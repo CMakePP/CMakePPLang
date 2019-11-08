@@ -12,7 +12,7 @@ build_path = os.path.join(doc_path, 'build')            # doc build directory
 # -- Project Info ------------------------------------------------------------
 copyright = u'2019, CMakePP Team'
 author = u'CMakePP Team'
-project = 'CMakePPBase'
+project = 'CMakePPCore'
 version = '1.0.0'
 release = '1.0.0alpha'
 
