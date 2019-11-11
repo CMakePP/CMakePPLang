@@ -1,4 +1,5 @@
 include_guard()
+include(cmakepp_core/utilities/negate)
 include(cmakepp_core/utilities/ternary_op)
 
 #[[[ Tests whether a string is the empty string.
@@ -26,7 +27,7 @@ include(cmakepp_core/utilities/ternary_op)
 #    We use macro instead of function to avoid a needless forward of the result.
 #]]
 macro(cpp_is_empty _cie_return _cie_str2check)
-    cpp_ternary_op(${_cie_return} TRUE FALSE "${_cie_str2check}" STREQUAL "")
+    cpp_ternary_op(${_cie_return} "${_cie_str2check} ;STREQUAL; " TRUE FALSE)
 endmacro()
 
 #[[[ Tests that a string is not the empty string.
@@ -54,5 +55,6 @@ endmacro()
 #    We use macro instead of function to avoid a needless forward of the result.
 #]]
 macro(cpp_is_not_empty _cine_return _cine_str2check)
-    cpp_ternary_op(${_cine_return} FALSE TRUE "${_cine_str2check}" STREQUAL "")
+    cpp_is_empty("${_cine_return}" "${_cine_str2check}")
+    cpp_negate("${_cine_return}" "${${_cine_return}}")
 endmacro()

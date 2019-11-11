@@ -13,18 +13,17 @@ include(cmakepp_core/utilities/return)
 #
 # :param _cto_result: Identifier to hold the resulting value.
 # :type _cto_result: identifier
-# :param _cto_tval: The value to return if the condition is true.
+# :param _cto_cond: The condition to evaluate. Valid conditions are anything
+#                   that can be used in CMake's "if" statements; however, if
+#                   the condition has multiple pieces (*e.g.*, ``x STREQUAL x``)
+#                   it must be passed as a list (*e.g.*, ``x;STREQUAL;x``).
+# :type _cto_cond: bool or list(str)
+# :param _cto_tval: The value to return if ``_cto_cond`` is true.
 # :type _cto_tval: str
-# :param _cto_fval: The value to return if the condition is false.
+# :param _cto_fval: The value to return if ``_cto_cond`` is false.
 # :type _cto_fval: str
-# :param ARGN: The condition. ``ARGN`` can be a single value whose truthy-ness
-               will be evaluated like ``if(${ARGN})`` or a statement like
-               ``x y z`` where ``x`` and ``z`` are the values being compared and
-               ``y`` is one of the CMake comparison operators (``EQUAL``,
-               ``LESS``, ``STREQUAL``, etc.). We are unable to accept any other
-               condition at this time.
-# :returns: ``_cto_tval`` if ``ARGN`` is true and ``_cto_fval`` otherwise. The
-#           result is returned via ``_cto_result``.
+# :returns: ``_cto_tval`` if ``_cto_cond`` is true and ``_cto_fval`` otherwise.
+#           The result is returned via ``_cto_result``.
 # :rtype: str
 #
 # Example
@@ -37,21 +36,14 @@ include(cmakepp_core/utilities/return)
 #
 #    include(cmakepp_core/utilities/ternary_op)
 #    set(input "foo")
-#    cpp_ternary_op(result "was_foo" "was_not_foo" "${input} STREQUAL "foo")
+#    cpp_ternary_op(result "${input} ;STREQUAL;foo " "was_foo" "was_not_foo")
 #    message("result contains: ${result}")  # Should print "was_foo"
+#
+# It should be noted that on the third line we include an extra space after the
+# variable
 #]]
-function(cpp_ternary_op _cto_result _cto_tval _cto_fval)
-    if(NOT ${ARGC} EQUAL 4 AND NOT ${ARGC} EQUAL 6)
-        message(
-            FATAL_ERROR
-            "Ternary op must be called with either 4 or 6 arguments. Call was:"
-            "cpp_ternary_op(${ARGV})"
-        )
-    endif()
-
-    if(${ARGC} EQUAL 4 AND "${ARGN}")
-        set("${_cto_result}" "${_cto_tval}")
-    elseif(${ARGC} EQUAL 6 AND "${ARGV3}" ${ARGV4} "${ARGV5}")
+function(cpp_ternary_op _cto_result _cto_cond _cto_tval _cto_fval)
+    if(${_cto_cond})
         set("${_cto_result}" "${_cto_tval}")
     else()
         set("${_cto_result}" "${_cto_fval}")
