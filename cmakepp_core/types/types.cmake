@@ -1,14 +1,12 @@
 include_guard()
 include(cmakepp_core/types/bool)
+include(cmakepp_core/types/description)
+include(cmakepp_core/types/empty_string)
 include(cmakepp_core/types/filepath)
 include(cmakepp_core/types/float)
 include(cmakepp_core/types/integer)
 include(cmakepp_core/types/list)
-include(cmakepp_core/types/string)
 include(cmakepp_core/types/target)
-
-## Convience list of recognized intrinsic CMake types. Useful for looping.
-set(CMAKEPP_CMAKE_TYPES bool filepath float int list str target)
 
 #[[[ Checks if a string can be lexically cast to a specified type.
 #
@@ -33,19 +31,21 @@ set(CMAKEPP_CMAKE_TYPES bool filepath float int list str target)
 # ==============
 #
 # The following snippet shows how to check if the value an identifier contains
-# is, for example, a string.
+# is, for example, a description.
 #
 # .. code-block:: cmake
 #
 #    include(cmakepp_core/types/types)
 #    set(a_variable "hello world")
-#    cpp_is_type(result str "${a_variable}")
-#    message("Variable is a string: ${result}")  # Prints "TRUE"
+#    cpp_is_type(result desc "${a_variable}")
+#    message("Variable is a description: ${result}")  # Prints "TRUE"
 #]]
 function(cpp_is_type _cit_result _cit_type _cit_str2check)
     string(TOLOWER "${_cit_type}" _cit_type)
     if("${_cit_type}" STREQUAL "bool")
         cpp_is_bool("${_cit_result}" "${_cit_str2check}")
+    elseif("${_cit_type}" STREQUAL "desc")
+        cpp_is_description("${_cit_result}" "${_cit_str2check}")
     elseif("${_cit_type}" STREQUAL "filepath")
         cpp_is_absolute_filepath("${_cit_result}" "${_cit_str2check}")
     elseif("${_cit_type}" STREQUAL "float")
@@ -56,8 +56,6 @@ function(cpp_is_type _cit_result _cit_type _cit_str2check)
         cpp_is_list("${_cit_result}" "${_cit_str2check}")
     elseif("${_cit_type}" STREQUAL "target")
         cpp_is_target("${_cit_result}" "${_cit_str2check}")
-    elseif("${_cit_type}" STREQUAL "str")
-        set(${_cit_result} TRUE)  #It's not anything else...
     else()
         message(
             FATAL_ERROR
@@ -88,14 +86,14 @@ endfunction()
 # ==============
 #
 # The following snippet shows how to check if the value an identifier contains
-# is, for example, not a string.
+# is, for example, not a description.
 #
 # .. code-block:: cmake
 #
 #    include(cmakepp_core/types/types)
 #    set(a_variable "hello world")
-#    cpp_is_not_type(result str "${a_variable}")
-#    message("Variable is not a string: ${result}")  # Prints "FALSE"
+#    cpp_is_not_type(result desc "${a_variable}")
+#    message("Variable is not a description: ${result}")  # Prints "FALSE"
 #]]
 function(cpp_is_not_type _cint_result _cint_type _cint_str2check)
     cpp_is_type("${_cint_result}" "${_cint_type}" "${_cint_str2check}")
@@ -103,38 +101,61 @@ function(cpp_is_not_type _cint_result _cint_type _cint_str2check)
     cpp_return("${_cint_result}")
 endfunction()
 
-#[[[ Asserts the provided string can be lexically cast to the provided type.
+#[[[ Tests that the arguments are of the correct types.
 #
-# This function will raise an error if the provided string can not be lexically
-# casted to the provided type. The type-check is done only if CMakePP is in
-# debug mode.
+# This function loops over an indefinite amount of (type, value)-pairs ensuring
+# that the values are of the correct types. This typically occurs as part of
+# type-checking a function's signature. If a value is not of the correct type an
+# error is raised. These type-checks only occur if CMakePP is in debug mode.
 #
-# :param _cat_type: The type to lexically cast to. Must be a recognized type. If
-#                   ``_cat_type`` is not a recognized type then an error will be
-#                   raised.
-# :type _cat_type: str
-# :param _cat_str2check: The string which should be lexically castable to an
-#                        instance of type ``_cat_type``.
-# :type _cat_str2check: str
-# :var CMAKEPP_CORE_DEBUG_MODE: If set to TRUE CMakePP is in debug mode and the
-#                               type-check will occur.
+# :param ARGV: The types and values of the arguments to check. ``ARGV`` should
+#              consist of (type, value) pairs and an error will be raised if
+#              there is an odd number of arguments provided.
+# :type ARGV: list(str)
+# :var CMAKEPP_CORE_DEBUG_MODE: If enabled then the type-checks will occur.
+# :type CMAKEPP_CORE_DEBUG_MODE: bool
 #
 # Example Usage:
 # ==============
 #
-# This example shows how to assert that the contents of a variable are, for
-# example, a string. In practice, such a check is usually done first thing
-# within a user-defined function where the type is not so obvious.
+# The following code snippet shows how to use ``cpp_assert_type`` to assert
+# that your function was called with the correct types. In this case we assume
+# that the positional arguments to the function are a description, an integer,
+# and a boolean.
 #
 # .. code-block:: cmake
 #
 #    include(cmakepp_core/types/types)
-#    set(a_var "Hello World")
-#    cpp_assert_type(str "${a_var}")
-#
+#    function(my_fxn arg0 arg1 arg2)
+#        cpp_assert_type(desc "${arg0}" int "${arg1}" bool "${arg2}")
+#    endfunction()
 #]]
-function(cpp_assert_type _cat_type _cat_str2check)
+function(cpp_assert_type)
     cpp_enable_if_debug()
-    cpp_is_type(_cat_result "${_cat_type}" "${_cat_str2check}")
-    cpp_assert(_cat_result "'${_cat_str2check}' is a ${_cat_type}")
+    math(EXPR _cat_is_odd "${ARGC} % 2")
+    if(${_cat_is_odd})
+        message(
+            FATAL_ERROR
+            "cpp_assert_type takes an even number of arguments."
+            "cpp_assert_type was called with: [${ARV}]"
+        )
+    endif()
+
+    # Range can't handle [0, -1] by 2's, *i.e.*, don't do anything
+    if(${ARGC} EQUAL 0)
+        return()
+    endif()
+
+    # Range is inclusive despite arguments starting at 0...
+    math(EXPR _cat_last "${ARGC} - 1")
+
+    foreach(_cat_pair_i RANGE 0 ${_cat_last} 2)
+        math(EXPR _cat_pair_j "${_cat_pair_i} + 1")
+        set(_cat_type "${ARGV${_cat_pair_i}}")
+        set(_cat_value "${ARGV${_cat_pair_j}}")
+        cpp_is_type(_cat_result "${_cat_type}" "${_cat_value}")
+        message("${_cat_result} ${_cat_type} ${_cat_value}")
+        cpp_assert(${_cat_result} "${_cat_value} is ${_cat_type}")
+    endforeach()
 endfunction()
+

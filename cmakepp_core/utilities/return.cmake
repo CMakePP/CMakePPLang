@@ -4,32 +4,38 @@ include_guard()
 #
 # CMake allows you to return variables by adding them to the parent namespace.
 # The best way to do this is to have the caller provide the function with an
-# identifier to save the result to. This function wraps the common case where
-# internally the function saves the result to a local variable with the same
-# name as the callee provided for the result. Without the ``cpp_return``
-# function this common pattern looks something like:
+# identifier in which to save the result. Assume some function ``A`` called a
+# function ``B``, which is now returning a value ``x``, the ``cpp_return``
+# function wraps the boilerplate associated with ensuring ``x`` is available in
+# ``A``'s namespace and also returns control back to ``A`` (*i.e.*, any
+# code following the ``cpp_return`` call in ``B`` will not be executed).
 #
-# .. code-block:: cmake
+# .. warning::
 #
-#    function(fxn_name return_identifier)
-#        set(${return_identifier} "the value")
-#        set(${return_identifier} "${${return_identifier}}" PARENT_SCOPE
-#    endfunction()
-#
-# With the ``cpp_return`` function the above becomes:
-#
-# .. code-block:: cmake
-#
-#    function(fxn_name return_identifier)
-#        set(${return_identifier} "the value")
-#        cpp_return(${return_identifier})
-#    endfunction()
-#
-# While the new code still has the same number of lines, it is our opinion that
-# the new code is easier to read and the intent is more clear.
+#    Extreme care needs to be taken when using this function in a macro as it
+#    always returns control to one scope up. Since macros do not create new
+#    scope this function will return through all macros on the stack until a
+#    function is reached. As a rule-of-thumb, never call this function from a
+#    macro.
 #
 # :param _cr_rv: The identifier which needs to be set in the parent namespace.
 # :type _cr_rv: identifier
+#
+# Example Usage:
+# ==============
+#
+# The following shows how to write a function which has multiple
+#
+# .. code-block:: cmake
+#
+#    function(fxn_name return_identifier)
+#        set(${return_identifier} "some value"
+#        if(x)
+#            set(${return_identifier} "anoter value")
+#            cpp_return(${return_identifier})
+#        endif()
+#        cpp_return(${return_indentifier})
+#    endfunction()
 #
 # ..note::
 #
@@ -42,4 +48,5 @@ include_guard()
 #]]
 macro(cpp_return _cr_rv)
     set("${_cr_rv}" "${${_cr_rv}}" PARENT_SCOPE)
+    return()
 endmacro()

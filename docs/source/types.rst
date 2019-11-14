@@ -12,116 +12,145 @@ types in order to avoid/catch such errors.
 Defining Strong Types
 =====================
 
-Native CMake supports the following implicit, contextually dependent casts from
-strings:
+All valid CMake values are strings. In addition to being of type "string"
+CMakePP additionally recognizes each valid CMake value as being of one, and
+only one, other intrinsic type. The following subsections discuss the intrinsic
+CMakePP types. The subsection headings include the standardized abbreviation of
+each type in parenthesis.
 
-- bool
-- filepath
-- float
-- int
-- list
-- target
+Boolean (bool)
+--------------
 
-CMakePP comes with several additional "intrinsic" types:
+Any CMake string which case-insensitively matches one of the established boolean
+literals is deemed to be a boolean. The recognized boolean literals adopted by
+CMakePP are a subset of those recognized by CMake itself. Specifically this list
+includes:
 
-- map
-- object
+  - True boolean literals: ``ON``, ``YES``, ``TRUE``, and ``Y``
+  - False boolean literals: ``OFF``, ``NO``, ``FALSE``, ``N``, and ``NOTFOUND``
 
-These types are not recognized by CMake proper; however, they are treated by
-CMakePP as if they were native intrinsic types. The union of the types
-recognized by CMake and those recognized by CMakePP forms the set of intrinsic
-types recognized by CMakePP.
+CMake's documentation additionally lists ``0`` and ``1`` as respectively being
+false and true boolean literals; however, CMakePP adopts the philosophy that
+``0`` and ``1`` are integer literals that can be implicitly casted to booleans.
 
-A given valid CMake string is recognized by CMakePP as being of one, and
-only one, intrinsic type. The following list comprises the types CMakePP
-recognizes. For each type we have included its abbreviation in parenthesis (the
-abbreviation is what you use when declaring signatures), a description of which
-CMake strings qualify as that type, and any other things to note about the type.
+Description (desc)
+------------------
 
-- boolean (``bool``)
+Description is the catchall for any CMake string which fails to meet the
+criteria of another intrinsic type. Descriptions are usually used to name and/or
+document things and tend to be human-readable. The name "description" was chosen
+to avoid confusion with the CMake's fundamental string type. Descriptions also
+tend to be the type an object is classified as if there is a syntax error, for
+example the literal ``" 1"`` is a description and **NOT** an integer because it
+includes whitespace.
 
-  - strings which case-insensitively match any of the true or false literals
-  - true values: ``ON``, ``YES``, ``TRUE``, ``Y``
-  - false values: ``OFF``, ``NO``, ``FALSE``, ``N``, ``NOTFOUND``
+Filepath (path)
+-------------------
 
-- description (``desc``)
+CMake has builtin support for determining whether a string is a valid filepath
+for a target operating system. While CMake natively has some support for
+relative filepaths, best CMake practice is to always use absolute filepaths.
+CMakePP therefore stipulates that any CMake string, which can be interpreted as
+an absolute filepath is an object of type ``path``. It is worth noting that the
+path does **NOT** need to exist in order for it to be a filepath object.
 
-  - strings which are not recognized as any type on this list.
-  - the name "description" was chosen to avoid confusion with the CMake's
-    fundamental string type and to highlight that such objects should primarily
-    be used to provide human-readable descriptions and not convey information...
+Floating-Point Number (float)
+---------------------------------
 
-- filepath (``path``)
+CMake strings which contain only a single decimal character (``.``) in addition
+to at least one digit in the range 0-9 are floating point numbers. Floating
+point numbers may optionally be prefixed with a single minus sign character
+(``-``) to denote that the value is negative. Since ultimately the
+floating-point value is stored as a string, it is of infinite precision. CMake's
+``math`` command does not support arithmetic involving floating point values and
+thus floating point numbers are uncommon in typical CMake scripts.
 
-  - string which may be interpreted as being an absolute filepath for the
-    present operating system
-  - The path does not have to exist
-  - Relative paths are poorly supported by CMake and will not be recognized as
-    filepaths by CMakePP, but as strings
+Integers (int)
+--------------
 
-- floating-point (``float``)
+Any CMake string comprised entirely of the digits 0-9 is an integer. Integers
+may optionally be prefixed with a single minus sign (``-``). Integers are
+ultimately stored as strings and thus are of infinite precision. That said
+CMake's backend is written in C++ and it is likely (although I can not say for
+certain) that passing integers into native CMake functions will result is a loss
+of precision.
 
-  - strings which only contain a single ``.`` character and at least one of
-    the digits in the range 0-9
-  - may optionally be prefixed with a single ``-`` sign
-  - floating-point values are stored as strings and are thus infinite precision
-  - CMake's ``math`` command does not perform math with floating point values
+List (list)
+-----------
 
-- integers (``int``)
+In CMake strings which contain at least one un-escaped semicolon are lists. In
+CMakePP we avoid lists as much as possible owing to the many gotchas associated
+with them. Nonetheless, particularly at interfaces with standard CMake code the
+use of lists is unavoidable. It is worth noting that CMakePP's definition of a
+list makes it such that it is impossible to have a list containing a single
+element.
 
-  - strings which only contain the digits 0-9
-  - may optionally be prefixed with a single ``-`` sign
-
-- list (``list``)
-
-  - strings which contain at least one un-escaped semicolon
-  - it is not possible to have a list with one element in CMakePP
-
-    - While this sounds restrictive, in practice lists are only used in CMakePP
-      to interface with native CMake and this restriction presents no problems
-      in those circumstances
-
-- map (``map``)
+Map (map)
+---------
 
   - strings which are recognizable as "this pointers" for CMakePP maps
 
     - CMakePP creates "this pointers" for maps by a name-mangling technique
       which should not interfere with any other type.
 
-- object (``obj``)
 
-  - strings which are recognizable as "this pointers" for CMakePP objects
+Object (obj)
+------------
 
-    - CMakePP creates "this pointers" for objects by a name-mangling technique
-      which should not interfere with any other type.
+This is the base class for all user-defined classes. A string is an object if it
+is recognizable as a "this pointer" for an object. This is done by comparing it
+against the name-mangling scheme used internally.
 
-- string (``str``)
+String (str)
+------------
 
-  - This is the fundamental type that all valid CMake values share
-  - A function which takes a value of type ``str`` accepts any valid CMake value
-    for that argument (think of it as ``void*``).
-  - Take care not to confuse string with description.
+This is the fundamental type that all valid CMake values share. In CMakePP the
+type ``str`` functions like ``void*`` in C. If a CMakePP function accepts an
+argument of type ``str`` that means it accepts any valid CMake value. It should
+be noted that ``str`` is not the same thing as ``desc``. In particular all
+``desc`` are ``str``, but not all ``str`` are ``desc``. For example the ``str``,
+``TRUE`` is a ``bool``.
 
-- target (``target``)
+Target (target)
+---------------
 
   - strings which CMake additionally identifies as targets
   - targets are always created via the native CMake calls like ``add_library``
 
+Type (type)
+-----------
+
+A CMake string is a type if it matches (case-insensitively) any of the
+abbreviations for the types listed in this section.
+
 Other Types
 ===========
 
-While reading CMakePP API documentation you will come across several types not
-on the above list.
+The types in the previous section are the rigorous types recognized by CMakePP,
+particularly for documenting returns from functions it is worth creating
+fictional CMakePP types.
 
-- identifier (`*<T>`)
+Identifier (T*)
+---------------
 
-  - Identifiers are ultimately descriptions which have been defined
+Identifiers are ultimately descriptions which have been defined. A description
+``x`` is said to be defined if ``if(DEFINED x)`` evaluates to true. Identifiers
+are synonymous with "variable". In CMake and CMakePP identifiers play a role
+similar to pointers in C/C++. Identifiers are "dereferenced" by using the
+``${}`` operation. The notation used for the abbreviation, ``T*``, draws on the
+pointer analogy and means that dereferencing the identifier will yield a value
+of type ``T``. For example if the identifier ``x`` is of type ```int*``,
+``${x}`` results in an integer. Identifiers most commonly show up as return
+types, although they can be inputs occasionally.
 
-    - A description ``x`` is defined if ``if(DEFINED ${x})`` evaluates to true.
+Tuple (tuple(<T>, <U>, ...))
+----------------------------
 
-  - Identifiers play a role similar to pointers in C/C++ allowing values to be
-    passed by reference vs. value
+  - strings which contain at least one-unescaped semicolon and a fixed number of
+    elements
+  - the ``<T>`` and ``<U>`` should be replaced with the types of the elements.
+  - CMakePP functions which return multiple values using multiple positional
+    arguments are considered to return tuples.
 
-  - The notation
 
 
