@@ -119,7 +119,7 @@ ct_add_test("_cpp_is_bool")
     ct_end_section()
 
     ct_add_section("map")
-        include(cmakepp_core/map/ctor)
+        include(cmakepp_core/map/detail_/ctor)
         _cpp_map_ctor(my_map)
         _cpp_is_bool(result "${my_map}")
         ct_assert_equal(result FALSE)

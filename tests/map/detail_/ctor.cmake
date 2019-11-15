@@ -1,7 +1,7 @@
 include(cmake_test/cmake_test)
 
 ct_add_test("_cpp_map_mangle")
-    include(cmakepp_core/map/ctor)
+    include(cmakepp_core/map/detail_/ctor)
 
     ct_add_section("empty this ptr")
         _cpp_map_mangle(result)
@@ -17,7 +17,7 @@ ct_add_test("_cpp_map_mangle")
 ct_end_test()
 
 ct_add_test("_cpp_map_ctor")
-    include(cmakepp_core/map/ctor)
+    include(cmakepp_core/map/detail_/ctor)
 
     _cpp_map_ctor(my_map)
     get_property(result GLOBAL PROPERTY ${my_map}_keys DEFINED)

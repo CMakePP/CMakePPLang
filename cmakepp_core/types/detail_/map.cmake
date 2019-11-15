@@ -1,5 +1,5 @@
 include_guard()
-include(cmakepp_core/map/ctor)
+include(cmakepp_core/map/detail_/ctor)
 
 #[[[ Determines if a CMake string is lexically convertibale to a CMakePP map.
 #

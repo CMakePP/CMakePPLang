@@ -34,7 +34,7 @@ ct_add_test("cpp_get_type")
     ct_end_section()
 
     ct_add_section("map")
-        include(cmakepp_core/map/ctor)
+        include(cmakepp_core/map/detail_/ctor)
         _cpp_map_ctor(my_map)
         cpp_get_type(result "${my_map}")
         ct_assert_equal(result "map")

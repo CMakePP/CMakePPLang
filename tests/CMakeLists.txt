@@ -23,6 +23,7 @@ function(add_cmake_unit_tests prefix)
     endforeach()
 endfunction()
 
+add_subdirectory(asserts)
 add_subdirectory(map)
 add_subdirectory(timer)
 add_subdirectory(types)
