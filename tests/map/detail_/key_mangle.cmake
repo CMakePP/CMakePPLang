@@ -1,0 +1,25 @@
+include(cmake_test/cmake_test)
+
+ct_add_test("_cpp_map_key_mangle")
+    include(cmakepp_core/map/detail_/key_mangle)
+
+    ct_add_section("signature check")
+        set(CMAKEPP_CORE_DEBUG_MODE ON)
+        ct_add_section("result is not desc")
+            _cpp_map_key_mangle(TRUE a_map a_key)
+            ct_assert_fails_as("Assertion: TRUE is desc")
+        ct_end_section()
+
+        ct_add_section("map is not a map")
+            _cpp_map_key_mangle(result a_map a_key)
+            ct_assert_fails_as("Assertion: a_map is map")
+        ct_end_section()
+    ct_end_section()
+
+    ct_add_section("mangles correctly")
+        include(cmakepp_core/map/detail_/ctor)
+        _cpp_map_ctor(a_map)
+        _cpp_map_key_mangle(result "${a_map}" the_key)
+        ct_assert_equal(result "${a_map}_key_the_key")
+    ct_end_section()
+ct_end_test()

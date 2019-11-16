@@ -1,9 +1,11 @@
 include_guard()
 include(cmakepp_core/asserts/type)
+include(cmakepp_core/map/detail_/add_key)
+include(cmakepp_core/map/detail_/key_mangle)
 
 function(_cpp_map_set _cms_map _cms_key _cms_value)
     cpp_assert_type(map "${_cms_map}")
-
     _cpp_map_add_key("${_cms_map}" "${_cms_key}")
-    set_property(GLOBAL PROPERTY "${_cms_map}_key_${_cms_key}" "${_cms_value}")
+    _cpp_map_key_mangle(_cms_key_identifier "${_cms_map}" "${_cms_key}")
+    set_property(GLOBAL PROPERTY "${_cms_key_identifier}" "${_cms_value}")
 endfunction()
