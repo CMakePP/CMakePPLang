@@ -24,7 +24,12 @@ function(add_cmake_unit_tests prefix)
 endfunction()
 
 add_subdirectory(asserts)
+add_subdirectory(examples)
+add_subdirectory(logic)
 add_subdirectory(map)
 add_subdirectory(timer)
 add_subdirectory(types)
 add_subdirectory(utilities)
+
+# Stress tests can take a long time to run
+#add_subdirectory(stress_tests)

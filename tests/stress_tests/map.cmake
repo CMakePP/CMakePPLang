@@ -1,0 +1,23 @@
+include(cmake_test/cmake_test)
+
+ct_add_test("Stress test map")
+message("CMake Version: ${CMAKE_VERSION}")
+include(cmakepp_core/map/map)
+include(cmakepp_core/timer/timer)
+set(n_iterations 40000)
+cpp_map(CTOR my_map)
+
+start_cmakepp_timer("set_timer")
+foreach(key_i RANGE ${n_iterations})
+    cpp_map(SET "${my_map}" ${key_i} "${key_i}_value")
+endforeach()
+stop_cmakepp_timer(time2set "set_timer")
+message("Time to set ${n_iterations} keys: ${time2set} s")
+
+start_cmakepp_timer("get_timer")
+foreach(key_i RANGE ${n_iterations})
+    cpp_map(GET value "${my_map}" ${key_i})
+endforeach()
+stop_cmakepp_timer(time2get "get_timer")
+message("Time to get ${n_iterations} keys: ${time2get} s")
+ct_end_test()

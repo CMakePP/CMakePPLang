@@ -88,10 +88,12 @@ element.
 Map (map)
 ---------
 
-  - strings which are recognizable as "this pointers" for CMakePP maps
-
-    - CMakePP creates "this pointers" for maps by a name-mangling technique
-      which should not interfere with any other type.
+Stealing from Python's design, it becomes much simpler to implement objects if
+we have an associative array object. The CMakePP map is such an object. When a
+map is created CMakePP creates a unique identifier for that instance. Behind the
+scenes, CMakePP keeps track of what state is associated with which instance by
+using these unique identifiers. A CMake string is a CMakePP map if it can be
+interpreted as being one of these unique identifiers.
 
 
 Object (obj)
@@ -114,8 +116,8 @@ be noted that ``str`` is not the same thing as ``desc``. In particular all
 Target (target)
 ---------------
 
-  - strings which CMake additionally identifies as targets
-  - targets are always created via the native CMake calls like ``add_library``
+CMake keeps an internal list of targets. Any CMake string that CMake recognizes
+as the name of a target is of the ``target`` type.
 
 Type (type)
 -----------
@@ -142,6 +144,17 @@ pointer analogy and means that dereferencing the identifier will yield a value
 of type ``T``. For example if the identifier ``x`` is of type ```int*``,
 ``${x}`` results in an integer. Identifiers most commonly show up as return
 types, although they can be inputs occasionally.
+
+It is tempting to make identifiers intrinsic types; however, since identifiers
+only differ from descriptions by the fact that they are defined, this leads to
+an ugly syntax like:
+
+.. code-block:: cmake
+
+   set(an_identifier)
+   fxn_taking_an_identifier(an_identifier)
+
+unless ``an_identifier`` was previously defined.
 
 Tuple (tuple(<T>, <U>, ...))
 ----------------------------
