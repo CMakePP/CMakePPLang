@@ -3,6 +3,13 @@ include(cmake_test/cmake_test)
 ct_add_test("_cpp_is_filepath")
     include(cmakepp_core/types/detail_/filepath)
 
+    ct_add_section("array")
+        include(cmakepp_core/array/detail_/ctor)
+        _cpp_array_ctor(my_array)
+        _cpp_is_filepath(result "${my_array}")
+        ct_assert_equal(result FALSE)
+    ct_end_section()
+
     ct_add_section("bool")
         _cpp_is_filepath(return TRUE)
         ct_assert_equal(return FALSE)

@@ -1,4 +1,5 @@
 include_guard()
+include(cmakepp_core/types/detail_/array)
 include(cmakepp_core/types/detail_/bool)
 include(cmakepp_core/types/detail_/filepath)
 include(cmakepp_core/types/detail_/float)
@@ -35,6 +36,12 @@ include(cmakepp_core/types/detail_/type)
 #
 #]]
 function(cpp_get_type _cgt_result _cgt_str2identify)
+
+    _cpp_is_array("${_cgt_result}" "${_cgt_str2identify}")
+    if(${${_cgt_result}})
+        set("${_cgt_result}" "array" PARENT_SCOPE)
+        return()
+    endif()
 
     _cpp_is_bool("${_cgt_result}" "${_cgt_str2identify}")
     if(${${_cgt_result}})

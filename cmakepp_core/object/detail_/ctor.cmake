@@ -1,0 +1,16 @@
+include_guard()
+include(cmakepp_core/map/map)
+
+function(_cpp_object_mangle _com_this_ptr)
+    set(${_com_this_ptr} "__cpp_object_${${_com_this_ptr}}" PARENT_SCOPE)
+endfunction()
+
+function(_cpp_object_ctor _coc_name)
+    string(RANDOM "${_coc_name}")
+    _cpp_object_mangle("${_coc_name}")
+    cpp_map(CTOR _coc_map)
+    set_property(GLOBAL PROPERTY "${${_coc_name}}" "${_coc_map}")
+    cpp_map(SET "${_coc_map}" __types object)
+    cpp_map(SET "${_coc_map}" __fxns "")
+    cpp_map(SET "${_coc_map}" __attr "")
+endfunction()

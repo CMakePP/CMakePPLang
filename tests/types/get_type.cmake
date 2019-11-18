@@ -3,6 +3,13 @@ include(cmake_test/cmake_test)
 ct_add_test("cpp_get_type")
     include(cmakepp_core/types/get_type)
 
+    ct_add_section("array")
+        include(cmakepp_core/array/detail_/ctor)
+        _cpp_array_ctor(my_array)
+        cpp_get_type(result "${my_array}")
+        ct_assert_equal(result "array")
+    ct_end_section()
+
     ct_add_section("bool")
         cpp_get_type(return TRUE)
         ct_assert_equal(return "bool")

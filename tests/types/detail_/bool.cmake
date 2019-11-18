@@ -3,6 +3,13 @@ include(cmake_test/cmake_test)
 ct_add_test("_cpp_is_bool")
     include(cmakepp_core/types/detail_/bool)
 
+    ct_add_section("array")
+        include(cmakepp_core/array/detail_/ctor)
+        _cpp_array_ctor(my_array)
+        _cpp_is_bool(result "${my_array}")
+        ct_assert_equal(result FALSE)
+    ct_end_section()
+
     ct_add_section("bool")
         ct_add_section("Is case-insensitive")
             _cpp_is_bool(return TrUe)

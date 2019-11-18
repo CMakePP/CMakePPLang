@@ -1,5 +1,6 @@
 include_guard()
 include(cmakepp_core/map/detail_/ctor)
+include(cmakepp_core/types/detail_/list)
 
 #[[[ Determines if a CMake string is lexically convertibale to a CMakePP map.
 #
@@ -32,8 +33,9 @@ include(cmakepp_core/map/detail_/ctor)
 #]]
 function(_cpp_is_map _cim_result _cim_map)
     _cpp_map_mangle(_cim_mangle)
-    if("${_cim_mangle}" STRLESS "${_cim_map}")
-
+    _cpp_is_list(_cim_list "${_cim_map}")
+    string(FIND "${_cim_map}" "${_cim_mangle}" _cim_pos)
+    if("${_cim_pos}" STREQUAL 0 AND NOT "${_cim_list}")
         get_property(_cim_is_defined GLOBAL PROPERTY "${_cim_map}_keys" DEFINED)
         if(_cim_is_defined)
             set(${_cim_result} TRUE PARENT_SCOPE)

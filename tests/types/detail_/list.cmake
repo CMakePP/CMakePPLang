@@ -3,6 +3,13 @@ include(cmake_test/cmake_test)
 ct_add_test("cpp_is_list")
     include(cmakepp_core/types/detail_/list)
 
+    ct_add_section("array")
+        include(cmakepp_core/array/detail_/ctor)
+        _cpp_array_ctor(my_array)
+        _cpp_is_list(result "${my_array}")
+        ct_assert_equal(result FALSE)
+    ct_end_section()
+
     ct_add_section("bool")
         _cpp_is_list(return TRUE)
         ct_assert_equal(return FALSE)

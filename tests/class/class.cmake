@@ -1,0 +1,15 @@
+include(cmake_test/cmake_test)
+
+ct_add_test("cpp_class")
+    include(cmakepp_core/class/class)
+    cpp_class(MyFirstClass)
+        cpp_member(print_out MyFirstClass _po_self bool _po_write_out)
+            cpp_MyFirstClass(INSTANCE_NAME _po_attr "${_po_self}")
+            if(${_po_write_out})
+                message("The name of this class \; is ${_po_attr}.")
+            endif()
+        cpp_end_member()
+
+        cpp_attr(MyFirstClass instance_name "No Name")
+    cpp_end_class(MyFirstClass)
+ct_end_test()

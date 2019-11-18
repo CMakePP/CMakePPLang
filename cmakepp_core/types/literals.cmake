@@ -16,5 +16,5 @@ set(CMAKEPP_BOOL_LITERALS ON YES TRUE Y OFF NO FALSE N NOTFOUND)
 # the recognized intrinsic CMakePP types.
 #]]
 set(CMAKEPP_TYPE_LITERALS
-    bool desc path float int list map obj str target type
+    array bool desc path float int list map obj str target type
 )
