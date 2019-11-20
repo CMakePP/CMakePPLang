@@ -16,10 +16,9 @@ include(cmakepp_core/map/detail_/keys)
 # :type _cmhk_key: desc
 #]]
 function(_cpp_map_has_key _cmhk_result _cmhk_map _cmhk_key)
-    cpp_assert_type(
-        desc "${_cmhk_result}" map "${_cmhk_map}" desc "${_cmhk_key}"
-    )
+    cpp_assert_signature("${ARGV}" desc map desc)
     _cpp_map_keys(_cmhk_keys "${_cmhk_map}")
+    string(TOLOWER "${_cmhk_key}" _cmhk_key)
     cpp_contains("${_cmhk_result}" "${_cmhk_key}" "${_cmhk_keys}")
     cpp_return("${_cmhk_result}")
 endfunction()

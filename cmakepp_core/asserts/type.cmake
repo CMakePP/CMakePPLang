@@ -1,6 +1,5 @@
 include_guard()
 include(cmakepp_core/types/get_type)
-include(cmakepp_core/utilities/are_equal)
 include(cmakepp_core/utilities/assert)
 include(cmakepp_core/utilities/enable_if_debug)
 
@@ -57,7 +56,9 @@ function(cpp_assert_type)
         set(_cat_type "${ARGV${_cat_pair_i}}")
         set(_cat_value "${ARGV${_cat_pair_j}}")
         cpp_get_type(_cat_result "${_cat_value}")
-        cpp_are_equal(_cat_result "${_cat_result}" "${_cat_type}")
-        cpp_assert(${_cat_result} "${_cat_value} is ${_cat_type}")
+        if(NOT "${_cat_result}" STREQUAL "${_cat_type}")
+            # Want to keep the uniform printing API
+            cpp_assert(FALSE "${_cat_value} is ${_cat_type}")
+        endif()
     endforeach()
 endfunction()

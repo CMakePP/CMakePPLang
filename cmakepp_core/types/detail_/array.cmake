@@ -1,5 +1,5 @@
 include_guard()
-include(cmakepp_core/array/detail_/ctor)
+include(cmakepp_core/types/detail_/map)
 
 #[[[ Determines if a CMake string is lexically convertibale to a CMakePP array.
 #
@@ -30,12 +30,15 @@ include(cmakepp_core/array/detail_/ctor)
 #    message("Is an array: ${result}")  # Prints true
 #]]
 function(_cpp_is_array _cia_result _cia_array)
-    _cpp_array_mangle(_cia_mangle)
     _cpp_is_list(_cia_list "${_cia_array}")
-    string(FIND "${_cia_array}" "${_cia_mangle}" _cia_pos)
-    if("${_cia_pos}" STREQUAL 0 AND NOT "${_cia_list}")
-        set(${_cia_result} TRUE PARENT_SCOPE)
-        return()
+    if(NOT "${_cia_list}" AND _cia_array)
+        get_property(_cia_contents GLOBAL PROPERTY "${_cia_array}")
+        get_property(_cia_type GLOBAL PROPERTY "${_cia_array}_type")
+        _cpp_is_map(_cia_is_map "${_cia_contents}")
+        if(_cia_is_map AND "${_cia_type}" STREQUAL "array")
+            set(${_cia_result} TRUE PARENT_SCOPE)
+            return()
+        endif()
     endif()
     set(${_cia_result} FALSE PARENT_SCOPE)
 endfunction()

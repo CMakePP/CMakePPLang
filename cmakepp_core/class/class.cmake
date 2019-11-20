@@ -1,34 +1,28 @@
 include_guard()
-include(cmakepp_core/class/detail_/ctor)
-include(cmakepp_core/class/detail_/get_class_registry)
-include(cmakepp_core/utilities/read_template)
+include(cmakepp_core/class/detail_/class_guts)
+include(cmakepp_core/class/member)
 
-function(_cpp_class _cc_type _cc_file)
-    _cpp_get_class_registry(_cc_registry)
-    set(_cc_fxn_regex [[cpp_member\(([A-Za-z0-9_]+)[ \t\r\n]+([^\)]*)]])
-    string(TOUPPER "${_cc_type}" _cc_uc_type)
-    cpp_map(HAS_KEY _cc_exists "${_cc_registry}" "${_cc_uc_type}")
-
-    if(_cc_exists) # Early abort if we've seen this class
+#[[ Declares a user-defined type.
+#
+# The ``cpp_class`` function is used to start the declaration of a user-defined
+# type. The type's declaration starts with ``cpp_class`` and ends with
+# ``cpp_end``. All objects automatically inherit from ``Object``.
+#
+# :param _cc_type: The name of the user-defined type.
+# :type _cc_type: desc
+# :param *args: The base classes this type inherits from.
+#
+# .. note::
+#
+#    ``cpp_class`` is a macro so that the ``cpp_class`` command can abort
+#    registering the class if CMakePP already knows about the class. This is
+#    because the actual process of registering the class is somewhat expensive.
+#]]
+macro(cpp_class _cc_type)
+    _cpp_class_guts(__cc_src_file "${_cc_type}" ${ARGN})
+    if(__cc_src_file)
+        include("${_cc_src_file}")
         return()
     endif()
-
-    _cpp_class_ctor(_cc_new_class "${_cc_type}" ${ARGN})
-    cpp_read_template(_cc_contents "${_cc_file}")
-    set(_cc_in_fxn TRUE)
-    foreach(_cc_line_i ${_cc_contents})
-        string(REGEX MATCH "${_cc_fxn_regex}" _cc_hit "${_cc_line_i}")
-        if(NOT "${_cc_hit}" STREQUAL "")
-            set(_cc_fxn_name "${CMAKE_MATCH_1}")
-            set(_cc_fxn_args "${CMAKE_MATCH_2}")
-            message("Start of member function: ${_cc_fxn_name}")
-            message("Args: ${_cc_fxn_args}")
-        endif()
-    endforeach()
-    message(FATAL_ERROR "contents")
-    cpp_map(SET "${_cc_registry}" "${_cc_uc_type}" "${_cc_new_class}")
-endfunction()
-
-macro(cpp_class _cc_type)
-    _cpp_class("${_cc_type}" "${CMAKE_CURRENT_LIST_FILE}" ${ARGN})
 endmacro()
+

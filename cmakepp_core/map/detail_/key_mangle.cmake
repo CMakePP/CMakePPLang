@@ -35,5 +35,6 @@ include(cmakepp_core/asserts/type)
 #]]
 function(_cpp_map_key_mangle _cmkm_result _cmkm_map _cmkm_key)
     cpp_assert_type(desc "${_cmkm_result}" map "${_cmkm_map}")
+    string(TOLOWER "${_cmkm_key}" _cmkm_key)
     set(${_cmkm_result} "${_cmkm_map}_key_${_cmkm_key}" PARENT_SCOPE)
 endfunction()

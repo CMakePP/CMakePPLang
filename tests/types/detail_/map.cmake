@@ -1,6 +1,7 @@
 include(cmake_test/cmake_test)
 
 ct_add_test("_cpp_is_map")
+    include(cmakepp_core/map/detail_/ctor)
     include(cmakepp_core/types/detail_/map)
 
     ct_add_section("array")

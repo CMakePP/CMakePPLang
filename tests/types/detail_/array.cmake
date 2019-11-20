@@ -1,6 +1,7 @@
 include(cmake_test/cmake_test)
 
 ct_add_test("_cpp_is_array")
+    include(cmakepp_core/array/detail_/ctor)
     include(cmakepp_core/types/detail_/array)
 
     ct_add_section("array")

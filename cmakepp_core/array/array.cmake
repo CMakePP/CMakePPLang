@@ -1,16 +1,28 @@
 include_guard()
 include(cmakepp_core/array/detail_/append)
+include(cmakepp_core/array/detail_/are_equal)
 include(cmakepp_core/array/detail_/ctor)
+include(cmakepp_core/array/detail_/end)
+include(cmakepp_core/array/detail_/find)
 include(cmakepp_core/array/detail_/get)
 include(cmakepp_core/array/detail_/length)
 include(cmakepp_core/array/detail_/set)
 
+#[[[ Container whose elements are obtained by offsets.
+#
+#]]
 macro(cpp_array _ca_mode)
     string(TOUPPER "${_ca_mode}" __ca_mode)
     if("${__ca_mode}" STREQUAL APPEND)
         _cpp_array_append(${ARGN})
+    elseif("${__ca_mode}" STREQUAL ARE_EQUAL)
+        _cpp_array_are_equal(${ARGN})
     elseif("${__ca_mode}" STREQUAL CTOR)
         _cpp_array_ctor(${ARGN})
+    elseif("${__ca_mode}" STREQUAL END)
+        _cpp_array_end(${ARGN})
+    elseif("${__ca_mode}" STREQUAL FIND)
+        _cpp_array_find(${ARGN})
     elseif("${__ca_mode}" STREQUAL GET)
         _cpp_array_get(${ARGN})
     elseif("${__ca_mode}" STREQUAL LENGTH)

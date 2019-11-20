@@ -1,8 +1,9 @@
 include(cmake_test/cmake_test)
 
 ct_add_test("_cpp_array_append")
-    include(cmakepp_core/array/detail_/ctor)
     include(cmakepp_core/array/detail_/append)
+include(cmakepp_core/array/detail_/ctor)
+    include(cmakepp_core/array/detail_/get)
 
     _cpp_array_ctor(my_array)
 

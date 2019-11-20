@@ -1,30 +1,8 @@
 include_guard()
+include(cmakepp_core/asserts/signature)
+include(cmakepp_core/map/detail_/set)
 include(cmakepp_core/utilities/return)
-include(cmakepp_core/utilities/ternary_op)
-
-#[[[ Encapsulates the logic behind how we mangle the "this pointer" for a map.
-#
-# This function will take the input identifier and mangle the string it contains
-# in such a way that CMakePP can identify the string as being the "this pointer"
-# for a map. The exact mangling is considered an implemntation detail, but can
-# be accessed at runtime by providing an identifier that contains an empty
-# string. After the call the identifier will be set to the prefix used for
-# mangling (the final mangled name being obtained by concatenating the prefix
-# with the contents of the provided identifier). This function is not part of
-# the map's public API and should not be called from outside CMakePP core.
-#
-# :param _cmm_this_ptr: An identifier which will be set to the "this pointer" of
-#                       the resulting map. The input contents of this variable
-#                       will be used to seed the result and should be unique or
-#                       else the resulting map will overwrite an existing map.
-# :type _cmm_this_ptr: identifier
-# :returns: The unique name of this map. The result is returned via the
-#           ``_cmm_this_ptr`` variable.
-# :rtype: str
-#]]
-function(_cpp_map_mangle _cmm_this_ptr)
-    set(${_cmm_this_ptr} "__cpp_map_${${_cmm_this_ptr}}" PARENT_SCOPE)
-endfunction()
+include(cmakepp_core/utilities/unique_id)
 
 #[[[ Creates and assigns a new map to the specified identifier.
 #
@@ -34,6 +12,7 @@ endfunction()
 #                   will play the role of the "this pointer" for the newly
 #                   created map.
 # :type _cmc_name: identifier
+# :param *args: A list of (key,value)-pairs to initialize the map with.
 # :returns: A newly created map instance. The map is returned via the
 #           ``_cmc_name`` parameter.
 # :rtype: map
@@ -51,11 +30,25 @@ endfunction()
 # After this call the map can be accessed like ``${my_map}``.
 #]]
 function(_cpp_map_ctor _cmc_name)
-    string(RANDOM ${_cmc_name})
-    _cpp_map_mangle(${_cmc_name})
+    cpp_assert_signature("${ARGV}" desc args)
+    cpp_unique_id("${_cmc_name}")
     define_property(
         GLOBAL PROPERTY ${${_cmc_name}}_keys BRIEF_DOCS "keys" FULL_DOCS "keys"
     )
+    set_property(GLOBAL PROPERTY "${${_cmc_name}}_type" "map")
+    if(${ARGC} GREATER 1)
+        set(_cmc_key_i 1)
+        set(_cmc_value_i 2)
+        while("${_cmc_key_i}" LESS "${ARGC}")
+            _cpp_map_set(
+                "${${_cmc_name}}"
+                "${ARGV${_cmc_key_i}}"
+                "${ARGV${_cmc_value_i}}"
+            )
+            math(EXPR _cmc_key_i "${_cmc_key_i} + 2")
+            math(EXPR _cmc_value_i "${_cmc_value_i} + 2")
+        endwhile()
+    endif()
     cpp_return(${_cmc_name})
 endfunction()
 

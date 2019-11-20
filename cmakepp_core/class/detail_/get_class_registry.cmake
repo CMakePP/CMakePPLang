@@ -15,12 +15,14 @@ include(cmakepp_core/utilities/return)
 # :rtype: map*
 #]]
 function(_cpp_get_class_registry _cgcr_registry)
-    cpp_assert_type(desc "${_cgcr_registry}")
+    cpp_assert_signature("${ARGV}" desc)
     get_property("${_cgcr_registry}" GLOBAL PROPERTY __CPP_CLASS_REGISTRY__)
 
     if("${${_cgcr_registry}}" STREQUAL "")
         cpp_map(CTOR "${_cgcr_registry}")
-        set_property(GLOBAL PROPERTY __CPP_CLASS_REGISTRY__ "${_cgcr_registry}")
+        set_property(
+            GLOBAL PROPERTY __CPP_CLASS_REGISTRY__ "${${_cgcr_registry}}"
+        )
     endif()
     cpp_return("${_cgcr_registry}")
 endfunction()

@@ -1,0 +1,7 @@
+# List of our unit tests
+set(
+    unit_tests serialize_array serialize_list serialize_map serialize_string
+               serialize_value
+)
+add_cmake_unit_tests("serialization" ${unit_tests})
+
