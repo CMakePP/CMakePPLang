@@ -1,6 +1,6 @@
 include_guard()
+include(cmakepp_core/algorithm/equal)
 include(cmakepp_core/asserts/signature)
-include(cmakepp_core/logic/are_equal)
 include(cmakepp_core/utilities/return)
 
 #[[[ Compares two maps in order to determine if they are equal.
@@ -34,7 +34,7 @@ function(_cpp_map_are_equal _cmae_result _cmae_lhs _cmae_rhs)
     list(SORT _cmae_lhs_keys)
     list(SORT _cmae_rhs_keys)
 
-    cpp_are_equal(_cmae_same_keys "${_cmae_lhs_keys}" "${_cmae_rhs_keys}")
+    cpp_equal(_cmae_same_keys "${_cmae_lhs_keys}" "${_cmae_rhs_keys}")
 
     if(NOT "${_cmae_same_keys}")
         cpp_return("${_cmae_result}")
@@ -43,7 +43,7 @@ function(_cpp_map_are_equal _cmae_result _cmae_lhs _cmae_rhs)
     foreach(_cmae_key_i IN LISTS _cmae_lhs_keys)
         _cpp_map_get(_cmae_value_lhs "${_cmae_lhs}" "${_cmae_key_i}")
         _cpp_map_get(_cmae_value_rhs "${_cmae_rhs}" "${_cmae_key_i}")
-        cpp_are_equal(_cmae_same "${_cmae_value_lhs}" "${_cmae_value_rhs}")
+        cpp_equal(_cmae_same "${_cmae_value_lhs}" "${_cmae_value_rhs}")
         if(NOT "${_cmae_same}")
             cpp_return("${_cmae_result}")
         endif()

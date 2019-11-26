@@ -7,12 +7,12 @@ include(cmakepp_core/types/detail_/list)
 # determine if the provided string is lexically convertible to an absolute
 # filepath or not.
 #
-# :param _ciaf_result: An identifier to hold the result.
-# :type _ciaf_result: identifier
-# :param _ciaf_str2check: The string which may be an absolute filepath.
-# :type _ciaf_str: str
-# :returns: ``TRUE`` if ``_ciaf_str2check`` is an absolute filepath and
-#           ``FALSE`` otherwise. The result is returned via ``_ciaf_result``.
+# :param _cip_result: An identifier to hold the result.
+# :type _cip_result: identifier
+# :param _cip_str2check: The string which may be an absolute filepath.
+# :type _cip_str: str
+# :returns: ``TRUE`` if ``_cip_str2check`` is an absolute filepath and
+#           ``FALSE`` otherwise. The result is returned via ``_cip_result``.
 # :rtype: bool
 #
 # Example Usage:
@@ -24,17 +24,17 @@ include(cmakepp_core/types/detail_/list)
 # .. code-block:: cmake
 #
 #    include(cmakepp_core/types/filepath)
-#    cpp_is_absolute_filepath(result "${CMAKE_BINARY_DIR}")
+#    cpp_is_path(result "${CMAKE_BINARY_DIR}")
 #    message("Is a filepath: ${result}")  # Prints TRUE
 #]]
-function(_cpp_is_filepath _cif_result _cif_str2check)
+function(_cpp_is_path _cip_result _cip_str2check)
     # Getting the if-statement to keep lists together so bail out early if list
-    _cpp_is_list(_cif_is_list "${_cif_str2check}")
-    if(_cif_is_list)
-        set(${_cif_result} FALSE PARENT_SCOPE)
-    elseif(IS_ABSOLUTE "${_cif_str2check}")
-        set(${_cif_result} TRUE PARENT_SCOPE)
+    _cpp_is_list(_cip_is_list "${_cip_str2check}")
+    if(_cip_is_list)
+        set(${_cip_result} FALSE PARENT_SCOPE)
+    elseif(IS_ABSOLUTE "${_cip_str2check}")
+        set(${_cip_result} TRUE PARENT_SCOPE)
     else()
-        set(${_cif_result} FALSE PARENT_SCOPE)
+        set(${_cip_result} FALSE PARENT_SCOPE)
     endif()
 endfunction()

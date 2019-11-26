@@ -35,7 +35,7 @@ function(_cpp_map_ctor _cmc_name)
     define_property(
         GLOBAL PROPERTY ${${_cmc_name}}_keys BRIEF_DOCS "keys" FULL_DOCS "keys"
     )
-    set_property(GLOBAL PROPERTY "${${_cmc_name}}_type" "map")
+   set_property(GLOBAL PROPERTY "${${_cmc_name}}_type" "map")
     if(${ARGC} GREATER 1)
         set(_cmc_key_i 1)
         set(_cmc_value_i 2)

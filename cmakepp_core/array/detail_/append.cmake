@@ -1,6 +1,6 @@
 include_guard()
 include(cmakepp_core/array/detail_/length)
-include(cmakepp_core/asserts/type)
+include(cmakepp_core/asserts/signature)
 include(cmakepp_core/map/map)
 
 #[[[ Adds one or more values onto the end of the array.
@@ -14,11 +14,11 @@ include(cmakepp_core/map/map)
 #
 #]]
 function(_cpp_array_append _caa_array)
-    cpp_assert_type(array "${_caa_array}")
+    cpp_assert_signature("${ARGV}" array args)
     _cpp_array_length(_caa_n "${_caa_array}")
     get_property(_caa_state GLOBAL PROPERTY "${_caa_array}")
     foreach(_caa_elem_i ${ARGN})
-        cpp_map(SET "${_caa_state}" "elem_${_caa_n}" "${_caa_elem_i}")
+        cpp_map(SET "${_caa_state}" "${_caa_n}" "${_caa_elem_i}")
         math(EXPR _caa_n "${_caa_n} + 1")
     endforeach()
 endfunction()

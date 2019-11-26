@@ -8,7 +8,7 @@ ct_add_test("cpp_class")
         _cpp_class_ctor(corr MyFirstClass Base1 Base2)
         _cpp_get_class_registry(registry)
         cpp_map(GET added_class "${registry}" MyFirstClass)
-        cpp_are_equal(result "${added_class}" "${corr}")
+        cpp_equal(result "${added_class}" "${corr}")
         ct_assert_equal(result TRUE)
     ct_end_section()
 

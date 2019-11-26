@@ -1,5 +1,5 @@
 include_guard()
-include(cmakepp_core/asserts/type)
+include(cmakepp_core/asserts/signature)
 
 #[[[ Retrieves a list of the keys which have been set for the current map.
 #
@@ -29,7 +29,7 @@ include(cmakepp_core/asserts/type)
 #    message("The maps keys are: ${result}")  # Prints "a_key;another_key"
 #]]
 function(_cpp_map_keys _cmk_result _cmk_map)
-    cpp_assert_type(desc "${_cmk_result}" map "${_cmk_map}")
+    cpp_assert_signature("${ARGV}" desc map)
     get_property("${_cmk_result}" GLOBAL PROPERTY "${_cmk_map}_keys")
     cpp_return("${_cmk_result}")
 endfunction()

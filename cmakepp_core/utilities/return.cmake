@@ -19,12 +19,18 @@ include_guard()
 #    macro.
 #
 # :param _cr_rv: The identifier which needs to be set in the parent namespace.
-# :type _cr_rv: identifier
+# :type _cr_rv: desc
+#
+# ..note::
+#
+#   This function is a macro to avoid creating another scope. If another scope
+#   is created, then the ``cpp_return`` function could not act in the caller's
+#   scope, *i.e.*, the caller would still have to call ``set`` and ``return``.
 #
 # Example Usage:
 # ==============
 #
-# The following shows how to write a function which has multiple
+# The following shows how to write a function which has multiple return points.
 #
 # .. code-block:: cmake
 #
@@ -37,14 +43,6 @@ include_guard()
 #        cpp_return(${return_indentifier})
 #    endfunction()
 #
-# ..note::
-#
-#   This function is a macro to avoid creating another scope. Assume that some
-#   function ``A`` called some function ``B`` and ``B`` is calling
-#   ``cpp_return`` to return a value to ``A``. If we had used ``function``
-#   than ``rv`` will be set in the scope of ``B``and NOT in the scope of ``A``.
-#   ``B`` would thus have to also do ``set(${rv} ${${rv}} PARENT_SCOPE)``
-#   defeating the purpose of this function.
 #]]
 macro(cpp_return _cr_rv)
     set("${_cr_rv}" "${${_cr_rv}}" PARENT_SCOPE)

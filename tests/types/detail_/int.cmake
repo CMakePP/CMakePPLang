@@ -1,7 +1,7 @@
 include(cmake_test/cmake_test)
 
 ct_add_test("_cpp_is_int")
-    include(cmakepp_core/types/detail_/integer)
+    include(cmakepp_core/types/detail_/int)
 
     ct_add_section("array")
         include(cmakepp_core/array/detail_/ctor)
@@ -23,18 +23,6 @@ ct_add_test("_cpp_is_int")
 
         ct_add_section("description containing integers")
             _cpp_is_int(return "Hello World 1")
-            ct_assert_equal(return FALSE)
-        ct_end_section()
-    ct_end_section()
-
-    ct_add_section("filepath")
-        ct_add_section("Normal filepath (probably)")
-            _cpp_is_int(return "${CMAKE_CURRENT_LIST_DIR}")
-            ct_assert_equal(return FALSE)
-        ct_end_section()
-
-        ct_add_section("Contains an integer")
-            _cpp_is_int(return "${CMAKE_CURRENT_LIST_DIR}/hello1")
             ct_assert_equal(return FALSE)
         ct_end_section()
     ct_end_section()
@@ -73,6 +61,25 @@ ct_add_test("_cpp_is_int")
         _cpp_map_ctor(my_map)
         _cpp_is_int(result "${my_map}")
         ct_assert_equal(result FALSE)
+    ct_end_section()
+
+    ct_add_section("obj")
+        include(cmakepp_core/object/detail_/ctor)
+        _cpp_object_ctor(an_object)
+        _cpp_is_int(result "${an_object}")
+        ct_assert_equal(result FALSE)
+    ct_end_section()
+
+    ct_add_section("path")
+        ct_add_section("Normal path")
+            _cpp_is_int(return "${CMAKE_CURRENT_LIST_DIR}")
+            ct_assert_equal(return FALSE)
+        ct_end_section()
+
+        ct_add_section("Path with int in it")
+            _cpp_is_int(return "${CMAKE_CURRENT_LIST_DIR}/3")
+            ct_assert_equal(return FALSE)
+        ct_end_section()
     ct_end_section()
 
     ct_add_section("target")

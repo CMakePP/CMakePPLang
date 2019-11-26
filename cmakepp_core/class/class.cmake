@@ -1,5 +1,7 @@
 include_guard()
+include(cmakepp_core/class/attr)
 include(cmakepp_core/class/detail_/class_guts)
+include(cmakepp_core/class/end_class)
 include(cmakepp_core/class/member)
 
 #[[ Declares a user-defined type.

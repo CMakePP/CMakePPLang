@@ -9,17 +9,26 @@ include(cmakepp_core/utilities/return)
 function(_cpp_class_ctor _ccc_result _ccc_type)
     cpp_assert_signature("${ARGV}" desc desc args)
     string(TOLOWER "${_ccc_type}" _ccc_lc_type)
-    set(
-        _ccc_impl_file
-        "${CMAKE_CURRENT_BINARY_DIR}/cpp_classes/${_ccc_lc_type}.cmake"
-    )
+
+
+
+    # Start the map
     cpp_map(CTOR "${_ccc_result}")
-    cpp_array(CTOR _ccc_bases object ${ARGN})
+
+    # Add a map for the class's attributes
+    cpp_map(CTOR _ccc_attr)
+    cpp_map(SET "${${_ccc_result}}" attributes "${_ccc_attr}")
+
+    # Add an array of base classes
+    cpp_array(CTOR _ccc_bases ${ARGN})
     cpp_map(SET "${${_ccc_result}}" base_classes "${_ccc_bases}")
+
+    # Add a map for member functions
     cpp_map(CTOR _ccc_fxns)
     cpp_map(SET "${${_ccc_result}}" fxns "${_ccc_fxns}")
-    cpp_map(SET "${${_ccc_result}}" impl_file "${_ccc_impl_file}")
-    cpp_map(SET "${${_ccc_result}}" my_type "${_ccc_type}")
+
+    # Record the file with implementations so we can include it dynamically
     cpp_map(SET "${${_ccc_result}}" src_file "${CMAKE_CURRENT_LIST_FILE}")
+
     cpp_return("${_ccc_result}")
 endfunction()

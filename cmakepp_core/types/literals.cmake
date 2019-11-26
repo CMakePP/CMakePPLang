@@ -13,7 +13,10 @@ set(CMAKEPP_BOOL_LITERALS ON YES TRUE Y OFF NO FALSE N NOTFOUND)
 #[[[ A variable containing the list of recognized CMakePP types.
 #
 # The content of CMAKEPP_TYPE_LITERALS is a list of the literal type for each of
-# the recognized intrinsic CMakePP types.
+# the recognized intrinsic CMakePP types. Each type is listed using the official
+# abbreviation for that type (*i.e.*, the abbreviation which must be used for
+# all APIs relying on the type system). Types are stored alphabetically to
+# facilitate :math:`n log_2(n)` look up.
 #]]
 set(CMAKEPP_TYPE_LITERALS
     array bool desc path float int list map obj str target type

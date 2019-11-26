@@ -1,23 +1,8 @@
     include(cmake_test/cmake_test)
 
 ct_add_test("_cpp_map_keys")
-    include(cmakepp_core/map/detail_/add_key)
-    include(cmakepp_core/map/detail_/ctor)
-    include(cmakepp_core/map/detail_/keys)
+    include(cmakepp_core/map/map)
 
-    ct_add_section("signature")
-        set(CMAKEPP_CORE_DEBUG_MODE ON)
-
-        ct_add_section("is a description")
-            _cpp_map_keys(TRUE a_map)
-            ct_assert_fails_as("Assertion: TRUE is desc")
-        ct_end_section()
-
-        ct_add_section("is a map")
-            _cpp_map_keys(result a_map)
-            ct_assert_fails_as("Assertion: a_map is map")
-        ct_end_section()
-    ct_end_section()
 
     ct_add_section("No keys")
         _cpp_map_ctor(a_map)

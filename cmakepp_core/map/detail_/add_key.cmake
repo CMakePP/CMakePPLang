@@ -29,10 +29,11 @@ include(cmakepp_core/map/detail_/has_key)
 #
 #]]
 function(_cpp_map_add_key _cmak_map _cmak_key)
-    cpp_assert_signature("${ARGV}" map desc)
+    cpp_assert_signature("${ARGV}" map str)
+
     string(TOLOWER "${_cmak_key}" _cmak_key)
     _cpp_map_has_key(_cmak_has_key "${_cmak_map}" "${_cmak_key}")
     if(NOT "${_cmak_has_key}")
-        set_property(GLOBAL APPEND PROPERTY ${_cmak_map}_keys ${_cmak_key})
+        set_property(GLOBAL APPEND PROPERTY "${_cmak_map}_keys" "${_cmak_key}")
     endif()
 endfunction()

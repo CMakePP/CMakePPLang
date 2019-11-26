@@ -1,4 +1,5 @@
 include_guard()
+include(cmakepp_core/types/detail_/list)
 include(cmakepp_core/types/detail_/map)
 
 #[[[ Determines if a CMake string is lexically convertibale to a CMakePP array.

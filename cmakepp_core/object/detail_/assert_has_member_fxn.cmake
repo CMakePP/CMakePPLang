@@ -1,0 +1,16 @@
+include_guard()
+include(cmakepp_core/asserts/signature)
+include(cmakepp_core/map/map)
+include(cmakepp_core/object/detail_/get_fxns)
+include(cmakepp_core/utilities/assert)
+include(cmakepp_core/utilities/enable_if_debug)
+
+function(_cpp_object_assert_has_member_fxn _coahmf_type _coahmf_fxn)
+    cpp_enable_if_debug()
+    cpp_assert_signature("${ARGV}" obj desc)
+    get_property(_coahmf_state GLOBAL PROPERTY "${_coahmf_type}")
+    _cpp_object_get_fxns(_coahmf_fxns "${_coahmf_state}")
+    cpp_map(HAS_KEY _coahmf_has_key "${_coahmf_fxns}" "${_coahmf_fxn}")
+
+    cpp_assert("${_coahmf_has_key}" "Class has member function: ${_coahmf_fxn}")
+endfunction()

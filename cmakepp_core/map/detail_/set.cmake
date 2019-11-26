@@ -3,24 +3,25 @@ include(cmakepp_core/asserts/type)
 include(cmakepp_core/map/detail_/add_key)
 include(cmakepp_core/map/detail_/key_mangle)
 
-#[[[ Code factorization for set and append
+#[[[ Code factorization for the map's set and append functions.
 #
 # The CMakePP map functions ``set`` and ``append`` only differ in the mode they
 # run ``set_property`` in. This function factors out the common implementation.
 #
 # :param _cmsg_mode: Which mode should ``set_property`` be run in? If
 #                    ``_cmsg_mode`` is ``APPEND``, ``set_property`` will be run
-#                    in append mode.
+#                    in append mode. If it is empty it will overwrite.
 # :type _cmsg_mode: desc
 # :param _cmsg_map: The map we are setting/appending a value to.
 # :type _cmsg_map: map
 # :param _cmsg_key: The key we are storing the value under.
-# :type _cmsg_key: desc
+# :type _cmsg_key: str
 # :param _cmsg_value: The value to set/append under the key.
 # :type _cmsg_value: str
 #]]
 function(_cpp_map_set_guts _cmsg_mode _cmsg_map _cmsg_key _cmsg_value)
-    cpp_assert_type(map "${_cmsg_map}" desc "${_cmsg_key}")
+    cpp_assert_signature("${ARGV}" desc map str str)
+
     _cpp_map_add_key("${_cmsg_map}" "${_cmsg_key}")
     _cpp_map_key_mangle(_cmsg_key_identifier "${_cmsg_map}" "${_cmsg_key}")
     if("${_cmsg_mode}" STREQUAL "APPEND")
@@ -43,7 +44,7 @@ endfunction()
 # :param _cms_map: The map we are setting the key in.
 # :type _cms_map: map
 # :param _cms_key: The key we are setting the value of.
-# :type _cms_key: desc
+# :type _cms_key: str
 # :param _cms_value: The value we are setting the key to.
 # :type _cms_value: str
 #
@@ -75,7 +76,7 @@ endfunction()
 # :param _cma_map: The map we are modifying.
 # :type _cma_map: map
 # :param _cma_key: The key we are appending the value to.
-# :type _cma_key: desc
+# :type _cma_key: str
 # :param _cma_value: The value we are appending to the key's value.
 # :type _cma_value: str
 #

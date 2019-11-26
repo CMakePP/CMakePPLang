@@ -5,12 +5,6 @@ ct_add_test("_cpp_map_add_key")
     include(cmakepp_core/map/detail_/add_key)
     include(cmakepp_core/map/detail_/keys)
 
-    ct_add_section("signature")
-        set(CMAKEPP_CORE_DEBUG_MODE ON)
-        _cpp_map_add_key(a_map a_key)
-        ct_assert_fails_as("Assertion: a_map is map")
-    ct_end_section()
-
     ct_add_section("Add 1 key")
         _cpp_map_ctor(a_map)
         _cpp_map_add_key(${a_map} a_key)

@@ -1,5 +1,6 @@
 include_guard()
 include(cmakepp_core/asserts/signature)
+include(cmakepp_core/class/detail_/assert_class_is_registered)
 include(cmakepp_core/class/detail_/get_class_registry)
 
 #[[[ Retrieves the map from function names to mangled overloads for a class.
@@ -21,20 +22,8 @@ include(cmakepp_core/class/detail_/get_class_registry)
 function(_cpp_class_get_fxns _ccgf_fxns _ccgf_type)
     cpp_assert_signature("${ARGV}" desc desc)
 
+    _cpp_assert_class_is_registered("${_ccgf_type}")
     _cpp_get_class_registry(_ccgf_registry)
-
-    # Make sure the class has been registered.
-    cpp_map(HAS_KEY _ccgf_has_key "${_ccgf_registry}" "${_ccgf_type}")
-    if(NOT "${_ccgf_has_key}")
-        set(
-            _ccgf_msg
-            "Can not retrieve member functions for type: ${_ccgf_type}"
-        )
-        message(
-            FATAL_ERROR
-            "${_ccgf_msg}. Did you call 'cpp_class(${_ccgf_type})' first?"
-        )
-    endif()
 
     # Basically does: "return registry.at(class).at(fxns)"
     cpp_map(GET _ccgf_class "${_ccgf_registry}" "${_ccgf_type}")

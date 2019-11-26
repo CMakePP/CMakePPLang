@@ -1,5 +1,5 @@
 include_guard()
-include(cmakepp_core/asserts/type)
+include(cmakepp_core/asserts/signature)
 
 #[[[ Encapsulates the name mangling used for keys.
 #
@@ -34,7 +34,7 @@ include(cmakepp_core/asserts/type)
 # on this name mangling remaining constant across versions.
 #]]
 function(_cpp_map_key_mangle _cmkm_result _cmkm_map _cmkm_key)
-    cpp_assert_type(desc "${_cmkm_result}" map "${_cmkm_map}")
+    cpp_assert_signature("${ARGV}" desc map str)
     string(TOLOWER "${_cmkm_key}" _cmkm_key)
     set(${_cmkm_result} "${_cmkm_map}_key_${_cmkm_key}" PARENT_SCOPE)
 endfunction()
