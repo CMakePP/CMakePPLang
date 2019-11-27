@@ -1,0 +1,6 @@
+include_guard()
+
+macro(@_cf_name@ @positional_args@)
+    cpp_assert_signature("${ARGV}" @
+
+    ${_mangled_name}(arg1...

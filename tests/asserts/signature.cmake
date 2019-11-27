@@ -122,6 +122,12 @@ ct_add_test("cpp_assert_signature")
         cpp_assert_signature("42" str)
     ct_end_section()
 
+    ct_add_section("Works with an object")
+        include(cmakepp_core/object/detail_/ctor)
+        _cpp_object_ctor(an_object)
+        cpp_assert_signature("${an_object}" obj)
+    ct_end_section()
+
     ct_add_section("Fails if passes args twice")
         cpp_assert_signature("TRUE;42;FALSE" bool args args)
         ct_assert_fails_as("Assertion: 'args' is last type provided")

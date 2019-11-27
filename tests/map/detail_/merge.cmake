@@ -59,7 +59,7 @@ ct_add_test("_cpp_map_merge")
         ct_end_section()
 
         ct_add_section("lhs into rhs")
-            cpp_map(CTOR corr a_key a_value TRUE 2 42)
+            cpp_map(CTOR corr a_key a_value foo TRUE 2 42)
             _cpp_map_merge("${rhs}" "${lhs}")
             cpp_equal(result "${rhs}" "${corr}")
             ct_assert_equal(result TRUE)

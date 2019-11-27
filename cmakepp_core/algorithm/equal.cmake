@@ -38,6 +38,10 @@ include(cmakepp_core/utilities/return)
 function(cpp_equal _ce_result _ce_lhs _ce_rhs)
     cpp_assert_signature("${ARGV}" desc str str)
 
+    # If the contents have dollar signs we need to protect them from evaluating
+    string(REGEX REPLACE [[\$]] [[\\$]] "${_ce_lhs}" "${${_ce_lhs}}")
+    string(REGEX REPLACE [[\$]] [[\\$]] "${_ce_rhs}" "${${_ce_rhs}}")
+
     cpp_get_type(_ce_lhs_t "${_ce_lhs}")
     cpp_get_type(_ce_rhs_t "${_ce_rhs}")
 

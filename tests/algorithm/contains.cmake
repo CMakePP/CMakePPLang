@@ -1,7 +1,7 @@
 include(cmake_test/cmake_test)
 
 ct_add_test("cpp_contains")
-    include(cmakepp_core/logic/contains)
+    include(cmakepp_core/algorithm/contains)
 
     ct_add_section("signature")
         set(CMAKEPP_CORE_DEBUG_MODE ON)

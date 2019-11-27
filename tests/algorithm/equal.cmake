@@ -1,7 +1,7 @@
 include(cmake_test/cmake_test)
 
 ct_add_test("cpp_equal")
-    include(cmakepp_core/logic/equal)
+    include(cmakepp_core/algorithm/equal)
 
     ct_add_section("Different Types")
         cpp_equal(result TRUE 1)
@@ -34,6 +34,19 @@ ct_add_test("cpp_equal")
         ct_add_section("LHS != RHS")
             cpp_equal(result TRUE FALSE)
             ct_assert_equal(result FALSE)
+        ct_end_section()
+    ct_end_section()
+
+    ct_add_section("code")
+        ct_add_section("LHS == RHS")
+            cpp_equal(result [[${LHS}]] [[${LHS}]])
+            ct_assert_equal(result TRUE)
+        ct_end_section()
+
+        ct_add_section("LHS != RHS")
+            set(LHS TRUE)
+            set(RHS FALSE)
+            cpp_equal(result [[${LHS}]] [[${RHS}]])
         ct_end_section()
     ct_end_section()
 

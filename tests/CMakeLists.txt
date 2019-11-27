@@ -3,7 +3,7 @@ include(FetchContent)
 FetchContent_Declare(
     cmake_test
     GIT_REPOSITORY https://github.com/CMakePP/CMakeTest
-    GIT_TAG install
+    GIT_TAG cmakedoc
 )
 set(BUILD_TESTS OFF)
 FetchContent_MakeAvailable(cmake_test)
@@ -26,11 +26,12 @@ endfunction()
 add_subdirectory(algorithm)
 add_subdirectory(array)
 add_subdirectory(asserts)
-add_subdirectory(class)
+#add_subdirectory(class)
 add_subdirectory(examples)
+add_subdirectory(function)
 add_subdirectory(iteration)
 add_subdirectory(map)
-add_subdirectory(object)
+#add_subdirectory(object)
 add_subdirectory(serialization)
 add_subdirectory(timer)
 add_subdirectory(types)

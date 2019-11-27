@@ -19,5 +19,5 @@ set(CMAKEPP_BOOL_LITERALS ON YES TRUE Y OFF NO FALSE N NOTFOUND)
 # facilitate :math:`n log_2(n)` look up.
 #]]
 set(CMAKEPP_TYPE_LITERALS
-    array bool desc path float int list map obj str target type
+    args array bool desc path float int list map obj str target type
 )

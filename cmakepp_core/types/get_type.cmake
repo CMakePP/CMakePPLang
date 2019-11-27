@@ -38,6 +38,13 @@ include(cmakepp_core/types/detail_/type)
 #]]
 function(cpp_get_type _cgt_result _cgt_str2identify)
 
+    # Some of the checks have trouble with the empty string, so we take care of
+    # that first (it's a desc)
+    if("${_cgt_str2identify}" STREQUAL "")
+        set("${_cgt_result}" "desc" PARENT_SCOPE)
+        return()
+    endif()
+
     _cpp_is_array("${_cgt_result}" "${_cgt_str2identify}")
     if(${${_cgt_result}})
         set("${_cgt_result}" "array" PARENT_SCOPE)

@@ -6,6 +6,17 @@ ct_add_test("_cpp_object_assert_has_member_fxn")
 
     _cpp_object_ctor(an_object)
 
+    ct_add_section("Signature")
+        set(CMAKEPP_CORE_DEBUG_MODE ON)
+
+        ct_add_section("Arg1 must be an obj")
+            _cpp_object_ctor(TRUE a_fxn)
+            ct_assert_fails_as("Assertion: TRUE is obj")
+        ct_end_section()
+
+        ct_add_section("Arg2 must be a description")
+        ct_end_section()
+    ct_end_section()
     ct_add_section("No assert unless CMakePP is in debug mode")
         _cpp_object_assert_has_member_fxn("${an_object}" not_a_fxn)
     ct_end_section()
