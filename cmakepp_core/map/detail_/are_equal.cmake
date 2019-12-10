@@ -21,26 +21,38 @@ include(cmakepp_core/utilities/return)
 function(_cpp_map_are_equal _cmae_result _cmae_lhs _cmae_rhs)
     cpp_assert_signature("${ARGV}" desc map map)
 
-    set("${_cmae_result}" FALSE)
+    # Quick check to see if LHS and RHS are literally the same instance
     if("${_cmae_lhs}" STREQUAL "${_cmae_rhs}")
         set("${_cmae_result}" TRUE)
         cpp_return("${_cmae_result}")
     endif()
 
+    # Rest of early aborts will be because the maps are not equal
+    set("${_cmae_result}" FALSE)
+
+    # Get the keys from each map
     _cpp_map_keys(_cmae_lhs_keys "${_cmae_lhs}")
     _cpp_map_keys(_cmae_rhs_keys "${_cmae_rhs}")
 
-    # Key order doesn't matter, so make sure keys are in the same order
-    list(SORT _cmae_lhs_keys)
-    list(SORT _cmae_rhs_keys)
+    # Ensure the maps have the same number of keys
+    list(LENGTH _cmae_lhs_keys _n_lhs)
+    list(LENGTH _cmae_rhs_keys _n_rhs)
 
-    cpp_equal(_cmae_same_keys "${_cmae_lhs_keys}" "${_cmae_rhs_keys}")
-
-    if(NOT "${_cmae_same_keys}")
+    if(NOT "${_n_lhs}" STREQUAL "${_n_rhs}")
         cpp_return("${_cmae_result}")
     endif()
 
+    # Loop over keys in LHS
     foreach(_cmae_key_i IN LISTS _cmae_lhs_keys)
+
+        # Ensure RHS has this key
+        _cpp_map_has_key(_cmae_rhs_has_key "${_cmae_rhs}" "${_cmae_key_i}")
+
+        if(NOT "${_cmae_rhs_has_key}")
+            cpp_return("${_cmae_result}")
+        endif()
+
+        # Get the values and compare them
         _cpp_map_get(_cmae_value_lhs "${_cmae_lhs}" "${_cmae_key_i}")
         _cpp_map_get(_cmae_value_rhs "${_cmae_rhs}" "${_cmae_key_i}")
         cpp_equal(_cmae_same "${_cmae_value_lhs}" "${_cmae_value_rhs}")
@@ -49,6 +61,6 @@ function(_cpp_map_are_equal _cmae_result _cmae_lhs _cmae_rhs)
         endif()
     endforeach()
 
-    set("${_cmae_result}" TRUE)
-    cpp_return("${_cmae_result}")
+    # If we made it this far the maps are equal...
+    set("${_cmae_result}" TRUE PARENT_SCOPE)
 endfunction()

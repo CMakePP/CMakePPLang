@@ -1,0 +1,46 @@
+include(cmake_test/cmake_test)
+
+ct_add_test("_cpp_function_call_overload")
+    include(cmakepp_core/function/detail_/add_overload)
+    include(cmakepp_core/function/detail_/call_overload)
+
+    ct_add_section("Single overload available")
+        _cpp_function_add_overload(a_fxn desc int)
+        function(${a_fxn} arg0 arg1)
+            set("${arg0}" ${arg1} PARENT_SCOPE)
+        endfunction()
+
+        ct_add_section("Good call")
+            _cpp_function_call_overload(a_fxn result 2)
+            ct_assert_equal(result 2)
+        ct_end_section()
+
+        ct_add_section("Bad call")
+            _cpp_function_call_overload(a_fxn)
+            ct_assert_fails_as("Overload a_fxn() does not exist")
+        ct_end_section()
+    ct_end_section()
+
+    ct_add_section("Two overloads available")
+        _cpp_function_add_overload(a_fxn desc int)
+        function(${a_fxn} arg0 arg1)
+            set("${arg0}" ${arg1} PARENT_SCOPE)
+        endfunction()
+
+        _cpp_function_add_overload(a_fxn desc int int)
+        function(${a_fxn} arg0 arg1 arg2)
+            math(EXPR ${arg0} "${arg1} + ${arg2}")
+            set(${arg0} ${${arg0}} PARENT_SCOPE)
+        endfunction()
+
+        ct_add_section("Call overload 1")
+            _cpp_function_call_overload(a_fxn result 2)
+            ct_assert_equal(result 2)
+        ct_end_section()
+
+        ct_add_section("Call overload 2")
+            _cpp_function_call_overload(a_fxn result 2 3)
+            ct_assert_equal(result 5)
+        ct_end_section()
+    ct_end_section()
+ct_end_test()

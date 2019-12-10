@@ -26,14 +26,11 @@ include(cmakepp_core/utilities/return)
 # :returns: ``_cmf_result`` will be set to the mangled name of the function.
 # :rtype: desc*
 #
-# .. note::
-#
-#    This function is meant to be called from ``_cpp_generate_wrapper`` and
-#    exists as a standalone function only to increase readability and
-#    facilitiate unit-testing.
-#
 # Error Checking
 # ==============
+#
+# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is run in debug
+#                               mode.
 #
 # If CMakePP is run in debug mode, then this function will ensure that the first
 # two arguments provided to it are both of type ``desc``. It also will ensure

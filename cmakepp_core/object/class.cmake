@@ -1,7 +1,8 @@
 include_guard()
 
 function(cpp_class _cc_type)
-    _cpp_object_ctor("${_cc_type}" ${ARGN})
+    _cpp_object_ctor("${_cc_type}")
+
     cpp_return("${_cc_type}")
 endfunction()
 

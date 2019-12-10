@@ -19,9 +19,16 @@ function(_cpp_map_has_key _cmhk_result _cmhk_map _cmhk_key)
 
     _cpp_map_keys(_cmhk_keys "${_cmhk_map}")
     string(TOLOWER "${_cmhk_key}" _cmhk_key)
-    if("${_cmhk_key}" IN_LIST _cmhk_keys)
-        set("${_cmhk_result}" TRUE PARENT_SCOPE)
-    else()
-        set("${_cmhk_result}" FALSE PARENT_SCOPE)
-    endif()
+
+    # We need to compare keys with cpp_equal, otherwise we'll compare "this"
+    # pointers for CMakePP objects
+    foreach(_cmhk_key_i ${_cmhk_keys})
+        cpp_equal("${_cmhk_result}" "${_cmhk_key_i}" "${_cmhk_key}")
+
+        if("${${_cmhk_result}}")  # Has the key, so early abort
+            cpp_return("${_cmhk_result}")
+        endif()
+    endforeach()
+
+    set("${_cmhk_result}" FALSE PARENT_SCOPE)
 endfunction()

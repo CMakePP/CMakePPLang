@@ -13,3 +13,5 @@ backwards compatible with C, one can not use C++ in C code.
 
 .. toctree::
    :maxdepth: 2
+
+   developer/index

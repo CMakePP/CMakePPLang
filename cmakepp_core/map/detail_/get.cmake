@@ -38,6 +38,7 @@ include(cmakepp_core/map/detail_/key_mangle)
 #]]
 function(_cpp_map_get _cmg_result _cmg_map _cmg_key)
     cpp_assert_signature("${ARGV}" desc map str)
+
     _cpp_map_assert_has_key("${_cmg_map}" "${_cmg_key}")
     _cpp_map_key_mangle(_cmg_key_identifier "${_cmg_map}" "${_cmg_key}")
     get_property("${_cmg_result}" GLOBAL PROPERTY "${_cmg_key_identifier}")

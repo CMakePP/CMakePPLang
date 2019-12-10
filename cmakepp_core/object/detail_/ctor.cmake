@@ -16,7 +16,7 @@ function(_cpp_object_ctor _coc_result)
 
     cpp_map(CTOR _coc_fxns)            # This will be the vtable for functions
     cpp_map(CTOR _coc_attrs)           # This will be the vtable for attributes
-    cpp_array(CTOR _coc_bases object ${ARGN})  # List of base classes
+    cpp_array(CTOR _coc_bases obj ${ARGN})  # List of base classes
     cpp_map(CTOR _coc_state attrs "${_coc_attrs}"
                             fxns  "${_coc_fxns}"
                             src_file "${CMAKE_CURRENT_LIST_DIR}"

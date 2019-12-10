@@ -1,5 +1,6 @@
 include_guard()
 include(cmakepp_core/asserts/signature)
+include(cmakepp_core/serialization/serialization)
 
 #[[[ Encapsulates the name mangling used for keys.
 #
@@ -35,6 +36,7 @@ include(cmakepp_core/asserts/signature)
 #]]
 function(_cpp_map_key_mangle _cmkm_result _cmkm_map _cmkm_key)
     cpp_assert_signature("${ARGV}" desc map str)
-    string(TOLOWER "${_cmkm_key}" _cmkm_key)
+    cpp_serialize(_cmkm_serial "${_cmkm_key}")
+    string(MD5 _cmkm_key "${_cmkm_serial}")
     set(${_cmkm_result} "${_cmkm_map}_key_${_cmkm_key}" PARENT_SCOPE)
 endfunction()

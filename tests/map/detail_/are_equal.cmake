@@ -51,4 +51,44 @@ ct_add_test("_cpp_map_are_equal")
             ct_assert_equal(result FALSE)
         ct_end_section()
     ct_end_section()
+
+    ct_add_section("CMakePP Objects as keys")
+        include(cmakepp_core/array/array)
+
+        cpp_array(CTOR lhs_key1)
+        cpp_array(CTOR lhs_key2 1 2 3)
+        cpp_array(CTOR lhs_key3 foo bar)
+
+        cpp_map(CTOR lhs "${lhs_key1}" "hello world"
+                         "${lhs_key2}" "${lhs_key3}")
+
+        ct_add_section("RHS is same instance")
+            _cpp_map_are_equal(result "${lhs}" "${lhs}")
+            ct_assert_equal(result TRUE)
+        ct_end_section()
+
+        ct_add_section("RHS uses same key instances")
+            cpp_map(CTOR rhs "${lhs_key1}" "hello world"
+                             "${lhs_key2}" "${lhs_key3}")
+            _cpp_map_are_equal(result "${lhs}" "${rhs}")
+            ct_assert_equal(result TRUE)
+        ct_end_section()
+
+        ct_add_section("RHS uses different key instances")
+            set(CMAKEPP_CORE_DEBUG_MODE ON)
+            cpp_array(CTOR rhs_key1)
+            cpp_array(CTOR rhs_key2 1 2 3)
+            cpp_array(CTOR rhs_key3 foo bar)
+            cpp_map(CTOR rhs "${rhs_key1}" "hello world"
+                             "${rhs_key2}" "${rhs_key3}")
+            _cpp_map_are_equal(result "${lhs}" "${rhs}")
+            ct_assert_equal(result TRUE)
+        ct_end_section()
+
+        ct_add_section("RHS is different")
+            cpp_map(CTOR rhs "${lhs_key2}" 42)
+            _cpp_map_are_equal(result "${lhs}" "${rhs}")
+            ct_assert_equal(result FALSE)
+        ct_end_section()
+    ct_end_section()
 ct_end_test()

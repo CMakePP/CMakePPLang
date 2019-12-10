@@ -1,5 +1,8 @@
 include_guard()
-include(cmakepp_core/function/detail_/generate_wrapper)
+include(cmakepp_core/function/detail_/add_overload)
+
+## The path to the wrapper function template
+set(__CPP_FUNCTION_INPUT_FILE__ ${CMAKE_CURRENT_LIST_DIR}/function.cmake.in)
 
 #[[[ Public API for declaring a CMakePP free function.
 #
@@ -15,6 +18,11 @@ include(cmakepp_core/function/detail_/generate_wrapper)
 # :returns: ``_cf_name`` will be set to the mangled name you should use for
 #           the CMake function which implements your CMakePP free function.
 # :rtype: desc*
+# :var __CPP_FUNCTION_INPUT_FILE__: Used to retrieve the path to the wrapper
+#                                   function template file. This variable is set
+#                                   automatically by including
+#                                   ``function.cmake`` and users need only
+#                                   ensure they do not overwrite this variable.
 #
 # .. note::
 #
@@ -33,30 +41,36 @@ include(cmakepp_core/function/detail_/generate_wrapper)
 # Example Usage
 # =============
 #
-# To declare a CMakePP free function which takes three integers the code is:
+# To declare a CMakePP free function which takes an integer and a bool the code
+# is:
 #
 # .. code-block:: cmake
 #
 #    include(cmakepp_core/function/function)
-#    cpp_function(my_fxn int int int)
-#    function(${my_fxn} int1 int2 int3)
-#        # Do stuff with the integers
+#    cpp_function(my_fxn int bool)
+#    function(${my_fxn} the_int the_bool)
+#        message("Provided integer: ${the_int} and boolean: ${the_bool}")
 #    endfunction()
+#
+#    my_fxn(2 TRUE)
 #
 # The first line includes the machinery for declaring and defining CMakePP
 # free functions. The second line declares a CMakePP free function named
-# ``my_fxn`` which has three positional arguments, each of which is an integer.
-# The remainder of the snippet defines a normal CMake function ``${my_fxn}``,
-# which takes three positional arguments called ``int1``, ``int2``, and
-# ``int3``. When a user calls ``my_fxn(0 1 2)``, ``my_fxn`` type-checks the
-# arguments before ultimately forwarding them to the normal CMake function
-# ``${my_fxn}``. In the body of the function you can be guaranteed that the
-# user has not provided you any additional inputs beyond what your signature
-# calls for and that the types of the provided inputs are correct.
+# ``my_fxn`` which has two positional arguments. The next three lines of the
+# snippet define a normal CMake function ``${my_fxn}``, which takes two
+# positional arguments called ``the_int`` and ``the_bool``. ``${my_fxn}`` prints
+# the values of the input. The last line demonstrates how to call the resulting
+# function.
 #]]
 macro(cpp_function _cf_name)
-    _cpp_generate_wrapper(
-        "${CMAKE_BINARY_DIR}/cpp_functions" "${_cf_name}" ${ARGN}
-    )
-    include("${CMAKE_BINARY_DIR}/cpp_functions/${${_cf_name}}.cmake")
+    function(cpp_function_write_wrapper _cfww_name)
+        set(_cfww_name "${_cfww_name}")
+        configure_file(
+            "${__CPP_FUNCTION_INPUT_FILE__}"
+            "${CMAKE_CURRENT_BINARY_DIR}/cmakepp/fxns/${_cfww_name}.cmake" @ONLY
+        )
+    endfunction()
+    cpp_function_write_wrapper("${_cf_name}")
+    _cpp_function_add_overload("${_cf_name}" ${ARGN})
+    include("${CMAKE_CURRENT_BINARY_DIR}/cmakepp/fxns/${_cf_name}.cmake")
 endmacro()

@@ -33,6 +33,7 @@ include(cmakepp_core/utilities/return)
 #]]
 function(_cpp_object_get_fxns _cogf_fxns _cogf_object)
     cpp_assert_signature("${ARGV}" desc obj)
+
     get_property(_cogf_state GLOBAL PROPERTY "${_cogf_object}")
     cpp_map(GET "${_cogf_fxns}" "${_cogf_state}" "fxns")
     cpp_return("${_cogf_fxns}")
