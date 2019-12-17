@@ -33,5 +33,6 @@ ct_add_test("cpp_call_fxn")
             cpp_call_fxn(a_fxn 3 4)
             ct_assert_equal(result "3+4")
         ct_end_section()
+
     ct_end_section()
 ct_end_test()

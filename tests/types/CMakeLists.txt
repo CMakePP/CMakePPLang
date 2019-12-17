@@ -1,3 +1,5 @@
-add_subdirectory(detail_)
-set(unit_tests get_type get_types implicitly_convertible)
+set(
+    unit_tests bool float implicitly_convertible int list path target type
+               type_of
+)
 add_cmake_unit_tests("types" ${unit_tests})

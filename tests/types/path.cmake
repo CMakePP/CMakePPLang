@@ -1,0 +1,70 @@
+include(cmake_test/cmake_test)
+
+ct_add_test("cpp_is_path")
+    include(cmakepp_core/types/path)
+
+    ct_add_section("bool")
+        cpp_is_path(return TRUE)
+        ct_assert_equal(return FALSE)
+    ct_end_section()
+
+    ct_add_section("description")
+        ct_add_section("Empty description")
+            cpp_is_path(return "")
+            ct_assert_equal(return FALSE)
+        ct_end_section()
+
+        ct_add_section("Normal description")
+            cpp_is_path(return "Hello World")
+            ct_assert_equal(return FALSE)
+        ct_end_section()
+
+        ct_add_section("Description with a filepath in it")
+            cpp_is_path(return "The path is: ${CMAKE_CURRENT_LIST_DIR}")
+            ct_assert_equal(return FALSE)
+        ct_end_section()
+    ct_end_section()
+
+    ct_add_section("float")
+        cpp_is_path(return 3.14)
+        ct_assert_equal(return FALSE)
+    ct_end_section()
+
+    ct_add_section("integer")
+        cpp_is_path(return 42)
+        ct_assert_equal(return FALSE)
+    ct_end_section()
+
+    ct_add_section("list")
+        ct_add_section("Normal list")
+            set(a_list 1 2 3)
+            cpp_is_path(return "${a_list}")
+            ct_assert_equal(return FALSE)
+        ct_end_section()
+
+        ct_add_section("List of filepaths")
+            set(a_list ${CMAKE_CURRENT_LIST_DIR} ${CMAKE_CURRENT_LIST_DIR})
+            cpp_is_path(return "${a_list}")
+            ct_assert_equal(return FALSE)
+        ct_end_section()
+    ct_end_section()
+
+    ct_add_section("path")
+        ct_add_section("absolute")
+            cpp_is_path(return "${CMAKE_BINARY_DIR}")
+            ct_assert_equal(return TRUE)
+        ct_end_section()
+
+        ct_add_section("relative")
+            cpp_is_path(return "a/directory")
+            ct_assert_equal(return FALSE)
+        ct_end_section()
+    ct_end_section()
+
+    ct_add_section("target")
+        add_library(lib STATIC IMPORTED)
+        cpp_is_path(return lib)
+        ct_assert_equal(return FALSE)
+    ct_end_section()
+
+ct_end_test()

@@ -22,6 +22,7 @@ include(cmakepp_core/utilities/return)
 #]]
 function(_cpp_array_find _caf_result _caf_array _caf_value)
     cpp_assert_signature("${ARGV}" desc array str)
+
     get_property(_caf_state GLOBAL PROPERTY "${_caf_array}")
     cpp_map(KEYS _caf_keys "${_caf_state}")
     foreach(_caf_key_i ${_caf_keys})

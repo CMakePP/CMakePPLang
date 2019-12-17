@@ -7,7 +7,8 @@ include(cmakepp_core/utilities/return)
 # as the "this" pointer for an object. The uniqueness of the identifier relies
 # on mangling the time (with second resolution) and a random string. Thus the
 # result should be unique so long as the same random string is not generated
-# during the same second.
+# during the same second. No check for uniqueness is currently present although
+# one could be added.
 #
 # :param _cui_id: The name to for the variable which will hold the result.
 # :type _cui_id: desc

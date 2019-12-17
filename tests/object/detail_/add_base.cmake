@@ -1,0 +1,55 @@
+include(cmake_test/cmake_test)
+
+ct_add_test("_cpp_object_add_base")
+    include(cmakepp_core/object/detail_/add_base)
+    include(cmakepp_core/object/detail_/ctor)
+    include(cmakepp_core/object/detail_/get_state)
+
+    _cpp_object_ctor(an_object)
+
+    ct_add_section("Signature")
+        set(CMAKEPP_CORE_DEBUG_MODE ON)
+
+        ct_add_section("Arg0 must be obj")
+            _cpp_object_add_base(TRUE a_base)
+            ct_assert_fails_as("Assertion: TRUE is obj")
+        ct_end_section()
+
+        ct_add_section("Arg1 must be desc")
+            _cpp_object_add_base("${an_object}" TRUE)
+            ct_assert_fails_as("Assertion: TRUE is desc")
+        ct_end_section()
+
+        ct_add_section("Takes 2 arguments")
+            _cpp_object_add_base("${an_object}" a_base hello)
+            ct_assert_fails_as("Function takes 2 argument(s), but 3 was/were")
+        ct_end_section()
+    ct_end_section()
+
+    ct_add_section("Can add a base")
+        _cpp_object_add_base("${an_object}" a_base)
+        _cpp_object_get_bases("${an_object}" bases)
+        cpp_array(CTOR corr obj a_base)
+        cpp_equal(result "${bases}" "${corr}")
+        ct_assert_equal(result TRUE)
+    ct_end_section()
+
+    ct_add_section("Does not repeat a base")
+        _cpp_object_add_base("${an_object}" a_base)
+        _cpp_object_add_base("${an_object}" a_base)
+        _cpp_object_get_bases("${an_object}" bases)
+        cpp_array(CTOR corr obj a_base)
+        cpp_equal(result "${bases}" "${corr}")
+        ct_assert_equal(result TRUE)
+    ct_end_section()
+
+    ct_add_section("Can add two bases")
+        _cpp_object_add_base("${an_object}" a_base)
+        _cpp_object_add_base("${an_object}" another_base)
+        _cpp_object_get_bases("${an_object}" bases)
+        cpp_array(CTOR corr obj a_base another_base)
+        cpp_equal(result "${bases}" "${corr}")
+        ct_assert_equal(result TRUE)
+    ct_end_section()
+
+ct_end_test()

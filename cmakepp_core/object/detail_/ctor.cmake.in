@@ -1,5 +1,0 @@
-include_guard()
-
-function(_cpp_@class_name@_ctor )
-
-endmacro()

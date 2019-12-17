@@ -15,12 +15,10 @@
 
 include_guard()
 include(cmakepp_core/asserts/signature)
-include(cmakepp_core/serialization/detail_/serialize_array)
-include(cmakepp_core/serialization/detail_/serialize_string)
 include(cmakepp_core/serialization/detail_/serialize_list)
-include(cmakepp_core/serialization/detail_/serialize_map)
-include(cmakepp_core/serialization/detail_/serialize_obj)
-include(cmakepp_core/types/get_type)
+include(cmakepp_core/serialization/detail_/serialize_string)
+include(cmakepp_core/types/implicitly_convertible)
+include(cmakepp_core/types/type_of)
 include(cmakepp_core/utilities/return)
 
 #[[[ Dispatches based on type to the appropiate serialization impelementation.
@@ -36,20 +34,23 @@ include(cmakepp_core/utilities/return)
 #           ``_csv_value``.
 # :rtype: desc*
 #]]
-function(_cpp_serialize_value _csv_return _csv_value)
-    cpp_assert_signature("${ARGV}" desc str)
-    cpp_get_type(_csv_type "${_csv_value}")
-    if("${_csv_type}" STREQUAL "array")
-        _cpp_serialize_array("${_csv_return}" "${_csv_value}")
-    elseif("${_csv_type}" STREQUAL "list")
-        _cpp_serialize_list("${_csv_return}" "${_csv_value}")
-    elseif("${_csv_type}" STREQUAL "map")
-        _cpp_serialize_map("${_csv_return}" "${_csv_value}")
-    elseif("${_csv_type}" STREQUAL "obj")
-        _cpp_serialize_obj("${_csv_return}" "${_csv_value}")
-    else()
-        _cpp_serialize_string("${_csv_return}" "${_csv_value}")
+function(_cpp_serialize_value _sv_return _sv_value)
+    #cpp_assert_signature("${ARGV}" desc str)
+
+    cpp_type_of(_sv_type "${_sv_value}")
+    cpp_implicitly_convertible(_sv_is_list "${_sv_type}" "list")
+    if("${_sv_is_list}")
+        _cpp_serialize_list("${_sv_return}" "${_sv_value}")
+        cpp_return("${_sv_return}")
     endif()
-    cpp_return("${_csv_return}")
+
+    cpp_implicitly_convertible(_sv_is_obj "${_sv_type}" "obj")
+    if("${_sv_is_obj}")
+        cpp_object(SERIALIZE "${_sv_value}" "${_sv_return}")
+        cpp_return("${_sv_return}")
+    endif()
+
+    _cpp_serialize_string("${_sv_return}" "${_sv_value}")
+    cpp_return("${_sv_return}")
 endfunction()
 

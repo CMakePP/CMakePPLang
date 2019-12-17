@@ -1,9 +1,4 @@
 include_guard()
-include(cmakepp_core/array/array)
-include(cmakepp_core/asserts/signature)
-include(cmakepp_core/map/map)
-include(cmakepp_core/types/get_type)
-include(cmakepp_core/utilities/return)
 
 #[[[ Compares two values for equivalency.
 #
@@ -36,27 +31,10 @@ include(cmakepp_core/utilities/return)
 #    message("1 == 3? : ${result}")  # Will print FALSE
 #]]
 function(cpp_equal _ce_result _ce_lhs _ce_rhs)
-    cpp_assert_signature("${ARGV}" desc str str)
 
-    # If the contents have dollar signs we need to protect them from evaluating
-    string(REGEX REPLACE [[\$]] [[\\$]] "${_ce_lhs}" "${${_ce_lhs}}")
-    string(REGEX REPLACE [[\$]] [[\\$]] "${_ce_rhs}" "${${_ce_rhs}}")
-
-    cpp_get_type(_ce_lhs_t "${_ce_lhs}")
-    cpp_get_type(_ce_rhs_t "${_ce_rhs}")
-
-    if(NOT "${_ce_lhs_t}" STREQUAL "${_ce_rhs_t}")
-        set(${_ce_result} FALSE)
-    elseif("${_ce_lhs_t}" STREQUAL "array")
-        cpp_array(ARE_EQUAL "${_ce_result}" "${_ce_lhs}" "${_ce_rhs}")
-    elseif("${_ce_lhs_t}" STREQUAL "map")
-        cpp_map(ARE_EQUAL "${_ce_result}" "${_ce_lhs}" "${_ce_rhs}")
-    else() # works for bool, desc, float, int, list, target names, and types
-        if("${_ce_lhs}" STREQUAL "${_ce_rhs}")
-            set(${_ce_result} TRUE)
-        else()
-            set(${_ce_result} FALSE)
-        endif()
+    if("${_ce_lhs}" STREQUAL "${_ce_rhs}")
+        set("${_ce_result}" TRUE PARENT_SCOPE)
+    else()
+        set("${_ce_result}" FALSE PARENT_SCOPE)
     endif()
-    cpp_return("${_ce_result}")
 endfunction()

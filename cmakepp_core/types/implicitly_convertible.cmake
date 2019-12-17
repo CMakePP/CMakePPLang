@@ -1,52 +1,52 @@
 include_guard()
-include(cmakepp_core/asserts/signature)
-include(cmakepp_core/utilities/return)
+include(cmakepp_core/types/type_of)
+include(cmakepp_core/utilities/global)
 
-#[[[ Used to determine if CMakePP allows implicit casts between two types.
+#[[[ Determines if an object of a given type can be passed as a different type.
 #
-# CMakePP is a strongly-typed language which allows for few implicit
-# conversions. For types ``T`` and ``U``, CMakePP allows implicit conversion
-# from ``T`` to ``U`` in the following circumstances:
+# CMakePP is a strongly-typed language with minimal implicit conversions. All of
+# the allowed implicit conversions are encapsulated by this function.
 #
-# 1. ``T`` is the same as ``U``,
-# 2. ``U`` is ``str``, or
-# 3. ``U`` is a base class of ``T``.
-#
-# :param _cic_result: Name for the variable which will hold the result.
-# :type _cic_result: desc
-# :param _cic_to_type: The type we are trying to convert to (``U`` in the
-#                      description)
-# :type _cic_to_type: type
-# :param _cic_from_type: The type we are trying to convert from (``T`` in the
-#                        description)
-# :type _cic_from_type: type
-# :returns: ``_cic_result`` will be set to ``TRUE`` if ``_cic_from_type`` can be
-#           converted to ``_cid_to_type``.
-# :rtype: bool*
-#
-# Error Checking
-# ==============
-#
-# :var CMAKEPP_CORE_DEBUG: Used to determine if CMakePP is being run in debug
-#                          mode.
-#
-# If CMakePP is in debug mode this function will ensure that the arguments
-# provided are of the correct types. These error checks are only done in debug
-# mode.
+# :param _ic_result: Name to use for the variable which will hold the result.
 #]]
-function(cpp_implicitly_convertible _cic_result _cic_to_type _cic_from_type)
-    cpp_assert_signature("${ARGV}" desc type type)
+function(cpp_implicitly_convertible _ic_result _ic_from _ic_to)
 
-    # The if-else tree is all the ways that RHS can be implicitly cast to LHS
-    set("${_cic_result}" TRUE)
+    # Make the to-type lowercase in order to avoid case-sensitivity
+    string(TOLOWER "${_ic_to}" _ic_to)
 
-    if("${_cic_to_type}" STREQUAL "${_cic_from_type}")
-        cpp_return("${_cic_result}")
-    elseif("${_cic_to_type}" STREQUAL "str")
-        cpp_return("${_cic_result}")
-    # Need a derived from clause
+    # See if we are casting from a user-defined class
+    cpp_type_of(_ic_from_type "${${_ic_from}}")
+    if("${_ic_from_type}" STREQUAL "class")
+        # Casting from "class" to "type" is okay
+        if("${_ic_to}" STREQUAL "type")
+            set("${_ic_result}" TRUE PARENT_SCOPE)
+        else()
+            # Get the list of bases
+            cpp_get_global(_ic_bases "${${_ic_from}}_bases")
+            list(FIND _ic_bases "${_ic_to}" _ic_index)
+            if("${_ic_index}" EQUAL -1)
+                set("${_ic_result}" FALSE PARENT_SCOPE)
+            else()
+                set("${_ic_result}" TRUE PARENT_SCOPE)
+            endif()
+        endif()
+        return()
     endif()
 
-    # Reaching here means that RHS can NOT be implicitly cast to LHS
-    set("${_cic_result}" FALSE PARENT_SCOPE)
+    # No longer need to dereference _ic_from, so can make it lowercase now
+    string(TOLOWER "${_ic_from}" _ic_from)
+
+    # Not convertible unless one of the following "if" conditions are true
+    set("${_ic_result}" FALSE PARENT_SCOPE)
+
+    if("${_ic_from}" STREQUAL "${_ic_to}")  # Casting to same type
+        set("${_ic_result}" TRUE PARENT_SCOPE)
+    elseif("${_ic_to}" STREQUAL "str")      # Casting to "str"
+        set("${_ic_result}" TRUE PARENT_SCOPE)
+    elseif("${_ic_from}" STREQUAL "overload")
+        if("${_ic_to}" STREQUAL "obj")
+            set("${_ic_result}" TRUE PARENT_SCOPE)
+        endif()
+    endif()
 endfunction()
+

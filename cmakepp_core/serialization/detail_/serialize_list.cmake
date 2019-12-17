@@ -31,7 +31,7 @@ include(cmakepp_core/serialization/detail_/serialize_value)
 # :rtype: desc*
 #]]
 function(_cpp_serialize_list _csl_return _csl_value)
-    cpp_assert_signature("${ARGV}" desc list)
+    #cpp_assert_signature("${ARGV}" desc list)
 
     set(_csl_temp "[")
     set(_csl_not_1st FALSE)
