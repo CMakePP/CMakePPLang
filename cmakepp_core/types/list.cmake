@@ -14,7 +14,14 @@ include_guard()
 # :type _il_str2check: str
 # :returns: ``_il_result`` will be set to ``TRUE`` if ``_il_str2check`` is a
 #           list and ``FALSE`` otherwise.
-# :rtype: bool*
+# :rtype: bool
+#
+# Error Checking
+# ==============
+#
+# ``cpp_is_list`` will assert that the caller has provided exactly two
+# arguments. If the caller has provided a different number of arguments than an
+# error will be raised.
 #
 # Example Usage:
 # ==============
@@ -29,6 +36,9 @@ include_guard()
 #    message("Is a list: ${result}")  # Will print TRUE
 #]]
 function(cpp_is_list _il_result _il_str2check)
+    if(NOT "${ARGC}" EQUAL 2)
+        message(FATAL_ERROR "cpp_is_list takes exactly 2 arguments.")
+    endif()
 
     list(LENGTH _il_str2check _il_length)
     if("${_il_length}" GREATER 1)

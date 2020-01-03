@@ -6,13 +6,19 @@ include_guard()
 # particular identifier is a target via CMake's native ``if`` statement. This
 # function simply wraps a call to ``if(TARGET ...)``.
 #
-# :param _cit_return: Name to use for the resulting identifier.
-# :type _cit_return: desc
-# :param _cit_str2check: The string whose targety-ness is in question
-# :type _cit_str2check: str
-# :returns: ``_cit_return`` will be set to ``TRUE`` if ``_cit_str2check`` is a
+# :param _it_return: Name to use for the resulting identifier.
+# :type _it_return: desc
+# :param _it_str2check: The string whose targety-ness is in question
+# :type _it_str2check: str
+# :returns: ``_it_return`` will be set to ``TRUE`` if ``_it_str2check`` is a
 #           target and ``FALSE`` otherwise.
-# :rtype: bool*
+# :rtype: bool
+#
+# Error Checking
+# ==============
+#
+# ``cpp_is_target`` will assert that the caller has provided exactly two
+# arguments. If this is not the case an error will be raised.
 #
 # Example Usage:
 # ==============
@@ -28,6 +34,10 @@ include_guard()
 #    message("my_target is a target: ${return}")  # prints TRUE
 #]]
 function(cpp_is_target _it_return _it_str2check)
+    if(NOT "${ARGC}" EQUAL 2)
+        message(FATAL_ERROR "cpp_is_target takes exactly 2 arguments.")
+    endif()
+
     if(TARGET "${_it_str2check}")
         set("${_it_return}" TRUE PARENT_SCOPE)
     else()

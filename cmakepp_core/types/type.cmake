@@ -15,20 +15,15 @@ include(cmakepp_core/utilities/global)
 # :type _it_type: str
 # :returns: ``_it_result`` will be set to ``TRUE`` if ``_it_type`` is a type and
 #           ``FALSE`` otherwise.
-# :rtype: bool*
+# :rtype: bool
 #
 #]]
 function(cpp_is_type _it_result _it_type)
-
-    # Check for the "type" meta-attribute
-    cpp_get_global(_it_is_class "${_it_type}_type")
-
-    if("${_it_is_class}" STREQUAL "class")
-        set("${_it_result}" TRUE PARENT_SCOPE)
-    elseif(NOT "${_it_is_class}" STREQUAL "")
-        set("${_it_result}" FALSE PARENT_SCOPE)
-        return()
+    if(NOT "${ARGC}" EQUAL 2)
+        message(FATAL_ERROR "cpp_is_type takes exactly 2 arguments.")
     endif()
+
+    string(TOLOWER "${_it_type}" _it_type)
 
     # See if its an intrinsic CMake type
     list(FIND CMAKE_TYPE_LITERALS "${_it_type}" _it_index)

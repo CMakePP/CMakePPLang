@@ -1,0 +1,14 @@
+include_guard()
+include(cmakepp_core/object/object)
+
+macro(@_cg_type@ _@_cg_type@_mode _@_cg_type@_this)
+    #TODO add type check for mode and this
+    cpp_sanitize_string(_@_cg_type@_nice_mode "${_@_cg_type@_mode}")
+    if("${_@_cg_type@_nice_mode}" STREQUAL "ctor")
+        cpp_get_global(_@_cg_type@_state "@_cg_type@__state")
+        _cpp_object_copy("${_@_cg_type@_state}" "${_@_cg_type@_this}")
+    else()
+        _cpp_object("${_@_cg_type@_nice_mode}" "${_@_cg_type@_this}" ${ARGN})
+    endif()
+endmacro()
+

@@ -27,7 +27,7 @@ include_guard()
 #   is created, then the ``cpp_return`` function could not act in the caller's
 #   scope, *i.e.*, the caller would still have to call ``set`` and ``return``.
 #
-# Example Usage:
+# Example Usage:cpp_function_ctor
 # ==============
 #
 # The following shows how to write a function which has multiple return points.

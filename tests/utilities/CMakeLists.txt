@@ -1,6 +1,5 @@
 set(
-    unit_tests assert call_fxn compare_lists enable_if_debug file_exists negate print_fxn_sig
-               protect_list read_template return ternary_op tuple_iterator
-               unique_id
+    unit_tests assert call_fxn compare_lists enable_if_debug file_exists global
+               print_fxn_sig return unique_id
 )
 add_cmake_unit_tests("utilities" ${unit_tests})

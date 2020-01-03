@@ -1,0 +1,13 @@
+include_guard()
+include(cmakepp_core/algorithm/copy)
+
+function(cpp_map_copy _mc_this _mc_other)
+    cpp_map_keys("${_mc_this}" _mc_keys)
+    cpp_map_ctor("_mc_temp")
+    foreach(_mc_key_i IN LISTS _mc_keys)
+        cpp_map_get("${_mc_this}" _mc_value_i "${_mc_key_i}")
+        cpp_copy(_mc_value_copy "${_mc_value_i}")
+        cpp_map_set("${_mc_temp}" "${_mc_key_i}" "${_mc_value_copy}")
+    endforeach()
+    set("${_mc_other}" "${_mc_temp}" PARENT_SCOPE)
+endfunction()

@@ -1,4 +1,9 @@
 include_guard()
+include(cmakepp_core/object/equal)
+include(cmakepp_core/types/type_of)
+include(cmakepp_core/types/implicitly_convertible)
+include(cmakepp_core/utilities/compare_lists)
+include(cmakepp_core/utilities/return)
 
 #[[[ Compares two values for equivalency.
 #
@@ -18,21 +23,34 @@ include_guard()
 #           to ``_ce_rhs`` and ``FALSE`` otherwise.
 # :rtype: bool*
 #
-# Example Usage:
-# ==============
-#
-# The following code snippet uses ``cpp_equal`` to determine if two integers
-# are equal.
-#
-# .. code-block:: cmake
-#
-#    include(cmakepp_core/utilities/equal)
-#    cpp_equal(result 1 3)
-#    message("1 == 3? : ${result}")  # Will print FALSE
 #]]
 function(cpp_equal _ce_result _ce_lhs _ce_rhs)
 
-    if("${_ce_lhs}" STREQUAL "${_ce_rhs}")
+    cpp_type_of(_ce_lhs_type "${_ce_lhs}")
+    cpp_type_of(_ce_rhs_type "${_ce_rhs}")
+    message("${_ce_rhs_type} ${_ce_lhs_type}")
+    cpp_implicitly_convertible(
+        _ce_good_types "${_ce_rhs_type}" "${_ce_lhs_type}"
+    )
+
+    # Different types
+    if(NOT "${_ce_good_types}")
+        set("${_ce_result}" FALSE PARENT_SCOPE)
+        return()
+    endif()
+
+    cpp_implicitly_convertible(_ce_is_obj "${_ce_lhs_type}" "obj")
+    message("Equal: ${_ce_is_obj} ${_ce_lhs_type}")
+    if("${_ce_is_obj}")
+        _cpp_object_equal("${_ce_lhs}" "${_ce_result}" "${_ce_rhs}")
+        cpp_return("${_ce_result}")
+    elseif("${_ce_lhs_type}" STREQUAL "list")
+        cpp_compare_lists("${_ce_result}" _ce_lhs _ce_rhs)
+        cpp_return("${_ce_result}")
+    elseif("${_ce_lhs_type}" STREQUAL "map")
+        cpp_map(EQUAL "${_ce_lhs}" "${_ce_result}" "${_ce_rhs}")
+        cpp_return("${_ce_result}")
+    elseif("${_ce_lhs}" STREQUAL "${_ce_rhs}")
         set("${_ce_result}" TRUE PARENT_SCOPE)
     else()
         set("${_ce_result}" FALSE PARENT_SCOPE)

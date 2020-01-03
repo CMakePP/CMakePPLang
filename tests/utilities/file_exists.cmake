@@ -8,12 +8,12 @@ ct_add_test("cpp_file_exists")
 
         ct_add_section("Arg1 must be desc")
             cpp_file_exists(TRUE "${CMAKE_CURRENT_LIST_FILE}")
-            ct_assert_fails_as("Assertion: TRUE is desc")
+            ct_assert_fails_as("Assertion: bool is convertible to desc failed.")
         ct_end_section()
 
         ct_add_section("Arg2 must be path")
             cpp_file_exists(result TRUE)
-            ct_assert_fails_as("Assertion: TRUE is path")
+            ct_assert_fails_as("Assertion: bool is convertible to path failed.")
         ct_end_section()
 
         ct_add_section("Takes two arguments")

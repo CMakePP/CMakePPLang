@@ -1,8 +1,8 @@
 include_guard()
-include(cmakepp_core/array/array)
-include(cmakepp_core/asserts/signature)
+#include(cmakepp_core/asserts/signature)
 include(cmakepp_core/map/map)
-include(cmakepp_core/types/get_type)
+include(cmakepp_core/object/copy)
+include(cmakepp_core/types/type_of)
 include(cmakepp_core/utilities/return)
 
 #[[[ Creates a new object which is a deep copy of an already existing object.
@@ -15,13 +15,13 @@ include(cmakepp_core/utilities/return)
 # :rtype: str*
 #]]
 function(cpp_copy _cc_result _cc_obj2copy)
-    cpp_assert_signature("${ARGV}" desc str)
-    cpp_get_type(_cc_type "${_cc_obj2copy}")
-
-    if("${_cc_type}" STREQUAL "array")
-        cpp_array(COPY "${_cc_result}" "${_cc_obj2copy}")
-    elseif("${_cc_type}" STREQUAL "map")
-        cpp_map(COPY "${_cc_result}" "${_cc_obj2copy}")
+    #cpp_assert_signature("${ARGV}" desc str)
+    cpp_type_of(_cc_type "${_cc_obj2copy}")
+    cpp_implicitly_convertible(_cc_is_obj "${_cc_type}" "obj")
+    if("${_cc_type}" STREQUAL "map")
+        cpp_map(COPY "${_cc_obj2copy}" "${_cc_result}")
+    elseif(_cc_is_obj)
+        _cpp_object_copy("${_cc_obj2copy}" "${_cc_result}")
     else()
         set("${_cc_result}" "${_cc_obj2copy}")
     endif()

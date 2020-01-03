@@ -7,14 +7,20 @@ include(cmakepp_core/types/literals)
 # literals known to CMakePP. The actual string comparison is done in a
 # case-insensitive manner.
 #
-# :param _cib_return: Name which should be used for the returned identifier.
-# :type  _cib_return: desc
-# :param _cib_str2check: The string we are checking for bool-ness
-# :type _cib_str2check: str
-# :returns: ``_cib_return`` will contain ``TRUE`` if ``_cib_str2check`` is one
+# :param _ib_return: Name of the variable used to hold the return.
+# :type  _ib_return: desc
+# :param _ib_str2check: The string we are checking for its bool-ness
+# :type _ib_str2check: str
+# :returns: ``_ib_return`` will contain ``TRUE`` if ``_ib_str2check`` is one
 #           of the recognized boolean literals and ``FALSE`` otherwise.
-# :rtype: bool*
+# :rtype: bool
 # :var CMAKEPP_BOOL_LITERALS: Used to get the list of boolean literals.
+#
+# Error Checking
+# ==============
+#
+# ``cpp_is_bool`` will ensure that it has been called with exactly two
+# arguments.
 #
 # Example Usage:
 # ==============
@@ -26,11 +32,14 @@ include(cmakepp_core/types/literals)
 #
 #    include(cmakepp_core/types/bool)
 #    set(var2check TRUE)
-#    cpp_is_bool(result ${var2check})
+#    cpp_is_bool(result "${var2check}")
 #    message("var2check is a bool: ${result}")  # will print TRUE
 #
 #]]
 function(cpp_is_bool _ib_return _ib_str2check)
+    if(NOT "${ARGC}" EQUAL 2)
+        message(FATAL_ERROR "cpp_is_bool accepts exactly 2 arguments")
+    endif()
 
     # Boolean literals are stored uppercase
     string(TOUPPER "${_ib_str2check}" _ib_str2check)
@@ -45,6 +54,14 @@ function(cpp_is_bool _ib_return _ib_str2check)
         endif()
 
     endforeach()
+
+    # Finally check if -NOTFOUND is the last 9 characters
+    string(REGEX MATCH [[^.*-NOTFOUND$]] _ib_notfound_suffix "${_ib_str2check}")
+    message("${_ib_notfound_suffix} ${_ib_str2check}")
+    if(NOT "${_ib_notfound_suffix}" STREQUAL "")
+        set("${_ib_return}" TRUE PARENT_SCOPE)
+        return()
+    endif()
 
     # Getting here means it's not a known boolean literal, so return false
     set(${_ib_return} FALSE PARENT_SCOPE)

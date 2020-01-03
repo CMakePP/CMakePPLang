@@ -45,7 +45,7 @@ ct_end_section()
 #TUTORIAL_START_SKIP
 ct_add_section("Is actually an error")
 say_hello(foo)
-ct_assert_fails_as("Overload say_hello(desc) does not exist")
+ct_assert_fails_as("Suitable overload for say_hello(desc)")
 ct_end_section()
 #TUTORIAL_STOP_SKIP
 
@@ -115,7 +115,7 @@ say_hello("Alice" "Bob" "Clarice")  # say_hello(desc, desc, args),
 ct_add_section("Ambiguous overloads is an error")
 set(CMAKEPP_CORE_DEBUG_MODE ON)
 cpp_function(say_hello desc args)
-ct_assert_fails_as("say_hello(desc, args) conflicts with existing")
+ct_assert_fails_as("say_hello(desc, args) is ambiguous with say_hello(desc)")
 ct_end_section()
 
 ct_add_section("Variadic works")

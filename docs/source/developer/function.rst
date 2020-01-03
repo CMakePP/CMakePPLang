@@ -77,7 +77,7 @@ need to consider an approximately constant number of overloads.
 
 The process is summarized in the following UML diagram.
 
-.. image:: cpp_function.jpg
+.. image:: cpp_function.png
 
 Understanding Ambiguities
 =========================

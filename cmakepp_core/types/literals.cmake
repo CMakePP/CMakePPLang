@@ -8,7 +8,7 @@ include_guard()
 # boolean literals, *i.e*, ``true``, `TrUe``, `y``, etc. are all also boolean
 # literals.
 #]]
-set(CMAKEPP_BOOL_LITERALS ON YES TRUE Y OFF NO FALSE N NOTFOUND)
+set(CMAKEPP_BOOL_LITERALS ON YES TRUE Y OFF NO FALSE N IGNORE NOTFOUND)
 
 
 #[[[ A variable containing the list of types recognized by CMake itself.
@@ -19,7 +19,7 @@ set(CMAKEPP_BOOL_LITERALS ON YES TRUE Y OFF NO FALSE N NOTFOUND)
 # used for all APIs relying on the type system). Types are stored in snake_case
 # and listed alphabetically.
 #]]
-set(CMAKE_TYPE_LITERALS bool float int list path target type)
+set(CMAKE_TYPE_LITERALS bool float fxn genex int list path target type)
 
 #[[[ A variable containing the list of intrinsic types recognized by CMakePP.
 #
@@ -29,4 +29,4 @@ set(CMAKE_TYPE_LITERALS bool float int list path target type)
 # used for all APIs relying on the type system). Types are stored in snake_case
 # and listed alphabetically.
 #]]
-set(CMAKEPP_TYPE_LITERALS class desc obj str)
+set(CMAKEPP_TYPE_LITERALS class desc map obj str)

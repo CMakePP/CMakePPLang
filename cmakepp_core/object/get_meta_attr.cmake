@@ -1,0 +1,10 @@
+include_guard()
+include(cmakepp_core/map/map)
+include(cmakepp_core/utilities/global)
+include(cmakepp_core/utilities/return)
+
+function(_cpp_object_get_meta_attr _ogma_this _ogma_result _ogma_attr)
+    cpp_get_global(_ogma_state "${_ogma_this}__state")
+    cpp_map(GET "${_ogma_state}" "${_ogma_result}" "_cpp_${_ogma_attr}")
+    cpp_return("${_ogma_result}")
+endfunction()

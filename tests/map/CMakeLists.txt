@@ -1,3 +1,2 @@
-add_subdirectory(detail_)
-set(unit_tests )
-add_cmake_unit_tests(map ${unit_tests})
+set(unit_tests append copy ctor equal get has_key keys set)
+add_cmake_unit_tests("map" ${unit_tests})

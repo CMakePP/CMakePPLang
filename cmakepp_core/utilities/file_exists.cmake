@@ -3,16 +3,25 @@ include(cmakepp_core/asserts/signature)
 
 #[[[ Determines if a provided path points to an existing file.
 #
-# :param _cfe_result: Name for variable which will hold the result.
-# :type _cfe_result: desc
-# :param _cfe_file: Potential path pointing to a file.
-# :type _cfe_file: path
-# :returns: ``_cfe_result`` will be set to ``TRUE`` if ``_cfe_file`` is the
+# :param _fe_result: Name for variable which will hold the result.
+# :type _fe_result: desc
+# :param _fe_file: Path which may be pointing to an existing file.
+# :type _fe_file: path
+# :returns: ``_fe_result`` will be set to ``TRUE`` if ``_fe_file`` is the
 #           absolute path of a file and ``FALSE`` otherwise. Of note if
-#           ``_cfe_file`` is the absolute path to a directory the result is also
+#           ``_ce_file`` is the absolute path to a directory the result is also
 #           ``FALSE``.
-# :rtype: bool*
+# :rtype: bool
 #
+# Error Checking
+# ==============
+#
+# If CMakePP is run in debug mode ``cpp_file_exists`` will assert that it has
+# been called with two arguments and that those arguments are of the correct
+# types.
+#
+# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                               debug mode or not.
 #]]
 function(cpp_file_exists _cfe_result _cfe_file)
     cpp_assert_signature("${ARGV}" desc path)

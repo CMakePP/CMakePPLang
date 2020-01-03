@@ -1,42 +1,30 @@
 include_guard()
-include(cmakepp_core/object/attributes)
+include(cmakepp_core/map/map)
+include(cmakepp_core/object/get_meta_attr)
+include(cmakepp_core/types/cmakepp_type)
 include(cmakepp_core/utilities/global)
 include(cmakepp_core/utilities/return)
-include(cmakepp_core/utilities/unique_id)
+include(cmakepp_core/utilities/sanitize_string)
 
-#[[[ Creates a CMakePP Object instance.
-#
-# This function creates a default initialized CMakePP Object instance. The
-# resulting instance has no attributes (aside from its type, which is "obj")
-# and no member functions.
-#
-# :param _coc_result: Name to use for variable which will hold the result.
-# :type _coc_result: desc
-# :returns: ``_coc_result`` will be set to the resulting instance.
-# :rtype: obj*
-#
-# Error Checking
-# ==============
-#
-# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is in debug mode.
-#
-# If CMakePP is in debug mode this function will ensure that only one argument
-# has been provided to it and that the argument is of the correct type. This
-# error check is only done if CMakePP is in debug mode.
-#]]
-function(cpp_object_ctor _oc_this)
+function(_cpp_object_ctor _oc_this _oc_type)
+    cpp_map(CTOR _oc_fxns)
+    cpp_map(CTOR _oc_attrs)
+    cpp_map(CTOR _oc_sub_objs)
 
-    string(TOLOWER "${_oc_type}" _oc_type)
+    foreach(_oc_sub_obj_i ${ARGN})
+        _cpp_object_get_meta_attr("${_oc_sub_obj_i}" _oc_type_i "type")
+        cpp_map(SET "${_oc_sub_objs}" "${_oc_type_i}" "${_oc_sub_obj_i}")
+    endforeach()
 
+    cpp_sanitize_string(_oc_type "${_oc_type}")
+    cpp_map(CTOR _oc_state  _cpp_attrs "${_oc_attrs}"
+                            _cpp_fxns "${_oc_fxns}"
+                            _cpp_sub_objs "${_oc_sub_objs}"
+                            _cpp_type "${_oc_type}"
+    )
 
     cpp_unique_id("${_oc_this}")
-
-    # Technically _oc_attrs is an attribute too, but including it leads to
-    # infinite recursion in most algorithms which loop over attributes.
-    set(_oc_attrs _cpp_bases _cpp_type)
-
-    cpp_object_set_attrs("${${_oc_this}}" "${_oc_attrs}")
-    cpp_object_set_attr("${${_oc_this}}" "_cpp_bases" "obj")
-    cpp_object_set_attr("${${_oc_this}}" "_cpp_type" "obj")
+    cpp_set_global("${${_oc_this}}__state" "${_oc_state}")
+    _cpp_set_cmakepp_type("${${_oc_this}}" "${_oc_type}")
     cpp_return("${_oc_this}")
 endfunction()

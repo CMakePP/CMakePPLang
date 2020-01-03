@@ -17,9 +17,17 @@ include_guard()
 #    This function is a macro in order to allow it to prematurely return from
 #    the function that called it. For this reason it is important that
 #    ``cpp_enable_if_debug`` is only called from functions and **NOT** macros.
+#
+# Error Checking
+# ==============
+#
+# ``cpp_enable_if_debug`` will raise an error if it is called with any
+# arguments.
 #]]
 macro(cpp_enable_if_debug)
-    if(NOT "${CMAKEPP_CORE_DEBUG_MODE}")
+    if("${ARGC}" GREATER 0)
+        message(FATAL_ERROR "cpp_enable_if_debug accepts no arguments.")
+    elseif(NOT "${CMAKEPP_CORE_DEBUG_MODE}")
         return()
     endif()
 endmacro()

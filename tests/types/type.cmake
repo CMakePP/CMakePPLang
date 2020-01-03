@@ -3,8 +3,26 @@ include(cmake_test/cmake_test)
 ct_add_test("cpp_is_type")
     include(cmakepp_core/types/type)
 
+    ct_add_section("Signature")
+        cpp_is_type(return TRUE hello)
+        ct_assert_fails_as("cpp_is_type takes exactly 2 arguments.")
+    ct_end_section()
+
     ct_add_section("bool")
         cpp_is_type(return TRUE)
+        ct_assert_equal(return FALSE)
+    ct_end_section()
+
+    ct_add_section("class")
+        include(cmakepp_core/class/class)
+        cpp_class(MyClass)
+
+        cpp_is_type(return MyClass)
+        ct_assert_equal(return FALSE)
+    ct_end_section()
+
+    ct_add_section("command")
+        cpp_is_type(return add_subdirectory)
         ct_assert_equal(return FALSE)
     ct_end_section()
 
@@ -40,6 +58,19 @@ ct_add_test("cpp_is_type")
             cpp_is_type(return "int;bool")
             ct_assert_equal(return FALSE)
         ct_end_section()
+    ct_end_section()
+
+    ct_add_section("map")
+        include(cmakepp_core/map/map)
+        cpp_map(CTOR a_map)
+        cpp_is_type(result a_map)
+        ct_assert_equal(result FALSE)
+    ct_end_section()
+
+    ct_add_section("obj")
+        include(cmakepp_core/object/object)
+        cpp_is_type(result "${__CPP_OBJECT_SINGLETON__}")
+        ct_assert_equal(result FALSE)
     ct_end_section()
 
     ct_add_section("path")
@@ -82,6 +113,16 @@ ct_add_test("cpp_is_type")
             ct_assert_equal(return TRUE)
         ct_end_section()
 
+        ct_add_section("fxn")
+            cpp_is_type(return fxn)
+            ct_assert_equal(return TRUE)
+        ct_end_section()
+
+        ct_add_section("genex")
+            cpp_is_type(return genex)
+            ct_assert_equal(return TRUE)
+        ct_end_section()
+
         ct_add_section("int")
             cpp_is_type(return int)
             ct_assert_equal(return TRUE)
@@ -89,6 +130,11 @@ ct_add_test("cpp_is_type")
 
         ct_add_section("list")
             cpp_is_type(return list)
+            ct_assert_equal(return TRUE)
+        ct_end_section()
+
+        ct_add_section("map")
+            cpp_is_type(return map)
             ct_assert_equal(return TRUE)
         ct_end_section()
 

@@ -9,7 +9,7 @@ ct_add_test("return")
         cpp_return(the_return)
     endfunction()
 
-    ct_add_section("Ensure return was not defined to begin with")
+    ct_add_section("Ensure the_return was not defined to begin with")
         ct_assert_not_defined(the_return)
     ct_end_section()
 

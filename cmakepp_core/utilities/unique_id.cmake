@@ -1,4 +1,5 @@
 include_guard()
+include(cmakepp_core/asserts/signature)
 include(cmakepp_core/utilities/return)
 
 #[[[ Generates a unique identifier.
@@ -10,16 +11,29 @@ include(cmakepp_core/utilities/return)
 # during the same second. No check for uniqueness is currently present although
 # one could be added.
 #
-# :param _cui_id: The name to for the variable which will hold the result.
-# :type _cui_id: desc
-# :returns: ``_cui_id`` will be set to the generated unique id.
-# :rtype: desc*
+# :param _ui_id: The name for the variable which will hold the result.
+# :type _ui_id: desc
+# :returns: ``_ui_id`` will be set to the generated unique id.
+# :rtype: desc
+#
+# Error Checking
+# ==============
+#
+# If CMakePP is run in debug mode ``cpp_unique_id`` will ensure that it was
+# passed only one argument and that that argument is of type ``desc``.
+#
+# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                               debug mode or not.
 #]]
-function(cpp_unique_id _cui_id)
-    # Get seconds since UNIX epoch (requires CMake version >= 3.6)
-    string(TIMESTAMP _cui_time "%s")
+function(cpp_unique_id _ui_id)
+    cpp_assert_signature("${ARGV}" desc)
 
-    string(RANDOM _cui_prefix)
-    string(TOLOWER "${_cui_prefix}_${_cui_time}" "${_cui_id}")
-    cpp_return("${_cui_id}")
+    # Get seconds since UNIX epoch (requires CMake version >= 3.6)
+    string(TIMESTAMP _ui_time "%s")
+
+    # Prepend a random prefix onto the time
+    string(RANDOM _ui_prefix)
+    string(TOLOWER "${_ui_prefix}_${_ui_time}" "${_ui_id}")
+
+    cpp_return("${_ui_id}")
 endfunction()

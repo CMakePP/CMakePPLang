@@ -15,7 +15,9 @@
 
 include_guard()
 include(cmakepp_core/asserts/signature)
+include(cmakepp_core/object/object)
 include(cmakepp_core/serialization/detail_/serialize_list)
+include(cmakepp_core/serialization/detail_/serialize_map)
 include(cmakepp_core/serialization/detail_/serialize_string)
 include(cmakepp_core/types/implicitly_convertible)
 include(cmakepp_core/types/type_of)
@@ -38,15 +40,22 @@ function(_cpp_serialize_value _sv_return _sv_value)
     #cpp_assert_signature("${ARGV}" desc str)
 
     cpp_type_of(_sv_type "${_sv_value}")
+
     cpp_implicitly_convertible(_sv_is_list "${_sv_type}" "list")
     if("${_sv_is_list}")
         _cpp_serialize_list("${_sv_return}" "${_sv_value}")
         cpp_return("${_sv_return}")
     endif()
 
+    cpp_implicitly_convertible(_sv_is_map "${_sv_type}" "map")
+    if("${_sv_is_map}")
+        _cpp_serialize_map("${_sv_return}" "${_sv_value}")
+        cpp_return("${_sv_return}")
+    endif()
+
     cpp_implicitly_convertible(_sv_is_obj "${_sv_type}" "obj")
     if("${_sv_is_obj}")
-        cpp_object(SERIALIZE "${_sv_value}" "${_sv_return}")
+        _cpp_object_serialize("${_sv_value}" "${_sv_return}")
         cpp_return("${_sv_return}")
     endif()
 

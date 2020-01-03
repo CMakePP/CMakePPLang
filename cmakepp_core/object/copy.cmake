@@ -1,0 +1,16 @@
+include_guard()
+include(cmakepp_core/map/map)
+include(cmakepp_core/utilities/global)
+include(cmakepp_core/utilities/return)
+include(cmakepp_core/utilities/unique_id)
+
+function(_cpp_object_copy _oc_this _oc_other)
+    cpp_get_global(_oc_this_state "${_oc_this}__state")
+    cpp_get_global(_oc_this_type "${_oc_this}__type")
+    cpp_map(COPY "${_oc_this_state}" _oc_other_state)
+    cpp_unique_id("${_oc_other}")
+    cpp_set_global("${${_oc_other}}__state" "${_oc_other_state}")
+    cpp_set_global("${${_oc_other}}__type" "${_oc_this_type}")
+    cpp_return("${_oc_other}")
+endfunction()
+

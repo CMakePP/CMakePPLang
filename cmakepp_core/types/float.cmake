@@ -6,13 +6,19 @@ include_guard()
 # point, and the numbers 0 through 9. Optionally the float may be prefixed with
 # a minus sign.
 #
-# :param _cif_return: The name to use to store the result.
-# :type _cif_return: desc
-# :param _cif_str2check: The string we are checking for its floaty-ness
-# :type _cif_str2check: str
-# :returns: ``_cif_return`` will be set to ``TRUE`` if ``_cif_str2check`` is a
+# :param _if_return: Name for the variable used to store the result.
+# :type _if_return: desc
+# :param _if_str2check: The string we are checking for its floaty-ness
+# :type _if_str2check: str
+# :returns: ``_if_return`` will be set to ``TRUE`` if ``_if_str2check`` is a
 #           float and ``FALSE`` otherwise.
-# :rtype: bool*
+# :rtype: bool
+#
+# Error Checking
+# ==============
+#
+# ``cpp_is_float`` will assert that it is called with exactly two arguments. If
+# it is not an error will be raised.
 #
 # Example Usage:
 # ==============
@@ -28,6 +34,9 @@ include_guard()
 #    message("3.14 is a float: ${return}")  # prints TRUE
 #]]
 function(cpp_is_float _if_return _if_str2check)
+    if(NOT "${ARGC}" EQUAL 2)
+        message(FATAL_ERROR "cpp_is_float accepts exactly 2 arguments")
+    endif()
 
     string(REGEX MATCH "^-?[0-9]+.[0-9]+\$" _if_match "${_if_str2check}")
 
