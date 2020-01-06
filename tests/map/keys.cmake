@@ -4,6 +4,27 @@ ct_add_test("cpp_map_keys")
     include(cmakepp_core/map/map)
     include(cmakepp_core/utilities/compare_lists)
 
+    ct_add_section("Signature")
+        set(CMAKEPP_CORE_DEBUG_MODE ON)
+
+        ct_add_section("0th argument must be a map")
+            cpp_map_keys(TRUE result)
+            ct_assert_fails_as("Assertion: bool is convertible to map failed.")
+        ct_end_section()
+
+        ct_add_section("1st argument must be a desc")
+            cpp_map_ctor(a_map)
+            cpp_map_keys("${a_map}" TRUE)
+            ct_assert_fails_as("Assertion: bool is convertible to desc failed.")
+        ct_end_section()
+
+        ct_add_section("Takes exactly 2 arguments.")
+            cpp_map_ctor(a_map)
+            cpp_map_keys("${a_map}" result hello)
+            ct_assert_fails_as("Function takes 2 argument(s), but 3 was/were")
+        ct_end_section()
+    ct_end_section()
+
     ct_add_section("Map with no keys")
         cpp_map_ctor(a_map)
         cpp_map_keys("${a_map}" keys)

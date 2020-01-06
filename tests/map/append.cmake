@@ -6,6 +6,25 @@ ct_add_test("cpp_map_append")
 
     cpp_map(CTOR a_map)
 
+    ct_add_section("Signature")
+        set(CMAKEPP_CORE_DEBUG_MODE ON)
+
+        ct_add_section("0th Argument must be a map")
+            cpp_map_append(TRUE foo bar)
+            ct_assert_fails_as("Assertion: bool is convertible to map failed.")
+        ct_end_section()
+
+        ct_add_section("1st Argument must be a desc")
+            cpp_map_append("${a_map}" TRUE bar)
+            ct_assert_fails_as("Assertion: bool is convertible to desc failed.")
+        ct_end_section()
+
+        ct_add_section("Accepts exactly 3 arguments")
+            cpp_map_append("${a_map}" foo bar hello)
+            ct_assert_fails_as("Function takes 3 argument(s), but 4 was/were")
+        ct_end_section()
+    ct_end_section()
+
     ct_add_section("Append under a new key")
         cpp_map(APPEND "${a_map}" foo bar)
 

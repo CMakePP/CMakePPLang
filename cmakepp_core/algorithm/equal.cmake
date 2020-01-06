@@ -28,7 +28,6 @@ function(cpp_equal _ce_result _ce_lhs _ce_rhs)
 
     cpp_type_of(_ce_lhs_type "${_ce_lhs}")
     cpp_type_of(_ce_rhs_type "${_ce_rhs}")
-    message("${_ce_rhs_type} ${_ce_lhs_type}")
     cpp_implicitly_convertible(
         _ce_good_types "${_ce_rhs_type}" "${_ce_lhs_type}"
     )
@@ -40,7 +39,6 @@ function(cpp_equal _ce_result _ce_lhs _ce_rhs)
     endif()
 
     cpp_implicitly_convertible(_ce_is_obj "${_ce_lhs_type}" "obj")
-    message("Equal: ${_ce_is_obj} ${_ce_lhs_type}")
     if("${_ce_is_obj}")
         _cpp_object_equal("${_ce_lhs}" "${_ce_result}" "${_ce_rhs}")
         cpp_return("${_ce_result}")

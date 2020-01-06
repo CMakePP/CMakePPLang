@@ -6,7 +6,7 @@ ct_add_test("_cpp_serialize_map")
     ct_add_section("Empty map")
         cpp_map(CTOR a_map)
         _cpp_serialize_map(result "${a_map}")
-        ct_assert_equal(result "{ }")
+        ct_assert_equal(result [[{ }]])
     ct_end_section()
 
     ct_add_section("Single key, value pair")

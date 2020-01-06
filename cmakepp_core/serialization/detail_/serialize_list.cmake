@@ -14,34 +14,47 @@
 ################################################################################
 
 include_guard()
-include(cmakepp_core/asserts/signature)
 include(cmakepp_core/serialization/detail_/serialize_value)
 
 #[[[ Serializes a CMake list into JSON format.
 #
-# This function will serialize a native CMake list into a JSON list.
-# Serialization of the elements of the list will be done recursively.
+# This function will serialize a native CMake list into a JSON list. This means
+# the contents of the list will be enclosed in ``[]`` and the contents of the
+# list stored in a comma-separated list whose elements are the serialized
+# values.
 #
-# :param _csl_return: The name for the variable which will hold the result.
-# :type _csl_return: desc
-# :param _csl_value: The CMake list we are serializing.
-# :type _csl_value: list
-# :returns: ``_csl_return`` will be set to the JSON serialized form of
-#           ``_csl_value``.
-# :rtype: desc*
+# :param _sl_return: The name for the variable which will hold the result.
+# :type _sl_return: desc
+# :param _sl_value: The CMake list we are serializing.
+# :type _sl_value: list
+# :returns: ``_sl_return`` will be set to the JSON serialized form of
+#           ``_sl_value``.
+# :rtype: desc
 #]]
 function(_cpp_serialize_list _csl_return _csl_value)
-    #cpp_assert_signature("${ARGV}" desc list)
 
+    # Start a temporary buffer to avoid recursion problems
     set(_csl_temp "[")
+
+    # Tracks if this is not the first element (to avoid spurious "," in list)
     set(_csl_not_1st FALSE)
+
+    # Loop over the elements in the list
     foreach(_csl_i ${_csl_value})
+
+        # If not the 1st element need a comma before printing the element
         if(_csl_not_1st)
-            set(_csl_temp "${_csl_temp} ,")
+            set(_csl_temp "${_csl_temp},")
         endif()
+
+        # Serialize the element and add it
         _cpp_serialize_value(_csl_str "${_csl_i}")
         set(_csl_temp "${_csl_temp} ${_csl_str}")
+
+        # Signal that we are past the first element
         set(_csl_not_1st TRUE)
     endforeach()
+
+    # Add the last "]" and return the result
     set("${_csl_return}" "${_csl_temp} ]" PARENT_SCOPE)
 endfunction()

@@ -14,7 +14,6 @@
 ################################################################################
 
 include_guard()
-include(cmakepp_core/asserts/signature)
 include(cmakepp_core/object/object)
 include(cmakepp_core/serialization/detail_/serialize_list)
 include(cmakepp_core/serialization/detail_/serialize_map)
@@ -23,42 +22,47 @@ include(cmakepp_core/types/implicitly_convertible)
 include(cmakepp_core/types/type_of)
 include(cmakepp_core/utilities/return)
 
-#[[[ Dispatches based on type to the appropiate serialization impelementation.
+#[[[ Dispatches based on type to the appropriate serialization implementation.
 #
 # This function is used to encapsulate the logic required to dispatch to the
-# correct serialization implemenation based on the type of the input value.
+# correct serialization implementation based on the type of the input value.
 #
-# :param _csv_return: The name for the variable which will hold the result.
-# :type _csv_return: desc
-# :param _csv_value: The value we are serializing.
-# :type _csv_value: str
-# :returns: ``_csv_return`` will be set to the JSON serialized form of
-#           ``_csv_value``.
-# :rtype: desc*
+# :param _sv_return: The name for the variable which will hold the result.
+# :type _sv_return: desc
+# :param _sv_value: The value we are serializing.
+# :type _sv_value: str
+# :returns: ``_sv_return`` will be set to the JSON serialized form of
+#           ``_sv_value``.
+# :rtype: desc
+#
+# Error Checking
+# ==============
+#
+# This function is considered an implementation detail of ``cpp_serialize`` and
+# performs no error-checking.
 #]]
 function(_cpp_serialize_value _sv_return _sv_value)
-    #cpp_assert_signature("${ARGV}" desc str)
 
+    # Get the type of the object we are serializing
     cpp_type_of(_sv_type "${_sv_value}")
 
-    cpp_implicitly_convertible(_sv_is_list "${_sv_type}" "list")
-    if("${_sv_is_list}")
+    # Special dispatch if the object is a list or a map
+    if("${_sv_type}" STREQUAL "list")
         _cpp_serialize_list("${_sv_return}" "${_sv_value}")
         cpp_return("${_sv_return}")
-    endif()
-
-    cpp_implicitly_convertible(_sv_is_map "${_sv_type}" "map")
-    if("${_sv_is_map}")
+    elseif("${_sv_type}" STREQUAL "map")
         _cpp_serialize_map("${_sv_return}" "${_sv_value}")
         cpp_return("${_sv_return}")
     endif()
 
+    # If the object is a literal object call its serialize member function
     cpp_implicitly_convertible(_sv_is_obj "${_sv_type}" "obj")
     if("${_sv_is_obj}")
-        _cpp_object_serialize("${_sv_value}" "${_sv_return}")
+        _cpp_object(SERIALIZE "${_sv_value}" "${_sv_return}")
         cpp_return("${_sv_return}")
     endif()
 
+    # If none of the above it's just a string-like thing
     _cpp_serialize_string("${_sv_return}" "${_sv_value}")
     cpp_return("${_sv_return}")
 endfunction()

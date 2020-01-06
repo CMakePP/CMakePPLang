@@ -14,20 +14,24 @@
 ################################################################################
 
 include_guard()
-
-#include(cmakepp_core/serialization/deserialize_value)
+include(cmakepp_core/asserts/signature)
 include(cmakepp_core/serialization/detail_/serialize_value)
 
 #[[[ Public API for serializing a value to JSON.
 #
-# :param _cs_result: The name for the variable which will hold the result.
-# :type _cs_result: desc
-# :param _cs_value: The value we are serializing.
-# :type _cs_value: str
-# :returns: ``_cs_result`` will be set to the JSON serialized form of
-#           ``_cs_value``.
-# :rtype: desc*
+# When a caller outside of the serialization submodule needs an object
+# serialized they should go through this API. This API wraps the (usually)
+# recursive procedure required to serialize a complicated object factoring out
+# the pieces that only need to be done once.
+#
+# :param _s_result: The name for the variable which will hold the result.
+# :type _s_result: desc
+# :param _s_value: The value we are serializing.
+# :type _s_value: str
+# :returns: ``_s_result`` will be set to the serialized form of``_s_value``.
+# :rtype: desc
 #]]
-macro(cpp_serialize _cs_result _cs_value)
-    _cpp_serialize_value("${_cs_result}" "${_cs_value}")
+macro(cpp_serialize _s_result _s_value)
+    cpp_assert_signature("${ARGV}" desc str)
+    _cpp_serialize_value("${_s_result}" "${_s_value}")
 endmacro()

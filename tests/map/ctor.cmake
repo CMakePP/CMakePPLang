@@ -5,6 +5,13 @@ ct_add_test("cpp_map_ctor")
     include(cmakepp_core/types/type_of)
     include(cmakepp_core/utilities/compare_lists)
 
+    ct_add_section("Signature")
+        set(CMAKEPP_CORE_DEBUG_MODE ON)
+
+        cpp_map_ctor(TRUE)
+        ct_assert_fails_as("Assertion: bool is convertible to desc failed.")
+    ct_end_section()
+
     ct_add_section("Default ctor")
         cpp_map_ctor(a_map)
 

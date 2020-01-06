@@ -57,7 +57,7 @@ function(cpp_is_bool _ib_return _ib_str2check)
 
     # Finally check if -NOTFOUND is the last 9 characters
     string(REGEX MATCH [[^.*-NOTFOUND$]] _ib_notfound_suffix "${_ib_str2check}")
-    message("${_ib_notfound_suffix} ${_ib_str2check}")
+
     if(NOT "${_ib_notfound_suffix}" STREQUAL "")
         set("${_ib_return}" TRUE PARENT_SCOPE)
         return()

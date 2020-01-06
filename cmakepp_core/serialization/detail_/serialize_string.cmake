@@ -14,36 +14,26 @@
 ################################################################################
 
 include_guard()
-include(cmakepp_core/asserts/signature)
 
 #[[[ Serializes a string according to the JSON standard.
 #
-# This is the catch-all serialization for CMakePP types:
+# This is the catch-all serialization for all CMakePP objects that do not have a
+# serialize routine and are not Map or List instances. A string in JSON is
+# simply the value enclosed in double quotes.
 #
-# - bool
-# - filepath
-# - float
-# - integer
-# - type
+# :param _ss_return: Name for the variable which will hold the returned value.
+# :type _ss_return: desc
+# :param _ss_value: The value we are serializing.
+# :type _ss_value: str
+# :returns: ``_ss_return`` will be set to JSON serialized form of ``_ss_value``.
+# :rtype: desc
 #
-# All of the aforementioned types are serialized as JSON strings.
+# Error Checking
+# ==============
 #
-# :param _css_return: Name for the variable which will hold the returned value.
-# :type _css_return: desc
-# :param _css_value: The value we are serializing.
-# :type _css_value: str
-# :returns: ``_css_return`` will be set to JSON serialized form of
-#           ``_css_value``.
-# :rtype: desc*
-#
-# .. note::
-#
-#    This function is an implementation detail for the ``cpp_serialize``
-#    function and does not perform any error-checking beyond type-checking. In
-#    particular this means it does **not** ensure that ``_css_value`` is a
-#    CMakePP type which should be serialized as a string.
+# This function is considered an implementation detail of ``cpp_serialize`` and
+# does not perform any error checking.
 #]]
-function(_cpp_serialize_string _css_return _css_value)
-    cpp_assert_signature("${ARGV}" desc str)
-    set("${_css_return}" "\"${_css_value}\"" PARENT_SCOPE)
+function(_cpp_serialize_string _ss_return _ss_value)
+    set("${_ss_return}" "\"${_ss_value}\"" PARENT_SCOPE)
 endfunction()

@@ -3,6 +3,27 @@ include(cmake_test/cmake_test)
 ct_add_test("cpp_map_copy")
     include(cmakepp_core/map/map)
 
+    ct_add_section("Signature")
+        set(CMAKEPP_CORE_DEBUG_MODE ON)
+
+        cpp_map(CTOR a_map)
+
+        ct_add_section("0th Argument must be a map")
+            cpp_map_copy(TRUE result)
+            ct_assert_fails_as("Assertion: bool is convertible to map failed.")
+        ct_end_section()
+
+        ct_add_section("1st Argument must be a desc")
+            cpp_map_copy("${a_map}" TRUE)
+            ct_assert_fails_as("Assertion: bool is convertible to desc failed.")
+        ct_end_section()
+
+        ct_add_section("Accepts Exactly 2 Arguments")
+            cpp_map_copy("${a_map}" result hello)
+            ct_assert_fails_as("Function takes 2 argument(s), but 3 was/were")
+        ct_end_section()
+    ct_end_section()
+
     ct_add_section("Empty Map")
         cpp_map(CTOR a_map)
         cpp_map(COPY "${a_map}" a_copy)

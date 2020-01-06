@@ -15,7 +15,7 @@ ct_add_test("_cpp_serialize_list")
 
     ct_add_section("two-item list")
         _cpp_serialize_list(result "hello;world")
-        ct_assert_equal(result "[ \"hello\" , \"world\" ]")
+        ct_assert_equal(result "[ \"hello\", \"world\" ]")
     ct_end_section()
 
 ct_end_test()
