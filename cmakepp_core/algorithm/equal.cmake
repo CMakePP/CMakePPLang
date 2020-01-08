@@ -1,4 +1,6 @@
 include_guard()
+include(cmakepp_core/asserts/signature)
+include(cmakepp_core/map/equal)
 include(cmakepp_core/object/equal)
 include(cmakepp_core/types/type_of)
 include(cmakepp_core/types/implicitly_convertible)
@@ -13,44 +15,56 @@ include(cmakepp_core/utilities/return)
 # instances of user-defined classes to ensure they have the same state. If two
 # objects have different types they are defined to be unequal.
 #
-# :param _ce_result: The name to use for variable holding the result.
-# :type _ce_result: desc
-# :param _ce_lhs: One of the two values involved in the comparison.
-# :type _ce_lhs: str
-# :param _ce_rhs: The other value involved in the comparison
-# :type _ce_rhs: str
-# :returns: ``_ce_result`` will be set to ``TRUE`` if ``_ce_lhs`` compares equal
-#           to ``_ce_rhs`` and ``FALSE`` otherwise.
-# :rtype: bool*
+# :param _e_result: The name to use for variable holding the result.
+# :type _e_result: desc
+# :param _e_lhs: One of the two values involved in the comparison.
+# :type _e_lhs: str
+# :param _e_rhs: The other value involved in the comparison
+# :type _e_rhs: str
+# :returns: ``_e_result`` will be set to ``TRUE`` if ``_e_lhs`` compares equal
+#           to ``_e_rhs`` and ``FALSE`` otherwise.
+# :rtype: bool
 #
+# Error Checking
+# ==============
+#
+# If CMakePP is being run in debug mode this function will assert that it is
+# being called with exactly three arguments and that those arguments are of the
+# correct types. If any of these asserts fail an error will be raised. These
+# errors are only checked for in debug mode.
+#
+# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                               debug mode or not.
+# :vartype CMAKEPP_CORE_DEBUG_MODE: bool
 #]]
-function(cpp_equal _ce_result _ce_lhs _ce_rhs)
-
-    cpp_type_of(_ce_lhs_type "${_ce_lhs}")
-    cpp_type_of(_ce_rhs_type "${_ce_rhs}")
+function(cpp_equal _e_result _e_lhs _e_rhs)
+    cpp_assert_signature("${ARGV}" desc str str)
+    
+    cpp_type_of(_e_lhs_type "${_e_lhs}")
+    cpp_type_of(_e_rhs_type "${_e_rhs}")
     cpp_implicitly_convertible(
-        _ce_good_types "${_ce_rhs_type}" "${_ce_lhs_type}"
+        _e_good_types "${_e_rhs_type}" "${_e_lhs_type}"
     )
 
     # Different types
-    if(NOT "${_ce_good_types}")
-        set("${_ce_result}" FALSE PARENT_SCOPE)
+    if(NOT "${_e_good_types}")
+        set("${_e_result}" FALSE PARENT_SCOPE)
         return()
     endif()
 
-    cpp_implicitly_convertible(_ce_is_obj "${_ce_lhs_type}" "obj")
-    if("${_ce_is_obj}")
-        _cpp_object_equal("${_ce_lhs}" "${_ce_result}" "${_ce_rhs}")
-        cpp_return("${_ce_result}")
-    elseif("${_ce_lhs_type}" STREQUAL "list")
-        cpp_compare_lists("${_ce_result}" _ce_lhs _ce_rhs)
-        cpp_return("${_ce_result}")
-    elseif("${_ce_lhs_type}" STREQUAL "map")
-        cpp_map(EQUAL "${_ce_lhs}" "${_ce_result}" "${_ce_rhs}")
-        cpp_return("${_ce_result}")
-    elseif("${_ce_lhs}" STREQUAL "${_ce_rhs}")
-        set("${_ce_result}" TRUE PARENT_SCOPE)
+    cpp_implicitly_convertible(_e_is_obj "${_e_lhs_type}" "obj")
+    if("${_e_is_obj}")
+        _cpp_object_equal("${_e_lhs}" "${_e_result}" "${_e_rhs}")
+        cpp_return("${_e_result}")
+    elseif("${_e_lhs_type}" STREQUAL "list")
+        cpp_compare_lists("${_e_result}" _e_lhs _e_rhs)
+        cpp_return("${_e_result}")
+    elseif("${_e_lhs_type}" STREQUAL "map")
+        cpp_map(EQUAL "${_e_lhs}" "${_e_result}" "${_e_rhs}")
+        cpp_return("${_e_result}")
+    elseif("${_e_lhs}" STREQUAL "${_e_rhs}")
+        set("${_e_result}" TRUE PARENT_SCOPE)
     else()
-        set("${_ce_result}" FALSE PARENT_SCOPE)
+        set("${_e_result}" FALSE PARENT_SCOPE)
     endif()
 endfunction()

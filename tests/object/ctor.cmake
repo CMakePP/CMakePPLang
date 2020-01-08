@@ -1,22 +1,32 @@
 include(cmake_test/cmake_test)
 
 ct_add_test("_cpp_object_ctor")
+    include(cmakepp_core/class/class)
     include(cmakepp_core/object/object)
     include(cmakepp_core/types/type_of)
     include(cmakepp_core/utilities/compare_lists)
 
-    ct_add_section("No base class")
-        _cpp_object_ctor(an_obj MyClass)
+    ct_add_section("Signature")
+        set(CMAKEPP_CORE_DEBUG_MODE ON)
 
-        _cpp_object_serialize("${an_obj}" result)
-
-        ct_add_section("bases meta attr")
-            _cpp_object_get_meta_attr("${an_obj}" bases bases)
-            ct_assert_equal(bases obj)
+        ct_add_section("0th argument must be a desc")
+            _cpp_object_ctor(TRUE bool)
+            ct_assert_fails_as("Assertion: bool is convertible to desc failed.")
         ct_end_section()
 
+        ct_add_section("1st argument must be a type")
+            _cpp_object_ctor(result TRUE)
+            ct_assert_fails_as("Assertion: bool is convertible to type failed.")
+        ct_end_section()
+    ct_end_section()
+
+    ct_add_section("No base class")
+
+        cpp_class(MyClass)
+        _cpp_object_ctor(an_obj MyClass)
+
         ct_add_section("type meta attr")
-            _cpp_object_get_meta_attr("${an_obj}" type type)
+            _cpp_object_get_meta_attr("${an_obj}" type my_type)
             ct_assert_equal(type myclass)
         ct_end_section()
 
@@ -27,18 +37,15 @@ ct_add_test("_cpp_object_ctor")
     ct_end_section()
 
     ct_add_section("Single base class")
+
+        cpp_class(BaseClass)
         _cpp_object_ctor(the_base BaseClass)
+
+        cpp_class(MyClass BaseClass)
         _cpp_object_ctor(an_obj MyClass "${the_base}")
 
-        ct_add_section("bases meta attr")
-            _cpp_object_get_meta_attr("${an_obj}" bases bases)
-            set(corr obj baseclass)
-            cpp_compare_lists(result corr bases)
-            ct_assert_equal(result TRUE)
-        ct_end_section()
-
         ct_add_section("type meta attr")
-            _cpp_object_get_meta_attr("${an_obj}" type type)
+            _cpp_object_get_meta_attr("${an_obj}" type my_type)
             ct_assert_equal(type myclass)
         ct_end_section()
 
@@ -54,19 +61,18 @@ ct_add_test("_cpp_object_ctor")
     ct_end_section()
 
     ct_add_section("Multiple base classes")
+
+        cpp_class(BaseClass1)
         _cpp_object_ctor(base1 BaseClass1)
+
+        cpp_class(BaseClass2)
         _cpp_object_ctor(base2 BaseClass2)
+
+        cpp_class(MyClass BaseClass1 BaseClass2)
         _cpp_object_ctor(an_obj MyClass "${base1}" "${base2}")
 
-        ct_add_section("bases")
-            _cpp_object_get_meta_attr("${an_obj}" bases bases)
-            set(corr obj baseclass1 baseclass2)
-            cpp_compare_lists(result corr bases)
-            ct_assert_equal(result TRUE)
-        ct_end_section()
-
         ct_add_section("type")
-            _cpp_object_get_meta_attr("${an_obj}" type type)
+            _cpp_object_get_meta_attr("${an_obj}" type my_type)
             ct_assert_equal(type myclass)
         ct_end_section()
 

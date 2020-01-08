@@ -2,6 +2,8 @@ include_guard()
 include(cmakepp_core/asserts/signature)
 include(cmakepp_core/map/copy)
 include(cmakepp_core/map/equal)
+include(cmakepp_core/map/has_key)
+include(cmakepp_core/map/keys)
 include(cmakepp_core/utilities/global)
 include(cmakepp_core/utilities/return)
 include(cmakepp_core/utilities/unique_id)
@@ -15,7 +17,7 @@ include(cmakepp_core/utilities/unique_id)
 # :param _ma_this: The map we modifying the state of.
 # :type _ma_this: map
 # :param _ma_key: The key whose value is being appended to.
-# :type _ma_key: desc
+# :type _ma_key: str
 # :param _ma_value: Value we are appending to the list stored under ``_ma_key``.
 # :type _ma_value: str
 #
@@ -33,7 +35,7 @@ include(cmakepp_core/utilities/unique_id)
 #
 #]]
 function(cpp_map_append _ma_this _ma_key _ma_value)
-    cpp_assert_signature("${ARGV}" map desc str)
+    cpp_assert_signature("${ARGV}" map str str)
 
     cpp_append_global("${_ma_this}_keys" "${_ma_key}")
     cpp_append_global("${_ma_this}_${_ma_key}" "${_ma_value}")
@@ -94,7 +96,7 @@ endfunction()
 # :param _mg_value: Name for the identifier to save the value to.
 # :type _mg_value: desc
 # :param _mg_key: The key whose value we want.
-# :type _mg_key: desc
+# :type _mg_key: str
 # :returns: ``_mg_value`` will be set to the value associated with ``_mg_key``.
 #           If ``_mg_key`` has no value associated with it ``_mg_value`` will be
 #           set to the empty string.
@@ -113,84 +115,10 @@ endfunction()
 # :vartype CMAKEPP_CORE_DEBUG_MODE: bool
 #]]
 function(cpp_map_get _mg_this _mg_value _mg_key)
-    cpp_assert_signature("${ARGV}" map desc desc)
+    cpp_assert_signature("${ARGV}" map desc str)
 
     cpp_get_global("${_mg_value}" "${_mg_this}_${_mg_key}")
     cpp_return("${_mg_value}")
-endfunction()
-
-#[[[ Determines if a map has the specified key.
-#
-# This function is used to determine if a particular key has been set for this
-# map.
-#
-# :param _mhk_this: The map for which we want to know if it has the specified
-#                   key.
-# :type _mhk_this: map
-# :param _mhk_result: Name to use for the variable which will hold the result.
-# :type _mhk_result: desc
-# :param _mhk_key: The key we want to know if the map has.
-# :type _mhk_key: desc
-# :returns: ``_mhk_result`` will be set to ``TRUE`` if ``_mhk_key`` has been
-#           set for this map and ``FALSE`` otherwise.
-# :rtype: bool
-#
-# Error Checking
-# ==============
-#
-# If CMakePP is run in debug mode this function will assert that it was called
-# with exactly two arguments, and that those arguments have the correct types.
-# If these assertions fail an error will be raised. These checks are only
-# performed if CMakePP is run in debug mode.
-#
-# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
-#                               debug mode or not.
-# :vartype CMAKEPP_CORE_DEBUG_MODE: bool
-#]]
-function(cpp_map_has_key _mhk_this _mhk_result _mhk_key)
-    cpp_assert_signature("${ARGV}" map desc desc)
-
-    cpp_map_keys("${_mhk_this}" _mhk_keys)
-    cpp_sanitize_string(_mhk_key "${_mhk_key}")
-    list(FIND _mhk_keys "${_mhk_key}" _mhk_index)
-    if("${_mhk_index}" GREATER -1)
-        set("${_mhk_result}" TRUE PARENT_SCOPE)
-    else()
-        set("${_mhk_result}" FALSE PARENT_SCOPE)
-    endif()
-endfunction()
-
-#[[[ Gets a list of all keys known to a map.
-#
-# This function can be used to get a list of keys which have been set for this
-# map.
-#
-# :param _mk_this: The map whose keys are being retrieved.
-# :type _mk_this: map
-# :param _mk_keys: Name for the variable which will hold the keys.
-# :type _mk_keys: desc
-# :returns: ``_mk_keys`` will be set to the list of keys which have been set for
-#           ``_mk_this``.
-# :rtype: [desc]
-#
-# Error Checking
-# ==============
-#
-# If CMakePP is run in debug mode this function will assert that it was called
-# with exactly two arguments, and that those arguments have the correct types.
-# If these assertions fail an error will be raised. These checks are only
-# performed if CMakePP is run in debug mode.
-#
-# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
-#                               debug mode or not.
-# :vartype CMAKEPP_CORE_DEBUG_MODE: bool
-#]]
-function(cpp_map_keys _mk_this _mk_keys)
-    cpp_assert_signature("${ARGV}" map desc)
-
-    cpp_get_global("${_mk_keys}" "${_mk_this}_keys")
-    list(REMOVE_DUPLICATES "${_mk_keys}")
-    cpp_return("${_mk_keys}")
 endfunction()
 
 #[[[ Associates a value with the specified key.
@@ -201,7 +129,7 @@ endfunction()
 # :param _ms_this: The map whose key is going to be set.
 # :type _ms_this: map
 # :param _ms_key: The key whose value is going to be set.
-# :type _ms_key: desc
+# :type _ms_key: str
 # :param _ms_value: The value to set the key to.
 # :type _ms_value: str
 #
@@ -219,7 +147,7 @@ endfunction()
 #
 #]]
 function(cpp_map_set _ms_this _ms_key _ms_value)
-    cpp_assert_signature("${ARGV}" map desc str)
+    cpp_assert_signature("${ARGV}" map str str args)
 
     cpp_append_global("${_ms_this}_keys" "${_ms_key}")
     cpp_set_global("${_ms_this}_${_ms_key}" "${_ms_value}")
@@ -229,6 +157,27 @@ function(cpp_map_set _ms_this _ms_key _ms_value)
     endif()
 endfunction()
 
+#[[[ Public API for interacting with Map instances.
+#
+#
+# :param _m_mode: The name of the member function to call.
+# :type _m_mode: desc
+# :param _m_this: The Map instance the member function is being called on.
+# :type _m_this: map
+# :param *args: Any additional arguments required by the specified member
+#               function.
+#
+# Error Checking
+# ==============
+#
+# If CMakePP is being run in debug mode, the individual member functions will
+# ensure that they have been called with correct number of, and types of,
+# arguments. In the event that the incorrect number or types of arguments have
+# been provided an error will be raised. These error checks are only done when
+# CMakePP is run in debug mode.
+#
+# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is b
+#]]
 function(cpp_map _m_mode _m_this)
     string(TOLOWER "${_m_mode}" _m_lc_mode)
 

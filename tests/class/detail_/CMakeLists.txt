@@ -1,2 +1,2 @@
-set(unit_tests attr_dispatch default_ctor write_wrapper)
+set(unit_tests bases)
 add_cmake_unit_tests(class ${unit_tests})

@@ -5,21 +5,15 @@ ct_add_test("cpp_contains")
 
     ct_add_section("signature")
         set(CMAKEPP_CORE_DEBUG_MODE ON)
-        cpp_contains(TRUE an_item a_list)
-        ct_assert_fails_as("Assertion: TRUE is desc")
-    ct_end_section()
 
-    ct_add_section("array")
-        cpp_array(CTOR an_array foo bar)
-
-        ct_add_section("Contains value")
-            cpp_contains(result "bar" "${an_array}")
-            ct_assert_equal(result TRUE)
+        ct_add_section("0th argument must be desc")
+            cpp_contains(TRUE an_item a_list)
+            ct_assert_fails_as("Assertion: bool is convertible to desc failed.")
         ct_end_section()
 
-        ct_add_section("Does not contain value")
-            cpp_contains(result 42 "${an_array}")
-            ct_assert_equal(result FALSE)
+        ct_add_section("Takes exactly three arguments")
+            cpp_contains(result an_item a_list hello)
+            ct_assert_fails_as("Function takes 3 argument(s), but 4 was/were")
         ct_end_section()
     ct_end_section()
 
@@ -37,6 +31,8 @@ ct_add_test("cpp_contains")
     ct_end_section()
 
     ct_add_section("map")
+        include(cmakepp_core/map/map)
+
         cpp_map(CTOR a_map a_key a_value foo bar)
 
         ct_add_section("has key")

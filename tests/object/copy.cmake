@@ -3,8 +3,29 @@ include(cmake_test/cmake_test)
 ct_add_test("_cpp_object_copy")
     include(cmakepp_core/object/object)
 
+    _cpp_object_ctor(an_obj obj)
+
+    ct_add_section("Signature")
+        set(CMAKEPP_CORE_DEBUG_MODE ON)
+
+        ct_add_section("0th argument must be obj")
+            _cpp_object_copy(TRUE result)
+            ct_assert_fails_as("Assertion: bool is convertible to obj failed.")
+        ct_end_section()
+
+        ct_add_section("1st argument must be desc")
+            _cpp_object_copy("${an_obj}" TRUE)
+            ct_assert_fails_as("Assertion: bool is convertible to desc failed.")
+        ct_end_section()
+
+        ct_add_section("Takes exactly 2 arguments")
+            _cpp_object_copy("${an_obj}" foo bar)
+            ct_assert_fails_as("Function takes 2 argument(s), but 3 was/were")
+        ct_end_section()
+    ct_end_section()
+
     ct_add_section("Base object")
-        _cpp_object_ctor(an_obj MyClass)
+
         _cpp_object_set_attr("${an_obj}" foo bar)
 
         _cpp_object_copy("${an_obj}" a_copy)

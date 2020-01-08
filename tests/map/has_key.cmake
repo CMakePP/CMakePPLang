@@ -18,11 +18,6 @@ ct_add_test("cpp_map_has_key")
             ct_assert_fails_as("Assertion: bool is convertible to desc failed.")
         ct_end_section()
 
-        ct_add_section("2nd argument must be a desc")
-            cpp_map_has_key("${a_map}" result TRUE)
-            ct_assert_fails_as("Assertion: bool is convertible to desc failed.")
-        ct_end_section()
-
         ct_add_section("Takes exactly 3 arguments")
             cpp_map_has_key("${a_map}" result foo hello)
             ct_assert_fails_as("Function takes 3 argument(s), but 4 was/were")

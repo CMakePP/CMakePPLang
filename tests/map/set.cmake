@@ -13,15 +13,6 @@ ct_add_test("cpp_map_set")
             ct_assert_fails_as("Assertion: bool is convertible to map failed.")
         ct_end_section()
 
-        ct_add_section("1st argument must be desc")
-            cpp_map_set("${a_map}" TRUE value)
-            ct_assert_fails_as("Assertion: bool is convertible to desc failed.")
-        ct_end_section()
-
-        ct_add_section("Takes exactly 3 arguments")
-            cpp_map_set("${a_map}" key value hello)
-            ct_assert_fails_as("Function takes 3 argument(s), but 4 was/were")
-        ct_end_section()
     ct_end_section()
 
     ct_add_section("Set to empty string")

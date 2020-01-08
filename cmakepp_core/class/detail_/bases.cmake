@@ -26,8 +26,20 @@ include(cmakepp_core/utilities/global)
 #           the list of base classes that the ``Class`` class derives from.
 # :rtype: [type]
 #
+# Error Checking
+# ==============
+#
+# This function will ensure that it has been called with exactly two arguments,
+# and if it has not, will raise an error.
 #]]
 macro(_cpp_class_get_bases _cgb_this _cgb_bases)
+    if(NOT "${ARGC}" EQUAL 2)
+        message(
+          FATAL_ERROR
+          "Function takes 2 argument(s), but ${ARGC} was/were provided"
+        )
+    endif()
+
     cpp_get_global("${_cgb_bases}" "${_cgb_this}__bases")
 endmacro()
 
@@ -36,7 +48,8 @@ endmacro()
 #
 # The type system needs to know which base classes a user-defined class can be
 # implicitly converted to. This function encapsulates the logic of setting that
-# list to avoid a direct coupling to how that list is stored.
+# list to avoid a direct coupling to how that list is stored. If the bases for a
+# class have already been set this function will overwrite the previous list.
 #
 #
 # :param _csb_this: The class instance we are setting the bases of.
@@ -47,12 +60,17 @@ endmacro()
 # Error Checking
 # ==============
 #
-# Unlike ``_cpp_class_get_bases``, ``_cpp_class_set_bases`` is not actually used
-# by the type-checking machinery and thus can rely on that machinery for
-# type-checking.
+# If CMakePP is run in debug mode (and only when it is) this function will
+# assert that the caller supplied exactly two arguments and that those arguments
+# have the correct types.
+#
+# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                               debug mode or not.
+# :vartype CMAKEPP_CORE_DEBUG_MODE: bool
 #]]
 function(_cpp_class_set_bases _csb_this _csb_bases)
     include(cmakepp_core/asserts/signature)
-    cpp_assert_signature("${ARGV}" class list)
+    cpp_assert_signature("${ARGV}" class desc)
+
     cpp_set_global("${_csb_this}__bases" "${${_csb_bases}}")
 endfunction()

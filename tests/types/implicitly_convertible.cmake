@@ -240,6 +240,11 @@ ct_add_test("cpp_implicitly_convertible")
         ct_end_section()
     ct_end_section()
 
+    ct_add_section("Class is convertible to type")
+        cpp_implicitly_convertible(result class type)
+        ct_assert_equal(result TRUE)
+    ct_end_section()
+
     ct_add_section("Different built-in types")
         cpp_implicitly_convertible(result bool double)
         ct_assert_equal(result FALSE)

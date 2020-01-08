@@ -1,10 +1,46 @@
 include_guard()
+include(cmakepp_core/asserts/signature)
 include(cmakepp_core/map/map)
 include(cmakepp_core/object/get_meta_attr)
 include(cmakepp_core/types/is_callable)
 include(cmakepp_core/utilities/return)
 
+#[[[ Encapsulates the process of looking up the symbol for a given signature.
+#
+# This function will search the current instance, as well as all of its
+# base class instances looking for a member function which can be called with
+# the provided signature. If a suitable overload exists this function will
+# return the corresponding symbol. Otherwise it will return ``FALSE``.
+#
+# :param _ogs_this: The Object instance whose member functions are being
+#                   considered.
+# :type _ogs_this: obj
+# :param _ogs_result: Name for the variable which will hold the result.
+# :type _ogs_result: desc
+# :param _ogs_sig: A list whose first element is the name of the function and
+#                  whose remaining elements are the types of each positional
+#                  argument.
+# :type _ogs_sig: list*
+# :returns: ``_ogs_result`` will be set to the symbol of the member function
+#           matching the provided signature (if a suitable match exists) or
+#           ``FALSE`` if there is no suitable overload.
+# :rtype: str
+#
+# Error Checking
+# ==============
+#
+# If CMakePP is run in debug mode (and only if CMakePP is run in debug mode)
+# this function will assert that it is called with exactly three arguments and
+# that these three arguments have the correct types. If any of these assertions
+# fail an error will be raised.
+#
+# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                               debug mode or not.
+# :vartype CMAKEPP_CORE_DEBUG_MODE: bool
+#]]
 function(_cpp_object_get_symbol _ogs_this _ogs_result _ogs_sig)
+    cpp_assert_signature("${ARGV}" obj desc desc)
+
     _cpp_object_get_meta_attr("${_ogs_this}" _ogs_fxns "fxns")
     cpp_map(KEYS "${_ogs_fxns}" _ogs_symbols)
 

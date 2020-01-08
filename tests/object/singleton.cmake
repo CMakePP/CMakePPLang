@@ -5,6 +5,20 @@ ct_add_test("_cpp_object_singleton")
 
     _cpp_object_singleton(singleton)
 
+    ct_add_section("Signature")
+        set(CMAKEPP_CORE_DEBUG_MODE ON)
+
+        ct_add_section("0th argument must be desc")
+            _cpp_object_singleton(TRUE)
+            ct_assert_fails_as("Assertion: bool is convertible to desc failed.")
+        ct_end_section()
+
+        ct_add_section("Function takes exactly 1 argument.")
+            _cpp_object_singleton(result hello)
+            ct_assert_fails_as("Function takes 1 argument(s), but 2 was/were")
+        ct_end_section()
+    ct_end_section()
+
     ct_add_section("attrs")
         _cpp_object_get_meta_attr("${singleton}" the_attrs attrs)
         cpp_map(CTOR corr)
@@ -35,7 +49,7 @@ ct_add_test("_cpp_object_singleton")
     ct_end_section()
 
     ct_add_section("type")
-        _cpp_object_get_meta_attr("${singleton}" result type)
+        _cpp_object_get_meta_attr("${singleton}" result my_type)
         ct_assert_equal(result obj)
     ct_end_section()
 

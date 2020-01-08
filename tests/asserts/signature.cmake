@@ -23,7 +23,7 @@ ct_add_test("cpp_assert_signature")
 
             ct_add_section("Wrong type")
                 cpp_assert_signature("TRUE" int)
-                ct_assert_fails_as("Assertion: TRUE is int")
+                ct_assert_fails_as("Assertion: bool is convertible to int")
             ct_end_section()
 
             ct_add_section("Too many arguments")
@@ -39,12 +39,12 @@ ct_add_test("cpp_assert_signature")
 
             ct_add_section("First is wrong type")
                 cpp_assert_signature("TRUE;42" int int)
-                ct_assert_fails_as("Assertion: TRUE is int")
+                ct_assert_fails_as("Assertion: bool is convertible to int")
             ct_end_section()
 
             ct_add_section("Second is wrong type")
                 cpp_assert_signature("TRUE;TRUE" bool int)
-                ct_assert_fails_as("Assertion: TRUE is int")
+                ct_assert_fails_as("Assertion: bool is convertible to int")
             ct_end_section()
 
             ct_add_section("Too many arguments")
@@ -75,7 +75,7 @@ ct_add_test("cpp_assert_signature")
 
         ct_add_section("One argument provided: Wrong type")
             cpp_assert_signature("TRUE" int args)
-            ct_assert_fails_as("Assertion: TRUE is int")
+            ct_assert_fails_as("Assertion: bool is convertible to int")
         ct_end_section()
 
         ct_add_section("2 arguments provided: Right type")
@@ -84,7 +84,7 @@ ct_add_test("cpp_assert_signature")
 
         ct_add_section("2 arguments provided: Wrong type")
             cpp_assert_signature("TRUE;TRUE" int args)
-            ct_assert_fails_as("Assertion: TRUE is int")
+            ct_assert_fails_as("Assertion: bool is convertible to int")
         ct_end_section()
     ct_end_section()
 
@@ -95,12 +95,12 @@ ct_add_test("cpp_assert_signature")
 
         ct_add_section("Two arguments provided: First wrong type")
             cpp_assert_signature("TRUE;TRUE" int bool args)
-            ct_assert_fails_as("Assertion: TRUE is int")
+            ct_assert_fails_as("Assertion: bool is convertible to int")
         ct_end_section()
 
         ct_add_section("Two arguments provided: Second wrong type")
             cpp_assert_signature("42;42" int bool args)
-            ct_assert_fails_as("Assertion: 42 is bool")
+            ct_assert_fails_as("Assertion: int is convertible to bool")
         ct_end_section()
 
         ct_add_section("3 arguments provided: Right types")
@@ -109,12 +109,12 @@ ct_add_test("cpp_assert_signature")
 
         ct_add_section("3 arguments provided: First wrong type")
             cpp_assert_signature("TRUE;TRUE;hello" int bool args)
-            ct_assert_fails_as("Assertion: TRUE is int")
+            ct_assert_fails_as("Assertion: bool is convertible to int")
         ct_end_section()
 
         ct_add_section("3 arguments provided: Second wrong type")
             cpp_assert_signature("42;42;hello" int bool args)
-            ct_assert_fails_as("Assertion: 42 is bool")
+            ct_assert_fails_as("Assertion: int is convertible to bool")
         ct_end_section()
     ct_end_section()
 
@@ -123,9 +123,8 @@ ct_add_test("cpp_assert_signature")
     ct_end_section()
 
     ct_add_section("Works with an object")
-        include(cmakepp_core/object/detail_/ctor)
-        _cpp_object_ctor(an_object)
-        cpp_assert_signature("${an_object}" obj)
+        include(cmakepp_core/object/object)
+        cpp_assert_signature("${__CPP_OBJECT_SINGLETON__}" obj)
     ct_end_section()
 
     ct_add_section("Fails if passes args twice")
