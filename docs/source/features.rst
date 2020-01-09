@@ -17,3 +17,4 @@ This is the initial release of the CMakePP core language and included:
 - Object-oriented paradigm (``Class`` and ``Object`` types)
 - Callback support (*i.e.*,  ``cpp_call_fxn``)
 - Function overloads
+- Profiling support
