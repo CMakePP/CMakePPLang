@@ -124,7 +124,7 @@ ct_add_test("cpp_assert_signature")
 
     ct_add_section("Works with an object")
         include(cmakepp_core/object/object)
-        cpp_assert_signature("${__CPP_OBJECT_SINGLETON__}" obj)
+        cpp_assert_signature("${__CMAKEPP_CORE_OBJECT_SINGLETON__}" obj)
     ct_end_section()
 
     ct_add_section("Fails if passes args twice")

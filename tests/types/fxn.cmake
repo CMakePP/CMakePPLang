@@ -69,7 +69,7 @@ ct_add_test("cpp_is_fxn")
 
     ct_add_section("obj")
         include(cmakepp_core/object/object)
-        cpp_is_fxn(result "${__CPP_OBJECT_SINGLETON__}")
+        cpp_is_fxn(result "${__CMAKEPP_CORE_OBJECT_SINGLETON__}")
         ct_assert_equal(result FALSE)
     ct_end_section()
 

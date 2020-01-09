@@ -61,7 +61,7 @@ ct_add_test("cpp_type_of")
         include(cmakepp_core/class/class)
 
         ct_add_section("An actual Object instance")
-            cpp_type_of(return "${__CPP_OBJECT_SINGLETON__}")
+            cpp_type_of(return "${__CMAKEPP_CORE_OBJECT_SINGLETON__}")
             ct_assert_equal(return obj)
         ct_end_section()
 

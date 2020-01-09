@@ -35,7 +35,9 @@ ct_add_test("_cpp_object_equal")
     ct_end_section()
 
     ct_add_section("Different objects")
-        _cpp_object_equal("${an_obj}" result "${__CPP_OBJECT_SINGLETON__}")
+        _cpp_object_equal(
+            "${an_obj}" result "${__CMAKEPP_CORE_OBJECT_SINGLETON__}"
+        )
         ct_assert_equal(result FALSE)
     ct_end_section()
 ct_end_test()

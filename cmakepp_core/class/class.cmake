@@ -3,7 +3,10 @@ include(cmakepp_core/class/detail_/bases)
 include(cmakepp_core/object/object)
 include(cmakepp_core/types/cmakepp_type)
 
-set(__CPP_CLASS_TEMPLATE__ "${CMAKE_CURRENT_LIST_DIR}/detail_/class.cmake.in")
+set(
+    __CMAKEPP_CORE_CLASS_TEMPLATE__
+    "${CMAKE_CURRENT_LIST_DIR}/detail_/class.cmake.in"
+)
 
 #[[[ Creates the new class
 #
@@ -24,7 +27,7 @@ set(__CPP_CLASS_TEMPLATE__ "${CMAKE_CURRENT_LIST_DIR}/detail_/class.cmake.in")
 function(_cpp_class_guts _cg_type _cg_wrapper)
     if("${ARGC}" EQUAL 2)
         set(_cg_bases "obj")
-        set(_cg_base_instances "${__CPP_OBJECT_SINGLETON__}")
+        set(_cg_base_instances "${__CMAKEPP_CORE_OBJECT_SINGLETON__}")
     else()
         set(_cg_bases "")
         set(_cg_base_instances "")
@@ -50,7 +53,9 @@ function(_cpp_class_guts _cg_type _cg_wrapper)
         "${_cg_wrapper}"
         "${CMAKE_CURRENT_BINARY_DIR}/cmakepp/classes/${_cg_type}.cmake"
     )
-    configure_file("${__CPP_CLASS_TEMPLATE__}" "${${_cg_wrapper}}" @ONLY)
+    configure_file(
+       "${__CMAKEPP_CORE_CLASS_TEMPLATE__}" "${${_cg_wrapper}}" @ONLY
+    )
     cpp_return("${_cg_wrapper}")
 endfunction()
 

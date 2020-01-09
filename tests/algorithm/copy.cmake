@@ -64,10 +64,10 @@ ct_add_test("cpp_copy")
     ct_add_section("objects")
         include(cmakepp_core/object/object)
 
-        cpp_copy(rhs "${__CPP_OBJECT_SINGLETON__}")
-        cpp_equal(result "${__CPP_OBJECT_SINGLETON__}" "${rhs}")
+        cpp_copy(rhs "${__CMAKEPP_CORE_OBJECT_SINGLETON__}")
+        cpp_equal(result "${__CMAKEPP_CORE_OBJECT_SINGLETON__}" "${rhs}")
         ct_assert_equal(result TRUE)
-        ct_assert_not_equal(__CPP_OBJECT_SINGLETON__ "${rhs}")
+        ct_assert_not_equal(__CMAKEPP_CORE_OBJECT_SINGLETON__ "${rhs}")
     ct_end_section()
 
     ct_add_section("types")
