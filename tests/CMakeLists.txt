@@ -8,7 +8,11 @@ FetchContent_Declare(
 set(BUILD_TESTS OFF)
 FetchContent_MakeAvailable(cmake_test)
 
-list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR} "${cmake_test_SOURCE_DIR}")
+list(
+    APPEND
+    CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake
+    "${cmake_test_SOURCE_DIR}"
+)
 
 # Define a function to make it easier to add tests to CTest
 function(add_cmake_unit_tests prefix)
