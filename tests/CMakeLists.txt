@@ -5,8 +5,10 @@ FetchContent_Declare(
     GIT_REPOSITORY https://github.com/CMakePP/CMakeTest
     GIT_TAG cmakedoc
 )
-set(BUILD_TESTS OFF)
+set(build_testing_old "${BUILD_TESTING}")
+set(BUILD_TESTING OFF CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(cmake_test)
+SET(BUILD_TESTING "${build_testing_old}" CACHE BOOL "" FORCE)
 
 list(
     APPEND
