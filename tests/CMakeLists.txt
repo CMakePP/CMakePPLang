@@ -8,13 +8,7 @@ FetchContent_Declare(
 set(build_testing_old "${BUILD_TESTING}")
 set(BUILD_TESTING OFF CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(cmake_test)
-SET(BUILD_TESTING "${build_testing_old}" CACHE BOOL "" FORCE)
-
-list(
-    APPEND
-    CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake
-    "${cmake_test_SOURCE_DIR}"
-)
+set(BUILD_TESTING "${build_testing_old}" CACHE BOOL "" FORCE)
 
 # Define a function to make it easier to add tests to CTest
 function(add_cmake_unit_tests prefix)
