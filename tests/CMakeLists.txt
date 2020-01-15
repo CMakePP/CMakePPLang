@@ -3,7 +3,6 @@ include(FetchContent)
 FetchContent_Declare(
     cmake_test
     GIT_REPOSITORY https://github.com/CMakePP/CMakeTest
-    GIT_TAG cmakedoc
 )
 set(build_testing_old "${BUILD_TESTING}")
 set(BUILD_TESTING OFF CACHE BOOL "" FORCE)
