@@ -17,5 +17,7 @@ which may be of some interest to the more advanced users.
    features
    conventions
    types
+   map
+   writing_a_class/index
    debugging
    developer/index
