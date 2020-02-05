@@ -8,9 +8,10 @@ ref`Automatically Download and Include CMakePP`. Alternatively you can choose
 to ref`Download the CMakePP Source and Build Manually`, which is a bit more
 complicated.
 
-==========================================
 Automatically Download and Include CMakePP
 ==========================================
+
+TODO maybe fix this to get CMakePPCore instead of CMakePP
 
 As a convenience to your users you can make it so that your build system
 automatically downloads CMakePP and includes it. The easiest way to do this is
@@ -62,7 +63,6 @@ Your project will now download CMakePP automatically as part of the CMake
 configuration. Users can use an already downloaded CMakePP by setting
 ``FETCHCONTENT_SOURCE_DIR_CPP`` to the directory of the pre-downloaded CMakePP.
 
-==============================================
 Download the CMakePP Source and Build Manually
 ==============================================
 

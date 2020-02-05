@@ -1,23 +1,21 @@
-====
+****
 Maps
-====
+****
 
----------------------
 Creating an Empty Map
----------------------
+=====================
 
-We can construct a map with no initial key-value pairs in the following way:
+We can construct a map with no initial key-value pairs using the following code:
 
 .. code-block:: cmake
 
   # Construct an empty map called "my_map"
   cpp_map(CTOR my_map)
 
-----------------------------
 Storing and Accessing Values
-----------------------------
+============================
 
-We can then store new values and access those values in the following way:
+We can then store new values and access those values using the following code:
 
 .. code-block:: cmake
 
@@ -37,9 +35,8 @@ We can then store new values and access those values in the following way:
   # resultA: myValueA
   # resultB: myValueB
 
-----------------------------------
 Creating a Map with Initial Values
-----------------------------------
+==================================
 
 We can also create a map with initial values by passing key-value pairs to the
 constructor in the following way:

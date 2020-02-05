@@ -1,10 +1,9 @@
-=======
+*******
 Classes
-=======
+*******
 
----------------------
 Writing a Basic Class
----------------------
+=====================
 
 We'll begin by writing a simple class ``Automobile`` that only contains one
 attribute named ``color`` that takes the default value ``red``:
@@ -41,7 +40,7 @@ We can also set the value of the attribute:
 .. code-block:: cmake
 
   # Set a new value for the "color" attribute
-  Automobile(SET "${my_auto}" color "blue")
+  Automobile(SET "${my_auto}" color blue)
 
   # Access the "color" attribute again and save it to "my_autos_color"
   Automobile(GET "${my_auto}" my_autos_color color)
@@ -51,27 +50,12 @@ We can also set the value of the attribute:
 
   # Output: The color of my_auto is: blue
 
----------------------------------
-Adding a User-Defined Constructor
----------------------------------
-
-**TODO Create example when feature is implemented**
-
-----------------------------
-Adding Multiple Constructors
-----------------------------
-
-**TODO Create example when feature is implemented**
-
-------------------------
 Adding a Member Function
-------------------------
+========================
 
 Next we will add a function to our class. The function will be named ``start``
-and will simply return a message from our ``Automobile`` instance indicating
-that it has started its engine. This function will return its value by setting
-the value of the variable ``result`` in the parent scope. The updated class
-definition is:
+and will simply print a message indicating that our ``Automobile`` has started
+its engine. The updated class definition with this new function added is:
 
 .. code-block:: cmake
 
@@ -81,51 +65,38 @@ definition is:
     # Define an attribute "color" with the value "red"
     cpp_attr(Automobile color red)
 
-    # Define a function "start" that returns a message
+    # Define a function "start" that prints a message
     cpp_member(start Automobile)
     function("${start}" self)
-      # Set the value of "result" in the parent scope to our message
-      set(result "Vroom! I have started my engine." PARENT_SCOPE)
+      message("Vroom! I have started my engine.")
     endfunction()
 
   # End class definition
   cpp_end_class()
 
 After creating an instance of the ``Automobile`` class named ``my_auto`` (as we
-did in the previous example) we can call our function and access its result in
-the following way:
+did in the previous example) we can call our function using the following:
 
 .. code-block:: cmake
 
   # Call the function using our Automobile instance
   Automobile(start "${my_auto}")
 
-  # Print out the message that the function stored in "result"
-  message("${result}")
-
   # Output: Vroom! I have started my engine.
 
-.. note::
-
-   Setting the value of a variable in the parent scope may seem an odd way to
-   return a value from a function, but this is how that is accomplished in
-   CMake.
-
-----------------------------------------
 Adding a Function That Takes an Argument
-----------------------------------------
+========================================
 
 Now we will add a function called ``drive`` that takes two arguments, an ``int``
-and a ``str`` and returns a message using those two arguments. We can do so by
+and a ``str`` and prints a message using those two arguments. We can do that by
 adding the following function to our class:
 
 .. code-block:: cmake
 
-  # Define a function "drive" that takes an int and a str
+  # Define a function "drive" that takes an int and a str and prints a message
   cpp_member(drive Automobile int str)
   function("${drive}" self distance_km destination)
-      # Set the value of "result" in the parent scope to our message
-      set(result "I just drove ${distance_km} km to ${destination}!" PARENT_SCOPE)
+      message("I just drove ${distance_km} km to ${destination}!")
   endfunction()
 
 Using our Automobile instance ``my_auto`` we can call the function in the
@@ -136,45 +107,41 @@ following way:
   # Call the function and pass two arguments
   Automobile(drive "${my_auto}" 10 "London")
 
-  # Print out the message that the function stored in "result"
-  message("${result}")
-
   # Output: I just drove 10 km to London!
 
 .. note::
 
-   CMakePP will complain if the arguments passed to the function do not match
-   the signature of the function.
+   CMakePP will throw an error if it cannot find a function whose signature
+   matches the call you are trying to make. In other words, the name of the
+   function you are calling and the types of arguments you are passing in must
+   match the function name and argument types in the function defintion.
 
-
-----------------------------------------------
 Adding a Function That References an Attribute
-----------------------------------------------
+==============================================
 
 Functions can access attributes of the class they are a member of. We will add
 an attribute ``km_driven`` to our class. We can then add a function
-``describe_self`` that returns a message describing the color of the car and
+``describe_self`` that prints a message describing the color of the car and
 how far it has driven. This can be accomplished by adding the following to our
 class definition:
 
 .. code-block:: cmake
 
-    # Define an attribute "km_driven" that takes a starting value of 0
-    cpp_attr(Automobile km_driven 0)
+  # Define an attribute "km_driven" that takes a starting value of 0
+  cpp_attr(Automobile km_driven 0)
 
-    # Define a function "describe_self" that references attributes of the class
-    cpp_member(describe_self Automobile)
-    function("${describe_self}" self)
-        # Access the attributes of the class and store them into local variables
-        Automobile(GET "${self}" my_color color)
-        Automobile(GET "${self}" my_distance_km distance_km)
-        # Set the value of "result" in the parent scope to our message
-        set(result "I am an automobile, I am ${my_color}, and I have driven a total of ${my_distance_km} km." PARENT_SCOPE)
-    endfunction()
+  # Define a function "describe_self" that references attributes of the class
+  cpp_member(describe_self Automobile)
+  function("${describe_self}" self)
 
+      # Access the attributes of the class and store them into local variables
+      Automobile(GET "${self}" my_color color)
+      Automobile(GET "${self}" my_km_driven km_driven)
 
-  # End class definition
-  cpp_end_class()
+      # Print out a message
+      message("I am an automobile, I am ${my_color}, and I have driven ${my_km_driven} km.")
+
+  endfunction()
 
 This function can be accessed in the same way as previous examples:
 
@@ -183,57 +150,104 @@ This function can be accessed in the same way as previous examples:
   # Call the function using the instance "my_auto"
   Automobile(describe_self "${my_auto}")
 
-  # Print out the message that the function stored in "result"
-  message("${result}")
+  # Output: I am an automobile, I am red, and I have driven 0 km.
 
-  # Output: I am an automobile, I am blue, and I have driven a total of 0 km.
+Adding a Function That Returns a Value
+======================================
 
-----------------------
+We will often want to return values from functions so that we can store their
+result for later use. We can modify the ``describe_self`` function we just
+wrote to accomplish this.
+
+Returning values from a function works differently in CMake than in most
+other languages. The best practice is to pass into the function the name of the
+variable that you want the result to be stored in in the parent scope. Then
+have the function set the value of the variable with that name in the parent
+scope using the ``set`` function with the ``PARENT_SCOPE`` option. This is
+demonstrated by the following redefinition of ``describe_self``:
+
+.. code-block:: cmake
+
+  # Redefine "describe_self" to take in a str for the name of the result variable
+  cpp_member(describe_self Automobile str)
+  function("${describe_self}" self result)
+
+      # Access the attributes of the class and store them into local variables
+      Automobile(GET "${self}" my_color color)
+      Automobile(GET "${self}" my_km_driven km_driven)
+
+      # Set the value of the variable with name stored in "result" to the value of our message
+      set("${result}" "I am an automobile, I am ${my_color}, and I have driven ${my_km_driven} km." PARENT_SCOPE)
+
+  endfunction()
+
+We can call this function and access its return value using the following:
+
+.. code-block:: cmake
+
+  # Call the function and store its result in "myResult"
+  Automobile(describe_self "${my_auto}" "myResult")
+
+  # Print out the value of "myResult"
+  message("${myResult}")
+
+  # Output: I am an automobile, I am red, and I have driven 0 km.
+
 Overloading a Function
-----------------------
+======================
 
 We can overload a function by adding a function of the same name with a
-different signature. We can overload our function "start" by adding a new
-function definition with the same name that takes one argument instead of no
-arguments. This done by adding the following code to our class:
+different signature. For example, we can overload our function ``start`` by
+adding a new function definition with the same name that takes one argument
+instead of no arguments. This can be done by adding the following to our class
+definition:
 
 .. code-block:: cmake
 
   # Overload the "start" function
   cpp_member(start Automobile int)
   function("${start}" self distance_km)
-      set(result "Vroom! I started my engine and I just drove ${distance_km} km." PARENT_SCOPE)
+      message("Vroom! I started my engine and I just drove ${distance_km} km.")
   endfunction()
 
-Now to call the new function we simple have to call "start" and pass in
-the correct argument types to match the signature of the new function we wrote:
+Now we can call the new function by passing in arguments with the correct types
+to match the signature of the new function we wrote. In this case we need to
+pass in one integer to match the new signature:
 
 .. code-block:: cmake
 
-  # Call the new function definition
+  # Call the new function implementation
   Automobile(start "${my_auto}" 10)
-
-  # Print out the message that the function stored in "result"
-  message("${result}")
 
   # Output: Vroom! I started my engine and I just drove 10 km.
 
-  # We can still call the original function definition as well
+  # We can still call the original function implementation as well
   Automobile(start "${my_auto}"
-  message("${result}")
 
   # Output: Vroom! I started my engine.
 
------------------------
-Writing a Derived Class
------------------------
+Adding a User-Defined Constructor
+=================================
 
-CMakePP supports inheritance which enables us to write derived *subclasses*
-of a class. We can demonstrate this by creating a new ``Car`` class that is
-derived from our ``Automobile`` class. Our ``Car`` class will contain a new
-attribute ``num_doors`` and will override the ``describe_self`` method to
-provide a more precise description. We can define the class by writing the \
-following:
+**TODO Create example when feature is implemented**
+
+Adding Multiple Constructors
+============================
+
+**TODO Create example when feature is implemented**
+
+Writing a Derived Class
+=======================
+
+CMakePP supports inheritance which enables us to write **subclasses** that
+inherit from a base class. Subclasses inherit all attributes and functions from
+their base class. However, subclasses can override the definitions in their
+base classes.
+
+We can demonstrate this by creating a new ``Car`` class that is derived from our
+``Automobile`` class. Our ``Car`` class will contain a new attribute
+``num_doors`` and will override the ``describe_self`` method to provide a more
+precise description. We can define the class by writing the following:
 
 .. code-block:: cmake
 
@@ -243,13 +257,12 @@ following:
     cpp_attr(Car num_doors 4)
 
     # Override the "describe_self" method of the Automobile class
-    cpp_member(describe_self Car)
-    function("${describe_self}" self)
-        # Access the attributes of the class and store them into local variables
+    cpp_member(describe_self Car str)
+    function("${describe_self}" self result)
         Car(GET "${self}" my_color color)
-        Car(GET "${self}" my_distance_km distance_km)
-        # Set the value of "result" in the parent scope to our message
-        set(result "I am a car with 4 doors, I am ${my_color}, and I have driven a total of ${my_distance_km} km." PARENT_SCOPE)
+        Car(GET "${self}" my_km_driven km_driven)
+        Car(GET "${self}" my_num_doors num_doors)
+        set("${result}" "I am a car with ${my_num_doors} doors, I am ${my_color}, and I have driven ${my_distance_km} km." PARENT_SCOPE)
     endfunction()
 
   # End class definition
@@ -265,14 +278,13 @@ class:
   Car(CTOR my_car)
 
   # Access the overridden method "describe_self" through the derived class
-  Car(describe_self "${my_car}")
-  message("${result}")
+  Car(describe_self "${my_car}" "carResult")
+  message("${carResult}")
 
-  # Output: I am a car with 4 doors, I am red, and I have driven a total of 0 km.
+  # Output: I am a car with 4 doors, I am red, and I have driven 0 km.
 
   # Access the inherited method "start" through the derived class
-  Car(describe_self "${my_car}")
-  message("${result}")
+  Car(start "${my_car}")
 
   # Output: Vroom! I have started my engine.
 
@@ -282,13 +294,17 @@ its base class ``Automobile``:
 .. code-block:: cmake
 
   # Access the overridden method "describe_self" through the base class
-  Automobile(describe_self "${my_car}")
-  message("${result}")
+  Automobile(describe_self "${my_car}" "autoResult")
+  message("${autoResult}")
 
-  # Output: I am a car with 4 doors, I am red, and I have driven a total of 0 km.
+  # Output: I am a car with 4 doors, I am red, and I have driven 0 km.
 
   # Access the inherited method "start" through the base class
-  Automobile(describe_self "${my_car}")
-  message("${result}")
+  Automobile(start "${my_car}")
 
   # Output: Vroom! I have started my engine.
+
+Adding A Pure Virtual Member Function
+=====================================
+
+**TODO Create example when feature is implemented**

@@ -1,6 +1,6 @@
-************************
-CMakePP Core Conventions
-************************
+********************
+Language Conventions
+********************
 
 While you can always check the CMakePP Core documentation for how to use a
 function, CMakePP strives to also make it as easy as possible to "guess" how to

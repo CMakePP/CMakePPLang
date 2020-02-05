@@ -1,5 +1,5 @@
 ***********************************
-Debugging Code Written With CMakePP
+Debugging Code Written in CMakePP
 ***********************************
 
 Native CMake has limited debugging capabilities, which are limited to printing

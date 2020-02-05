@@ -2,12 +2,11 @@
 Basic CMakePP Examples
 ######################
 
-This section provides usage examples of CMakePP classes and maps. These examples
+This part provides usage examples of CMakePP classes and maps. These examples
 assume you have already set up your build system to download and include
-CMakePP automatically. If you have not done this step, please refer to
-:ref:`Automatically Download and Include CMakePP`. These examples also assume
-you have a basic knowledge of the CMake language. If you need a refresher,
-you can refer to :ref:`Prerequisite CMake Fundamentals`.
+CMakePP automatically. If you have not done this step, please Obtain CMakePP.
+
+TODO: Fix linking
 
 .. toctree::
    :maxdepth: 2
