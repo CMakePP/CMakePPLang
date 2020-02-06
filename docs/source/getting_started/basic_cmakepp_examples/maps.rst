@@ -20,20 +20,20 @@ We can then store new values and access those values using the following code:
 .. code-block:: cmake
 
   # Set some new values
-  cpp_map(SET "${my_map}" myKeyA myValueA)
-  cpp_map(SET "${my_map}" myKeyB myValueB)
+  cpp_map(SET ${my_map} key_a value_a)
+  cpp_map(SET ${my_map} key_b value_b)
 
-  # Access the values and store them in "resultA" and "resultB"
-  cpp_map(GET "${my_map}" resultA myKeyA)
-  cpp_map(GET "${my_map}" resultB myKeyB)
+  # Access the values and store them in "result_a" and "result_b"
+  cpp_map(GET ${my_map} result_a key_a)
+  cpp_map(GET ${my_map} result_b key_b)
 
   # Print the values out
-  message("resultA: ${resultA}")
-  message("resultB: ${resultB}")
+  message("result_a: ${result_a}")
+  message("result_b: ${result_b}")
 
   # Output:
-  # resultA: myValueA
-  # resultB: myValueB
+  # result_a: value_a
+  # result_b: value_b
 
 Creating a Map with Initial Values
 ==================================
@@ -44,17 +44,17 @@ constructor in the following way:
 .. code-block:: cmake
 
   # Construct a map with initial key value pairs:
-  # [myKeyA->myValueA, myKeyB->myValueB]
-  cpp_map(CTOR my_map myKeyA myValueA myKeyB myValueB)
+  # [key_a->value_a, key_b->value_b]
+  cpp_map(CTOR my_map key_a value_a key_b value_b)
 
-  # Access the values and store them in "resultA" and "resultB"
-  cpp_map(GET "${my_map}" resultA myKeyA)
-  cpp_map(GET "${my_map}" resultB myKeyB)
+  # Access the values and store them in "result_a" and "result_b"
+  cpp_map(GET ${my_map} result_a key_a)
+  cpp_map(GET ${my_map} result_b key_b)
 
   # Print the values out
-  message("resultA: ${resultA}")
-  message("resultB: ${resultB}")
+  message("result_a: ${result_a}")
+  message("result_b: ${result_b}")
 
   # Output:
-  # resultA: myValueA
-  # resultB: myValueB
+  # result_a: value_a
+  # result_b: value_b
