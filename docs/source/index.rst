@@ -10,8 +10,9 @@ same way that C++ coding differs from C coding despite some level of
 interoperability.
 
 This documentation is primarily meant to introduce users to
-the CMakePP language. Also included are algorithmic details and developer notes,
-which may be of some interest to more advanced users.
+the CMakePP language. It includes some basic usage examples, an overview of the
+features and conventions of the language, auto-generated API documentation,
+notes on debugging, as well as notes for developers.
 
 .. toctree::
    :maxdepth: 2
