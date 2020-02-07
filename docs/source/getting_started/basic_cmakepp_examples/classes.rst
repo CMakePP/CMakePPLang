@@ -2,8 +2,10 @@
 Classes
 *******
 
-Writing a Basic Class
-=====================
+This page provides examples of using CMakePP classes.
+
+Write a Basic Class
+===================
 
 We'll begin by writing a simple class ``Automobile`` that only contains one
 attribute named ``color`` that takes the default value ``red``:
@@ -50,8 +52,8 @@ We can also set the value of the attribute:
 
   # Output: The color of my_auto is: blue
 
-Adding a Member Function
-========================
+Add a Member Function
+=====================
 
 Next we will add a function to our class. The function will be named ``start``
 and will simply print a message indicating that our ``Automobile`` has started
@@ -84,8 +86,8 @@ did in the previous example) we can call our function using the following:
 
   # Output: Vroom! I have started my engine.
 
-Adding a Function That Takes an Argument
-========================================
+Add a Function That Takes an Argument
+=====================================
 
 Now we will add a function called ``drive`` that takes two arguments, an ``int``
 and a ``str`` and prints a message using those two arguments. We can do that by
@@ -116,8 +118,8 @@ following way:
    function you are calling and the types of arguments you are passing in must
    match the function name and argument types in the function defintion.
 
-Adding a Function That References an Attribute
-==============================================
+Add a Function That References an Attribute
+===========================================
 
 Functions can access attributes of the class they are a member of. We will add
 an attribute ``km_driven`` to our class. We can then add a function
@@ -152,8 +154,8 @@ This function can be accessed in the same way as previous examples:
 
   # Output: I am an automobile, I am red, and I have driven 0 km.
 
-Adding a Function That Returns a Value
-======================================
+Return a Value from a Function
+==============================
 
 We will often want to return values from functions so that we can store those
 values for later use. We can modify the ``describe_self`` function we just
@@ -177,10 +179,18 @@ This is demonstrated by the following redefinition of ``describe_self``:
       Automobile(GET ${self} my_color color)
       Automobile(GET ${self} my_km_driven km_driven)
 
-      # Set the value of the var with name stored in "return_id" in the parent scope
+      # Set the value of the var with the name ${return_id} in the parent scope
       set(${return_id} "I am an automobile, I am ${my_color}, and I have driven ${my_km_driven} km." PARENT_SCOPE)
 
   endfunction()
+
+.. note::
+
+  When we use the dereferencing expression in code comments (such as the
+  comments containing "${return_id}" above) or documentaton, we are referring to
+  the value contained within the variable with the name ``return_id``. In other
+  words, we mean to imply dereferencing the variable and getting its value in
+  the same way that the CMake intepretter would do so.
 
 We can call this function and access its return value using the following:
 
@@ -194,8 +204,76 @@ We can call this function and access its return value using the following:
 
   # Output: I am an automobile, I am red, and I have driven 0 km.
 
-Overloading a Function
-======================
+Add Multiple Return Points to a Function
+=========================================
+
+We can employ the ``cpp_return`` macro to create multiple return points in a
+function. Additionally ``cpp_return`` also provides us with a more concise way
+to return a value to the parent scope.
+
+When we want to return from a function and return a value to the variable with
+the name ``${return_id}`` to the parent scope we just need to do the following:
+
+1. Set the value of the variable with the name ``${return_id}`` in the current
+   scope to the value we want to return
+2. Call ``cpp_return(${return_id})``
+
+This will set the value of the variable with the name ``${return_id}`` in the
+parent scope to that value it had in the function's scope as well as return
+control to the parent scope.
+
+Suppose we wanted our ``describe_self`` function to take in an option that
+specifies whether or not it should indicate the color of itself in the
+description it returns. We could accomplish this by redefining the function
+as follows:
+
+.. code-block:: cmake
+
+  # Redefine "describe_self" to have multiple return points
+  cpp_member(describe_self Automobile str bool)
+  function(${describe_self} self return_id include_color)
+
+    # Access the km_driven attribute
+    Automobile(GET ${self} my_km_driven km_driven)
+
+    if(include_color)
+      # Access the color attribute
+      Automobile(GET ${self} my_color color)
+
+      # Set the value of the var with the name ${return_id} in the current scope
+      set(${return_id} "I am an automobile, I am ${my_color}, and I have driven ${my_km_driven} km.")
+
+      # Return the value and exit the function
+      cpp_return(${return_id})
+    endif()
+
+    # This only executes if include_color is false
+    # Set the value of the var with the name ${return_id} in the current scope
+    set(${return_id} "I am an automobile and I have driven ${my_km_driven} km.")
+
+    # Return the value and exit the function
+    cpp_return(${return_id})
+
+  endfunction()
+
+We can call the function in the following way:
+
+.. code-block:: cmake
+
+  # Call the function and specify that color should be included
+  Automobile(describe_self ${my_auto} my_result TRUE)
+  message(${my_result})
+
+  # Output: I am an automobile, I am red, and I have driven 0 km.
+
+  # Call the function and specify that color should NOT be included
+  Automobile(describe_self ${my_auto} my_result FALSE)
+  message(${my_result})
+
+  # Output: I am an automobile and I have driven 0 km.
+
+Overload a Function
+===================
 
 We can overload a function by adding a function of the same name with a
 different signature. For example, we can overload our function ``start`` by
@@ -227,18 +305,18 @@ pass in one integer to match the new signature:
 
   # Output: Vroom! I started my engine.
 
-Adding a User-Defined Constructor
-=================================
+Add a User-Defined Constructor
+==============================
 
 **TODO Create example when feature is implemented**
 
-Adding Multiple Constructors
-============================
+Add Multiple Constructors
+=========================
 
 **TODO Create example when feature is implemented**
 
-Writing a Derived Class
-=======================
+Write a Derived Class
+=====================
 
 CMakePP supports inheritance which enables us to write **subclasses** that
 inherit from a base class. Subclasses inherit all attributes and functions from
@@ -309,7 +387,7 @@ its base class ``Automobile``:
 
   # Output: Vroom! I have started my engine.
 
-Adding A Pure Virtual Member Function
-=====================================
+Add A Pure Virtual Member Function
+==================================
 
 **TODO Create example when feature is implemented**

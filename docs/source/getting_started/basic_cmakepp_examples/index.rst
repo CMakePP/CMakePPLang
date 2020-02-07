@@ -14,3 +14,4 @@ TODO: Fix linking
 
    classes
    maps
+   utilities

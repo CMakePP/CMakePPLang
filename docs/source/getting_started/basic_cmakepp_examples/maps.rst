@@ -2,6 +2,8 @@
 Maps
 ****
 
+This page provides examples of using CMakePP maps.
+
 Creating an Empty Map
 =====================
 
