@@ -3,10 +3,10 @@ Getting Started
 ###############
 
 This part provides some helpful information for users who want to get started
-using CMakePPCore. If you are unfamiliar with the CMake language, it is
-probably best to start with ref:`Prerequisite CMake Fundamentals`. If you have
-a solid grasp of the CMake language, start by Obtaining CMakePP and then move on
-to Basic CMakePPCore Examples to learn the basics of using CMakePPCore.
+using CMakePPCore. If you are unfamiliar with the CMake language, it is best to
+start with Prerequisite CMake Fundamentals. If you have a solid grasp of the
+CMake language, start by Obtaining CMakePP and then move on to CMakePP Examples
+to learn the basics of using CMakePPCore.
 
 TODO: Fix linking
 
@@ -14,4 +14,4 @@ TODO: Fix linking
    :maxdepth: 3
 
    obtaining_cmakepp
-   basic_cmakepp_examples/index
+   cmakepp_examples/index

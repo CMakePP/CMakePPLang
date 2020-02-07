@@ -1,6 +1,6 @@
-######################
-Basic CMakePP Examples
-######################
+################
+CMakePP Examples
+################
 
 This part provides usage examples of CMakePP classes and maps. These examples
 assume you have already set up your build system to download and include
