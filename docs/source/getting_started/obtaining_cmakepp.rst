@@ -8,6 +8,8 @@ ref`Automatically Download and Include CMakePP`. Alternatively you can choose
 to ref`Download the CMakePP Source and Build Manually`, which is a bit more
 complicated.
 
+.. _auto-downloading-cmakepp:
+
 Automatically Download and Include CMakePP
 ==========================================
 

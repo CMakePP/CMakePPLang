@@ -1,14 +1,16 @@
-*********
-Utilities
-*********
+.. _using-utilities:
+
+***************
+Using Utilities
+***************
 
 This page provides examples of using CMakePP's utility functions.
 
-Check if Variables are Equal
-============================
+Checking if Variables are Equal
+===============================
 
 We can use the ``cpp_equal`` function to check for equality between any two
-CMakePP objects.
+variables, including objects and maps.
 
 .. code-block:: cmake
 
@@ -18,8 +20,8 @@ CMakePP objects.
   set(string_c "Goodbye World")
 
   # Check if certain strings are equivalent
-  cpp_equal(result_ab "${string_a}" "${string_b}")
-  cpp_equal(result_ac "${string_a}" "${string_c}")
+  cpp_equal(result_ab ${string_a} ${string_b})
+  cpp_equal(result_ac ${string_a} ${string_c})
 
   # Print out the results
   message("A equals B? ${result_ab}")
@@ -34,10 +36,10 @@ CMakePP objects.
   For native CMake types, such as booleans and integers, equality is defined as
   being the same string.
 
-Serialize an Object
-===================
+Serializing a Variable
+======================
 
-We can use ``cpp_serialize`` to serialize an object into a JSON string:
+We can use ``cpp_serialize`` to serialize a variable into a JSON string:
 
 .. code-block:: cmake
 
@@ -49,16 +51,16 @@ We can use ``cpp_serialize`` to serialize an object into a JSON string:
   cpp_map(SET ${my_map} list_key ${my_list})
 
   # Serialize the map and print out the result
-  cpp_serialize(serialized "${my_map}")
+  cpp_serialize(serialized ${my_map})
   message(${serialized})
 
   # Output:
   # { "desc_key" : "Hello World", "list_key" : [ "1", "2", "3" ] }
 
-Copy a Variable
-===============
+Copying a Variable
+==================
 
-We can use the ``cpp_copy`` to create a deep copy of an existing object
+We can use the ``cpp_copy`` to create a deep copy of an existing variable
 regardless of what type it is:
 
 .. code-block:: cmake
@@ -67,10 +69,10 @@ regardless of what type it is:
   set(my_list 1 2 3)
 
   # Create a map containing a desc and a list
-  cpp_map(CTOR my_map desc_key "desc" list_key "${my_list}")
+  cpp_map(CTOR my_map desc_key "desc" list_key ${my_list})
 
   # Create a copy of the map
-  cpp_copy(map_copy "${my_map}")
+  cpp_copy(map_copy ${my_map})
 
   # Serialize the copy and print out the result
   cpp_serialize(serialized map_copy)
@@ -79,12 +81,12 @@ regardless of what type it is:
   # Output:
   # { "desc_key" : "Hello World", "list_key" : [ "1", "2", "3" ] }
 
-Check if Variable Contains a Value
-==================================
+Checking if Variable Contains a Value
+=====================================
 
-We can use the ``cpp_contains`` function to check if a value is contained within
-another variable. The behavior changes depending on the type of the variable
-we are examining.
+We can use the ``cpp_contains`` function to check if a certain value is
+contained within another variable. The behavior changes depending on the type of
+the variable we are examining.
 
 Descs
 -----
@@ -97,9 +99,9 @@ We can use ``cpp_contains`` to check if a desc contains a substring:
   set(my_desc "Here is a desc")
 
   # Check if the desc contains certain substrings
-  cpp_contains(desc_has_here "Here" "${my_desc}")
-  cpp_contains(desc_has_a "a" "${my_desc}")
-  cpp_contains(desc_has_foo "foo" "${my_desc}")
+  cpp_contains(desc_has_here "Here" ${my_desc})
+  cpp_contains(desc_has_a "a" ${my_desc})
+  cpp_contains(desc_has_foo "foo" ${my_desc})
 
   # Print out the results
   message("Desc contains \"Here\"? ${desc_has_here}")
@@ -107,6 +109,7 @@ We can use ``cpp_contains`` to check if a desc contains a substring:
   message("Desc contains \"foo\"? ${desc_has_foo}")
 
   # Output:
+  # Desc contains "Here"? TRUE
   # Desc contains "a"? TRUE
   # Desc contains "foo"? FALSE
 
@@ -121,9 +124,9 @@ We can use ``cpp_contains`` to check if a list contains a value:
   set(my_list 1 2 3 "hello" "world")
 
   # Check if the list contains certain values
-  cpp_contains(list_has_two 2 "${my_list}")
-  cpp_contains(list_has_hello "hello" "${my_list}")
-  cpp_contains(list_has_foo "foo" "${my_list}")
+  cpp_contains(list_has_two 2 ${my_list})
+  cpp_contains(list_has_hello "hello" ${my_list})
+  cpp_contains(list_has_foo "foo" ${my_list})
 
   # Print out the results
   message("List contains 2? ${list_has_two}")
@@ -137,7 +140,7 @@ We can use ``cpp_contains`` to check if a list contains a value:
 
 .. note::
 
-  ``cpp_contains`` can take CMakePP objects as search values.
+  ``cpp_contains`` can take CMakePP objects and maps as search values.
 
 Maps
 ----
@@ -150,8 +153,8 @@ We can use ``cpp_contains`` to check if a map contains a key:
   cpp_map(CTOR my_map key_a value_a key_b value_b)
 
   # Check if the map contains a certain keys
-  cpp_contains(map_has_key_a key_a "${my_map}")
-  cpp_contains(map_has_key_c key_c "${my_map}")
+  cpp_contains(map_has_key_a key_a ${my_map})
+  cpp_contains(map_has_key_c key_c ${my_map})
 
   # Print out the results
   message("Map contains key_a? ${map_has_key_a}")
@@ -161,8 +164,8 @@ We can use ``cpp_contains`` to check if a map contains a key:
   # Map contains key_a? TRUE
   # Map contains key_c? FALSE
 
-Determine the Type of a Variable
-================================
+Determining the Type of a Variable
+==================================
 
 We can use ``cpp_type_of`` to get the type of a variable or value:
 
@@ -170,7 +173,7 @@ We can use ``cpp_type_of`` to get the type of a variable or value:
 
   # Get the type of a value and print the result
   cpp_type_of(result TRUE)
-  message("${result}")
+  message(${result})
 
   # Output: bool
 
@@ -178,8 +181,8 @@ We can use ``cpp_type_of`` to get the type of a variable or value:
 
   ``cpp_type_of`` works with CMakePP types as well as native CMake types.
 
-Assert a Condition
-==================
+Asserting a Condition
+=====================
 
 We can use ``cpp_assert`` to assert that a given value is true:
 
@@ -187,7 +190,7 @@ We can use ``cpp_assert`` to assert that a given value is true:
 
   # Assert that 3 is an int
   cpp_is_int(is_int 3)
-  cpp_assert("${_is_int}" "3 is an integer")
+  cpp_assert(${_is_int} "3 is an integer")
 
   # Assert that x is greater than 3
   set(x 4)
@@ -197,8 +200,8 @@ If an assert fails, it will stop the execution of the program and print the
 provided assertion message along with the call stack from where the assertion
 failed.
 
-Check if File Exists
-====================
+Checking if a File Exists
+=========================
 
 We can use ``cpp_file_exists`` to check if files exist:
 
@@ -211,17 +214,17 @@ We can use ``cpp_file_exists`` to check if files exist:
   # Call the function and pass in directory
   cpp_file_exists(result_3 "/home/joe/Desktop")
 
-  message("${result_1}")        # Output: TRUE
-  message("${result_2}")        # Output: FALSE
-  message("${result_3}")        # Output: FALSE
+  message(${result_1})        # Output: TRUE
+  message(${result_2})        # Output: FALSE
+  message(${result_3})        # Output: FALSE
 
   # Output:
   # TRUE
   # TRUE
   # FALSE
 
-Manipulate Globals
-==================
+Manipulating Globals
+====================
 
 We can use ``cpp_set_global``, ``cpp_get_global``, and ``cpp_append_global`` to
 get, set, and append global values:
@@ -246,8 +249,8 @@ get, set, and append global values:
 
   # Output: Hello World
 
-Create a Unique Identifier
-==========================
+Creating a Unique Identifier
+============================
 
 We can use ``cpp_unique_id`` to create a unique identifier:
 

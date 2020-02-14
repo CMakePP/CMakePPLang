@@ -1,11 +1,11 @@
-*******
-Classes
-*******
+*************
+Using Classes
+*************
 
 This page provides examples of using CMakePP classes.
 
-Write a Basic Class
-===================
+Writing a Basic Class
+=====================
 
 We'll begin by writing a simple class ``Automobile`` that only contains one
 attribute named ``color`` that takes the default value ``red``:
@@ -52,8 +52,8 @@ We can also set the value of the attribute:
 
   # Output: The color of my_auto is: blue
 
-Add a Member Function
-=====================
+Adding a Member Function
+========================
 
 Next we will add a function to our class. The function will be named ``start``
 and will simply print a message indicating that our ``Automobile`` has started
@@ -86,8 +86,8 @@ did in the previous example) we can call our function using the following:
 
   # Output: Vroom! I have started my engine.
 
-Add a Function That Takes an Argument
-=====================================
+Adding a Function That Takes an Argument
+========================================
 
 Now we will add a function called ``drive`` that takes two arguments, an ``int``
 and a ``str`` and prints a message using those two arguments. We can do that by
@@ -118,8 +118,8 @@ following way:
    function you are calling and the types of arguments you are passing in must
    match the function name and argument types in the function defintion.
 
-Add a Function That References an Attribute
-===========================================
+Adding a Function That References an Attribute
+==============================================
 
 Functions can access attributes of the class they are a member of. We will add
 an attribute ``km_driven`` to our class. We can then add a function
@@ -154,8 +154,8 @@ This function can be accessed in the same way as previous examples:
 
   # Output: I am an automobile, I am red, and I have driven 0 km.
 
-Return a Value from a Function
-==============================
+Returning a Value from a Function
+=================================
 
 We will often want to return values from functions so that we can store those
 values for later use. We can modify the ``describe_self`` function we just
@@ -204,8 +204,8 @@ We can call this function and access its return value using the following:
 
   # Output: I am an automobile, I am red, and I have driven 0 km.
 
-Add Multiple Return Points to a Function
-=========================================
+Adding Multiple Return Points to a Function
+===========================================
 
 We can employ the ``cpp_return`` macro to create multiple return points in a
 function. Additionally ``cpp_return`` also provides us with a more concise way
@@ -272,8 +272,8 @@ We can call the function in the following way:
 
   # Output: I am an automobile and I have driven 0 km.
 
-Overload a Function
-===================
+Overloading a Function
+======================
 
 We can overload a function by adding a function of the same name with a
 different signature. For example, we can overload our function ``start`` by
@@ -305,18 +305,18 @@ pass in one integer to match the new signature:
 
   # Output: Vroom! I started my engine.
 
-Add a User-Defined Constructor
-==============================
+Adding a User-Defined Constructor
+=================================
 
 **TODO Create example when feature is implemented**
 
-Add Multiple Constructors
-=========================
+Adding Multiple Constructors
+============================
 
 **TODO Create example when feature is implemented**
 
-Write a Derived Class
-=====================
+Writing a Derived Class
+=======================
 
 CMakePP supports inheritance which enables us to write **subclasses** that
 inherit from a base class. Subclasses inherit all attributes and functions from
@@ -387,7 +387,7 @@ its base class ``Automobile``:
 
   # Output: Vroom! I have started my engine.
 
-Add A Pure Virtual Member Function
-==================================
-
-**TODO Create example when feature is implemented**
+.. Adding A Pure Virtual Member Function
+.. =====================================
+..
+.. **TODO Create example when feature is implemented**

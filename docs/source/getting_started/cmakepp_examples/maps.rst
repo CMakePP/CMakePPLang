@@ -1,6 +1,6 @@
-****
-Maps
-****
+**********
+Using Maps
+**********
 
 This page provides examples of using CMakePP maps.
 
