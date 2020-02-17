@@ -7,7 +7,7 @@ one implementation to a function. Each implementation simply needs to have a
 unique signature.
 
 For example we could declare a function ``what_was_passed_in`` with two
-implemtations (one that takes a single int and one that takes two ints) in the
+implementations (one that takes a single int and one that takes two ints) in the
 following way:
 
 .. code-block:: cmake

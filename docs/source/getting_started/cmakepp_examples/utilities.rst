@@ -14,7 +14,7 @@ variables, including objects and maps.
 
 .. code-block:: cmake
 
-  # Create three strings, two that are equivaltent and on that is not
+  # Create three strings, two that are equivalent and on that is not
   set(string_a "Hello World")
   set(string_b "Hello World")
   set(string_c "Goodbye World")

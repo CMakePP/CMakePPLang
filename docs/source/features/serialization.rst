@@ -1,11 +1,11 @@
-*************
+.. *************
 Serialization
 *************
 
 CMakePP provides the ability to serialize objects, maps, and other values into
 JSON strings via the ``cpp_serialize`` function. We will start by covering the
 serialization of maps, lists, and native CMake types since these are fairly
-simple. Lastly, we'll cover the serialization of objects as their serialziation
+simple. Lastly, we'll cover the serialization of objects as their serialization
 process is a bit more complicated.
 
 The Serialization Function
@@ -61,7 +61,7 @@ All values of other types are serialized into simple JSON strings.
 | Target             | ``lib``                  | ``"lib"``                |
 +--------------------+--------------------------+--------------------------+
 
-TODO potentially add generator expressions to this list
+.. TODO potentially add generator expressions to this list
 
 Serialization of Objects
 ========================

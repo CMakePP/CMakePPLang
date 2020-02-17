@@ -4,16 +4,16 @@ Obtaining CMakePP
 
 This section details two ways of obtaining CMakePP for use in your build system.
 The easiest way to use CMakePP in your project is to
-ref`Automatically Download and Include CMakePP`. Alternatively you can choose
-to ref`Download the CMakePP Source and Build Manually`, which is a bit more
-complicated.
+:ref:`auto-downloading-cmakepp`.
+
+.. TODO Docs on downloading source and manually buildig CMakePP
+.. Alternatively you can choose to :ref:`downloading-cmakepp-manually`, which is
+.. a bit more complicated.
 
 .. _auto-downloading-cmakepp:
 
-Automatically Download and Include CMakePP
-==========================================
-
-TODO maybe fix this to get CMakePPCore instead of CMakePP
+Automatically Downloading and Including CMakePP
+===============================================
 
 As a convenience to your users you can make it so that your build system
 automatically downloads CMakePP and includes it. The easiest way to do this is
@@ -65,7 +65,8 @@ Your project will now download CMakePP automatically as part of the CMake
 configuration. Users can use an already downloaded CMakePP by setting
 ``FETCHCONTENT_SOURCE_DIR_CPP`` to the directory of the pre-downloaded CMakePP.
 
-Download the CMakePP Source and Build Manually
-==============================================
-
-TODO Download source and manually build CMakePP
+.. TODO Docs on downloading source and manually building CMakePP
+.. .. _downloading-cmakepp-manually:
+..
+.. Downloading the CMakePP Source and Building Manually
+.. ====================================================

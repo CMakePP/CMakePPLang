@@ -116,7 +116,7 @@ following way:
    CMakePP will throw an error if it cannot find a function whose signature
    matches the call you are trying to make. In other words, the name of the
    function you are calling and the types of arguments you are passing in must
-   match the function name and argument types in the function defintion.
+   match the function name and argument types in the function definition.
 
 Adding a Function That References an Attribute
 ==============================================
@@ -187,10 +187,10 @@ This is demonstrated by the following redefinition of ``describe_self``:
 .. note::
 
   When we use the dereferencing expression in code comments (such as the
-  comments containing "${return_id}" above) or documentaton, we are referring to
+  comments containing "${return_id}" above) or documentation, we are referring to
   the value contained within the variable with the name ``return_id``. In other
   words, we mean to imply dereferencing the variable and getting its value in
-  the same way that the CMake intepretter would do so.
+  the same way that the CMake interpreter would do so.
 
 We can call this function and access its return value using the following:
 
@@ -305,15 +305,13 @@ pass in one integer to match the new signature:
 
   # Output: Vroom! I started my engine.
 
-Adding a User-Defined Constructor
-=================================
+.. TODO Create example when feature is implemented
+.. Adding a User-Defined Constructor
+.. =================================
 
-**TODO Create example when feature is implemented**
-
-Adding Multiple Constructors
-============================
-
-**TODO Create example when feature is implemented**
+.. TODO Create example when feature is implemented
+.. Adding Multiple Constructors
+.. ============================
 
 Writing a Derived Class
 =======================
@@ -390,4 +388,4 @@ its base class ``Automobile``:
 .. Adding A Pure Virtual Member Function
 .. =====================================
 ..
-.. **TODO Create example when feature is implemented**
+.. TODO Create example when feature is implemented
