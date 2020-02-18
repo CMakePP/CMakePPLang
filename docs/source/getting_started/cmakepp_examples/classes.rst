@@ -1,3 +1,5 @@
+.. _using-classes:
+
 *************
 Using Classes
 *************
@@ -316,11 +318,11 @@ pass in one integer to match the new signature:
 Writing a Derived Class
 =======================
 
-CMakePP supports inheritance which enables us to write **subclasses** that
-inherit from a base class. Subclasses inherit all attributes and functions from
-their base class. However, subclasses can override the definitions of functions
-in their base classes. They can also override the default values of attributes
-that are set in the base class.
+CMakePP supports inheritance which enables us to write **subclasses** that are
+derived from (or *inherit from*) a base class. Subclasses inherit all attributes
+and functions from their base class. However, subclasses can override the
+definitions of functions in their base classes. They can also override the
+default values of attributes that are set in the base class.
 
 We can demonstrate this by creating a new ``Car`` class that is derived from our
 ``Automobile`` class. Our ``Car`` class will contain a new attribute
@@ -385,7 +387,215 @@ its base class ``Automobile``:
 
   # Output: Vroom! I have started my engine.
 
+Inheriting from Multiple Classes
+================================
+
+The Basics
+----------
+
+A class can inherit from multiple parent classes. Suppose we have defined the
+following classes to represent **electric vehicles** and **trucks**:
+
+.. code-block:: cmake
+
+  # The ElectricVehicle class
+  cpp_class(ElectricVehicle)
+
+    # Attribute for storing battery percentage
+    cpp_attr(ElectricVehicle battery_percentage 100)
+
+    # Function for starting the vehicle
+    cpp_member(drive ElectricVehicle)
+    function("${drive}" self)
+        message("I am driving.")
+    endfunction()
+
+  cpp_end_class()
+
+  # The Truck class
+  cpp_class(Truck)
+
+    # Attribute for storing towing capacity
+    cpp_attr(Truck towing_cap_lbs 3500)
+
+    # Function for driving the truck
+    cpp_member(tow Truck)
+    function("${tow}" self)
+        message("I am towing.")
+    endfunction()
+
+  cpp_end_class()
+
+If we want to create a class to represent an electric truck, we can create a
+new class ``ElectricTruck`` that inherits from both of these classes:
+
+.. code-block:: cmake
+
+  # Define a subclass that inherits from both parent classes
+  cpp_class(ElectricTruck ElectricVehicle Truck)
+
+    # This is an empty class that inherits methods and attributes from its parent classes
+
+  cpp_end_class()
+
+Then we can create an instance of ``ElectricTruck`` like we would any other
+class:
+
+.. code-block:: cmake
+
+  # Create instance of the subclass
+  ElectricTruck(CTOR my_inst)
+
+We can then access the attributes that are defined in each of the parent classes
+like we would any other attribute:
+
+.. code-block:: cmake
+
+  # Access the attributes of each parent class through the ElectricTruck class
+  ElectricTruck(GET ${my_inst} result1 battery_percentage)
+  message("Battery percentage: ${result1}%")
+  ElectricTruck(GET ${my_inst} result2 towing_cap_lbs)
+  message("Towing capactiy: ${result2} lbs")
+
+  # Output:
+  # Battery percentage: 100%
+  # Towing capactiy: 3500 lbs
+
+We can access the functions defined in each of the parent classes as well:
+
+.. code-block:: cmake
+
+  # Access the functions of each parent class through the ElectricTruck class
+  ElectricTruck(drive ${my_inst})
+  ElectricTruck(tow ${my_inst})
+
+  # Output:
+  # I am driving.
+  # I am towing.
+
+Inheriting from Multiple Classes with Conflicting Attribute and Function Names
+------------------------------------------------------------------------------
+
+Inheriting from multiple classes creates the possibility of inheriting from
+two or more classes that all have an attribute of the same name or a function
+with the same signature. Suppose our ``ElectricVehicle`` and ``Truck`` classes
+were defined with the following:
+
+.. code-block:: cmake
+
+  # Define the ElectricVehicle class
+  cpp_class(ElectricVehicle)
+
+    # Attribute for storing the power source of the electric vehicle
+    cpp_attr(ElectricVehicle power_source "100 kWh Battery")
+
+    # Function for starting the vehicle
+    cpp_member(start ElectricVehicle)
+    function("${start}" self)
+        message("I have started silently.")
+    endfunction()
+
+  cpp_end_class()
+
+  # Define the Truck class
+  cpp_class(Truck)
+
+    # Attribute for storing the power source of the truck
+    cpp_attr(Truck power_source "20 Gallon Fuel Tank")
+
+    # Function for starting the truck
+    cpp_member(start Truck)
+    function("${start}" self)
+        message("Vroom! I have started my engine.")
+    endfunction()
+
+  cpp_end_class()
+
+Notice that both classes have an attribute named ``power_source`` and a function
+named ``start``. Again, we can create a subclass of these two classes using the
+following:
+
+.. code-block:: cmake
+
+  # Define a subclass that inherits from both parent classes
+  cpp_class(ElectricTruck ElectricVehicle Truck)
+
+    # This is an empty class that inherits methods and attributes from its parent classes
+
+  cpp_end_class()
+
+Now if we attempt to access the ``power_source`` attribute or call the ``start``
+function, CMakePP will search the parent classes in the order that they were
+passed to the ``cpp_class`` macro. That is, CMakePP will first look in the
+``ElectricVehicle`` class for the attribute or function and, if it does not
+find the attribute for function there, CMakePP will then move on to the
+``Truck`` class.
+
+So, if we create an instance of ``ElectricTruck`` and attempt to access
+``power_source`` and call ``start`` we'll get the following:
+
+.. code-block:: cmake
+
+  # Create instance of the subclass
+  ElectricTruck(CTOR my_inst)
+
+  # Access the power_source attribute
+  ElectricTruck(GET ${my_inst} result power_source)
+  message("Power source: ${result}")
+
+  # Output
+  # Power source: Battery
+  # I have started silently.
+
+Alternatively, we could define our subclass with
+``cpp_class(ElectricTruck Truck ElectricVehicle)``. Note that the we now placed
+``Truck`` in front of ``ElectricVehicle`` so CMakePP would look in ``Truck``
+first when searching for attributes and functions. If we made the same calls as
+above, the following output would be generated:
+
+.. code-block:: cmake
+
+  # Output
+  # Power source: Fuel Tank
+  # Vroom! I have started my engine.
+
 .. Adding A Pure Virtual Member Function
 .. =====================================
 ..
 .. TODO Create example when feature is implemented
+
+
+.. _overriding-object-methods:
+
+Overriding Equals, Copy, and Serialize
+======================================
+
+User classes can override the ``_cpp_object_equal``, ``_cpp_object_copy``, and
+``_cpp_object_serialize`` methods by defining their own implementations of these
+functions within their class.
+
+Calls to the ``cpp_equal``, ``cpp_copy``, and ``cpp_serialize`` functions will
+then use the new, user-defined implementations when executing.
+
+.. TODO finish examples of overriding objects methods
+.. We'll show examples of overriding each of these methods below. We'll start
+.. by defining with a simple class:
+..
+.. .. code-block:: cmake
+..
+..   # class def
+..
+.. Overriding Equals
+.. -----------------
+..
+.. We can override  ``_cpp_object_equal``
+..
+.. Overriding Copy
+.. ---------------
+..
+.. We can override  ``_cpp_object_copy``
+..
+.. Overriding Serialize
+.. --------------------
+..
+.. We can override  ``_cpp_object_serialize``
