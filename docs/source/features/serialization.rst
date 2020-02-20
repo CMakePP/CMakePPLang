@@ -1,4 +1,4 @@
-.. *************
+*************
 Serialization
 *************
 
@@ -121,12 +121,12 @@ object:
 .. code-block:: JSON
 
   {
-    "nuop7_1581040712": {                             # Unique ID of the instance
-      "_cpp_attrs": {                                 # Its attributes
+    "nuop7_1581040712": {
+      "_cpp_attrs": {
         "color": "red",
         "num_doors": "4"
       },
-      "_cpp_fxns": {                                  # Its functions
+      "_cpp_fxns": {
         "_cpp_automobile_start_automobile_": [
           "start",
           "automobile"
@@ -143,7 +143,7 @@ object:
           "str"
         ]
       },
-      "_cpp_sub_objs": {                              # The classes it inherits from
+      "_cpp_sub_objs": {                              
         "obj": {
           "urqsk_1581040712": {
             "_cpp_attrs": {
