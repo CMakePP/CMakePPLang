@@ -559,25 +559,23 @@ above, the following output would be generated:
   # Power source: Fuel Tank
   # Vroom! I have started my engine.
 
+.. TODO Create example when feature is implemented
 .. Adding A Pure Virtual Member Function
 .. =====================================
-..
-.. TODO Create example when feature is implemented
-
-
-.. _overriding-object-methods:
-
-Overriding Equals, Copy, and Serialize
-======================================
-
-User classes can override the ``_cpp_object_equal``, ``_cpp_object_copy``, and
-``_cpp_object_serialize`` methods by defining their own implementations of these
-functions within their class.
-
-Calls to the ``cpp_equal``, ``cpp_copy``, and ``cpp_serialize`` functions will
-then use the new, user-defined implementations when executing.
 
 .. TODO finish examples of overriding objects methods
+.. .. _overriding-object-methods:
+..
+.. Overriding Equals, Copy, and Serialize
+.. ======================================
+..
+.. User classes can override the ``_cpp_object_equal``, ``_cpp_object_copy``, and
+.. ``_cpp_object_serialize`` methods by defining their own implementations of these
+.. functions within their class.
+..
+.. Calls to the ``cpp_equal``, ``cpp_copy``, and ``cpp_serialize`` functions will
+.. then use the new, user-defined implementations when executing.
+
 .. We'll show examples of overriding each of these methods below. We'll start
 .. by defining with a simple class:
 ..

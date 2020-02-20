@@ -11,11 +11,12 @@ these features are called:
 - ``_cpp_object_copy``
 - ``_cpp_object_serialize``
 
-The implementations of these functionalities within the object class are what
-are called by the ``cpp_equal``, ``cpp_copy``, and ``cpp_serialize`` utilities.
-It is useful to note that these functions may be **overridden** by any class
-(since all classes inherit from object). Examples of overriding these methods
-are provided in :ref:`overriding-object-methods`.
-
-Other than the above, the object class is not assumed to be of much interest
-to most users of CMakePP.
+.. TODO add when object methods can be overridden
+.. The implementations of these functionalities within the object class are what
+.. are called by the ``cpp_equal``, ``cpp_copy``, and ``cpp_serialize`` utilities.
+.. It is useful to note that these functions may be **overridden** by any class
+.. (since all classes inherit from object). Examples of overriding these methods
+.. are provided in :ref:`overriding-object-methods`.
+..
+.. Other than the above, the object class is not assumed to be of much interest
+.. to most users of CMakePP.
