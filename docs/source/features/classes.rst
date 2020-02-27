@@ -40,7 +40,7 @@ created using the following:
 Attributes
 ==========
 
-CMakePP classes can contain attributes. These attributes take default values
+CMakePP classes can contain **attributes**. These attributes take default values
 that are declared when the class is defined. An instance of a class can have
 its attributes retrieved and modified from within the class or from without the
 class.
@@ -101,9 +101,14 @@ set, ``my_attr`` is where the name of the attribute you want to set, and
 Member Functions
 ================
 
-CMakePP classes can contain member functions. This functions are similar to
-regular CMake functions. The main difference is that they belong to a CMakePP
-class.
+CMakePP classes can contain **member functions**. These functions are similar to
+regular CMake functions. The main differences being that they:
+
+* belong to a CMakePP class and can only be called using an instance of that
+  class
+* have a **signature** that defines the types of the parameters that the
+  function expects
+* can be **overloaded** with multiple implementations for different signatures
 
 Defining Member Functions
 -------------------------
@@ -115,18 +120,22 @@ Member function definitions are structured in the following way:
 
 .. code-block:: cmake
 
-  cpp_member(my_fxn MyClass type_a type_b)
-  function("${my_fxn}" self param_a param_b)
+  cpp_class(MyClass)
 
-    # The body of the function
+    cpp_member(my_fxn MyClass type_a type_b)
+    function("${my_fxn}" self param_a param_b)
 
-    # ${self} can be used to access the instance of MyClass
-    # the function is being called with
+      # The body of the function
 
-    # ${param_a} and ${param_b} can be used to access the
-    # values of the parameters passed into the function
+      # ${self} can be used to access the instance of MyClass
+      # the function is being called with
 
-  endfunction()
+      # ${param_a} and ${param_b} can be used to access the
+      # values of the parameters passed into the function
+
+    endfunction()
+
+  cpp_end_class()
 
 The structure of the above function definition contains the following pieces:
 
@@ -136,20 +145,34 @@ The structure of the above function definition contains the following pieces:
    that the function takes in. In this case there are two parameters of the
    types ``type_a`` and ``type_b``.
 2. ``function("${my_fxn}" self param_a param_b)``-- A CMake function declaration
-   the defines a function with the name ``${my_fxn}``, ``self`` as the name
-   used to reference the class instance the function was called with, and
-   ``param_a`` and ``param_b`` as the names used to access the parameters
-   passed into the function. These parameters that correspond to the types in
-   the ``cpp_member`` statement.
+   the defines a function with the name ``${my_fxn}``, sets ``self`` as the
+   variable name used to reference the class instance the function was called
+   with, and ``param_a`` and ``param_b`` as the variables name used to access
+   the parameters passed into the function. These parameters correspond to the
+   types in the ``cpp_member`` statement.
 
 3. The function body.
 
 4. ``endfunction()``-- The end of the CMake function definition.
 
+.. note::
+
+  The reason that the ``function`` command gets the dereferenced value of
+  ``my_fxn`` here is because the ``cpp_member`` command sets the value of
+  ``my_fxn`` to a name / symbol that the CMakePP language uses to find the
+  actual CMake function when a call is made to the member function ``my_fxn``
+  through a CMakePP class.
+
+  This may be a bit confusing. All you need to remember is that the
+  ``cpp_member`` command gets the string name of the member function you want to
+  declare and the ``function`` statement that follows it gets the dereferenced
+  value of that name (``"${my_fxn}"`` in this case).
+
 Calling Member Functions
 ------------------------
 
-A function ``my_fxn`` belonging to a class ``MyClass`` can be called using:
+The function ``my_fxn`` belonging to a class ``MyClass`` as defined above can
+be called using:
 
 .. code-block:: cmake
 
@@ -158,11 +181,64 @@ A function ``my_fxn`` belonging to a class ``MyClass`` can be called using:
 Here ``my_instance`` is the name of an instance of ``MyClass`` and ``"value_a"``
 and ``"value_b"`` are the parameter values being passed to the function.
 
-When a call is made to a member function, CMakePP will look for a function with
-a signature that matches the call being made. If CMakePP finds a matching
-function, it will execute that function. If it does not, it will throw an error
-indicating that no suitable function could be found. This process is referred to
-as **function resolution**.
+Function Overloading
+--------------------
+
+CMakePP allows for function overloading. This means users can define more than
+one implementation to a function. Each implementation simply needs to have a
+unique signature.
+
+For example we could declare a function ``what_was_passed_in`` with two
+implementations: one that takes a single int and one that takes two ints. This
+can be done in the following way:
+
+.. code-block:: cmake
+
+  cpp_class(MyClass)
+
+    # Define first implementation
+    cpp_member(what_was_passed_in MyClass int)
+    function("${what_was_passed_in}" self x)
+        message("${x} was passed in.")
+    endfunction()
+
+    # Define second implementation
+    cpp_member(what_was_passed_in MyClass int int)
+    function("${what_was_passed_in}" self x y)
+        message("${x} and ${y} were passed in.")
+    endfunction()
+
+  cpp_end_class()
+
+Function Overload Resolution
+----------------------------
+
+When calling a function that has multiple implementations, you simply need to
+call the function with with argument(s) that match the signature of the
+implementation you are trying to invoke. CMakePP will automatically find the
+implementation whose signature matches the parameters passed in and execute it
+(a process called **function overload resolution**). For example, we could call
+the above implementations in the following way:
+
+.. code-block:: cmake
+
+  # Create instance of MyClass
+  MyClass(CTOR my_instance)
+
+  # Call first implementation
+  MyClass(what_was_passed_in "${my_instance}" 1)
+
+  # Outputs: 1 was passed in.
+
+  # Call second implementation
+  MyClass(what_was_passed_in "${my_instance}" 2 3)
+
+  # Outputs: 2 and 3 were passed in.
+
+.. note::
+
+  If no function with a signature that matches the given parameters can be
+  found, CMakePP will throw an error indicating this.
 
 Inheritance
 ===========

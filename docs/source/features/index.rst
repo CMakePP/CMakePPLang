@@ -8,9 +8,8 @@ This part gives an overview of the features of the CMakePP language.
    :maxdepth: 2
 
    types
-   classes 
+   classes
    maps
    objects
-   function_overloading
    serialization
    utilities
