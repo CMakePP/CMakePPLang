@@ -4,79 +4,172 @@ Classes
 
 CMakePP enables users to define classes and create instances of the classes.
 Classes in CMakePP can contain attributes and functions. CMakePP also
-supports inheritance. Examples of using classes are provided in
-:ref:`using-classes` the section. A basic overview of the features is provided
-below.
+supports inheritance. Examples of using classes are provided in the
+:ref:`using-classes` the section. A basic overview of the features of classes
+are provided below.
 
 Class Definition
 ================
 
 Class definitions start with ``cpp_class(MyClass)`` where ``MyClass`` is what
-you want to name the class. Class definitions are ended with ``cpp_end_class()``
-(after all the class's attributes and functions have been added).
+you want to name the class. Class definitions are ended with
+``cpp_end_class()``. The following is an example of an empty class definition:
+
+.. code-block:: cmake
+
+  # Begin class definition of class MyClass
+  cpp_class(MyClass)
+
+    # Class attribute and functions go here
+
+  # End class definition
+  cpp_end_class()
 
 Instantiation
 =============
 
-Once a class is declared, an instance of that class can be created. An instance
-of a class ``MyClass`` with the name ``my_instance`` is created using
-``MyClass(CTOR my_instance)``.
+Once a class is declared, an instance of that class can be created. For example
+an instance of a class ``MyClass`` with the variable name ``my_instance`` can be
+created using the following:
+
+.. code-block:: cmake
+
+  # Create an instance of MyClass with the name "my_instance"
+  MyClass(CTOR my_instance)
 
 Attributes
 ==========
 
-CMakePP classes can contain attributes of any type. Attributes of a class are
-loosely typed. No type is declared when declaring an attribute and attributes
-can be assigned a value of any type, regardless of the type of their initial
-value.
+CMakePP classes can contain attributes. These attributes take default values
+that are declared when the class is defined. An instance of a class can have
+its attributes retrieved and modified from within the class or from without the
+class.
 
-Attributes are added to class using ``cpp_attr(MyClass my_attr my_value)`` where
-``MyClass`` is the name of the class, ``my_attr`` is the name of the attribute,
-and ``my_value`` is the initial value of the attribute.
+Typing of Attributes
+--------------------
 
-Functions
-=========
+Attributes of CMakePP classes of a class are **loosely typed**. No type is
+declared when declaring an attribute, and attributes can be assigned a value of
+any type, regardless of the type of their initial value.
 
-CMakePP classes can contain member functions. Member functions are declared
-in the same way as normal CMake functions with the addition of a ``cpp_member``
-statement to declare which class the function belongs to and the types of
-arguments the function takes.
+Declaring Attributes
+--------------------
 
-Function definitions contain the following parts (listed in order):
+Attributes are added to class using the ``cpp_attr(MyClass my_attr my_value)``
+statement where ``MyClass`` is the name of the class, ``my_attr`` is the name of
+the attribute, and ``my_value`` is the initial value of the attribute. The
+following is an example of a class with two attributes:
 
-1. ``cpp_member(my_fxn MyClass type_a type_b)`` where ``my_fxn`` is the name of
-   the function, ``MyClass`` is the name of the class the function is being added
-   to, and ``type_a`` and ``type_b`` are the types of the first and second
-   parameters, respectively.
-2. ``function(${my_fxn} self param_a param_b)`` Where ``my_fxn`` is the name of
-   the function and ``param_a`` and ``param_b`` are the names of the parameters
-   of the function (these parameter names correspond to their respective type
-   declarations in the function signature in line above)
-3. The body of the function.
-4. ``endfunction()`` to end the function definition.
+.. code-block:: cmake
 
-A function belonging to a class ``MyClass`` is called using
-``MyClass(my_fxn ${my_instance} param_a param_b)`` where ``my_fxn`` is the name
-of the function, ``my_instance`` is the name of an instance of the class, and
-``param_a`` and ``param_b`` are the parameters being passed to the function.
-CMakePP will look for a function with a name and signature that matches the
-call being made. If it finds one, it will execute the function. If it does not,
-it will throw an error indicating that no suitable function could be found.
+  cpp_class(MyClass)
 
-Attribute Access
+    # Declare an attribute "color" with the default value "red"
+    cpp_attr(MyClass color red)
+
+    # Declare an attribute "size" with the default value "10"
+    cpp_attr(MyClass size 10)
+
+  cpp_end_class()
+
+Getting and Setting Attributes
+------------------------------
+
+The attributes of a class are accessed by using the ``GET`` and ``SET``
+keywords. The value of an attribute is retrieved using:
+
+.. code-block:: cmake
+
+  # Retrieve the value of "my_attr" and store it in "my_result"
+  MyClass(GET "${my_instance}" my_result my_attr)
+
+Here ``my_instance`` is the name of the instance whose attribute you want to
+access, ``my_result`` is where the value will be stored, and ``my_attr`` is
+the name of the attribute being accessed.
+
+The value of an attribute is set using:
+
+.. code-block:: cmake
+
+  # Set the value of "my_attr" to "my_value"
+  MyClass(SET "${my_instance}" my_attr my_value)
+
+Here ``my_instance`` is the name of the instance whose attribute you want to
+set, ``my_attr`` is where the name of the attribute you want to set, and
+``my_value`` is the value you want to set the attribute to.
+
+Member Functions
 ================
 
-The attributes of a class are accessed via the command using the ``GET`` and
-``SET`` keywords. The value of an attribute is retrieved using
-``MyClass(GET ${my_instance} my_result my_attr)`` where ``my_instance`` is the
-name of the instance, ``my_result`` is where the value will be stored, and
-``my_attr`` is the name of the attribute being accessed.
+CMakePP classes can contain member functions. This functions are similar to
+regular CMake functions. The main difference is that they belong to a CMakePP
+class.
+
+Defining Member Functions
+-------------------------
+
+Member functions are declared in the same way as normal CMake functions with
+the addition of the ``cpp_member`` statement to declare the **signature** of the
+function (the name of the function and the types of the arguments it takes).
+Member function definitions are structured in the following way:
+
+.. code-block:: cmake
+
+  cpp_member(my_fxn MyClass type_a type_b)
+  function("${my_fxn}" self param_a param_b)
+
+    # The body of the function
+
+    # ${self} can be used to access the instance of MyClass
+    # the function is being called with
+
+    # ${param_a} and ${param_b} can be used to access the
+    # values of the parameters passed into the function
+
+  endfunction()
+
+The structure of the above function definition contains the following pieces:
+
+1. ``cpp_member(my_fxn MyClass type_a type_b)``-- The CMakePP class member
+   declaration. This statement defines a function named ``my_fxn`` for the class
+   ``MyClass``. The statement also indicates the number and type of parameters
+   that the function takes in. In this case there are two parameters of the
+   types ``type_a`` and ``type_b``.
+2. ``function("${my_fxn}" self param_a param_b)``-- A CMake function declaration
+   the defines a function with the name ``${my_fxn}``, ``self`` as the name
+   used to reference the class instance the function was called with, and
+   ``param_a`` and ``param_b`` as the names used to access the parameters
+   passed into the function. These parameters that correspond to the types in
+   the ``cpp_member`` statement.
+
+3. The function body.
+
+4. ``endfunction()``-- The end of the CMake function definition.
+
+Calling Member Functions
+------------------------
+
+A function ``my_fxn`` belonging to a class ``MyClass`` can be called using:
+
+.. code-block:: cmake
+
+  MyClass(my_fxn "${my_instance}" "value_a" "value_b")
+
+Here ``my_instance`` is the name of an instance of ``MyClass`` and ``"value_a"``
+and ``"value_b"`` are the parameter values being passed to the function.
+
+When a call is made to a member function, CMakePP will look for a function with
+a signature that matches the call being made. If CMakePP finds a matching
+function, it will execute that function. If it does not, it will throw an error
+indicating that no suitable function could be found. This process is referred to
+as **function resolution**.
 
 Inheritance
 ===========
 
 CMakePP classes support inheritance. A class can inherit from one or more
-parent classes.
+parent classes. Classes that inherit from another class are referred to as
+**derived classes**.
 
 Attribute Inheritance
 ---------------------
@@ -90,49 +183,159 @@ Function Inheritance
 --------------------
 
 A class that inherits from a parent class inherits all of the functions defined
-in that parent class. The inherited functions can be overriden with a new
+in that parent class. The inherited functions can be overridden with a new
 implementation in the derived class by adding a function definition with a
-signature that matches the signature of the function in the parent class that is
-to be overridden.
+signature that matches the signature of the function in the parent class.
+
+Creating a Derived Class
+------------------------
+
+To create a derived class, we need a parent class that our derived class will
+inherit from. We will use the following parent class:
+
+.. code-block:: cmake
+
+  cpp_class(ParentClass)
+
+    # Declare some attributes with default values
+    cpp_attr(ParentClass color red)
+    cpp_attr(ParentClass size 10)
+
+    # Declare a function taking some parameters
+    cpp_member(my_fxn ParentClass type_a type_b)
+    function("${my_fxn}" self param_a param_b)
+      # Function body
+    endfunction()
+
+    # Declare a function taking no parameters
+    cpp_member(another_fxn ParentClass)
+    function("${another_fxn}" self)
+      # Function body
+    endfunction()
+
+  cpp_end_class()
+
+To create a class called ``ChildClass`` that derives from ``ParentClass`` we
+just need to pass ``ParentClass`` as a parameter into the ``cpp_class``
+statement we use to declare ``ChildClass``. This looks like:
+
+.. code-block:: cmake
+
+  cpp_class(ChildClass ParentClass)
+
+    # Derived class definition
+
+  cpp_end_class()
+
+We can define ``ChildClass`` that:
+
+* Keeps the inherited default value for the attribute ``size``
+* Keeps the inherited implementation for the function ``another_fxn``
+* Overrides the ``color`` attribute
+* Overrides the member function ``my_fxn``
+* Declares a new attribute ``name``
+* Declares and a new member function ``new_fxn``
+
+This can be done with the following:
+
+.. code-block:: cmake
+
+  cpp_class(ChildClass ParentClass)
+
+    # Override the default value "color" attribute
+    cpp_attr(ChildClass color blue)
+
+    # Add a new attribute "name" belonging to ChildClass
+    cpp_attr(ChildClass name "My Name")
+
+    # Override the "my_fxn" function
+    cpp_member(my_fxn ChildClass type_a type_b)
+    function("${my_fxn}" self param_a param_b)
+      # Function body with different implementation
+    endfunction()
+
+    # Add a new function "new_fxn" belonging to ChildClass
+    cpp_member(new_fxn ChildClass)
+    function("${new_fxn}" self)
+      # Function body
+    endfunction()
+
+  cpp_end_class()
 
 Using a Derived Class
 ---------------------
 
-The attributes and functions of an instance of a derived class can be accessed
-through the parent class as well as the derived class. For example if we have
-class ``SubClass`` that inherits from ``ParentClass`` we could access the
-attributes and functions of of ``SubClass`` with any of the following
-statements:
+We can create an instance of our derived class using the following:
 
 .. code-block:: cmake
 
-  # Access attributes through derived class and parent class
-  # Access my_attr of an istance of subclass and store it in my_result
-  SubClass(GET ${my_subclass_instance} my_result my_attr)
-  ParentClass(GET ${my_subclass_instance} my_result my_attr)
+  # Create an instance of ChildClass
+  ChildClass(CTOR child_instance)
 
-  # Call functions through derived class and parent class
-  # Call the member function my_fxn of the subclass
-  SubClass(my_fxn ${my_subclass_instance})
-  ParentClass(my_fxn ${my_subclass_instance})
+The **inherited** attributes and functions of the parent class can be accessed
+through the derived class as well as the parent class:
+
+.. code-block:: cmake
+
+  # Access an inherited attribute through the derived class and parent class
+  ChildClass(GET "${child_instance}" my_result size)
+  ParentClass(GET "${child_instance}" my_result size)
+
+  # Access an inherited function through the derived class and parent class
+  ChildClass(another_fxn "${child_instance}")
+  ParentClass(another_fxn "${child_instance}")
+
+The **overidden** attributes and functions in the derived class can be through
+the derived class as well as well as the parent class:
+
+.. code-block:: cmake
+
+  # Access an overridden attribute through the derived class and parent class
+  ChildClass(GET "${child_instance}" my_result color)
+  ParentClass(GET "${child_instance}" my_result color)
+
+  # Access an overridden function through the derived class and parent class
+  ChildClass(my_fxn "${child_instance}" "value_a" "value_b")
+  ParentClass(my_fxn "${child_instance}" "value_a" "value_b")
+
+The **newly declared** attributes and functions in the derived class that are
+not present in the parent class can be accessed through the derived class as
+well as the parent class:
+
+.. code-block:: cmake
+
+  # Access a newly declared attribute that is present in ChildClass and not
+  # ParentClass through the derived class and parent class
+  ChildClass(GET "${child_instance}" my_result name)
+  ParentClass(GET "${child_instance}" my_result name)
+
+  # Access a newly declared function that is present in ChildClass and not
+  # ParentClass through the derived class and parent class
+  ChildClass(new_fxn "${child_instance}")
+  ParentClass(new_fxn "${child_instance}")
 
 Multiple Class Inheritance
 --------------------------
 
-A class can inherit from multiple classes. If the parent classes have
+A class can inherit from multiple classes. If the parent classes both have
 attributes or functions that have the same name, CMakePP will resolve in
 the following way:
 
-- CMakePP will check for the attribute or function in the first parent class
-  passed into the ``cpp_class`` macro where the subclass is defined.
-- If the attribute / function is found there it will use that
-  attribute / function.
-- If the attribute / function is not found, it will search in the next parent
-  class that was passed into the ``cpp_class`` macro.
-- CMakePP will continue searching the next parent class until the attribute /
-  function is found or it runs out of parent classes to search (upon which
-  an error will be thrown).
+1. CMakePP will check for the attribute or function in the first parent class
+   passed into the ``cpp_class`` macro where the subclass is defined.
+2. If the attribute / function is found there it will use that
+   attribute / function.
+3. If the attribute / function is not found, it will search in the next parent
+   class that was passed into the ``cpp_class`` macro.
+4. CMakePP will continue searching subsequent parent classes until the
+   attribute / function is found or it runs out of parent classes to search
+   (upon which an error will be thrown).
 
-For example, if a subclass called ``SubClass`` is defined using
-``cpp_class(SubClass Parent1 Parent2)``, CMakePP will search for
-attributes / functions in ``Parent1`` first and then ``Parent2``.
+For example, if a derived class called ``ChildClass`` is defined using:
+
+.. code-block:: cmake
+
+  cpp_class(ChildClass ParentClass1 ParentClass2)
+
+Then CMakePP will search for attributes / functions in ``ParentClass1`` first
+and then ``ParentClass2``.

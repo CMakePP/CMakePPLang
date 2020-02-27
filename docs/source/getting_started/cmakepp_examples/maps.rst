@@ -24,12 +24,12 @@ We can then store new values and access those values using the following code:
 .. code-block:: cmake
 
   # Set some new values
-  cpp_map(SET ${my_map} key_a value_a)
-  cpp_map(SET ${my_map} key_b value_b)
+  cpp_map(SET "${my_map}" key_a value_a)
+  cpp_map(SET "${my_map}" key_b value_b)
 
   # Access the values and store them in "result_a" and "result_b"
-  cpp_map(GET ${my_map} result_a key_a)
-  cpp_map(GET ${my_map} result_b key_b)
+  cpp_map(GET "${my_map}" result_a key_a)
+  cpp_map(GET "${my_map}" result_b key_b)
 
   # Print the values out
   message("result_a: ${result_a}")
@@ -52,8 +52,8 @@ constructor in the following way:
   cpp_map(CTOR my_map key_a value_a key_b value_b)
 
   # Access the values and store them in "result_a" and "result_b"
-  cpp_map(GET ${my_map} result_a key_a)
-  cpp_map(GET ${my_map} result_b key_b)
+  cpp_map(GET "${my_map}" result_a key_a)
+  cpp_map(GET "${my_map}" result_b key_b)
 
   # Print the values out
   message("result_a: ${result_a}")

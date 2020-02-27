@@ -32,7 +32,7 @@ color attribute, and print out that value:
   Automobile(CTOR my_auto)
 
   # Access the "color" attribute and save it to the var "my_autos_color"
-  Automobile(GET ${my_auto} my_autos_color color)
+  Automobile(GET "${my_auto}" my_autos_color color)
 
   # Print out the value of the var "my_autos_color"
   message("The color of my_auto is: ${my_autos_color}")
@@ -44,10 +44,10 @@ We can also set the value of the attribute:
 .. code-block:: cmake
 
   # Set a new value for the "color" attribute
-  Automobile(SET ${my_auto} color blue)
+  Automobile(SET "${my_auto}" color blue)
 
   # Access the "color" attribute again and save it to the var "my_autos_color"
-  Automobile(GET ${my_auto} my_autos_color color)
+  Automobile(GET "${my_auto}" my_autos_color color)
 
   # Print out the value of the var "my_autos_color"
   message("The color of my_auto is: ${my_autos_color}")
@@ -71,7 +71,7 @@ its engine. The updated class definition with this new function added is:
 
     # Define a function "start" that prints a message
     cpp_member(start Automobile)
-    function(${start} self)
+    function("${start}" self)
       message("Vroom! I have started my engine.")
     endfunction()
 
@@ -84,7 +84,7 @@ did in the previous example) we can call our function using the following:
 .. code-block:: cmake
 
   # Call the function using our Automobile instance
-  Automobile(start ${my_auto})
+  Automobile(start "${my_auto}")
 
   # Output: Vroom! I have started my engine.
 
@@ -99,7 +99,7 @@ adding the following to our class:
 
   # Define a function "drive" that takes an int and a str and prints a message
   cpp_member(drive Automobile int str)
-  function(${drive} self distance_km destination)
+  function("${drive}" self distance_km destination)
       message("I just drove ${distance_km} km to ${destination}!")
   endfunction()
 
@@ -109,7 +109,7 @@ following way:
 .. code-block:: cmake
 
   # Call the function and pass two arguments
-  Automobile(drive ${my_auto} 10 "London")
+  Automobile(drive "${my_auto}" 10 "London")
 
   # Output: I just drove 10 km to London!
 
@@ -136,11 +136,11 @@ class definition:
 
   # Define a function "describe_self" that references attributes of the class
   cpp_member(describe_self Automobile)
-  function(${describe_self} self)
+  function("${describe_self}" self)
 
       # Access the attributes of the class and store them into local vars
-      Automobile(GET ${self} my_color color)
-      Automobile(GET ${self} my_km_driven km_driven)
+      Automobile(GET "${self}" my_color color)
+      Automobile(GET "${self}" my_km_driven km_driven)
 
       # Print out a message
       message("I am an automobile, I am ${my_color}, and I have driven ${my_km_driven} km.")
@@ -152,7 +152,7 @@ This function can be accessed in the same way as previous examples:
 .. code-block:: cmake
 
   # Call the function using the instance "my_auto"
-  Automobile(describe_self ${my_auto})
+  Automobile(describe_self "${my_auto}")
 
   # Output: I am an automobile, I am red, and I have driven 0 km.
 
@@ -175,14 +175,14 @@ This is demonstrated by the following redefinition of ``describe_self``:
 
   # Redefine "describe_self" to take in a return identifier
   cpp_member(describe_self Automobile str)
-  function(${describe_self} self return_id)
+  function("${describe_self}" self return_id)
 
       # Access the attributes of the class and store them into local vars
-      Automobile(GET ${self} my_color color)
-      Automobile(GET ${self} my_km_driven km_driven)
+      Automobile(GET "${self}" my_color color)
+      Automobile(GET "${self}" my_km_driven km_driven)
 
       # Set the value of the var with the name ${return_id} in the parent scope
-      set(${return_id} "I am an automobile, I am ${my_color}, and I have driven ${my_km_driven} km." PARENT_SCOPE)
+      set("${return_id}" "I am an automobile, I am ${my_color}, and I have driven ${my_km_driven} km." PARENT_SCOPE)
 
   endfunction()
 
@@ -199,10 +199,10 @@ We can call this function and access its return value using the following:
 .. code-block:: cmake
 
   # Call the function and store its result in "my_result"
-  Automobile(describe_self ${my_auto} my_result)
+  Automobile(describe_self "${my_auto}" my_result)
 
   # Print out the value of "my_result"
-  message(${my_result})
+  message("${my_result}")
 
   # Output: I am an automobile, I am red, and I have driven 0 km.
 
@@ -233,28 +233,28 @@ as follows:
 
   # Redefine "describe_self" to have multiple return points
   cpp_member(describe_self Automobile str bool)
-  function(${describe_self} self return_id include_color)
+  function("${describe_self}" self return_id include_color)
 
     # Access the km_driven attribute
-    Automobile(GET ${self} my_km_driven km_driven)
+    Automobile(GET "${self}" my_km_driven km_driven)
 
     if(include_color)
       # Access the color attribute
-      Automobile(GET ${self} my_color color)
+      Automobile(GET "${self}" my_color color)
 
       # Set the value of the var with the name ${return_id} in the current scope
-      set(${return_id} "I am an automobile, I am ${my_color}, and I have driven ${my_km_driven} km.")
+      set("${return_id}" "I am an automobile, I am ${my_color}, and I have driven ${my_km_driven} km.")
 
       # Return the value and exit the function
-      cpp_return(${return_id})
+      cpp_return("${return_id}")
     endif()
 
     # This only executes if include_color is false
     # Set the value of the var with the name ${return_id} in the current scope
-    set(${return_id} "I am an automobile and I have driven ${my_km_driven} km.")
+    set("${return_id}" "I am an automobile and I have driven ${my_km_driven} km.")
 
     # Return the value and exit the function
-    cpp_return(${return_id})
+    cpp_return("${return_id}")
 
   endfunction()
 
@@ -263,14 +263,14 @@ We can call the function in the following way:
 .. code-block:: cmake
 
   # Call the function and specify that color should be included
-  Automobile(describe_self ${my_auto} my_result TRUE)
-  message(${my_result})
+  Automobile(describe_self "${my_auto}" my_result TRUE)
+  message("${my_result}")
 
   # Output: I am an automobile, I am red, and I have driven 0 km.
 
   # Call the function and specify that color should NOT be included
-  Automobile(describe_self ${my_auto} my_result FALSE)
-  message(${my_result})
+  Automobile(describe_self "${my_auto}" my_result FALSE)
+  message("${my_result}")
 
   # Output: I am an automobile and I have driven 0 km.
 
@@ -287,7 +287,7 @@ definition:
 
   # Overload the "start" function
   cpp_member(start Automobile int)
-  function(${start} self distance_km)
+  function("${start}" self distance_km)
       message("Vroom! I started my engine and I just drove ${distance_km} km.")
   endfunction()
 
@@ -298,12 +298,12 @@ pass in one integer to match the new signature:
 .. code-block:: cmake
 
   # Call the new function implementation
-  Automobile(start ${my_auto} 10)
+  Automobile(start "${my_auto}" 10)
 
   # Output: Vroom! I started my engine and I just drove 10 km.
 
   # We can still call the original function implementation as well
-  Automobile(start ${my_auto})
+  Automobile(start "${my_auto}")
 
   # Output: Vroom! I started my engine.
 
@@ -341,11 +341,11 @@ precise description. We can define the class by writing the following:
 
     # Override the "describe_self" method of the Automobile class
     cpp_member(describe_self Car str)
-    function(${describe_self} self result_id)
-        Car(GET ${self} my_color color)
-        Car(GET ${self} my_km_driven km_driven)
-        Car(GET ${self} my_num_doors num_doors)
-        set(${result_id} "I am a car with ${my_num_doors} doors, I am ${my_color}, and I have driven ${my_distance_km} km." PARENT_SCOPE)
+    function("${describe_self}" self result_id)
+        Car(GET "${self}" my_color color)
+        Car(GET "${self}" my_km_driven km_driven)
+        Car(GET "${self}" my_num_doors num_doors)
+        set("${result_id}" "I am a car with ${my_num_doors} doors, I am ${my_color}, and I have driven ${my_distance_km} km." PARENT_SCOPE)
     endfunction()
 
   # End class definition
@@ -361,13 +361,13 @@ class:
   Car(CTOR my_car)
 
   # Access the overridden method "describe_self" through the derived class
-  Car(describe_self ${my_car} car_result)
-  message(${car_result})
+  Car(describe_self "${my_car}" car_result)
+  message("${car_result}")
 
   # Output: I am a car with 4 doors, I am green, and I have driven 0 km.
 
   # Access the inherited method "start" through the derived class
-  Car(start ${my_car})
+  Car(start "${my_car}")
 
   # Output: Vroom! I have started my engine.
 
@@ -377,13 +377,13 @@ its base class ``Automobile``:
 .. code-block:: cmake
 
   # Access the overridden method "describe_self" through the base class
-  Automobile(describe_self ${my_car} auto_result)
-  message(${auto_result})
+  Automobile(describe_self "${my_car}" auto_result)
+  message("${auto_result}")
 
   # Output: I am a car with 4 doors, I am red, and I have driven 0 km.
 
   # Access the inherited method "start" through the base class
-  Automobile(start ${my_car})
+  Automobile(start "${my_car}")
 
   # Output: Vroom! I have started my engine.
 
@@ -452,9 +452,9 @@ like we would any other attribute:
 .. code-block:: cmake
 
   # Access the attributes of each parent class through the ElectricTruck class
-  ElectricTruck(GET ${my_inst} result1 battery_percentage)
+  ElectricTruck(GET "${my_inst}" result1 battery_percentage)
   message("Battery percentage: ${result1}%")
-  ElectricTruck(GET ${my_inst} result2 towing_cap_lbs)
+  ElectricTruck(GET "${my_inst}" result2 towing_cap_lbs)
   message("Towing capactiy: ${result2} lbs")
 
   # Output:
@@ -466,8 +466,8 @@ We can access the functions defined in each of the parent classes as well:
 .. code-block:: cmake
 
   # Access the functions of each parent class through the ElectricTruck class
-  ElectricTruck(drive ${my_inst})
-  ElectricTruck(tow ${my_inst})
+  ElectricTruck(drive "${my_inst}")
+  ElectricTruck(tow "${my_inst}")
 
   # Output:
   # I am driving.
@@ -540,7 +540,7 @@ So, if we create an instance of ``ElectricTruck`` and attempt to access
   ElectricTruck(CTOR my_inst)
 
   # Access the power_source attribute
-  ElectricTruck(GET ${my_inst} result power_source)
+  ElectricTruck(GET "${my_inst}" result power_source)
   message("Power source: ${result}")
 
   # Output

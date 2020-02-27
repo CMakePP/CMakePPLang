@@ -79,15 +79,14 @@ state of an **instance of a class** consists of:
 1. The instance's **attributes** contained within a dictionary at the key
    ``_cpp_attrs``. Each key in this dictionary is the name of an attribute and
    points to the serialized value of that attribute.
-2. The **functions** of the class that this instance belongs to are serialized into
-   a dictionary at the key "_cpp_fxns". Each key in this dictionary takes the
-   form of ``_cpp_*CLASSNAME*_*FUNCTIONNAME*_*ARGNTYPE*_`` and each points to
-   a list of types. This list contains the types present in the functions
-   signature (in order).
+2. The **functions** of the class that this instance belongs to are serialized
+   into a dictionary at the key "_cpp_fxns". Each key in this dictionary is a
+   function's symbol and points to a list of types. The types in this list are
+   the types present in the functions (in order).
 3. The serialized instances of the classes the instance inherits from in a
-   dictionary at the key ``_cpp_sub_objs``. If this instance is of a class
-   that does not inherit from another class, this will only contain an
-   instance of ``obj``.
+   dictionary at the key ``_cpp_sub_objs``. If this instance is of a class that
+   does not inherit from another class, this will only contain an instance of
+   ``obj``.
 
 Take the following class for example:
 
@@ -121,41 +120,41 @@ object:
 .. code-block:: JSON
 
   {
-    "nuop7_1581040712": {
+    "<unique_identifier>": {
       "_cpp_attrs": {
         "color": "red",
         "num_doors": "4"
       },
       "_cpp_fxns": {
-        "_cpp_automobile_start_automobile_": [
+        "<automobile_start_symbol_1>": [
           "start",
           "automobile"
         ],
-        "_cpp_automobile_start_automobile_int_": [
+        "<automobile_start_symbol_2>": [
           "start",
           "automobile",
           "int"
         ],
-        "_cpp_automobile_drive_automobile_int_str_": [
+        "<automobile_start_symbol_3>": [
           "drive",
           "automobile",
           "int",
           "str"
         ]
       },
-      "_cpp_sub_objs": {                              
+      "_cpp_sub_objs": {
         "obj": {
-          "urqsk_1581040712": {
+          "<unique_identifier>": {
             "_cpp_attrs": {
             },
             "_cpp_fxns": {
-              "_cpp_obj_equal_obj_desc_obj_": [
+              "<obj_equal_symbol>": [
                 "equal",
                 "obj",
                 "desc",
                 "obj"
               ],
-              "_cpp_obj_serialize_obj_desc_": [
+              "<obj_serialize_symbol>": [
                 "serialize",
                 "obj",
                 "desc"
@@ -170,3 +169,7 @@ object:
       "_cpp_my_type": "automobile"
     }
   }
+
+.. note::
+
+  The content of the the angeled brackets is run-dependenent.

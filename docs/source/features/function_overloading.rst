@@ -16,13 +16,13 @@ following way:
 
   # Define first implementation
   cpp_member(what_was_passed_in MyClass int)
-  function(${what_was_passed_in} self x)
+  function("${what_was_passed_in}" self x)
       message("${x} was passed in.")
   endfunction()
 
   # Define second implementation
   cpp_member(what_was_passed_in MyClass int int)
-  function(${what_was_passed_in} self x y)
+  function("${what_was_passed_in}" self x y)
       message("${x} and ${y} were passed in.")
   endfunction()
 
@@ -41,12 +41,12 @@ For example, we could call the above implementations in the following way:
   MyClass(CTOR my_instance)
 
   # Call first implementation
-  MyClass(what_was_passed_in ${my_instance} 1)
+  MyClass(what_was_passed_in "${my_instance}" 1)
 
   # Outputs: 1 was passed in.
 
   # Call second implementation
-  MyClass(what_was_passed_in ${my_instance} 2 3)
+  MyClass(what_was_passed_in "${my_instance}" 2 3)
 
   # Outputs: 2 and 3 were passed in.
 
