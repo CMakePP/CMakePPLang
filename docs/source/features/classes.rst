@@ -114,7 +114,7 @@ Defining Member Functions
 -------------------------
 
 Member functions are declared in the same way as normal CMake functions with
-the addition of the ``cpp_member`` statement to declare the **signature** of the
+the addition of the ``cpp_member`` decorator to declare the **signature** of the
 function (the name of the function and the types of the arguments it takes).
 Member function definitions are structured in the following way:
 
@@ -140,16 +140,16 @@ Member function definitions are structured in the following way:
 The structure of the above function definition contains the following pieces:
 
 1. ``cpp_member(my_fxn MyClass type_a type_b)``-- The CMakePP class member
-   declaration. This statement defines a function named ``my_fxn`` for the class
-   ``MyClass``. The statement also indicates the number and type of parameters
-   that the function takes in. In this case there are two parameters of the
-   types ``type_a`` and ``type_b``.
+   declaration. This decorator defines a function named ``my_fxn`` for the class
+   ``MyClass``. It also indicates the number and type of parameters that the
+   function takes in. In this case there are two parameters of the types
+   ``type_a`` and ``type_b``.
 2. ``function("${my_fxn}" self param_a param_b)``-- A CMake function declaration
    the defines a function with the name ``${my_fxn}``, sets ``self`` as the
    variable name used to reference the class instance the function was called
    with, and ``param_a`` and ``param_b`` as the variables name used to access
    the parameters passed into the function. These parameters correspond to the
-   types in the ``cpp_member`` statement.
+   types in the ``cpp_member`` decorator.
 
 3. The function body.
 
@@ -158,13 +158,13 @@ The structure of the above function definition contains the following pieces:
 .. note::
 
   The reason that the ``function`` command gets the dereferenced value of
-  ``my_fxn`` here is because the ``cpp_member`` command sets the value of
+  ``my_fxn`` here is because the ``cpp_member`` decorator sets the value of
   ``my_fxn`` to a name / symbol that the CMakePP language uses to find the
   actual CMake function when a call is made to the member function ``my_fxn``
   through a CMakePP class.
 
   This may be a bit confusing. All you need to remember is that the
-  ``cpp_member`` command gets the string name of the member function you want to
+  ``cpp_member`` decorator gets the string name of the member function you want to
   declare and the ``function`` statement that follows it gets the dereferenced
   value of that name (``"${my_fxn}"`` in this case).
 
@@ -278,7 +278,7 @@ inherit from. We will use the following parent class:
     cpp_attr(ParentClass size 10)
 
     # Declare a function taking some parameters
-    cpp_member(my_fxn ParentClass type_a type_b)
+    cpp_member(my_fxn ParentClass desc desc)
     function("${my_fxn}" self param_a param_b)
       # Function body
     endfunction()
@@ -325,7 +325,7 @@ This can be done with the following:
     cpp_attr(ChildClass name "My Name")
 
     # Override the "my_fxn" function
-    cpp_member(my_fxn ChildClass type_a type_b)
+    cpp_member(my_fxn ChildClass desc desc)
     function("${my_fxn}" self param_a param_b)
       # Function body with different implementation
     endfunction()
