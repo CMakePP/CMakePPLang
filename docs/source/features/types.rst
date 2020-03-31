@@ -2,8 +2,8 @@
 Types in CMakePP
 ****************
 
-Native CMake is a weakly typed language where all values are strings and in 
-certain circumstances, certain strings are interpreted as being of another type. 
+Native CMake is a weakly typed language where all values are strings and in
+certain circumstances, certain strings are interpreted as being of another type.
 A common example is when a  string is used as an argument to CMake's ``if``
 statement. There the  string is implicitly cast to a boolean. In practice this
 weak typing can lead to subtle hard-to-detect errors. CMakePP implements strong
@@ -93,9 +93,7 @@ thus floating point numbers are uncommon in typical CMake scripts.
 Generator Expressions (genexpr)
 -------------------------------
 
-.. todo::
-
-   Expand this section
+.. TODO Expand this section
 
 CMake expressions of the form ``$<...>`` are generator expressions.
 

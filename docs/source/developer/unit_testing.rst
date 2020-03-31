@@ -84,7 +84,7 @@ Functions that can not be type-checked with cpp_assert_signature
 
 The following UML diagram summarizes the call graph of ``cpp_assert_signature``.
 
-.. image:: assert_signature.png
+.. image:: assert_signature_call_graph.png
 
 Caveats regarding recursion aside, the call graph of any CMake script must
 ultimately be a directed-acyclic graph. This means we can not use

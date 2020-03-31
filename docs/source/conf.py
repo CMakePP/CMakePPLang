@@ -30,5 +30,5 @@ htmlhelp_basename = project + 'doc'
 extensions = [
     'sphinx.ext.mathjax',
     'sphinx.ext.githubpages',
+    'sphinx.ext.autosectionlabel'
 ]
-
