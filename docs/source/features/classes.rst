@@ -25,6 +25,19 @@ you want to name the class. Class definitions are ended with
   # End class definition
   cpp_end_class()
 
+Optionally, users can provide the name of the class being defined to the
+``cpp_end_class`` function as well:
+
+.. code-block:: cmake
+
+  # Begin class definition of class MyClass
+  cpp_class(MyClass)
+
+    # Class attribute and functions go here
+
+  # End class definition
+  cpp_end_class(MyClass)
+
 Instantiation
 =============
 
