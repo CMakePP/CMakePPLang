@@ -124,6 +124,46 @@ ct_add_test("cpp_member")
     ct_end_section()
 ct_end_test()
 
+ct_add_test("cpp_member_function_calls")
+    include(cmakepp_core/class/class)
+
+    cpp_class(MyClass)
+        cpp_member(fxn_a MyClass int)
+        function("${fxn_a}" self a)
+            message("a = ${a}")
+        endfunction()
+
+        cpp_member(fxn_b MyClass int int)
+        function("${fxn_b}" self a b)
+            message("a = ${a}, b = ${b}")
+        endfunction()
+
+        cpp_member(fxn_c MyClass int desc)
+        function("${fxn_c}" self a b)
+            message("a = ${a}, b = ${b}")
+        endfunction()
+    cpp_end_class()
+
+    ct_add_section("member functions with a single parameter can be called")
+        MyClass(CTOR my_instance)
+        MyClass(fxn_a "${my_instance}" 1)
+        ct_assert_prints("a = 1")
+    ct_end_section()
+
+    ct_add_section("member functions with multiple parameters can be called")
+        MyClass(CTOR my_instance)
+        MyClass(fxn_b "${my_instance}" 1 2)
+        ct_assert_prints("a = 1, b = 2")
+    ct_end_section()
+
+    ct_add_section("member functions with desc parameters can be called")
+        MyClass(CTOR my_instance)
+        MyClass(fxn_c "${my_instance}" 1 "This is a string.")
+        ct_assert_prints("a = 1, b = This is a string.")
+    ct_end_section()
+
+ct_end_test()
+
 ct_add_test("cpp_attr")
     include(cmakepp_core/class/class)
 

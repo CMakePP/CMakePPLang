@@ -15,10 +15,29 @@ include(cmakepp_core/utilities/unique_id)
 # :param *args: The arguments to forward to the function.
 #]]
 function(_cpp_call_fxn_guts _cfg_fxn2call _cfg_result)
+    # Create a new arg list that is a copy of ARGN except all args of type desc
+    # are surrounded with double quotes
+    set(_cfg_args_list "")
+
+    # Loop over all args
+    foreach(_cfg_current_arg ${ARGN})
+        # Get the type of the arg
+        cpp_type_of(_cfg_curr_arg_type "${_cfg_current_arg}")
+
+        # If the arg is of type desc, surround it with double quotes,
+        # Leave all other arguments the same
+        if("${_cfg_curr_arg_type}" STREQUAL "desc")
+            string(APPEND _cfg_args_list " \"${_cfg_current_arg}\"")
+        else()
+            string(APPEND _cfg_args_list " ${_cfg_current_arg}")
+        endif()
+    endforeach()
+
+    # Write a .cmake file that calls the function
     cpp_unique_id(_cfg_uuid)
     set(_cfg_file "${CMAKE_CURRENT_BINARY_DIR}/cmakepp/fxn_calls")
     set(_cfg_file "${_cfg_file}/${_cfg_fxn2call}_${_cfg_uuid}.cmake")
-    file(WRITE "${_cfg_file}" "${_cfg_fxn2call}(${ARGN})")
+    file(WRITE "${_cfg_file}" "${_cfg_fxn2call}(${_cfg_args_list})")
     set("${_cfg_result}" "${_cfg_file}" PARENT_SCOPE)
 endfunction()
 
@@ -40,6 +59,8 @@ endfunction()
 #    significantly complicate the implementation.
 #]]
 macro(cpp_call_fxn _cf_fxn2call)
+    # Create a .cmake file that calls the function with the provided args
     _cpp_call_fxn_guts("${_cf_fxn2call}" __cpp_call_fxn_file ${ARGN})
+    # Include that .cmake file
     include("${__cpp_call_fxn_file}")
 endmacro()

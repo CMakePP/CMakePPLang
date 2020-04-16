@@ -50,8 +50,13 @@ ct_add_test("cpp_is_float")
         ct_end_section()
     ct_end_section()
 
-    ct_add_section("integer")
+    ct_add_section("small integer")
         cpp_is_float(return 42)
+        ct_assert_equal(return FALSE)
+    ct_end_section()
+
+    ct_add_section("big integer")
+        cpp_is_float(return 123456789)
         ct_assert_equal(return FALSE)
     ct_end_section()
 
