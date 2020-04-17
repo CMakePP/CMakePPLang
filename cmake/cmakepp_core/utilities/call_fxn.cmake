@@ -15,22 +15,12 @@ include(cmakepp_core/utilities/unique_id)
 # :param *args: The arguments to forward to the function.
 #]]
 function(_cpp_call_fxn_guts _cfg_fxn2call _cfg_result)
-    # Create a new arg list that is a copy of ARGN except all args of type desc
-    # are surrounded with double quotes
+    # Create a new arg list that is a copy of ARGN except all args are
+    # surrounded with double quotes (to ensure strings with spaces aren't
+    # parsed as lists)
     set(_cfg_args_list "")
-
-    # Loop over all args
-    foreach(_cfg_current_arg ${ARGN})
-        # Get the type of the arg
-        cpp_type_of(_cfg_curr_arg_type "${_cfg_current_arg}")
-
-        # If the arg is of type desc, surround it with double quotes,
-        # Leave all other arguments the same
-        if("${_cfg_curr_arg_type}" STREQUAL "desc")
-            string(APPEND _cfg_args_list " \"${_cfg_current_arg}\"")
-        else()
-            string(APPEND _cfg_args_list " ${_cfg_current_arg}")
-        endif()
+    foreach(_cfg_current_arg ${ARGN}) # Loop over all args
+        string(APPEND _cfg_args_list " \"${_cfg_current_arg}\" ")
     endforeach()
 
     # Write a .cmake file that calls the function
