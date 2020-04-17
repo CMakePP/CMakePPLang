@@ -38,7 +38,9 @@ function(cpp_is_float _if_return _if_str2check)
         message(FATAL_ERROR "cpp_is_float accepts exactly 2 arguments")
     endif()
 
-    string(REGEX MATCH "^-?[0-9]+.[0-9]+\$" _if_match "${_if_str2check}")
+    # Note: Regex pattern strings in CMake require 2 backslashes to escape
+    # characters (must escape CMake string first)
+    string(REGEX MATCH "^-?[0-9]+\\.[0-9]+\$" _if_match "${_if_str2check}")
 
     if("${_if_match}" STREQUAL "")
         set(${_if_return} FALSE PARENT_SCOPE)
