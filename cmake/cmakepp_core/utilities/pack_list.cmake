@@ -49,11 +49,7 @@ function(cpp_pack_list _p_result _p_list)
         cpp_type_of(_p_elem_type "${_p_elem}")
         if(_p_elem_type STREQUAL "list")
             # If element is a list, recursively pack it and add it to result
-            cpp_pack_list(
-                _p_elem_result
-                "${_p_elem}"
-                DEPTH ${_p_next_depth}
-            )
+            cpp_pack_list(_p_elem_result "${_p_elem}" DEPTH ${_p_next_depth})
             string(APPEND _p_packed_list "${_p_elem_result}")
         else()
             # If the element is not a list, just add it to result
@@ -136,11 +132,8 @@ function(cpp_unpack_list _up_result _up_packed_list)
     else()
         # Replace seperation characters
         string(
-            REPLACE
-            "${_up_search}"
-            "${_up_replace}"
-            _up_packed_list
-            "${_up_packed_list}"
+            REPLACE "${_up_search}" "${_up_replace}"
+            _up_packed_list "${_up_packed_list}"
         )
 
         # Calculate next depth
