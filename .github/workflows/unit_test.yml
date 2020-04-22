@@ -1,0 +1,30 @@
+name: CMakePPCore Unit Tests
+on:
+  pull_request:
+    branches:
+      - master
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        cmake: [3.14.7, 3.15.5, 3.16.3]
+    env:
+      cmake_version: ${{ matrix.cmake }}
+      os: Linux-x86_64
+    steps:
+      - uses: actions/checkout@v1
+      - name: get cmake
+        env:
+          url_prefix: https://github.com/Kitware/CMake/releases/download
+        run: |
+          cmake_script=cmake-${cmake_version}-${os}.sh
+          wget "${url_prefix}/v${cmake_version}/${cmake_script}"
+          yes | /bin/sh "${cmake_script}"
+      - name: configure
+        run: |
+          cmake-${cmake_version}-${os}/bin/cmake -H. -Bbuild -DBUILD_TESTING=ON
+      - name: unit_test
+        run: |
+          cd build
+          ../cmake-${cmake_version}-${os}/bin/ctest  -j 2 --output-on-failure
