@@ -17,8 +17,8 @@ jobs:
       - name: get cmake
         env:
           url_prefix: https://github.com/Kitware/CMake/releases/download
-          cmake_script: cmake-${cmake_version}-${os}.sh
         run: |
+          cmake_script=cmake-${cmake_version}-${os}.sh
           wget "${url_prefix}/v${cmake_version}/${cmake_script}"
           yes | /bin/sh "${cmake_script}"
       - name: configure
