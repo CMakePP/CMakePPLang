@@ -19,53 +19,68 @@ include(cmakepp_core/serialization/serialization)
 # my_list will be transformed to the packed list string:
 # a_CPP_0_CPP_b_CPP_1_CPP_c_CPP_2_CPP_cc_CPP_1_CPP_bb_CPP_0_CPP_aa
 #
-# :param _p_result: The name for the variable which will hold the result.
-# :type _p_result: desc
-# :param _p_list: The list we want to pack into a string.
-# :type _p_result: list
-# :returns: ``_p_result`` will be set to the resulting packed list string.
+# :param _pl_result: The name for the variable which will hold the result.
+# :type _pl_result: desc
+# :param _pl_list: The list we want to pack into a string.
+# :type _pl_result: list
+# :returns: ``_pl_result`` will be set to the resulting packed list string.
 # :rtype: desc
+#
+# Error Checking
+# ==============
+#
+# If CMakePP is run in debug mode ``cpp_pack_list`` will assert that it has
+# been called with two arguments and that those arguments are of the correct
+# types.
+#
+# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                               debug mode or not.
 #]]
-function(cpp_pack_list _p_result _p_list)
+function(cpp_pack_list _pl_result _pl_list)
+    cpp_assert_signature("${ARGV}" desc list)
+
     # Get the depth argument, if no depth was set, set it to 0
-    cmake_parse_arguments(_p "" DEPTH "" ${ARGN})
-    if(NOT _p_DEPTH)
-        set(_p_DEPTH 0)
+    cmake_parse_arguments(_pl "" DEPTH "" ${ARGN})
+    if(NOT _pl_DEPTH)
+        set(_pl_DEPTH 0)
     endif()
 
     # Start the result string
-    set(_p_packed_list "")
+    set(_pl_packed_list "")
 
     # Start a counter and capture length of list
-    set(_p_counter 0)
-    list(LENGTH _p_list _p_n_elems)
+    set(_pl_counter 0)
+    list(LENGTH _pl_list _pl_n_elems)
 
     # Calc next depth
-    math(EXPR _p_next_depth "${_p_DEPTH} + 1")
+    math(EXPR _pl_next_depth "${_pl_DEPTH} + 1")
+
+    # Use the end-of-tranmission as the delimiter for the packed list string
+    string(ASCII 04 _pl_delim)
 
     # Loop over elements in list
-    foreach(_p_elem ${_p_list})
+    foreach(_pl_elem ${_pl_list})
         # Get the type of current element
-        cpp_type_of(_p_elem_type "${_p_elem}")
-        if(_p_elem_type STREQUAL "list")
+        cpp_type_of(_pl_elem_type "${_pl_elem}")
+        if(_pl_elem_type STREQUAL "list")
             # If element is a list, recursively pack it and add it to result
-            cpp_pack_list(_p_elem_result "${_p_elem}" DEPTH ${_p_next_depth})
-            string(APPEND _p_packed_list "${_p_elem_result}")
+            cpp_pack_list(_pl_elem_result "${_pl_elem}" DEPTH ${_pl_next_depth})
+            string(APPEND _pl_packed_list "${_pl_elem_result}")
         else()
             # If the element is not a list, just add it to result
-            string(APPEND _p_packed_list "${_p_elem}")
+            string(APPEND _pl_packed_list "${_pl_elem}")
         endif()
 
         # Update counter
-        math(EXPR _p_counter "${_p_counter} + 1")
-        if("${_p_counter}" LESS "${_p_n_elems}")
+        math(EXPR _pl_counter "${_pl_counter} + 1")
+        if("${_pl_counter}" LESS "${_pl_n_elems}")
             # Add a seperation character if this is not the last item
-            string(APPEND _p_packed_list "_CPP_${_p_DEPTH}_CPP_")
+            string(APPEND _pl_packed_list "_${_pl_delim}_${_pl_DEPTH}_${_pl_delim}_")
         endif()
     endforeach()
 
     # Return the result
-    set("${_p_result}" "${_p_packed_list}" PARENT_SCOPE)
+    set("${_pl_result}" "${_pl_packed_list}" PARENT_SCOPE)
 endfunction()
 
 #[[[ Transforms a string generated from a list being passed to cpp_pack_list
@@ -108,8 +123,11 @@ function(cpp_unpack_list _up_result _up_packed_list)
         set(_up_DEPTH 0)
     endif()
 
+    # Use the end-of-tranmission as the delimiter for the packed list string
+    string(ASCII 04 _up_delim)
+
     # Create the current string we want to replace
-    set(_up_search "_CPP_${_up_DEPTH}_CPP_")
+    set(_up_search "_${_up_delim}_${_up_DEPTH}_${_up_delim}_")
 
     # Calculate string to replace search string with
     if(_up_DEPTH EQUAL 0)
