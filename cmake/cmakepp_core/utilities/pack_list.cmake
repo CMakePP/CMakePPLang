@@ -114,51 +114,51 @@ endfunction()
 # :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.
 #]]
-function(cpp_unpack_list _up_result _up_packed_list)
+function(cpp_unpack_list _ul_result _ul_packed_list)
     cpp_assert_signature("${ARGV}" desc desc)
 
     # Get the depth argument, if no depth was set, set it to 0
-    cmake_parse_arguments(_up "" DEPTH "" ${ARGN})
-    if(NOT _up_DEPTH)
-        set(_up_DEPTH 0)
+    cmake_parse_arguments(_ul "" DEPTH "" ${ARGN})
+    if(NOT _ul_DEPTH)
+        set(_ul_DEPTH 0)
     endif()
 
     # Use the end-of-tranmission as the delimiter for the packed list string
-    string(ASCII 04 _up_delim)
+    string(ASCII 04 _ul_delim)
 
     # Create the current string we want to replace
-    set(_up_search "_${_up_delim}_${_up_DEPTH}_${_up_delim}_")
+    set(_ul_search "_${_ul_delim}_${_ul_DEPTH}_${_ul_delim}_")
 
     # Calculate string to replace search string with
-    if(_up_DEPTH EQUAL 0)
+    if(_ul_DEPTH EQUAL 0)
         # Depth 0 just gets ";"
-        set(_up_replace ";")
+        set(_ul_replace ";")
     else()
         # Lower depths get "\\" for each level of depth and an additional "\;"
-        set(_up_replace ";")
-        foreach(n RANGE 1 ${_up_DEPTH})
-            string(PREPEND _up_replace "\\")
+        set(_ul_replace ";")
+        foreach(n RANGE 1 ${_ul_DEPTH})
+            string(PREPEND _ul_replace "\\")
         endforeach()
     endif()
 
     # Look for seperation characters
-    string(FIND "${_up_packed_list}" "${_up_search}" _up_find_result)
-    if(_up_find_result EQUAL -1)
+    string(FIND "${_ul_packed_list}" "${_ul_search}" _ul_find_result)
+    if(_ul_find_result EQUAL -1)
         # No seperation characters to replace here, return list
-        set("${_up_result}" "${_up_packed_list}" PARENT_SCOPE)
+        set("${_ul_result}" "${_ul_packed_list}" PARENT_SCOPE)
         return()
     else()
         # Replace seperation characters
         string(
-            REPLACE "${_up_search}" "${_up_replace}"
-            _up_packed_list "${_up_packed_list}"
+            REPLACE "${_ul_search}" "${_ul_replace}"
+            _ul_packed_list "${_ul_packed_list}"
         )
 
         # Calculate next depth
-        math(EXPR _up_next_depth "${_up_DEPTH} + 1")
+        math(EXPR _ul_next_depth "${_ul_DEPTH} + 1")
 
         # Recursively unpack all levels and return result
-        cpp_unpack_list(_up_packed_list "${_up_packed_list}" DEPTH ${_up_next_depth})
-        set("${_up_result}" "${_up_packed_list}" PARENT_SCOPE)
+        cpp_unpack_list(_ul_packed_list "${_ul_packed_list}" DEPTH ${_ul_next_depth})
+        set("${_ul_result}" "${_ul_packed_list}" PARENT_SCOPE)
     endif()
 endfunction()
