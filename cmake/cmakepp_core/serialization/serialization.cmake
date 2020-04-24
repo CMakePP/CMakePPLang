@@ -31,7 +31,8 @@ include(cmakepp_core/serialization/detail_/serialize_value)
 # :returns: ``_s_result`` will be set to the serialized form of``_s_value``.
 # :rtype: desc
 #]]
-macro(cpp_serialize _s_result _s_value)
+function(cpp_serialize _s_result _s_value)
     cpp_assert_signature("${ARGV}" desc str)
-    _cpp_serialize_value("${_s_result}" "${_s_value}")
-endmacro()
+    _cpp_serialize_value(_s_serialized "${_s_value}")
+    set("${_s_result}" "${_s_serialized}" PARENT_SCOPE)
+endfunction()
