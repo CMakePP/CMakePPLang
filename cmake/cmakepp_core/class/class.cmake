@@ -26,7 +26,9 @@ set(
 #]]
 function(_cpp_class_guts _cg_type _cg_wrapper)
     if("${ARGC}" EQUAL 2)
+        # No parent classes passed in, only inherit from obj
         set(_cg_bases "obj")
+        # Use the obj singleton as the base instance
         set(_cg_base_instances "${__CMAKEPP_CORE_OBJECT_SINGLETON__}")
     else()
         set(_cg_bases "")
@@ -127,6 +129,18 @@ function(cpp_member _m_name _m_type)
     cpp_get_global(_m_state "${_m_type}__state")
     _cpp_object_add_fxn("${_m_state}" "${_m_name}" "${_m_type}" ${ARGN})
     cpp_return("${_m_name}")
+endfunction()
+
+# TODO docstring
+# Register a class constructor
+# Note: Second parameter is of type desc not the class type since. This desc
+# param is the handle that the class instance should be stored at
+function(cpp_constructor _c_name _c_type)
+    cpp_assert_signature("${ARGV}" desc class args)
+
+    cpp_get_global(_c_state "${_c_type}__state")
+    _cpp_object_add_fxn("${_c_state}" "${_c_name}" "desc" ${ARGN})
+    cpp_return("${_c_name}")
 endfunction()
 
 #[[[ Registers a class's attribute.

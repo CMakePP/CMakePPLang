@@ -36,7 +36,14 @@ include(cmakepp_core/utilities/return)
 macro(_cpp_object_singleton _os_this)
     cpp_assert_signature("${ARGV}" desc)
 
+    # Create the object singleton using the default CTOR
     _cpp_object_ctor("${_os_this}" "obj")
+
+    # Add the default CTOR, equal, and serialize functions to object
+    _cpp_object_add_fxn("${${_os_this}}" ctor desc)
+    function("${ctor}" __oc_this)
+        # Do nothing
+    endfunction()
 
     _cpp_object_add_fxn("${${_os_this}}" equal obj desc obj)
     function("${equal}" __oe_this __oe_result __oe_other)
