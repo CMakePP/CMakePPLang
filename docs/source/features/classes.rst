@@ -181,10 +181,10 @@ them returned using a prefix. This is done with a call like the following
 .. code-block:: cmake
 
     # Get attrs and store them at _pre_attr_a, _pre_attr_b, and _pre_attr_c
-    MyClass(GET "${my_instance}" _gma attr_a attr_b attr_c)
+    MyClass(GET "${my_instance}" _pre attr_a attr_b attr_c)
 
 Here ``my_instance`` is the name of the instance whose attributes you want to
-access, ``_gma`` is prefix that will be prepended to each attributes name to
+access, ``_pre`` is prefix that will be prepended to each attributes name to
 create the variable name where the attributes will be stored in the current
 scope, and ``attr_a``, ``attr_b``, and ``attr_c`` are the name of the attributes
 being accessed.
