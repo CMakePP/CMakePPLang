@@ -5,7 +5,7 @@ include(cmakepp_core/types/cmakepp_type)
 include(cmakepp_core/class/find_ctor)
 
 #[[[ Handles the construction of a class instance.
-# TODO
+#
 # This function handles the construction of a new class and calls to the
 # constructors for base classes.
 #
@@ -20,8 +20,6 @@ include(cmakepp_core/class/find_ctor)
 # :rtype: desc
 #]]
 function(cpp_class_ctor _cc_this _cc_type)
-    # cpp_assert_signature("${ARGV}" object class args)
-
     # Check if _cc_this is already an instance
     cpp_type_of(_cc_this_type "${_cc_this}")
     cpp_implicitly_convertible(_cc_conv_to_obj "${_cc_this_type}" "obj")
@@ -35,8 +33,7 @@ function(cpp_class_ctor _cc_this _cc_type)
                 FATAL_ERROR
                 "Constructor for type ${_cc_type} called from instance of\
                 type ${_cc_this_type}. ${_cc_this_type} is\
-                not a subclass of ${_cc_type}.
-                "
+                not a subclass of ${_cc_type}."
             )
         endif()
 
