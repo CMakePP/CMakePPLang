@@ -136,7 +136,7 @@ endfunction()
 # This function is used to declare a new virtual member function that has no
 # concrete implementation and must be overridden by a derived class.
 #
-# :param _vm_fxn_name: The mangled name name of the virtual member function.
+# :param _vm_fxn_name: The name of the virtual member function.
 # :type _vm_fxn_name: desc
 #]]
 macro(cpp_virtual_member _vm_fxn_name)
