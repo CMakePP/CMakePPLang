@@ -1,9 +1,13 @@
 include_guard()
 include(cmakepp_core/object/object)
 include(cmakepp_core/class/ctor)
-include(cmakepp_core/class/try_ctor)
 
-# TODO docstring
+#[[[ The template for the macro created for CMakePP classes.
+#
+# This file is used by the cpp_class command to create a macro that handles
+# calls to the a cpp_class. It handles CTOR, GET, SET and any function calls
+# for that class.
+#]]
 macro(@_cg_type@ _@_cg_type@_mode _@_cg_type@_this)
     cpp_assert_signature("${ARGV}" desc desc args)
 

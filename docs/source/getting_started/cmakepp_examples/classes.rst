@@ -28,7 +28,7 @@ color attribute, and print out that value:
 
 .. code-block:: cmake
 
-  # Create an instance of the class called "my_auto"
+  # Create an instance of the class called "my_auto" using the default CTOR
   Automobile(CTOR my_auto)
 
   # Access the "color" attribute and save it to the var "my_autos_color"
@@ -120,14 +120,16 @@ following way:
    function you are calling and the types of arguments you are passing in must
    match the function name and argument types in the function definition.
 
-Adding a Function That References an Attribute
-==============================================
+Adding a Function That References Attributes
+============================================
 
 Functions can access attributes of the class they are a member of. We will add
 an attribute ``km_driven`` to our class. We can then add a function
 ``describe_self`` that prints a message describing the color of the car and
-how far it has driven. This can be accomplished by adding the following to our
-class definition:
+how far it has driven. Within our function, we'll use the ``GET`` function, but
+this time we'll pass a prefix and a list of attribute names. This call will get
+all the attributes and store them in the current scope with the prefix
+prepended to their name. Here is the function:
 
 .. code-block:: cmake
 
@@ -138,12 +140,12 @@ class definition:
   cpp_member(describe_self Automobile)
   function("${describe_self}" self)
 
-      # Access the attributes of the class and store them into local vars
-      Automobile(GET "${self}" my_color color)
-      Automobile(GET "${self}" my_km_driven km_driven)
+      # Access the attributes of the class and store them into the local vars
+      # _ds_color and _ds_km_driven
+      Automobile(GET "${self}" _ds color km_driven)
 
       # Print out a message
-      message("I am an automobile, I am ${my_color}, and I have driven ${my_km_driven} km.")
+      message("I am an automobile, I am ${_ds_color}, and I have driven ${km_driven} km.")
 
   endfunction()
 
@@ -307,13 +309,47 @@ pass in one integer to match the new signature:
 
   # Output: Vroom! I started my engine.
 
-.. TODO Create example when feature is implemented
-.. Adding a User-Defined Constructor
-.. =================================
+Adding a User-Defined Constructors
+==================================
 
-.. TODO Create example when feature is implemented
-.. Adding Multiple Constructors
-.. ============================
+CMakePP allows users to define multiple custom constructors for classes. This is
+done using the ``cpp_constructor`` command. Here we add a constructor that takes
+two integers to our ``Automobile`` class:
+
+.. code-block:: cmake
+
+    cpp_constructor(CTOR Automobile int int)
+    function("${CTOR}" self a b)
+        # Do set up using arguments passed to constructors
+    endfunction()
+
+Multiple constructors can be added to a class. Calls to constructors will use
+function resolution in the same way the member function calls do. That is when a
+call is made to a constructor, CMakePP will attempt to find a constructor that
+matches the signature of that call and then call that constructor. If no
+matching constructor is found, an error will be thrown. The only exception to
+this is when a call is made to the constructor of a class and no arguments are
+passed. In that case, CMakePP will just call the default constructor for the
+class.
+
+Using the KWARGS Constructor
+============================
+
+CMakePP allows users to call a **KWARGS Constructor**. This constructor enables
+users to automatically set the values of attributes of the class upon
+construction. No constructor needs to be defined to use this feature. WeS just
+need to use the ``KWARGS`` keyword as the third argument to the call and provide
+a list consisting of the name of each attribute we want to set followed
+immediately by the value or values we want to set. Suppose our automobile class
+has three attributes: ``color``, ``num_doors``, and ``owners``. Then we could
+set these upon construction using the following:
+
+.. code-block:: cmake
+
+    MyClass(CTOR my_auto KWARGS color red num_doors 4 owners Alice Bob Chuck)
+
+This would set the value of ``color`` to ``red``, ``num_doors`` to ``4``, and
+``owners`` to ``Alice;Bob;Chuck``.
 
 Writing a Derived Class
 =======================

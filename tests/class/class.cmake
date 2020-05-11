@@ -162,19 +162,52 @@ ct_end_test()
 ct_add_test("cpp_attr")
     include(cmakepp_core/class/class)
 
-    cpp_class(MyClass)
-
     ct_add_section("Signature")
         set(CMAKEPP_CORE_DEBUG_MODE ON)
+
+        cpp_class(MyClass)
 
         ct_add_section("0th argument must be class")
             cpp_attr(TRUE an_attr)
             ct_assert_fails_as("Assertion: bool is convertible to class")
         ct_end_section()
+    ct_end_section()
 
-        ct_add_section("1st argument must be desc")
-            cpp_attr(Myclass TRUE)
-            ct_assert_fails_as("Assertion: bool is convertible to desc")
+    ct_add_section("Can retrieve attributes")
+        # Declare class with functions for getting and printing attributes
+        cpp_class(MyClass)
+            cpp_attr(MyClass a 1)
+            cpp_attr(MyClass b 2)
+            cpp_attr(MyClass c 3)
+            cpp_attr(MyClass d 4)
+
+            # Get multiple attributes one at a time
+            cpp_member(get_single_attrs MyClass)
+            function("${get_single_attrs}" self)
+                MyClass(GET "${self}" _gsa_a a)
+                MyClass(GET "${self}" _gsa_d d)
+                message("${_gsa_a}, ${_gsa_d}")
+            endfunction()
+
+            # Get multiple attributes and return using prefix
+            cpp_member(get_multiple_attrs MyClass)
+            function("${get_multiple_attrs}" self)
+                MyClass(GET "${self}" _gma a b c d)
+                message("${_gma_a}, ${_gma_b}, ${_gma_c}, ${_gma_d}")
+            endfunction()
+        cpp_end_class()
+
+        # Create instance
+        MyClass(CTOR my_instance)
+
+        ct_add_section("Can retrieve a single attribute in one call")
+            MyClass(get_single_attrs "${my_instance}")
+            ct_assert_prints("1, 4")
+        ct_end_section()
+
+        ct_add_section("Can retrieve multiple attributes in one call")
+            MyClass(get_multiple_attrs "${my_instance}")
+            ct_assert_prints("1, 2, 3, 4")
         ct_end_section()
     ct_end_section()
 ct_end_test()
@@ -281,6 +314,35 @@ ct_add_test("cpp_constructor")
             ct_assert_prints("my_attr = 3")
         ct_end_section()
 
+    ct_end_section()
+
+    ct_add_section("KWARGS Constructor")
+        # Define class with three attributes and one function to print them out
+        cpp_class(MyClass)
+            cpp_attr(MyClass a 10)
+            cpp_attr(MyClass b 20)
+            cpp_attr(MyClass c 30)
+
+            cpp_member(MyFunc MyClass)
+            function("${MyFunc}" self)
+                MyClass(GET "${self}" _gma a b c)
+                message("${_gma_a}, ${_gma_b}, ${_gma_c}")
+            endfunction()
+        cpp_end_class()
+
+        ct_add_section("Sets attributes")
+            # Create instance using KWARGS CTOR and call MyFunc
+            MyClass(CTOR my_instance KWARGS a 1 b 2 3 4 c 5 6)
+            MyClass(MyFunc "${my_instance}")
+
+            # Test that the KWARGS CTOR set attributes correctly
+            ct_assert_prints("1, 2;3;4, 5;6")
+        ct_end_section()
+
+        ct_add_section("Raises error when first KWARG is not attribute name")
+            MyClass(CTOR my_instance KWARGS not_an_attr 1 b 2 3 4 c 5 6)
+            ct_assert_fails_as("Instance has no attribute not_an_attr")
+        ct_end_section()
     ct_end_section()
 
     ct_add_section("Calling base class constructor")

@@ -2,10 +2,26 @@ include_guard()
 include(cmakepp_core/class/detail_/bases)
 include(cmakepp_core/object/object)
 include(cmakepp_core/types/cmakepp_type)
+include(cmakepp_core/class/find_ctor)
 
-# TODO docstring
-# Construct a class instance or call CTOR for subobject
+#[[[ Handles the construction of a class instance.
+# TODO
+# This function handles the construction of a new class and calls to the
+# constructors for base classes.
+#
+# :param _cc_this: The handle to the object that will be constructed.
+# :type _cc_this: desc
+# :param _cc_type: The class we are calling the constructor for.
+# :type _cc_type: class
+# :param *args: The arguments the constructor was called with (not including
+#               the instance name and class).
+# :returns: ``_cc_this`` will be set to the mangled name of the newly
+            constructed instance.
+# :rtype: desc
+#]]
 function(cpp_class_ctor _cc_this _cc_type)
+    # cpp_assert_signature("${ARGV}" object class args)
+
     # Check if _cc_this is already an instance
     cpp_type_of(_cc_this_type "${_cc_this}")
     cpp_implicitly_convertible(_cc_conv_to_obj "${_cc_this_type}" "obj")
@@ -29,7 +45,7 @@ function(cpp_class_ctor _cc_this _cc_type)
         cpp_map(GET "${_cc_subobjs}" _cc_subobj "${_cc_type}")
 
         # Try to find a CTOR function of this instance to call
-        cpp_try_ctor("${_cc_subobj}" "${_cc_type}" ${ARGN})
+        _cpp_find_ctor("${_cc_subobj}" "${_cc_type}" ${ARGN})
     else()
         # If type of _cc_this not object then no instance has been
         # created yet, so create a new instance
@@ -37,7 +53,7 @@ function(cpp_class_ctor _cc_this _cc_type)
         _cpp_object_copy("${_cc_state}" "${_cc_this}")
 
         # Try to find a CTOR function of this instance to call
-        cpp_try_ctor("${${_cc_this}}" "${_cc_type}" ${ARGN})
+        _cpp_find_ctor("${${_cc_this}}" "${_cc_type}" ${ARGN})
 
         # Return the new class instance
         set("${_cc_this}" "${${_cc_this}}" PARENT_SCOPE)
