@@ -506,3 +506,49 @@ For example, if a derived class called ``ChildClass`` is defined using:
 
 Then CMakePP will search for attributes / functions in ``ParentClass1`` first
 and then ``ParentClass2``.
+
+Pure Virtual Member Functions
+-----------------------------
+
+CMakePP allows users to define **pure virtual member functions**. These are
+virtual functions with no implementation that can be overridden with an
+implementation in a derived class. We can create ``ParentClass`` with a
+virtual member function ``my_virtual_fxn`` with the following:
+
+.. code-block:: cmake
+
+    cpp_class(ParentClass)
+
+        # Add a virtual member function to be overridden by derived classes
+        cpp_member(my_virtual_fxn ParentClass)
+        cpp_virtual_member(my_virtual_fxn)
+
+    cpp_end_class()
+
+Now we can create a class that derives from ``ParentClass`` and overrides
+``my_virtual_fxn`` called ``ChildClass``:
+
+.. code-block:: cmake
+
+    cpp_class(ChildClass ParentClass)
+
+        # Override the virtual fxn
+        cpp_member(my_virtual_fxn ChildClass)
+        function("${my_virtual_fxn}" self)
+            message("I am an instance of ChildClass")
+        endfunction()
+
+    cpp_end_class()
+
+The overridden implementation can be called with an instance of ``ChildClass``:
+
+.. code-block:: cmake
+
+    ChildClass(CTOR my_instance)
+    ChildClass(my_virtual_fxn "${my_instance}")
+
+.. warning::
+
+    If a call is made to the ``my_virtual_fxn`` function for an instance of
+    ``ParentClass``, CMakePP will throw an error indicating that this function
+    is virtual and must be overridden in a derived class.
