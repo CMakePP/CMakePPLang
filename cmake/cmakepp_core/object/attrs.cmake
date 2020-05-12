@@ -35,6 +35,7 @@ include(cmakepp_core/utilities/return)
 #    checking on its own.
 #]]
 function(_cpp_object_get_attr_guts _ogag_this _ogag_value _ogag_done _ogag_attr)
+    cpp_assert_signature("${ARGV}" obj desc desc)
 
     # Get the list of attributes and determine if the target attr is in it.
     _cpp_object_get_meta_attr("${_ogag_this}" _ogag_attrs "attrs")
@@ -74,16 +75,26 @@ endfunction()
 #
 # This is the "public" API (for the most part users shouldn't be going through
 # the Object API at all) for accessing the attributes of an Object instance.
+# This function can get one attribute or multiple depending on the signature
+# of the call.
+#
+# Single Attribute GET Signature:
+#_cpp_object_get_attr(this value attribute)
+#
+# Here "this" is the object to retrieve the attribute from, "value" is the
+# handle where the attribute is to be returned to the parent scope, and
+# "attribute" is the name of the attribute to be retrieved.
+#
+# Multiple Attribute GET Signature:
+# _cpp_object_get_attr(this prefix attrs)
+#
+# Here is the object to retrieve the attributes from, prefix will be prepended
+# to the each attributes name and used as the handle where that attribute is
+# returned to the parent scope, and attributes is the list of attributes to
+# retrieve.
 #
 # :param _oga_this: The object whose attribute is being accessed.
 # :type _oga_this: obj
-# :param _oga_value: Name for the identifier which will hold the value of the
-#                    attribute.
-# :type _oga_value: desc
-# :param _oga_attr: Name of the attribute whose value we want.
-# :type _oga_attr: desc
-# :returns: ``_oga_value`` will be set to the value of the attribute.
-# :rtype: str
 #
 # Error Checking
 # ==============
@@ -101,18 +112,50 @@ endfunction()
 # requested attribute. If the object does not posses the attribute an error will
 # be raised.
 #]]
-function(_cpp_object_get_attr _oga_this _oga_value _oga_attr)
-    cpp_assert_signature("${ARGV}" obj desc desc)
+function(_cpp_object_get_attr _oga_this)
+    cpp_assert_signature("${ARGV}" obj args)
 
-    _cpp_object_get_attr_guts(
-        "${_oga_this}" "${_oga_value}" _oga_found "${_oga_attr}"
-    )
+    # Check arg types to determine type of call
+    if(${ARGC} GREATER 3)
+        # If more than 3 args, then multiple attributes and a prefix were passed
+        # in, so get the prefix and list of attrs to get
+        set(_oga_prefix "${ARGV1}")
+        list(SUBLIST ARGN 1 -1 _oga_attrs)
 
-    if(_oga_found)
-        cpp_return("${_oga_value}")
+        # Loop over all attributes
+        foreach(_oga_attr ${_oga_attrs})
+            # Attempt to find the attribute
+            _cpp_object_get_attr_guts(
+                "${_oga_this}" _oga_value _oga_found "${_oga_attr}"
+            )
+
+            if(_oga_found)
+                # Return the variable using the prefix if it is found
+                set("${_oga_prefix}_${_oga_attr}" "${_oga_value}" PARENT_SCOPE)
+            else()
+                # Otherwise throw an error
+                message(FATAL_ERROR "Instance has no attribute ${_oga_attr}")
+            endif()
+        endforeach()
+    else()
+        # If only 2 args, then an attribute an result identifier were passed in
+        # Get the attr and value handle that will contain the result
+        set(_oga_value "${ARGV1}")
+        set(_oga_attr "${ARGV2}")
+
+        # Attempt to find the attr
+        _cpp_object_get_attr_guts(
+            "${_oga_this}" "${_oga_value}" _oga_found "${_oga_attr}"
+        )
+
+        # If it is found, return it
+        if(_oga_found)
+            cpp_return("${_oga_value}")
+        endif()
+
+        # Throw an error if is not found
+        message(FATAL_ERROR "Instance has no attribute ${_oga_attr}")
     endif()
-
-    message(FATAL_ERROR "Instance has no attribute ${_oga_attr}")
 endfunction()
 
 #[[[ Sets the value of an Object instance's attribute.

@@ -26,7 +26,9 @@ set(
 #]]
 function(_cpp_class_guts _cg_type _cg_wrapper)
     if("${ARGC}" EQUAL 2)
+        # No parent classes passed in, only inherit from obj
         set(_cg_bases "obj")
+        # Use the obj singleton as the base instance
         set(_cg_base_instances "${__CMAKEPP_CORE_OBJECT_SINGLETON__}")
     else()
         set(_cg_bases "")
@@ -127,6 +129,39 @@ function(cpp_member _m_name _m_type)
     cpp_get_global(_m_state "${_m_type}__state")
     _cpp_object_add_fxn("${_m_state}" "${_m_name}" "${_m_type}" ${ARGN})
     cpp_return("${_m_name}")
+endfunction()
+
+#[[[ Registers a class constructor.
+#
+# This function is used to declare a class constructor.
+#
+# :param _c_name: The name of the constructor (CTOR by convention). This will be
+#                 the named used to invoke the member constructor.
+# :type _c_name: desc
+# :param _c_type: The class we are adding the constructor to.
+# :type _c_type: class
+# :param *args: The types of the arguments to the constructor function.
+# :returns: ``_c_name`` will be set to the mangled name of the declared
+#            constructor to facilitate implementing it.
+# :rtype: desc
+#
+# Error Checking
+# ==============
+#
+# If CMakePP is run in debug mode (and only if) this function will assert that
+# it is called with the correct number and types of arguments. If any of these
+# assertions fail an error will be raised.
+#
+# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                               debug mode or not.
+# :vartype CMAKEPP_CORE_DEBUG_MODE: bool
+#]]
+function(cpp_constructor _c_name _c_type)
+    cpp_assert_signature("${ARGV}" desc class args)
+
+    cpp_get_global(_c_state "${_c_type}__state")
+    _cpp_object_add_fxn("${_c_state}" "${_c_name}" "desc" ${ARGN})
+    cpp_return("${_c_name}")
 endfunction()
 
 #[[[ Registers a class's attribute.

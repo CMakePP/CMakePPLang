@@ -29,26 +29,15 @@ ct_add_test("_cpp_object_get_attr")
 
     ct_add_section("Signature")
         set(CMAKEPP_CORE_DEBUG_MODE ON)
-
         ct_add_section("0th argument must be obj")
             _cpp_object_get_attr(TRUE result attr)
             ct_assert_fails_as("Assertion: bool is convertible to obj failed.")
         ct_end_section()
+    ct_end_section()
 
-        ct_add_section("1st argument must be desc")
-            _cpp_object_get_attr("${an_obj}" TRUE attr)
-            ct_assert_fails_as("Assertion: bool is convertible to desc failed.")
-        ct_end_section()
-
-        ct_add_section("2nd argument must be desc")
-            _cpp_object_get_attr("${an_obj}" result TRUE)
-            ct_assert_fails_as("Assertion: bool is convertible to desc failed.")
-        ct_end_section()
-
-        ct_add_section("Takes exactly 3 arguments")
-            _cpp_object_get_attr("${an_obj}" result key hello)
-            ct_assert_fails_as("Function takes 3 argument(s), but 4 was/were")
-        ct_end_section()
+    ct_add_section("Fails if attribute does not exist")
+        _cpp_object_get_attr("${an_obj}" result not_an_attr)
+        ct_assert_fails_as("Instance has no attribute not_an_attr")
     ct_end_section()
 
     ct_add_section("Fails if attribute does not exist")

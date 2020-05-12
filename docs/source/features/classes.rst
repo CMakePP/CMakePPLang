@@ -30,25 +30,88 @@ Optionally, users can provide the name of the class being defined to the
 
 .. code-block:: cmake
 
-  # Begin class definition of class MyClass
-  cpp_class(MyClass)
+    # Begin class definition of class MyClass
+    cpp_class(MyClass)
 
-    # Class attribute and functions go here
+        # Class attribute and functions go here
 
-  # End class definition
-  cpp_end_class(MyClass)
+    # End class definition
+    cpp_end_class(MyClass)
 
-Instantiation
-=============
+Constructors and Instantiation
+==============================
 
-Once a class is declared, an instance of that class can be created. For example
-an instance of a class ``MyClass`` with the variable name ``my_instance`` can be
-created using the following:
+Classes can be instantiated in a variety of ways.
+
+Default Constructor
+-------------------
+
+Once a class is declared, an instance of that class can be created by using the
+default constructor for the class. No constructor definition is required. All
+attributes of the calss will simply take their default value. An instance of a
+class ``MyClass`` with the variable name ``my_instance`` can be created using
+the default constructor for the class with the following:
 
 .. code-block:: cmake
 
   # Create an instance of MyClass with the name "my_instance"
   MyClass(CTOR my_instance)
+
+Custom Constructor
+------------------
+
+Users can define custom constructors to do the initial setup of their class
+upon construction. Below is an example of a class with a custom constructor
+and instantiation of that class:
+
+.. code-block:: cmake
+
+  cpp_class(MyClass)
+
+      # Define a custom constructor
+      cpp_constructor(CTOR MyClass int int)
+      function("${CTOR}" self a b)
+         # Do set up using arguments passed to constructors
+      endfunction()
+
+  cpp_end_class()
+
+  # Create an instance of MyClass using the custom constructor
+  MyClass(CTOR my_instance 100 20)
+
+Multiple constructors can be defined for a class as long as they have different
+signatures. CMakePP will automatically find the implementation whose signature
+matches the parameters passed in and execute it.
+
+KWARGS Constructor
+------------------
+
+Another way to instantiate a class is using the **KWARGS constructor**. This
+constructor allows users to pass in attribute values that will be automatically
+assigned for the newly constructed instance. Say we have the following class
+with some attributes:
+
+.. code-block:: cmake
+
+    # Define class with some attributes
+    cpp_class(MyClass)
+
+        cpp_attr(MyClass attr_a)
+        cpp_attr(MyClass attr_b)
+        cpp_attr(MyClass attr_c)
+
+    cpp_end_class()
+
+Then we can use the **KWARGS constructor** to set the values of those attributes
+upon construction using the following:
+
+.. code-block:: cmake
+
+    # Create an instance of MyClass using the KWARGS constructor
+    MyClass(CTOR my_instance KWARGS attr_a 1 attr_b 2 3 4 attr_c 5 6)
+
+Here the ``attr_a`` would take the value of ``1``, ``attr_b`` would take the
+value of ``2;3;4``, and ``attr_c`` would take the value of ``5;6``.
 
 Attributes
 ==========
@@ -89,7 +152,19 @@ Getting and Setting Attributes
 ------------------------------
 
 The attributes of a class are accessed by using the ``GET`` and ``SET``
-keywords. The value of an attribute is retrieved using:
+keywords.The value of an attribute is set using:
+
+.. code-block:: cmake
+
+  # Set the value of "my_attr" to "my_value"
+  MyClass(SET "${my_instance}" my_attr my_value)
+
+Here ``my_instance`` is the name of the instance whose attribute you want to
+set, ``my_attr`` is where the name of the attribute you want to set, and
+``my_value`` is the value you want to set the attribute to.
+
+Attributes can be retrieved in one of two ways. The first way is to retrieve
+attributes one at a time. That can be done using the following call to ``GET``:
 
 .. code-block:: cmake
 
@@ -100,16 +175,19 @@ Here ``my_instance`` is the name of the instance whose attribute you want to
 access, ``my_result`` is where the value will be stored, and ``my_attr`` is
 the name of the attribute being accessed.
 
-The value of an attribute is set using:
+Another way to get multiple attributes is to get multiple at a time and have
+them returned using a prefix. This is done with a call like the following
 
 .. code-block:: cmake
 
-  # Set the value of "my_attr" to "my_value"
-  MyClass(SET "${my_instance}" my_attr my_value)
+    # Get attrs and store them at _pre_attr_a, _pre_attr_b, and _pre_attr_c
+    MyClass(GET "${my_instance}" _pre attr_a attr_b attr_c)
 
-Here ``my_instance`` is the name of the instance whose attribute you want to
-set, ``my_attr`` is where the name of the attribute you want to set, and
-``my_value`` is the value you want to set the attribute to.
+Here ``my_instance`` is the name of the instance whose attributes you want to
+access, ``_pre`` is prefix that will be prepended to each attributes name to
+create the variable name where the attributes will be stored in the current
+scope, and ``attr_a``, ``attr_b``, and ``attr_c`` are the name of the attributes
+being accessed.
 
 Member Functions
 ================

@@ -35,6 +35,9 @@ ct_add_test("_cpp_object_singleton")
         cpp_map(
             SET "${corr}" "_cpp_obj_serialize_obj_desc_" [[serialize;obj;desc]]
         )
+        cpp_map(
+            SET "${corr}" "_cpp_obj_ctor_desc_" [[ctor;desc]]
+        )
 
         cpp_map(EQUAL "${corr}" result "${the_fxns}")
         ct_assert_equal(result TRUE)
