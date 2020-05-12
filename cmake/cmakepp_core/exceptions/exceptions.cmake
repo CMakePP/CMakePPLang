@@ -4,7 +4,7 @@ include_guard()
 cpp_map(CTOR _exception_handlers)
 cpp_set_global("_CPP_EXCEPTION_HANDLERS_" "${_exception_handlers}")
 
-#
+# TODO docstring
 function(cpp_catch _c_name _c_exec_type)
     cpp_assert_signature("${ARGV}" desc desc)
 
@@ -22,10 +22,8 @@ function(cpp_catch _c_name _c_exec_type)
     cpp_return("${_c_name}")
 endfunction()
 
-#
+# TODO docstring
 function(cpp_raise _r_exec_type)
-    # Check that we're within a try block
-
     # Get the map of exception handlers and attempt to get the handler for
     # this type from the map
     cpp_get_global(_r_exception_handlers "_CPP_EXCEPTION_HANDLERS_")
@@ -42,7 +40,6 @@ endfunction()
 macro(cpp_try)
     # set count indicating that we're within another try
 endmacro()
-
 
 macro(cpp_end_try_catch)
     # decrement count indicating that we've left a try block
