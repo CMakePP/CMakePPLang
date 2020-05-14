@@ -1,7 +1,8 @@
 include(cmake_test/cmake_test)
-include(cmakepp_core/exceptions/exceptions)
 
 ct_add_test("cpp_catch")
+    include(cmakepp_core/exceptions/exceptions)
+
     ct_add_section("Signature")
         set(CMAKEPP_CORE_DEBUG_MODE ON)
 
@@ -48,6 +49,8 @@ ct_add_test("cpp_catch")
 ct_end_test()
 
 ct_add_test("cpp_raise")
+    include(cmakepp_core/exceptions/exceptions)
+
     ct_add_section("Signature")
         set(CMAKEPP_CORE_DEBUG_MODE ON)
 
@@ -63,6 +66,8 @@ ct_add_test("cpp_raise")
 ct_end_test()
 
 ct_add_test("cpp_end_try_catch")
+    include(cmakepp_core/exceptions/exceptions)
+
     ct_add_section("Signature")
         set(CMAKEPP_CORE_DEBUG_MODE ON)
 
