@@ -1,7 +1,6 @@
 include_guard()
 include(cmakepp_core/map/map)
 include(cmakepp_core/utilities/global)
-include(cmakepp_core/utilities/global)
 include(cmakepp_core/utilities/call_fxn)
 
 # Create the global exception handlers map
