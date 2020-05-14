@@ -200,6 +200,34 @@ ct_add_test("cpp_attr")
             ct_assert_equal(res_d 4)
         ct_end_section()
     ct_end_section()
+
+    ct_add_section("Can set attributes")
+        # Declare class with attributes
+        cpp_class(MyClass)
+            cpp_attr(MyClass a 1)
+            cpp_attr(MyClass b 2)
+        cpp_end_class()
+
+        # Create instance
+        MyClass(CTOR my_instance)
+
+        ct_add_section("Can set attributes as single value")
+            # Set attribute as single value
+            MyClass(SET "${my_instance}" a 3)
+            # Get the value and ensure it was set correctly
+            MyClass(GET "${my_instance}" res a)
+            ct_assert_equal(res 3)
+        ct_end_section()
+
+        ct_add_section("Can set attribute as list of values")
+            # Set attribute as a list of values
+            MyClass(SET "${my_instance}" b 1 2 3)
+            # Get the value and ensure it was set correctly
+            MyClass(GET "${my_instance}" res b)
+            ct_assert_equal(res "1;2;3")
+        ct_end_section()
+
+    ct_end_section()
 ct_end_test()
 
 ct_add_test("cpp_constructor")
