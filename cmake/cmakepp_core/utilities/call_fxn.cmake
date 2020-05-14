@@ -20,7 +20,7 @@ function(_cpp_call_fxn_guts _cfg_fxn2call _cfg_result)
     # parsed as lists)
     set(_cfg_args_list "")
     foreach(_cfg_current_arg ${ARGN}) # Loop over all args
-        string(APPEND _cfg_args_list " \"${_cfg_current_arg}\" ")
+        string(APPEND _cfg_args_list "\"${_cfg_current_arg}\" ")
     endforeach()
 
     # Write a .cmake file that calls the function

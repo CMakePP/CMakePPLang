@@ -33,7 +33,7 @@ function(cpp_unique_id _ui_id)
 
     # Prepend a random prefix onto the time
     string(RANDOM _ui_prefix)
-    string(TOLOWER "${_ui_prefix}_${_ui_time}" "${_ui_id}")
+    string(TOLOWER "cpp_${_ui_prefix}_${_ui_time}" "${_ui_id}")
 
     cpp_return("${_ui_id}")
 endfunction()

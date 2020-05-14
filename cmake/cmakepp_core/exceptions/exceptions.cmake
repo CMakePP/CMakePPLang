@@ -44,18 +44,22 @@ function(cpp_catch _c_exec_type)
     # Get the map of exception handlers
     cpp_get_global(_c_exception_handlers "_CPP_EXCEPTION_HANDLERS_")
 
-    # Check if an exception handler already exists for this type, if so
-    # throw an error
-    cpp_map(HAS_KEY "${_c_exception_handlers}" _c_has_key "${_c_exec_type}")
-    if(_c_has_key)
-        message(FATAL_ERROR "A handler is already set for this exception type")
-    endif()
-
     # Create unique function name
     cpp_unique_id("${_c_exec_type}")
 
+    # Check if this key already exists in the map
+    cpp_map(HAS_KEY "${_c_exception_handlers}" _c_has_key "${_c_exec_type}")
+    if(_c_has_key)
+        # If it exists, append this handler to the list of handlers
+        cpp_map(APPEND "${_c_exception_handlers}"
+                "${_c_exec_type}" "${${_c_exec_type}}")
+    else()
+        # If it doesn't, add this handler
+        cpp_map(SET "${_c_exception_handlers}"
+                "${_c_exec_type}" "${${_c_exec_type}}")
+    endif()
+
     # Update map of exception handlers for this exception type
-    cpp_map(SET "${_c_exception_handlers}" "${_c_exec_type}" "${${_c_exec_type}}")
     cpp_set_global("_CPP_EXCEPTION_HANDLERS_" "${_exception_handlers}")
 
     # Return the function name
@@ -90,12 +94,14 @@ function(cpp_raise _r_exec_type)
     # Get the map of exception handlers and attempt to get the handler for
     # this type from the map
     cpp_get_global(_r_exception_handlers "_CPP_EXCEPTION_HANDLERS_")
-    cpp_map(GET "${_r_exception_handlers}" _r_fxn_2_call "${_r_exec_type}")
+    cpp_map(GET "${_r_exception_handlers}" _r_handlers_list "${_r_exec_type}")
 
-    # Call the function if its found, else throw an error
-    if("${_r_fxn_2_call}" STREQUAL "")
-        message(FATAL_ERROR "No exception handler for exception type ${_r_exec_type}")
+    # If the list is empty, throw an error, otherwise get the last handler
+    # and call it
+    if("${_r_handlers_list}" STREQUAL "")
+        message(FATAL_ERROR "Uncaught ${_r_exec_type} exception: ${ARGV}")
     else()
+        list(GET _r_handlers_list -1 _r_fxn_2_call)
         cpp_call_fxn("${_r_fxn_2_call}" "${ARGN}")
     endif()
 endfunction()
@@ -139,7 +145,15 @@ endmacro()
 function(cpp_end_try_catch _etc_exec_type)
     cpp_assert_signature("${ARGV}" desc)
 
-    # Remove the handler for this exception type
+    # Get the handlers for this type
     cpp_get_global(_etc_exception_handlers "_CPP_EXCEPTION_HANDLERS_")
-    cpp_map(SET "${_etc_exception_handlers}" "${_etc_exec_type}" "")
+    cpp_map(GET "${_etc_exception_handlers}" _etc_handlers_list "${_etc_exec_type}")
+
+    # Remove the last handler for this exception type from the list
+    list(LENGTH _etc_handlers_list _etc_len)
+    math(EXPR _etc_len_sub_1 "${_etc_len} - 1")
+    list(SUBLIST _etc_handlers_list 0 "${_etc_len_sub_1}" _etc_new_handlers_list)
+
+    # Update the list of handlers for this type
+    cpp_map(SET "${_etc_exception_handlers}" "${_etc_exec_type}" "${_etc_new_handlers_list}")
 endfunction()
