@@ -28,8 +28,18 @@ constructor:
   # Create a map with initial key value pairs
   cpp_map(CTOR my_map key_a value_a key_b value_b)
 
-Setting of Values
-=================
+Accessing Values
+================
+
+Values can be accessed using ``GET`` keyword:
+
+.. code-block:: cmake
+
+    # Access the value at my_key and store it in my_result
+    cpp_map(GET "${my_map}" my_result my_key)
+
+Setting Values
+==============
 
 Values can be set by using the ``SET`` keyword:
 
@@ -38,12 +48,52 @@ Values can be set by using the ``SET`` keyword:
     # Set the value of my_key to my_value
     cpp_map(SET "${my_map}" my_key my_value)
 
-Accessing of Values
-===================
+Appending Values
+================
 
-Values can be accessed using ``GET`` keyword:
+Values can be appended by using the ``APPEND`` keyword:
 
 .. code-block:: cmake
 
-    # Access the value at my_key and store it in my_result
-    cpp_map(GET "${my_map}" my_result my_key)
+    # Append new_value to the value at my_key
+    cpp_map(APPEND "${my_map}" my_key new_value)
+
+Copying a Map
+=============
+
+Maps can be copied using the ``COPY`` keyword:
+
+.. code-block:: cmake
+
+    # Copy my_map to my_map_copy
+    cpp_map(COPY "${my_map}" my_map_copy)
+
+Checking Equality of Maps
+=========================
+
+Map equality can be checked using the ``EQUAL`` keyword:
+
+.. code-block:: cmake
+
+    # Check if map_a is equivalent to map_b
+    cpp_map(EQUAL "${map_a}" equal_result "${map_b}")
+
+Checking if a Map has a Key
+===========================
+
+Check whether the map contains a key with the ``HAS_KEY`` keyword:
+
+.. code-block:: cmake
+
+    # Check whether the map has the key "my_key"
+    cpp_map(HAS_KEY "${my_map}" has_key_result my_key)
+
+Getting a Map's Keys
+====================
+
+A list of a map's keys can be retrieved using the ``KEYS`` keyword:
+
+.. code-block:: cmake
+
+    # Put the list of the map's keys in keys_list
+    cpp_map(KEYS "${my_map}" keys_list)

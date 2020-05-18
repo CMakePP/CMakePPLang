@@ -62,3 +62,53 @@ constructor in the following way:
   # Output:
   # result_a: value_a
   # result_b: value_b
+
+Appending Values
+================
+
+We can append values to an existing value using the ``APPEND`` keyword:
+
+.. code-block:: cmake
+
+  # Append new_value to the value at my_key
+  cpp_map(APPEND "${my_map}" my_key new_value)
+
+Copying a Map
+=============
+
+We can copy a map using the ``COPY`` keyword:
+
+.. code-block:: cmake
+
+  # Copy my_map to my_map_copy
+  cpp_map(COPY "${my_map}" my_map_copy)
+
+Checking Equality of Maps
+=========================
+
+We can check for equality between maps using the ``EQUAL`` keyword:
+
+.. code-block:: cmake
+
+  # Check if map_a is equivalent to map_b
+  cpp_map(EQUAL "${map_a}" equal_result "${map_b}")
+
+Checking if a Map has a Key
+===========================
+
+We can check whether a map contains a key with the ``HAS_KEY`` keyword:
+
+.. code-block:: cmake
+
+  # Check whether the map has the key "my_key"
+  cpp_map(HAS_KEY "${my_map}" has_key_result my_key)
+
+Getting a Map's Keys
+====================
+
+We can get a list of a map's keys using the ``KEYS`` keyword:
+
+.. code-block:: cmake
+
+  # Put the list of the map's keys in keys_list
+  cpp_map(KEYS "${my_map}" keys_list)
