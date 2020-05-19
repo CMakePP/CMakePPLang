@@ -11,7 +11,7 @@ an exception can be thrown using the ``cpp_raise`` command.
 Basic Try-Catch Block
 =====================
 
-A basic Try-Catch Block for an exception type named ``FileNotFound`` looks like
+A basic try-catch block for an exception type named ``FileNotFound`` looks like
 this:
 
 .. code-block:: cmake
@@ -36,15 +36,55 @@ Multiple exception handlers for different types of exceptions can be declared:
 
 .. code-block:: cmake
 
-    # Set the value of my_key to my_value
-    cpp_map(SET "${my_map}" my_key my_value)
+    # Add two exception handlers
+    cpp_catch(FileNotFound ConnectionFailure)
+    function("${FileNotFound}" message)
+        message("FileNotFound Exception Occured")
+        message("Details: ${message}")
+    endfunction()
+    function("${ConnectionFailure}" message)
+        message("ConnectionFailure Exception Occured")
+        message("Details: ${message}")
+    endfunction()
+
+    # Begin the try block
+    cpp_try()
+        # Raise a FileNotFound Exception
+        cpp_raise(FileNotFound "The file doesn't exist!")
+        # Raise a ConnectionFailure Exception
+        cpp_raise(ConnectionFailure "The file doesn't exist!")
+    cpp_end_try_catch(FileNotFound)
 
 Nested Try-Catch Blocks
 =======================
 
-Example showing nested exception handler:
+If a try-catch block for an exception type is nested within a try-catch block
+of the same exception type, the handler declared by the deepest try-catch
+block will be called:
 
 .. code-block:: cmake
 
-    # Access the value at my_key and store it in my_result
-    cpp_map(GET "${my_map}" my_result my_key)
+    # Declare an exception handler for the outer try-catch block
+    cpp_catch(FileNotFound)
+    function("${FileNotFound}" message)
+        message("Outer FileNotFound Handler")
+        message("Details: ${message}")
+    endfunction()
+
+    # Begin outer try block
+    cpp_try()
+
+        # Declare an exception handler for the inner try-catch block
+        cpp_catch(FileNotFound)
+        function("${FileNotFound}" message)
+            message("Inner FileNotFound Handler")
+            message("Details: ${message}")
+        endfunction()
+
+        # Begin the inner try block
+        cpp_try()
+            # Raise an exception (calling the inner handler)
+            cpp_raise(FileNotFound "The file doesn't exist!")
+        cpp_end_try_catch(FileNotFound)
+
+    cpp_end_try_catch(FileNotFound)
