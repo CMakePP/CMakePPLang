@@ -170,12 +170,10 @@ endfunction()
 # :type _osa_this: obj
 # :param _osa_attr: The name of the attribute we are setting.
 # :type _osa_attr: desc
-# :param _osa_value: The value we are setting the attribute to.
-# :type _osa_value: str
+# :param *args: The value or values the attribute will be set as.
 #]]
-function(_cpp_object_set_attr _osa_this _osa_attr _osa_value)
-    cpp_assert_signature("${ARGV}" obj desc str)
-
+function(_cpp_object_set_attr _osa_this _osa_attr)
+    cpp_assert_signature("${ARGV}" obj desc args)
     _cpp_object_get_meta_attr("${_osa_this}" _osa_attrs "attrs")
-    cpp_map(SET "${_osa_attrs}" "${_osa_attr}" "${_osa_value}")
+    cpp_map(SET "${_osa_attrs}" "${_osa_attr}" "${ARGN}")
 endfunction()
