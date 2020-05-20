@@ -168,8 +168,6 @@ function(cpp_end_try_catch)
     endif()
 
     foreach(_etc_exce_type_i ${ARGN})
-        cpp_assert_signature("${ARGV}" desc)
-
         # Get the handlers for this type
         cpp_get_global(_etc_exception_handlers "_CPP_EXCEPTION_HANDLERS_")
         cpp_map(GET "${_etc_exception_handlers}" _etc_handlers_list "${_etc_exce_type_i}")

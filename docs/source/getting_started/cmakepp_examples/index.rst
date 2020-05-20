@@ -14,6 +14,4 @@ CMakePP automatically. If you have not done this step, please see
    :numbered:
 
    classes
-   exceptions
-   maps
    utilities
