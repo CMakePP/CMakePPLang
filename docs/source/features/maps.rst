@@ -5,9 +5,8 @@ Maps
 CMakePP provides the ``map`` type for storing key-value pairs. The CMakePP
 ``map`` provides the same basic functionality as C++'s ``std:map``, Python's
 ``dictionary``, or JavaScript's **Associative Array** structure. Users can use
-maps in there code wherever they see fit. Examples of using maps are provided in
-:ref:`using-maps` the section. A basic overview of the features is provided
-below.
+maps in there code wherever they see fit. A basic overview of the features is
+provided below.
 
 Map Creation
 ============
