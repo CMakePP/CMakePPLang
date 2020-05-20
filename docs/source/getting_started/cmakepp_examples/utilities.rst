@@ -88,8 +88,8 @@ We can use the ``cpp_contains`` function to check if a certain value is
 contained within another variable. The behavior changes depending on the type of
 the variable we are examining.
 
-Descs
------
+Check if a Desc Contains a Substring
+------------------------------------
 
 We can use ``cpp_contains`` to check if a desc contains a substring:
 
@@ -113,8 +113,8 @@ We can use ``cpp_contains`` to check if a desc contains a substring:
   # Desc contains "a"? TRUE
   # Desc contains "foo"? FALSE
 
-Lists
------
+Check if a List Contains a Value
+--------------------------------
 
 We can use ``cpp_contains`` to check if a list contains a value:
 
@@ -142,8 +142,8 @@ We can use ``cpp_contains`` to check if a list contains a value:
 
   ``cpp_contains`` can take CMakePP objects and maps as search values.
 
-Maps
-----
+Check if a Map Contains a Key
+-----------------------------
 
 We can use ``cpp_contains`` to check if a map contains a key:
 

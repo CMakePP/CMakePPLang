@@ -159,6 +159,55 @@ ct_add_test("cpp_member")
     ct_end_section()
 ct_end_test()
 
+ct_add_test("cpp_virtual_member")
+    include(cmakepp_core/class/class)
+
+    ct_add_section("Signature")
+        set(CMAKEPP_CORE_DEBUG_MODE ON)
+
+        cpp_class(MyClass)
+
+        ct_add_section("0th argument must be a desc")
+            cpp_virtual_member(TRUE my_virtual_fxn)
+            ct_assert_fails_as("Assertion: bool is convertible to desc")
+        ct_end_section()
+    ct_end_section()
+
+    # Define a base class with a virtual member
+    cpp_class(BaseClass)
+        cpp_member(my_virtual_fxn BaseClass)
+        cpp_virtual_member(my_virtual_fxn)
+    cpp_end_class()
+
+    # Define a derived class that overrides the virtual member
+    cpp_class(DerivedClass BaseClass)
+        cpp_member(my_virtual_fxn DerivedClass)
+        function("${my_virtual_fxn}" self)
+            message("Overridden implementation")
+        endfunction()
+    cpp_end_class()
+
+    ct_add_section("Cannot call virtual member")
+        # Create an instance of the base class and attempt to call the virtual
+        # member
+        BaseClass(CTOR base_instance)
+        BaseClass(my_virtual_fxn "${base_instance}")
+
+        # Assert an error message is thrown
+        ct_assert_fails_as("my_virtual_fxn is pure virtual and must be")
+    ct_end_section()
+
+    ct_add_section("Can override virtual member")
+        # Create an instance of the derived class and attempt to call the
+        # implementation that overrides the virtual member
+        DerivedClass(CTOR derived_instance)
+        DerivedClass(my_virtual_fxn "${derived_instance}")
+
+        # Assert the derived implemntation was called
+        ct_assert_prints("Overridden implementation")
+    ct_end_section()
+ct_end_test()
+
 ct_add_test("cpp_attr")
     include(cmakepp_core/class/class)
 

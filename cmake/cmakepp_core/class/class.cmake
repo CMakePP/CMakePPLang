@@ -131,6 +131,25 @@ function(cpp_member _m_name _m_type)
     cpp_return("${_m_name}")
 endfunction()
 
+#[[[ Registers a class's virtual member function.
+#
+# This function is used to declare a new virtual member function that has no
+# concrete implementation and must be overridden by a derived class.
+#
+# :param _vm_fxn_name: The name of the virtual member function.
+# :type _vm_fxn_name: desc
+#]]
+macro(cpp_virtual_member _vm_fxn_name)
+    cpp_assert_signature("${ARGV}" desc class)
+
+    function("${${_vm_fxn_name}}")
+        message(
+            FATAL_ERROR
+            "${_vm_fxn_name} is pure virtual and must be overriden by derived class"
+        )
+    endfunction()
+endmacro()
+
 #[[[ Registers a class constructor.
 #
 # This function is used to declare a class constructor.
