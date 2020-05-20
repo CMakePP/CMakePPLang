@@ -223,41 +223,59 @@ ct_add_test("cpp_attr")
     ct_end_section()
 
     ct_add_section("Can retrieve attributes")
-        # Declare class with functions for getting and printing attributes
+        # Declare class with attributes
         cpp_class(MyClass)
             cpp_attr(MyClass a 1)
             cpp_attr(MyClass b 2)
             cpp_attr(MyClass c 3)
             cpp_attr(MyClass d 4)
-
-            # Get multiple attributes one at a time
-            cpp_member(get_single_attrs MyClass)
-            function("${get_single_attrs}" self)
-                MyClass(GET "${self}" _gsa_a a)
-                MyClass(GET "${self}" _gsa_d d)
-                message("${_gsa_a}, ${_gsa_d}")
-            endfunction()
-
-            # Get multiple attributes and return using prefix
-            cpp_member(get_multiple_attrs MyClass)
-            function("${get_multiple_attrs}" self)
-                MyClass(GET "${self}" _gma a b c d)
-                message("${_gma_a}, ${_gma_b}, ${_gma_c}, ${_gma_d}")
-            endfunction()
         cpp_end_class()
 
         # Create instance
         MyClass(CTOR my_instance)
 
         ct_add_section("Can retrieve a single attribute in one call")
-            MyClass(get_single_attrs "${my_instance}")
-            ct_assert_prints("1, 4")
+            MyClass(GET "${my_instance}" res_1 a)
+            MyClass(GET "${my_instance}" res_2 d)
+            ct_assert_equal(res_1 1)
+            ct_assert_equal(res_2 4)
         ct_end_section()
 
         ct_add_section("Can retrieve multiple attributes in one call")
-            MyClass(get_multiple_attrs "${my_instance}")
-            ct_assert_prints("1, 2, 3, 4")
+            MyClass(GET "${my_instance}" res a b c d)
+            ct_assert_equal(res_a 1)
+            ct_assert_equal(res_b 2)
+            ct_assert_equal(res_c 3)
+            ct_assert_equal(res_d 4)
         ct_end_section()
+    ct_end_section()
+
+    ct_add_section("Can set attributes")
+        # Declare class with attributes
+        cpp_class(MyClass)
+            cpp_attr(MyClass a 1)
+            cpp_attr(MyClass b 2)
+        cpp_end_class()
+
+        # Create instance
+        MyClass(CTOR my_instance)
+
+        ct_add_section("Can set attributes as single value")
+            # Set attribute as single value
+            MyClass(SET "${my_instance}" a 3)
+            # Get the value and ensure it was set correctly
+            MyClass(GET "${my_instance}" res a)
+            ct_assert_equal(res 3)
+        ct_end_section()
+
+        ct_add_section("Can set attribute as list of values")
+            # Set attribute as a list of values
+            MyClass(SET "${my_instance}" b 1 2 3)
+            # Get the value and ensure it was set correctly
+            MyClass(GET "${my_instance}" res b)
+            ct_assert_equal(res "1;2;3")
+        ct_end_section()
+
     ct_end_section()
 ct_end_test()
 
@@ -279,24 +297,19 @@ ct_add_test("cpp_constructor")
     ct_end_section()
 
     ct_add_section("No custom constructor defined")
-        # Define class with no CTOR and one member function
+        # Define class with no CTOR
         cpp_class(MyClass)
-            cpp_member(MyFunc MyClass int)
-            function("${MyFunc}" self a)
-                    message("a = ${a}")
-            endfunction()
+            cpp_attr(MyClass my_attr 1)
         cpp_end_class()
 
-        # Create instance and call MyFunc
+        # Create instance
         MyClass(CTOR my_instance)
-        MyClass(MyFunc "${my_instance}" 1)
-
-        # Test that MyFunc was called
-        ct_assert_prints("a = 1")
+        MyClass(GET "${my_instance}" res my_attr)
+        ct_assert_equal(res 1)
     ct_end_section()
 
     ct_add_section("Single custom constructor defined")
-        # Define class with one CTOR, one attribute, and one member function
+        # Define class with one custom CTOR
         cpp_class(MyClass)
             cpp_attr(MyClass my_attr 1)
 
@@ -304,24 +317,16 @@ ct_add_test("cpp_constructor")
             function("${CTOR}" self)
                 MyClass(SET "${self}" my_attr 2)
             endfunction()
-
-            cpp_member(MyFunc MyClass)
-            function("${MyFunc}" self)
-                MyClass(GET "${self}" attr my_attr)
-                message("my_attr = ${attr}")
-            endfunction()
         cpp_end_class()
 
-        # Create instance and call MyFunc
+        # Create instance and test that the custom CTOR was called
         MyClass(CTOR my_instance)
-        MyClass(MyFunc "${my_instance}")
-
-        # Test that the CTOR was called
-        ct_assert_prints("my_attr = 2")
+        MyClass(GET "${my_instance}" res my_attr)
+        ct_assert_equal(res 2)
     ct_end_section()
 
     ct_add_section("Multiple custom constructor defined")
-        # Define class with one CTOR, one attribute, and one member function
+        # Define class with multiple cuustom CTORs
         cpp_class(MyClass)
             cpp_attr(MyClass my_attr 1)
 
@@ -336,56 +341,39 @@ ct_add_test("cpp_constructor")
                 # Change value of my_attr
                 MyClass(SET "${self}" my_attr "${a}")
             endfunction()
-
-            cpp_member(MyFunc MyClass)
-            function("${MyFunc}" self)
-                # Get and print value of my_attr
-                MyClass(GET "${self}" attr my_attr)
-                message("my_attr = ${attr}")
-            endfunction()
         cpp_end_class()
 
         ct_add_section("1st constructor with no parameters can be called")
-            # Create instance and call MyFunc
+            # Create instance and test that the 1st CTOR was called
             MyClass(CTOR my_instance)
-            MyClass(MyFunc "${my_instance}")
-
-            # Test that the 1st CTOR was called
-            ct_assert_prints("my_attr = 2")
+            MyClass(GET "${my_instance}" res my_attr)
+            ct_assert_equal(res 2)
         ct_end_section()
 
         ct_add_section("2nd constructor with an int parameter can be called")
-            # Create instance and call MyFunc
+            # Create instance and test that the 1st CTOR was called
             MyClass(CTOR my_instance 3)
-            MyClass(MyFunc "${my_instance}")
-
-            # Test that the 2nd CTOR was called
-            ct_assert_prints("my_attr = 3")
+            MyClass(GET "${my_instance}" res my_attr)
+            ct_assert_equal(res 3)
         ct_end_section()
 
     ct_end_section()
 
     ct_add_section("KWARGS Constructor")
-        # Define class with three attributes and one function to print them out
+        # Define class with three attributes
         cpp_class(MyClass)
             cpp_attr(MyClass a 10)
             cpp_attr(MyClass b 20)
             cpp_attr(MyClass c 30)
-
-            cpp_member(MyFunc MyClass)
-            function("${MyFunc}" self)
-                MyClass(GET "${self}" _gma a b c)
-                message("${_gma_a}, ${_gma_b}, ${_gma_c}")
-            endfunction()
         cpp_end_class()
 
         ct_add_section("Sets attributes")
             # Create instance using KWARGS CTOR and call MyFunc
             MyClass(CTOR my_instance KWARGS a 1 b 2 3 4 c 5 6)
-            MyClass(MyFunc "${my_instance}")
-
-            # Test that the KWARGS CTOR set attributes correctly
-            ct_assert_prints("1, 2;3;4, 5;6")
+            MyClass(GET "${my_instance}" res a b c)
+            ct_assert_equal(res_a 1)
+            ct_assert_equal(res_b "2;3;4")
+            ct_assert_equal(res_c "5;6")
         ct_end_section()
 
         ct_add_section("Raises error when first KWARG is not attribute name")
@@ -426,12 +414,13 @@ ct_add_test("cpp_constructor")
             endfunction()
         cpp_end_class()
 
-        # Create instance and call MyFunc
+        # Create instance
         DerivedClass(CTOR my_instance)
-        DerivedClass(MyFunc "${my_instance}")
-
-        # Test the the 2nd CTOR was called
-        ct_assert_prints("parent_attr = b, derived_attr = 2")
+        # Test that both derived and parent CTORs were called
+        DerivedClass(GET "${my_instance}" p_attr parent_attr)
+        DerivedClass(GET "${my_instance}" d_attr derived_attr)
+        ct_assert_equal(p_attr b)
+        ct_assert_equal(d_attr 2)
     ct_end_section()
 
     ct_add_section("No suitable overload")
