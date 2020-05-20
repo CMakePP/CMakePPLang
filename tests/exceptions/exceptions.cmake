@@ -79,6 +79,40 @@ ct_add_test("cpp_catch")
         # Ensure second handler was called
         ct_assert_prints("Exception details 2: Here are the details 2")
     ct_end_section()
+
+    ct_add_section("Handles ALL_EXCEPTIONS handler and no other handlers")
+        # Add ALL_EXCEPTIONS handler
+        cpp_catch(ALL_EXCEPTIONS)
+        function("${ALL_EXCEPTIONS}" exce_type message)
+            message("ALL_EXCEPTIONS handler for exception type: ${exce_type}")
+            message("Exception details: ${message}")
+        endfunction()
+
+        # Raise exception
+        cpp_raise(my_exce_type "Here are the details")
+
+        # Ensure ALL_EXCEPTIONS handler was called
+        ct_assert_prints("Exception details: Here are the details")
+    ct_end_section()
+
+    ct_add_section("Handles ALL_EXCEPTIONS handler and another handler")
+        # Add exception handler for ALL_EXCEPTIONS and my_exce_type_1
+        cpp_catch(ALL_EXCEPTIONS my_exce_type_1)
+        function("${ALL_EXCEPTIONS}" exce_type message)
+            message("ALL_EXCEPTIONS handler for exception type: ${exce_type}")
+            message("ALL_EXCEPTIONS exception details: ${message}")
+        endfunction()
+        function("${my_exce_type_1}" message)
+            message("In my_exception_handler for exception type: my_exce_type_1")
+            message("Exception details 1: ${message}")
+        endfunction()
+
+        # Raise exception with no declared handler
+        cpp_raise(my_exce_type_2 "Here are the details")
+
+        # Ensure ALL_EXCEPTIONS handler was called
+        ct_assert_prints("ALL_EXCEPTIONS exception details: Here are the")
+    ct_end_section()
 ct_end_test()
 
 ct_add_test("cpp_raise")
@@ -151,7 +185,26 @@ ct_add_test("cpp_end_try_catch")
         # Attempt to raise an exception
         cpp_raise(my_exce_type "Here are the details 1")
 
-        # Ensure fisrt handler was called
+        # Ensure first handler was called
         ct_assert_prints("Exception details 1: Here are the details 1")
+    ct_end_section()
+
+    ct_add_section("Removes ALL_EXCEPTIONS handler")
+        # Add ALL_EXCEPTIONS handler
+        cpp_catch(ALL_EXCEPTIONS)
+        function("${ALL_EXCEPTIONS}" exce_type message)
+            message("ALL_EXCEPTIONS handler for exception type: ${exce_type}")
+            message("Exception details: ${message}")
+        endfunction()
+
+        # Remove ALL_EXCEPTIONS handler
+        cpp_end_try_catch(ALL_EXCEPTIONS)
+
+        # Attempt to raise an exception
+        cpp_raise(my_exce_type "Here are the details 1")
+
+        # Attempt to raise an exception and ensure it fails
+        cpp_raise(my_exce_type)
+        ct_assert_fails_as("Uncaught my_exce_type exception:")
     ct_end_section()
 ct_end_test()

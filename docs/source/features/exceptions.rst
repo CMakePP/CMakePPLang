@@ -88,3 +88,25 @@ block will be called:
         cpp_end_try_catch(FileNotFound)
 
     cpp_end_try_catch(FileNotFound)
+
+Adding Exception Handler for All Exceptions
+===========================================
+
+A general exception handler that catches all exceptions that don't have a
+specific handler declared for their exception type can be declared by using the
+``ALL_EXCEPTIONS`` keyword in the try-catch block:
+
+.. code-block:: cmake
+
+    # Add general exception handler that catches all exceptions
+    cpp_catch(ALL_EXCEPTIONS)
+    function("${ALL_EXCEPTIONS}" exce_type message)
+        message("ALL_EXCEPTIONS handler for exception type: ${exce_type}")
+        message("Exception details: ${message}")
+    endfunction()
+
+    # Raise exception for exception type with no declared handler
+    cpp_raise(FileNotFound "The file doesn't exist!")
+
+    # Remove the exception handler
+    cpp_end_try_catch(ALL_EXCEPTIONS)

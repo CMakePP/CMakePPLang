@@ -15,13 +15,13 @@ cpp_set_global("_CPP_EXCEPTION_HANDLERS_" "${_exception_handlers}")
 #
 # Example usage:
 #
-# cpp_catch(my_exec_type_1 my_exec_type_2)
-# function("${my_exec_type_1}" message)
-#    message("In my_exception_handler for exception type: my_exec_type_1")
+# cpp_catch(my_exce_type_1 my_exce_type_2)
+# function("${my_exce_type_1}" message)
+#    message("In my_exception_handler for exception type: my_exce_type_1")
 #    message("Exception details: ${message}")
 # endfunction()
-# function("${my_exec_type_2}" message)
-#    message("In my_exception_handler for exception type: my_exec_type_2")
+# function("${my_exce_type_2}" message)
+#    message("In my_exception_handler for exception type: my_exce_type_2")
 #    message("Exception details: ${message}")
 # endfunction()
 #
@@ -87,10 +87,10 @@ endfunction()
 #
 # Example usage:
 #
-# cpp_raise(my_exec_type)
+# cpp_raise(my_exce_type)
 #
-# :param _r_exec_type: The exception type to be raised
-# :type _r_exec_type: desc
+# :param _r_exce_type: The exception type to be raised
+# :type _r_exce_type: desc
 #
 # Error Checking
 # ==============
@@ -103,19 +103,26 @@ endfunction()
 #                               debug mode or not.
 # :vartype CMAKEPP_CORE_DEBUG_MODE: bool
 #]]
-function(cpp_raise _r_exec_type)
+function(cpp_raise _r_exce_type)
     cpp_assert_signature("${ARGV}" desc)
 
     # Get the map of exception handlers and attempt to get the handler for
     # this type from the map
     cpp_get_global(_r_exception_handlers "_CPP_EXCEPTION_HANDLERS_")
-    cpp_map(GET "${_r_exception_handlers}" _r_handlers_list "${_r_exec_type}")
+    cpp_map(GET "${_r_exception_handlers}" _r_handlers_list "${_r_exce_type}")
 
-    # If the list is empty, throw an error, otherwise get the last handler
-    # and call it
     if("${_r_handlers_list}" STREQUAL "")
-        message(FATAL_ERROR "Uncaught ${_r_exec_type} exception: ${ARGV}")
+        # If the list is empty, check if the ALL_EXCEPTIONS handler was set, if
+        # so, use it. Otherwise throw an error indicating an uncaught exception
+        cpp_map(GET "${_r_exception_handlers}" _r_handlers_list "ALL_EXCEPTIONS")
+        if("${_r_handlers_list}" STREQUAL "")
+            message(FATAL_ERROR "Uncaught ${_r_exce_type} exception: ${ARGN}")
+        else()
+            list(GET _r_handlers_list -1 _r_fxn_2_call)
+            cpp_call_fxn("${_r_fxn_2_call}" "${_r_exce_type}" "${ARGN}")
+        endif()
     else()
+        # If the list is not empty get last / deepest handler and call it
         list(GET _r_handlers_list -1 _r_fxn_2_call)
         cpp_call_fxn("${_r_fxn_2_call}" "${ARGN}")
     endif()
@@ -143,7 +150,7 @@ endmacro()
 #
 # Example usage:
 #
-# cpp_end_try_catch(my_exec_type)
+# cpp_end_try_catch(my_exce_type)
 #
 # Error Checking
 # ==============
