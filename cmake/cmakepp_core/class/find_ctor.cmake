@@ -5,7 +5,7 @@ include(cmakepp_core/types/cmakepp_type)
 include(cmakepp_core/class/set_kwargs_attrs)
 
 #[[[ Finds the proper CTOR function to call for the given object and arguments.
-# 
+#
 # This function checks if the CTOR call was a KWARGS call, a regular CTOR call
 # with arguments, or CTOR with no arguments. If it was a KWARGS call, the
 # _cpp_set_kwargs_attrs is called. If it was a CTOR call with arguments, it
@@ -50,8 +50,12 @@ function(_cpp_find_ctor _fc_this _fc_type)
             list(APPEND _fc_sig "${_fc_nice_type_i}")
         endforeach()
 
+        # Create a dummy object of the type we're trying to find a CTOR for
+        cpp_get_global(_fc_state "${_fc_type}__state")
+        _cpp_object_copy("${_fc_state}" _fc_subobj)
+
         # Attempt to find a CTOR function matching that signature
-        _cpp_object_get_symbol("${_fc_this}" _fc_symbol _fc_sig)
+        _cpp_object_get_symbol("${_fc_subobj}" _fc_symbol _fc_sig)
         if(_fc_symbol)
             # CTOR found, call it
             cpp_call_fxn("${_fc_symbol}" "${_fc_this}" ${ARGN})
