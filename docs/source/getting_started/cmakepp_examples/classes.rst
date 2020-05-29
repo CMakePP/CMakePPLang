@@ -595,9 +595,56 @@ above, the following output would be generated:
   # Power source: Fuel Tank
   # Vroom! I have started my engine.
 
-.. TODO Create example when feature is implemented
-.. Adding A Pure Virtual Member Function
-.. =====================================
+Adding A Pure Virtual Member Function
+=====================================
+
+CMakePP allows users to define pure virtual member functions in base classes.
+These functions have no concrete implementation but can be overriden by
+implementations in derived classes. Let's start by defining a ``Vehicle`` class
+with a virtual member function ``describe_self``:
+
+.. code-block:: cmake
+
+    # Define the Vehicle class
+    cpp_class(Vehicle)
+
+        # Add a virtual member function to be overridden by derived classes
+        cpp_member(describe_self Vehicle)
+        cpp_virtual_member(describe_self)
+
+    cpp_end_class()
+
+Now we can define a ``Truck`` class that is derived from the ``Vehicle`` class
+that overrides ``describe_self`` with an implementation:
+
+.. code-block:: cmake
+
+    # Define the Truck class
+    cpp_class(Truck Vehicle)
+
+        cpp_member(describe_self Truck)
+        function("${describe_self}" self)
+            message("I am a truck!")
+        endfunction()
+
+    cpp_end_class()
+
+Now we can create an instance of the ``Truck`` class and call the
+``describe_self`` function:
+
+.. code-block:: cmake
+
+    # Create an instance of the Truck class and call describe_self
+    Truck(CTOR my_inst)
+    Truck(describe_self "${my_inst}")
+
+    # Output: I am a truck!
+
+.. warning::
+
+    If a call is made to the ``describe_self`` function for an instance of the
+    ``Vehicle`` class, CMakePP will throw an error indicating that this function
+    is virtual and must be overridden in a derived class.
 
 .. TODO finish examples of overriding objects methods
 .. .. _overriding-object-methods:

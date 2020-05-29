@@ -103,19 +103,26 @@ endfunction()
 #                               debug mode or not.
 # :vartype CMAKEPP_CORE_DEBUG_MODE: bool
 #]]
-function(cpp_raise _r_exec_type)
+function(cpp_raise _r_exce_type)
     cpp_assert_signature("${ARGV}" desc)
 
     # Get the map of exception handlers and attempt to get the handler for
     # this type from the map
     cpp_get_global(_r_exception_handlers "_CPP_EXCEPTION_HANDLERS_")
-    cpp_map(GET "${_r_exception_handlers}" _r_handlers_list "${_r_exec_type}")
+    cpp_map(GET "${_r_exception_handlers}" _r_handlers_list "${_r_exce_type}")
 
-    # If the list is empty, throw an error, otherwise get the last handler
-    # and call it
     if("${_r_handlers_list}" STREQUAL "")
-        message(FATAL_ERROR "Uncaught ${_r_exec_type} exception: ${ARGV}")
+        # If the list is empty, check if the ALL_EXCEPTIONS handler was set, if
+        # so, use it. Otherwise throw an error indicating an uncaught exception
+        cpp_map(GET "${_r_exception_handlers}" _r_handlers_list "ALL_EXCEPTIONS")
+        if("${_r_handlers_list}" STREQUAL "")
+            message(FATAL_ERROR "Uncaught ${_r_exce_type} exception: ${ARGN}")
+        else()
+            list(GET _r_handlers_list -1 _r_fxn_2_call)
+            cpp_call_fxn("${_r_fxn_2_call}" "${_r_exce_type}" "${ARGN}")
+        endif()
     else()
+        # If the list is not empty get last / deepest handler and call it
         list(GET _r_handlers_list -1 _r_fxn_2_call)
         cpp_call_fxn("${_r_fxn_2_call}" "${ARGN}")
     endif()
@@ -136,14 +143,14 @@ endmacro()
 
 #[[[ Ends a try-catch block
 #
-# This command ends a try-catch block and removes one exception handler for the
-# each of the specified types.
+# This command ends a try-catch block and removes the exception handlers for the
+# specified types.
 #
 # :param *args: The exception types to declare handlers for.
 #
 # Example usage:
 #
-# cpp_end_try_catch(my_exec_type)
+# cpp_end_try_catch(my_exce_type)
 #
 # Error Checking
 # ==============
@@ -168,8 +175,6 @@ function(cpp_end_try_catch)
     endif()
 
     foreach(_etc_exce_type_i ${ARGN})
-        cpp_assert_signature("${ARGV}" desc)
-
         # Get the handlers for this type
         cpp_get_global(_etc_exception_handlers "_CPP_EXCEPTION_HANDLERS_")
         cpp_map(GET "${_etc_exception_handlers}" _etc_handlers_list "${_etc_exce_type_i}")

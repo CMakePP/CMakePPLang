@@ -9,6 +9,7 @@ This part gives an overview of the features of the CMakePP language.
 
    types
    classes
+   exceptions
    maps
    objects
    serialization
