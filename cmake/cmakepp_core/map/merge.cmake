@@ -4,13 +4,14 @@ include(cmakepp_core/asserts/signature)
 
 #[[[ Adds the key-value pairs from one dictionary to another.
 #
-# This function is to add all the key-value pairs from one dictionary into
-# another.
+# This function adds all the key-value pairs from _m_this into
+# _m_other. If a key is present in both dictionary, the value from _m_other
+# will overwrite the value in _m_this.
 #
-# :param _u_this: The map that will have the key-value pairs added to it.
-# :type _u_this: map
-# :param _u_other: The map whose key-value pairs will be added to _u_this.
-# :type _u_other: map
+# :param _m_this: The map that will have the key-value pairs added to it.
+# :type _m_this: map
+# :param _m_other: The map whose key-value pairs will be added to _m_this.
+# :type _m_other: map
 #
 # Error Checking
 # ==============
@@ -24,13 +25,13 @@ include(cmakepp_core/asserts/signature)
 #                               debug mode or not.
 # :vartype CMAKEPP_CORE_DEBUG_MODE: bool
 #]]
-function(cpp_map_update _u_this _u_other)
+function(cpp_map_merge _m_this _m_other)
     cpp_assert_signature("${ARGV}" map map)
 
-    # Add all key-value pairs from _u_other to _u_this
-    cpp_map(KEYS "${_u_other}" _u_other_keys)
-    foreach(_u_other_key_i ${_u_other_keys})
-        cpp_map(GET "${_u_other}" _u_other_value_i "${_u_other_key_i}")
-        cpp_map(SET "${_u_this}" "${_u_other_key_i}" "${_u_other_value_i}")
+    # Add all key-value pairs from _m_other to _m_this
+    cpp_map(KEYS "${_m_other}" _m_other_keys)
+    foreach(_m_other_key_i ${_m_other_keys})
+        cpp_map(GET "${_m_other}" _m_other_value_i "${_m_other_key_i}")
+        cpp_map(SET "${_m_this}" "${_m_other_key_i}" "${_m_other_value_i}")
     endforeach()
 endfunction()

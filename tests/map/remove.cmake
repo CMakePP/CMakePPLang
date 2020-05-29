@@ -1,6 +1,6 @@
 include(cmake_test/cmake_test)
 
-ct_add_test("cpp_map_set")
+ct_add_test("cpp_map_remove")
     include(cmakepp_core/map/map)
     include(cmakepp_core/serialization/serialization)
 

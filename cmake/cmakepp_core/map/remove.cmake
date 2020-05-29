@@ -2,10 +2,9 @@ include_guard()
 include(cmakepp_core/algorithm/copy)
 include(cmakepp_core/asserts/signature)
 
-#[[[ Adds the key-value pairs from one dictionary to another.
+#[[[ Removes the specified keys from a map.
 #
-# This function is to add all the key-value pairs from one dictionary into
-# another.
+# This function removes the key-value pairs for specified keys from a map.
 #
 # :param _r_this: The map that will have key-value pairs removed from it
 # :type _r_this: map
