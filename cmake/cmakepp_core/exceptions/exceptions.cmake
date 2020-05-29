@@ -15,13 +15,13 @@ cpp_set_global("_CPP_EXCEPTION_HANDLERS_" "${_exception_handlers}")
 #
 # Example usage:
 #
-# cpp_catch(my_exce_type_1 my_exce_type_2)
-# function("${my_exce_type_1}" message)
-#    message("In my_exception_handler for exception type: my_exce_type_1")
+# cpp_catch(my_exec_type_1 my_exec_type_2)
+# function("${my_exec_type_1}" message)
+#    message("In my_exception_handler for exception type: my_exec_type_1")
 #    message("Exception details: ${message}")
 # endfunction()
-# function("${my_exce_type_2}" message)
-#    message("In my_exception_handler for exception type: my_exce_type_2")
+# function("${my_exec_type_2}" message)
+#    message("In my_exception_handler for exception type: my_exec_type_2")
 #    message("Exception details: ${message}")
 # endfunction()
 #
@@ -83,14 +83,14 @@ endfunction()
 
 #[[[ Raises an exception
 # This command raises an exception of the specified type. This will call
-# the exception handler for that type if it is declared. command.
+# the exception handler for that type if it is declared.
 #
 # Example usage:
 #
-# cpp_raise(my_exce_type)
+# cpp_raise(my_exec_type)
 #
-# :param _r_exce_type: The exception type to be raised
-# :type _r_exce_type: desc
+# :param _r_exec_type: The exception type to be raised
+# :type _r_exec_type: desc
 #
 # Error Checking
 # ==============
