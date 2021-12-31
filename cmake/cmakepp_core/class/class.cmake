@@ -44,6 +44,7 @@ function(_cpp_class_guts _cg_type _cg_wrapper)
         list(REMOVE_DUPLICATES _cg_bases)
     endif()
 
+    message("_cg_type:${_cg_type}")
     # Set the type before calling any ``Class`` members so we can type check
     _cpp_set_cmakepp_type("${_cg_type}" "class")
 
