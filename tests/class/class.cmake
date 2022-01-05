@@ -186,38 +186,43 @@ endfunction()
 ct_add_test(NAME "_test_virtual_member")
 function(${_test_virtual_member})
 
-    include(cmakepp_core/class/class)
+    #include(cmakepp_core/class/class)
 
     ct_add_section(NAME "_virt_member_sig")
     function(${_virt_member_sig})
         set(CMAKEPP_CORE_DEBUG_MODE ON)
 
-        cpp_class(MyClass)
+
 
         ct_add_section(NAME "_virt_member_sig_first_param_desc" EXPECTFAIL)
         function(${_virt_member_sig_first_param_desc})
+            cpp_class(MyClass)
             cpp_virtual_member(TRUE my_virtual_fxn)
         endfunction()
     endfunction()
 
-    # Define a base class with a virtual member
-    cpp_class(BaseClass)
-        cpp_member(my_virtual_fxn BaseClass)
-        cpp_virtual_member(my_virtual_fxn)
-    cpp_end_class()
+    macro(test_virtual_member_setup)
 
-    # Define a derived class that overrides the virtual member
-    cpp_class(DerivedClass BaseClass)
-        cpp_member(my_virtual_fxn DerivedClass)
-        function("${my_virtual_fxn}" self)
-            message("Overridden implementation")
-        endfunction()
-    cpp_end_class()
+        # Define a base class with a virtual member
+        cpp_class(BaseClass)
+            cpp_member(my_virtual_fxn BaseClass)
+            cpp_virtual_member(my_virtual_fxn)
+        cpp_end_class()
+
+        # Define a derived class that overrides the virtual member
+        cpp_class(DerivedClass BaseClass)
+            cpp_member(my_virtual_fxn DerivedClass)
+            function("${my_virtual_fxn}" self)
+                message("Overridden implementation")
+            endfunction()
+        cpp_end_class()
+    endmacro()
 
     ct_add_section(NAME "_virt_memb_failed_call" EXPECTFAIL)
     function(${_virt_memb_failed_call})
         # Create an instance of the base class and attempt to call the virtual
         # member
+        test_virtual_member_setup()
         BaseClass(CTOR base_instance)
         BaseClass(my_virtual_fxn "${base_instance}")
     endfunction()
@@ -226,6 +231,7 @@ function(${_test_virtual_member})
     function(${_virt_memb_override})
         # Create an instance of the derived class and attempt to call the
         # implementation that overrides the virtual member
+        test_virtual_member_setup()
         DerivedClass(CTOR derived_instance)
         DerivedClass(my_virtual_fxn "${derived_instance}")
 
@@ -242,29 +248,32 @@ function(${_test_attr})
     function(${_attr_sig})
         set(CMAKEPP_CORE_DEBUG_MODE ON)
 
-        cpp_class(MyClass)
 
         ct_add_section(NAME "_attr_sig_first_arg_class" EXPECTFAIL)
         function(${_attr_sig_first_arg_class})
+            cpp_class(MyClass)
             cpp_attr(TRUE an_attr)
         endfunction()
     endfunction()
 
     ct_add_section(NAME "_attr_retrieve")
     function(${_attr_retrieve})
-        # Declare class with attributes
-        cpp_class(MyClass)
-            cpp_attr(MyClass a 1)
-            cpp_attr(MyClass b 2)
-            cpp_attr(MyClass c 3)
-            cpp_attr(MyClass d 4)
-        cpp_end_class()
+        macro(_attr_retrieve_setup)
+            # Declare class with attributes
+            cpp_class(MyClass)
+                cpp_attr(MyClass a 1)
+                cpp_attr(MyClass b 2)
+                cpp_attr(MyClass c 3)
+                cpp_attr(MyClass d 4)
+            cpp_end_class()
 
-        # Create instance
-        MyClass(CTOR my_instance)
+            # Create instance
+            MyClass(CTOR my_instance)
+        endmacro()
 
         ct_add_section(NAME "_retrieve_single_call")
         function(${_retrieve_single_call})
+            _attr_retrieve_setup()
             MyClass(GET "${my_instance}" res_1 a)
             MyClass(GET "${my_instance}" res_2 d)
             ct_assert_equal(res_1 1)
@@ -273,6 +282,7 @@ function(${_test_attr})
 
         ct_add_section(NAME "_retrieve_multi_params_single_call")
         function(${_retrieve_multi_params_single_call})
+            _attr_retrieve_setup()
             MyClass(GET "${my_instance}" res a b c d)
             ct_assert_equal(res_a 1)
             ct_assert_equal(res_b 2)
@@ -283,17 +293,20 @@ function(${_test_attr})
 
     ct_add_section(NAME "_attr_set")
     function(${_attr_set})
-        # Declare class with attributes
-        cpp_class(MyClass)
-            cpp_attr(MyClass a 1)
-            cpp_attr(MyClass b 2)
-        cpp_end_class()
+        macro(_attr_set_setup)
+            # Declare class with attributes
+            cpp_class(MyClass)
+                cpp_attr(MyClass a 1)
+                cpp_attr(MyClass b 2)
+            cpp_end_class()
 
-        # Create instance
-        MyClass(CTOR my_instance)
+            # Create instance
+            MyClass(CTOR my_instance)
+       endmacro()
 
         ct_add_section(NAME "_attr_set_single_val")
         function(${_attr_set_single_val})
+            _attr_set_setup()
             # Set attribute as single value
             MyClass(SET "${my_instance}" a 3)
             # Get the value and ensure it was set correctly
@@ -303,6 +316,8 @@ function(${_test_attr})
 
         ct_add_section(NAME "_attr_set_list")
         function(${_attr_set_list})
+            _attr_set_setup()
+
             # Set attribute as a list of values
             MyClass(SET "${my_instance}" b 1 2 3)
             # Get the value and ensure it was set correctly
@@ -365,25 +380,29 @@ function(${_test_constructor})
 
     ct_add_section(NAME "_constructor_multiple_customs")
     function(${_constructor_multiple_customs})
-        # Define class with multiple cuustom CTORs
-        cpp_class(MyClass)
-            cpp_attr(MyClass my_attr 1)
+        macro(_constructor_multiple_customs_setup)
 
-            cpp_constructor(CTOR MyClass)
-            function("${CTOR}" self)
-                # Change value of my_attr
-                MyClass(SET "${self}" my_attr 2)
-            endfunction()
+            # Define class with multiple cuustom CTORs
+            cpp_class(MyClass)
+                cpp_attr(MyClass my_attr 1)
 
-            cpp_constructor(CTOR MyClass int)
-            function("${CTOR}" self a)
-                # Change value of my_attr
-                MyClass(SET "${self}" my_attr "${a}")
-            endfunction()
-        cpp_end_class()
+                cpp_constructor(CTOR MyClass)
+                function("${CTOR}" self)
+                    # Change value of my_attr
+                    MyClass(SET "${self}" my_attr 2)
+                endfunction()
+
+                cpp_constructor(CTOR MyClass int)
+                function("${CTOR}" self a)
+                    # Change value of my_attr
+                    MyClass(SET "${self}" my_attr "${a}")
+                endfunction()
+            cpp_end_class()
+        endmacro()
 
         ct_add_section(NAME "_multi_construct_first_no_params")
         function(${_multi_construct_first_no_params})
+            _constructor_multiple_customs_setup()
             # Create instance and test that the 1st CTOR was called
             MyClass(CTOR my_instance)
             MyClass(GET "${my_instance}" res my_attr)
@@ -392,6 +411,7 @@ function(${_test_constructor})
 
         ct_add_section(NAME "_multi_construct_second_int_param")
         function(${_multi_construct_second_int_param})
+            _constructor_multiple_customs_setup()
             # Create instance and test that the 1st CTOR was called
             MyClass(CTOR my_instance 3)
             MyClass(GET "${my_instance}" res my_attr)
@@ -402,15 +422,19 @@ function(${_test_constructor})
 
     ct_add_section(NAME "_construct_kwargs")
     function(${_construct_kwargs})
-        # Define class with three attributes
-        cpp_class(MyClass)
-            cpp_attr(MyClass a 10)
-            cpp_attr(MyClass b 20)
-            cpp_attr(MyClass c 30)
-        cpp_end_class()
+
+        macro(_construct_kwargs_setup)
+            # Define class with three attributes
+            cpp_class(MyClass)
+                cpp_attr(MyClass a 10)
+                cpp_attr(MyClass b 20)
+                cpp_attr(MyClass c 30)
+            cpp_end_class()
+        endmacro()
 
         ct_add_section(NAME "_kwargs_sets_attr")
         function(${_kwargs_sets_attr})
+            _construct_kwargs_setup()
             # Create instance using KWARGS CTOR and call MyFunc
             MyClass(CTOR my_instance KWARGS a 1 b 2 3 4 c 5 6)
             MyClass(GET "${my_instance}" res a b c)
@@ -421,6 +445,7 @@ function(${_test_constructor})
 
         ct_add_section(NAME "_kwargs_first_not_attr" EXPECTFAIL)
         function(${_kwargs_first_not_attr})
+            _construct_kwargs_setup()
             MyClass(CTOR my_instance KWARGS not_an_attr 1 b 2 3 4 c 5 6)
         endfunction()
     endfunction()
