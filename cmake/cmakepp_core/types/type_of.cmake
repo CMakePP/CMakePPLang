@@ -55,7 +55,7 @@ function(cpp_type_of _to_result _to_obj)
     # (only need CMake literals as CMakePP literals would have been caught)
     foreach(_to_type_i ${CMAKE_TYPE_LITERALS})
 
-        if("${_to_type_i}" STREQUAL bool)
+        if(_to_type_i STREQUAL "bool")
             cpp_is_bool(_to_is_type_i "${_to_obj}")
         elseif("${_to_type_i}" STREQUAL float)
             cpp_is_float(_to_is_type_i "${_to_obj}")
