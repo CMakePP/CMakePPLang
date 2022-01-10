@@ -9,10 +9,6 @@ FetchContent_Declare(
 set(build_testing_old "${BUILD_TESTING}")
 set(BUILD_TESTING OFF CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(cpp)
-
-#Remove after module_path_fix PR of CMaize pulled in
-list(APPEND CMAKE_MODULE_PATH "${cpp_SOURCE_DIR}")
-
 include(cpp/cpp)
 
 
