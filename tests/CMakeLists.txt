@@ -44,8 +44,8 @@ ct_add_dir(exceptions)
 ct_add_dir(map)
 ct_add_dir(object)
 ct_add_dir(serialization)
+ct_add_dir(types)
 
-#add_subdirectory(serialization)
 #add_subdirectory(types)
 #add_subdirectory(utilities)
 
