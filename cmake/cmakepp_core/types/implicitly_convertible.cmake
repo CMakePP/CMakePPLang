@@ -42,23 +42,23 @@ function(cpp_implicitly_convertible _ic_result _ic_from _ic_to)
     cpp_sanitize_string(_ic_from "${_ic_from}")
 
     # Check if they are the same type (which are always implicitly convertible)
-    if("${_ic_to}" STREQUAL "${_ic_from}")
+    if(_ic_to STREQUAL _ic_from)
         set("${_ic_result}" TRUE PARENT_SCOPE)
         return()
     endif()
 
     # If from-type is "Class" we are casting from a user-defined class
     cpp_type_of(_ic_from_type "${_ic_from}")
-    if("${_ic_from_type}" STREQUAL "class")
+    if(_ic_from_type STREQUAL "class")
         # Casting from "Class" to "type" is okay
-        if("${_ic_to}" STREQUAL "type")
+        if(_ic_to STREQUAL "type")
             set("${_ic_result}" TRUE PARENT_SCOPE)
             return()
         else()
             # Need to see if from-type is a base class of to-type
             _cpp_class_get_bases("${_ic_from}" _ic_bases)
             list(FIND _ic_bases "${_ic_to}" _ic_index)
-            if("${_ic_index}" EQUAL -1) # Not in list, so not a base class
+            if(_ic_index EQUAL -1) # Not in list, so not a base class
                 set("${_ic_result}" FALSE PARENT_SCOPE)
             else() # In the list, so a base class
                 set("${_ic_result}" TRUE PARENT_SCOPE)
@@ -74,14 +74,14 @@ function(cpp_implicitly_convertible _ic_result _ic_from _ic_to)
     set("${_ic_result}" FALSE PARENT_SCOPE)
 
     # These are the edge-cases that make it an okay conversion
-    if("${_ic_to}" STREQUAL "str")      # Everything is a str
+    if(_ic_to STREQUAL "str")      # Everything is a str
         set("${_ic_result}" TRUE PARENT_SCOPE)
-    elseif("${_ic_to}" STREQUAL "list")  # Any one object is a one-element list
+    elseif(_ic_to STREQUAL "list")  # Any one object is a one-element list
         set("${_ic_result}" TRUE PARENT_SCOPE)
     # We checked if the type of from_type was a class, but missed if from_type
     # itself was class
-    elseif("${_ic_from}" STREQUAL "class")
-        if("${_ic_to}" STREQUAL "type")
+    elseif(_ic_from STREQUAL "class")
+        if(_ic_to STREQUAL "type")
             set("${_ic_result}" TRUE PARENT_SCOPE)
         endif()
     endif()
