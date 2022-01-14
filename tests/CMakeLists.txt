@@ -49,4 +49,4 @@ ct_add_dir(utilities)
 
 
 # Stress tests can take a long time to run
-#add_subdirectory(stress_tests)
+ct_add_dir(stress_tests)
