@@ -45,8 +45,8 @@ ct_add_dir(map)
 ct_add_dir(object)
 ct_add_dir(serialization)
 ct_add_dir(types)
+ct_add_dir(utilities)
 
-#add_subdirectory(types)
 #add_subdirectory(utilities)
 
 # Stress tests can take a long time to run
