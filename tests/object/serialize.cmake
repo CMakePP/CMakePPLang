@@ -55,18 +55,9 @@ function("${test__cpp_object_print}")
         endfunction()
     endfunction()
 
-
-    #[[
-    #
-    # Test fails because ct_assert_prints() checks for whole
-    # string match, not for substring matches.
-    # See https://github.com/CMakePP/CMakeTest/issues/40
-    #
-    #
-    #ct_add_section(NAME "print_val")
-    #function("${print_val}")
-    #    _cpp_object_print("${__CMAKEPP_CORE_OBJECT_SINGLETON__}")
-    #    ct_assert_prints("{ \"_cpp_attrs\" : { }, ")
-    #endfunction()
-    #]]
+    ct_add_section(NAME "print_val")
+    function("${print_val}")
+        _cpp_object_print("${__CMAKEPP_CORE_OBJECT_SINGLETON__}")
+        ct_assert_prints("{ \"_cpp_attrs\" : { }, ")
+    endfunction()
 endfunction()
