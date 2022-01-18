@@ -56,7 +56,6 @@ function(cpp_assert_signature _cas_argv)
 
         # Get the counter-th argument passed to the function
         list(GET _cas_argv "${_cas_counter}" _cas_elem)
-
         # Only check if the type is not supposed to be a string
         if(NOT "${_cas_type_i}" STREQUAL "str")
             cpp_assert_type("${_cas_type_i}" "${_cas_elem}")

@@ -1,22 +1,25 @@
 include(cmake_test/cmake_test)
 
-ct_add_test("cpp_map_remove")
+ct_add_test(NAME "test_cpp_map_remove")
+function("${test_cpp_map_remove}")
     include(cmakepp_core/map/map)
     include(cmakepp_core/serialization/serialization)
 
-    ct_add_section("Signature")
+    ct_add_section(NAME "test_signature")
+    function("${test_signature}")
         set(CMAKEPP_CORE_DEBUG_MODE ON)
 
         cpp_map_ctor(a_map)
 
-        ct_add_section("0th argument must be map")
+        ct_add_section(NAME "first_arg_map" EXPECTFAIL)
+        function("${first_arg_map}")
             cpp_map_remove(TRUE)
-            ct_assert_fails_as("Assertion: bool is convertible to map failed.")
-        ct_end_section()
+        endfunction()
 
-    ct_end_section()
+    endfunction()
 
-    ct_add_section("Removes one key")
+    ct_add_section(NAME "remove_one_key")
+    function("${remove_one_key}")
         # Create map and remove one key
         cpp_map_ctor(a_map key_1 value_1 key_2 value_2 key_3 value_3)
         cpp_map_remove("${a_map}" key_2)
@@ -25,9 +28,10 @@ ct_add_test("cpp_map_remove")
         set(corr "{ \"key_1\" : \"value_1\", \"key_3\" : \"value_3\" }")
         cpp_serialize(res "${a_map}")
         ct_assert_equal(res "${corr}")
-    ct_end_section()
+    endfunction()
 
-    ct_add_section("Removes multiple keys")
+    ct_add_section(NAME "remove_multi_keys")
+    function("${remove_multi_keys}")
         # Create map and remove two keys
         cpp_map_ctor(a_map key_1 value_1 key_2 value_2
                            key_3 value_3 key_4 value_4)
@@ -37,9 +41,10 @@ ct_add_test("cpp_map_remove")
         set(corr "{ \"key_1\" : \"value_1\", \"key_3\" : \"value_3\" }")
         cpp_serialize(res "${a_map}")
         ct_assert_equal(res "${corr}")
-    ct_end_section()
+    endfunction()
 
-    ct_add_section("Does nothing for non-existant key")
+    ct_add_section(NAME "no_op_nonexistant_key")
+    function("${no_op_nonexistant_key}")
         # Create map and remove one key
         cpp_map_ctor(a_map key_1 value_1 key_2 value_2 key_3 value_3)
         cpp_map_remove("${a_map}" key_2 non_existant_key)
@@ -48,5 +53,5 @@ ct_add_test("cpp_map_remove")
         set(corr "{ \"key_1\" : \"value_1\", \"key_3\" : \"value_3\" }")
         cpp_serialize(res "${a_map}")
         ct_assert_equal(res "${corr}")
-    ct_end_section()
-ct_end_test()
+    endfunction()
+endfunction()
