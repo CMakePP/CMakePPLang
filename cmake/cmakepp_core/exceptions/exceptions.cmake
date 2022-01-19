@@ -89,8 +89,15 @@ endfunction()
 #
 # cpp_raise(my_exec_type)
 #
+# An exception message may be optionally added via calling with additonal parameters.
+#
+# Example usage:
+#
+# cpp_raise(my_exec_type "My exception message")
 # :param _r_exec_type: The exception type to be raised
 # :type _r_exec_type: desc
+# :param _r_exec_message: The exception message
+# :type _r_exec_message: optional desc
 #
 # Error Checking
 # ==============
@@ -104,13 +111,12 @@ endfunction()
 # :vartype CMAKEPP_CORE_DEBUG_MODE: bool
 #]]
 function(cpp_raise _r_exce_type)
-    cpp_assert_signature("${ARGV}" desc)
+    cpp_assert_signature("${ARGV}" desc args)
 
     # Get the map of exception handlers and attempt to get the handler for
     # this type from the map
     cpp_get_global(_r_exception_handlers "_CPP_EXCEPTION_HANDLERS_")
     cpp_map(GET "${_r_exception_handlers}" _r_handlers_list "${_r_exce_type}")
-
     if("${_r_handlers_list}" STREQUAL "")
         # If the list is empty, check if the ALL_EXCEPTIONS handler was set, if
         # so, use it. Otherwise throw an error indicating an uncaught exception
