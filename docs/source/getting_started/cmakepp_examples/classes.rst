@@ -145,7 +145,7 @@ prepended to their name. Here is the function:
       Automobile(GET "${self}" _ds color km_driven)
 
       # Print out a message
-      message("I am an automobile, I am ${_ds_color}, and I have driven ${km_driven} km.")
+      message("I am an automobile, I am ${_ds_color}, and I have driven ${_ds_km_driven} km.")
 
   endfunction()
 
