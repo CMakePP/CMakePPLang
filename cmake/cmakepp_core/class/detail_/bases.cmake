@@ -1,5 +1,5 @@
 include_guard()
-include(cmakepp_core/utilities/global)
+include(cmakepp_lang/utilities/global)
 
 #[[[ Encapsulates the logic for retrieving the base classes of a user-defined
 #    type.
@@ -64,12 +64,12 @@ endmacro()
 # assert that the caller supplied exactly two arguments and that those arguments
 # have the correct types.
 #
-# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var cmakepp_lang_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.
-# :vartype CMAKEPP_CORE_DEBUG_MODE: bool
+# :vartype cmakepp_lang_DEBUG_MODE: bool
 #]]
 function(_cpp_class_set_bases _csb_this _csb_bases)
-    include(cmakepp_core/asserts/signature)
+    include(cmakepp_lang/asserts/signature)
     cpp_assert_signature("${ARGV}" class desc)
 
     cpp_set_global("${_csb_this}__bases" "${${_csb_bases}}")

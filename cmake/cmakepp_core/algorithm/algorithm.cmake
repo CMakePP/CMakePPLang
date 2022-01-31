@@ -1,5 +1,5 @@
 include_guard()
 
-include(cmakepp_core/algorithm/contains)
-include(cmakepp_core/algorithm/copy)
-include(cmakepp_core/algorithm/equal)
+include(cmakepp_lang/algorithm/contains)
+include(cmakepp_lang/algorithm/copy)
+include(cmakepp_lang/algorithm/equal)

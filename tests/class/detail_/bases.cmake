@@ -2,8 +2,8 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "_test_class_get_bases")
 function(${_test_class_get_bases})
-    include(cmakepp_core/class/class)
-    include(cmakepp_core/utilities/compare_lists)
+    include(cmakepp_lang/class/class)
+    include(cmakepp_lang/utilities/compare_lists)
 
     ct_add_section(NAME "_get_bases_sig" EXPECTFAIL)
     function(${_get_bases_sig})
@@ -44,14 +44,14 @@ endfunction()
 
 ct_add_test(NAME "_cpp_class_set_bases")
 function(${_cpp_class_set_bases})
-    include(cmakepp_core/class/class)
-    include(cmakepp_core/utilities/compare_lists)
+    include(cmakepp_lang/class/class)
+    include(cmakepp_lang/utilities/compare_lists)
 
     cpp_class(MyClass)
 
     ct_add_section(NAME "_set_bases_sig")
     function(${_set_bases_sig})
-        set(CMAKEPP_CORE_DEBUG_MODE ON)
+        set(cmakepp_lang_DEBUG_MODE ON)
 
         ct_add_section(NAME "_set_bases_sig_first_arg_class" EXPECTFAIL)
         function(${_set_bases_sig_first_arg_class})

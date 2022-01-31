@@ -1,11 +1,11 @@
 include_guard()
-include(cmakepp_core/asserts/signature)
-include(cmakepp_core/map/equal)
-include(cmakepp_core/object/equal)
-include(cmakepp_core/types/type_of)
-include(cmakepp_core/types/implicitly_convertible)
-include(cmakepp_core/utilities/compare_lists)
-include(cmakepp_core/utilities/return)
+include(cmakepp_lang/asserts/signature)
+include(cmakepp_lang/map/equal)
+include(cmakepp_lang/object/equal)
+include(cmakepp_lang/types/type_of)
+include(cmakepp_lang/types/implicitly_convertible)
+include(cmakepp_lang/utilities/compare_lists)
+include(cmakepp_lang/utilities/return)
 
 #[[[ Compares two values for equivalency.
 #
@@ -33,9 +33,9 @@ include(cmakepp_core/utilities/return)
 # correct types. If any of these asserts fail an error will be raised. These
 # errors are only checked for in debug mode.
 #
-# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var cmakepp_lang_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.
-# :vartype CMAKEPP_CORE_DEBUG_MODE: bool
+# :vartype cmakepp_lang_DEBUG_MODE: bool
 #]]
 function(cpp_equal _e_result _e_lhs _e_rhs)
     cpp_assert_signature("${ARGV}" desc str str)

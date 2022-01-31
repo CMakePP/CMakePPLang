@@ -2,12 +2,12 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "_test_class")
 function(${_test_class})
-    include(cmakepp_core/class/class)
-    include(cmakepp_core/types/types)
+    include(cmakepp_lang/class/class)
+    include(cmakepp_lang/types/types)
 
     ct_add_section(NAME "_class_signature" EXPECTFAIL)
     function(${_class_signature})
-        set(CMAKEPP_CORE_DEBUG_MODE ON)
+        set(cmakepp_lang_DEBUG_MODE ON)
 
         cpp_class(TRUE)
     endfunction()
@@ -125,13 +125,13 @@ endfunction()
 
 ct_add_test(NAME "_test_member")
 function(${_test_member})
-    include(cmakepp_core/class/class)
+    include(cmakepp_lang/class/class)
 
     cpp_class(MyClass)
 
     ct_add_section(NAME "_member_signature")
     function(${_member_signature})
-        set(CMAKEPP_CORE_DEBUG_MODE ON)
+        set(cmakepp_lang_DEBUG_MODE ON)
 
         ct_add_section(NAME "_member_sig_first_desc" EXPECTFAIL)
         function(${_member_sig_first_desc})
@@ -186,11 +186,11 @@ endfunction()
 ct_add_test(NAME "_test_virtual_member")
 function(${_test_virtual_member})
 
-    #include(cmakepp_core/class/class)
+    #include(cmakepp_lang/class/class)
 
     ct_add_section(NAME "_virt_member_sig")
     function(${_virt_member_sig})
-        set(CMAKEPP_CORE_DEBUG_MODE ON)
+        set(cmakepp_lang_DEBUG_MODE ON)
 
 
 
@@ -242,11 +242,11 @@ endfunction()
 
 ct_add_test(NAME "_test_attr")
 function(${_test_attr})
-    include(cmakepp_core/class/class)
+    include(cmakepp_lang/class/class)
 
     ct_add_section(NAME "_attr_sig")
     function(${_attr_sig})
-        set(CMAKEPP_CORE_DEBUG_MODE ON)
+        set(cmakepp_lang_DEBUG_MODE ON)
 
 
         ct_add_section(NAME "_attr_sig_first_arg_class" EXPECTFAIL)
@@ -330,11 +330,11 @@ endfunction()
 
 ct_add_test(NAME "_test_constructor")
 function(${_test_constructor})
-    include(cmakepp_core/class/class)
+    include(cmakepp_lang/class/class)
 
     ct_add_section(NAME "_test_constructor_sig")
     function(${_test_constructor_sig})
-        set(CMAKEPP_CORE_DEBUG_MODE ON)
+        set(cmakepp_lang_DEBUG_MODE ON)
 
         ct_add_section(NAME "_constructor_sig_first_arg_desc" EXPECTFAIL)
         function(${_constructor_sig_first_arg_desc})

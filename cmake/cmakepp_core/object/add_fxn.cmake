@@ -1,8 +1,8 @@
 include_guard()
-include(cmakepp_core/asserts/signature)
-include(cmakepp_core/map/map)
-include(cmakepp_core/object/get_meta_attr)
-include(cmakepp_core/utilities/sanitize_string)
+include(cmakepp_lang/asserts/signature)
+include(cmakepp_lang/map/map)
+include(cmakepp_lang/object/get_meta_attr)
+include(cmakepp_lang/utilities/sanitize_string)
 
 #[[[ Register's a member function with the object.
 #
@@ -29,9 +29,9 @@ include(cmakepp_core/utilities/sanitize_string)
 # an error will be raised. These error checks are only performed if CMakePP is
 # being run in debug mode.
 #
-# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var cmakepp_lang_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.
-# :vartype CMAKEPP_CORE_DEBUG_MODE: bool
+# :vartype cmakepp_lang_DEBUG_MODE: bool
 #]]
 function(_cpp_object_add_fxn _oaf_this _oaf_name)
     cpp_assert_signature("${ARGV}" obj desc args)

@@ -2,7 +2,7 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "test__cpp_compare_names")
 function("${test__cpp_compare_names}")
-    include(cmakepp_core/types/is_callable)
+    include(cmakepp_lang/types/is_callable)
 
     set(sig0 a_fxn int bool)
     ct_add_section(NAME "names_match")
@@ -29,7 +29,7 @@ endfunction()
 
 ct_add_test(NAME "test__cpp_compare_lengths")
 function("${test__cpp_compare_lengths}")
-    include(cmakepp_core/types/is_callable)
+    include(cmakepp_lang/types/is_callable)
 
     ct_add_section(NAME "no_args")
     function("${no_args}")
@@ -190,11 +190,11 @@ endfunction()
 
 ct_add_test(NAME "test_cpp_is_callable")
 function("${test_cpp_is_callable}")
-    include(cmakepp_core/types/is_callable)
+    include(cmakepp_lang/types/is_callable)
 
     ct_add_section(NAME "test_signature")
     function("${test_signature}")
-        set(CMAKEPP_CORE_DEBUG_MODE ON)
+        set(cmakepp_lang_DEBUG_MODE ON)
 
         ct_add_section(NAME "first_arg_desc" EXPECTFAIL)
         function("${first_arg_desc}")

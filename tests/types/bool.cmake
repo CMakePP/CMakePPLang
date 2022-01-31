@@ -2,7 +2,7 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "test_cpp_is_bool")
 function("${test_cpp_is_bool}")
-    include(cmakepp_core/types/bool)
+    include(cmakepp_lang/types/bool)
 
     ct_add_section(NAME "test_signature" EXPECTFAIL)
     function("${test_signature}")
@@ -86,7 +86,7 @@ function("${test_cpp_is_bool}")
 
     ct_add_section(NAME "test_class")
     function("${test_class}")
-        include(cmakepp_core/class/class)
+        include(cmakepp_lang/class/class)
         cpp_class(MyClass)
 
         cpp_is_bool(return MyClass)
@@ -170,7 +170,7 @@ function("${test_cpp_is_bool}")
 
     ct_add_section(NAME "test_map")
     function("${test_map}")
-        include(cmakepp_core/map/map)
+        include(cmakepp_lang/map/map)
         cpp_map(CTOR a_map)
         cpp_is_bool(result a_map)
         ct_assert_equal(result FALSE)
@@ -178,8 +178,8 @@ function("${test_cpp_is_bool}")
 
     ct_add_section(NAME "test_obj")
     function("${test_obj}")
-        include(cmakepp_core/object/object)
-        cpp_is_bool(result "${__CMAKEPP_CORE_OBJECT_SINGLETON__}")
+        include(cmakepp_lang/object/object)
+        cpp_is_bool(result "${__cmakepp_lang_OBJECT_SINGLETON__}")
         ct_assert_equal(result FALSE)
     endfunction()
 

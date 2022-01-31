@@ -1,8 +1,8 @@
 include_guard()
-include(cmakepp_core/asserts/signature)
-include(cmakepp_core/map/map)
-include(cmakepp_core/utilities/global)
-include(cmakepp_core/utilities/return)
+include(cmakepp_lang/asserts/signature)
+include(cmakepp_lang/map/map)
+include(cmakepp_lang/utilities/global)
+include(cmakepp_lang/utilities/return)
 
 #[[[ Encapsulates the process of retrieving an object's meta attributes.
 #
@@ -34,9 +34,9 @@ include(cmakepp_core/utilities/return)
 # and that those arguments have the correct types. If any assertion fails an
 # error will be raised.
 #
-# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var cmakepp_lang_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.
-# :vartype CMAKEPP_CORE_DEBUG_MODE: bool
+# :vartype cmakepp_lang_DEBUG_MODE: bool
 #]]
 function(_cpp_object_get_meta_attr _ogma_this _ogma_result _ogma_attr)
     cpp_assert_signature("${ARGV}" obj desc desc)

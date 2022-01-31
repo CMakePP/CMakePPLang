@@ -1,7 +1,7 @@
 include_guard()
-include(cmakepp_core/algorithm/equal)
-include(cmakepp_core/asserts/signature)
-include(cmakepp_core/map/map)
+include(cmakepp_lang/algorithm/equal)
+include(cmakepp_lang/asserts/signature)
+include(cmakepp_lang/map/map)
 
 #[[[ Determines if two map instances are equivalent.
 #
@@ -27,9 +27,9 @@ include(cmakepp_core/map/map)
 # these assertions fail an error will be raised. These error checks are only
 # done if CMakePP is run in debug mode.
 #
-# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var cmakepp_lang_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.
-# :vartype CMAKEPP_CORE_DEBUG_MODE: bool
+# :vartype cmakepp_lang_DEBUG_MODE: bool
 #]]
 function(cpp_map_equal _me_this _me_result _me_other)
     cpp_assert_signature("${ARGV}" map desc map)

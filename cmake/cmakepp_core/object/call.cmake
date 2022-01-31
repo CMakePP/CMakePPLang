@@ -1,9 +1,9 @@
 include_guard()
-include(cmakepp_core/object/object)
-include(cmakepp_core/types/type_of)
-include(cmakepp_core/utilities/call_fxn)
-include(cmakepp_core/utilities/print_fxn_sig)
-include(cmakepp_core/utilities/sanitize_string)
+include(cmakepp_lang/object/object)
+include(cmakepp_lang/types/type_of)
+include(cmakepp_lang/utilities/call_fxn)
+include(cmakepp_lang/utilities/print_fxn_sig)
+include(cmakepp_lang/utilities/sanitize_string)
 
 #[[[ Determines the correct member function to call for the input.
 #
@@ -87,9 +87,9 @@ endfunction()
 # this function will ensure that it was called with the correct number and types
 # of arguments. If it is not an error will be raised.
 #
-# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var cmakepp_lang_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                              debug mode or not.
-# :vartype CMAKEPP_CORE_DEBUG_MODE: bool
+# :vartype cmakepp_lang_DEBUG_MODE: bool
 #
 # Additionally, this function will raise an error if the Object instance does
 # not contain a suitable overload for the provided arguments.

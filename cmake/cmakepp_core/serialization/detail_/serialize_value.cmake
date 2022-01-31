@@ -14,13 +14,13 @@
 ################################################################################
 
 include_guard()
-include(cmakepp_core/object/object)
-include(cmakepp_core/serialization/detail_/serialize_list)
-include(cmakepp_core/serialization/detail_/serialize_map)
-include(cmakepp_core/serialization/detail_/serialize_string)
-include(cmakepp_core/types/implicitly_convertible)
-include(cmakepp_core/types/type_of)
-include(cmakepp_core/utilities/return)
+include(cmakepp_lang/object/object)
+include(cmakepp_lang/serialization/detail_/serialize_list)
+include(cmakepp_lang/serialization/detail_/serialize_map)
+include(cmakepp_lang/serialization/detail_/serialize_string)
+include(cmakepp_lang/types/implicitly_convertible)
+include(cmakepp_lang/types/type_of)
+include(cmakepp_lang/utilities/return)
 
 #[[[ Dispatches based on type to the appropriate serialization implementation.
 #

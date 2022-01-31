@@ -1,7 +1,7 @@
 include_guard()
-include(cmakepp_core/asserts/type)
-include(cmakepp_core/utilities/assert)
-include(cmakepp_core/utilities/enable_if_debug)
+include(cmakepp_lang/asserts/type)
+include(cmakepp_lang/utilities/assert)
+include(cmakepp_lang/utilities/enable_if_debug)
 
 #[[[ Ensures a function was called with the correct number and types of objects.
 #
@@ -17,7 +17,7 @@ include(cmakepp_core/utilities/enable_if_debug)
 # :param *args: The types that each argument should obey. Users can pass
 #               ``args`` as a type to indicate that their function is variadic.
 #               If provided, ``args`` must be the last type.
-# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is in debug mode.
+# :var cmakepp_lang_DEBUG_MODE: Used to determine if CMakePP is in debug mode.
 #
 # Example Usage:
 # ==============
@@ -27,7 +27,7 @@ include(cmakepp_core/utilities/enable_if_debug)
 #
 # .. code-block::
 #
-#    include(cmakepp_core/asserts/signature)
+#    include(cmakepp_lang/asserts/signature)
 #    function(my_fxn a_int a_bool)
 #        cpp_assert_signature("${ARGV}" int bool)
 #    endfunction()

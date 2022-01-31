@@ -1,6 +1,6 @@
 include_guard()
-include(cmakepp_core/asserts/signature)
-include(cmakepp_core/utilities/return)
+include(cmakepp_lang/asserts/signature)
+include(cmakepp_lang/utilities/return)
 
 #[[[ Generates a unique identifier.
 #
@@ -22,7 +22,7 @@ include(cmakepp_core/utilities/return)
 # If CMakePP is run in debug mode ``cpp_unique_id`` will ensure that it was
 # passed only one argument and that that argument is of type ``desc``.
 #
-# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var cmakepp_lang_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.
 #]]
 function(cpp_unique_id _ui_id)

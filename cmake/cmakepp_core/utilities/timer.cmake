@@ -1,8 +1,8 @@
 include_guard()
-include(cmakepp_core/utilities/call_fxn)
-include(cmakepp_core/utilities/return)
-include(cmakepp_core/utilities/sanitize_string)
-include(cmakepp_core/utilities/unique_id)
+include(cmakepp_lang/utilities/call_fxn)
+include(cmakepp_lang/utilities/return)
+include(cmakepp_lang/utilities/sanitize_string)
+include(cmakepp_lang/utilities/unique_id)
 
 #[[[ Starts a timer using the provided name.
 #
@@ -15,7 +15,7 @@ include(cmakepp_core/utilities/unique_id)
 #]]
 function(cpp_start_timing _st_name)
     cpp_sanitize_string(_st_nice_name "${_st_name}")
-    set(_st_start_var "__CMAKEPP_CORE_${_st_nice_name}_TIMER_START__")
+    set(_st_start_var "__cmakepp_lang_${_st_nice_name}_TIMER_START__")
     string(TIMESTAMP "${_st_start_var}" "%s")
     cpp_return("${_st_start_var}")
 endfunction()
@@ -50,7 +50,7 @@ function(cpp_stop_timing _st_time _st_name)
 
     # Now look for the timer, if it doesn't exist raise an understandable error
     cpp_sanitize_string(_st_nice_name "${_st_name}")
-    set(_st_start_var "__CMAKEPP_CORE_${_st_nice_name}_TIMER_START__")
+    set(_st_start_var "__cmakepp_lang_${_st_nice_name}_TIMER_START__")
 
     if("${${_st_start_var}}" STREQUAL "")
         message(FATAL_ERROR "Timer ${_st_name} was never started.")

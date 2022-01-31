@@ -1,8 +1,8 @@
 include_guard()
-include(cmakepp_core/class/detail_/bases)
-include(cmakepp_core/object/object)
-include(cmakepp_core/types/cmakepp_type)
-include(cmakepp_core/class/set_kwargs_attrs)
+include(cmakepp_lang/class/detail_/bases)
+include(cmakepp_lang/object/object)
+include(cmakepp_lang/types/cmakepp_type)
+include(cmakepp_lang/class/set_kwargs_attrs)
 
 #[[[ Finds the proper CTOR function to call for the given object and arguments.
 #
@@ -25,9 +25,9 @@ include(cmakepp_core/class/set_kwargs_attrs)
 # If CMakePP is being run in debug mode this function will ensure that it was
 # called with an obj and a type as the first two parameters.
 #
-# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var cmakepp_lang_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.
-# :vartype CMAKEPP_CORE_DEBUG_MODE: bool
+# :vartype cmakepp_lang_DEBUG_MODE: bool
 #
 # Additionally, this function will always throw an error if a CTOR call with
 # arguments was made an no CTOR can be found matching the signature of the call.

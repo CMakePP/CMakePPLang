@@ -1,6 +1,6 @@
 include_guard()
-include(cmakepp_core/algorithm/copy)
-include(cmakepp_core/asserts/signature)
+include(cmakepp_lang/algorithm/copy)
+include(cmakepp_lang/asserts/signature)
 
 #[[[ Adds the key-value pairs from one dictionary to another.
 #
@@ -21,9 +21,9 @@ include(cmakepp_core/asserts/signature)
 # If these assertions fail an error will be raised. These checks are only
 # performed if CMakePP is run in debug mode.
 #
-# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var cmakepp_lang_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.
-# :vartype CMAKEPP_CORE_DEBUG_MODE: bool
+# :vartype cmakepp_lang_DEBUG_MODE: bool
 #]]
 function(cpp_map_merge _m_this _m_other)
     cpp_assert_signature("${ARGV}" map map)

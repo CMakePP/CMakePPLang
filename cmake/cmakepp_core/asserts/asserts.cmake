@@ -1,4 +1,4 @@
 include_guard()
 
-include(cmakepp_core/asserts/signature)
-include(cmakepp_core/asserts/type)
+include(cmakepp_lang/asserts/signature)
+include(cmakepp_lang/asserts/type)

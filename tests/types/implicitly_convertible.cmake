@@ -2,9 +2,9 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "test_cpp_implicitly_convertible")
 function("${test_cpp_implicitly_convertible}")
-    include(cmakepp_core/class/class)
-    include(cmakepp_core/map/map)
-    include(cmakepp_core/types/implicitly_convertible)
+    include(cmakepp_lang/class/class)
+    include(cmakepp_lang/map/map)
+    include(cmakepp_lang/types/implicitly_convertible)
 
     ct_add_section(NAME "test_signature" EXPECTFAIL)
     function("${test_signature}")

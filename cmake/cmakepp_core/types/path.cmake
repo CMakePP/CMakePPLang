@@ -1,5 +1,5 @@
 include_guard()
-include(cmakepp_core/types/list)
+include(cmakepp_lang/types/list)
 
 #[[[ Determines if a string is lexically convertible to an absolute filepath.
 #
@@ -29,7 +29,7 @@ include(cmakepp_core/types/list)
 #
 # .. code-block:: cmake
 #
-#    include(cmakepp_core/types/filepath)
+#    include(cmakepp_lang/types/filepath)
 #    cpp_is_path(result "${CMAKE_BINARY_DIR}")
 #    message("Is a filepath: ${result}")  # Prints TRUE
 #]]

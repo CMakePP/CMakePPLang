@@ -1,7 +1,7 @@
 include_guard()
-include(cmakepp_core/map/map)
-include(cmakepp_core/object/get_meta_attr)
-include(cmakepp_core/utilities/return)
+include(cmakepp_lang/map/map)
+include(cmakepp_lang/object/get_meta_attr)
+include(cmakepp_lang/utilities/return)
 
 #[[[ Core of the routine which retrieves the attributes.
 #
@@ -104,9 +104,9 @@ endfunction()
 # type. If any of these assertions fail an error will be raised. These errors
 # are only considered if CMakePP is being run in debug mode.
 #
-# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var cmakepp_lang_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.
-# :vartype CMAKEPP_CORE_DEBUG_MODE: bool
+# :vartype cmakepp_lang_DEBUG_MODE: bool
 #
 # Additionally, this function will always assert that the object possesses the
 # requested attribute. If the object does not posses the attribute an error will

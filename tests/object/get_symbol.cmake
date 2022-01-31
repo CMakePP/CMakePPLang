@@ -2,12 +2,12 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "test__cpp_get_symbol")
 function("${test__cpp_get_symbol}")
-    include(cmakepp_core/class/class)
-    include(cmakepp_core/object/object)
+    include(cmakepp_lang/class/class)
+    include(cmakepp_lang/object/object)
 
     ct_add_section(NAME "test_signature")
     function("${test_signature}")
-        set(CMAKEPP_CORE_DEBUG_MODE ON)
+        set(cmakepp_lang_DEBUG_MODE ON)
 
         _cpp_object_ctor(an_obj obj)
 

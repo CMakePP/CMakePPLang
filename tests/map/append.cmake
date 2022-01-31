@@ -2,14 +2,14 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "test_cpp_map_append")
 function("${test_cpp_map_append}")
-    include(cmakepp_core/map/map)
-    include(cmakepp_core/utilities/compare_lists)
+    include(cmakepp_lang/map/map)
+    include(cmakepp_lang/utilities/compare_lists)
 
     cpp_map(CTOR a_map)
 
     ct_add_section(NAME "test_signature")
     function("${test_signature}")
-        set(CMAKEPP_CORE_DEBUG_MODE ON)
+        set(cmakepp_lang_DEBUG_MODE ON)
 
         ct_add_section(NAME "first_arg_map" EXPECTFAIL)
         function("${first_arg_map}")

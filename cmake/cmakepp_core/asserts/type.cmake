@@ -1,8 +1,8 @@
 include_guard()
-include(cmakepp_core/types/implicitly_convertible)
-include(cmakepp_core/types/type_of)
-include(cmakepp_core/utilities/assert)
-include(cmakepp_core/utilities/enable_if_debug)
+include(cmakepp_lang/types/implicitly_convertible)
+include(cmakepp_lang/types/type_of)
+include(cmakepp_lang/utilities/assert)
+include(cmakepp_lang/utilities/enable_if_debug)
 
 #[[[ Tests that the provided object can be implicitly cast to the provided type.
 #
@@ -16,9 +16,9 @@ include(cmakepp_core/utilities/enable_if_debug)
 # :param _at_obj: The object whose type must be implicitly convertible to
 #                 ``_at_type``.
 # :type _at_obj: str
-# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var cmakepp_lang_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode
-# :vartype CMAKEPP_CORE_DEBUG_MODE: bool
+# :vartype cmakepp_lang_DEBUG_MODE: bool
 #
 # Error Checking
 # ==============

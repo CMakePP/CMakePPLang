@@ -1,5 +1,5 @@
 include_guard()
-include(cmakepp_core/types/cmakepp_type)
+include(cmakepp_lang/types/cmakepp_type)
 
 #[[[ Determines if a string is lexically convertible to a command.
 #
@@ -24,7 +24,7 @@ include(cmakepp_core/types/cmakepp_type)
 #
 # .. code-block:: cmake
 #
-#    include(cmakepp_core/types/fxn)
+#    include(cmakepp_lang/types/fxn)
 #    cpp_is_fxn(result add_subdirectory)
 #    message("Is a command: ${result}")  # Prints TRUE
 #]]

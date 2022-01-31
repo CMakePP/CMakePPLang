@@ -1,14 +1,14 @@
 include_guard()
-include(cmakepp_core/object/add_fxn)
-include(cmakepp_core/object/attrs)
-include(cmakepp_core/object/call)
-include(cmakepp_core/object/copy)
-include(cmakepp_core/object/ctor)
-include(cmakepp_core/object/equal)
-include(cmakepp_core/object/get_meta_attr)
-include(cmakepp_core/object/get_symbol)
-include(cmakepp_core/object/serialize)
-include(cmakepp_core/object/singleton)
+include(cmakepp_lang/object/add_fxn)
+include(cmakepp_lang/object/attrs)
+include(cmakepp_lang/object/call)
+include(cmakepp_lang/object/copy)
+include(cmakepp_lang/object/ctor)
+include(cmakepp_lang/object/equal)
+include(cmakepp_lang/object/get_meta_attr)
+include(cmakepp_lang/object/get_symbol)
+include(cmakepp_lang/object/serialize)
+include(cmakepp_lang/object/singleton)
 
 #[[[ Holds an instance of the ``obj`` class.
 #
@@ -17,11 +17,11 @@ include(cmakepp_core/object/singleton)
 # single instance of the ``obj`` class and have all derived classes alias it.
 # For all intents and purposes this makes the object class a singleton. That
 # said aside from ``cpp_class()`` needing this variable
-# (``__CMAKEPP_CORE_OBJECT_SINGLETON__``) to hold an ``obj`` instance no part of
+# (``__cmakepp_lang_OBJECT_SINGLETON__``) to hold an ``obj`` instance no part of
 # CMakePP actually requires there to only be one ``obj`` instance in play at any
 # time.
 #]]
-_cpp_object_singleton(__CMAKEPP_CORE_OBJECT_SINGLETON__)
+_cpp_object_singleton(__cmakepp_lang_OBJECT_SINGLETON__)
 
 
 macro(_cpp_object _o_mode _o_this)

@@ -2,8 +2,8 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "test__cpp_get_cmakepp_type")
 function("${test__cpp_get_cmakepp_type}")
-    include(cmakepp_core/map/map)
-    include(cmakepp_core/types/cmakepp_type)
+    include(cmakepp_lang/map/map)
+    include(cmakepp_lang/types/cmakepp_type)
 
     cpp_map(CTOR a_map)
 
@@ -65,8 +65,8 @@ endfunction()
 
 ct_add_test(NAME "test__cpp_set_cmakepp_type")
 function("${test__cpp_set_cmakepp_type}")
-    include(cmakepp_core/class/class)
-    include(cmakepp_core/types/cmakepp_type)
+    include(cmakepp_lang/class/class)
+    include(cmakepp_lang/types/cmakepp_type)
 
     cpp_class(MyClass)
 

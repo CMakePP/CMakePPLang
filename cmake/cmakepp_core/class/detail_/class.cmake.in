@@ -1,6 +1,6 @@
 include_guard()
-include(cmakepp_core/object/object)
-include(cmakepp_core/class/ctor)
+include(cmakepp_lang/object/object)
+include(cmakepp_lang/class/ctor)
 
 #[[[ The template for the macro created for CMakePP classes.
 #

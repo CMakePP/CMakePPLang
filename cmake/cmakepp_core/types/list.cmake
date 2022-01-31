@@ -30,7 +30,7 @@ include_guard()
 #
 # .. code-block:: cmake
 #
-#    include(cmakepp_core/types/list)
+#    include(cmakepp_lang/types/list)
 #    set(a_list 1 2 3)
 #    cpp_is_list(result "${a_list}")
 #    message("Is a list: ${result}")  # Will print TRUE

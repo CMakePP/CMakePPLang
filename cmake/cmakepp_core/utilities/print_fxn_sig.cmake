@@ -1,5 +1,5 @@
 include_guard()
-include(cmakepp_core/asserts/signature)
+include(cmakepp_lang/asserts/signature)
 
 #[[[ Creates a pretty, human-readable representation of a function's signature.
 #

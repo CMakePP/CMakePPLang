@@ -2,7 +2,7 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "test_cpp_map")
 function("${test_cpp_map}")
-    include(cmakepp_core/map/map)
+    include(cmakepp_lang/map/map)
 
     ct_add_section(NAME "append")
     function("${append}")

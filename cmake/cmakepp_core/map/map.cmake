@@ -1,14 +1,14 @@
 include_guard()
-include(cmakepp_core/asserts/signature)
-include(cmakepp_core/map/copy)
-include(cmakepp_core/map/equal)
-include(cmakepp_core/map/has_key)
-include(cmakepp_core/map/keys)
-include(cmakepp_core/map/merge)
-include(cmakepp_core/map/remove)
-include(cmakepp_core/utilities/global)
-include(cmakepp_core/utilities/return)
-include(cmakepp_core/utilities/unique_id)
+include(cmakepp_lang/asserts/signature)
+include(cmakepp_lang/map/copy)
+include(cmakepp_lang/map/equal)
+include(cmakepp_lang/map/has_key)
+include(cmakepp_lang/map/keys)
+include(cmakepp_lang/map/merge)
+include(cmakepp_lang/map/remove)
+include(cmakepp_lang/utilities/global)
+include(cmakepp_lang/utilities/return)
+include(cmakepp_lang/utilities/unique_id)
 
 #[[[ Appends to the value stored under the specified key.
 #
@@ -31,9 +31,9 @@ include(cmakepp_core/utilities/unique_id)
 # type. If an assert fails an error will be raised. The assertions happen only
 # when CMakePP is run in debug mode.
 #
-# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var cmakepp_lang_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.
-# :vartype CMAKEPP_CORE_DEBUG_MODE: bool
+# :vartype cmakepp_lang_DEBUG_MODE: bool
 #
 #]]
 function(cpp_map_append _ma_this _ma_key _ma_value)
@@ -67,9 +67,9 @@ endfunction()
 # assertions fail an error will be raised. These assertions are only performed
 # if CMakePP is run in debug mode.
 #
-# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var cmakepp_lang_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode.
-# :vartype CMAKEPP_CORE_DEBUG_MODE: bool
+# :vartype cmakepp_lang_DEBUG_MODE: bool
 #]]
 function(cpp_map_ctor _mc_result)
     cpp_assert_signature("${ARGV}" desc args)
@@ -112,9 +112,9 @@ endfunction()
 # types. If any of these checks fail an error will be raised. These checks are
 # only performed if CMakePP is being run in debug mode.
 #
-# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var cmakepp_lang_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode.
-# :vartype CMAKEPP_CORE_DEBUG_MODE: bool
+# :vartype cmakepp_lang_DEBUG_MODE: bool
 #]]
 function(cpp_map_get _mg_this _mg_value _mg_key)
     cpp_assert_signature("${ARGV}" map desc str)
@@ -143,9 +143,9 @@ endfunction()
 # If these assertions fail an error will be raised. These checks are only
 # performed if CMakePP is run in debug mode.
 #
-# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var cmakepp_lang_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.
-# :vartype CMAKEPP_CORE_DEBUG_MODE: bool
+# :vartype cmakepp_lang_DEBUG_MODE: bool
 #
 #]]
 function(cpp_map_set _ms_this _ms_key _ms_value)
@@ -178,7 +178,7 @@ endfunction()
 # been provided an error will be raised. These error checks are only done when
 # CMakePP is run in debug mode.
 #
-# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is b
+# :var cmakepp_lang_DEBUG_MODE: Used to determine if CMakePP is b
 #]]
 function(cpp_map _m_mode _m_this)
     string(TOLOWER "${_m_mode}" _m_lc_mode)

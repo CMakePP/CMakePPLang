@@ -2,11 +2,11 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "test_cpp_map_has_key")
 function("${test_cpp_map_has_key}")
-    include(cmakepp_core/map/map)
+    include(cmakepp_lang/map/map)
 
     ct_add_section(NAME "test_signature")
     function("${test_signature}")
-        set(CMAKEPP_CORE_DEBUG_MODE ON)
+        set(cmakepp_lang_DEBUG_MODE ON)
 
         cpp_map_ctor(a_map)
 

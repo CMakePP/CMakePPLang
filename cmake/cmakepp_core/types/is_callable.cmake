@@ -1,8 +1,8 @@
 include_guard()
-include(cmakepp_core/asserts/signature)
-include(cmakepp_core/types/implicitly_convertible)
-include(cmakepp_core/utilities/return)
-include(cmakepp_core/utilities/sanitize_string)
+include(cmakepp_lang/asserts/signature)
+include(cmakepp_lang/types/implicitly_convertible)
+include(cmakepp_lang/utilities/return)
+include(cmakepp_lang/utilities/sanitize_string)
 
 #[[[ Handles logic for comparing the human-readable names of the functions.
 #
@@ -128,9 +128,9 @@ endfunction()
 # these asserts fail an error will be raised. These assertions are only done in
 # debug mode.
 #
-# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var cmakepp_lang_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode.
-# :vartype CMAKEPP_CORE_DEBUG_MODE: bool
+# :vartype cmakepp_lang_DEBUG_MODE: bool
 #]]
 function(cpp_is_callable _ic_result _ic_fxn _ic_args)
     cpp_assert_signature("${ARGV}" desc desc desc)

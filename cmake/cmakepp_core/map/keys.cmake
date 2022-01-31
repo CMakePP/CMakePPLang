@@ -1,7 +1,7 @@
 include_guard()
-include(cmakepp_core/asserts/signature)
-include(cmakepp_core/utilities/global)
-include(cmakepp_core/utilities/return)
+include(cmakepp_lang/asserts/signature)
+include(cmakepp_lang/utilities/global)
+include(cmakepp_lang/utilities/return)
 
 #[[[ Gets a list of all keys known to a map.
 #
@@ -24,9 +24,9 @@ include(cmakepp_core/utilities/return)
 # If these assertions fail an error will be raised. These checks are only
 # performed if CMakePP is run in debug mode.
 #
-# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var cmakepp_lang_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.
-# :vartype CMAKEPP_CORE_DEBUG_MODE: bool
+# :vartype cmakepp_lang_DEBUG_MODE: bool
 #]]
 function(cpp_map_keys _mk_this _mk_keys)
     cpp_assert_signature("${ARGV}" map desc)

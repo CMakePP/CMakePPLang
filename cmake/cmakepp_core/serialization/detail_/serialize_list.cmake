@@ -14,7 +14,7 @@
 ################################################################################
 
 include_guard()
-include(cmakepp_core/serialization/detail_/serialize_value)
+include(cmakepp_lang/serialization/detail_/serialize_value)
 
 #[[[ Serializes a CMake list into JSON format.
 #

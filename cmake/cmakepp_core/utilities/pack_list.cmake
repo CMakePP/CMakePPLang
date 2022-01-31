@@ -1,5 +1,5 @@
 include_guard()
-include(cmakepp_core/serialization/serialization)
+include(cmakepp_lang/serialization/serialization)
 
 #[[[ Transforms a CMake list into a string that can be passed down through
 #    function calls and then transformed back to the original CMake list that
@@ -33,7 +33,7 @@ include(cmakepp_core/serialization/serialization)
 # been called with two arguments and that those arguments are of the correct
 # types.
 #
-# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var cmakepp_lang_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.
 #]]
 function(cpp_pack_list _pl_result _pl_list)
@@ -111,7 +111,7 @@ endfunction()
 # been called with two arguments and that those arguments are of the correct
 # types.
 #
-# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var cmakepp_lang_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.
 #]]
 function(cpp_unpack_list _ul_result _ul_packed_list)

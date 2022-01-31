@@ -1,8 +1,8 @@
 include_guard()
-include(cmakepp_core/asserts/type)
-include(cmakepp_core/map/has_key)
-include(cmakepp_core/types/types)
-include(cmakepp_core/utilities/return)
+include(cmakepp_lang/asserts/type)
+include(cmakepp_lang/map/has_key)
+include(cmakepp_lang/types/types)
+include(cmakepp_lang/utilities/return)
 
 #[[[ Determines if an element appears in a set-like object.
 #
@@ -30,9 +30,9 @@ include(cmakepp_core/utilities/return)
 # with the correct number of arguments and that those arguments have the correct
 # types. These error checks are only performed if CMakePP is run in debug mode.
 #
-# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var cmakepp_lang_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.
-# :vartype CMAKEPP_CORE_DEBUG_MODE: bool
+# :vartype cmakepp_lang_DEBUG_MODE: bool
 #
 # Example Usage:
 # ==============
@@ -42,7 +42,7 @@ include(cmakepp_core/utilities/return)
 #
 # .. code-block:: cmake
 #
-#    include(cmakepp_core/logic/contains)
+#    include(cmakepp_lang/logic/contains)
 #    set(a_list "hello" "world")
 #    cpp_contains(result "hello" "${a_list}")
 #    message("The list contains 'hello': ${result}")  # Will print TRUE

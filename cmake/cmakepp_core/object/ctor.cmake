@@ -1,11 +1,11 @@
 include_guard()
-include(cmakepp_core/asserts/signature)
-include(cmakepp_core/map/map)
-include(cmakepp_core/object/get_meta_attr)
-include(cmakepp_core/types/cmakepp_type)
-include(cmakepp_core/utilities/global)
-include(cmakepp_core/utilities/return)
-include(cmakepp_core/utilities/sanitize_string)
+include(cmakepp_lang/asserts/signature)
+include(cmakepp_lang/map/map)
+include(cmakepp_lang/object/get_meta_attr)
+include(cmakepp_lang/types/cmakepp_type)
+include(cmakepp_lang/utilities/global)
+include(cmakepp_lang/utilities/return)
+include(cmakepp_lang/utilities/sanitize_string)
 
 #[[[ Constructs a new instance of the specified type.
 #
@@ -30,9 +30,9 @@ include(cmakepp_core/utilities/sanitize_string)
 # debug mode) this function will assert that it has been called with the correct
 # number and types of arguments. If an assertion fails an error will be raised.
 #
-# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var cmakepp_lang_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.
-# :vartype CMAKEPP_CORE_DEBUG_MODE: bool
+# :vartype cmakepp_lang_DEBUG_MODE: bool
 #]]
 function(_cpp_object_ctor _oc_this _oc_type)
     cpp_assert_signature("${ARGV}" desc type args)

@@ -1,7 +1,7 @@
 include_guard()
-include(cmakepp_core/class/detail_/bases)
-include(cmakepp_core/object/object)
-include(cmakepp_core/types/cmakepp_type)
+include(cmakepp_lang/class/detail_/bases)
+include(cmakepp_lang/object/object)
+include(cmakepp_lang/types/cmakepp_type)
 
 #[[[ Reads KWARGS and assigns sets the appropriate attributes values.
 #
@@ -24,9 +24,9 @@ include(cmakepp_core/types/cmakepp_type)
 # If CMakePP is being run in debug mode this function will ensure that it was
 # called with and object as the first argument.
 #
-# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var cmakepp_lang_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.
-# :vartype CMAKEPP_CORE_DEBUG_MODE: bool
+# :vartype cmakepp_lang_DEBUG_MODE: bool
 #
 # Additionally, this function will ensure that the proper syntax is used for
 # the list of KWARGS. That is the KWARGS must consist of pairings of attribute

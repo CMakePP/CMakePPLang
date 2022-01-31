@@ -1,6 +1,6 @@
 include_guard()
-include(cmakepp_core/types/literals)
-include(cmakepp_core/utilities/global)
+include(cmakepp_lang/types/literals)
+include(cmakepp_lang/utilities/global)
 
 #[[[ Determines if a string is lexically convertible to a type literal.
 #
