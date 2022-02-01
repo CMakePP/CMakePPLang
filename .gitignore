@@ -1,6 +1,9 @@
-#Build directories
-docs/build
+# Build directories
+**/build
 cmake-build-debug
 
 # CLion settings
 .idea
+
+# VSCode settings
+.vscode
