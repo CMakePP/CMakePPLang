@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1. Using Classes &mdash; CMakePPCore 1.0.0alpha documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2. Using Utilities" href="utilities.html" />
+    <link rel="prev" title="CMakePP Examples" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> CMakePPCore
+          </a>
+              <div class="version">
+                1.0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Getting Started</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../obtaining_cmakepp.html">Obtaining CMakePP</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">CMakePP Examples</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">1. Using Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#writing-a-basic-class">1.1. Writing a Basic Class</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-a-member-function">1.2. Adding a Member Function</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-a-function-that-takes-an-argument">1.3. Adding a Function That Takes an Argument</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-a-function-that-references-attributes">1.4. Adding a Function That References Attributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#returning-a-value-from-a-function">1.5. Returning a Value from a Function</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-multiple-return-points-to-a-function">1.6. Adding Multiple Return Points to a Function</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#overloading-a-function">1.7. Overloading a Function</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-a-user-defined-constructors">1.8. Adding a User-Defined Constructors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-the-kwargs-constructor">1.9. Using the KWARGS Constructor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#writing-a-derived-class">1.10. Writing a Derived Class</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inheriting-from-multiple-classes">1.11. Inheriting from Multiple Classes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-a-pure-virtual-member-function">1.12. Adding A Pure Virtual Member Function</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="utilities.html">2. Using Utilities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../features/index.html">Language Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../conventions.html">Language Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../debugging.html">Debugging Code Written in CMakePP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developing CMakePP</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CMakePPCore</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Getting Started</a> &raquo;</li>
+          <li><a href="index.html">CMakePP Examples</a> &raquo;</li>
+      <li><span class="section-number">1. </span>Using Classes</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/getting_started/cmakepp_examples/classes.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-classes">
+<span id="id1"></span><h1><span class="section-number">1. </span>Using Classes<a class="headerlink" href="#using-classes" title="Permalink to this headline"></a></h1>
+<p>This page provides examples of using CMakePP classes.</p>
+<section id="writing-a-basic-class">
+<h2><span class="section-number">1.1. </span>Writing a Basic Class<a class="headerlink" href="#writing-a-basic-class" title="Permalink to this headline"></a></h2>
+<p>We’ll begin by writing a simple class <code class="docutils literal notranslate"><span class="pre">Automobile</span></code> that only contains one
+attribute named <code class="docutils literal notranslate"><span class="pre">color</span></code> that takes the default value <code class="docutils literal notranslate"><span class="pre">red</span></code>:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Begin class definition</span>
+<span class="nb">cpp_class</span><span class="p">(</span><span class="s">Automobile</span><span class="p">)</span>
+
+<span class="w">  </span><span class="c"># Define an attribute &quot;color&quot; with the default value &quot;red&quot;</span>
+<span class="w">  </span><span class="nb">cpp_attr</span><span class="p">(</span><span class="s">Automobile</span><span class="w"> </span><span class="s">color</span><span class="w"> </span><span class="s">red</span><span class="p">)</span>
+
+<span class="c"># End class definition</span>
+<span class="nb">cpp_end_class</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Now we can instantiate a <code class="docutils literal notranslate"><span class="pre">Automobile</span></code> object called <code class="docutils literal notranslate"><span class="pre">my_auto</span></code>, access its
+color attribute, and print out that value:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Create an instance of the class called &quot;my_auto&quot; using the default CTOR</span>
+<span class="nb">Automobile</span><span class="p">(</span><span class="s">CTOR</span><span class="w"> </span><span class="s">my_auto</span><span class="p">)</span>
+
+<span class="c"># Access the &quot;color&quot; attribute and save it to the var &quot;my_autos_color&quot;</span>
+<span class="nb">Automobile</span><span class="p">(</span><span class="s">GET</span><span class="w"> </span><span class="s2">&quot;${my_auto}&quot;</span><span class="w"> </span><span class="s">my_autos_color</span><span class="w"> </span><span class="s">color</span><span class="p">)</span>
+
+<span class="c"># Print out the value of the var &quot;my_autos_color&quot;</span>
+<span class="nb">message</span><span class="p">(</span><span class="s2">&quot;The color of my_auto is: ${my_autos_color}&quot;</span><span class="p">)</span>
+
+<span class="c"># Output: The color of my_auto is: red</span>
+</pre></div>
+</div>
+<p>We can also set the value of the attribute:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Set a new value for the &quot;color&quot; attribute</span>
+<span class="nb">Automobile</span><span class="p">(</span><span class="s">SET</span><span class="w"> </span><span class="s2">&quot;${my_auto}&quot;</span><span class="w"> </span><span class="s">color</span><span class="w"> </span><span class="s">blue</span><span class="p">)</span>
+
+<span class="c"># Access the &quot;color&quot; attribute again and save it to the var &quot;my_autos_color&quot;</span>
+<span class="nb">Automobile</span><span class="p">(</span><span class="s">GET</span><span class="w"> </span><span class="s2">&quot;${my_auto}&quot;</span><span class="w"> </span><span class="s">my_autos_color</span><span class="w"> </span><span class="s">color</span><span class="p">)</span>
+
+<span class="c"># Print out the value of the var &quot;my_autos_color&quot;</span>
+<span class="nb">message</span><span class="p">(</span><span class="s2">&quot;The color of my_auto is: ${my_autos_color}&quot;</span><span class="p">)</span>
+
+<span class="c"># Output: The color of my_auto is: blue</span>
+</pre></div>
+</div>
+</section>
+<section id="adding-a-member-function">
+<h2><span class="section-number">1.2. </span>Adding a Member Function<a class="headerlink" href="#adding-a-member-function" title="Permalink to this headline"></a></h2>
+<p>Next we will add a function to our class. The function will be named <code class="docutils literal notranslate"><span class="pre">start</span></code>
+and will simply print a message indicating that our <code class="docutils literal notranslate"><span class="pre">Automobile</span></code> has started
+its engine. The updated class definition with this new function added is:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Begin class definition</span>
+<span class="nb">cpp_class</span><span class="p">(</span><span class="s">Automobile</span><span class="p">)</span>
+
+<span class="w">  </span><span class="c"># Define an attribute &quot;color&quot; with the value &quot;red&quot;</span>
+<span class="w">  </span><span class="nb">cpp_attr</span><span class="p">(</span><span class="s">Automobile</span><span class="w"> </span><span class="s">color</span><span class="w"> </span><span class="s">red</span><span class="p">)</span>
+
+<span class="w">  </span><span class="c"># Define a function &quot;start&quot; that prints a message</span>
+<span class="w">  </span><span class="nb">cpp_member</span><span class="p">(</span><span class="s">start</span><span class="w"> </span><span class="s">Automobile</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">function</span><span class="p">(</span><span class="s2">&quot;${start}&quot;</span><span class="w"> </span><span class="s">self</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">message</span><span class="p">(</span><span class="s2">&quot;Vroom! I have started my engine.&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">endfunction</span><span class="p">()</span>
+
+<span class="c"># End class definition</span>
+<span class="nb">cpp_end_class</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>After creating an instance of the <code class="docutils literal notranslate"><span class="pre">Automobile</span></code> class named <code class="docutils literal notranslate"><span class="pre">my_auto</span></code> (as we
+did in the previous example) we can call our function using the following:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Call the function using our Automobile instance</span>
+<span class="nb">Automobile</span><span class="p">(</span><span class="s">start</span><span class="w"> </span><span class="s2">&quot;${my_auto}&quot;</span><span class="p">)</span>
+
+<span class="c"># Output: Vroom! I have started my engine.</span>
+</pre></div>
+</div>
+</section>
+<section id="adding-a-function-that-takes-an-argument">
+<h2><span class="section-number">1.3. </span>Adding a Function That Takes an Argument<a class="headerlink" href="#adding-a-function-that-takes-an-argument" title="Permalink to this headline"></a></h2>
+<p>Now we will add a function called <code class="docutils literal notranslate"><span class="pre">drive</span></code> that takes two arguments, an <code class="docutils literal notranslate"><span class="pre">int</span></code>
+and a <code class="docutils literal notranslate"><span class="pre">str</span></code> and prints a message using those two arguments. We can do that by
+adding the following to our class:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Define a function &quot;drive&quot; that takes an int and a str and prints a message</span>
+<span class="nb">cpp_member</span><span class="p">(</span><span class="s">drive</span><span class="w"> </span><span class="s">Automobile</span><span class="w"> </span><span class="s">int</span><span class="w"> </span><span class="s">str</span><span class="p">)</span>
+<span class="nb">function</span><span class="p">(</span><span class="s2">&quot;${drive}&quot;</span><span class="w"> </span><span class="s">self</span><span class="w"> </span><span class="s">distance_km</span><span class="w"> </span><span class="s">destination</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">message</span><span class="p">(</span><span class="s2">&quot;I just drove ${distance_km} km to ${destination}!&quot;</span><span class="p">)</span>
+<span class="nb">endfunction</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Using our Automobile instance <code class="docutils literal notranslate"><span class="pre">my_auto</span></code> we can call the function in the
+following way:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Call the function and pass two arguments</span>
+<span class="nb">Automobile</span><span class="p">(</span><span class="s">drive</span><span class="w"> </span><span class="s2">&quot;${my_auto}&quot;</span><span class="w"> </span><span class="s">10</span><span class="w"> </span><span class="s2">&quot;London&quot;</span><span class="p">)</span>
+
+<span class="c"># Output: I just drove 10 km to London!</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>CMakePP will throw an error if it cannot find a function whose signature
+matches the call you are trying to make. In other words, the name of the
+function you are calling and the types of arguments you are passing in must
+match the function name and argument types in the function definition.</p>
+</div>
+</section>
+<section id="adding-a-function-that-references-attributes">
+<h2><span class="section-number">1.4. </span>Adding a Function That References Attributes<a class="headerlink" href="#adding-a-function-that-references-attributes" title="Permalink to this headline"></a></h2>
+<p>Functions can access attributes of the class they are a member of. We will add
+an attribute <code class="docutils literal notranslate"><span class="pre">km_driven</span></code> to our class. We can then add a function
+<code class="docutils literal notranslate"><span class="pre">describe_self</span></code> that prints a message describing the color of the car and
+how far it has driven. Within our function, we’ll use the <code class="docutils literal notranslate"><span class="pre">GET</span></code> function, but
+this time we’ll pass a prefix and a list of attribute names. This call will get
+all the attributes and store them in the current scope with the prefix
+prepended to their name. Here is the function:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Define an attribute &quot;km_driven&quot; that takes a starting value of 0</span>
+<span class="nb">cpp_attr</span><span class="p">(</span><span class="s">Automobile</span><span class="w"> </span><span class="s">km_driven</span><span class="w"> </span><span class="s">0</span><span class="p">)</span>
+
+<span class="c"># Define a function &quot;describe_self&quot; that references attributes of the class</span>
+<span class="nb">cpp_member</span><span class="p">(</span><span class="s">describe_self</span><span class="w"> </span><span class="s">Automobile</span><span class="p">)</span>
+<span class="nb">function</span><span class="p">(</span><span class="s2">&quot;${describe_self}&quot;</span><span class="w"> </span><span class="s">self</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c"># Access the attributes of the class and store them into the local vars</span>
+<span class="w">    </span><span class="c"># _ds_color and _ds_km_driven</span>
+<span class="w">    </span><span class="nb">Automobile</span><span class="p">(</span><span class="s">GET</span><span class="w"> </span><span class="s2">&quot;${self}&quot;</span><span class="w"> </span><span class="s">_ds</span><span class="w"> </span><span class="s">color</span><span class="w"> </span><span class="s">km_driven</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c"># Print out a message</span>
+<span class="w">    </span><span class="nb">message</span><span class="p">(</span><span class="s2">&quot;I am an automobile, I am ${_ds_color}, and I have driven ${km_driven} km.&quot;</span><span class="p">)</span>
+
+<span class="nb">endfunction</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This function can be accessed in the same way as previous examples:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Call the function using the instance &quot;my_auto&quot;</span>
+<span class="nb">Automobile</span><span class="p">(</span><span class="s">describe_self</span><span class="w"> </span><span class="s2">&quot;${my_auto}&quot;</span><span class="p">)</span>
+
+<span class="c"># Output: I am an automobile, I am red, and I have driven 0 km.</span>
+</pre></div>
+</div>
+</section>
+<section id="returning-a-value-from-a-function">
+<h2><span class="section-number">1.5. </span>Returning a Value from a Function<a class="headerlink" href="#returning-a-value-from-a-function" title="Permalink to this headline"></a></h2>
+<p>We will often want to return values from functions so that we can store those
+values for later use. We can modify the <code class="docutils literal notranslate"><span class="pre">describe_self</span></code> function we just
+wrote to return a value instead of printing a message.</p>
+<p>Returning values from a function works differently in CMake than in most
+other languages. The best practice is to pass into the function the name of the
+variable that you want the return value to be stored in in the parent scope
+(we’ll refer to this name as the <strong>return identifier</strong>). Then have the function
+set the value of the variable with the name specified by the return identifier
+in the parent scope using the <code class="docutils literal notranslate"><span class="pre">set</span></code> command with the <code class="docutils literal notranslate"><span class="pre">PARENT_SCOPE</span></code> option.
+This is demonstrated by the following redefinition of <code class="docutils literal notranslate"><span class="pre">describe_self</span></code>:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Redefine &quot;describe_self&quot; to take in a return identifier</span>
+<span class="nb">cpp_member</span><span class="p">(</span><span class="s">describe_self</span><span class="w"> </span><span class="s">Automobile</span><span class="w"> </span><span class="s">str</span><span class="p">)</span>
+<span class="nb">function</span><span class="p">(</span><span class="s2">&quot;${describe_self}&quot;</span><span class="w"> </span><span class="s">self</span><span class="w"> </span><span class="s">return_id</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c"># Access the attributes of the class and store them into local vars</span>
+<span class="w">    </span><span class="nb">Automobile</span><span class="p">(</span><span class="s">GET</span><span class="w"> </span><span class="s2">&quot;${self}&quot;</span><span class="w"> </span><span class="s">my_color</span><span class="w"> </span><span class="s">color</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">Automobile</span><span class="p">(</span><span class="s">GET</span><span class="w"> </span><span class="s2">&quot;${self}&quot;</span><span class="w"> </span><span class="s">my_km_driven</span><span class="w"> </span><span class="s">km_driven</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c"># Set the value of the var with the name ${return_id} in the parent scope</span>
+<span class="w">    </span><span class="nb">set</span><span class="p">(</span><span class="s2">&quot;${return_id}&quot;</span><span class="w"> </span><span class="s2">&quot;I am an automobile, I am ${my_color}, and I have driven ${my_km_driven} km.&quot;</span><span class="w"> </span><span class="s">PARENT_SCOPE</span><span class="p">)</span>
+
+<span class="nb">endfunction</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When we use the dereferencing expression in code comments (such as the
+comments containing “${return_id}” above) or documentation, we are referring to
+the value contained within the variable with the name <code class="docutils literal notranslate"><span class="pre">return_id</span></code>. In other
+words, we mean to imply dereferencing the variable and getting its value in
+the same way that the CMake interpreter would do so.</p>
+</div>
+<p>We can call this function and access its return value using the following:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Call the function and store its result in &quot;my_result&quot;</span>
+<span class="nb">Automobile</span><span class="p">(</span><span class="s">describe_self</span><span class="w"> </span><span class="s2">&quot;${my_auto}&quot;</span><span class="w"> </span><span class="s">my_result</span><span class="p">)</span>
+
+<span class="c"># Print out the value of &quot;my_result&quot;</span>
+<span class="nb">message</span><span class="p">(</span><span class="s2">&quot;${my_result}&quot;</span><span class="p">)</span>
+
+<span class="c"># Output: I am an automobile, I am red, and I have driven 0 km.</span>
+</pre></div>
+</div>
+</section>
+<section id="adding-multiple-return-points-to-a-function">
+<h2><span class="section-number">1.6. </span>Adding Multiple Return Points to a Function<a class="headerlink" href="#adding-multiple-return-points-to-a-function" title="Permalink to this headline"></a></h2>
+<p>We can employ the <code class="docutils literal notranslate"><span class="pre">cpp_return</span></code> macro to create multiple return points in a
+function. Additionally <code class="docutils literal notranslate"><span class="pre">cpp_return</span></code> also provides us with a more concise way
+to return a value to the parent scope.</p>
+<p>When we want to return from a function and return a value to the variable with
+the name <code class="docutils literal notranslate"><span class="pre">${return_id}</span></code> to the parent scope we just need to do the following:</p>
+<ol class="arabic simple">
+<li><p>Set the value of the variable with the name <code class="docutils literal notranslate"><span class="pre">${return_id}</span></code> in the current
+scope to the value we want to return</p></li>
+<li><p>Call <code class="docutils literal notranslate"><span class="pre">cpp_return(${return_id})</span></code></p></li>
+</ol>
+<p>This will set the value of the variable with the name <code class="docutils literal notranslate"><span class="pre">${return_id}</span></code> in the
+parent scope to that value it had in the function’s scope as well as return
+control to the parent scope.</p>
+<p>Suppose we wanted our <code class="docutils literal notranslate"><span class="pre">describe_self</span></code> function to take in an option that
+specifies whether or not it should indicate the color of itself in the
+description it returns. We could accomplish this by redefining the function
+as follows:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Redefine &quot;describe_self&quot; to have multiple return points</span>
+<span class="nb">cpp_member</span><span class="p">(</span><span class="s">describe_self</span><span class="w"> </span><span class="s">Automobile</span><span class="w"> </span><span class="s">str</span><span class="w"> </span><span class="s">bool</span><span class="p">)</span>
+<span class="nb">function</span><span class="p">(</span><span class="s2">&quot;${describe_self}&quot;</span><span class="w"> </span><span class="s">self</span><span class="w"> </span><span class="s">return_id</span><span class="w"> </span><span class="s">include_color</span><span class="p">)</span>
+
+<span class="w">  </span><span class="c"># Access the km_driven attribute</span>
+<span class="w">  </span><span class="nb">Automobile</span><span class="p">(</span><span class="s">GET</span><span class="w"> </span><span class="s2">&quot;${self}&quot;</span><span class="w"> </span><span class="s">my_km_driven</span><span class="w"> </span><span class="s">km_driven</span><span class="p">)</span>
+
+<span class="w">  </span><span class="nb">if</span><span class="p">(</span><span class="s">include_color</span><span class="p">)</span>
+<span class="w">    </span><span class="c"># Access the color attribute</span>
+<span class="w">    </span><span class="nb">Automobile</span><span class="p">(</span><span class="s">GET</span><span class="w"> </span><span class="s2">&quot;${self}&quot;</span><span class="w"> </span><span class="s">my_color</span><span class="w"> </span><span class="s">color</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c"># Set the value of the var with the name ${return_id} in the current scope</span>
+<span class="w">    </span><span class="nb">set</span><span class="p">(</span><span class="s2">&quot;${return_id}&quot;</span><span class="w"> </span><span class="s2">&quot;I am an automobile, I am ${my_color}, and I have driven ${my_km_driven} km.&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c"># Return the value and exit the function</span>
+<span class="w">    </span><span class="nb">cpp_return</span><span class="p">(</span><span class="s2">&quot;${return_id}&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">endif</span><span class="p">()</span>
+
+<span class="w">  </span><span class="c"># This only executes if include_color is false</span>
+<span class="w">  </span><span class="c"># Set the value of the var with the name ${return_id} in the current scope</span>
+<span class="w">  </span><span class="nb">set</span><span class="p">(</span><span class="s2">&quot;${return_id}&quot;</span><span class="w"> </span><span class="s2">&quot;I am an automobile and I have driven ${my_km_driven} km.&quot;</span><span class="p">)</span>
+
+<span class="w">  </span><span class="c"># Return the value and exit the function</span>
+<span class="w">  </span><span class="nb">cpp_return</span><span class="p">(</span><span class="s2">&quot;${return_id}&quot;</span><span class="p">)</span>
+
+<span class="nb">endfunction</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>We can call the function in the following way:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Call the function and specify that color should be included</span>
+<span class="nb">Automobile</span><span class="p">(</span><span class="s">describe_self</span><span class="w"> </span><span class="s2">&quot;${my_auto}&quot;</span><span class="w"> </span><span class="s">my_result</span><span class="w"> </span><span class="s">TRUE</span><span class="p">)</span>
+<span class="nb">message</span><span class="p">(</span><span class="s2">&quot;${my_result}&quot;</span><span class="p">)</span>
+
+<span class="c"># Output: I am an automobile, I am red, and I have driven 0 km.</span>
+
+<span class="c"># Call the function and specify that color should NOT be included</span>
+<span class="nb">Automobile</span><span class="p">(</span><span class="s">describe_self</span><span class="w"> </span><span class="s2">&quot;${my_auto}&quot;</span><span class="w"> </span><span class="s">my_result</span><span class="w"> </span><span class="s">FALSE</span><span class="p">)</span>
+<span class="nb">message</span><span class="p">(</span><span class="s2">&quot;${my_result}&quot;</span><span class="p">)</span>
+
+<span class="c"># Output: I am an automobile and I have driven 0 km.</span>
+</pre></div>
+</div>
+</section>
+<section id="overloading-a-function">
+<h2><span class="section-number">1.7. </span>Overloading a Function<a class="headerlink" href="#overloading-a-function" title="Permalink to this headline"></a></h2>
+<p>We can overload a function by adding a function of the same name with a
+different signature. For example, we can overload our function <code class="docutils literal notranslate"><span class="pre">start</span></code> by
+adding a new function definition with the same name that takes one argument
+instead of no arguments. This can be done by adding the following to our class
+definition:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Overload the &quot;start&quot; function</span>
+<span class="nb">cpp_member</span><span class="p">(</span><span class="s">start</span><span class="w"> </span><span class="s">Automobile</span><span class="w"> </span><span class="s">int</span><span class="p">)</span>
+<span class="nb">function</span><span class="p">(</span><span class="s2">&quot;${start}&quot;</span><span class="w"> </span><span class="s">self</span><span class="w"> </span><span class="s">distance_km</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">message</span><span class="p">(</span><span class="s2">&quot;Vroom! I started my engine and I just drove ${distance_km} km.&quot;</span><span class="p">)</span>
+<span class="nb">endfunction</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Now we can call the new function by passing in arguments with the correct types
+to match the signature of the new function we wrote. In this case we need to
+pass in one integer to match the new signature:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Call the new function implementation</span>
+<span class="nb">Automobile</span><span class="p">(</span><span class="s">start</span><span class="w"> </span><span class="s2">&quot;${my_auto}&quot;</span><span class="w"> </span><span class="s">10</span><span class="p">)</span>
+
+<span class="c"># Output: Vroom! I started my engine and I just drove 10 km.</span>
+
+<span class="c"># We can still call the original function implementation as well</span>
+<span class="nb">Automobile</span><span class="p">(</span><span class="s">start</span><span class="w"> </span><span class="s2">&quot;${my_auto}&quot;</span><span class="p">)</span>
+
+<span class="c"># Output: Vroom! I started my engine.</span>
+</pre></div>
+</div>
+</section>
+<section id="adding-a-user-defined-constructors">
+<h2><span class="section-number">1.8. </span>Adding a User-Defined Constructors<a class="headerlink" href="#adding-a-user-defined-constructors" title="Permalink to this headline"></a></h2>
+<p>CMakePP allows users to define multiple custom constructors for classes. This is
+done using the <code class="docutils literal notranslate"><span class="pre">cpp_constructor</span></code> command. Here we add a constructor that takes
+two integers to our <code class="docutils literal notranslate"><span class="pre">Automobile</span></code> class:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cpp_constructor</span><span class="p">(</span><span class="s">CTOR</span><span class="w"> </span><span class="s">Automobile</span><span class="w"> </span><span class="s">int</span><span class="w"> </span><span class="s">int</span><span class="p">)</span>
+<span class="nb">function</span><span class="p">(</span><span class="s2">&quot;${CTOR}&quot;</span><span class="w"> </span><span class="s">self</span><span class="w"> </span><span class="s">a</span><span class="w"> </span><span class="s">b</span><span class="p">)</span>
+<span class="w">    </span><span class="c"># Do set up using arguments passed to constructors</span>
+<span class="nb">endfunction</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Multiple constructors can be added to a class. Calls to constructors will use
+function resolution in the same way the member function calls do. That is when a
+call is made to a constructor, CMakePP will attempt to find a constructor that
+matches the signature of that call and then call that constructor. If no
+matching constructor is found, an error will be thrown. The only exception to
+this is when a call is made to the constructor of a class and no arguments are
+passed. In that case, CMakePP will just call the default constructor for the
+class.</p>
+</section>
+<section id="using-the-kwargs-constructor">
+<h2><span class="section-number">1.9. </span>Using the KWARGS Constructor<a class="headerlink" href="#using-the-kwargs-constructor" title="Permalink to this headline"></a></h2>
+<p>CMakePP allows users to call a <strong>KWARGS Constructor</strong>. This constructor enables
+users to automatically set the values of attributes of the class upon
+construction. No constructor needs to be defined to use this feature. WeS just
+need to use the <code class="docutils literal notranslate"><span class="pre">KWARGS</span></code> keyword as the third argument to the call and provide
+a list consisting of the name of each attribute we want to set followed
+immediately by the value or values we want to set. Suppose our automobile class
+has three attributes: <code class="docutils literal notranslate"><span class="pre">color</span></code>, <code class="docutils literal notranslate"><span class="pre">num_doors</span></code>, and <code class="docutils literal notranslate"><span class="pre">owners</span></code>. Then we could
+set these upon construction using the following:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">MyClass</span><span class="p">(</span><span class="s">CTOR</span><span class="w"> </span><span class="s">my_auto</span><span class="w"> </span><span class="s">KWARGS</span><span class="w"> </span><span class="s">color</span><span class="w"> </span><span class="s">red</span><span class="w"> </span><span class="s">num_doors</span><span class="w"> </span><span class="s">4</span><span class="w"> </span><span class="s">owners</span><span class="w"> </span><span class="s">Alice</span><span class="w"> </span><span class="s">Bob</span><span class="w"> </span><span class="s">Chuck</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This would set the value of <code class="docutils literal notranslate"><span class="pre">color</span></code> to <code class="docutils literal notranslate"><span class="pre">red</span></code>, <code class="docutils literal notranslate"><span class="pre">num_doors</span></code> to <code class="docutils literal notranslate"><span class="pre">4</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">owners</span></code> to <code class="docutils literal notranslate"><span class="pre">Alice;Bob;Chuck</span></code>.</p>
+</section>
+<section id="writing-a-derived-class">
+<h2><span class="section-number">1.10. </span>Writing a Derived Class<a class="headerlink" href="#writing-a-derived-class" title="Permalink to this headline"></a></h2>
+<p>CMakePP supports inheritance which enables us to write <strong>subclasses</strong> that are
+derived from (or <em>inherit from</em>) a base class. Subclasses inherit all attributes
+and functions from their base class. However, subclasses can override the
+definitions of functions in their base classes. They can also override the
+default values of attributes that are set in the base class.</p>
+<p>We can demonstrate this by creating a new <code class="docutils literal notranslate"><span class="pre">Car</span></code> class that is derived from our
+<code class="docutils literal notranslate"><span class="pre">Automobile</span></code> class. Our <code class="docutils literal notranslate"><span class="pre">Car</span></code> class will contain a new attribute
+<code class="docutils literal notranslate"><span class="pre">num_doors</span></code> and will override the <code class="docutils literal notranslate"><span class="pre">describe_self</span></code> method to provide a more
+precise description. We can define the class by writing the following:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Begin class definition</span>
+<span class="nb">cpp_class</span><span class="p">(</span><span class="s">Car</span><span class="w"> </span><span class="s">Automobile</span><span class="p">)</span>
+<span class="w">  </span><span class="c"># Override the default value of the color attribute</span>
+<span class="w">  </span><span class="nb">cpp_attr</span><span class="p">(</span><span class="s">Automobile</span><span class="w"> </span><span class="s">color</span><span class="w"> </span><span class="s">green</span><span class="p">)</span>
+
+<span class="w">  </span><span class="c"># Add a new attribute to the subclass</span>
+<span class="w">  </span><span class="nb">cpp_attr</span><span class="p">(</span><span class="s">Car</span><span class="w"> </span><span class="s">num_doors</span><span class="w"> </span><span class="s">4</span><span class="p">)</span>
+
+<span class="w">  </span><span class="c"># Override the &quot;describe_self&quot; method of the Automobile class</span>
+<span class="w">  </span><span class="nb">cpp_member</span><span class="p">(</span><span class="s">describe_self</span><span class="w"> </span><span class="s">Car</span><span class="w"> </span><span class="s">str</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">function</span><span class="p">(</span><span class="s2">&quot;${describe_self}&quot;</span><span class="w"> </span><span class="s">self</span><span class="w"> </span><span class="s">result_id</span><span class="p">)</span>
+<span class="w">      </span><span class="nb">Car</span><span class="p">(</span><span class="s">GET</span><span class="w"> </span><span class="s2">&quot;${self}&quot;</span><span class="w"> </span><span class="s">my_color</span><span class="w"> </span><span class="s">color</span><span class="p">)</span>
+<span class="w">      </span><span class="nb">Car</span><span class="p">(</span><span class="s">GET</span><span class="w"> </span><span class="s2">&quot;${self}&quot;</span><span class="w"> </span><span class="s">my_km_driven</span><span class="w"> </span><span class="s">km_driven</span><span class="p">)</span>
+<span class="w">      </span><span class="nb">Car</span><span class="p">(</span><span class="s">GET</span><span class="w"> </span><span class="s2">&quot;${self}&quot;</span><span class="w"> </span><span class="s">my_num_doors</span><span class="w"> </span><span class="s">num_doors</span><span class="p">)</span>
+<span class="w">      </span><span class="nb">set</span><span class="p">(</span><span class="s2">&quot;${result_id}&quot;</span><span class="w"> </span><span class="s2">&quot;I am a car with ${my_num_doors} doors, I am ${my_color}, and I have driven ${my_distance_km} km.&quot;</span><span class="w"> </span><span class="s">PARENT_SCOPE</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">endfunction</span><span class="p">()</span>
+
+<span class="c"># End class definition</span>
+<span class="nb">cpp_end_class</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>We can now create an instance of our derived <code class="docutils literal notranslate"><span class="pre">Car</span></code> class and access its
+methods (and the methods inherited from its base class) through the <code class="docutils literal notranslate"><span class="pre">Car</span></code>
+class:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Create an instance of the derived class &quot;Car&quot;</span>
+<span class="nb">Car</span><span class="p">(</span><span class="s">CTOR</span><span class="w"> </span><span class="s">my_car</span><span class="p">)</span>
+
+<span class="c"># Access the overridden method &quot;describe_self&quot; through the derived class</span>
+<span class="nb">Car</span><span class="p">(</span><span class="s">describe_self</span><span class="w"> </span><span class="s2">&quot;${my_car}&quot;</span><span class="w"> </span><span class="s">car_result</span><span class="p">)</span>
+<span class="nb">message</span><span class="p">(</span><span class="s2">&quot;${car_result}&quot;</span><span class="p">)</span>
+
+<span class="c"># Output: I am a car with 4 doors, I am green, and I have driven 0 km.</span>
+
+<span class="c"># Access the inherited method &quot;start&quot; through the derived class</span>
+<span class="nb">Car</span><span class="p">(</span><span class="s">start</span><span class="w"> </span><span class="s2">&quot;${my_car}&quot;</span><span class="p">)</span>
+
+<span class="c"># Output: Vroom! I have started my engine.</span>
+</pre></div>
+</div>
+<p>Alternatively we can access the methods of the <code class="docutils literal notranslate"><span class="pre">Car</span></code> class through
+its base class <code class="docutils literal notranslate"><span class="pre">Automobile</span></code>:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Access the overridden method &quot;describe_self&quot; through the base class</span>
+<span class="nb">Automobile</span><span class="p">(</span><span class="s">describe_self</span><span class="w"> </span><span class="s2">&quot;${my_car}&quot;</span><span class="w"> </span><span class="s">auto_result</span><span class="p">)</span>
+<span class="nb">message</span><span class="p">(</span><span class="s2">&quot;${auto_result}&quot;</span><span class="p">)</span>
+
+<span class="c"># Output: I am a car with 4 doors, I am red, and I have driven 0 km.</span>
+
+<span class="c"># Access the inherited method &quot;start&quot; through the base class</span>
+<span class="nb">Automobile</span><span class="p">(</span><span class="s">start</span><span class="w"> </span><span class="s2">&quot;${my_car}&quot;</span><span class="p">)</span>
+
+<span class="c"># Output: Vroom! I have started my engine.</span>
+</pre></div>
+</div>
+</section>
+<section id="inheriting-from-multiple-classes">
+<h2><span class="section-number">1.11. </span>Inheriting from Multiple Classes<a class="headerlink" href="#inheriting-from-multiple-classes" title="Permalink to this headline"></a></h2>
+<section id="the-basics">
+<h3><span class="section-number">1.11.1. </span>The Basics<a class="headerlink" href="#the-basics" title="Permalink to this headline"></a></h3>
+<p>A class can inherit from multiple parent classes. Suppose we have defined the
+following classes to represent <strong>electric vehicles</strong> and <strong>trucks</strong>:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># The ElectricVehicle class</span>
+<span class="nb">cpp_class</span><span class="p">(</span><span class="s">ElectricVehicle</span><span class="p">)</span>
+
+<span class="w">  </span><span class="c"># Attribute for storing battery percentage</span>
+<span class="w">  </span><span class="nb">cpp_attr</span><span class="p">(</span><span class="s">ElectricVehicle</span><span class="w"> </span><span class="s">battery_percentage</span><span class="w"> </span><span class="s">100</span><span class="p">)</span>
+
+<span class="w">  </span><span class="c"># Function for starting the vehicle</span>
+<span class="w">  </span><span class="nb">cpp_member</span><span class="p">(</span><span class="s">drive</span><span class="w"> </span><span class="s">ElectricVehicle</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">function</span><span class="p">(</span><span class="s2">&quot;${drive}&quot;</span><span class="w"> </span><span class="s">self</span><span class="p">)</span>
+<span class="w">      </span><span class="nb">message</span><span class="p">(</span><span class="s2">&quot;I am driving.&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">endfunction</span><span class="p">()</span>
+
+<span class="nb">cpp_end_class</span><span class="p">()</span>
+
+<span class="c"># The Truck class</span>
+<span class="nb">cpp_class</span><span class="p">(</span><span class="s">Truck</span><span class="p">)</span>
+
+<span class="w">  </span><span class="c"># Attribute for storing towing capacity</span>
+<span class="w">  </span><span class="nb">cpp_attr</span><span class="p">(</span><span class="s">Truck</span><span class="w"> </span><span class="s">towing_cap_lbs</span><span class="w"> </span><span class="s">3500</span><span class="p">)</span>
+
+<span class="w">  </span><span class="c"># Function for driving the truck</span>
+<span class="w">  </span><span class="nb">cpp_member</span><span class="p">(</span><span class="s">tow</span><span class="w"> </span><span class="s">Truck</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">function</span><span class="p">(</span><span class="s2">&quot;${tow}&quot;</span><span class="w"> </span><span class="s">self</span><span class="p">)</span>
+<span class="w">      </span><span class="nb">message</span><span class="p">(</span><span class="s2">&quot;I am towing.&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">endfunction</span><span class="p">()</span>
+
+<span class="nb">cpp_end_class</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>If we want to create a class to represent an electric truck, we can create a
+new class <code class="docutils literal notranslate"><span class="pre">ElectricTruck</span></code> that inherits from both of these classes:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Define a subclass that inherits from both parent classes</span>
+<span class="nb">cpp_class</span><span class="p">(</span><span class="s">ElectricTruck</span><span class="w"> </span><span class="s">ElectricVehicle</span><span class="w"> </span><span class="s">Truck</span><span class="p">)</span>
+
+<span class="w">  </span><span class="c"># This is an empty class that inherits methods and attributes from its parent classes</span>
+
+<span class="nb">cpp_end_class</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Then we can create an instance of <code class="docutils literal notranslate"><span class="pre">ElectricTruck</span></code> like we would any other
+class:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Create instance of the subclass</span>
+<span class="nb">ElectricTruck</span><span class="p">(</span><span class="s">CTOR</span><span class="w"> </span><span class="s">my_inst</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can then access the attributes that are defined in each of the parent classes
+like we would any other attribute:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Access the attributes of each parent class through the ElectricTruck class</span>
+<span class="nb">ElectricTruck</span><span class="p">(</span><span class="s">GET</span><span class="w"> </span><span class="s2">&quot;${my_inst}&quot;</span><span class="w"> </span><span class="s">result1</span><span class="w"> </span><span class="s">battery_percentage</span><span class="p">)</span>
+<span class="nb">message</span><span class="p">(</span><span class="s2">&quot;Battery percentage: ${result1}%&quot;</span><span class="p">)</span>
+<span class="nb">ElectricTruck</span><span class="p">(</span><span class="s">GET</span><span class="w"> </span><span class="s2">&quot;${my_inst}&quot;</span><span class="w"> </span><span class="s">result2</span><span class="w"> </span><span class="s">towing_cap_lbs</span><span class="p">)</span>
+<span class="nb">message</span><span class="p">(</span><span class="s2">&quot;Towing capactiy: ${result2} lbs&quot;</span><span class="p">)</span>
+
+<span class="c"># Output:</span>
+<span class="c"># Battery percentage: 100%</span>
+<span class="c"># Towing capactiy: 3500 lbs</span>
+</pre></div>
+</div>
+<p>We can access the functions defined in each of the parent classes as well:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Access the functions of each parent class through the ElectricTruck class</span>
+<span class="nb">ElectricTruck</span><span class="p">(</span><span class="s">drive</span><span class="w"> </span><span class="s2">&quot;${my_inst}&quot;</span><span class="p">)</span>
+<span class="nb">ElectricTruck</span><span class="p">(</span><span class="s">tow</span><span class="w"> </span><span class="s2">&quot;${my_inst}&quot;</span><span class="p">)</span>
+
+<span class="c"># Output:</span>
+<span class="c"># I am driving.</span>
+<span class="c"># I am towing.</span>
+</pre></div>
+</div>
+</section>
+<section id="inheriting-from-multiple-classes-with-conflicting-attribute-and-function-names">
+<h3><span class="section-number">1.11.2. </span>Inheriting from Multiple Classes with Conflicting Attribute and Function Names<a class="headerlink" href="#inheriting-from-multiple-classes-with-conflicting-attribute-and-function-names" title="Permalink to this headline"></a></h3>
+<p>Inheriting from multiple classes creates the possibility of inheriting from
+two or more classes that all have an attribute of the same name or a function
+with the same signature. Suppose our <code class="docutils literal notranslate"><span class="pre">ElectricVehicle</span></code> and <code class="docutils literal notranslate"><span class="pre">Truck</span></code> classes
+were defined with the following:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Define the ElectricVehicle class</span>
+<span class="nb">cpp_class</span><span class="p">(</span><span class="s">ElectricVehicle</span><span class="p">)</span>
+
+<span class="w">  </span><span class="c"># Attribute for storing the power source of the electric vehicle</span>
+<span class="w">  </span><span class="nb">cpp_attr</span><span class="p">(</span><span class="s">ElectricVehicle</span><span class="w"> </span><span class="s">power_source</span><span class="w"> </span><span class="s2">&quot;100 kWh Battery&quot;</span><span class="p">)</span>
+
+<span class="w">  </span><span class="c"># Function for starting the vehicle</span>
+<span class="w">  </span><span class="nb">cpp_member</span><span class="p">(</span><span class="s">start</span><span class="w"> </span><span class="s">ElectricVehicle</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">function</span><span class="p">(</span><span class="s2">&quot;${start}&quot;</span><span class="w"> </span><span class="s">self</span><span class="p">)</span>
+<span class="w">      </span><span class="nb">message</span><span class="p">(</span><span class="s2">&quot;I have started silently.&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">endfunction</span><span class="p">()</span>
+
+<span class="nb">cpp_end_class</span><span class="p">()</span>
+
+<span class="c"># Define the Truck class</span>
+<span class="nb">cpp_class</span><span class="p">(</span><span class="s">Truck</span><span class="p">)</span>
+
+<span class="w">  </span><span class="c"># Attribute for storing the power source of the truck</span>
+<span class="w">  </span><span class="nb">cpp_attr</span><span class="p">(</span><span class="s">Truck</span><span class="w"> </span><span class="s">power_source</span><span class="w"> </span><span class="s2">&quot;20 Gallon Fuel Tank&quot;</span><span class="p">)</span>
+
+<span class="w">  </span><span class="c"># Function for starting the truck</span>
+<span class="w">  </span><span class="nb">cpp_member</span><span class="p">(</span><span class="s">start</span><span class="w"> </span><span class="s">Truck</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">function</span><span class="p">(</span><span class="s2">&quot;${start}&quot;</span><span class="w"> </span><span class="s">self</span><span class="p">)</span>
+<span class="w">      </span><span class="nb">message</span><span class="p">(</span><span class="s2">&quot;Vroom! I have started my engine.&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">endfunction</span><span class="p">()</span>
+
+<span class="nb">cpp_end_class</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Notice that both classes have an attribute named <code class="docutils literal notranslate"><span class="pre">power_source</span></code> and a function
+named <code class="docutils literal notranslate"><span class="pre">start</span></code>. Again, we can create a subclass of these two classes using the
+following:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Define a subclass that inherits from both parent classes</span>
+<span class="nb">cpp_class</span><span class="p">(</span><span class="s">ElectricTruck</span><span class="w"> </span><span class="s">ElectricVehicle</span><span class="w"> </span><span class="s">Truck</span><span class="p">)</span>
+
+<span class="w">  </span><span class="c"># This is an empty class that inherits methods and attributes from its parent classes</span>
+
+<span class="nb">cpp_end_class</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Now if we attempt to access the <code class="docutils literal notranslate"><span class="pre">power_source</span></code> attribute or call the <code class="docutils literal notranslate"><span class="pre">start</span></code>
+function, CMakePP will search the parent classes in the order that they were
+passed to the <code class="docutils literal notranslate"><span class="pre">cpp_class</span></code> macro. That is, CMakePP will first look in the
+<code class="docutils literal notranslate"><span class="pre">ElectricVehicle</span></code> class for the attribute or function and, if it does not
+find the attribute for function there, CMakePP will then move on to the
+<code class="docutils literal notranslate"><span class="pre">Truck</span></code> class.</p>
+<p>So, if we create an instance of <code class="docutils literal notranslate"><span class="pre">ElectricTruck</span></code> and attempt to access
+<code class="docutils literal notranslate"><span class="pre">power_source</span></code> and call <code class="docutils literal notranslate"><span class="pre">start</span></code> we’ll get the following:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Create instance of the subclass</span>
+<span class="nb">ElectricTruck</span><span class="p">(</span><span class="s">CTOR</span><span class="w"> </span><span class="s">my_inst</span><span class="p">)</span>
+
+<span class="c"># Access the power_source attribute</span>
+<span class="nb">ElectricTruck</span><span class="p">(</span><span class="s">GET</span><span class="w"> </span><span class="s2">&quot;${my_inst}&quot;</span><span class="w"> </span><span class="s">result</span><span class="w"> </span><span class="s">power_source</span><span class="p">)</span>
+<span class="nb">message</span><span class="p">(</span><span class="s2">&quot;Power source: ${result}&quot;</span><span class="p">)</span>
+
+<span class="c"># Output</span>
+<span class="c"># Power source: Battery</span>
+<span class="c"># I have started silently.</span>
+</pre></div>
+</div>
+<p>Alternatively, we could define our subclass with
+<code class="docutils literal notranslate"><span class="pre">cpp_class(ElectricTruck</span> <span class="pre">Truck</span> <span class="pre">ElectricVehicle)</span></code>. Note that the we now placed
+<code class="docutils literal notranslate"><span class="pre">Truck</span></code> in front of <code class="docutils literal notranslate"><span class="pre">ElectricVehicle</span></code> so CMakePP would look in <code class="docutils literal notranslate"><span class="pre">Truck</span></code>
+first when searching for attributes and functions. If we made the same calls as
+above, the following output would be generated:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Output</span>
+<span class="c"># Power source: Fuel Tank</span>
+<span class="c"># Vroom! I have started my engine.</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="adding-a-pure-virtual-member-function">
+<h2><span class="section-number">1.12. </span>Adding A Pure Virtual Member Function<a class="headerlink" href="#adding-a-pure-virtual-member-function" title="Permalink to this headline"></a></h2>
+<p>CMakePP allows users to define pure virtual member functions in base classes.
+These functions have no concrete implementation but can be overriden by
+implementations in derived classes. Let’s start by defining a <code class="docutils literal notranslate"><span class="pre">Vehicle</span></code> class
+with a virtual member function <code class="docutils literal notranslate"><span class="pre">describe_self</span></code>:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Define the Vehicle class</span>
+<span class="nb">cpp_class</span><span class="p">(</span><span class="s">Vehicle</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c"># Add a virtual member function to be overridden by derived classes</span>
+<span class="w">    </span><span class="nb">cpp_member</span><span class="p">(</span><span class="s">describe_self</span><span class="w"> </span><span class="s">Vehicle</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">cpp_virtual_member</span><span class="p">(</span><span class="s">describe_self</span><span class="p">)</span>
+
+<span class="nb">cpp_end_class</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Now we can define a <code class="docutils literal notranslate"><span class="pre">Truck</span></code> class that is derived from the <code class="docutils literal notranslate"><span class="pre">Vehicle</span></code> class
+that overrides <code class="docutils literal notranslate"><span class="pre">describe_self</span></code> with an implementation:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Define the Truck class</span>
+<span class="nb">cpp_class</span><span class="p">(</span><span class="s">Truck</span><span class="w"> </span><span class="s">Vehicle</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nb">cpp_member</span><span class="p">(</span><span class="s">describe_self</span><span class="w"> </span><span class="s">Truck</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">function</span><span class="p">(</span><span class="s2">&quot;${describe_self}&quot;</span><span class="w"> </span><span class="s">self</span><span class="p">)</span>
+<span class="w">        </span><span class="nb">message</span><span class="p">(</span><span class="s2">&quot;I am a truck!&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">endfunction</span><span class="p">()</span>
+
+<span class="nb">cpp_end_class</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Now we can create an instance of the <code class="docutils literal notranslate"><span class="pre">Truck</span></code> class and call the
+<code class="docutils literal notranslate"><span class="pre">describe_self</span></code> function:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Create an instance of the Truck class and call describe_self</span>
+<span class="nb">Truck</span><span class="p">(</span><span class="s">CTOR</span><span class="w"> </span><span class="s">my_inst</span><span class="p">)</span>
+<span class="nb">Truck</span><span class="p">(</span><span class="s">describe_self</span><span class="w"> </span><span class="s2">&quot;${my_inst}&quot;</span><span class="p">)</span>
+
+<span class="c"># Output: I am a truck!</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If a call is made to the <code class="docutils literal notranslate"><span class="pre">describe_self</span></code> function for an instance of the
+<code class="docutils literal notranslate"><span class="pre">Vehicle</span></code> class, CMakePP will throw an error indicating that this function
+is virtual and must be overridden in a derived class.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="CMakePP Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="utilities.html" class="btn btn-neutral float-right" title="2. Using Utilities" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, CMakePP Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

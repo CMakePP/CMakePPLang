@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maps &mdash; CMakePPCore 1.0.0alpha documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Objects" href="objects.html" />
+    <link rel="prev" title="Exception Handling" href="exceptions.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> CMakePPCore
+          </a>
+              <div class="version">
+                1.0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Language Features</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="types.html">Types in CMakePP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html">Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html">Exception Handling</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Maps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#map-creation">Map Creation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-values">Accessing Values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-values">Setting Values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#appending-values">Appending Values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#copying-a-map">Copying a Map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#checking-equality-of-maps">Checking Equality of Maps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#checking-if-a-map-has-a-key">Checking if a Map has a Key</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getting-a-map-s-keys">Getting a Map’s Keys</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="objects.html">Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="serialization.html">Serialization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html">Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../conventions.html">Language Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging.html">Debugging Code Written in CMakePP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developing CMakePP</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CMakePPCore</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Language Features</a> &raquo;</li>
+      <li>Maps</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/features/maps.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="maps">
+<h1>Maps<a class="headerlink" href="#maps" title="Permalink to this headline"></a></h1>
+<p>CMakePP provides the <code class="docutils literal notranslate"><span class="pre">map</span></code> type for storing key-value pairs. The CMakePP
+<code class="docutils literal notranslate"><span class="pre">map</span></code> provides the same basic functionality as C++’s <code class="docutils literal notranslate"><span class="pre">std:map</span></code>, Python’s
+<code class="docutils literal notranslate"><span class="pre">dictionary</span></code>, or JavaScript’s <strong>Associative Array</strong> structure. Users can use
+maps in there code wherever they see fit. A basic overview of the features is
+provided below.</p>
+<section id="map-creation">
+<h2>Map Creation<a class="headerlink" href="#map-creation" title="Permalink to this headline"></a></h2>
+<p>The map constructor is used to create an empty map:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Create an empty map named my_map</span>
+<span class="nb">cpp_map</span><span class="p">(</span><span class="s">CTOR</span><span class="w"> </span><span class="s">my_map</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Optionally, key-value pairs can be provided to the map constructor. You must
+simply add keys and their corresponding values as arguments passed to the
+constructor:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Create a map with initial key value pairs</span>
+<span class="nb">cpp_map</span><span class="p">(</span><span class="s">CTOR</span><span class="w"> </span><span class="s">my_map</span><span class="w"> </span><span class="s">key_a</span><span class="w"> </span><span class="s">value_a</span><span class="w"> </span><span class="s">key_b</span><span class="w"> </span><span class="s">value_b</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="accessing-values">
+<h2>Accessing Values<a class="headerlink" href="#accessing-values" title="Permalink to this headline"></a></h2>
+<p>Values can be accessed using <code class="docutils literal notranslate"><span class="pre">GET</span></code> keyword:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Access the value at my_key and store it in my_result</span>
+<span class="nb">cpp_map</span><span class="p">(</span><span class="s">GET</span><span class="w"> </span><span class="s2">&quot;${my_map}&quot;</span><span class="w"> </span><span class="s">my_result</span><span class="w"> </span><span class="s">my_key</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="setting-values">
+<h2>Setting Values<a class="headerlink" href="#setting-values" title="Permalink to this headline"></a></h2>
+<p>Values can be set by using the <code class="docutils literal notranslate"><span class="pre">SET</span></code> keyword:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Set the value of my_key to my_value</span>
+<span class="nb">cpp_map</span><span class="p">(</span><span class="s">SET</span><span class="w"> </span><span class="s2">&quot;${my_map}&quot;</span><span class="w"> </span><span class="s">my_key</span><span class="w"> </span><span class="s">my_value</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="appending-values">
+<h2>Appending Values<a class="headerlink" href="#appending-values" title="Permalink to this headline"></a></h2>
+<p>Values can be appended by using the <code class="docutils literal notranslate"><span class="pre">APPEND</span></code> keyword:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Append new_value to the value at my_key</span>
+<span class="nb">cpp_map</span><span class="p">(</span><span class="s">APPEND</span><span class="w"> </span><span class="s2">&quot;${my_map}&quot;</span><span class="w"> </span><span class="s">my_key</span><span class="w"> </span><span class="s">new_value</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="copying-a-map">
+<h2>Copying a Map<a class="headerlink" href="#copying-a-map" title="Permalink to this headline"></a></h2>
+<p>Maps can be copied using the <code class="docutils literal notranslate"><span class="pre">COPY</span></code> keyword:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Copy my_map to my_map_copy</span>
+<span class="nb">cpp_map</span><span class="p">(</span><span class="s">COPY</span><span class="w"> </span><span class="s2">&quot;${my_map}&quot;</span><span class="w"> </span><span class="s">my_map_copy</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="checking-equality-of-maps">
+<h2>Checking Equality of Maps<a class="headerlink" href="#checking-equality-of-maps" title="Permalink to this headline"></a></h2>
+<p>Map equality can be checked using the <code class="docutils literal notranslate"><span class="pre">EQUAL</span></code> keyword:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Check if map_a is equivalent to map_b</span>
+<span class="nb">cpp_map</span><span class="p">(</span><span class="s">EQUAL</span><span class="w"> </span><span class="s2">&quot;${map_a}&quot;</span><span class="w"> </span><span class="s">equal_result</span><span class="w"> </span><span class="s2">&quot;${map_b}&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="checking-if-a-map-has-a-key">
+<h2>Checking if a Map has a Key<a class="headerlink" href="#checking-if-a-map-has-a-key" title="Permalink to this headline"></a></h2>
+<p>Check whether the map contains a key with the <code class="docutils literal notranslate"><span class="pre">HAS_KEY</span></code> keyword:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Check whether the map has the key &quot;my_key&quot;</span>
+<span class="nb">cpp_map</span><span class="p">(</span><span class="s">HAS_KEY</span><span class="w"> </span><span class="s2">&quot;${my_map}&quot;</span><span class="w"> </span><span class="s">has_key_result</span><span class="w"> </span><span class="s">my_key</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="getting-a-map-s-keys">
+<h2>Getting a Map’s Keys<a class="headerlink" href="#getting-a-map-s-keys" title="Permalink to this headline"></a></h2>
+<p>A list of a map’s keys can be retrieved using the <code class="docutils literal notranslate"><span class="pre">KEYS</span></code> keyword:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Put the list of the map&#39;s keys in keys_list</span>
+<span class="nb">cpp_map</span><span class="p">(</span><span class="s">KEYS</span><span class="w"> </span><span class="s2">&quot;${my_map}&quot;</span><span class="w"> </span><span class="s">keys_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="exceptions.html" class="btn btn-neutral float-left" title="Exception Handling" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="objects.html" class="btn btn-neutral float-right" title="Objects" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, CMakePP Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

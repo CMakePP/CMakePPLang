@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Serialization &mdash; CMakePPCore 1.0.0alpha documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Utilities" href="utilities.html" />
+    <link rel="prev" title="Objects" href="objects.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> CMakePPCore
+          </a>
+              <div class="version">
+                1.0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Language Features</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="types.html">Types in CMakePP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html">Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html">Exception Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maps.html">Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects.html">Objects</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Serialization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-serialization-function">The Serialization Function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serialization-of-maps">Serialization of Maps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serialization-of-lists">Serialization of Lists</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serialization-of-other-native-cmake-types">Serialization of other Native CMake Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serialization-of-objects">Serialization of Objects</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html">Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../conventions.html">Language Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging.html">Debugging Code Written in CMakePP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developing CMakePP</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CMakePPCore</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Language Features</a> &raquo;</li>
+      <li>Serialization</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/features/serialization.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="serialization">
+<h1>Serialization<a class="headerlink" href="#serialization" title="Permalink to this headline"></a></h1>
+<p>CMakePP provides the ability to serialize objects, maps, and other values into
+JSON strings via the <code class="docutils literal notranslate"><span class="pre">cpp_serialize</span></code> function. We will start by covering the
+serialization of maps, lists, and native CMake types since these are fairly
+simple. Lastly, we’ll cover the serialization of objects as their serialization
+process is a bit more complicated.</p>
+<section id="the-serialization-function">
+<h2>The Serialization Function<a class="headerlink" href="#the-serialization-function" title="Permalink to this headline"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">cpp_serialize</span></code> function takes two arguments in the following order:</p>
+<ol class="arabic simple">
+<li><p>The name for the variable which will hold the result <strong>(of type desc)</strong></p></li>
+<li><p>The value we to be serialized <strong>(of any type)</strong></p></li>
+</ol>
+</section>
+<section id="serialization-of-maps">
+<h2>Serialization of Maps<a class="headerlink" href="#serialization-of-maps" title="Permalink to this headline"></a></h2>
+<p>Maps are serialized into JSON dictionaries (otherwise known as associative
+arrays).</p>
+<p>For example a map created with
+<code class="docutils literal notranslate"><span class="pre">cpp_map(CTOR</span> <span class="pre">my_map</span> <span class="pre">key_a</span> <span class="pre">value_a</span> <span class="pre">key_b</span> <span class="pre">value_b)</span></code> serializes to
+<code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">&quot;key_a&quot;</span> <span class="pre">:</span> <span class="pre">&quot;value_a&quot;,</span> <span class="pre">&quot;key_b&quot;</span> <span class="pre">:</span> <span class="pre">&quot;value_b&quot;</span> <span class="pre">}</span></code></p>
+</section>
+<section id="serialization-of-lists">
+<h2>Serialization of Lists<a class="headerlink" href="#serialization-of-lists" title="Permalink to this headline"></a></h2>
+<p>Lists are serialized into JSON lists.</p>
+<p>For example <code class="docutils literal notranslate"><span class="pre">&quot;this;is;a;list&quot;</span></code> serializes to
+<code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">&quot;this&quot;,</span> <span class="pre">&quot;is&quot;,</span> <span class="pre">&quot;a&quot;,</span> <span class="pre">&quot;list&quot;</span> <span class="pre">]</span></code></p>
+</section>
+<section id="serialization-of-other-native-cmake-types">
+<h2>Serialization of other Native CMake Types<a class="headerlink" href="#serialization-of-other-native-cmake-types" title="Permalink to this headline"></a></h2>
+<p>All values of other types are serialized into simple JSON strings.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 36%" />
+<col style="width: 36%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>Example</p></th>
+<th class="head"><p>Result of Serialization</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Regular String</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;string&quot;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>String with Spaces</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;string</span> <span class="pre">with</span> <span class="pre">spaces&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;string</span> <span class="pre">with</span> <span class="pre">spaces&quot;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Booleans</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TRUE</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;TRUE&quot;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Int</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">123</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;123&quot;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.23</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;1.23&quot;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Command</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">add_subdirectories</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;add_subdirectories&quot;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Path</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/path/to/file.txt</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;/path/to/file.txt&quot;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;bool&quot;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Target</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">lib</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;lib&quot;</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="serialization-of-objects">
+<h2>Serialization of Objects<a class="headerlink" href="#serialization-of-objects" title="Permalink to this headline"></a></h2>
+<p>CMakePP serializes objects by creating a JSON dictionary with a single
+key-value pair.</p>
+<p>The key in this pair is the unique identifier that CMakePP uses
+to refer to the object (the value of <code class="docutils literal notranslate"><span class="pre">${my_obj}</span></code> where <code class="docutils literal notranslate"><span class="pre">my_obj</span></code> is the name
+of an obj).</p>
+<p>The value in the pair is the serialized state of the object. The serialized
+state of an <strong>instance of a class</strong> consists of:</p>
+<ol class="arabic simple">
+<li><p>The instance’s <strong>attributes</strong> contained within a dictionary at the key
+<code class="docutils literal notranslate"><span class="pre">_cpp_attrs</span></code>. Each key in this dictionary is the name of an attribute and
+points to the serialized value of that attribute.</p></li>
+<li><p>The <strong>functions</strong> of the class that this instance belongs to are serialized
+into a dictionary at the key “_cpp_fxns”. Each key in this dictionary is a
+function’s symbol and points to a list of types. The types in this list are
+the types present in the functions (in order).</p></li>
+<li><p>The serialized instances of the classes the instance inherits from in a
+dictionary at the key <code class="docutils literal notranslate"><span class="pre">_cpp_sub_objs</span></code>. If this instance is of a class that
+does not inherit from another class, this will only contain an instance of
+<code class="docutils literal notranslate"><span class="pre">obj</span></code>.</p></li>
+</ol>
+<p>Take the following class for example:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cpp_class</span><span class="p">(</span><span class="s">Automobile</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nb">cpp_attr</span><span class="p">(</span><span class="s">Automobile</span><span class="w"> </span><span class="s">color</span><span class="w"> </span><span class="s">red</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">cpp_attr</span><span class="p">(</span><span class="s">Automobile</span><span class="w"> </span><span class="s">num_doors</span><span class="w"> </span><span class="s">4</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nb">cpp_member</span><span class="p">(</span><span class="s">start</span><span class="w"> </span><span class="s">Automobile</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">function</span><span class="p">(</span><span class="s2">&quot;${start}&quot;</span><span class="w"> </span><span class="s">self</span><span class="p">)</span>
+<span class="w">        </span><span class="nb">set</span><span class="p">(</span><span class="s">result</span><span class="w"> </span><span class="s2">&quot;Vroom! I have started my engine.&quot;</span><span class="w"> </span><span class="s">PARENT_SCOPE</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">endfunction</span><span class="p">()</span>
+
+<span class="w">    </span><span class="nb">cpp_member</span><span class="p">(</span><span class="s">start</span><span class="w"> </span><span class="s">Automobile</span><span class="w"> </span><span class="s">int</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">function</span><span class="p">(</span><span class="s2">&quot;${start}&quot;</span><span class="w"> </span><span class="s">self</span><span class="w"> </span><span class="s">distance_km</span><span class="p">)</span>
+<span class="w">        </span><span class="nb">set</span><span class="p">(</span><span class="s">result</span><span class="w"> </span><span class="s2">&quot;Vroom! I started my engine and I just drove ${distance_km} km!&quot;</span><span class="w"> </span><span class="s">PARENT_SCOPE</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">endfunction</span><span class="p">()</span>
+
+<span class="w">    </span><span class="nb">cpp_member</span><span class="p">(</span><span class="s">drive</span><span class="w"> </span><span class="s">Automobile</span><span class="w"> </span><span class="s">int</span><span class="w"> </span><span class="s">str</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">function</span><span class="p">(</span><span class="s2">&quot;${drive}&quot;</span><span class="w"> </span><span class="s">self</span><span class="w"> </span><span class="s">distance_km</span><span class="w"> </span><span class="s">destination</span><span class="p">)</span>
+<span class="w">        </span><span class="nb">set</span><span class="p">(</span><span class="s">result</span><span class="w"> </span><span class="s2">&quot;I just drove ${distance_km} km to ${destination}!&quot;</span><span class="w"> </span><span class="s">PARENT_SCOPE</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">endfunction</span><span class="p">()</span>
+
+<span class="nb">cpp_end_class</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>An instance of the <code class="docutils literal notranslate"><span class="pre">Automobile</span></code> class serializes into the following JSON
+object:</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;&lt;unique_identifier&gt;&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;_cpp_attrs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;red&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;num_doors&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;_cpp_fxns&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;&lt;automobile_start_symbol_1&gt;&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;start&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;automobile&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p">],</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;&lt;automobile_start_symbol_2&gt;&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;start&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;automobile&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;int&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p">],</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;&lt;automobile_start_symbol_3&gt;&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;drive&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;automobile&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;int&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;str&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p">]</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;_cpp_sub_objs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;obj&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;&lt;unique_identifier&gt;&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;_cpp_attrs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="p">},</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;_cpp_fxns&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;&lt;obj_equal_symbol&gt;&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">              </span><span class="s2">&quot;equal&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">              </span><span class="s2">&quot;obj&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">              </span><span class="s2">&quot;desc&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">              </span><span class="s2">&quot;obj&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">],</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;&lt;obj_serialize_symbol&gt;&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">              </span><span class="s2">&quot;serialize&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">              </span><span class="s2">&quot;obj&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">              </span><span class="s2">&quot;desc&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">]</span><span class="w"></span>
+<span class="w">          </span><span class="p">},</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;_cpp_sub_objs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="p">},</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;_cpp_my_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;obj&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;_cpp_my_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;automobile&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The content of the the angeled brackets is run-dependenent.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="objects.html" class="btn btn-neutral float-left" title="Objects" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="utilities.html" class="btn btn-neutral float-right" title="Utilities" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, CMakePP Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

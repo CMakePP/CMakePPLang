@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exception Handling &mdash; CMakePPCore 1.0.0alpha documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Maps" href="maps.html" />
+    <link rel="prev" title="Classes" href="classes.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> CMakePPCore
+          </a>
+              <div class="version">
+                1.0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Language Features</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="types.html">Types in CMakePP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html">Classes</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Exception Handling</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#basic-try-catch-block">Basic Try-Catch Block</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#handling-multiple-types-of-exceptions">Handling Multiple Types of Exceptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nested-try-catch-blocks">Nested Try-Catch Blocks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-exception-handler-for-all-exceptions">Adding Exception Handler for All Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="maps.html">Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects.html">Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="serialization.html">Serialization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html">Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../conventions.html">Language Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging.html">Debugging Code Written in CMakePP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developing CMakePP</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CMakePPCore</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Language Features</a> &raquo;</li>
+      <li>Exception Handling</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/features/exceptions.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="exception-handling">
+<h1>Exception Handling<a class="headerlink" href="#exception-handling" title="Permalink to this headline"></a></h1>
+<p>CMakePP provides commands for handling exceptions. Users can use the
+<code class="docutils literal notranslate"><span class="pre">cpp_catch</span></code> command to declare an exception type and a handler function for
+that exception type. Users can then use the <code class="docutils literal notranslate"><span class="pre">cpp_try</span></code> to initiate a try block
+and <code class="docutils literal notranslate"><span class="pre">cpp_end_try_catch</span></code> to end a try block. Anywhere within that try block,
+an exception can be thrown using the <code class="docutils literal notranslate"><span class="pre">cpp_raise</span></code> command.</p>
+<section id="basic-try-catch-block">
+<h2>Basic Try-Catch Block<a class="headerlink" href="#basic-try-catch-block" title="Permalink to this headline"></a></h2>
+<p>A basic try-catch block for an exception type named <code class="docutils literal notranslate"><span class="pre">FileNotFound</span></code> looks like
+this:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Add an exception handler</span>
+<span class="nb">cpp_catch</span><span class="p">(</span><span class="s">FileNotFound</span><span class="p">)</span>
+<span class="nb">function</span><span class="p">(</span><span class="s2">&quot;${FileNotFound}&quot;</span><span class="w"> </span><span class="s">message</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">message</span><span class="p">(</span><span class="s2">&quot;FileNotFound Exception Occured&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">message</span><span class="p">(</span><span class="s2">&quot;Details: ${message}&quot;</span><span class="p">)</span>
+<span class="nb">endfunction</span><span class="p">()</span>
+
+<span class="c"># Begin the try block</span>
+<span class="nb">cpp_try</span><span class="p">()</span>
+<span class="w">    </span><span class="c"># If an error occurs, raise an exception and pass along details</span>
+<span class="w">    </span><span class="nb">cpp_raise</span><span class="p">(</span><span class="s">FileNotFound</span><span class="w"> </span><span class="s2">&quot;The file doesn&#39;t exist!&quot;</span><span class="p">)</span>
+<span class="nb">cpp_end_try_catch</span><span class="p">(</span><span class="s">FileNotFound</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="handling-multiple-types-of-exceptions">
+<h2>Handling Multiple Types of Exceptions<a class="headerlink" href="#handling-multiple-types-of-exceptions" title="Permalink to this headline"></a></h2>
+<p>Multiple exception handlers for different types of exceptions can be declared:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Add two exception handlers</span>
+<span class="nb">cpp_catch</span><span class="p">(</span><span class="s">FileNotFound</span><span class="w"> </span><span class="s">ConnectionFailure</span><span class="p">)</span>
+<span class="nb">function</span><span class="p">(</span><span class="s2">&quot;${FileNotFound}&quot;</span><span class="w"> </span><span class="s">message</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">message</span><span class="p">(</span><span class="s2">&quot;FileNotFound Exception Occured&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">message</span><span class="p">(</span><span class="s2">&quot;Details: ${message}&quot;</span><span class="p">)</span>
+<span class="nb">endfunction</span><span class="p">()</span>
+<span class="nb">function</span><span class="p">(</span><span class="s2">&quot;${ConnectionFailure}&quot;</span><span class="w"> </span><span class="s">message</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">message</span><span class="p">(</span><span class="s2">&quot;ConnectionFailure Exception Occured&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">message</span><span class="p">(</span><span class="s2">&quot;Details: ${message}&quot;</span><span class="p">)</span>
+<span class="nb">endfunction</span><span class="p">()</span>
+
+<span class="c"># Begin the try block</span>
+<span class="nb">cpp_try</span><span class="p">()</span>
+<span class="w">    </span><span class="c"># Raise a FileNotFound Exception</span>
+<span class="w">    </span><span class="nb">cpp_raise</span><span class="p">(</span><span class="s">FileNotFound</span><span class="w"> </span><span class="s2">&quot;The file doesn&#39;t exist!&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="c"># Raise a ConnectionFailure Exception</span>
+<span class="w">    </span><span class="nb">cpp_raise</span><span class="p">(</span><span class="s">ConnectionFailure</span><span class="w"> </span><span class="s2">&quot;The file doesn&#39;t exist!&quot;</span><span class="p">)</span>
+<span class="nb">cpp_end_try_catch</span><span class="p">(</span><span class="s">FileNotFound</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="nested-try-catch-blocks">
+<h2>Nested Try-Catch Blocks<a class="headerlink" href="#nested-try-catch-blocks" title="Permalink to this headline"></a></h2>
+<p>If a try-catch block for an exception type is nested within a try-catch block
+of the same exception type, the handler declared by the deepest try-catch
+block will be called:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Declare an exception handler for the outer try-catch block</span>
+<span class="nb">cpp_catch</span><span class="p">(</span><span class="s">FileNotFound</span><span class="p">)</span>
+<span class="nb">function</span><span class="p">(</span><span class="s2">&quot;${FileNotFound}&quot;</span><span class="w"> </span><span class="s">message</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">message</span><span class="p">(</span><span class="s2">&quot;Outer FileNotFound Handler&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">message</span><span class="p">(</span><span class="s2">&quot;Details: ${message}&quot;</span><span class="p">)</span>
+<span class="nb">endfunction</span><span class="p">()</span>
+
+<span class="c"># Begin outer try block</span>
+<span class="nb">cpp_try</span><span class="p">()</span>
+
+<span class="w">    </span><span class="c"># Declare an exception handler for the inner try-catch block</span>
+<span class="w">    </span><span class="nb">cpp_catch</span><span class="p">(</span><span class="s">FileNotFound</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">function</span><span class="p">(</span><span class="s2">&quot;${FileNotFound}&quot;</span><span class="w"> </span><span class="s">message</span><span class="p">)</span>
+<span class="w">        </span><span class="nb">message</span><span class="p">(</span><span class="s2">&quot;Inner FileNotFound Handler&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="nb">message</span><span class="p">(</span><span class="s2">&quot;Details: ${message}&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">endfunction</span><span class="p">()</span>
+
+<span class="w">    </span><span class="c"># Begin the inner try block</span>
+<span class="w">    </span><span class="nb">cpp_try</span><span class="p">()</span>
+<span class="w">        </span><span class="c"># Raise an exception (calling the inner handler)</span>
+<span class="w">        </span><span class="nb">cpp_raise</span><span class="p">(</span><span class="s">FileNotFound</span><span class="w"> </span><span class="s2">&quot;The file doesn&#39;t exist!&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">cpp_end_try_catch</span><span class="p">(</span><span class="s">FileNotFound</span><span class="p">)</span>
+
+<span class="nb">cpp_end_try_catch</span><span class="p">(</span><span class="s">FileNotFound</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="adding-exception-handler-for-all-exceptions">
+<h2>Adding Exception Handler for All Exceptions<a class="headerlink" href="#adding-exception-handler-for-all-exceptions" title="Permalink to this headline"></a></h2>
+<p>A general exception handler that catches all exceptions that don’t have a
+specific handler declared for their exception type can be declared by using the
+<code class="docutils literal notranslate"><span class="pre">ALL_EXCEPTIONS</span></code> keyword in the try-catch block:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Add general exception handler that catches all exceptions</span>
+<span class="nb">cpp_catch</span><span class="p">(</span><span class="s">ALL_EXCEPTIONS</span><span class="p">)</span>
+<span class="nb">function</span><span class="p">(</span><span class="s2">&quot;${ALL_EXCEPTIONS}&quot;</span><span class="w"> </span><span class="s">exce_type</span><span class="w"> </span><span class="s">message</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">message</span><span class="p">(</span><span class="s2">&quot;ALL_EXCEPTIONS handler for exception type: ${exce_type}&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">message</span><span class="p">(</span><span class="s2">&quot;Exception details: ${message}&quot;</span><span class="p">)</span>
+<span class="nb">endfunction</span><span class="p">()</span>
+
+<span class="c"># Raise exception for exception type with no declared handler</span>
+<span class="nb">cpp_raise</span><span class="p">(</span><span class="s">FileNotFound</span><span class="w"> </span><span class="s2">&quot;The file doesn&#39;t exist!&quot;</span><span class="p">)</span>
+
+<span class="c"># Remove the exception handler</span>
+<span class="nb">cpp_end_try_catch</span><span class="p">(</span><span class="s">ALL_EXCEPTIONS</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="classes.html" class="btn btn-neutral float-left" title="Classes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="maps.html" class="btn btn-neutral float-right" title="Maps" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, CMakePP Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Classes &mdash; CMakePPCore 1.0.0alpha documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Exception Handling" href="exceptions.html" />
+    <link rel="prev" title="Types in CMakePP" href="types.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> CMakePPCore
+          </a>
+              <div class="version">
+                1.0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Language Features</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="types.html">Types in CMakePP</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#class-definition">Class Definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#constructors-and-instantiation">Constructors and Instantiation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#default-constructor">Default Constructor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#custom-constructor">Custom Constructor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#kwargs-constructor">KWARGS Constructor</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#attributes">Attributes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#typing-of-attributes">Typing of Attributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#declaring-attributes">Declaring Attributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getting-and-setting-attributes">Getting and Setting Attributes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#defining-member-functions">Defining Member Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#calling-member-functions">Calling Member Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#function-overloading">Function Overloading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#function-overload-resolution">Function Overload Resolution</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#inheritance">Inheritance</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#attribute-inheritance">Attribute Inheritance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#function-inheritance">Function Inheritance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-derived-class">Creating a Derived Class</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-a-derived-class">Using a Derived Class</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#multiple-class-inheritance">Multiple Class Inheritance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pure-virtual-member-functions">Pure Virtual Member Functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html">Exception Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maps.html">Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects.html">Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="serialization.html">Serialization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html">Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../conventions.html">Language Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging.html">Debugging Code Written in CMakePP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developing CMakePP</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CMakePPCore</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Language Features</a> &raquo;</li>
+      <li>Classes</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/features/classes.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="classes">
+<h1>Classes<a class="headerlink" href="#classes" title="Permalink to this headline"></a></h1>
+<p>CMakePP enables users to define classes and create instances of the classes.
+Classes in CMakePP can contain attributes and functions. CMakePP also
+supports inheritance. Examples of using classes are provided in the
+<a class="reference internal" href="../getting_started/cmakepp_examples/classes.html#using-classes"><span class="std std-ref">Using Classes</span></a> the section. A basic overview of the features of classes
+are provided below.</p>
+<section id="class-definition">
+<h2>Class Definition<a class="headerlink" href="#class-definition" title="Permalink to this headline"></a></h2>
+<p>Class definitions start with <code class="docutils literal notranslate"><span class="pre">cpp_class(MyClass)</span></code> where <code class="docutils literal notranslate"><span class="pre">MyClass</span></code> is what
+you want to name the class. Class definitions are ended with
+<code class="docutils literal notranslate"><span class="pre">cpp_end_class()</span></code>. The following is an example of an empty class definition:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Begin class definition of class MyClass</span>
+<span class="nb">cpp_class</span><span class="p">(</span><span class="s">MyClass</span><span class="p">)</span>
+
+<span class="w">  </span><span class="c"># Class attribute and functions go here</span>
+
+<span class="c"># End class definition</span>
+<span class="nb">cpp_end_class</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Optionally, users can provide the name of the class being defined to the
+<code class="docutils literal notranslate"><span class="pre">cpp_end_class</span></code> function as well:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Begin class definition of class MyClass</span>
+<span class="nb">cpp_class</span><span class="p">(</span><span class="s">MyClass</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c"># Class attribute and functions go here</span>
+
+<span class="c"># End class definition</span>
+<span class="nb">cpp_end_class</span><span class="p">(</span><span class="s">MyClass</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="constructors-and-instantiation">
+<h2>Constructors and Instantiation<a class="headerlink" href="#constructors-and-instantiation" title="Permalink to this headline"></a></h2>
+<p>Classes can be instantiated in a variety of ways.</p>
+<section id="default-constructor">
+<h3>Default Constructor<a class="headerlink" href="#default-constructor" title="Permalink to this headline"></a></h3>
+<p>Once a class is declared, an instance of that class can be created by using the
+default constructor for the class. No constructor definition is required. All
+attributes of the calss will simply take their default value. An instance of a
+class <code class="docutils literal notranslate"><span class="pre">MyClass</span></code> with the variable name <code class="docutils literal notranslate"><span class="pre">my_instance</span></code> can be created using
+the default constructor for the class with the following:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Create an instance of MyClass with the name &quot;my_instance&quot;</span>
+<span class="nb">MyClass</span><span class="p">(</span><span class="s">CTOR</span><span class="w"> </span><span class="s">my_instance</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="custom-constructor">
+<h3>Custom Constructor<a class="headerlink" href="#custom-constructor" title="Permalink to this headline"></a></h3>
+<p>Users can define custom constructors to do the initial setup of their class
+upon construction. Below is an example of a class with a custom constructor
+and instantiation of that class:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cpp_class</span><span class="p">(</span><span class="s">MyClass</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c"># Define a custom constructor</span>
+<span class="w">    </span><span class="nb">cpp_constructor</span><span class="p">(</span><span class="s">CTOR</span><span class="w"> </span><span class="s">MyClass</span><span class="w"> </span><span class="s">int</span><span class="w"> </span><span class="s">int</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">function</span><span class="p">(</span><span class="s2">&quot;${CTOR}&quot;</span><span class="w"> </span><span class="s">self</span><span class="w"> </span><span class="s">a</span><span class="w"> </span><span class="s">b</span><span class="p">)</span>
+<span class="w">       </span><span class="c"># Do set up using arguments passed to constructors</span>
+<span class="w">    </span><span class="nb">endfunction</span><span class="p">()</span>
+
+<span class="nb">cpp_end_class</span><span class="p">()</span>
+
+<span class="c"># Create an instance of MyClass using the custom constructor</span>
+<span class="nb">MyClass</span><span class="p">(</span><span class="s">CTOR</span><span class="w"> </span><span class="s">my_instance</span><span class="w"> </span><span class="s">100</span><span class="w"> </span><span class="s">20</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Multiple constructors can be defined for a class as long as they have different
+signatures. CMakePP will automatically find the implementation whose signature
+matches the parameters passed in and execute it.</p>
+</section>
+<section id="kwargs-constructor">
+<h3>KWARGS Constructor<a class="headerlink" href="#kwargs-constructor" title="Permalink to this headline"></a></h3>
+<p>Another way to instantiate a class is using the <strong>KWARGS constructor</strong>. This
+constructor allows users to pass in attribute values that will be automatically
+assigned for the newly constructed instance. Say we have the following class
+with some attributes:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Define class with some attributes</span>
+<span class="nb">cpp_class</span><span class="p">(</span><span class="s">MyClass</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nb">cpp_attr</span><span class="p">(</span><span class="s">MyClass</span><span class="w"> </span><span class="s">attr_a</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">cpp_attr</span><span class="p">(</span><span class="s">MyClass</span><span class="w"> </span><span class="s">attr_b</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">cpp_attr</span><span class="p">(</span><span class="s">MyClass</span><span class="w"> </span><span class="s">attr_c</span><span class="p">)</span>
+
+<span class="nb">cpp_end_class</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Then we can use the <strong>KWARGS constructor</strong> to set the values of those attributes
+upon construction using the following:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Create an instance of MyClass using the KWARGS constructor</span>
+<span class="nb">MyClass</span><span class="p">(</span><span class="s">CTOR</span><span class="w"> </span><span class="s">my_instance</span><span class="w"> </span><span class="s">KWARGS</span><span class="w"> </span><span class="s">attr_a</span><span class="w"> </span><span class="s">1</span><span class="w"> </span><span class="s">attr_b</span><span class="w"> </span><span class="s">2</span><span class="w"> </span><span class="s">3</span><span class="w"> </span><span class="s">4</span><span class="w"> </span><span class="s">attr_c</span><span class="w"> </span><span class="s">5</span><span class="w"> </span><span class="s">6</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here the <code class="docutils literal notranslate"><span class="pre">attr_a</span></code> would take the value of <code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">attr_b</span></code> would take the
+value of <code class="docutils literal notranslate"><span class="pre">2;3;4</span></code>, and <code class="docutils literal notranslate"><span class="pre">attr_c</span></code> would take the value of <code class="docutils literal notranslate"><span class="pre">5;6</span></code>.</p>
+</section>
+</section>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline"></a></h2>
+<p>CMakePP classes can contain <strong>attributes</strong>. These attributes take default values
+that are declared when the class is defined. An instance of a class can have
+its attributes retrieved and modified from within the class or from without the
+class.</p>
+<section id="typing-of-attributes">
+<h3>Typing of Attributes<a class="headerlink" href="#typing-of-attributes" title="Permalink to this headline"></a></h3>
+<p>Attributes of CMakePP classes of a class are <strong>loosely typed</strong>. No type is
+declared when declaring an attribute, and attributes can be assigned a value of
+any type, regardless of the type of their initial value.</p>
+</section>
+<section id="declaring-attributes">
+<h3>Declaring Attributes<a class="headerlink" href="#declaring-attributes" title="Permalink to this headline"></a></h3>
+<p>Attributes are added to class using the <code class="docutils literal notranslate"><span class="pre">cpp_attr(MyClass</span> <span class="pre">my_attr</span> <span class="pre">my_value)</span></code>
+statement where <code class="docutils literal notranslate"><span class="pre">MyClass</span></code> is the name of the class, <code class="docutils literal notranslate"><span class="pre">my_attr</span></code> is the name of
+the attribute, and <code class="docutils literal notranslate"><span class="pre">my_value</span></code> is the initial value of the attribute. The
+following is an example of a class with two attributes:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cpp_class</span><span class="p">(</span><span class="s">MyClass</span><span class="p">)</span>
+
+<span class="w">  </span><span class="c"># Declare an attribute &quot;color&quot; with the default value &quot;red&quot;</span>
+<span class="w">  </span><span class="nb">cpp_attr</span><span class="p">(</span><span class="s">MyClass</span><span class="w"> </span><span class="s">color</span><span class="w"> </span><span class="s">red</span><span class="p">)</span>
+
+<span class="w">  </span><span class="c"># Declare an attribute &quot;size&quot; with the default value &quot;10&quot;</span>
+<span class="w">  </span><span class="nb">cpp_attr</span><span class="p">(</span><span class="s">MyClass</span><span class="w"> </span><span class="s">size</span><span class="w"> </span><span class="s">10</span><span class="p">)</span>
+
+<span class="nb">cpp_end_class</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="getting-and-setting-attributes">
+<h3>Getting and Setting Attributes<a class="headerlink" href="#getting-and-setting-attributes" title="Permalink to this headline"></a></h3>
+<p>The attributes of a class are accessed by using the <code class="docutils literal notranslate"><span class="pre">GET</span></code> and <code class="docutils literal notranslate"><span class="pre">SET</span></code>
+keywords.The value of an attribute is set using:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Set the value of &quot;my_attr&quot; to &quot;my_value&quot;</span>
+<span class="nb">MyClass</span><span class="p">(</span><span class="s">SET</span><span class="w"> </span><span class="s2">&quot;${my_instance}&quot;</span><span class="w"> </span><span class="s">my_attr</span><span class="w"> </span><span class="s">my_value</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here <code class="docutils literal notranslate"><span class="pre">my_instance</span></code> is the name of the instance whose attribute you want to
+set, <code class="docutils literal notranslate"><span class="pre">my_attr</span></code> is where the name of the attribute you want to set, and
+<code class="docutils literal notranslate"><span class="pre">my_value</span></code> is the value you want to set the attribute to.</p>
+<p>Attributes can be retrieved in one of two ways. The first way is to retrieve
+attributes one at a time. That can be done using the following call to <code class="docutils literal notranslate"><span class="pre">GET</span></code>:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Retrieve the value of &quot;my_attr&quot; and store it in &quot;my_result&quot;</span>
+<span class="nb">MyClass</span><span class="p">(</span><span class="s">GET</span><span class="w"> </span><span class="s2">&quot;${my_instance}&quot;</span><span class="w"> </span><span class="s">my_result</span><span class="w"> </span><span class="s">my_attr</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here <code class="docutils literal notranslate"><span class="pre">my_instance</span></code> is the name of the instance whose attribute you want to
+access, <code class="docutils literal notranslate"><span class="pre">my_result</span></code> is where the value will be stored, and <code class="docutils literal notranslate"><span class="pre">my_attr</span></code> is
+the name of the attribute being accessed.</p>
+<p>Another way to get multiple attributes is to get multiple at a time and have
+them returned using a prefix. This is done with a call like the following</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Get attrs and store them at _pre_attr_a, _pre_attr_b, and _pre_attr_c</span>
+<span class="nb">MyClass</span><span class="p">(</span><span class="s">GET</span><span class="w"> </span><span class="s2">&quot;${my_instance}&quot;</span><span class="w"> </span><span class="s">_pre</span><span class="w"> </span><span class="s">attr_a</span><span class="w"> </span><span class="s">attr_b</span><span class="w"> </span><span class="s">attr_c</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here <code class="docutils literal notranslate"><span class="pre">my_instance</span></code> is the name of the instance whose attributes you want to
+access, <code class="docutils literal notranslate"><span class="pre">_pre</span></code> is prefix that will be prepended to each attributes name to
+create the variable name where the attributes will be stored in the current
+scope, and <code class="docutils literal notranslate"><span class="pre">attr_a</span></code>, <code class="docutils literal notranslate"><span class="pre">attr_b</span></code>, and <code class="docutils literal notranslate"><span class="pre">attr_c</span></code> are the name of the attributes
+being accessed.</p>
+</section>
+</section>
+<section id="member-functions">
+<h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this headline"></a></h2>
+<p>CMakePP classes can contain <strong>member functions</strong>. These functions are similar to
+regular CMake functions. The main differences being that they:</p>
+<ul class="simple">
+<li><p>belong to a CMakePP class and can only be called using an instance of that
+class</p></li>
+<li><p>have a <strong>signature</strong> that defines the types of the parameters that the
+function expects</p></li>
+<li><p>can be <strong>overloaded</strong> with multiple implementations for different signatures</p></li>
+</ul>
+<section id="defining-member-functions">
+<h3>Defining Member Functions<a class="headerlink" href="#defining-member-functions" title="Permalink to this headline"></a></h3>
+<p>Member functions are declared in the same way as normal CMake functions with
+the addition of the <code class="docutils literal notranslate"><span class="pre">cpp_member</span></code> decorator to declare the <strong>signature</strong> of the
+function (the name of the function and the types of the arguments it takes).
+Member function definitions are structured in the following way:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cpp_class</span><span class="p">(</span><span class="s">MyClass</span><span class="p">)</span>
+
+<span class="w">  </span><span class="nb">cpp_member</span><span class="p">(</span><span class="s">my_fxn</span><span class="w"> </span><span class="s">MyClass</span><span class="w"> </span><span class="s">type_a</span><span class="w"> </span><span class="s">type_b</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">function</span><span class="p">(</span><span class="s2">&quot;${my_fxn}&quot;</span><span class="w"> </span><span class="s">self</span><span class="w"> </span><span class="s">param_a</span><span class="w"> </span><span class="s">param_b</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c"># The body of the function</span>
+
+<span class="w">    </span><span class="c"># ${self} can be used to access the instance of MyClass</span>
+<span class="w">    </span><span class="c"># the function is being called with</span>
+
+<span class="w">    </span><span class="c"># ${param_a} and ${param_b} can be used to access the</span>
+<span class="w">    </span><span class="c"># values of the parameters passed into the function</span>
+
+<span class="w">  </span><span class="nb">endfunction</span><span class="p">()</span>
+
+<span class="nb">cpp_end_class</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The structure of the above function definition contains the following pieces:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cpp_member(my_fxn</span> <span class="pre">MyClass</span> <span class="pre">type_a</span> <span class="pre">type_b)</span></code>– The CMakePP class member
+declaration. This decorator defines a function named <code class="docutils literal notranslate"><span class="pre">my_fxn</span></code> for the class
+<code class="docutils literal notranslate"><span class="pre">MyClass</span></code>. It also indicates the number and type of parameters that the
+function takes in. In this case there are two parameters of the types
+<code class="docutils literal notranslate"><span class="pre">type_a</span></code> and <code class="docutils literal notranslate"><span class="pre">type_b</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">function(&quot;${my_fxn}&quot;</span> <span class="pre">self</span> <span class="pre">param_a</span> <span class="pre">param_b)</span></code>– A CMake function declaration
+the defines a function with the name <code class="docutils literal notranslate"><span class="pre">${my_fxn}</span></code>, sets <code class="docutils literal notranslate"><span class="pre">self</span></code> as the
+variable name used to reference the class instance the function was called
+with, and <code class="docutils literal notranslate"><span class="pre">param_a</span></code> and <code class="docutils literal notranslate"><span class="pre">param_b</span></code> as the variables name used to access
+the parameters passed into the function. These parameters correspond to the
+types in the <code class="docutils literal notranslate"><span class="pre">cpp_member</span></code> decorator.</p></li>
+<li><p>The function body.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">endfunction()</span></code>– The end of the CMake function definition.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The reason that the <code class="docutils literal notranslate"><span class="pre">function</span></code> command gets the dereferenced value of
+<code class="docutils literal notranslate"><span class="pre">my_fxn</span></code> here is because the <code class="docutils literal notranslate"><span class="pre">cpp_member</span></code> decorator sets the value of
+<code class="docutils literal notranslate"><span class="pre">my_fxn</span></code> to a name / symbol that the CMakePP language uses to find the
+actual CMake function when a call is made to the member function <code class="docutils literal notranslate"><span class="pre">my_fxn</span></code>
+through a CMakePP class.</p>
+<p>This may be a bit confusing. All you need to remember is that the
+<code class="docutils literal notranslate"><span class="pre">cpp_member</span></code> decorator gets the string name of the member function you want to
+declare and the <code class="docutils literal notranslate"><span class="pre">function</span></code> statement that follows it gets the dereferenced
+value of that name (<code class="docutils literal notranslate"><span class="pre">&quot;${my_fxn}&quot;</span></code> in this case).</p>
+</div>
+</section>
+<section id="calling-member-functions">
+<h3>Calling Member Functions<a class="headerlink" href="#calling-member-functions" title="Permalink to this headline"></a></h3>
+<p>The function <code class="docutils literal notranslate"><span class="pre">my_fxn</span></code> belonging to a class <code class="docutils literal notranslate"><span class="pre">MyClass</span></code> as defined above can
+be called using:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">MyClass</span><span class="p">(</span><span class="s">my_fxn</span><span class="w"> </span><span class="s2">&quot;${my_instance}&quot;</span><span class="w"> </span><span class="s2">&quot;value_a&quot;</span><span class="w"> </span><span class="s2">&quot;value_b&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here <code class="docutils literal notranslate"><span class="pre">my_instance</span></code> is the name of an instance of <code class="docutils literal notranslate"><span class="pre">MyClass</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;value_a&quot;</span></code>
+and <code class="docutils literal notranslate"><span class="pre">&quot;value_b&quot;</span></code> are the parameter values being passed to the function.</p>
+</section>
+<section id="function-overloading">
+<h3>Function Overloading<a class="headerlink" href="#function-overloading" title="Permalink to this headline"></a></h3>
+<p>CMakePP allows for function overloading. This means users can define more than
+one implementation to a function. Each implementation simply needs to have a
+unique signature.</p>
+<p>For example we could declare a function <code class="docutils literal notranslate"><span class="pre">what_was_passed_in</span></code> with two
+implementations: one that takes a single int and one that takes two ints. This
+can be done in the following way:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cpp_class</span><span class="p">(</span><span class="s">MyClass</span><span class="p">)</span>
+
+<span class="w">  </span><span class="c"># Define first implementation</span>
+<span class="w">  </span><span class="nb">cpp_member</span><span class="p">(</span><span class="s">what_was_passed_in</span><span class="w"> </span><span class="s">MyClass</span><span class="w"> </span><span class="s">int</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">function</span><span class="p">(</span><span class="s2">&quot;${what_was_passed_in}&quot;</span><span class="w"> </span><span class="s">self</span><span class="w"> </span><span class="s">x</span><span class="p">)</span>
+<span class="w">      </span><span class="nb">message</span><span class="p">(</span><span class="s2">&quot;${x} was passed in.&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">endfunction</span><span class="p">()</span>
+
+<span class="w">  </span><span class="c"># Define second implementation</span>
+<span class="w">  </span><span class="nb">cpp_member</span><span class="p">(</span><span class="s">what_was_passed_in</span><span class="w"> </span><span class="s">MyClass</span><span class="w"> </span><span class="s">int</span><span class="w"> </span><span class="s">int</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">function</span><span class="p">(</span><span class="s2">&quot;${what_was_passed_in}&quot;</span><span class="w"> </span><span class="s">self</span><span class="w"> </span><span class="s">x</span><span class="w"> </span><span class="s">y</span><span class="p">)</span>
+<span class="w">      </span><span class="nb">message</span><span class="p">(</span><span class="s2">&quot;${x} and ${y} were passed in.&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">endfunction</span><span class="p">()</span>
+
+<span class="nb">cpp_end_class</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="function-overload-resolution">
+<h3>Function Overload Resolution<a class="headerlink" href="#function-overload-resolution" title="Permalink to this headline"></a></h3>
+<p>When calling a function that has multiple implementations, you simply need to
+call the function with with argument(s) that match the signature of the
+implementation you are trying to invoke. CMakePP will automatically find the
+implementation whose signature matches the parameters passed in and execute it
+(a process called <strong>function overload resolution</strong>). For example, we could call
+the above implementations in the following way:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Create instance of MyClass</span>
+<span class="nb">MyClass</span><span class="p">(</span><span class="s">CTOR</span><span class="w"> </span><span class="s">my_instance</span><span class="p">)</span>
+
+<span class="c"># Call first implementation</span>
+<span class="nb">MyClass</span><span class="p">(</span><span class="s">what_was_passed_in</span><span class="w"> </span><span class="s2">&quot;${my_instance}&quot;</span><span class="w"> </span><span class="s">1</span><span class="p">)</span>
+
+<span class="c"># Outputs: 1 was passed in.</span>
+
+<span class="c"># Call second implementation</span>
+<span class="nb">MyClass</span><span class="p">(</span><span class="s">what_was_passed_in</span><span class="w"> </span><span class="s2">&quot;${my_instance}&quot;</span><span class="w"> </span><span class="s">2</span><span class="w"> </span><span class="s">3</span><span class="p">)</span>
+
+<span class="c"># Outputs: 2 and 3 were passed in.</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If no function with a signature that matches the given parameters can be
+found, CMakePP will throw an error indicating this.</p>
+</div>
+</section>
+</section>
+<section id="inheritance">
+<h2>Inheritance<a class="headerlink" href="#inheritance" title="Permalink to this headline"></a></h2>
+<p>CMakePP classes support inheritance. A class can inherit from one or more
+parent classes. Classes that inherit from another class are referred to as
+<strong>derived classes</strong>.</p>
+<section id="attribute-inheritance">
+<h3>Attribute Inheritance<a class="headerlink" href="#attribute-inheritance" title="Permalink to this headline"></a></h3>
+<p>A class that inherits from a parent class inherits all of the parent class’s
+attributes as well as the default values of those attributes. The default values
+can be overridden by simply declaring an attribute of the same name in the
+derived class with a new default value.</p>
+</section>
+<section id="function-inheritance">
+<h3>Function Inheritance<a class="headerlink" href="#function-inheritance" title="Permalink to this headline"></a></h3>
+<p>A class that inherits from a parent class inherits all of the functions defined
+in that parent class. The inherited functions can be overridden with a new
+implementation in the derived class by adding a function definition with a
+signature that matches the signature of the function in the parent class.</p>
+</section>
+<section id="creating-a-derived-class">
+<h3>Creating a Derived Class<a class="headerlink" href="#creating-a-derived-class" title="Permalink to this headline"></a></h3>
+<p>To create a derived class, we need a parent class that our derived class will
+inherit from. We will use the following parent class:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cpp_class</span><span class="p">(</span><span class="s">ParentClass</span><span class="p">)</span>
+
+<span class="w">  </span><span class="c"># Declare some attributes with default values</span>
+<span class="w">  </span><span class="nb">cpp_attr</span><span class="p">(</span><span class="s">ParentClass</span><span class="w"> </span><span class="s">color</span><span class="w"> </span><span class="s">red</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">cpp_attr</span><span class="p">(</span><span class="s">ParentClass</span><span class="w"> </span><span class="s">size</span><span class="w"> </span><span class="s">10</span><span class="p">)</span>
+
+<span class="w">  </span><span class="c"># Declare a function taking some parameters</span>
+<span class="w">  </span><span class="nb">cpp_member</span><span class="p">(</span><span class="s">my_fxn</span><span class="w"> </span><span class="s">ParentClass</span><span class="w"> </span><span class="s">desc</span><span class="w"> </span><span class="s">desc</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">function</span><span class="p">(</span><span class="s2">&quot;${my_fxn}&quot;</span><span class="w"> </span><span class="s">self</span><span class="w"> </span><span class="s">param_a</span><span class="w"> </span><span class="s">param_b</span><span class="p">)</span>
+<span class="w">    </span><span class="c"># Function body</span>
+<span class="w">  </span><span class="nb">endfunction</span><span class="p">()</span>
+
+<span class="w">  </span><span class="c"># Declare a function taking no parameters</span>
+<span class="w">  </span><span class="nb">cpp_member</span><span class="p">(</span><span class="s">another_fxn</span><span class="w"> </span><span class="s">ParentClass</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">function</span><span class="p">(</span><span class="s2">&quot;${another_fxn}&quot;</span><span class="w"> </span><span class="s">self</span><span class="p">)</span>
+<span class="w">    </span><span class="c"># Function body</span>
+<span class="w">  </span><span class="nb">endfunction</span><span class="p">()</span>
+
+<span class="nb">cpp_end_class</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>To create a class called <code class="docutils literal notranslate"><span class="pre">ChildClass</span></code> that derives from <code class="docutils literal notranslate"><span class="pre">ParentClass</span></code> we
+just need to pass <code class="docutils literal notranslate"><span class="pre">ParentClass</span></code> as a parameter into the <code class="docutils literal notranslate"><span class="pre">cpp_class</span></code>
+statement we use to declare <code class="docutils literal notranslate"><span class="pre">ChildClass</span></code>. This looks like:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cpp_class</span><span class="p">(</span><span class="s">ChildClass</span><span class="w"> </span><span class="s">ParentClass</span><span class="p">)</span>
+
+<span class="w">  </span><span class="c"># Derived class definition</span>
+
+<span class="nb">cpp_end_class</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>We can define <code class="docutils literal notranslate"><span class="pre">ChildClass</span></code> that:</p>
+<ul class="simple">
+<li><p>Keeps the inherited default value for the attribute <code class="docutils literal notranslate"><span class="pre">size</span></code></p></li>
+<li><p>Keeps the inherited implementation for the function <code class="docutils literal notranslate"><span class="pre">another_fxn</span></code></p></li>
+<li><p>Overrides the <code class="docutils literal notranslate"><span class="pre">color</span></code> attribute</p></li>
+<li><p>Overrides the member function <code class="docutils literal notranslate"><span class="pre">my_fxn</span></code></p></li>
+<li><p>Declares a new attribute <code class="docutils literal notranslate"><span class="pre">name</span></code></p></li>
+<li><p>Declares and a new member function <code class="docutils literal notranslate"><span class="pre">new_fxn</span></code></p></li>
+</ul>
+<p>This can be done with the following:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cpp_class</span><span class="p">(</span><span class="s">ChildClass</span><span class="w"> </span><span class="s">ParentClass</span><span class="p">)</span>
+
+<span class="w">  </span><span class="c"># Override the default value &quot;color&quot; attribute</span>
+<span class="w">  </span><span class="nb">cpp_attr</span><span class="p">(</span><span class="s">ChildClass</span><span class="w"> </span><span class="s">color</span><span class="w"> </span><span class="s">blue</span><span class="p">)</span>
+
+<span class="w">  </span><span class="c"># Add a new attribute &quot;name&quot; belonging to ChildClass</span>
+<span class="w">  </span><span class="nb">cpp_attr</span><span class="p">(</span><span class="s">ChildClass</span><span class="w"> </span><span class="s">name</span><span class="w"> </span><span class="s2">&quot;My Name&quot;</span><span class="p">)</span>
+
+<span class="w">  </span><span class="c"># Override the &quot;my_fxn&quot; function</span>
+<span class="w">  </span><span class="nb">cpp_member</span><span class="p">(</span><span class="s">my_fxn</span><span class="w"> </span><span class="s">ChildClass</span><span class="w"> </span><span class="s">desc</span><span class="w"> </span><span class="s">desc</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">function</span><span class="p">(</span><span class="s2">&quot;${my_fxn}&quot;</span><span class="w"> </span><span class="s">self</span><span class="w"> </span><span class="s">param_a</span><span class="w"> </span><span class="s">param_b</span><span class="p">)</span>
+<span class="w">    </span><span class="c"># Function body with different implementation</span>
+<span class="w">  </span><span class="nb">endfunction</span><span class="p">()</span>
+
+<span class="w">  </span><span class="c"># Add a new function &quot;new_fxn&quot; belonging to ChildClass</span>
+<span class="w">  </span><span class="nb">cpp_member</span><span class="p">(</span><span class="s">new_fxn</span><span class="w"> </span><span class="s">ChildClass</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">function</span><span class="p">(</span><span class="s2">&quot;${new_fxn}&quot;</span><span class="w"> </span><span class="s">self</span><span class="p">)</span>
+<span class="w">    </span><span class="c"># Function body</span>
+<span class="w">  </span><span class="nb">endfunction</span><span class="p">()</span>
+
+<span class="nb">cpp_end_class</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="using-a-derived-class">
+<h3>Using a Derived Class<a class="headerlink" href="#using-a-derived-class" title="Permalink to this headline"></a></h3>
+<p>We can create an instance of our derived class using the following:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Create an instance of ChildClass</span>
+<span class="nb">ChildClass</span><span class="p">(</span><span class="s">CTOR</span><span class="w"> </span><span class="s">child_instance</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <strong>inherited</strong> attributes and functions of the parent class can be accessed
+through the derived class as well as the parent class:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Access an inherited attribute through the derived class and parent class</span>
+<span class="nb">ChildClass</span><span class="p">(</span><span class="s">GET</span><span class="w"> </span><span class="s2">&quot;${child_instance}&quot;</span><span class="w"> </span><span class="s">my_result</span><span class="w"> </span><span class="s">size</span><span class="p">)</span>
+<span class="nb">ParentClass</span><span class="p">(</span><span class="s">GET</span><span class="w"> </span><span class="s2">&quot;${child_instance}&quot;</span><span class="w"> </span><span class="s">my_result</span><span class="w"> </span><span class="s">size</span><span class="p">)</span>
+
+<span class="c"># Access an inherited function through the derived class and parent class</span>
+<span class="nb">ChildClass</span><span class="p">(</span><span class="s">another_fxn</span><span class="w"> </span><span class="s2">&quot;${child_instance}&quot;</span><span class="p">)</span>
+<span class="nb">ParentClass</span><span class="p">(</span><span class="s">another_fxn</span><span class="w"> </span><span class="s2">&quot;${child_instance}&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <strong>overidden</strong> attributes and functions in the derived class can be through
+the derived class as well as well as the parent class:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Access an overridden attribute through the derived class and parent class</span>
+<span class="nb">ChildClass</span><span class="p">(</span><span class="s">GET</span><span class="w"> </span><span class="s2">&quot;${child_instance}&quot;</span><span class="w"> </span><span class="s">my_result</span><span class="w"> </span><span class="s">color</span><span class="p">)</span>
+<span class="nb">ParentClass</span><span class="p">(</span><span class="s">GET</span><span class="w"> </span><span class="s2">&quot;${child_instance}&quot;</span><span class="w"> </span><span class="s">my_result</span><span class="w"> </span><span class="s">color</span><span class="p">)</span>
+
+<span class="c"># Access an overridden function through the derived class and parent class</span>
+<span class="nb">ChildClass</span><span class="p">(</span><span class="s">my_fxn</span><span class="w"> </span><span class="s2">&quot;${child_instance}&quot;</span><span class="w"> </span><span class="s2">&quot;value_a&quot;</span><span class="w"> </span><span class="s2">&quot;value_b&quot;</span><span class="p">)</span>
+<span class="nb">ParentClass</span><span class="p">(</span><span class="s">my_fxn</span><span class="w"> </span><span class="s2">&quot;${child_instance}&quot;</span><span class="w"> </span><span class="s2">&quot;value_a&quot;</span><span class="w"> </span><span class="s2">&quot;value_b&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <strong>newly declared</strong> attributes and functions in the derived class that are
+not present in the parent class can be accessed through the derived class as
+well as the parent class:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Access a newly declared attribute that is present in ChildClass and not</span>
+<span class="c"># ParentClass through the derived class and parent class</span>
+<span class="nb">ChildClass</span><span class="p">(</span><span class="s">GET</span><span class="w"> </span><span class="s2">&quot;${child_instance}&quot;</span><span class="w"> </span><span class="s">my_result</span><span class="w"> </span><span class="s">name</span><span class="p">)</span>
+<span class="nb">ParentClass</span><span class="p">(</span><span class="s">GET</span><span class="w"> </span><span class="s2">&quot;${child_instance}&quot;</span><span class="w"> </span><span class="s">my_result</span><span class="w"> </span><span class="s">name</span><span class="p">)</span>
+
+<span class="c"># Access a newly declared function that is present in ChildClass and not</span>
+<span class="c"># ParentClass through the derived class and parent class</span>
+<span class="nb">ChildClass</span><span class="p">(</span><span class="s">new_fxn</span><span class="w"> </span><span class="s2">&quot;${child_instance}&quot;</span><span class="p">)</span>
+<span class="nb">ParentClass</span><span class="p">(</span><span class="s">new_fxn</span><span class="w"> </span><span class="s2">&quot;${child_instance}&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="multiple-class-inheritance">
+<h3>Multiple Class Inheritance<a class="headerlink" href="#multiple-class-inheritance" title="Permalink to this headline"></a></h3>
+<p>A class can inherit from multiple classes. If the parent classes both have
+attributes or functions that have the same name, CMakePP will resolve in
+the following way:</p>
+<ol class="arabic simple">
+<li><p>CMakePP will check for the attribute or function in the first parent class
+passed into the <code class="docutils literal notranslate"><span class="pre">cpp_class</span></code> macro where the subclass is defined.</p></li>
+<li><p>If the attribute / function is found there it will use that
+attribute / function.</p></li>
+<li><p>If the attribute / function is not found, it will search in the next parent
+class that was passed into the <code class="docutils literal notranslate"><span class="pre">cpp_class</span></code> macro.</p></li>
+<li><p>CMakePP will continue searching subsequent parent classes until the
+attribute / function is found or it runs out of parent classes to search
+(upon which an error will be thrown).</p></li>
+</ol>
+<p>For example, if a derived class called <code class="docutils literal notranslate"><span class="pre">ChildClass</span></code> is defined using:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cpp_class</span><span class="p">(</span><span class="s">ChildClass</span><span class="w"> </span><span class="s">ParentClass1</span><span class="w"> </span><span class="s">ParentClass2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then CMakePP will search for attributes / functions in <code class="docutils literal notranslate"><span class="pre">ParentClass1</span></code> first
+and then <code class="docutils literal notranslate"><span class="pre">ParentClass2</span></code>.</p>
+</section>
+<section id="pure-virtual-member-functions">
+<h3>Pure Virtual Member Functions<a class="headerlink" href="#pure-virtual-member-functions" title="Permalink to this headline"></a></h3>
+<p>CMakePP allows users to define <strong>pure virtual member functions</strong>. These are
+virtual functions with no implementation that can be overridden with an
+implementation in a derived class. We can create <code class="docutils literal notranslate"><span class="pre">ParentClass</span></code> with a
+virtual member function <code class="docutils literal notranslate"><span class="pre">my_virtual_fxn</span></code> with the following:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cpp_class</span><span class="p">(</span><span class="s">ParentClass</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c"># Add a virtual member function to be overridden by derived classes</span>
+<span class="w">    </span><span class="nb">cpp_member</span><span class="p">(</span><span class="s">my_virtual_fxn</span><span class="w"> </span><span class="s">ParentClass</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">cpp_virtual_member</span><span class="p">(</span><span class="s">my_virtual_fxn</span><span class="p">)</span>
+
+<span class="nb">cpp_end_class</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Now we can create a class that derives from <code class="docutils literal notranslate"><span class="pre">ParentClass</span></code> and overrides
+<code class="docutils literal notranslate"><span class="pre">my_virtual_fxn</span></code> called <code class="docutils literal notranslate"><span class="pre">ChildClass</span></code>:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cpp_class</span><span class="p">(</span><span class="s">ChildClass</span><span class="w"> </span><span class="s">ParentClass</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c"># Override the virtual fxn</span>
+<span class="w">    </span><span class="nb">cpp_member</span><span class="p">(</span><span class="s">my_virtual_fxn</span><span class="w"> </span><span class="s">ChildClass</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">function</span><span class="p">(</span><span class="s2">&quot;${my_virtual_fxn}&quot;</span><span class="w"> </span><span class="s">self</span><span class="p">)</span>
+<span class="w">        </span><span class="nb">message</span><span class="p">(</span><span class="s2">&quot;I am an instance of ChildClass&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">endfunction</span><span class="p">()</span>
+
+<span class="nb">cpp_end_class</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The overridden implementation can be called with an instance of <code class="docutils literal notranslate"><span class="pre">ChildClass</span></code>:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">ChildClass</span><span class="p">(</span><span class="s">CTOR</span><span class="w"> </span><span class="s">my_instance</span><span class="p">)</span>
+<span class="nb">ChildClass</span><span class="p">(</span><span class="s">my_virtual_fxn</span><span class="w"> </span><span class="s2">&quot;${my_instance}&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If a call is made to the <code class="docutils literal notranslate"><span class="pre">my_virtual_fxn</span></code> function for an instance of
+<code class="docutils literal notranslate"><span class="pre">ParentClass</span></code>, CMakePP will throw an error indicating that this function
+is virtual and must be overridden in a derived class.</p>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="types.html" class="btn btn-neutral float-left" title="Types in CMakePP" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="exceptions.html" class="btn btn-neutral float-right" title="Exception Handling" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, CMakePP Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

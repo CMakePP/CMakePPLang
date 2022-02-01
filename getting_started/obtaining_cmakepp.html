@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Obtaining CMakePP &mdash; CMakePPCore 1.0.0alpha documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="CMakePP Examples" href="cmakepp_examples/index.html" />
+    <link rel="prev" title="Getting Started" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> CMakePPCore
+          </a>
+              <div class="version">
+                1.0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Getting Started</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Obtaining CMakePP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#automatically-downloading-and-including-cmakepp">Automatically Downloading and Including CMakePP</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cmakepp_examples/index.html">CMakePP Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../features/index.html">Language Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conventions.html">Language Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging.html">Debugging Code Written in CMakePP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developing CMakePP</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CMakePPCore</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Getting Started</a> &raquo;</li>
+      <li>Obtaining CMakePP</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/getting_started/obtaining_cmakepp.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="obtaining-cmakepp">
+<h1>Obtaining CMakePP<a class="headerlink" href="#obtaining-cmakepp" title="Permalink to this headline"></a></h1>
+<p>This section details two ways of obtaining CMakePP for use in your build system.
+The easiest way to use CMakePP in your project is to
+<a class="reference internal" href="#auto-downloading-cmakepp"><span class="std std-ref">Automatically Downloading and Including CMakePP</span></a>.</p>
+<section id="automatically-downloading-and-including-cmakepp">
+<span id="auto-downloading-cmakepp"></span><h2>Automatically Downloading and Including CMakePP<a class="headerlink" href="#automatically-downloading-and-including-cmakepp" title="Permalink to this headline"></a></h2>
+<p>As a convenience to your users you can make it so that your build system
+automatically downloads CMakePP and includes it. The easiest way to do this is
+to put the following CMake script in a file <code class="docutils literal notranslate"><span class="pre">cmake/get_cpp.cmake</span></code>:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">include_guard</span><span class="p">()</span>
+
+<span class="c">#[[</span>
+<span class="c"># This function encapsulates the process of getting CMakePP using CMake&#39;s</span>
+<span class="c"># FetchContent module. We have encapsulated it in a function so we can set</span>
+<span class="c"># the options for its configure step without affecting the options for the</span>
+<span class="c"># parent project&#39;s configure step (namely we do not want to build CMakePP&#39;s</span>
+<span class="c"># unit tests).</span>
+<span class="c">#]]</span>
+<span class="nb">function</span><span class="p">(</span><span class="s">get_cpp</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c"># Store whether we are building tests or not, then turn off the tests</span>
+<span class="w">    </span><span class="nb">set</span><span class="p">(</span><span class="s">build_testing_old</span><span class="w"> </span><span class="s2">&quot;${BUILD_TESTING}&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">set</span><span class="p">(</span><span class="s">BUILD_TESTING</span><span class="w"> </span><span class="s">OFF</span><span class="w"> </span><span class="s">CACHE</span><span class="w"> </span><span class="s">BOOL</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="s">FORCE</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c"># Download CMakePP and bring it into scope</span>
+<span class="w">    </span><span class="nb">include</span><span class="p">(</span><span class="s">FetchContent</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">FetchContent_Declare</span><span class="p">(</span>
+<span class="w">         </span><span class="s">cpp</span>
+<span class="w">         </span><span class="s">GIT_REPOSITORY</span><span class="w"> </span><span class="s">https://github.com/CMakePP/CMakePackagingProject</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="nb">FetchContent_MakeAvailable</span><span class="p">(</span><span class="s">cpp</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c"># Restore the previous value</span>
+<span class="w">    </span><span class="nb">set</span><span class="p">(</span><span class="s">BUILD_TESTING</span><span class="w"> </span><span class="s2">&quot;${build_testing_old}&quot;</span><span class="w"> </span><span class="s">CACHE</span><span class="w"> </span><span class="s">BOOL</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="s">FORCE</span><span class="p">)</span>
+<span class="nb">endfunction</span><span class="p">()</span>
+
+<span class="c"># Call the function we just wrote to get CMakePP</span>
+<span class="nb">get_cpp</span><span class="p">()</span>
+
+<span class="c"># Include CMakePP</span>
+<span class="nb">include</span><span class="p">(</span><span class="s">cpp/cpp</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>and then in your top level <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> (assumed to be in the same
+directory as the <code class="docutils literal notranslate"><span class="pre">cmake</span></code> directory you put <code class="docutils literal notranslate"><span class="pre">get_cpp.cmake</span></code> in) add the line:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">include</span><span class="p">(</span><span class="s2">&quot;${PROJECT_SOURCE_DIR}/cmake/get_cpp.cmake&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Your project will now download CMakePP automatically as part of the CMake
+configuration. Users can use an already downloaded CMakePP by setting
+<code class="docutils literal notranslate"><span class="pre">FETCHCONTENT_SOURCE_DIR_CPP</span></code> to the directory of the pre-downloaded CMakePP.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Getting Started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cmakepp_examples/index.html" class="btn btn-neutral float-right" title="CMakePP Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, CMakePP Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

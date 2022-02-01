@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2. Using Utilities &mdash; CMakePPCore 1.0.0alpha documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Language Features" href="../../features/index.html" />
+    <link rel="prev" title="1. Using Classes" href="classes.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> CMakePPCore
+          </a>
+              <div class="version">
+                1.0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Getting Started</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../obtaining_cmakepp.html">Obtaining CMakePP</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">CMakePP Examples</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="classes.html">1. Using Classes</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">2. Using Utilities</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#checking-if-variables-are-equal">2.1. Checking if Variables are Equal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#serializing-a-variable">2.2. Serializing a Variable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#copying-a-variable">2.3. Copying a Variable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#checking-if-variable-contains-a-value">2.4. Checking if Variable Contains a Value</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#determining-the-type-of-a-variable">2.5. Determining the Type of a Variable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#asserting-a-condition">2.6. Asserting a Condition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#checking-if-a-file-exists">2.7. Checking if a File Exists</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#manipulating-globals">2.8. Manipulating Globals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-unique-identifier">2.9. Creating a Unique Identifier</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../features/index.html">Language Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../conventions.html">Language Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../debugging.html">Debugging Code Written in CMakePP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developing CMakePP</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CMakePPCore</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Getting Started</a> &raquo;</li>
+          <li><a href="index.html">CMakePP Examples</a> &raquo;</li>
+      <li><span class="section-number">2. </span>Using Utilities</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/getting_started/cmakepp_examples/utilities.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-utilities">
+<span id="id1"></span><h1><span class="section-number">2. </span>Using Utilities<a class="headerlink" href="#using-utilities" title="Permalink to this headline"></a></h1>
+<p>This page provides examples of using CMakePP’s utility functions.</p>
+<section id="checking-if-variables-are-equal">
+<h2><span class="section-number">2.1. </span>Checking if Variables are Equal<a class="headerlink" href="#checking-if-variables-are-equal" title="Permalink to this headline"></a></h2>
+<p>We can use the <code class="docutils literal notranslate"><span class="pre">cpp_equal</span></code> function to check for equality between any two
+variables, including objects and maps.</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Create three strings, two that are equivalent and on that is not</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">string_a</span><span class="w"> </span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">string_b</span><span class="w"> </span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">string_c</span><span class="w"> </span><span class="s2">&quot;Goodbye World&quot;</span><span class="p">)</span>
+
+<span class="c"># Check if certain strings are equivalent</span>
+<span class="nb">cpp_equal</span><span class="p">(</span><span class="s">result_ab</span><span class="w"> </span><span class="s2">&quot;${string_a}&quot;</span><span class="w"> </span><span class="s2">&quot;${string_b}&quot;</span><span class="p">)</span>
+<span class="nb">cpp_equal</span><span class="p">(</span><span class="s">result_ac</span><span class="w"> </span><span class="s2">&quot;${string_a}&quot;</span><span class="w"> </span><span class="s2">&quot;${string_c}&quot;</span><span class="p">)</span>
+
+<span class="c"># Print out the results</span>
+<span class="nb">message</span><span class="p">(</span><span class="s2">&quot;A equals B? ${result_ab}&quot;</span><span class="p">)</span>
+<span class="nb">message</span><span class="p">(</span><span class="s2">&quot;A equals C? ${result_ac}&quot;</span><span class="p">)</span>
+
+<span class="c"># Output:</span>
+<span class="c"># A equals B? TRUE</span>
+<span class="c"># A equals C? FALSE</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For native CMake types, such as booleans and integers, equality is defined as
+being the same string.</p>
+</div>
+</section>
+<section id="serializing-a-variable">
+<h2><span class="section-number">2.2. </span>Serializing a Variable<a class="headerlink" href="#serializing-a-variable" title="Permalink to this headline"></a></h2>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">cpp_serialize</span></code> to serialize a variable into a JSON string:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Create a map containing a desc</span>
+<span class="nb">cpp_map</span><span class="p">(</span><span class="s">CTOR</span><span class="w"> </span><span class="s">my_map</span><span class="w"> </span><span class="s">desc_key</span><span class="w"> </span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span>
+
+<span class="c"># Create a list and it to the map</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">my_list</span><span class="w"> </span><span class="s">1</span><span class="w"> </span><span class="s">2</span><span class="w"> </span><span class="s">3</span><span class="p">)</span>
+<span class="nb">cpp_map</span><span class="p">(</span><span class="s">SET</span><span class="w"> </span><span class="s2">&quot;${my_map}&quot;</span><span class="w"> </span><span class="s">list_key</span><span class="w"> </span><span class="s2">&quot;${my_list}&quot;</span><span class="p">)</span>
+
+<span class="c"># Serialize the map and print out the result</span>
+<span class="nb">cpp_serialize</span><span class="p">(</span><span class="s">serialized</span><span class="w"> </span><span class="s2">&quot;${my_map}&quot;</span><span class="p">)</span>
+<span class="nb">message</span><span class="p">(</span><span class="s2">&quot;${serialized}&quot;</span><span class="p">)</span>
+
+<span class="c"># Output:</span>
+<span class="c"># { &quot;desc_key&quot; : &quot;Hello World&quot;, &quot;list_key&quot; : [ &quot;1&quot;, &quot;2&quot;, &quot;3&quot; ] }</span>
+</pre></div>
+</div>
+</section>
+<section id="copying-a-variable">
+<h2><span class="section-number">2.3. </span>Copying a Variable<a class="headerlink" href="#copying-a-variable" title="Permalink to this headline"></a></h2>
+<p>We can use the <code class="docutils literal notranslate"><span class="pre">cpp_copy</span></code> to create a deep copy of an existing variable
+regardless of what type it is:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Create a list</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">my_list</span><span class="w"> </span><span class="s">1</span><span class="w"> </span><span class="s">2</span><span class="w"> </span><span class="s">3</span><span class="p">)</span>
+
+<span class="c"># Create a map containing a desc and a list</span>
+<span class="nb">cpp_map</span><span class="p">(</span><span class="s">CTOR</span><span class="w"> </span><span class="s">my_map</span><span class="w"> </span><span class="s">desc_key</span><span class="w"> </span><span class="s2">&quot;desc&quot;</span><span class="w"> </span><span class="s">list_key</span><span class="w"> </span><span class="s2">&quot;${my_list}&quot;</span><span class="p">)</span>
+
+<span class="c"># Create a copy of the map</span>
+<span class="nb">cpp_copy</span><span class="p">(</span><span class="s">map_copy</span><span class="w"> </span><span class="s2">&quot;${my_map}&quot;</span><span class="p">)</span>
+
+<span class="c"># Serialize the copy and print out the result</span>
+<span class="nb">cpp_serialize</span><span class="p">(</span><span class="s">serialized</span><span class="w"> </span><span class="s">map_copy</span><span class="p">)</span>
+<span class="nb">message</span><span class="p">(</span><span class="s2">&quot;${serialized}&quot;</span><span class="p">)</span>
+
+<span class="c"># Output:</span>
+<span class="c"># { &quot;desc_key&quot; : &quot;Hello World&quot;, &quot;list_key&quot; : [ &quot;1&quot;, &quot;2&quot;, &quot;3&quot; ] }</span>
+</pre></div>
+</div>
+</section>
+<section id="checking-if-variable-contains-a-value">
+<h2><span class="section-number">2.4. </span>Checking if Variable Contains a Value<a class="headerlink" href="#checking-if-variable-contains-a-value" title="Permalink to this headline"></a></h2>
+<p>We can use the <code class="docutils literal notranslate"><span class="pre">cpp_contains</span></code> function to check if a certain value is
+contained within another variable. The behavior changes depending on the type of
+the variable we are examining.</p>
+<section id="check-if-a-desc-contains-a-substring">
+<h3><span class="section-number">2.4.1. </span>Check if a Desc Contains a Substring<a class="headerlink" href="#check-if-a-desc-contains-a-substring" title="Permalink to this headline"></a></h3>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">cpp_contains</span></code> to check if a desc contains a substring:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Create a desc</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">my_desc</span><span class="w"> </span><span class="s2">&quot;Here is a desc&quot;</span><span class="p">)</span>
+
+<span class="c"># Check if the desc contains certain substrings</span>
+<span class="nb">cpp_contains</span><span class="p">(</span><span class="s">desc_has_here</span><span class="w"> </span><span class="s2">&quot;Here&quot;</span><span class="w"> </span><span class="s2">&quot;${my_desc}&quot;</span><span class="p">)</span>
+<span class="nb">cpp_contains</span><span class="p">(</span><span class="s">desc_has_a</span><span class="w"> </span><span class="s2">&quot;a&quot;</span><span class="w"> </span><span class="s2">&quot;${my_desc}&quot;</span><span class="p">)</span>
+<span class="nb">cpp_contains</span><span class="p">(</span><span class="s">desc_has_foo</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="w"> </span><span class="s2">&quot;${my_desc}&quot;</span><span class="p">)</span>
+
+<span class="c"># Print out the results</span>
+<span class="nb">message</span><span class="p">(</span><span class="s2">&quot;Desc contains \&quot;</span><span class="s">Here\</span><span class="s2">&quot;? ${desc_has_here}&quot;</span><span class="p">)</span>
+<span class="nb">message</span><span class="p">(</span><span class="s2">&quot;Desc contains \&quot;</span><span class="s">a\</span><span class="s2">&quot;? ${desc_has_a}&quot;</span><span class="p">)</span>
+<span class="nb">message</span><span class="p">(</span><span class="s2">&quot;Desc contains \&quot;</span><span class="s">foo\</span><span class="s2">&quot;? ${desc_has_foo}&quot;</span><span class="p">)</span>
+
+<span class="c"># Output:</span>
+<span class="c"># Desc contains &quot;Here&quot;? TRUE</span>
+<span class="c"># Desc contains &quot;a&quot;? TRUE</span>
+<span class="c"># Desc contains &quot;foo&quot;? FALSE</span>
+</pre></div>
+</div>
+</section>
+<section id="check-if-a-list-contains-a-value">
+<h3><span class="section-number">2.4.2. </span>Check if a List Contains a Value<a class="headerlink" href="#check-if-a-list-contains-a-value" title="Permalink to this headline"></a></h3>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">cpp_contains</span></code> to check if a list contains a value:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Create list containing some values</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">my_list</span><span class="w"> </span><span class="s">1</span><span class="w"> </span><span class="s">2</span><span class="w"> </span><span class="s">3</span><span class="w"> </span><span class="s2">&quot;hello&quot;</span><span class="w"> </span><span class="s2">&quot;world&quot;</span><span class="p">)</span>
+
+<span class="c"># Check if the list contains certain values</span>
+<span class="nb">cpp_contains</span><span class="p">(</span><span class="s">list_has_two</span><span class="w"> </span><span class="s">2</span><span class="w"> </span><span class="s2">&quot;${my_list}&quot;</span><span class="p">)</span>
+<span class="nb">cpp_contains</span><span class="p">(</span><span class="s">list_has_hello</span><span class="w"> </span><span class="s2">&quot;hello&quot;</span><span class="w"> </span><span class="s2">&quot;${my_list}&quot;</span><span class="p">)</span>
+<span class="nb">cpp_contains</span><span class="p">(</span><span class="s">list_has_foo</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="w"> </span><span class="s2">&quot;${my_list}&quot;</span><span class="p">)</span>
+
+<span class="c"># Print out the results</span>
+<span class="nb">message</span><span class="p">(</span><span class="s2">&quot;List contains 2? ${list_has_two}&quot;</span><span class="p">)</span>
+<span class="nb">message</span><span class="p">(</span><span class="s2">&quot;List contains \&quot;</span><span class="s">hello\</span><span class="s2">&quot;? ${list_has_hello}&quot;</span><span class="p">)</span>
+<span class="nb">message</span><span class="p">(</span><span class="s2">&quot;List contains \&quot;</span><span class="s">foo\</span><span class="s2">&quot;? ${list_has_foo}&quot;</span><span class="p">)</span>
+
+<span class="c"># Output:</span>
+<span class="c"># List contains 2? TRUE</span>
+<span class="c"># List contains &quot;hello&quot;? TRUE</span>
+<span class="c"># List contains &quot;foo&quot;? FALSE</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">cpp_contains</span></code> can take CMakePP objects and maps as search values.</p>
+</div>
+</section>
+<section id="check-if-a-map-contains-a-key">
+<h3><span class="section-number">2.4.3. </span>Check if a Map Contains a Key<a class="headerlink" href="#check-if-a-map-contains-a-key" title="Permalink to this headline"></a></h3>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">cpp_contains</span></code> to check if a map contains a key:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Create a map containing some initial key value pairs</span>
+<span class="nb">cpp_map</span><span class="p">(</span><span class="s">CTOR</span><span class="w"> </span><span class="s">my_map</span><span class="w"> </span><span class="s">key_a</span><span class="w"> </span><span class="s">value_a</span><span class="w"> </span><span class="s">key_b</span><span class="w"> </span><span class="s">value_b</span><span class="p">)</span>
+
+<span class="c"># Check if the map contains a certain keys</span>
+<span class="nb">cpp_contains</span><span class="p">(</span><span class="s">map_has_key_a</span><span class="w"> </span><span class="s">key_a</span><span class="w"> </span><span class="s2">&quot;${my_map}&quot;</span><span class="p">)</span>
+<span class="nb">cpp_contains</span><span class="p">(</span><span class="s">map_has_key_c</span><span class="w"> </span><span class="s">key_c</span><span class="w"> </span><span class="s2">&quot;${my_map}&quot;</span><span class="p">)</span>
+
+<span class="c"># Print out the results</span>
+<span class="nb">message</span><span class="p">(</span><span class="s2">&quot;Map contains key_a? ${map_has_key_a}&quot;</span><span class="p">)</span>
+<span class="nb">message</span><span class="p">(</span><span class="s2">&quot;Map contains key_c? ${map_has_key_c}&quot;</span><span class="p">)</span>
+
+<span class="c"># Output:</span>
+<span class="c"># Map contains key_a? TRUE</span>
+<span class="c"># Map contains key_c? FALSE</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="determining-the-type-of-a-variable">
+<h2><span class="section-number">2.5. </span>Determining the Type of a Variable<a class="headerlink" href="#determining-the-type-of-a-variable" title="Permalink to this headline"></a></h2>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">cpp_type_of</span></code> to get the type of a variable or value:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Get the type of a value and print the result</span>
+<span class="nb">cpp_type_of</span><span class="p">(</span><span class="s">result</span><span class="w"> </span><span class="s">TRUE</span><span class="p">)</span>
+<span class="nb">message</span><span class="p">(</span><span class="s2">&quot;${result}&quot;</span><span class="p">)</span>
+
+<span class="c"># Output: bool</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">cpp_type_of</span></code> works with CMakePP types as well as native CMake types.</p>
+</div>
+</section>
+<section id="asserting-a-condition">
+<h2><span class="section-number">2.6. </span>Asserting a Condition<a class="headerlink" href="#asserting-a-condition" title="Permalink to this headline"></a></h2>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">cpp_assert</span></code> to assert that a given value is true:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Assert that 3 is an int</span>
+<span class="nb">cpp_is_int</span><span class="p">(</span><span class="s">is_int</span><span class="w"> </span><span class="s">3</span><span class="p">)</span>
+<span class="nb">cpp_assert</span><span class="p">(</span><span class="s2">&quot;${_is_int}&quot;</span><span class="w"> </span><span class="s2">&quot;3 is an integer&quot;</span><span class="p">)</span>
+
+<span class="c"># Assert that x is greater than 3</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">x</span><span class="w"> </span><span class="s">4</span><span class="p">)</span>
+<span class="nb">cpp_assert</span><span class="p">(</span><span class="s2">&quot;${x};GREATER;3&quot;</span><span class="w"> </span><span class="s2">&quot;x is &gt; 3&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If an assert fails, it will stop the execution of the program and print the
+provided assertion message along with the call stack from where the assertion
+failed.</p>
+</section>
+<section id="checking-if-a-file-exists">
+<h2><span class="section-number">2.7. </span>Checking if a File Exists<a class="headerlink" href="#checking-if-a-file-exists" title="Permalink to this headline"></a></h2>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">cpp_file_exists</span></code> to check if files exist:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Check if some files exist</span>
+<span class="nb">cpp_file_exists</span><span class="p">(</span><span class="s">result_1</span><span class="w"> </span><span class="s2">&quot;/home/joe/file_that_exists.txt&quot;</span><span class="p">)</span>
+<span class="nb">cpp_file_exists</span><span class="p">(</span><span class="s">result_2</span><span class="w"> </span><span class="s2">&quot;/home/joe/file_that_does_not_exists.txt&quot;</span><span class="p">)</span>
+
+<span class="c"># Call the function and pass in directory</span>
+<span class="nb">cpp_file_exists</span><span class="p">(</span><span class="s">result_3</span><span class="w"> </span><span class="s2">&quot;/home/joe/Desktop&quot;</span><span class="p">)</span>
+
+<span class="nb">message</span><span class="p">(</span><span class="s2">&quot;${result_1}&quot;</span><span class="p">)</span><span class="w">        </span><span class="c"># Output: TRUE</span>
+<span class="nb">message</span><span class="p">(</span><span class="s2">&quot;${result_2}&quot;</span><span class="p">)</span><span class="w">        </span><span class="c"># Output: FALSE</span>
+<span class="nb">message</span><span class="p">(</span><span class="s2">&quot;${result_3}&quot;</span><span class="p">)</span><span class="w">        </span><span class="c"># Output: FALSE</span>
+
+<span class="c"># Output:</span>
+<span class="c"># TRUE</span>
+<span class="c"># TRUE</span>
+<span class="c"># FALSE</span>
+</pre></div>
+</div>
+</section>
+<section id="manipulating-globals">
+<h2><span class="section-number">2.8. </span>Manipulating Globals<a class="headerlink" href="#manipulating-globals" title="Permalink to this headline"></a></h2>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">cpp_set_global</span></code>, <code class="docutils literal notranslate"><span class="pre">cpp_get_global</span></code>, and <code class="docutils literal notranslate"><span class="pre">cpp_append_global</span></code> to
+get, set, and append global values:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Set a global value</span>
+<span class="nb">cpp_set_global</span><span class="p">(</span><span class="s">key_a</span><span class="w"> </span><span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
+
+<span class="c"># Get the global value and print it out</span>
+<span class="nb">cpp_get_global</span><span class="p">(</span><span class="s">result_a</span><span class="w"> </span><span class="s">key_a</span><span class="p">)</span>
+<span class="nb">message</span><span class="p">(</span><span class="s2">&quot;${result_a}&quot;</span><span class="p">)</span>
+
+<span class="c"># Output: Hello</span>
+
+<span class="c"># Append the global value</span>
+<span class="nb">cpp_append_global</span><span class="p">(</span><span class="s">key_a</span><span class="w"> </span><span class="s2">&quot; World&quot;</span><span class="p">)</span>
+
+<span class="c"># Get the global value and print it out again</span>
+<span class="nb">cpp_get_global</span><span class="p">(</span><span class="s">result_a</span><span class="w"> </span><span class="s">key_a</span><span class="p">)</span>
+<span class="nb">message</span><span class="p">(</span><span class="s2">&quot;${result_a}&quot;</span><span class="p">)</span>
+
+<span class="c"># Output: Hello World</span>
+</pre></div>
+</div>
+</section>
+<section id="creating-a-unique-identifier">
+<h2><span class="section-number">2.9. </span>Creating a Unique Identifier<a class="headerlink" href="#creating-a-unique-identifier" title="Permalink to this headline"></a></h2>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">cpp_unique_id</span></code> to create a unique identifier:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Create a unique ID and print it out</span>
+<span class="nb">cpp_unique_id</span><span class="p">(</span><span class="s">new_uid</span><span class="p">)</span>
+<span class="nb">message</span><span class="p">(</span><span class="s2">&quot;${new_uid}&quot;</span><span class="p">)</span>
+
+<span class="c"># Outputs something like: 9ii6l_1581033874</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="classes.html" class="btn btn-neutral float-left" title="1. Using Classes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../features/index.html" class="btn btn-neutral float-right" title="Language Features" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, CMakePP Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

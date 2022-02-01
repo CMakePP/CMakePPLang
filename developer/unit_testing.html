@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unit Testing CMakePPCore Functions &mdash; CMakePPCore 1.0.0alpha documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="CMakePP Function Implementation" href="function.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> CMakePPCore
+          </a>
+              <div class="version">
+                1.0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../features/index.html">Language Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conventions.html">Language Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging.html">Debugging Code Written in CMakePP</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Developing CMakePP</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="function.html">CMakePP Function Implementation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Unit Testing CMakePPCore Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#testing-signatures">Testing Signatures</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cpp-assert-signature">cpp_assert_signature</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#functions-that-can-not-be-type-checked-with-cpp-assert-signature">Functions that can not be type-checked with cpp_assert_signature</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CMakePPCore</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Developing CMakePP</a> &raquo;</li>
+      <li>Unit Testing CMakePPCore Functions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/developer/unit_testing.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="unit-testing-cmakeppcore-functions">
+<h1>Unit Testing CMakePPCore Functions<a class="headerlink" href="#unit-testing-cmakeppcore-functions" title="Permalink to this headline"></a></h1>
+<p>This page contains guidelines, tips, and tricks which relate to unit testing
+functionality in the CMakePPCore module. The contents of this page is somewhat
+exclusive to CMakePPCore and is in addition to project-wide guidelines.</p>
+<section id="testing-signatures">
+<h2>Testing Signatures<a class="headerlink" href="#testing-signatures" title="Permalink to this headline"></a></h2>
+<p>The CMake language is weakly typed, the CMakePP language is strongly typed.
+Because CMakePP is unit tested, users can be confident that CMakePP functions
+will correctly enforce type safety (and if they don’t that is a bug).
+Unfortunately, this means that all other functions intended to implement CMakePP
+functions need to have their type-safety checked manually. This section focuses
+on how to unit-test the signatures of functions which are strongly typed, but
+are not CMakePP functions.</p>
+<section id="cpp-assert-signature">
+<h3>cpp_assert_signature<a class="headerlink" href="#cpp-assert-signature" title="Permalink to this headline"></a></h3>
+<p>CMakePP provides the function <code class="docutils literal notranslate"><span class="pre">cpp_assert_signature</span></code> to facilitate the testing
+of signatures. <code class="docutils literal notranslate"><span class="pre">cpp_assert_signature</span></code> does the actual type-checking for you.
+In your unit test you simply need to make sure you are calling
+<code class="docutils literal notranslate"><span class="pre">cpp_assert_signature</span></code> correctly.</p>
+<p>As an example of using <code class="docutils literal notranslate"><span class="pre">cpp_assert_signature</span></code> consider the implementation of a
+function with the signature <code class="docutils literal notranslate"><span class="pre">my_function(desc,</span> <span class="pre">bool)</span></code>. This would look like:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">include</span><span class="p">(</span><span class="s">cmakepp_core/asserts/signature</span><span class="p">)</span>
+<span class="nb">function</span><span class="p">(</span><span class="s">my_function</span><span class="w"> </span><span class="s">arg0</span><span class="w"> </span><span class="s">arg1</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">cpp_assert_signature</span><span class="p">(</span><span class="s2">&quot;${ARGV}&quot;</span><span class="w"> </span><span class="s">desc</span><span class="w"> </span><span class="s">bool</span><span class="p">)</span>
+<span class="w">    </span><span class="c"># Function implementation goes here</span>
+<span class="nb">endfunction</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The basic pattern is your function’s first line should call
+<code class="docutils literal notranslate"><span class="pre">cpp_assert_signature</span></code> with the arguments provided to your function (this is
+always <code class="docutils literal notranslate"><span class="pre">&quot;${ARGV}&quot;</span></code>) and the types that each argument should be (of course you
+should use your function’s actual types and not ). To make sure you are calling
+<code class="docutils literal notranslate"><span class="pre">cpp_assert_signature</span></code> your unit-test should look like:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">include</span><span class="p">(</span><span class="s">cmake_test/cmake_test</span><span class="p">)</span>
+
+<span class="nb">ct_add_test</span><span class="p">(</span><span class="s2">&quot;my_function&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">include</span><span class="p">(</span><span class="s">path/to/my_function/implementation</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nb">ct_add_section</span><span class="p">(</span><span class="s2">&quot;signature&quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="nb">ct_add_section</span><span class="p">(</span><span class="s2">&quot;First argument must be a desc&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="nb">my_function</span><span class="p">(</span><span class="s">TRUE</span><span class="w"> </span><span class="s">TRUE</span><span class="p">)</span>
+<span class="w">            </span><span class="nb">ct_assert_fails_as</span><span class="p">(</span>
+<span class="w">                </span><span class="s2">&quot;Assertion: bool is convertible to desc failed.&quot;</span>
+<span class="w">            </span><span class="p">)</span>
+<span class="w">        </span><span class="nb">ct_end_section</span><span class="p">()</span>
+
+<span class="w">        </span><span class="nb">ct_add_section</span><span class="p">(</span><span class="s2">&quot;Second argument must be a bool&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="nb">my_function</span><span class="p">(</span><span class="s">hello</span><span class="w"> </span><span class="s">world</span><span class="p">)</span>
+<span class="w">            </span><span class="nb">ct_assert_fails_as</span><span class="p">(</span>
+<span class="w">                </span><span class="s2">&quot;Assertion: desc is convertible to bool failed.&quot;</span>
+<span class="w">            </span><span class="p">)</span>
+<span class="w">        </span><span class="nb">ct_end_section</span><span class="p">()</span>
+
+<span class="w">        </span><span class="nb">ct_add_section</span><span class="p">(</span><span class="s2">&quot;Function only takes two arguments&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="nb">my_function</span><span class="p">(</span><span class="s">hello</span><span class="w"> </span><span class="s">TRUE</span><span class="w"> </span><span class="s">42</span><span class="p">)</span>
+<span class="w">            </span><span class="nb">ct_assert_fails_as</span><span class="p">(</span>
+<span class="w">                </span><span class="s2">&quot;Function takes 2 argument(s), but 3 was/were provided.&quot;</span>
+<span class="w">            </span><span class="p">)</span>
+<span class="w">        </span><span class="nb">ct_end_section</span><span class="p">()</span>
+<span class="w">    </span><span class="nb">ct_end_section</span><span class="p">()</span>
+<span class="nb">ct_end_test</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This is admittedly boilerplate heavy, but it is also the minimum required to
+make sure that you have correctly set the types of each argument and that your
+function is not variadic (in this example we did not define our function as
+variadic; if yours is variadic you can skip this check).</p>
+</section>
+<section id="functions-that-can-not-be-type-checked-with-cpp-assert-signature">
+<h3>Functions that can not be type-checked with cpp_assert_signature<a class="headerlink" href="#functions-that-can-not-be-type-checked-with-cpp-assert-signature" title="Permalink to this headline"></a></h3>
+<p>The following UML diagram summarizes the call graph of <code class="docutils literal notranslate"><span class="pre">cpp_assert_signature</span></code>.</p>
+<img alt="../_images/assert_signature_call_graph.png" src="../_images/assert_signature_call_graph.png" />
+<p>Caveats regarding recursion aside, the call graph of any CMake script must
+ultimately be a directed-acyclic graph. This means we can not use
+<code class="docutils literal notranslate"><span class="pre">cpp_assert_signature</span></code> to type-check any of the signatures of the functions
+used to implement it. More generally, with respect to the above UML diagram,
+each function in the diagram can only use functions below it to implement
+type-checking. For example <code class="docutils literal notranslate"><span class="pre">sanitize_string</span></code> can not use any function in the
+call-graph to implement its type-checking (because all functions in the graph
+depend on <code class="docutils literal notranslate"><span class="pre">sanitize_string</span></code>), whereas <code class="docutils literal notranslate"><span class="pre">cmakepp_type</span></code> can use functions in
+the <code class="docutils literal notranslate"><span class="pre">global</span></code> module as well as <code class="docutils literal notranslate"><span class="pre">sanitize_string</span></code> (which is not very helpful
+in the long run for this particular use case). For the most part many of these
+functions are quite generic (operating on objects of type <code class="docutils literal notranslate"><span class="pre">str</span></code> in many cases)
+so type-checking is not particularly useful anyways (think of <code class="docutils literal notranslate"><span class="pre">str</span></code> as
+<code class="docutils literal notranslate"><span class="pre">void*</span></code> in C/C++). At the moment, for better or for worse, most of these
+functions in this call graph have no type-checking.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="function.html" class="btn btn-neutral float-left" title="CMakePP Function Implementation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, CMakePP Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

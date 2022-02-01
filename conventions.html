@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Language Conventions &mdash; CMakePPCore 1.0.0alpha documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API" href="api/index.html" />
+    <link rel="prev" title="Utilities" href="features/utilities.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> CMakePPCore
+          </a>
+              <div class="version">
+                1.0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="features/index.html">Language Features</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Language Conventions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#namespaces">Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#function-argument-order">Function Argument Order</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">Debugging Code Written in CMakePP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer/index.html">Developing CMakePP</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">CMakePPCore</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Language Conventions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/conventions.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="language-conventions">
+<h1>Language Conventions<a class="headerlink" href="#language-conventions" title="Permalink to this headline"></a></h1>
+<p>While you can always check the CMakePP Core documentation for how to use a
+function, CMakePP strives to also make it as easy as possible to “guess” how to
+use functions. Key to this effort is understanding the various conventions
+underlying how CMakePP decides on APIs. This chapter goes into more details
+regarding the CMakePP language conventions.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>CMakePP strives to have no exceptions to these conventions. If an exception
+exists (and it is not documented why it is an exception) assume it is a bug
+and please file an issue on GitHub.</p>
+</div>
+<section id="namespaces">
+<h2>Namespaces<a class="headerlink" href="#namespaces" title="Permalink to this headline"></a></h2>
+<p>CMake has a concept of variable scope, but does not have a namespace concept.
+The most straightforward way to introduce namespaces is to mangle a prefix onto
+function and variable names. CMakePP uses the prefix <code class="docutils literal notranslate"><span class="pre">cpp_</span></code> for all commands
+that are part of the public API. This helps avoid conflicts with existing CMake
+commands, commands from other modules, as well as commands users may write.
+Similarly CMakePP uses the prefix <code class="docutils literal notranslate"><span class="pre">_cpp_</span></code> for “protected” commands and
+<code class="docutils literal notranslate"><span class="pre">__cpp_</span></code> for private commands. Note that commands in native CMake (as well
+as CMakePP) are case-insensitive meaning <code class="docutils literal notranslate"><span class="pre">CPP_</span></code> (on a command) is still the
+same namespace as <code class="docutils literal notranslate"><span class="pre">cpp_</span></code>.</p>
+<p>In CMake variables are case-sensitive. Native CMake tends to prefix their
+configuration variables with <code class="docutils literal notranslate"><span class="pre">CMAKE_</span></code>. CMakePP follows suit with prefixes
+<code class="docutils literal notranslate"><span class="pre">CMAKEPP_CORE_</span></code> and <code class="docutils literal notranslate"><span class="pre">__CMAKEPP_CORE</span></code> respectively for public and private
+configuration variables (<code class="docutils literal notranslate"><span class="pre">_CMAKEPP_CORE</span></code> will be used if there is ever need
+for a protected variable).</p>
+</section>
+<section id="function-argument-order">
+<h2>Function Argument Order<a class="headerlink" href="#function-argument-order" title="Permalink to this headline"></a></h2>
+<p>The signatures of functions found in the CMakePP library all follow the same
+conventions when it comes to argument orders. For a non-member CMakePP function
+taking <span class="math notranslate nohighlight">\(m\)</span> arguments and returning <span class="math notranslate nohighlight">\(n\)</span> values (<span class="math notranslate nohighlight">\(n\le m\)</span>), the
+first <span class="math notranslate nohighlight">\(n\)</span> arguments will be the <span class="math notranslate nohighlight">\(n\)</span> values returned by the function
+and the remaining <span class="math notranslate nohighlight">\(m-n\)</span> values will be the inputs. CMake nor CMakePP make
+any attempt to distinguish the value of <span class="math notranslate nohighlight">\(n\)</span> in the signature and the only
+way to know if a value is input or output is to consult the documentation (or
+read the source code).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Native CMake uses a mix of return positions. For example, the <code class="docutils literal notranslate"><span class="pre">list()</span></code> and
+<code class="docutils literal notranslate"><span class="pre">string()</span></code> commands tend to have the variable holding the result as the
+last argument. Note that for the various string hashing operations (<em>e.g.</em>
+<code class="docutils literal notranslate"><span class="pre">string(MD5</span> <span class="pre">...)</span></code> the variable for the return actually comes before the
+string to hash. Other functions, such as <code class="docutils literal notranslate"><span class="pre">get_filename_component</span></code> also put
+the return variable before the input arguments.</p>
+</div>
+<p>For all intents and purposes we can think of CMake’s native <code class="docutils literal notranslate"><span class="pre">list()</span></code> and
+<code class="docutils literal notranslate"><span class="pre">string()</span></code> commands as defining APIs for calling member functions of <code class="docutils literal notranslate"><span class="pre">list</span></code>
+and <code class="docutils literal notranslate"><span class="pre">string</span></code> instances respectively. Within this view, a call like
+<code class="docutils literal notranslate"><span class="pre">list(LENGTH</span> <span class="pre">&lt;list_instance&gt;</span> <span class="pre">&lt;return_variable&gt;)</span></code> is calling the member
+function named <code class="docutils literal notranslate"><span class="pre">LENGTH</span></code> of the provided <code class="docutils literal notranslate"><span class="pre">list</span></code> instance and returning the
+result in the provided variable. CMakePP generalizes this convention to
+additional types, including user-defined classes.</p>
+<p>For member functions associated with a type <code class="docutils literal notranslate"><span class="pre">T</span></code>, CMakePP convention is to
+access the members via a function named <code class="docutils literal notranslate"><span class="pre">T</span></code> whose first argument is the name
+of the member function and whose second argument is the instance the member is
+being called on (<em>e.g.</em>, the <code class="docutils literal notranslate"><span class="pre">this</span></code> instance in C++ or the <code class="docutils literal notranslate"><span class="pre">self</span></code> instance
+in Python). Arguments following the object instance obey the same ordering
+conventions as non-member functions (returns followed by input).</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="features/utilities.html" class="btn btn-neutral float-left" title="Utilities" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="api/index.html" class="btn btn-neutral float-right" title="API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, CMakePP Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
