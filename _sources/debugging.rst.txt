@@ -12,11 +12,11 @@ systems.
 Basics
 ======
 
-The variable ``CMAKEPP_CORE_DEBUG_MODE`` can be used to cause all CMakePP
+The variable ``CMAKEPP_LANG_DEBUG_MODE`` can be used to cause all CMakePP
 functions to run in debug mode. If you are familiar with the C/C++ preprocessor
 macro definition ``NDEBUG`` it's the same idea, without the odd negative logic.
 Basically verbose logging and extra error checks, like type and bounds checks,
-are only done when ``CMAKEPP_CORE_DEBUG_MODE`` is defined and set to a true
+are only done when ``CMAKEPP_LANG_DEBUG_MODE`` is defined and set to a true
 value.
 
 .. warning::

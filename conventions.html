@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Language Conventions &mdash; CMakePPCore 1.0.0alpha documentation</title>
+  <title>Language Conventions &mdash; CMakePPLang 1.0.0alpha documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -28,7 +28,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> CMakePPCore
+            <a href="index.html" class="icon icon-home"> CMakePPLang
           </a>
               <div class="version">
                 1.0.0
@@ -60,7 +60,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">CMakePPCore</a>
+          <a href="index.html">CMakePPLang</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -80,7 +80,7 @@
              
   <section id="language-conventions">
 <h1>Language Conventions<a class="headerlink" href="#language-conventions" title="Permalink to this headline"></a></h1>
-<p>While you can always check the CMakePP Core documentation for how to use a
+<p>While you can always check the CMakePPLang documentation for how to use a
 function, CMakePP strives to also make it as easy as possible to “guess” how to
 use functions. Key to this effort is understanding the various conventions
 underlying how CMakePP decides on APIs. This chapter goes into more details
@@ -104,8 +104,8 @@ as CMakePP) are case-insensitive meaning <code class="docutils literal notransla
 same namespace as <code class="docutils literal notranslate"><span class="pre">cpp_</span></code>.</p>
 <p>In CMake variables are case-sensitive. Native CMake tends to prefix their
 configuration variables with <code class="docutils literal notranslate"><span class="pre">CMAKE_</span></code>. CMakePP follows suit with prefixes
-<code class="docutils literal notranslate"><span class="pre">CMAKEPP_CORE_</span></code> and <code class="docutils literal notranslate"><span class="pre">__CMAKEPP_CORE</span></code> respectively for public and private
-configuration variables (<code class="docutils literal notranslate"><span class="pre">_CMAKEPP_CORE</span></code> will be used if there is ever need
+<code class="docutils literal notranslate"><span class="pre">CMAKEPP_LANG_</span></code> and <code class="docutils literal notranslate"><span class="pre">__CMAKEPP_LANG</span></code> respectively for public and private
+configuration variables (<code class="docutils literal notranslate"><span class="pre">_CMAKEPP_LANG</span></code> will be used if there is ever need
 for a protected variable).</p>
 </section>
 <section id="function-argument-order">

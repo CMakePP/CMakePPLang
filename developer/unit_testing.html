@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Unit Testing CMakePPCore Functions &mdash; CMakePPCore 1.0.0alpha documentation</title>
+  <title>Unit Testing CMakePPLang Functions &mdash; CMakePPLang 1.0.0alpha documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -26,7 +26,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> CMakePPCore
+            <a href="../index.html" class="icon icon-home"> CMakePPLang
           </a>
               <div class="version">
                 1.0.0
@@ -47,7 +47,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../debugging.html">Debugging Code Written in CMakePP</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Developing CMakePP</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="function.html">CMakePP Function Implementation</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Unit Testing CMakePPCore Functions</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Unit Testing CMakePPLang Functions</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#testing-signatures">Testing Signatures</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#cpp-assert-signature">cpp_assert_signature</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#functions-that-can-not-be-type-checked-with-cpp-assert-signature">Functions that can not be type-checked with cpp_assert_signature</a></li>
@@ -65,7 +65,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">CMakePPCore</a>
+          <a href="../index.html">CMakePPLang</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -74,7 +74,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="index.html">Developing CMakePP</a> &raquo;</li>
-      <li>Unit Testing CMakePPCore Functions</li>
+      <li>Unit Testing CMakePPLang Functions</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/developer/unit_testing.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -84,11 +84,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="unit-testing-cmakeppcore-functions">
-<h1>Unit Testing CMakePPCore Functions<a class="headerlink" href="#unit-testing-cmakeppcore-functions" title="Permalink to this headline"></a></h1>
+  <section id="unit-testing-cmakepplang-functions">
+<h1>Unit Testing CMakePPLang Functions<a class="headerlink" href="#unit-testing-cmakepplang-functions" title="Permalink to this headline"></a></h1>
 <p>This page contains guidelines, tips, and tricks which relate to unit testing
-functionality in the CMakePPCore module. The contents of this page is somewhat
-exclusive to CMakePPCore and is in addition to project-wide guidelines.</p>
+functionality in the CMakePPLang module. The contents of this page is somewhat
+exclusive to CMakePPLang and is in addition to project-wide guidelines.</p>
 <section id="testing-signatures">
 <h2>Testing Signatures<a class="headerlink" href="#testing-signatures" title="Permalink to this headline"></a></h2>
 <p>The CMake language is weakly typed, the CMakePP language is strongly typed.
@@ -106,7 +106,7 @@ In your unit test you simply need to make sure you are calling
 <code class="docutils literal notranslate"><span class="pre">cpp_assert_signature</span></code> correctly.</p>
 <p>As an example of using <code class="docutils literal notranslate"><span class="pre">cpp_assert_signature</span></code> consider the implementation of a
 function with the signature <code class="docutils literal notranslate"><span class="pre">my_function(desc,</span> <span class="pre">bool)</span></code>. This would look like:</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">include</span><span class="p">(</span><span class="s">cmakepp_core/asserts/signature</span><span class="p">)</span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">include</span><span class="p">(</span><span class="s">cmakepp_lang/asserts/signature</span><span class="p">)</span>
 <span class="nb">function</span><span class="p">(</span><span class="s">my_function</span><span class="w"> </span><span class="s">arg0</span><span class="w"> </span><span class="s">arg1</span><span class="p">)</span>
 <span class="w">    </span><span class="nb">cpp_assert_signature</span><span class="p">(</span><span class="s2">&quot;${ARGV}&quot;</span><span class="w"> </span><span class="s">desc</span><span class="w"> </span><span class="s">bool</span><span class="p">)</span>
 <span class="w">    </span><span class="c"># Function implementation goes here</span>
