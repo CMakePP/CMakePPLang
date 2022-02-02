@@ -25,9 +25,9 @@ include(cmakepp_lang/class/set_kwargs_attrs)
 # If CMakePP is being run in debug mode this function will ensure that it was
 # called with an obj and a type as the first two parameters.
 #
-# :var cmakepp_lang_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.
-# :vartype cmakepp_lang_DEBUG_MODE: bool
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #
 # Additionally, this function will always throw an error if a CTOR call with
 # arguments was made an no CTOR can be found matching the signature of the call.

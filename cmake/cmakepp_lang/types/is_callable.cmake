@@ -128,9 +128,9 @@ endfunction()
 # these asserts fail an error will be raised. These assertions are only done in
 # debug mode.
 #
-# :var cmakepp_lang_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode.
-# :vartype cmakepp_lang_DEBUG_MODE: bool
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(cpp_is_callable _ic_result _ic_fxn _ic_args)
     cpp_assert_signature("${ARGV}" desc desc desc)

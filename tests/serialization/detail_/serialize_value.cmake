@@ -9,7 +9,7 @@ function("${test__cpp_serialize_value}")
         include(cmakepp_lang/algorithm/contains)
         include(cmakepp_lang/object/object)
 
-        _cpp_serialize_value(result "${__cmakepp_lang_OBJECT_SINGLETON__}")
+        _cpp_serialize_value(result "${__CMAKEPP_LANG_OBJECT_SINGLETON__}")
 
         # This is just a small part of the actual result, but should be enough
         # to know it got serialized as an object

@@ -31,9 +31,9 @@ include(cmakepp_lang/utilities/unique_id)
 # type. If an assert fails an error will be raised. The assertions happen only
 # when CMakePP is run in debug mode.
 #
-# :var cmakepp_lang_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.
-# :vartype cmakepp_lang_DEBUG_MODE: bool
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #
 #]]
 function(cpp_map_append _ma_this _ma_key _ma_value)
@@ -67,9 +67,9 @@ endfunction()
 # assertions fail an error will be raised. These assertions are only performed
 # if CMakePP is run in debug mode.
 #
-# :var cmakepp_lang_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode.
-# :vartype cmakepp_lang_DEBUG_MODE: bool
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(cpp_map_ctor _mc_result)
     cpp_assert_signature("${ARGV}" desc args)
@@ -112,9 +112,9 @@ endfunction()
 # types. If any of these checks fail an error will be raised. These checks are
 # only performed if CMakePP is being run in debug mode.
 #
-# :var cmakepp_lang_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode.
-# :vartype cmakepp_lang_DEBUG_MODE: bool
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(cpp_map_get _mg_this _mg_value _mg_key)
     cpp_assert_signature("${ARGV}" map desc str)
@@ -143,9 +143,9 @@ endfunction()
 # If these assertions fail an error will be raised. These checks are only
 # performed if CMakePP is run in debug mode.
 #
-# :var cmakepp_lang_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.
-# :vartype cmakepp_lang_DEBUG_MODE: bool
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #
 #]]
 function(cpp_map_set _ms_this _ms_key _ms_value)
@@ -178,7 +178,7 @@ endfunction()
 # been provided an error will be raised. These error checks are only done when
 # CMakePP is run in debug mode.
 #
-# :var cmakepp_lang_DEBUG_MODE: Used to determine if CMakePP is b
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is b
 #]]
 function(cpp_map _m_mode _m_this)
     string(TOLOWER "${_m_mode}" _m_lc_mode)

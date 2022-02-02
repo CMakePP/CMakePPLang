@@ -16,9 +16,9 @@ include(cmakepp_lang/utilities/enable_if_debug)
 # :param _at_obj: The object whose type must be implicitly convertible to
 #                 ``_at_type``.
 # :type _at_obj: str
-# :var cmakepp_lang_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode
-# :vartype cmakepp_lang_DEBUG_MODE: bool
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #
 # Error Checking
 # ==============

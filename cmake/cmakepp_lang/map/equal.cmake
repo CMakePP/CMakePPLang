@@ -27,9 +27,9 @@ include(cmakepp_lang/map/map)
 # these assertions fail an error will be raised. These error checks are only
 # done if CMakePP is run in debug mode.
 #
-# :var cmakepp_lang_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.
-# :vartype cmakepp_lang_DEBUG_MODE: bool
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(cpp_map_equal _me_this _me_result _me_other)
     cpp_assert_signature("${ARGV}" map desc map)

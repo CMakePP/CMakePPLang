@@ -27,9 +27,9 @@ include(cmakepp_lang/utilities/sanitize_string)
 # If these assertions fail an error will be raised. These checks are only
 # performed if CMakePP is run in debug mode.
 #
-# :var cmakepp_lang_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.
-# :vartype cmakepp_lang_DEBUG_MODE: bool
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(cpp_map_has_key _mhk_this _mhk_result _mhk_key)
     cpp_assert_signature("${ARGV}" map desc str)

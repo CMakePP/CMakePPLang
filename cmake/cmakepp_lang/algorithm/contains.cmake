@@ -30,9 +30,9 @@ include(cmakepp_lang/utilities/return)
 # with the correct number of arguments and that those arguments have the correct
 # types. These error checks are only performed if CMakePP is run in debug mode.
 #
-# :var cmakepp_lang_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.
-# :vartype cmakepp_lang_DEBUG_MODE: bool
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #
 # Example Usage:
 # ==============

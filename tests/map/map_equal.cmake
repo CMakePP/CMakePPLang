@@ -6,7 +6,7 @@ function("${test_cpp_map_equal}")
 
     ct_add_section(NAME "test_signature")
     function("${test_signature}")
-        set(cmakepp_lang_DEBUG_MODE ON)
+        set(CMAKEPP_LANG_DEBUG_MODE ON)
 
         cpp_map(CTOR a_map)
 

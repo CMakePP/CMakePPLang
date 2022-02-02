@@ -8,7 +8,7 @@ function("${test__cpp_object_get_meta_attr}")
 
     ct_add_section(NAME "test_signature")
     function("${test_signature}")
-        set(cmakepp_lang_DEBUG_MODE ON)
+        set(CMAKEPP_LANG_DEBUG_MODE ON)
 
         ct_add_section(NAME "first_arg_obj" EXPECTFAIL)
         function("${first_arg_obj}")

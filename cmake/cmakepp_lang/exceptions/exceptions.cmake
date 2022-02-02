@@ -36,15 +36,15 @@ cpp_set_global("_CPP_EXCEPTION_HANDLERS_" "${_exception_handlers}")
 # If CMakePP is run in debug mode (and only if it is run in debug mode) this
 # function will assert that it was called with one or more desc arguments.
 #
-# :var cmakepp_lang_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.
-# :vartype cmakepp_lang_DEBUG_MODE: bool
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(cpp_catch)
     cpp_assert_signature("${ARGV}" desc)
 
     # If debug, ensure that at least one arg was passed and each arg is a desc
-    if(cmakepp_lang_DEBUG_MODE)
+    if(CMAKEPP_LANG_DEBUG_MODE)
         if(NOT ${ARGC} GREATER_EQUAL 1)
             message(FATAL_ERROR "This function expects at least one argument")
         endif()
@@ -106,9 +106,9 @@ endfunction()
 # function will assert that it was called with at least one argument and that
 # the argument is of type desc.
 #
-# :var cmakepp_lang_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.
-# :vartype cmakepp_lang_DEBUG_MODE: bool
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(cpp_raise _r_exce_type)
     cpp_assert_signature("${ARGV}" desc args)
@@ -164,13 +164,13 @@ endmacro()
 # If CMakePP is run in debug mode (and only if it is run in debug mode) this
 # function will assert that it was called with one or more desc arguments.
 #
-# :var cmakepp_lang_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.
-# :vartype cmakepp_lang_DEBUG_MODE: bool
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(cpp_end_try_catch)
     # If debug, ensure that at least one arg was passed and each arg is a desc
-    if(cmakepp_lang_DEBUG_MODE)
+    if(CMAKEPP_LANG_DEBUG_MODE)
         if(NOT ${ARGC} GREATER_EQUAL 1)
             message(FATAL_ERROR "This function expects at least one argument")
         endif()

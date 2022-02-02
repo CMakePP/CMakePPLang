@@ -73,7 +73,7 @@ function("${test_cpp_type_of}")
 
         ct_add_section(NAME "obj_instance")
         function("${obj_instance}")
-            cpp_type_of(return "${__cmakepp_lang_OBJECT_SINGLETON__}")
+            cpp_type_of(return "${__CMAKEPP_LANG_OBJECT_SINGLETON__}")
             ct_assert_equal(return obj)
         endfunction()
 

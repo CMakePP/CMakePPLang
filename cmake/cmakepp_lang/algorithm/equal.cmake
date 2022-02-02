@@ -33,9 +33,9 @@ include(cmakepp_lang/utilities/return)
 # correct types. If any of these asserts fail an error will be raised. These
 # errors are only checked for in debug mode.
 #
-# :var cmakepp_lang_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.
-# :vartype cmakepp_lang_DEBUG_MODE: bool
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(cpp_equal _e_result _e_lhs _e_rhs)
     cpp_assert_signature("${ARGV}" desc str str)

@@ -22,7 +22,7 @@ include(cmakepp_lang/utilities/return)
 # If CMakePP is run in debug mode ``cpp_unique_id`` will ensure that it was
 # passed only one argument and that that argument is of type ``desc``.
 #
-# :var cmakepp_lang_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.
 #]]
 function(cpp_unique_id _ui_id)

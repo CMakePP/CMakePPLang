@@ -29,7 +29,7 @@ include(cmakepp_lang/utilities/return)
 # dereferencing one of the input lists in most cases) and that the arguments are
 # all of type ``desc``.
 #
-# :var cmakepp_lang_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode.
 #]]
 function(cpp_compare_lists _cl_result _cl_lhs _cl_rhs)

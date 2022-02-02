@@ -83,7 +83,7 @@ function("${test_cpp_is_fxn}")
     ct_add_section(NAME "test_obj")
     function("${test_obj}")
         include(cmakepp_lang/object/object)
-        cpp_is_fxn(result "${__cmakepp_lang_OBJECT_SINGLETON__}")
+        cpp_is_fxn(result "${__CMAKEPP_LANG_OBJECT_SINGLETON__}")
         ct_assert_equal(result FALSE)
     endfunction()
 

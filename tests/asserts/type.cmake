@@ -3,7 +3,7 @@ include(cmake_test/cmake_test)
 ct_add_test(NAME "_test_cpp_assert_type")
 function(${_test_cpp_assert_type})
     include(cmakepp_lang/asserts/type)
-    set(cmakepp_lang_DEBUG_MODE ON)
+    set(CMAKEPP_LANG_DEBUG_MODE ON)
 
     ct_add_section(NAME "assert_type_sig")
     function(${assert_type_sig})

@@ -8,7 +8,7 @@ function("${test__cpp_object_serialize}")
 
     ct_add_section(NAME "test_signature")
     function("${test_signature}")
-        set(cmakepp_lang_DEBUG_MODE ON)
+        set(CMAKEPP_LANG_DEBUG_MODE ON)
 
         ct_add_section(NAME "first_arg_obj" EXPECTFAIL)
         function("${first_arg_obj}")
@@ -42,7 +42,7 @@ function("${test__cpp_object_print}")
 
     ct_add_section(NAME "test_signature")
     function("${test_signature}")
-        set(cmakepp_lang_DEBUG_MODE ON)
+        set(CMAKEPP_LANG_DEBUG_MODE ON)
 
         ct_add_section(NAME "first_arg_obj" EXPECTFAIL)
         function("${first_arg_obj}")
@@ -51,13 +51,13 @@ function("${test__cpp_object_print}")
 
         ct_add_section(NAME "takes_one_arg" EXPECTFAIL)
         function("${takes_one_arg}")
-            _cpp_object_print("${__cmakepp_lang_OBJECT_SINGLETON__}" hello)
+            _cpp_object_print("${__CMAKEPP_LANG_OBJECT_SINGLETON__}" hello)
         endfunction()
     endfunction()
 
     ct_add_section(NAME "print_val")
     function("${print_val}")
-        _cpp_object_print("${__cmakepp_lang_OBJECT_SINGLETON__}")
+        _cpp_object_print("${__CMAKEPP_LANG_OBJECT_SINGLETON__}")
         ct_assert_prints("{ \"_cpp_attrs\" : { }, ")
     endfunction()
 endfunction()
