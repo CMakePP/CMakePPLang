@@ -1,10 +1,10 @@
 **********************************
-Unit Testing CMakePPCore Functions
+Unit Testing CMakePPLang Functions
 **********************************
 
 This page contains guidelines, tips, and tricks which relate to unit testing
-functionality in the CMakePPCore module. The contents of this page is somewhat
-exclusive to CMakePPCore and is in addition to project-wide guidelines.
+functionality in the CMakePPLang module. The contents of this page is somewhat
+exclusive to CMakePPLang and is in addition to project-wide guidelines.
 
 Testing Signatures
 ==================
