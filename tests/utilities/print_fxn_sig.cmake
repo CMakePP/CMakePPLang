@@ -2,11 +2,11 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "test_cpp_print_fxn_sig")
 function("${test_cpp_print_fxn_sig}")
-    include(cmakepp_core/utilities/print_fxn_sig)
+    include(cmakepp_lang/utilities/print_fxn_sig)
 
     ct_add_section(NAME "test_signature")
     function("${test_signature}")
-        set(CMAKEPP_CORE_DEBUG_MODE ON)
+        set(CMAKEPP_LANG_DEBUG_MODE ON)
 
         ct_add_section(NAME "first_arg_desc" EXPECTFAIL)
         function("${first_arg_desc}")

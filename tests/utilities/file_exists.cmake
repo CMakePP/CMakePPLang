@@ -2,11 +2,11 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "test_cpp_file_exists")
 function("${test_cpp_file_exists}")
-    include(cmakepp_core/utilities/file_exists)
+    include(cmakepp_lang/utilities/file_exists)
 
     ct_add_section(NAME "test_signature")
     function("${test_signature}")
-        set(CMAKEPP_CORE_DEBUG_MODE ON)
+        set(CMAKEPP_LANG_DEBUG_MODE ON)
 
         ct_add_section(NAME "first_arg_desc" EXPECTFAIL)
         function("${first_arg_desc}")

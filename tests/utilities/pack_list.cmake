@@ -2,15 +2,15 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "test_cpp_pack_list")
 function("${test_cpp_pack_list}")
-    include(cmakepp_core/utilities/pack_list)
-    include(cmakepp_core/serialization/serialization)
+    include(cmakepp_lang/utilities/pack_list)
+    include(cmakepp_lang/serialization/serialization)
 
     # Use the end-of-tranmission as the delimiter for the packed list string
     string(ASCII 04 delim)
 
     ct_add_section(NAME "test_signature")
     function("${test_signature}")
-        set(CMAKEPP_CORE_DEBUG_MODE ON)
+        set(CMAKEPP_LANG_DEBUG_MODE ON)
 
         ct_add_section(NAME "first_arg_desc" EXPECTFAIL)
         function("${first_arg_desc}")
@@ -75,14 +75,14 @@ endfunction()
 
 ct_add_test(NAME "test_cpp_unpack_list")
 function("${test_cpp_unpack_list}")
-    include(cmakepp_core/utilities/pack_list)
+    include(cmakepp_lang/utilities/pack_list)
 
     # Use the end-of-tranmission as the delimiter for the packed list string
     string(ASCII 04 delim)
 
     ct_add_section(NAME "test_signature")
     function("${test_signature}")
-        set(CMAKEPP_CORE_DEBUG_MODE ON)
+        set(CMAKEPP_LANG_DEBUG_MODE ON)
 
         ct_add_section(NAME "first_arg_desc" EXPECTFAIL)
         function("${first_arg_desc}")

@@ -2,8 +2,8 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "_test_cpp_assert_type")
 function(${_test_cpp_assert_type})
-    include(cmakepp_core/asserts/type)
-    set(CMAKEPP_CORE_DEBUG_MODE ON)
+    include(cmakepp_lang/asserts/type)
+    set(CMAKEPP_LANG_DEBUG_MODE ON)
 
     ct_add_section(NAME "assert_type_sig")
     function(${assert_type_sig})
@@ -38,7 +38,7 @@ function(${_test_cpp_assert_type})
 
     ct_add_section(NAME "assert_type_classes")
     function(${assert_type_classes})
-        include(cmakepp_core/class/class)
+        include(cmakepp_lang/class/class)
 
         if(NOT DEFINED _assert_type_classes_setup)
              cpp_class(BaseClass)

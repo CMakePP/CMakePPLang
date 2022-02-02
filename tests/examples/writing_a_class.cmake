@@ -7,11 +7,11 @@ function("${writing_a_class}")
 #TUTORIAL
 #
 # The machinery for declaring and defining a CMakePP class lives in
-# ``cmakepp_core/class/class``. Let's start by writing a simple class
+# ``cmakepp_lang/class/class``. Let's start by writing a simple class
 # ``Greeter`` which has a single member function ``say_hello``. ``say_hello``
 # simply returns ``"Hello World"`` via the variable ``result``. The code to do
 # this is:
-include(cmakepp_core/class/class)
+include(cmakepp_lang/class/class)
 
 cpp_class(Greeter)
 

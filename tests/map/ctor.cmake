@@ -2,13 +2,13 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "test_cpp_map_ctor")
 function("${test_cpp_map_ctor}")
-    include(cmakepp_core/map/map)
-    include(cmakepp_core/types/type_of)
-    include(cmakepp_core/utilities/compare_lists)
+    include(cmakepp_lang/map/map)
+    include(cmakepp_lang/types/type_of)
+    include(cmakepp_lang/utilities/compare_lists)
 
     ct_add_section(NAME "test_signature" EXPECTFAIL)
     function("${test_signature}")
-        set(CMAKEPP_CORE_DEBUG_MODE ON)
+        set(CMAKEPP_LANG_DEBUG_MODE ON)
 
         cpp_map_ctor(TRUE)
     endfunction()

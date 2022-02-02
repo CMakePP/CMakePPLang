@@ -2,7 +2,7 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "test__cpp_serialize_map")
 function("${test__cpp_serialize_map}")
-    include(cmakepp_core/serialization/serialization)
+    include(cmakepp_lang/serialization/serialization)
 
     ct_add_section(NAME "empty_map")
     function("${empty_map}")

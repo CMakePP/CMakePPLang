@@ -1,5 +1,5 @@
 ###########
-CMakePPCore
+CMakePPLang
 ###########
 
 At the heart of the CMake Packaging Project is the CMakePP language. The CMakePP

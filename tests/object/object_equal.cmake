@@ -2,13 +2,13 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "test__cpp_object_equal")
 function("${test__cpp_object_equal}")
-    include(cmakepp_core/object/object)
+    include(cmakepp_lang/object/object)
 
     _cpp_object_ctor(an_obj obj)
 
     ct_add_section(NAME "test_signature")
     function("${test_signature}")
-        set(CMAKEPP_CORE_DEBUG_MODE ON)
+        set(CMAKEPP_LANG_DEBUG_MODE ON)
 
         ct_add_section(NAME "first_arg_obj" EXPECTFAIL)
         function("${first_arg_obj}")
@@ -40,7 +40,7 @@ function("${test__cpp_object_equal}")
     ct_add_section(NAME "diff_objects")
     function("${diff_objects}")
         _cpp_object_equal(
-            "${an_obj}" result "${__CMAKEPP_CORE_OBJECT_SINGLETON__}"
+            "${an_obj}" result "${__CMAKEPP_LANG_OBJECT_SINGLETON__}"
         )
         ct_assert_equal(result FALSE)
     endfunction()

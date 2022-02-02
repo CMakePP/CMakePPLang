@@ -2,7 +2,7 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "test_cpp_call_fxn")
 function("${test_cpp_call_fxn}")
-    include(cmakepp_core/utilities/call_fxn)
+    include(cmakepp_lang/utilities/call_fxn)
 
     ct_add_section(NAME "function_no_args")
     function("${function_no_args}")

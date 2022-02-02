@@ -2,11 +2,11 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "cpp_equal")
 function("${cpp_equal}")
-    include(cmakepp_core/algorithm/equal)
+    include(cmakepp_lang/algorithm/equal)
 
     ct_add_section(NAME "signature")
     function("${signature}")
-        set(CMAKEPP_CORE_DEBUG_MODE ON)
+        set(CMAKEPP_LANG_DEBUG_MODE ON)
 
         ct_add_section(NAME "first_arg_desc" EXPECTFAIL)
         function("${first_arg_desc}")
@@ -121,7 +121,7 @@ function("${cpp_equal}")
 
     ct_add_section(NAME "objects")
     function("${objects}")
-        include(cmakepp_core/class/class)
+        include(cmakepp_lang/class/class)
 
         cpp_class(MyClass)
             cpp_attr(MyClass foo bar)
