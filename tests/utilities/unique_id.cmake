@@ -2,7 +2,7 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "test_cpp_unique_id")
 function("${test_cpp_unique_id}")
-    include(cmakepp_core/utilities/unique_id)
+    include(cmakepp_lang/utilities/unique_id)
 
     ct_add_section(NAME "test_signature")
     function("${test_signature}")

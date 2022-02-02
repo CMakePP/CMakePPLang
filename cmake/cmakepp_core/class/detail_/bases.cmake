@@ -1,5 +1,5 @@
 include_guard()
-include(cmakepp_core/utilities/global)
+include(cmakepp_lang/utilities/global)
 
 #[[[ Encapsulates the logic for retrieving the base classes of a user-defined
 #    type.
@@ -69,7 +69,7 @@ endmacro()
 # :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(_cpp_class_set_bases _csb_this _csb_bases)
-    include(cmakepp_core/asserts/signature)
+    include(cmakepp_lang/asserts/signature)
     cpp_assert_signature("${ARGV}" class desc)
 
     cpp_set_global("${_csb_this}__bases" "${${_csb_bases}}")

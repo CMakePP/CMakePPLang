@@ -1,8 +1,8 @@
 include_guard()
-include(cmakepp_core/asserts/signature)
-include(cmakepp_core/map/map)
-include(cmakepp_core/object/get_meta_attr)
-include(cmakepp_core/utilities/sanitize_string)
+include(cmakepp_lang/asserts/signature)
+include(cmakepp_lang/map/map)
+include(cmakepp_lang/object/get_meta_attr)
+include(cmakepp_lang/utilities/sanitize_string)
 
 #[[[ Register's a member function with the object.
 #

@@ -2,8 +2,8 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "test_cpp_map_append")
 function("${test_cpp_map_append}")
-    include(cmakepp_core/map/map)
-    include(cmakepp_core/utilities/compare_lists)
+    include(cmakepp_lang/map/map)
+    include(cmakepp_lang/utilities/compare_lists)
 
     cpp_map(CTOR a_map)
 

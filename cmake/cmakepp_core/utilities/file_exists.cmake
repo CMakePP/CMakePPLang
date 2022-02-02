@@ -1,5 +1,5 @@
 include_guard()
-include(cmakepp_core/asserts/signature)
+include(cmakepp_lang/asserts/signature)
 
 #[[[ Determines if a provided path points to an existing file.
 #

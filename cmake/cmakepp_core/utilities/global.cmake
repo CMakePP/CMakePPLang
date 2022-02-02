@@ -1,5 +1,5 @@
 include_guard()
-include(cmakepp_core/utilities/sanitize_string)
+include(cmakepp_lang/utilities/sanitize_string)
 
 #[[[ Appends a value to a global list.
 #

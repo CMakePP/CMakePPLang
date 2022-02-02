@@ -1,6 +1,6 @@
 include_guard()
-include(cmakepp_core/algorithm/copy)
-include(cmakepp_core/asserts/signature)
+include(cmakepp_lang/algorithm/copy)
+include(cmakepp_lang/asserts/signature)
 
 #[[[ Makes a deep copy of a Map instance.
 #

@@ -1,5 +1,5 @@
 include_guard()
-include(cmakepp_core/types/literals)
+include(cmakepp_lang/types/literals)
 
 #[[[ Determines if the provided string can lexically be cast to a boolean.
 #
@@ -30,7 +30,7 @@ include(cmakepp_core/types/literals)
 
 # .. code-block:: cmake
 #
-#    include(cmakepp_core/types/bool)
+#    include(cmakepp_lang/types/bool)
 #    set(var2check TRUE)
 #    cpp_is_bool(result "${var2check}")
 #    message("var2check is a bool: ${result}")  # will print TRUE

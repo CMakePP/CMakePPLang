@@ -1,9 +1,9 @@
 include_guard()
-include(cmakepp_core/asserts/signature)
-include(cmakepp_core/map/copy)
-include(cmakepp_core/utilities/global)
-include(cmakepp_core/utilities/return)
-include(cmakepp_core/utilities/unique_id)
+include(cmakepp_lang/asserts/signature)
+include(cmakepp_lang/map/copy)
+include(cmakepp_lang/utilities/global)
+include(cmakepp_lang/utilities/return)
+include(cmakepp_lang/utilities/unique_id)
 
 #[[[ Deep copies an Object instance.
 #

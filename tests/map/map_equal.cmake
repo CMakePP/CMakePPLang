@@ -2,7 +2,7 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "test_cpp_map_equal")
 function("${test_cpp_map_equal}")
-    include(cmakepp_core/map/map)
+    include(cmakepp_lang/map/map)
 
     ct_add_section(NAME "test_signature")
     function("${test_signature}")

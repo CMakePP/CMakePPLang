@@ -1,9 +1,9 @@
 include_guard()
-include(cmakepp_core/asserts/signature)
-include(cmakepp_core/map/map)
-include(cmakepp_core/object/get_meta_attr)
-include(cmakepp_core/types/is_callable)
-include(cmakepp_core/utilities/return)
+include(cmakepp_lang/asserts/signature)
+include(cmakepp_lang/map/map)
+include(cmakepp_lang/object/get_meta_attr)
+include(cmakepp_lang/types/is_callable)
+include(cmakepp_lang/utilities/return)
 
 #[[[ Encapsulates the process of looking up the symbol for a given signature.
 #

@@ -1,6 +1,6 @@
 include_guard()
-include(cmakepp_core/asserts/signature)
-include(cmakepp_core/serialization/serialization)
+include(cmakepp_lang/asserts/signature)
+include(cmakepp_lang/serialization/serialization)
 
 #[[[ Serializes an object into JSON format.
 #

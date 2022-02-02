@@ -23,8 +23,8 @@ include_guard()
 #
 # .. code-block:: cmake
 #
-#    include(cmakepp_core/utilities/assert)
-#    include(cmakepp_core/types/integer)
+#    include(cmakepp_lang/utilities/assert)
+#    include(cmakepp_lang/types/integer)
 #    cpp_is_int(is_int 3)
 #    cpp_assert("${_is_int}" "3 is an integer")
 #
@@ -33,7 +33,7 @@ include_guard()
 #
 # .. code-block:: cmake
 #
-#    include(cmakepp_core/utilities/assert)
+#    include(cmakepp_lang/utilities/assert)
 #    set(x 4)
 #    cpp_assert("${x};GREATER;3" "x is > 3")
 #]]

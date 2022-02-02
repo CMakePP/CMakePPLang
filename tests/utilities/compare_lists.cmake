@@ -2,7 +2,7 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "test_cpp_compare_lists")
 function("${test_cpp_compare_lists}")
-    include(cmakepp_core/utilities/compare_lists)
+    include(cmakepp_lang/utilities/compare_lists)
 
     ct_add_section(NAME "test_signature")
     function("${test_signature}")

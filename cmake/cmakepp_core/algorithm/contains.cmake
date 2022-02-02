@@ -1,8 +1,8 @@
 include_guard()
-include(cmakepp_core/asserts/type)
-include(cmakepp_core/map/has_key)
-include(cmakepp_core/types/types)
-include(cmakepp_core/utilities/return)
+include(cmakepp_lang/asserts/type)
+include(cmakepp_lang/map/has_key)
+include(cmakepp_lang/types/types)
+include(cmakepp_lang/utilities/return)
 
 #[[[ Determines if an element appears in a set-like object.
 #
@@ -42,7 +42,7 @@ include(cmakepp_core/utilities/return)
 #
 # .. code-block:: cmake
 #
-#    include(cmakepp_core/logic/contains)
+#    include(cmakepp_lang/logic/contains)
 #    set(a_list "hello" "world")
 #    cpp_contains(result "hello" "${a_list}")
 #    message("The list contains 'hello': ${result}")  # Will print TRUE

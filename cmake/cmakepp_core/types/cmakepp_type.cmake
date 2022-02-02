@@ -1,5 +1,5 @@
 include_guard()
-include(cmakepp_core/utilities/global)
+include(cmakepp_lang/utilities/global)
 
 #[[[ Encapsulates the process of getting a CMakePP object's type.
 #

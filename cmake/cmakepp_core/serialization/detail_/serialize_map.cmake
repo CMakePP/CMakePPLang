@@ -1,6 +1,6 @@
 include_guard()
-include(cmakepp_core/map/map)
-include(cmakepp_core/serialization/detail_/serialize_value)
+include(cmakepp_lang/map/map)
+include(cmakepp_lang/serialization/detail_/serialize_value)
 
 #[[[ Serializes a map using JSON serialization.
 #

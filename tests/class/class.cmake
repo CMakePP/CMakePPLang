@@ -2,8 +2,8 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "_test_class")
 function(${_test_class})
-    include(cmakepp_core/class/class)
-    include(cmakepp_core/types/types)
+    include(cmakepp_lang/class/class)
+    include(cmakepp_lang/types/types)
 
     ct_add_section(NAME "_class_signature" EXPECTFAIL)
     function(${_class_signature})
@@ -125,7 +125,7 @@ endfunction()
 
 ct_add_test(NAME "_test_member")
 function(${_test_member})
-    include(cmakepp_core/class/class)
+    include(cmakepp_lang/class/class)
 
     cpp_class(MyClass)
 
@@ -186,7 +186,7 @@ endfunction()
 ct_add_test(NAME "_test_virtual_member")
 function(${_test_virtual_member})
 
-    #include(cmakepp_core/class/class)
+    #include(cmakepp_lang/class/class)
 
     ct_add_section(NAME "_virt_member_sig")
     function(${_virt_member_sig})
@@ -242,7 +242,7 @@ endfunction()
 
 ct_add_test(NAME "_test_attr")
 function(${_test_attr})
-    include(cmakepp_core/class/class)
+    include(cmakepp_lang/class/class)
 
     ct_add_section(NAME "_attr_sig")
     function(${_attr_sig})
@@ -330,7 +330,7 @@ endfunction()
 
 ct_add_test(NAME "_test_constructor")
 function(${_test_constructor})
-    include(cmakepp_core/class/class)
+    include(cmakepp_lang/class/class)
 
     ct_add_section(NAME "_test_constructor_sig")
     function(${_test_constructor_sig})

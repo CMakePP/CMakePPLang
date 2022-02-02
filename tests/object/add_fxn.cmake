@@ -2,7 +2,7 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "test__cpp_object_add_fxn")
 function("${test__cpp_object_add_fxn}")
-    include(cmakepp_core/object/object)
+    include(cmakepp_lang/object/object)
 
     _cpp_object_ctor(an_object obj)
     cpp_map(CTOR corr)

@@ -2,7 +2,7 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "test__cpp_object_call_guts")
 function("${test__cpp_object_call_guts}")
-    include(cmakepp_core/object/object)
+    include(cmakepp_lang/object/object)
 
     _cpp_object_singleton(singleton)
 
@@ -22,7 +22,7 @@ endfunction()
 
 ct_add_test(NAME "test_cpp_object_call")
 function("${test_cpp_object_call}")
-    include(cmakepp_core/object/object)
+    include(cmakepp_lang/object/object)
 
     _cpp_object_singleton(singleton)
 

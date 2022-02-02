@@ -1,8 +1,8 @@
 include_guard()
-include(cmakepp_core/class/detail_/bases)
-include(cmakepp_core/object/object)
-include(cmakepp_core/types/cmakepp_type)
-include(cmakepp_core/class/set_kwargs_attrs)
+include(cmakepp_lang/class/detail_/bases)
+include(cmakepp_lang/object/object)
+include(cmakepp_lang/types/cmakepp_type)
+include(cmakepp_lang/class/set_kwargs_attrs)
 
 #[[[ Finds the proper CTOR function to call for the given object and arguments.
 #

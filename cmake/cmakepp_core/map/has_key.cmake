@@ -1,7 +1,7 @@
 include_guard()
-include(cmakepp_core/asserts/signature)
-include(cmakepp_core/map/keys)
-include(cmakepp_core/utilities/sanitize_string)
+include(cmakepp_lang/asserts/signature)
+include(cmakepp_lang/map/keys)
+include(cmakepp_lang/utilities/sanitize_string)
 
 #[[[ Determines if a map has the specified key.
 #

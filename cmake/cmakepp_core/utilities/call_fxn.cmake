@@ -1,5 +1,5 @@
 include_guard()
-include(cmakepp_core/utilities/unique_id)
+include(cmakepp_lang/utilities/unique_id)
 
 #[[[ Performs most of the work for dynamically calling a function.
 #

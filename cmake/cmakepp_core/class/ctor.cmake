@@ -1,10 +1,10 @@
 include_guard()
-include(cmakepp_core/class/detail_/bases)
-include(cmakepp_core/object/object)
-include(cmakepp_core/map/map)
-include(cmakepp_core/types/cmakepp_type)
-include(cmakepp_core/class/find_ctor)
-include(cmakepp_core/class/flatten_attrs)
+include(cmakepp_lang/class/detail_/bases)
+include(cmakepp_lang/object/object)
+include(cmakepp_lang/map/map)
+include(cmakepp_lang/types/cmakepp_type)
+include(cmakepp_lang/class/find_ctor)
+include(cmakepp_lang/class/flatten_attrs)
 
 #[[[ Handles the construction of a class instance.
 #

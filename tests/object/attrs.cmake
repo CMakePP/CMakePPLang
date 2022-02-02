@@ -2,7 +2,7 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "test__cpp_object_get_attr_guts")
 function("${test__cpp_object_get_attr_guts}")
-    include(cmakepp_core/object/object)
+    include(cmakepp_lang/object/object)
 
     ct_add_section(NAME "base_object")
     function("${base_object}")
@@ -28,7 +28,7 @@ endfunction()
 
 ct_add_test(NAME "test__cpp_object_get_attr")
 function("${test__cpp_object_get_attr}")
-    include(cmakepp_core/object/object)
+    include(cmakepp_lang/object/object)
 
     _cpp_object_ctor(an_obj obj)
 
@@ -50,7 +50,7 @@ endfunction()
 
 ct_add_test(NAME "test__cpp_object_set_attr")
 function("${test__cpp_object_set_attr}")
-    include(cmakepp_core/object/object)
+    include(cmakepp_lang/object/object)
 
     _cpp_object_ctor(an_obj obj)
 

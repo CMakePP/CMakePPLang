@@ -1,8 +1,8 @@
 include_guard()
-include(cmakepp_core/utilities/call_fxn)
-include(cmakepp_core/utilities/return)
-include(cmakepp_core/utilities/sanitize_string)
-include(cmakepp_core/utilities/unique_id)
+include(cmakepp_lang/utilities/call_fxn)
+include(cmakepp_lang/utilities/return)
+include(cmakepp_lang/utilities/sanitize_string)
+include(cmakepp_lang/utilities/unique_id)
 
 #[[[ Starts a timer using the provided name.
 #

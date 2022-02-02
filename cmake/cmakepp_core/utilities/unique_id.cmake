@@ -1,6 +1,6 @@
 include_guard()
-include(cmakepp_core/asserts/signature)
-include(cmakepp_core/utilities/return)
+include(cmakepp_lang/asserts/signature)
+include(cmakepp_lang/utilities/return)
 
 #[[[ Generates a unique identifier.
 #

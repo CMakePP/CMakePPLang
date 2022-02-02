@@ -1,6 +1,6 @@
 include_guard()
-include(cmakepp_core/algorithm/copy)
-include(cmakepp_core/asserts/signature)
+include(cmakepp_lang/algorithm/copy)
+include(cmakepp_lang/asserts/signature)
 
 #[[[ Adds the key-value pairs from one dictionary to another.
 #

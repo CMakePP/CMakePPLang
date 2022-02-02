@@ -1,11 +1,11 @@
 include_guard()
-include(cmakepp_core/asserts/signature)
-include(cmakepp_core/map/equal)
-include(cmakepp_core/object/equal)
-include(cmakepp_core/types/type_of)
-include(cmakepp_core/types/implicitly_convertible)
-include(cmakepp_core/utilities/compare_lists)
-include(cmakepp_core/utilities/return)
+include(cmakepp_lang/asserts/signature)
+include(cmakepp_lang/map/equal)
+include(cmakepp_lang/object/equal)
+include(cmakepp_lang/types/type_of)
+include(cmakepp_lang/types/implicitly_convertible)
+include(cmakepp_lang/utilities/compare_lists)
+include(cmakepp_lang/utilities/return)
 
 #[[[ Compares two values for equivalency.
 #

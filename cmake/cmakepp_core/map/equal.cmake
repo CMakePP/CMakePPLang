@@ -1,7 +1,7 @@
 include_guard()
-include(cmakepp_core/algorithm/equal)
-include(cmakepp_core/asserts/signature)
-include(cmakepp_core/map/map)
+include(cmakepp_lang/algorithm/equal)
+include(cmakepp_lang/asserts/signature)
+include(cmakepp_lang/map/map)
 
 #[[[ Determines if two map instances are equivalent.
 #

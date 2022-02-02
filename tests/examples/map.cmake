@@ -2,7 +2,7 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "map_class")
 function("${map_class}")
-    include(cmakepp_core/map/map)
+    include(cmakepp_lang/map/map)
 
     cpp_map(CTOR a_map foo bar hello world)
 

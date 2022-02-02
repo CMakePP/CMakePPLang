@@ -1,10 +1,10 @@
 include(cmake_test/cmake_test)
 
 ct_add_test("_cpp_object_ctor")
-    include(cmakepp_core/class/class)
-    include(cmakepp_core/object/object)
-    include(cmakepp_core/types/type_of)
-    include(cmakepp_core/utilities/compare_lists)
+    include(cmakepp_lang/class/class)
+    include(cmakepp_lang/object/object)
+    include(cmakepp_lang/types/type_of)
+    include(cmakepp_lang/utilities/compare_lists)
 
     ct_add_section("Signature")
         set(CMAKEPP_LANG_DEBUG_MODE ON)

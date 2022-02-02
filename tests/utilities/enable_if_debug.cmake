@@ -9,7 +9,7 @@ include(cmake_test/cmake_test)
 #]]
 ct_add_test(NAME "test_cpp_enable_if_debug")
 function("${test_cpp_enable_if_debug}")
-    include(cmakepp_core/utilities/enable_if_debug)
+    include(cmakepp_lang/utilities/enable_if_debug)
 
     ct_add_section(NAME "test_signature" EXPECTFAIL)
     function("${test_signature}")

@@ -2,8 +2,8 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "cpp_copy")
 function("${cpp_copy}")
-    include(cmakepp_core/algorithm/copy)
-    include(cmakepp_core/algorithm/equal)
+    include(cmakepp_lang/algorithm/copy)
+    include(cmakepp_lang/algorithm/equal)
 
 #    ct_add_section(NAME "Signature")
 #        set(CMAKEPP_LANG_DEBUG_MODE ON)
@@ -61,7 +61,7 @@ function("${cpp_copy}")
 
     ct_add_section(NAME "map")
     function("${map}")
-        include(cmakepp_core/map/map)
+        include(cmakepp_lang/map/map)
         cpp_map(CTOR lhs a_key a_value foo bar)
         cpp_copy(rhs "${lhs}")
         cpp_equal(result "${lhs}" "${rhs}")
@@ -70,7 +70,7 @@ function("${cpp_copy}")
 
     ct_add_section(NAME "objects")
     function("${objects}")
-        include(cmakepp_core/object/object)
+        include(cmakepp_lang/object/object)
 
         cpp_copy(rhs "${__CMAKEPP_LANG_OBJECT_SINGLETON__}")
         cpp_equal(result "${__CMAKEPP_LANG_OBJECT_SINGLETON__}" "${rhs}")

@@ -1,7 +1,7 @@
 include_guard()
-include(cmakepp_core/map/map)
-include(cmakepp_core/object/get_meta_attr)
-include(cmakepp_core/utilities/return)
+include(cmakepp_lang/map/map)
+include(cmakepp_lang/object/get_meta_attr)
+include(cmakepp_lang/utilities/return)
 
 #[[[ Core of the routine which retrieves the attributes.
 #

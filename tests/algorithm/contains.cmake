@@ -2,7 +2,7 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "test_cpp_contains")
 function("${test_cpp_contains}")
-    include(cmakepp_core/algorithm/contains)
+    include(cmakepp_lang/algorithm/contains)
 
     ct_add_section(NAME "signature")
     function("${signature}")
@@ -37,7 +37,7 @@ function("${test_cpp_contains}")
 
     ct_add_section(NAME "map")
     function("${map}")
-        include(cmakepp_core/map/map)
+        include(cmakepp_lang/map/map)
 
         cpp_map(CTOR a_map a_key a_value foo bar)
 

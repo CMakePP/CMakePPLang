@@ -10,7 +10,7 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "test_cpp_assert")
 function("${test_cpp_assert}")
-    include(cmakepp_core/utilities/assert)
+    include(cmakepp_lang/utilities/assert)
 
     ct_add_section(NAME "true_value")
     function("${true_value}")

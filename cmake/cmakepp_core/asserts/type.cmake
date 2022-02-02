@@ -1,8 +1,8 @@
 include_guard()
-include(cmakepp_core/types/implicitly_convertible)
-include(cmakepp_core/types/type_of)
-include(cmakepp_core/utilities/assert)
-include(cmakepp_core/utilities/enable_if_debug)
+include(cmakepp_lang/types/implicitly_convertible)
+include(cmakepp_lang/types/type_of)
+include(cmakepp_lang/utilities/assert)
+include(cmakepp_lang/utilities/enable_if_debug)
 
 #[[[ Tests that the provided object can be implicitly cast to the provided type.
 #

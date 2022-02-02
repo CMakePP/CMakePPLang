@@ -1,7 +1,7 @@
 include_guard()
-include(cmakepp_core/algorithm/equal)
-include(cmakepp_core/asserts/signature)
-include(cmakepp_core/utilities/return)
+include(cmakepp_lang/algorithm/equal)
+include(cmakepp_lang/asserts/signature)
+include(cmakepp_lang/utilities/return)
 
 #[[[ Encapsulates the process of comparing two CMake lists to one another.
 #

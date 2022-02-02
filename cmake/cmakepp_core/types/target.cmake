@@ -28,7 +28,7 @@ include_guard()
 #
 # .. code-block:: cmake
 #
-#    include(cmakepp_core/types/target)
+#    include(cmakepp_lang/types/target)
 #    add_library(my_target STATIC IMPORTED)
 #    cpp_is_target(return ${my_target})
 #    message("my_target is a target: ${return}")  # prints TRUE

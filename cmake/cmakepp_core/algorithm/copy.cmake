@@ -1,9 +1,9 @@
 include_guard()
-include(cmakepp_core/asserts/signature)
-include(cmakepp_core/map/copy)
-include(cmakepp_core/object/copy)
-include(cmakepp_core/types/type_of)
-include(cmakepp_core/utilities/return)
+include(cmakepp_lang/asserts/signature)
+include(cmakepp_lang/map/copy)
+include(cmakepp_lang/object/copy)
+include(cmakepp_lang/types/type_of)
+include(cmakepp_lang/utilities/return)
 
 #[[[ Creates a new object which is a deep copy of an already existing object.
 #

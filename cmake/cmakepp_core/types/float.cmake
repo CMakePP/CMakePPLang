@@ -28,7 +28,7 @@ include_guard()
 #
 # .. code-block:: cmake
 #
-#    include(cmakepp_core/types/float)
+#    include(cmakepp_lang/types/float)
 #    set(x 3.14)
 #    cpp_is_float(return ${x})
 #    message("3.14 is a float: ${return}")  # prints TRUE

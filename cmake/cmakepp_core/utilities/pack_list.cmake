@@ -1,5 +1,5 @@
 include_guard()
-include(cmakepp_core/serialization/serialization)
+include(cmakepp_lang/serialization/serialization)
 
 #[[[ Transforms a CMake list into a string that can be passed down through
 #    function calls and then transformed back to the original CMake list that

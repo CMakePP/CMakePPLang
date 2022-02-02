@@ -30,7 +30,7 @@ function with the signature ``my_function(desc, bool)``. This would look like:
 
 .. code-block:: cmake
 
-   include(cmakepp_core/asserts/signature)
+   include(cmakepp_lang/asserts/signature)
    function(my_function arg0 arg1)
        cpp_assert_signature("${ARGV}" desc bool)
        # Function implementation goes here

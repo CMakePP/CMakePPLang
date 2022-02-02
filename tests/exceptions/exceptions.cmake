@@ -2,7 +2,7 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "test_cpp_catch")
 function("${test_cpp_catch}")
-    include(cmakepp_core/exceptions/exceptions)
+    include(cmakepp_lang/exceptions/exceptions)
 
     ct_add_section(NAME "test_signature")
     function("${test_signature}")
@@ -128,7 +128,7 @@ endfunction()
 
 ct_add_test(NAME "test_cpp_raise")
 function("${test_cpp_raise}")
-    include(cmakepp_core/exceptions/exceptions)
+    include(cmakepp_lang/exceptions/exceptions)
 
     ct_add_section(NAME "test_signature" EXPECTFAIL)
     function("${test_signature}")
@@ -146,7 +146,7 @@ endfunction()
 
 ct_add_test(NAME "test_cpp_end_try_catch")
 function("${test_cpp_end_try_catch}")
-    include(cmakepp_core/exceptions/exceptions)
+    include(cmakepp_lang/exceptions/exceptions)
 
     ct_add_section(NAME "test_signature")
     function("${test_signature}")

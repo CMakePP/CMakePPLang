@@ -1,7 +1,7 @@
 include_guard()
-include(cmakepp_core/asserts/signature)
-include(cmakepp_core/object/object)
-include(cmakepp_core/utilities/return)
+include(cmakepp_lang/asserts/signature)
+include(cmakepp_lang/object/object)
+include(cmakepp_lang/utilities/return)
 
 #[[[ Returns a new default constructed Object instance.
 #

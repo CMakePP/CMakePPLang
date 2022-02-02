@@ -1,8 +1,8 @@
 include_guard()
-include(cmakepp_core/asserts/signature)
-include(cmakepp_core/types/implicitly_convertible)
-include(cmakepp_core/utilities/return)
-include(cmakepp_core/utilities/sanitize_string)
+include(cmakepp_lang/asserts/signature)
+include(cmakepp_lang/types/implicitly_convertible)
+include(cmakepp_lang/utilities/return)
+include(cmakepp_lang/utilities/sanitize_string)
 
 #[[[ Handles logic for comparing the human-readable names of the functions.
 #

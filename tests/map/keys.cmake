@@ -2,8 +2,8 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "test_cpp_map_keys")
 function("${test_cpp_map_keys}")
-    include(cmakepp_core/map/map)
-    include(cmakepp_core/utilities/compare_lists)
+    include(cmakepp_lang/map/map)
+    include(cmakepp_lang/utilities/compare_lists)
 
     ct_add_section(NAME "test_signature")
     function("${test_signature}")

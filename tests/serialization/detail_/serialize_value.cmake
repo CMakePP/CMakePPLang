@@ -2,12 +2,12 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "test__cpp_serialize_value")
 function("${test__cpp_serialize_value}")
-    include(cmakepp_core/serialization/detail_/serialize_value)
+    include(cmakepp_lang/serialization/detail_/serialize_value)
 
     ct_add_section(NAME "serialize_obj")
     function("${serialize_obj}")
-        include(cmakepp_core/algorithm/contains)
-        include(cmakepp_core/object/object)
+        include(cmakepp_lang/algorithm/contains)
+        include(cmakepp_lang/object/object)
 
         _cpp_serialize_value(result "${__CMAKEPP_LANG_OBJECT_SINGLETON__}")
 
@@ -26,7 +26,7 @@ function("${test__cpp_serialize_value}")
 
     ct_add_section(NAME "serialize_map")
     function("${serialize_map}")
-        include(cmakepp_core/map/map)
+        include(cmakepp_lang/map/map)
         cpp_map(CTOR a_map foo bar hello world)
         _cpp_serialize_value(result "${a_map}")
         ct_assert_equal(result [[{ "foo" : "bar", "hello" : "world" }]])

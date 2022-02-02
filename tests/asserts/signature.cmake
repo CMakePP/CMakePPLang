@@ -9,7 +9,7 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "_test_cpp_assert_signature")
 function(${_test_cpp_assert_signature})
-    include(cmakepp_core/asserts/signature)
+    include(cmakepp_lang/asserts/signature)
     set(CMAKEPP_LANG_DEBUG_MODE ON)
 
     ct_add_section(NAME "sig_nonvariadic")
@@ -142,7 +142,7 @@ function(${_test_cpp_assert_signature})
 
     ct_add_section(NAME "sig_object")
     function(${sig_object})
-        include(cmakepp_core/object/object)
+        include(cmakepp_lang/object/object)
         cpp_assert_signature("${__CMAKEPP_LANG_OBJECT_SINGLETON__}" obj)
     endfunction()
 

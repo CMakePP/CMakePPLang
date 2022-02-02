@@ -2,7 +2,7 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "test_cpp_print_fxn_sig")
 function("${test_cpp_print_fxn_sig}")
-    include(cmakepp_core/utilities/print_fxn_sig)
+    include(cmakepp_lang/utilities/print_fxn_sig)
 
     ct_add_section(NAME "test_signature")
     function("${test_signature}")

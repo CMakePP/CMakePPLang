@@ -2,7 +2,7 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "test__cpp_object_serialize")
 function("${test__cpp_object_serialize}")
-    include(cmakepp_core/object/object)
+    include(cmakepp_lang/object/object)
 
     _cpp_object_ctor(an_obj obj)
 
@@ -38,7 +38,7 @@ endfunction()
 
 ct_add_test(NAME "test__cpp_object_print")
 function("${test__cpp_object_print}")
-    include(cmakepp_core/object/object)
+    include(cmakepp_lang/object/object)
 
     ct_add_section(NAME "test_signature")
     function("${test_signature}")

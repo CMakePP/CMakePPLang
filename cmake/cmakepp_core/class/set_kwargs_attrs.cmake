@@ -1,7 +1,7 @@
 include_guard()
-include(cmakepp_core/class/detail_/bases)
-include(cmakepp_core/object/object)
-include(cmakepp_core/types/cmakepp_type)
+include(cmakepp_lang/class/detail_/bases)
+include(cmakepp_lang/object/object)
+include(cmakepp_lang/types/cmakepp_type)
 
 #[[[ Reads KWARGS and assigns sets the appropriate attributes values.
 #

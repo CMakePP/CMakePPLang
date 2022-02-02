@@ -2,7 +2,7 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "test_cpp_map_get")
 function("${test_cpp_map_get}")
-    include(cmakepp_core/map/map)
+    include(cmakepp_lang/map/map)
 
     cpp_map_ctor(a_map)
 
@@ -49,7 +49,7 @@ function("${test_cpp_map_get}")
 
     ct_add_section(NAME "get_list_val")
     function("${get_list_val}")
-        include(cmakepp_core/utilities/compare_lists)
+        include(cmakepp_lang/utilities/compare_lists)
         set(corr hello world)
         cpp_map_set("${a_map}" foo "${corr}")
         cpp_map_get("${a_map}" value foo)
