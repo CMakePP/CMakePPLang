@@ -2,7 +2,7 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "test_cpp_stop_timing")
 function("${test_cpp_stop_timing}")
-    include(cmakepp_core/utilities/timer)
+    include(cmakepp_lang/utilities/timer)
 
     ct_add_section(NAME "timer_not_starter" EXPECTFAIL)
     function("${timer_not_started}")
@@ -12,7 +12,7 @@ endfunction()
 
 ct_add_test(NAME "cpp_time_fxn")
 function("${cpp_time_fxn}")
-    include(cmakepp_core/utilities/timer)
+    include(cmakepp_lang/utilities/timer)
 
     function(fxn2time)
     endfunction()

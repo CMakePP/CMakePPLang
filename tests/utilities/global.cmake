@@ -2,7 +2,7 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "test_cpp_append_global")
 function("${test_cpp_append_global}")
-    include(cmakepp_core/utilities/global)
+    include(cmakepp_lang/utilities/global)
 
     ct_add_section(NAME "test_signature" EXPECTFAIL)
     function("${test_signature}")
@@ -18,7 +18,7 @@ function("${test_cpp_append_global}")
 
     ct_add_section(NAME "existing_var")
     function("${existing_var}")
-        include(cmakepp_core/utilities/compare_lists)
+        include(cmakepp_lang/utilities/compare_lists)
         cpp_append_global(a_key_2 foo)
         cpp_append_global(a_key_2 bar)
         cpp_get_global(value a_key_2)
@@ -37,7 +37,7 @@ endfunction()
 
 ct_add_test(NAME "test_cpp_set_global")
 function("${test_cpp_set_global}")
-    include(cmakepp_core/utilities/global)
+    include(cmakepp_lang/utilities/global)
 
     ct_add_section(NAME "test_signature" EXPECTFAIL)
     function("${test_signature}")
@@ -69,7 +69,7 @@ endfunction()
 
 ct_add_test(NAME "test_cpp_get_global")
 function("${test_cpp_get_global}")
-    include(cmakepp_core/utilities/global)
+    include(cmakepp_lang/utilities/global)
 
     ct_add_section(NAME "test_signature" EXPECTFAIL)
     function("${test_signature}")

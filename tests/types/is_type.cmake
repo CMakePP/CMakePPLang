@@ -2,7 +2,7 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "test_cpp_is_type")
 function("${test_cpp_is_type}")
-    include(cmakepp_core/types/type)
+    include(cmakepp_lang/types/type)
 
     ct_add_section(NAME "test_signature" EXPECTFAIL)
     function("${test_signature}")
@@ -17,7 +17,7 @@ function("${test_cpp_is_type}")
 
     ct_add_section(NAME "test_class")
     function("${test_class}")
-        include(cmakepp_core/class/class)
+        include(cmakepp_lang/class/class)
         cpp_class(MyClass)
 
         cpp_is_type(return MyClass)
@@ -74,7 +74,7 @@ function("${test_cpp_is_type}")
 
     ct_add_section(NAME "test_map")
     function("${test_map}")
-        include(cmakepp_core/map/map)
+        include(cmakepp_lang/map/map)
         cpp_map(CTOR a_map)
         cpp_is_type(result a_map)
         ct_assert_equal(result FALSE)
@@ -82,8 +82,8 @@ function("${test_cpp_is_type}")
 
     ct_add_section(NAME "test_obj")
     function("${test_obj}")
-        include(cmakepp_core/object/object)
-        cpp_is_type(result "${__CMAKEPP_CORE_OBJECT_SINGLETON__}")
+        include(cmakepp_lang/object/object)
+        cpp_is_type(result "${__CMAKEPP_LANG_OBJECT_SINGLETON__}")
         ct_assert_equal(result FALSE)
     endfunction()
 

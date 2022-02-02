@@ -14,7 +14,7 @@ writes code something akin to:
 
 .. code-block:: cmake
 
-   include(cmakepp_core/function/function)
+   include(cmakepp_lang/function/function)
 
    cpp_function(foo int bool)
    function(${foo} arg0 arg1)

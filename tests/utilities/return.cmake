@@ -2,7 +2,7 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "test_return")
 function("${test_return}")
-    include(cmakepp_core/utilities/return)
+    include(cmakepp_lang/utilities/return)
 
     # Define a dummy function which uses the return function
     function(dummy_fxn)

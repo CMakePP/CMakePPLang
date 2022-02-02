@@ -2,13 +2,13 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "test__cpp_object_copy")
 function("${test__cpp_object_copy}")
-    include(cmakepp_core/object/object)
+    include(cmakepp_lang/object/object)
 
     _cpp_object_ctor(an_obj obj)
 
     ct_add_section(NAME "test_signature")
     function("${test_signature}")
-        set(CMAKEPP_CORE_DEBUG_MODE ON)
+        set(CMAKEPP_LANG_DEBUG_MODE ON)
 
         ct_add_section(NAME "first_arg_obj" EXPECTFAIL)
         function("${first_arg_obj}")
@@ -47,7 +47,7 @@ function("${test__cpp_object_copy}")
 
     ct_add_section(NAME "simple_inheritance")
     function("${simple_inheritance}")
-        include(cmakepp_core/class/class)
+        include(cmakepp_lang/class/class)
 
         cpp_class(BaseClass)
             cpp_attr(BaseClass foo bar)
