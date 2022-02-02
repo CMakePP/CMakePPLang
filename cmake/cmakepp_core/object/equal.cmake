@@ -30,9 +30,9 @@ include(cmakepp_core/utilities/return)
 # arguments are of the correct types. If this is not the case an error will be
 # raised.
 #
-# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.
-# :vartype CMAKEPP_CORE_DEBUG_MODE: bool
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(_cpp_object_equal _oe_this _oe_result _oe_other)
     cpp_assert_signature("${ARGV}" obj desc obj)

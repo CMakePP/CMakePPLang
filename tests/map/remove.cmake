@@ -7,7 +7,7 @@ function("${test_cpp_map_remove}")
 
     ct_add_section(NAME "test_signature")
     function("${test_signature}")
-        set(CMAKEPP_CORE_DEBUG_MODE ON)
+        set(CMAKEPP_LANG_DEBUG_MODE ON)
 
         cpp_map_ctor(a_map)
 

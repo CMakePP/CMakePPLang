@@ -6,7 +6,7 @@ function("${test_cpp_contains}")
 
     ct_add_section(NAME "signature")
     function("${signature}")
-        set(CMAKEPP_CORE_DEBUG_MODE ON)
+        set(CMAKEPP_LANG_DEBUG_MODE ON)
 
         ct_add_section(NAME "arg_must_be_desc" EXPECTFAIL)
         function("${arg_must_be_desc}")

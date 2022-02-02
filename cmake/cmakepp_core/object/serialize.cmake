@@ -25,9 +25,9 @@ include(cmakepp_core/serialization/serialization)
 # that the caller has provided exactly two arguments and that those arguments
 # have the correct types. If any assertion fails an error is raised.
 #
-# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.
-# :vartype CMAKEPP_CORE_DEBUG_MODE: bool
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(_cpp_object_serialize _os_this _os_result)
     cpp_assert_signature("${ARGV}" obj desc)
@@ -55,9 +55,9 @@ endfunction()
 # convertible to an Object. If either of these assertions fail an error will be
 # raised.
 #
-# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.
-# :vartype CMAKEPP_CORE_DEBUG_MODE: bool
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(_cpp_object_print _op_this)
     cpp_assert_signature("${ARGV}" obj)

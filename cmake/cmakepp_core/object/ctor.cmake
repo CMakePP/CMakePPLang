@@ -30,9 +30,9 @@ include(cmakepp_core/utilities/sanitize_string)
 # debug mode) this function will assert that it has been called with the correct
 # number and types of arguments. If an assertion fails an error will be raised.
 #
-# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.
-# :vartype CMAKEPP_CORE_DEBUG_MODE: bool
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(_cpp_object_ctor _oc_this _oc_type)
     cpp_assert_signature("${ARGV}" desc type args)

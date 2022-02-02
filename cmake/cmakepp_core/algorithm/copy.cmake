@@ -25,9 +25,9 @@ include(cmakepp_core/utilities/return)
 # correct types. If any of these assertions fail, an error will be raised. These
 # error checks are done only if CMakePP is being run in debug mode.
 #
-# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode.
-# :vartype CMAKEPP_CORE_DEBUG_MODE: bool
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(cpp_copy _c_result _c_obj2copy)
     #cpp_assert_signature("${ARGV}" desc str)

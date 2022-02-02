@@ -29,9 +29,9 @@ include(cmakepp_core/utilities/return)
 # that the one argument is of type ``desc``. If either of these asserts fails an
 # error will be raised.
 #
-# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                              debug mode or not.
-# :vartype CMAKEPP_CORE_DEBUG_MODE: bool
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 macro(_cpp_object_singleton _os_this)
     cpp_assert_signature("${ARGV}" desc)

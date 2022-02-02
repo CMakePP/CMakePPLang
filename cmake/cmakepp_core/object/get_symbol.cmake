@@ -34,9 +34,9 @@ include(cmakepp_core/utilities/return)
 # that these three arguments have the correct types. If any of these assertions
 # fail an error will be raised.
 #
-# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.
-# :vartype CMAKEPP_CORE_DEBUG_MODE: bool
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(_cpp_object_get_symbol _ogs_this _ogs_result _ogs_sig)
     cpp_assert_signature("${ARGV}" obj desc desc)

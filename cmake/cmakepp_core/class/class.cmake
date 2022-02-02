@@ -4,7 +4,7 @@ include(cmakepp_core/object/object)
 include(cmakepp_core/types/cmakepp_type)
 
 set(
-    __CMAKEPP_CORE_CLASS_TEMPLATE__
+    __CMAKEPP_LANG_CLASS_TEMPLATE__
     "${CMAKE_CURRENT_LIST_DIR}/detail_/class.cmake.in"
 )
 
@@ -29,7 +29,7 @@ function(_cpp_class_guts _cg_type _cg_wrapper)
         # No parent classes passed in, only inherit from obj
         set(_cg_bases "obj")
         # Use the obj singleton as the base instance
-        set(_cg_base_instances "${__CMAKEPP_CORE_OBJECT_SINGLETON__}")
+        set(_cg_base_instances "${__CMAKEPP_LANG_OBJECT_SINGLETON__}")
     else()
         set(_cg_bases "")
         set(_cg_base_instances "")
@@ -56,7 +56,7 @@ function(_cpp_class_guts _cg_type _cg_wrapper)
         "${CMAKE_CURRENT_BINARY_DIR}/cmakepp/classes/${_cg_type}.cmake"
     )
     configure_file(
-       "${__CMAKEPP_CORE_CLASS_TEMPLATE__}" "${${_cg_wrapper}}" @ONLY
+       "${__CMAKEPP_LANG_CLASS_TEMPLATE__}" "${${_cg_wrapper}}" @ONLY
     )
     cpp_return("${_cg_wrapper}")
 endfunction()
@@ -85,9 +85,9 @@ endfunction()
 # function will assert that it was called with at least one argument and that
 # the arguments have the correct types.
 #
-# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.
-# :vartype CMAKEPP_CORE_DEBUG_MODE: bool
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 macro(cpp_class _c_type)
     cpp_assert_signature("${ARGV}" desc args)
@@ -119,9 +119,9 @@ endmacro()
 # it is called with the correct number and types of arguments. If any of these
 # assertions fail an error will be raised.
 #
-# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.
-# :vartype CMAKEPP_CORE_DEBUG_MODE: bool
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(cpp_member _m_name _m_type)
     cpp_assert_signature("${ARGV}" desc class args)
@@ -171,9 +171,9 @@ endmacro()
 # it is called with the correct number and types of arguments. If any of these
 # assertions fail an error will be raised.
 #
-# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.
-# :vartype CMAKEPP_CORE_DEBUG_MODE: bool
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(cpp_constructor _c_name _c_type)
     cpp_assert_signature("${ARGV}" desc class args)
@@ -201,9 +201,9 @@ endfunction()
 # it is called with the correct number and types of arguments. If any of these
 # assertions fail an error will be raised.
 #
-# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.
-# :vartype CMAKEPP_CORE_DEBUG_MODE: bool
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(cpp_attr _a_type _a_attr)
     cpp_assert_signature("${ARGV}" class desc args)

@@ -20,9 +20,9 @@ include(cmakepp_core/asserts/asserts)
 # assertion fails an error will be raised. These checks are only performed if
 # CMakePP is run in debug mode.
 #
-# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.
-# :vartype CMAKEPP_CORE_DEBUG_MODE: bool
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(_cpp_flatten_attrs _fa_this)
     cpp_assert_signature("${ARGV}" obj)

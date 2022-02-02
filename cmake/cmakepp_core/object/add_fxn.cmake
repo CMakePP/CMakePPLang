@@ -29,9 +29,9 @@ include(cmakepp_core/utilities/sanitize_string)
 # an error will be raised. These error checks are only performed if CMakePP is
 # being run in debug mode.
 #
-# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.
-# :vartype CMAKEPP_CORE_DEBUG_MODE: bool
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(_cpp_object_add_fxn _oaf_this _oaf_name)
     cpp_assert_signature("${ARGV}" obj desc args)

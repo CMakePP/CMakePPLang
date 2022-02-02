@@ -23,9 +23,9 @@ include(cmakepp_core/asserts/signature)
 # types. This error check is only performed if CMakePP is being run in debug
 # mode.
 #
-# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.
-# :vartype CMAKEPP_CORE_DEBUG_MODE: bool
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(cpp_map_copy _mc_this _mc_other)
     cpp_assert_signature("${ARGV}" map desc)

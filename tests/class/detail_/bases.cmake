@@ -51,7 +51,7 @@ function(${_cpp_class_set_bases})
 
     ct_add_section(NAME "_set_bases_sig")
     function(${_set_bases_sig})
-        set(CMAKEPP_CORE_DEBUG_MODE ON)
+        set(CMAKEPP_LANG_DEBUG_MODE ON)
 
         ct_add_section(NAME "_set_bases_sig_first_arg_class" EXPECTFAIL)
         function(${_set_bases_sig_first_arg_class})

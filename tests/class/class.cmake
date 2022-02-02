@@ -7,7 +7,7 @@ function(${_test_class})
 
     ct_add_section(NAME "_class_signature" EXPECTFAIL)
     function(${_class_signature})
-        set(CMAKEPP_CORE_DEBUG_MODE ON)
+        set(CMAKEPP_LANG_DEBUG_MODE ON)
 
         cpp_class(TRUE)
     endfunction()
@@ -131,7 +131,7 @@ function(${_test_member})
 
     ct_add_section(NAME "_member_signature")
     function(${_member_signature})
-        set(CMAKEPP_CORE_DEBUG_MODE ON)
+        set(CMAKEPP_LANG_DEBUG_MODE ON)
 
         ct_add_section(NAME "_member_sig_first_desc" EXPECTFAIL)
         function(${_member_sig_first_desc})
@@ -190,7 +190,7 @@ function(${_test_virtual_member})
 
     ct_add_section(NAME "_virt_member_sig")
     function(${_virt_member_sig})
-        set(CMAKEPP_CORE_DEBUG_MODE ON)
+        set(CMAKEPP_LANG_DEBUG_MODE ON)
 
 
 
@@ -246,7 +246,7 @@ function(${_test_attr})
 
     ct_add_section(NAME "_attr_sig")
     function(${_attr_sig})
-        set(CMAKEPP_CORE_DEBUG_MODE ON)
+        set(CMAKEPP_LANG_DEBUG_MODE ON)
 
 
         ct_add_section(NAME "_attr_sig_first_arg_class" EXPECTFAIL)
@@ -334,7 +334,7 @@ function(${_test_constructor})
 
     ct_add_section(NAME "_test_constructor_sig")
     function(${_test_constructor_sig})
-        set(CMAKEPP_CORE_DEBUG_MODE ON)
+        set(CMAKEPP_LANG_DEBUG_MODE ON)
 
         ct_add_section(NAME "_constructor_sig_first_arg_desc" EXPECTFAIL)
         function(${_constructor_sig_first_arg_desc})

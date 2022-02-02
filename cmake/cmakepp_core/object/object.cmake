@@ -17,11 +17,11 @@ include(cmakepp_core/object/singleton)
 # single instance of the ``obj`` class and have all derived classes alias it.
 # For all intents and purposes this makes the object class a singleton. That
 # said aside from ``cpp_class()`` needing this variable
-# (``__CMAKEPP_CORE_OBJECT_SINGLETON__``) to hold an ``obj`` instance no part of
+# (``__CMAKEPP_LANG_OBJECT_SINGLETON__``) to hold an ``obj`` instance no part of
 # CMakePP actually requires there to only be one ``obj`` instance in play at any
 # time.
 #]]
-_cpp_object_singleton(__CMAKEPP_CORE_OBJECT_SINGLETON__)
+_cpp_object_singleton(__CMAKEPP_LANG_OBJECT_SINGLETON__)
 
 
 macro(_cpp_object _o_mode _o_this)

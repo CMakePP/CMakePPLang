@@ -29,8 +29,8 @@ same namespace as ``cpp_``.
 
 In CMake variables are case-sensitive. Native CMake tends to prefix their
 configuration variables with ``CMAKE_``. CMakePP follows suit with prefixes
-``CMAKEPP_CORE_`` and ``__CMAKEPP_CORE`` respectively for public and private
-configuration variables (``_CMAKEPP_CORE`` will be used if there is ever need
+``CMAKEPP_LANG_`` and ``__CMAKEPP_LANG`` respectively for public and private
+configuration variables (``_CMAKEPP_LANG`` will be used if there is ever need
 for a protected variable).
 
 Function Argument Order

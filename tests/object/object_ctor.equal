@@ -7,7 +7,7 @@ ct_add_test("_cpp_object_ctor")
     include(cmakepp_core/utilities/compare_lists)
 
     ct_add_section("Signature")
-        set(CMAKEPP_CORE_DEBUG_MODE ON)
+        set(CMAKEPP_LANG_DEBUG_MODE ON)
 
         ct_add_section("0th argument must be a desc")
             _cpp_object_ctor(TRUE bool)

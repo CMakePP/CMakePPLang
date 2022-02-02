@@ -20,7 +20,7 @@ include(cmakepp_core/asserts/signature)
 # been called with two arguments and that those arguments are of the correct
 # types.
 #
-# :var CMAKEPP_CORE_DEBUG_MODE: Used to determine if CMakePP is being run in
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.
 #]]
 function(cpp_file_exists _cfe_result _cfe_file)

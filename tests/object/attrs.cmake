@@ -34,7 +34,7 @@ function("${test__cpp_object_get_attr}")
 
     ct_add_section(NAME "test_signature")
     function("${test_signature}")
-        set(CMAKEPP_CORE_DEBUG_MODE ON)
+        set(CMAKEPP_LANG_DEBUG_MODE ON)
         ct_add_section(NAME "first_arg_obj" EXPECTFAIL)
         function("${first_arg_obj}")
             _cpp_object_get_attr(TRUE result attr)
@@ -56,7 +56,7 @@ function("${test__cpp_object_set_attr}")
 
     ct_add_section(NAME "test_signature")
     function("${test_signature}")
-        set(CMAKEPP_CORE_DEBUG_MODE ON)
+        set(CMAKEPP_LANG_DEBUG_MODE ON)
 
         ct_add_section(NAME "first_arg_obj" EXPECTFAIL)
         function("${first_arg_obj}")

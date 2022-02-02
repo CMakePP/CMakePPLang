@@ -6,7 +6,7 @@ function("${cpp_copy}")
     include(cmakepp_core/algorithm/equal)
 
 #    ct_add_section(NAME "Signature")
-#        set(CMAKEPP_CORE_DEBUG_MODE ON)
+#        set(CMAKEPP_LANG_DEBUG_MODE ON)
 #
 #        ct_add_section(NAME "0th argument is desc")
 #            cpp_copy(TRUE hi)
@@ -72,10 +72,10 @@ function("${cpp_copy}")
     function("${objects}")
         include(cmakepp_core/object/object)
 
-        cpp_copy(rhs "${__CMAKEPP_CORE_OBJECT_SINGLETON__}")
-        cpp_equal(result "${__CMAKEPP_CORE_OBJECT_SINGLETON__}" "${rhs}")
+        cpp_copy(rhs "${__CMAKEPP_LANG_OBJECT_SINGLETON__}")
+        cpp_equal(result "${__CMAKEPP_LANG_OBJECT_SINGLETON__}" "${rhs}")
         ct_assert_equal(result TRUE)
-        ct_assert_not_equal(__CMAKEPP_CORE_OBJECT_SINGLETON__ "${rhs}")
+        ct_assert_not_equal(__CMAKEPP_LANG_OBJECT_SINGLETON__ "${rhs}")
     endfunction()
 
     ct_add_section(NAME "types")

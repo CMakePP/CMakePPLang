@@ -7,7 +7,7 @@ function("${test__cpp_get_symbol}")
 
     ct_add_section(NAME "test_signature")
     function("${test_signature}")
-        set(CMAKEPP_CORE_DEBUG_MODE ON)
+        set(CMAKEPP_LANG_DEBUG_MODE ON)
 
         _cpp_object_ctor(an_obj obj)
 
