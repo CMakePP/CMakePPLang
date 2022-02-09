@@ -12,47 +12,21 @@ Writing a Basic Class
 We'll begin by writing a simple class ``Automobile`` that only contains one
 attribute named ``color`` that takes the default value ``red``:
 
-.. code-block:: cmake
-
-  # Begin class definition
-  cpp_class(Automobile)
-
-    # Define an attribute "color" with the default value "red"
-    cpp_attr(Automobile color red)
-
-  # End class definition
-  cpp_end_class()
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_writing_basic_class.cmake
+   :lines: 1-8
 
 Now we can instantiate a ``Automobile`` object called ``my_auto``, access its
 color attribute, and print out that value:
 
-.. code-block:: cmake
-
-  # Create an instance of the class called "my_auto" using the default CTOR
-  Automobile(CTOR my_auto)
-
-  # Access the "color" attribute and save it to the var "my_autos_color"
-  Automobile(GET "${my_auto}" my_autos_color color)
-
-  # Print out the value of the var "my_autos_color"
-  message("The color of my_auto is: ${my_autos_color}")
-
-  # Output: The color of my_auto is: red
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_writing_basic_class.cmake
+   :lines: 10-19
 
 We can also set the value of the attribute:
 
-.. code-block:: cmake
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_writing_basic_class.cmake
+   :lines: 21-30
 
-  # Set a new value for the "color" attribute
-  Automobile(SET "${my_auto}" color blue)
-
-  # Access the "color" attribute again and save it to the var "my_autos_color"
-  Automobile(GET "${my_auto}" my_autos_color color)
-
-  # Print out the value of the var "my_autos_color"
-  message("The color of my_auto is: ${my_autos_color}")
-
-  # Output: The color of my_auto is: blue
+See :ref:`features-classes` for more information about CMakePP classes.
 
 Adding a Member Function
 ========================
@@ -61,32 +35,17 @@ Next we will add a function to our class. The function will be named ``start``
 and will simply print a message indicating that our ``Automobile`` has started
 its engine. The updated class definition with this new function added is:
 
-.. code-block:: cmake
-
-  # Begin class definition
-  cpp_class(Automobile)
-
-    # Define an attribute "color" with the value "red"
-    cpp_attr(Automobile color red)
-
-    # Define a function "start" that prints a message
-    cpp_member(start Automobile)
-    function("${start}" self)
-      message("Vroom! I have started my engine.")
-    endfunction()
-
-  # End class definition
-  cpp_end_class()
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_adding_member_function.cmake
+   :lines: 1-14
 
 After creating an instance of the ``Automobile`` class named ``my_auto`` (as we
 did in the previous example) we can call our function using the following:
 
-.. code-block:: cmake
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_adding_member_function.cmake
+   :lines: 16-22
 
-  # Call the function using our Automobile instance
-  Automobile(start "${my_auto}")
-
-  # Output: Vroom! I have started my engine.
+See :ref:`features-classes-member-functions` for more information about writing class 
+member functions.
 
 Adding a Function That Takes an Argument
 ========================================
@@ -95,23 +54,19 @@ Now we will add a function called ``drive`` that takes two arguments, an ``int``
 and a ``str`` and prints a message using those two arguments. We can do that by
 adding the following to our class:
 
-.. code-block:: cmake
-
-  # Define a function "drive" that takes an int and a str and prints a message
-  cpp_member(drive Automobile int str)
-  function("${drive}" self distance_km destination)
-      message("I just drove ${distance_km} km to ${destination}!")
-  endfunction()
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_adding_function_taking_argument.cmake
+   :lines: 13-17
+   :dedent:
 
 Using our Automobile instance ``my_auto`` we can call the function in the
 following way:
 
-.. code-block:: cmake
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_adding_function_taking_argument.cmake
+   :lines: 25-28
 
-  # Call the function and pass two arguments
-  Automobile(drive "${my_auto}" 10 "London")
-
-  # Output: I just drove 10 km to London!
+See :ref:`features-types` for a list and descriptions of data types 
+supported by CMakePPLang and :ref:`features-classes-member-functions` for 
+more information about writing class member functions.
 
 .. note::
 
