@@ -1,3 +1,5 @@
+.. _features-classes:
+
 *******
 Classes
 *******
@@ -7,6 +9,8 @@ Classes in CMakePP can contain attributes and functions. CMakePP also
 supports inheritance. Examples of using classes are provided in the
 :ref:`using-classes` the section. A basic overview of the features of classes
 are provided below.
+
+.. _features-classes-definition:
 
 Class Definition
 ================
@@ -38,10 +42,14 @@ Optionally, users can provide the name of the class being defined to the
     # End class definition
     cpp_end_class(MyClass)
 
+.. _features-classes-constructors-and-instantiation:
+
 Constructors and Instantiation
 ==============================
 
 Classes can be instantiated in a variety of ways.
+
+.. _features-classes-default-constructor:
 
 Default Constructor
 -------------------
@@ -56,6 +64,8 @@ the default constructor for the class with the following:
 
   # Create an instance of MyClass with the name "my_instance"
   MyClass(CTOR my_instance)
+
+.. _features-classes-custom-constructor:
 
 Custom Constructor
 ------------------
@@ -82,6 +92,8 @@ and instantiation of that class:
 Multiple constructors can be defined for a class as long as they have different
 signatures. CMakePP will automatically find the implementation whose signature
 matches the parameters passed in and execute it.
+
+.. _features-classes-kwargs-constructor:
 
 KWARGS Constructor
 ------------------
@@ -113,6 +125,8 @@ upon construction using the following:
 Here the ``attr_a`` would take the value of ``1``, ``attr_b`` would take the
 value of ``2;3;4``, and ``attr_c`` would take the value of ``5;6``.
 
+.. _features-classes-attributes:
+
 Attributes
 ==========
 
@@ -121,12 +135,16 @@ that are declared when the class is defined. An instance of a class can have
 its attributes retrieved and modified from within the class or from without the
 class.
 
+.. _features-classes-attributes-typing:
+
 Typing of Attributes
 --------------------
 
 Attributes of CMakePP classes of a class are **loosely typed**. No type is
 declared when declaring an attribute, and attributes can be assigned a value of
 any type, regardless of the type of their initial value.
+
+.. _features-classes-declaring-attributes:
 
 Declaring Attributes
 --------------------
@@ -147,6 +165,8 @@ following is an example of a class with two attributes:
     cpp_attr(MyClass size 10)
 
   cpp_end_class()
+
+.. _features-classes-getting-setting-attributes:
 
 Getting and Setting Attributes
 ------------------------------
@@ -189,6 +209,8 @@ create the variable name where the attributes will be stored in the current
 scope, and ``attr_a``, ``attr_b``, and ``attr_c`` are the name of the attributes
 being accessed.
 
+.. _features-classes-member-functions:
+
 Member Functions
 ================
 
@@ -200,6 +222,8 @@ regular CMake functions. The main differences being that they:
 * have a **signature** that defines the types of the parameters that the
   function expects
 * can be **overloaded** with multiple implementations for different signatures
+
+.. _features-classes-defining-member-functions:
 
 Defining Member Functions
 -------------------------
@@ -259,6 +283,8 @@ The structure of the above function definition contains the following pieces:
   declare and the ``function`` statement that follows it gets the dereferenced
   value of that name (``"${my_fxn}"`` in this case).
 
+.. _features-classes-calling-member-functions:
+
 Calling Member Functions
 ------------------------
 
@@ -271,6 +297,8 @@ be called using:
 
 Here ``my_instance`` is the name of an instance of ``MyClass`` and ``"value_a"``
 and ``"value_b"`` are the parameter values being passed to the function.
+
+.. _features-classes-overloading-functions:
 
 Function Overloading
 --------------------
@@ -300,6 +328,8 @@ can be done in the following way:
     endfunction()
 
   cpp_end_class()
+
+.. _features-classes-function-overload-resolution:
 
 Function Overload Resolution
 ----------------------------
@@ -331,12 +361,16 @@ the above implementations in the following way:
   If no function with a signature that matches the given parameters can be
   found, CMakePP will throw an error indicating this.
 
+.. _features-classes-inheritance:
+
 Inheritance
 ===========
 
 CMakePP classes support inheritance. A class can inherit from one or more
 parent classes. Classes that inherit from another class are referred to as
 **derived classes**.
+
+.. _features-classes-attribute-inheritance:
 
 Attribute Inheritance
 ---------------------
@@ -346,6 +380,8 @@ attributes as well as the default values of those attributes. The default values
 can be overridden by simply declaring an attribute of the same name in the
 derived class with a new default value.
 
+.. _features-classes-function-inheritance:
+
 Function Inheritance
 --------------------
 
@@ -353,6 +389,8 @@ A class that inherits from a parent class inherits all of the functions defined
 in that parent class. The inherited functions can be overridden with a new
 implementation in the derived class by adding a function definition with a
 signature that matches the signature of the function in the parent class.
+
+.. _features-classes-creating-derived-class:
 
 Creating a Derived Class
 ------------------------
@@ -429,6 +467,8 @@ This can be done with the following:
 
   cpp_end_class()
 
+.. _features-classes-using-derived-class:
+
 Using a Derived Class
 ---------------------
 
@@ -481,6 +521,8 @@ well as the parent class:
   ChildClass(new_fxn "${child_instance}")
   ParentClass(new_fxn "${child_instance}")
 
+.. _features-classes-multiple-class-inheritance:
+
 Multiple Class Inheritance
 --------------------------
 
@@ -506,6 +548,8 @@ For example, if a derived class called ``ChildClass`` is defined using:
 
 Then CMakePP will search for attributes / functions in ``ParentClass1`` first
 and then ``ParentClass2``.
+
+.. _features-classes-pure-virtual-member-functions:
 
 Pure Virtual Member Functions
 -----------------------------

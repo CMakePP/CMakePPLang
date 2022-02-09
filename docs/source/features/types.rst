@@ -1,10 +1,12 @@
+.. _features-types:
+
 ****************
 Types in CMakePP
 ****************
 
 Native CMake is a weakly typed language where all values are strings and in
 certain circumstances, certain strings are interpreted as being of another type.
-A common example is when a  string is used as an argument to CMake's ``if``
+A common example is when a string is used as an argument to CMake's ``if``
 statement. There the  string is implicitly cast to a boolean. In practice this
 weak typing can lead to subtle hard-to-detect errors. CMakePP implements strong
 types in order to avoid/catch such errors.
@@ -14,6 +16,8 @@ Subsections describe the individual types in more detail (the type literal
 associated with the subsection's type is listed in parentheses after the type's
 name).
 
+.. _features-types-cmake:
+
 CMake Types
 ===========
 
@@ -22,6 +26,8 @@ recognized by CMake". From what I can deduce CMake proper (that is CMake without
 the CMakePP language extension) can in some context or another recognize a
 string as being of one of the following types: boolean, command, file path,
 floating-point number, generator expression, integer, or a target
+
+.. _features-types-cmake-bool:
 
 Boolean (bool)
 --------------
@@ -38,6 +44,8 @@ of CMakePP boolean literals are:
 CMake's documentation additionally lists integer literals as being boolean
 literals; however, CMakePP adopts the philosophy that ``0`` and ``1`` are
 integer literals.
+
+.. _features-types-cmake-fxn:
 
 Command (fxn)
 -------------
@@ -67,6 +75,8 @@ mangled name will be different than this).
    functions have mangled names and this is thus only an ambiguity for the
    syntactic sugar to call them.
 
+.. _features-types-cmake-path:
+
 File Path (path)
 -------------------
 
@@ -79,6 +89,8 @@ path does **NOT** need to exist in order for it to be a file path object and
 that elements of the path should be separated by ``/`` characters regardless of
 the actual OS's convention.
 
+.. _features-types-cmake-float:
+
 Floating-Point Number (float)
 ---------------------------------
 
@@ -90,12 +102,16 @@ floating-point value is stored as a string, it is of infinite precision. CMake's
 ``math`` command does not support arithmetic involving floating point values and
 thus floating point numbers are uncommon in typical CMake scripts.
 
+.. _features-types-cmake-genexpr:
+
 Generator Expressions (genexpr)
 -------------------------------
 
 .. TODO Expand this section
 
 CMake expressions of the form ``$<...>`` are generator expressions.
+
+.. _features-types-cmake-int:
 
 Integers (int)
 --------------
@@ -106,6 +122,8 @@ ultimately stored as strings and thus are of infinite precision. That said
 CMake's backend is written in C++ and it is likely (although I can not say for
 certain) that passing integers into native CMake functions will result in a loss
 of precision.
+
+.. _features-types-cmake-list:
 
 List (list)
 -----------
@@ -119,6 +137,8 @@ of that element. In practice this poses no problem because we allow any single
 object to be implicitly cast to a single-element list in order to satisfy a
 function's signature.
 
+.. _features-types-cmake-str:
+
 String (str)
 ------------
 
@@ -130,17 +150,23 @@ be noted that ``str`` is not the same thing as ``desc``. In particular all
 ``TRUE`` is a ``bool``. In CMakePP the intrinsic type of an object will never be
 ``str``.
 
+.. _features-types-cmake-target:
+
 Target (target)
 ---------------
 
 CMake keeps an internal list of targets. Any CMake string that CMake recognizes
 as the name of a target is of the ``target`` type.
 
+.. _features-types-quasi-cmake:
+
 Quasi-CMake Types
 =================
 
 The types in this section straddle the line between being native to CMake itself
 and being part of the CMakePP language extension.
+
+.. _features-types-quasi-cmake-desc:
 
 Description (desc)
 ------------------
@@ -158,6 +184,8 @@ common throughout CMake). Also of note, descriptions tend to be the type of an
 object when there is a syntax error, for example the string literal ``" 1"`` is
 a description and not an integer because it includes whitespace.
 
+.. _features-types-quasi-cmake-type:
+
 Type (type)
 -----------
 
@@ -170,8 +198,12 @@ generally, a CMake string is of type "type" if it matches (case-insensitively)
 any of the type abbreviations in this chapter. The list of which is: bool, class
 desc, float, fxn, genexpr, int, list, map, obj, path, str, target, and type.
 
+.. _features-types-cmakepp:
+
 CMakePP Types
 =============
+
+.. _features-types-cmakepp-class:
 
 Class (class)
 -------------
@@ -191,6 +223,8 @@ users immaterial (and in fact you almost always want to take instances of type
 "Type" and just let classes be implicitly converted) so ignore it if it is
 confusing you and know that the string "class" is reserved and can't be used.
 
+.. _features-types-cmakepp-map:
+
 Map (map)
 ---------
 
@@ -203,6 +237,8 @@ instead of lists whenever feasible as maps can be arbitrarily nested without
 further consideration and tend to work cleaner than CMake's native lists
 (although there is an abstraction penalty).
 
+.. _features-types-cmakepp-obj:
+
 Object (obj)
 ------------
 
@@ -214,11 +250,15 @@ expected to be of interest to most users aside from the fact that it is the
 Object class which defines the default implementations for member functions like
 equality comparisons.
 
+.. _features-types-other:
+
 Other Types
 ===========
 
 Particularly for documentation purposes CMakePP introduces several other types.
 These types may only be conceptual or they may have some code support.
+
+.. _features-types-other-pointer:
 
 Pointers
 --------
@@ -257,6 +297,8 @@ introducing the concept of a pointer to CMake it becomes easier to make this
 distinction. In almost all circumstances native CMake functions take pointers to
 lists and not the lists themselves.
 
+.. _features-types-other-tuple:
+
 Tuples
 ------
 
@@ -269,6 +311,8 @@ CMakePP documentation syntax for this is stolen from Python. For example
 type ``int`` and the second value is of type ``bool``. As a slight aside
 multiple returns in CMake are done simply by having multiple arguments to a
 function be denoted as results.
+
+.. _features-types-summary:
 
 Summary
 =======
