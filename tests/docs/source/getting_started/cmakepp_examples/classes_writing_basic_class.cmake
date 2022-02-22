@@ -1,3 +1,5 @@
+include(cmake_test/cmake_test)
+
 # Begin class definition
 cpp_class(Automobile)
 
@@ -7,24 +9,33 @@ cpp_class(Automobile)
 # End class definition
 cpp_end_class()
 
-# Create an instance of the class called "my_auto" using the default CTOR
-Automobile(CTOR my_auto)
+ct_add_test("writing_basic_class")
+function("${writing_basic_class}")
 
-# Access the "color" attribute and save it to the var "my_autos_color"
-Automobile(GET "${my_auto}" my_autos_color color)
+    # Create an instance of the class called "my_auto" using the default CTOR
+    Automobile(CTOR my_auto)
 
-# Print out the value of the var "my_autos_color"
-message("The color of my_auto is: ${my_autos_color}")
+    # Access the "color" attribute and save it to the var "my_autos_color"
+    Automobile(GET "${my_auto}" my_autos_color color)
 
-# Output: The color of my_auto is: red
+    # Print out the value of the var "my_autos_color"
+    message("The color of my_auto is: ${my_autos_color}")
 
-# Set a new value for the "color" attribute
-Automobile(SET "${my_auto}" color blue)
+    # Output: The color of my_auto is: red
 
-# Access the "color" attribute again and save it to the var "my_autos_color"
-Automobile(GET "${my_auto}" my_autos_color color)
+    ct_assert_equal(my_result "The color of my_auto is: red")
 
-# Print out the value of the var "my_autos_color"
-message("The color of my_auto is: ${my_autos_color}")
+    # Set a new value for the "color" attribute
+    Automobile(SET "${my_auto}" color blue)
 
-# Output: The color of my_auto is: blue
+    # Access the "color" attribute again and save it to the var "my_autos_color"
+    Automobile(GET "${my_auto}" my_autos_color color)
+
+    # Print out the value of the var "my_autos_color"
+    message("The color of my_auto is: ${my_autos_color}")
+
+    # Output: The color of my_auto is: blue
+
+    ct_assert_equal(my_result "The color of my_auto is: blue")
+
+endfunction()

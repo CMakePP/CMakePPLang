@@ -1,3 +1,5 @@
+include(cmake_test/cmake_test)
+
 # Begin class definition
 cpp_class(Automobile)
 
@@ -35,13 +37,20 @@ cpp_class(Automobile)
 # End class definition
 cpp_end_class()
 
-# Create an instance of the class called "my_auto" using the default CTOR
-Automobile(CTOR my_auto)
+ct_add_test("function_returns_value")
+function("${function_returns_value}")
 
-# Call the function and store its result in "my_result"
-Automobile(describe_self "${my_auto}" my_result)
+    # Create an instance of the class called "my_auto" using the default CTOR
+    Automobile(CTOR my_auto)
 
-# Print out the value of "my_result"
-message("${my_result}")
+    # Call the function and store its result in "my_result"
+    Automobile(describe_self "${my_auto}" my_result)
 
-# Output: I am an automobile, I am red, and I have driven 0 km.
+    # Print out the value of "my_result"
+    message("${my_result}")
+
+    # Output: I am an automobile, I am red, and I have driven 0 km.
+
+    ct_assert_equal(my_result "I am an automobile, I am red, and I have driven 0 km.")
+
+endfunction()

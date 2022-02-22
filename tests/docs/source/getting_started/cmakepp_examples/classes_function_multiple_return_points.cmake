@@ -1,3 +1,5 @@
+include(cmake_test/cmake_test)
+
 # Begin class definition
 cpp_class(Automobile)
 
@@ -49,17 +51,26 @@ cpp_class(Automobile)
 # End class definition
 cpp_end_class()
 
-# Create an instance of the class called "my_auto" using the default CTOR
-Automobile(CTOR my_auto)
+ct_add_test("function_multiple_return_points")
+function("${function_multiple_return_points}")
 
-# Call the function and specify that color should be included
-Automobile(describe_self "${my_auto}" my_result TRUE)
-message("${my_result}")
+    # Create an instance of the class called "my_auto" using the default CTOR
+    Automobile(CTOR my_auto)
 
-# Output: I am an automobile, I am red, and I have driven 0 km.
+    # Call the function and specify that color should be included
+    Automobile(describe_self "${my_auto}" my_result TRUE)
+    message("${my_result}")
 
-# Call the function and specify that color should NOT be included
-Automobile(describe_self "${my_auto}" my_result FALSE)
-message("${my_result}")
+    # Output: I am an automobile, I am red, and I have driven 0 km.
 
-# Output: I am an automobile and I have driven 0 km.
+    ct_assert_equal(my_result "I am an automobile, I am red, and I have driven 0 km.")
+
+    # Call the function and specify that color should NOT be included
+    Automobile(describe_self "${my_auto}" my_result FALSE)
+    message("${my_result}")
+
+    # Output: I am an automobile and I have driven 0 km.
+
+    ct_assert_equal(my_result "I am an automobile and I have driven 0 km.")
+
+endfunction()
