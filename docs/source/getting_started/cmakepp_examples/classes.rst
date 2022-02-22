@@ -6,6 +6,8 @@ Using Classes
 
 This page provides examples of using CMakePP classes.
 
+.. _examples-classes-writing-basic-class:
+
 Writing a Basic Class
 =====================
 
@@ -30,6 +32,8 @@ We can also set the value of the attribute:
 
 See :ref:`features-classes` for more information about CMakePP classes.
 
+.. _examples-classes-member-functions:
+
 Adding a Member Function
 ========================
 
@@ -37,17 +41,19 @@ Next we will add a function to our class. The function will be named ``start``
 and will simply print a message indicating that our ``Automobile`` has started
 its engine. The updated class definition with this new function added is:
 
-.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/adding_member_function.cmake
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/member_functions.cmake
    :lines: 1-14
 
 After creating an instance of the ``Automobile`` class named ``my_auto`` (as we
 did in the previous example) we can call our function using the following:
 
-.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/adding_member_function.cmake
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/member_functions.cmake
    :lines: 16-22
 
 See :ref:`features-classes-member-functions` for more information about writing class 
 member functions.
+
+.. _examples-classes-function-arguments:
 
 Adding a Function That Takes an Argument
 ========================================
@@ -77,6 +83,8 @@ more information about writing class member functions.
    function you are calling and the types of arguments you are passing in must
    match the function name and argument types in the function definition.
 
+.. _examples-classes-function-referencing-attributes:
+
 Adding a Function That References Attributes
 ============================================
 
@@ -96,6 +104,8 @@ This function can be accessed in the same way as previous examples:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/function_referencing_attributes.cmake
    :lines: 41-44
+
+.. _examples-classes-return-value:
 
 Returning a Value from a Function
 =================================
@@ -130,6 +140,8 @@ We can call this function and access its return value using the following:
    :lines: 46-52
    :dedent:
 
+.. _examples-classes-multiple-return-points:
+
 Adding Multiple Return Points to a Function
 ===========================================
 
@@ -163,6 +175,8 @@ We can call the function in the following way:
    :lines: 60-65, 68-72
    :dedent:
 
+.. _examples-classes-function-overloading:
+
 Overloading a Function
 ======================
 
@@ -184,6 +198,8 @@ pass in one integer to match the new signature:
    :lines: 66-70, 73-76
    :dedent:
 
+.. _examples-classes-constructor-user-defined:
+
 Adding a User-Defined Constructors
 ==================================
 
@@ -204,6 +220,8 @@ this is when a call is made to the constructor of a class and no arguments are
 passed. In that case, CMakePP will just call the default constructor for the
 class.
 
+.. _examples-classes-constructor-kwargs:
+
 Using the KWARGS Constructor
 ============================
 
@@ -222,6 +240,8 @@ set these upon construction using the following:
 
 This would set the value of ``color`` to ``red``, ``num_doors`` to ``4``, and
 ``owners`` to ``Alice;Bob;Chuck``.
+
+.. _examples-classes-derived-class:
 
 Writing a Derived Class
 =======================
@@ -256,8 +276,12 @@ its base class ``Automobile``:
    :lines: 90-104
    :dedent:
 
+.. _examples-classes-multiple-inheritance:
+
 Inheriting from Multiple Classes
 ================================
+
+.. _examples-classes-multiple-inheritance-basics:
 
 The Basics
 ----------
@@ -298,6 +322,8 @@ We can access the functions defined in each of the parent classes as well:
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/multiple_inheritance_basics.cmake
    :lines: 65-71
    :dedent:
+
+.. _examples-classes-multiple-inheritance-conflicting:
 
 Inheriting from Multiple Classes with Conflicting Attribute and Function Names
 ------------------------------------------------------------------------------
@@ -346,6 +372,8 @@ look in ``Truck`` first when searching for attributes and functions:
    :lines: 70-79, 82-85
    :dedent:
 
+.. _examples-classes-pure-virtual-member-functions:
+
 Adding A Pure Virtual Member Function
 =====================================
 
@@ -376,7 +404,7 @@ Now we can create an instance of the ``Truck`` class and call the
     is virtual and must be overridden in a derived class.
 
 .. TODO finish examples of overriding objects methods
-.. .. _overriding-object-methods:
+.. .. _examples-classes-overriding-object-methods:
 ..
 .. Overriding Equals, Copy, and Serialize
 .. ======================================
