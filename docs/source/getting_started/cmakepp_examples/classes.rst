@@ -307,83 +307,44 @@ two or more classes that all have an attribute of the same name or a function
 with the same signature. Suppose our ``ElectricVehicle`` and ``Truck`` classes
 were defined with the following:
 
-.. code-block:: cmake
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/multiple_inheritance_conflicting.cmake
+   :lines: 3-15
 
-  # Define the ElectricVehicle class
-  cpp_class(ElectricVehicle)
+and
 
-    # Attribute for storing the power source of the electric vehicle
-    cpp_attr(ElectricVehicle power_source "100 kWh Battery")
-
-    # Function for starting the vehicle
-    cpp_member(start ElectricVehicle)
-    function("${start}" self)
-        message("I have started silently.")
-    endfunction()
-
-  cpp_end_class()
-
-  # Define the Truck class
-  cpp_class(Truck)
-
-    # Attribute for storing the power source of the truck
-    cpp_attr(Truck power_source "20 Gallon Fuel Tank")
-
-    # Function for starting the truck
-    cpp_member(start Truck)
-    function("${start}" self)
-        message("Vroom! I have started my engine.")
-    endfunction()
-
-  cpp_end_class()
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/multiple_inheritance_conflicting.cmake
+   :lines: 17-29
 
 Notice that both classes have an attribute named ``power_source`` and a function
 named ``start``. Again, we can create a subclass of these two classes using the
 following:
 
-.. code-block:: cmake
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/multiple_inheritance_conflicting.cmake
+   :lines: 36-41
+   :dedent:
 
-  # Define a subclass that inherits from both parent classes
-  cpp_class(ElectricTruck ElectricVehicle Truck)
-
-    # This is an empty class that inherits methods and attributes from its parent classes
-
-  cpp_end_class()
-
-Now if we attempt to access the ``power_source`` attribute or call the ``start``
-function, CMakePP will search the parent classes in the order that they were
-passed to the ``cpp_class`` macro. That is, CMakePP will first look in the
-``ElectricVehicle`` class for the attribute or function and, if it does not
-find the attribute for function there, CMakePP will then move on to the
-``Truck`` class.
+Now if we attempt to access the ``power_source`` attribute or call the 
+``start`` function, the CMakePP language will search the parent classes in 
+the order that they were passed to the ``cpp_class`` macro. That is, the 
+CMakePP language will first look in the ``ElectricVehicle`` class for the 
+attribute or function and, if it does not find the attribute for function 
+there, the CMakePP language will then move on to the ``Truck`` class.
 
 So, if we create an instance of ``ElectricTruck`` and attempt to access
 ``power_source`` and call ``start`` we'll get the following:
 
-.. code-block:: cmake
-
-  # Create instance of the subclass
-  ElectricTruck(CTOR my_inst)
-
-  # Access the power_source attribute
-  ElectricTruck(GET "${my_inst}" result power_source)
-  message("Power source: ${result}")
-
-  # Output
-  # Power source: Battery
-  # I have started silently.
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/multiple_inheritance_conflicting.cmake
+   :lines: 43-52, 55-58
+   :dedent:
 
 Alternatively, we could define our subclass with
-``cpp_class(ElectricTruck Truck ElectricVehicle)``. Note that the we now placed
-``Truck`` in front of ``ElectricVehicle`` so CMakePP would look in ``Truck``
-first when searching for attributes and functions. If we made the same calls as
-above, the following output would be generated:
+``cpp_class(ElectricTruck Truck ElectricVehicle)``. Note that we now placed
+``Truck`` in front of ``ElectricVehicle``, so the CMakePP language will would 
+look in ``Truck`` first when searching for attributes and functions:
 
-.. code-block:: cmake
-
-  # Output
-  # Power source: Fuel Tank
-  # Vroom! I have started my engine.
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/multiple_inheritance_conflicting.cmake
+   :lines: 70-79, 82-85
+   :dedent:
 
 Adding A Pure Virtual Member Function
 =====================================
