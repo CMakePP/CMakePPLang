@@ -33,7 +33,7 @@ cpp_class(Automobile)
 # End class definition
 cpp_end_class()
 
-ct_add_test("class_constructor_kwargs")
+ct_add_test(NAME "class_constructor_kwargs")
 function("${class_constructor_kwargs}")
 
     # Create an instance of the class called "my_auto" using the default CTOR

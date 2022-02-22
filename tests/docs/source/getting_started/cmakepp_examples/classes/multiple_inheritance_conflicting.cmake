@@ -28,10 +28,10 @@ cpp_class(Truck)
 
 cpp_end_class()
 
-ct_add_test("multiple_inheritance_conflicting")
+ct_add_test(NAME "multiple_inheritance_conflicting")
 function("${multiple_inheritance_conflicting}")
 
-    ct_add_section("electric_vehicle_then_truck")
+    ct_add_section(NAME "electric_vehicle_then_truck")
     function("${electric_vehicle_then_truck}")
         # Define a subclass that inherits from both parent classes
         cpp_class(ElectricTruck ElectricVehicle Truck)
@@ -58,20 +58,20 @@ function("${multiple_inheritance_conflicting}")
         # I have started silently.
     endfunction()
 
-    ct_add_section("truck_then_electric_vehicle")
+    ct_add_section(NAME "truck_then_electric_vehicle")
     function("${truck_then_electric_vehicle}")
         # Define a subclass that inherits from both parent classes
-        cpp_class(ElectricTruck Truck ElectricVehicle)
+        cpp_class(TruckElectric Truck ElectricVehicle)
 
             # This is an empty class that inherits methods and attributes from its parent classes
 
         cpp_end_class()
 
         # Create instance of the subclass
-        ElectricTruck(CTOR my_inst)
+        TruckElectric(CTOR my_inst)
 
         # Access the power_source attribute
-        ElectricTruck(GET "${my_inst}" result power_source)
+        TruckElectric(GET "${my_inst}" result power_source)
         message("Power source: ${result}")
 
         # Output
@@ -79,7 +79,7 @@ function("${multiple_inheritance_conflicting}")
 
         ct_assert_equal(result "20 Gallon Fuel Tank")
 
-        ElectricTruck(start "${my_inst}")
+        TruckElectric(start "${my_inst}")
 
         # Output
         # Vroom! I have started my engine.

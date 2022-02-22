@@ -9,7 +9,7 @@ cpp_class(Automobile)
 # End class definition
 cpp_end_class()
 
-ct_add_test("writing_basic_class")
+ct_add_test(NAME "writing_basic_class")
 function("${writing_basic_class}")
 
     # Create an instance of the class called "my_auto" using the default CTOR
@@ -23,8 +23,6 @@ function("${writing_basic_class}")
 
     # Output: The color of my_auto is: red
 
-    ct_assert_equal(my_result "The color of my_auto is: red")
-
     # Set a new value for the "color" attribute
     Automobile(SET "${my_auto}" color blue)
 
@@ -35,7 +33,5 @@ function("${writing_basic_class}")
     message("The color of my_auto is: ${my_autos_color}")
 
     # Output: The color of my_auto is: blue
-
-    ct_assert_equal(my_result "The color of my_auto is: blue")
 
 endfunction()

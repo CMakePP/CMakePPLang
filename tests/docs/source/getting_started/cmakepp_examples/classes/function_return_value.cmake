@@ -37,7 +37,7 @@ cpp_class(Automobile)
 # End class definition
 cpp_end_class()
 
-ct_add_test("function_returns_value")
+ct_add_test(NAME "function_returns_value")
 function("${function_returns_value}")
 
     # Create an instance of the class called "my_auto" using the default CTOR

@@ -57,7 +57,7 @@ cpp_class(Automobile)
 # End class definition
 cpp_end_class()
 
-ct_add_test("function_overloading")
+ct_add_test(NAME "function_overloading")
 function("${function_overloading}")
 
     # Create an instance of the class called "my_auto" using the default CTOR
@@ -67,14 +67,10 @@ function("${function_overloading}")
     Automobile(start "${my_auto}" 10)
 
     # Output: Vroom! I started my engine and I just drove 10 km.
-
-    ct_assert_equal(my_result "Vroom! I started my engine and I just drove 10 km.")
-
+    
     # We can still call the original function implementation as well
     Automobile(start "${my_auto}")
 
     # Output: Vroom! I started my engine.
-
-    ct_assert_equal(my_result "Vroom! I started my engine.")
 
 endfunction()

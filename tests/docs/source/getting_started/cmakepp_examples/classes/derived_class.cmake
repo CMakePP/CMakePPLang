@@ -55,16 +55,16 @@ cpp_class(Car Automobile)
         Car(GET "${self}" my_num_doors num_doors)
 
         # Set the return value
-        set("${result_id}" "I am a car with ${my_num_doors} doors, I am ${my_color}, and I have driven ${my_distance_km} km." PARENT_SCOPE)
+        set("${result_id}" "I am a car with ${my_num_doors} doors, I am ${my_color}, and I have driven ${my_km_driven} km." PARENT_SCOPE)
     endfunction()
 
 # End class definition
 cpp_end_class()
 
-ct_add_test("derived_class")
+ct_add_test(NAME "derived_class")
 function("${derived_class}")
 
-    ct_add_section("access_from_derived_class")
+    ct_add_section(NAME "access_from_derived_class")
     function("${access_from_derived_class}")
         # Create an instance of the derived class "Car"
         Car(CTOR my_car)
@@ -81,11 +81,9 @@ function("${derived_class}")
         Car(start "${my_car}")
 
         # Output: Vroom! I have started my engine.
-
-        ct_assert_equal(my_result "Vroom! I have started my engine.")
     endfunction()
 
-    ct_add_section("access_from_base_class")
+    ct_add_section(NAME "access_from_base_class")
     function("${access_from_base_class}")
         # Create an instance of the derived class "Car"
         Car(CTOR my_car)
@@ -102,7 +100,5 @@ function("${derived_class}")
         Automobile(start "${my_car}")
 
         # Output: Vroom! I have started my engine.
-
-        ct_assert_equal(my_result "Vroom! I have started my engine.")
     endfunction()
 endfunction()
