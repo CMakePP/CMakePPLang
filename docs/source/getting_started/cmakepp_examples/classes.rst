@@ -265,82 +265,39 @@ The Basics
 A class can inherit from multiple parent classes. Suppose we have defined the
 following classes to represent **electric vehicles** and **trucks**:
 
-.. code-block:: cmake
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_multiple_inheritance_basics.cmake
+   :lines: 3-15
 
-  # The ElectricVehicle class
-  cpp_class(ElectricVehicle)
+and
 
-    # Attribute for storing battery percentage
-    cpp_attr(ElectricVehicle battery_percentage 100)
-
-    # Function for starting the vehicle
-    cpp_member(drive ElectricVehicle)
-    function("${drive}" self)
-        message("I am driving.")
-    endfunction()
-
-  cpp_end_class()
-
-  # The Truck class
-  cpp_class(Truck)
-
-    # Attribute for storing towing capacity
-    cpp_attr(Truck towing_cap_lbs 3500)
-
-    # Function for driving the truck
-    cpp_member(tow Truck)
-    function("${tow}" self)
-        message("I am towing.")
-    endfunction()
-
-  cpp_end_class()
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_multiple_inheritance_basics.cmake
+   :lines: 17-29
 
 If we want to create a class to represent an electric truck, we can create a
 new class ``ElectricTruck`` that inherits from both of these classes:
 
-.. code-block:: cmake
-
-  # Define a subclass that inherits from both parent classes
-  cpp_class(ElectricTruck ElectricVehicle Truck)
-
-    # This is an empty class that inherits methods and attributes from its parent classes
-
-  cpp_end_class()
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_multiple_inheritance_basics.cmake
+   :lines: 31-36
 
 Then we can create an instance of ``ElectricTruck`` like we would any other
 class:
 
-.. code-block:: cmake
-
-  # Create instance of the subclass
-  ElectricTruck(CTOR my_inst)
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_multiple_inheritance_basics.cmake
+   :lines: 43-44
+   :dedent:
 
 We can then access the attributes that are defined in each of the parent classes
 like we would any other attribute:
 
-.. code-block:: cmake
-
-  # Access the attributes of each parent class through the ElectricTruck class
-  ElectricTruck(GET "${my_inst}" result1 battery_percentage)
-  message("Battery percentage: ${result1}%")
-  ElectricTruck(GET "${my_inst}" result2 towing_cap_lbs)
-  message("Towing capactiy: ${result2} lbs")
-
-  # Output:
-  # Battery percentage: 100%
-  # Towing capactiy: 3500 lbs
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_multiple_inheritance_basics.cmake
+   :lines: 46-54
+   :dedent:
 
 We can access the functions defined in each of the parent classes as well:
 
-.. code-block:: cmake
-
-  # Access the functions of each parent class through the ElectricTruck class
-  ElectricTruck(drive "${my_inst}")
-  ElectricTruck(tow "${my_inst}")
-
-  # Output:
-  # I am driving.
-  # I am towing.
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_multiple_inheritance_basics.cmake
+   :lines: 65-71
+   :dedent:
 
 Inheriting from Multiple Classes with Conflicting Attribute and Function Names
 ------------------------------------------------------------------------------
