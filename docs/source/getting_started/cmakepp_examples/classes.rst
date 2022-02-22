@@ -4,7 +4,8 @@
 Using Classes
 *************
 
-This page provides examples of using CMakePP classes.
+This page provides examples of creating and using classes in the CMakePP 
+language.
 
 .. _examples-classes-writing-basic-class:
 
@@ -50,8 +51,8 @@ did in the previous example) we can call our function using the following:
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/member_functions.cmake
    :lines: 16-22
 
-See :ref:`features-classes-member-functions` for more information about writing class 
-member functions.
+See :ref:`features-classes-member-functions` for more information about writing 
+class member functions.
 
 .. _examples-classes-function-arguments:
 
@@ -73,15 +74,16 @@ following way:
    :lines: 25-28
 
 See :ref:`features-types` for a list and descriptions of data types 
-supported by CMakePPLang and :ref:`features-classes-member-functions` for 
-more information about writing class member functions.
+supported by the CMakePP language and :ref:`features-classes-member-functions` 
+for more information about writing class member functions.
 
 .. note::
 
-   CMakePP will throw an error if it cannot find a function whose signature
-   matches the call you are trying to make. In other words, the name of the
-   function you are calling and the types of arguments you are passing in must
-   match the function name and argument types in the function definition.
+   The CMakePP language will throw an error if it cannot find a function whose 
+   signature matches the call you are trying to make. In other words, the name 
+   of the function you are calling and the types of arguments you are passing 
+   in must match the function name and argument types in the function 
+   definition.
 
 .. _examples-classes-function-referencing-attributes:
 
@@ -129,10 +131,10 @@ This is demonstrated by the following redefinition of ``describe_self``:
 .. note::
 
   When we use the dereferencing expression in code comments (such as the
-  comments containing "${return_id}" above) or documentation, we are referring to
-  the value contained within the variable with the name ``return_id``. In other
-  words, we mean to imply dereferencing the variable and getting its value in
-  the same way that the CMake interpreter would do so.
+  comments containing "${return_id}" above) or documentation, we are referring 
+  to the value contained within the variable with the name ``return_id``. In 
+  other words, we mean to imply dereferencing the variable and getting its 
+  value in the same way that the CMake interpreter would do so.
 
 We can call this function and access its return value using the following:
 
@@ -203,9 +205,9 @@ pass in one integer to match the new signature:
 Adding a User-Defined Constructors
 ==================================
 
-CMakePP allows users to define multiple custom constructors for classes. This is
-done using the ``cpp_constructor`` command. Here we add a constructor that takes
-two integers to our ``Automobile`` class:
+The CMakePP language allows users to define multiple custom constructors for 
+classes. This is done using the ``cpp_constructor`` command. Here we add a 
+constructor that takes two integers to our ``Automobile`` class:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/constructor_user_defined.cmake
    :lines: 10-13
@@ -213,26 +215,26 @@ two integers to our ``Automobile`` class:
 
 Multiple constructors can be added to a class. Calls to constructors will use
 function resolution in the same way the member function calls do. That is when a
-call is made to a constructor, CMakePP will attempt to find a constructor that
-matches the signature of that call and then call that constructor. If no
-matching constructor is found, an error will be thrown. The only exception to
-this is when a call is made to the constructor of a class and no arguments are
-passed. In that case, CMakePP will just call the default constructor for the
-class.
+call is made to a constructor, the CMakePP language will attempt to find a 
+constructor that matches the signature of that call and then call that 
+constructor. If no matching constructor is found, an error will be thrown. The 
+only exception to this is when a call is made to the constructor of a class and 
+no arguments are passed. In that case, the CMakePP language will just call the 
+default constructor for the class.
 
 .. _examples-classes-constructor-kwargs:
 
 Using the KWARGS Constructor
 ============================
 
-CMakePP allows users to call a **KWARGS Constructor**. This constructor enables
-users to automatically set the values of attributes of the class upon
-construction. No constructor needs to be defined to use this feature. We just
-need to use the ``KWARGS`` keyword as the third argument to the call and provide
-a list consisting of the name of each attribute we want to set followed
-immediately by the value or values we want to set. Suppose our automobile class
-has three attributes: ``color``, ``num_doors``, and ``owners``. Then we could
-set these upon construction using the following:
+The CMakePP language allows users to call a **KWARGS Constructor**. This 
+constructor enables users to automatically set the values of attributes of the 
+class upon construction. No constructor needs to be defined to use this 
+feature. We just need to use the ``KWARGS`` keyword as the third argument to 
+the call and provide a list consisting of the name of each attribute we want to 
+set followed immediately by the value or values we want to set. Suppose our 
+automobile class has three attributes: ``color``, ``num_doors``, and 
+``owners``. Then we could set these upon construction using the following:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/constructor_kwargs.cmake
    :lines: 40
@@ -246,11 +248,12 @@ This would set the value of ``color`` to ``red``, ``num_doors`` to ``4``, and
 Writing a Derived Class
 =======================
 
-CMakePP supports inheritance which enables us to write **subclasses** that are
-derived from (or *inherit from*) a base class. Subclasses inherit all attributes
-and functions from their base class. However, subclasses can override the
-definitions of functions in their base classes. They can also override the
-default values of attributes that are set in the base class.
+The CMakePP language supports inheritance which enables us to write 
+**subclasses** that are derived from (or *inherit from*) a base class. 
+Subclasses inherit all attributes and functions from their base class. However, 
+subclasses can override the definitions of functions in their base classes. 
+They can also override the default values of attributes that are set in the 
+base class.
 
 We can demonstrate this by creating a new ``Car`` class that is derived from our
 ``Automobile`` class. Our ``Car`` class will contain a new attribute
@@ -400,8 +403,8 @@ Now we can create an instance of the ``Truck`` class and call the
 .. warning::
 
     If a call is made to the ``describe_self`` function for an instance of the
-    ``Vehicle`` class, CMakePP will throw an error indicating that this function
-    is virtual and must be overridden in a derived class.
+    ``Vehicle`` class, the CMakePP language will throw an error indicating that 
+    this function is virtual and must be overridden in a derived class.
 
 .. TODO finish examples of overriding objects methods
 .. .. _examples-classes-overriding-object-methods:
