@@ -12,19 +12,19 @@ Writing a Basic Class
 We'll begin by writing a simple class ``Automobile`` that only contains one
 attribute named ``color`` that takes the default value ``red``:
 
-.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_writing_basic_class.cmake
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/writing_basic_class.cmake
    :lines: 3-10
 
 Now we can instantiate a ``Automobile`` object called ``my_auto``, access its
 color attribute, and print out that value:
 
-.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_writing_basic_class.cmake
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/writing_basic_class.cmake
    :lines: 15-24
    :dedent:
 
 We can also set the value of the attribute:
 
-.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_writing_basic_class.cmake
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/writing_basic_class.cmake
    :lines: 28-37
    :dedent:
 
@@ -37,13 +37,13 @@ Next we will add a function to our class. The function will be named ``start``
 and will simply print a message indicating that our ``Automobile`` has started
 its engine. The updated class definition with this new function added is:
 
-.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_adding_member_function.cmake
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/adding_member_function.cmake
    :lines: 1-14
 
 After creating an instance of the ``Automobile`` class named ``my_auto`` (as we
 did in the previous example) we can call our function using the following:
 
-.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_adding_member_function.cmake
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/adding_member_function.cmake
    :lines: 16-22
 
 See :ref:`features-classes-member-functions` for more information about writing class 
@@ -56,14 +56,14 @@ Now we will add a function called ``drive`` that takes two arguments, an ``int``
 and a ``str`` and prints a message using those two arguments. We can do that by
 adding the following to our class:
 
-.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_function_arguments.cmake
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/function_arguments.cmake
    :lines: 13-17
    :dedent:
 
 Using our Automobile instance ``my_auto`` we can call the function in the
 following way:
 
-.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_function_arguments.cmake
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/function_arguments.cmake
    :lines: 25-28
 
 See :ref:`features-types` for a list and descriptions of data types 
@@ -88,13 +88,13 @@ this time we'll pass a prefix and a list of attribute names. This call will get
 all the attributes and store them in the current scope with the prefix
 prepended to their name. Here is the function:
 
-.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_function_referencing_attributes.cmake
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/function_referencing_attributes.cmake
    :lines: 22-33
    :dedent:
 
 This function can be accessed in the same way as previous examples:
 
-.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_function_referencing_attributes.cmake
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/function_referencing_attributes.cmake
    :lines: 41-44
 
 Returning a Value from a Function
@@ -112,7 +112,7 @@ set the value of the variable with the name specified by the return identifier
 in the parent scope using the ``set`` command with the ``PARENT_SCOPE`` option.
 This is demonstrated by the following redefinition of ``describe_self``:
 
-.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_function_return_value.cmake
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/function_return_value.cmake
    :lines: 24-35
    :dedent:
 
@@ -126,7 +126,7 @@ This is demonstrated by the following redefinition of ``describe_self``:
 
 We can call this function and access its return value using the following:
 
-.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_function_return_value.cmake
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/function_return_value.cmake
    :lines: 46-52
    :dedent:
 
@@ -153,13 +153,13 @@ specifies whether or not it should indicate the color of itself in the
 description it returns. We could accomplish this by redefining the function
 as follows:
 
-.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_function_multiple_return_points.cmake
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/function_multiple_return_points.cmake
    :lines: 24-49
    :dedent:
 
 We can call the function in the following way:
 
-.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_function_multiple_return_points.cmake
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/function_multiple_return_points.cmake
    :lines: 60-65, 68-72
    :dedent:
 
@@ -172,7 +172,7 @@ adding a new function definition with the same name that takes one argument
 instead of no arguments. This can be done by adding the following to our class
 definition:
 
-.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_function_overloading.cmake
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/function_overloading.cmake
    :lines: 18-22
    :dedent:
 
@@ -180,7 +180,7 @@ Now we can call the new function by passing in arguments with the correct types
 to match the signature of the new function we wrote. In this case we need to
 pass in one integer to match the new signature:
 
-.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_function_overloading.cmake
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/function_overloading.cmake
    :lines: 66-70, 73-76
    :dedent:
 
@@ -191,7 +191,7 @@ CMakePP allows users to define multiple custom constructors for classes. This is
 done using the ``cpp_constructor`` command. Here we add a constructor that takes
 two integers to our ``Automobile`` class:
 
-.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_constructor_user_defined.cmake
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/constructor_user_defined.cmake
    :lines: 10-13
    :dedent:
 
@@ -216,7 +216,7 @@ immediately by the value or values we want to set. Suppose our automobile class
 has three attributes: ``color``, ``num_doors``, and ``owners``. Then we could
 set these upon construction using the following:
 
-.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_constructor_kwargs.cmake
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/constructor_kwargs.cmake
    :lines: 40
    :dedent:
 
@@ -237,7 +237,7 @@ We can demonstrate this by creating a new ``Car`` class that is derived from our
 ``num_doors`` and will override the ``describe_self`` method to provide a more
 precise description. We can define the class by writing the following:
 
-.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_derived_class.cmake
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/derived_class.cmake
    :lines: 40-62
    :dedent:
 
@@ -245,14 +245,14 @@ We can now create an instance of our derived ``Car`` class and access its
 methods (and the methods inherited from its base class) through the ``Car``
 class:
 
-.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_derived_class.cmake
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/derived_class.cmake
    :lines: 69-83
    :dedent:
 
 Alternatively we can access the methods of the ``Car`` class through
 its base class ``Automobile``:
 
-.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_derived_class.cmake
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/derived_class.cmake
    :lines: 90-104
    :dedent:
 
@@ -265,37 +265,37 @@ The Basics
 A class can inherit from multiple parent classes. Suppose we have defined the
 following classes to represent **electric vehicles** and **trucks**:
 
-.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_multiple_inheritance_basics.cmake
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/multiple_inheritance_basics.cmake
    :lines: 3-15
 
 and
 
-.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_multiple_inheritance_basics.cmake
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/multiple_inheritance_basics.cmake
    :lines: 17-29
 
 If we want to create a class to represent an electric truck, we can create a
 new class ``ElectricTruck`` that inherits from both of these classes:
 
-.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_multiple_inheritance_basics.cmake
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/multiple_inheritance_basics.cmake
    :lines: 31-36
 
 Then we can create an instance of ``ElectricTruck`` like we would any other
 class:
 
-.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_multiple_inheritance_basics.cmake
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/multiple_inheritance_basics.cmake
    :lines: 43-44
    :dedent:
 
 We can then access the attributes that are defined in each of the parent classes
 like we would any other attribute:
 
-.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_multiple_inheritance_basics.cmake
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/multiple_inheritance_basics.cmake
    :lines: 46-54
    :dedent:
 
 We can access the functions defined in each of the parent classes as well:
 
-.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_multiple_inheritance_basics.cmake
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/multiple_inheritance_basics.cmake
    :lines: 65-71
    :dedent:
 
