@@ -86,32 +86,13 @@ this time we'll pass a prefix and a list of attribute names. This call will get
 all the attributes and store them in the current scope with the prefix
 prepended to their name. Here is the function:
 
-.. code-block:: cmake
-
-  # Define an attribute "km_driven" that takes a starting value of 0
-  cpp_attr(Automobile km_driven 0)
-
-  # Define a function "describe_self" that references attributes of the class
-  cpp_member(describe_self Automobile)
-  function("${describe_self}" self)
-
-      # Access the attributes of the class and store them into the local vars
-      # _ds_color and _ds_km_driven
-      Automobile(GET "${self}" _ds color km_driven)
-
-      # Print out a message
-      message("I am an automobile, I am ${_ds_color}, and I have driven ${_ds_km_driven} km.")
-
-  endfunction()
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_adding_function_that_references_attributes.cmake
+   :lines: 1-15
 
 This function can be accessed in the same way as previous examples:
 
-.. code-block:: cmake
-
-  # Call the function using the instance "my_auto"
-  Automobile(describe_self "${my_auto}")
-
-  # Output: I am an automobile, I am red, and I have driven 0 km.
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_adding_function_that_references_attributes.cmake
+   :lines: 20-23
 
 Returning a Value from a Function
 =================================
@@ -122,26 +103,15 @@ wrote to return a value instead of printing a message.
 
 Returning values from a function works differently in CMake than in most
 other languages. The best practice is to pass into the function the name of the
-variable that you want the return value to be stored in in the parent scope
-(we'll refer to this name as the **return identifier**). Then have the function
+variable that you want the return value to be stored in from the parent scope
+(we will refer to this name as the **return identifier**). Then, have the function
 set the value of the variable with the name specified by the return identifier
 in the parent scope using the ``set`` command with the ``PARENT_SCOPE`` option.
 This is demonstrated by the following redefinition of ``describe_self``:
 
-.. code-block:: cmake
-
-  # Redefine "describe_self" to take in a return identifier
-  cpp_member(describe_self Automobile str)
-  function("${describe_self}" self return_id)
-
-      # Access the attributes of the class and store them into local vars
-      Automobile(GET "${self}" my_color color)
-      Automobile(GET "${self}" my_km_driven km_driven)
-
-      # Set the value of the var with the name ${return_id} in the parent scope
-      set("${return_id}" "I am an automobile, I am ${my_color}, and I have driven ${my_km_driven} km." PARENT_SCOPE)
-
-  endfunction()
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_adding_function_that_returns_value.cmake
+   :lines: 10-21
+   :dedent:
 
 .. note::
 
@@ -153,15 +123,8 @@ This is demonstrated by the following redefinition of ``describe_self``:
 
 We can call this function and access its return value using the following:
 
-.. code-block:: cmake
-
-  # Call the function and store its result in "my_result"
-  Automobile(describe_self "${my_auto}" my_result)
-
-  # Print out the value of "my_result"
-  message("${my_result}")
-
-  # Output: I am an automobile, I am red, and I have driven 0 km.
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_adding_function_that_returns_value.cmake
+   :lines: 29-35
 
 Adding Multiple Return Points to a Function
 ===========================================
@@ -186,50 +149,14 @@ specifies whether or not it should indicate the color of itself in the
 description it returns. We could accomplish this by redefining the function
 as follows:
 
-.. code-block:: cmake
-
-  # Redefine "describe_self" to have multiple return points
-  cpp_member(describe_self Automobile str bool)
-  function("${describe_self}" self return_id include_color)
-
-    # Access the km_driven attribute
-    Automobile(GET "${self}" my_km_driven km_driven)
-
-    if(include_color)
-      # Access the color attribute
-      Automobile(GET "${self}" my_color color)
-
-      # Set the value of the var with the name ${return_id} in the current scope
-      set("${return_id}" "I am an automobile, I am ${my_color}, and I have driven ${my_km_driven} km.")
-
-      # Return the value and exit the function
-      cpp_return("${return_id}")
-    endif()
-
-    # This only executes if include_color is false
-    # Set the value of the var with the name ${return_id} in the current scope
-    set("${return_id}" "I am an automobile and I have driven ${my_km_driven} km.")
-
-    # Return the value and exit the function
-    cpp_return("${return_id}")
-
-  endfunction()
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_adding_function_multiple_return_points.cmake
+   :lines: 10-35
+   :dedent:
 
 We can call the function in the following way:
 
-.. code-block:: cmake
-
-  # Call the function and specify that color should be included
-  Automobile(describe_self "${my_auto}" my_result TRUE)
-  message("${my_result}")
-
-  # Output: I am an automobile, I am red, and I have driven 0 km.
-
-  # Call the function and specify that color should NOT be included
-  Automobile(describe_self "${my_auto}" my_result FALSE)
-  message("${my_result}")
-
-  # Output: I am an automobile and I have driven 0 km.
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_adding_function_multiple_return_points.cmake
+   :lines: 43-53
 
 Overloading a Function
 ======================
