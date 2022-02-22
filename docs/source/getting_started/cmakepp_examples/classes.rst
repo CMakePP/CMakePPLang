@@ -1,4 +1,4 @@
-.. _using-classes:
+.. _examples-classes:
 
 *************
 Using Classes

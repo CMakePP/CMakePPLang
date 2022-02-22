@@ -7,8 +7,8 @@ Classes
 CMakePP enables users to define classes and create instances of the classes.
 Classes in CMakePP can contain attributes and functions. CMakePP also
 supports inheritance. Examples of using classes are provided in the
-:ref:`using-classes` the section. A basic overview of the features of classes
-are provided below.
+:ref:`examples-classes` the section. A basic overview of the features of 
+classes are provided below.
 
 .. _features-classes-definition:
 
