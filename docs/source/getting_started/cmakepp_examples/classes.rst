@@ -87,12 +87,13 @@ all the attributes and store them in the current scope with the prefix
 prepended to their name. Here is the function:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_adding_function_that_references_attributes.cmake
-   :lines: 1-15
+   :lines: 22-33
+   :dedent:
 
 This function can be accessed in the same way as previous examples:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_adding_function_that_references_attributes.cmake
-   :lines: 20-23
+   :lines: 41-44
 
 Returning a Value from a Function
 =================================
@@ -110,7 +111,7 @@ in the parent scope using the ``set`` command with the ``PARENT_SCOPE`` option.
 This is demonstrated by the following redefinition of ``describe_self``:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_adding_function_that_returns_value.cmake
-   :lines: 10-21
+   :lines: 22-33
    :dedent:
 
 .. note::
@@ -124,7 +125,7 @@ This is demonstrated by the following redefinition of ``describe_self``:
 We can call this function and access its return value using the following:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_adding_function_that_returns_value.cmake
-   :lines: 29-35
+   :lines: 41-47
 
 Adding Multiple Return Points to a Function
 ===========================================
@@ -150,13 +151,13 @@ description it returns. We could accomplish this by redefining the function
 as follows:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_adding_function_multiple_return_points.cmake
-   :lines: 10-35
+   :lines: 22-47
    :dedent:
 
 We can call the function in the following way:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_adding_function_multiple_return_points.cmake
-   :lines: 43-53
+   :lines: 55-65
 
 Overloading a Function
 ======================
@@ -167,29 +168,16 @@ adding a new function definition with the same name that takes one argument
 instead of no arguments. This can be done by adding the following to our class
 definition:
 
-.. code-block:: cmake
-
-  # Overload the "start" function
-  cpp_member(start Automobile int)
-  function("${start}" self distance_km)
-      message("Vroom! I started my engine and I just drove ${distance_km} km.")
-  endfunction()
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_function_overloading.cmake
+   :lines: 16-20
+   :dedent:
 
 Now we can call the new function by passing in arguments with the correct types
 to match the signature of the new function we wrote. In this case we need to
 pass in one integer to match the new signature:
 
-.. code-block:: cmake
-
-  # Call the new function implementation
-  Automobile(start "${my_auto}" 10)
-
-  # Output: Vroom! I started my engine and I just drove 10 km.
-
-  # We can still call the original function implementation as well
-  Automobile(start "${my_auto}")
-
-  # Output: Vroom! I started my engine.
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_function_overloading.cmake
+   :lines: 61-69
 
 Adding a User-Defined Constructors
 ==================================
@@ -198,12 +186,9 @@ CMakePP allows users to define multiple custom constructors for classes. This is
 done using the ``cpp_constructor`` command. Here we add a constructor that takes
 two integers to our ``Automobile`` class:
 
-.. code-block:: cmake
-
-    cpp_constructor(CTOR Automobile int int)
-    function("${CTOR}" self a b)
-        # Do set up using arguments passed to constructors
-    endfunction()
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_constructor_user_defined.cmake
+   :lines: 10-13
+   :dedent:
 
 Multiple constructors can be added to a class. Calls to constructors will use
 function resolution in the same way the member function calls do. That is when a
@@ -219,16 +204,16 @@ Using the KWARGS Constructor
 
 CMakePP allows users to call a **KWARGS Constructor**. This constructor enables
 users to automatically set the values of attributes of the class upon
-construction. No constructor needs to be defined to use this feature. WeS just
+construction. No constructor needs to be defined to use this feature. We just
 need to use the ``KWARGS`` keyword as the third argument to the call and provide
 a list consisting of the name of each attribute we want to set followed
 immediately by the value or values we want to set. Suppose our automobile class
 has three attributes: ``color``, ``num_doors``, and ``owners``. Then we could
 set these upon construction using the following:
 
-.. code-block:: cmake
-
-    MyClass(CTOR my_auto KWARGS color red num_doors 4 owners Alice Bob Chuck)
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes_constructor_kwargs.cmake
+   :lines: 40
+   :dedent:
 
 This would set the value of ``color`` to ``red``, ``num_doors`` to ``4``, and
 ``owners`` to ``Alice;Bob;Chuck``.

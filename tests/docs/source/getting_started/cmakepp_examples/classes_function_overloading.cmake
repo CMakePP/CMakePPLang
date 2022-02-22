@@ -13,6 +13,12 @@ cpp_class(Automobile)
         message("Vroom! I have started my engine.")
     endfunction()
 
+    # Overload the "start" function
+    cpp_member(start Automobile int)
+    function("${start}" self distance_km)
+        message("Vroom! I started my engine and I just drove ${distance_km} km.")
+    endfunction()
+
     # Define a function "drive" that takes an int and a str and prints a message
     cpp_member(drive Automobile int str)
     function("${drive}" self distance_km destination)
@@ -52,14 +58,12 @@ cpp_end_class()
 # Create an instance of the class called "my_auto" using the default CTOR
 Automobile(CTOR my_auto)
 
-# Call the function and specify that color should be included
-Automobile(describe_self "${my_auto}" my_result TRUE)
-message("${my_result}")
+# Call the new function implementation
+Automobile(start "${my_auto}" 10)
 
-# Output: I am an automobile, I am red, and I have driven 0 km.
+# Output: Vroom! I started my engine and I just drove 10 km.
 
-# Call the function and specify that color should NOT be included
-Automobile(describe_self "${my_auto}" my_result FALSE)
-message("${my_result}")
+# We can still call the original function implementation as well
+Automobile(start "${my_auto}")
 
-# Output: I am an automobile and I have driven 0 km.
+# Output: Vroom! I started my engine.

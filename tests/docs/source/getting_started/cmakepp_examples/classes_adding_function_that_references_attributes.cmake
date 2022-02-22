@@ -7,6 +7,18 @@ cpp_class(Automobile)
     # Define an attribute "km_driven" that takes a starting value of 0
     cpp_attr(Automobile km_driven 0)
 
+    # Define a function "start" that prints a message
+    cpp_member(start Automobile)
+    function("${start}" self)
+        message("Vroom! I have started my engine.")
+    endfunction()
+
+    # Define a function "drive" that takes an int and a str and prints a message
+    cpp_member(drive Automobile int str)
+    function("${drive}" self distance_km destination)
+        message("I just drove ${distance_km} km to ${destination}!")
+    endfunction()
+
     # Define a function "describe_self" that references attributes of the class
     cpp_member(describe_self Automobile)
     function("${describe_self}" self)
