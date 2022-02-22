@@ -349,47 +349,25 @@ look in ``Truck`` first when searching for attributes and functions:
 Adding A Pure Virtual Member Function
 =====================================
 
-CMakePP allows users to define pure virtual member functions in base classes.
-These functions have no concrete implementation but can be overriden by
-implementations in derived classes. Let's start by defining a ``Vehicle`` class
-with a virtual member function ``describe_self``:
+The CMakePP Language allows users to define pure virtual member functions in 
+base classes. These functions have no concrete implementation, but can be 
+overriden by implementations in derived classes. Let's start by defining a 
+``Vehicle`` class with a virtual member function ``describe_self``:
 
-.. code-block:: cmake
-
-    # Define the Vehicle class
-    cpp_class(Vehicle)
-
-        # Add a virtual member function to be overridden by derived classes
-        cpp_member(describe_self Vehicle)
-        cpp_virtual_member(describe_self)
-
-    cpp_end_class()
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/pure_virtual_member_functions.cmake
+   :lines: 1-8
 
 Now we can define a ``Truck`` class that is derived from the ``Vehicle`` class
 that overrides ``describe_self`` with an implementation:
 
-.. code-block:: cmake
-
-    # Define the Truck class
-    cpp_class(Truck Vehicle)
-
-        cpp_member(describe_self Truck)
-        function("${describe_self}" self)
-            message("I am a truck!")
-        endfunction()
-
-    cpp_end_class()
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/pure_virtual_member_functions.cmake
+   :lines: 10-18
 
 Now we can create an instance of the ``Truck`` class and call the
 ``describe_self`` function:
 
-.. code-block:: cmake
-
-    # Create an instance of the Truck class and call describe_self
-    Truck(CTOR my_inst)
-    Truck(describe_self "${my_inst}")
-
-    # Output: I am a truck!
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/pure_virtual_member_functions.cmake
+   :lines: 20-24
 
 .. warning::
 
