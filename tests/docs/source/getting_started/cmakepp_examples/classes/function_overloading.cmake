@@ -67,10 +67,14 @@ function("${function_overloading}")
     Automobile(start "${my_auto}" 10)
 
     # Output: Vroom! I started my engine and I just drove 10 km.
+
+    ct_assert_prints("Vroom! I started my engine and I just drove 10 km.")
     
     # We can still call the original function implementation as well
     Automobile(start "${my_auto}")
 
-    # Output: Vroom! I started my engine.
+    # Output: Vroom! I have started my engine.
+
+    ct_assert_prints("Vroom! I have started my engine.")
 
 endfunction()

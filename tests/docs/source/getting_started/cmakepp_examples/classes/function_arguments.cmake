@@ -1,3 +1,5 @@
+include(cmake_test/cmake_test)
+
 # Begin class definition
 cpp_class(Automobile)
 
@@ -19,10 +21,17 @@ cpp_class(Automobile)
 # End class definition
 cpp_end_class()
 
-# Create an instance of the class called "my_auto" using the default CTOR
-Automobile(CTOR my_auto)
+ct_add_test(NAME "constructor_user_defined")
+function("${constructor_user_defined}")
 
-# Call the function and pass two arguments
-Automobile(drive "${my_auto}" 10 "London")
+    # Create an instance of the class called "my_auto" using the default CTOR
+    Automobile(CTOR my_auto)
 
-# Output: I just drove 10 km to London!
+    # Call the function and pass two arguments
+    Automobile(drive "${my_auto}" 10 "London")
+
+    # Output: I just drove 10 km to London!
+
+    ct_assert_prints("I just drove 10 km to London!")
+
+endfunction()

@@ -56,6 +56,8 @@ function("${multiple_inheritance_conflicting}")
 
         # Output
         # I have started silently.
+
+        ct_assert_prints("I have started silently.")
     endfunction()
 
     ct_add_section(NAME "truck_then_electric_vehicle")
@@ -83,6 +85,8 @@ function("${multiple_inheritance_conflicting}")
 
         # Output
         # Vroom! I have started my engine.
+
+        ct_assert_prints("Vroom! I have started my engine.")
     endfunction()
 
 endfunction()

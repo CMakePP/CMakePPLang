@@ -81,6 +81,9 @@ function("${derived_class}")
         Car(start "${my_car}")
 
         # Output: Vroom! I have started my engine.
+
+        ct_assert_prints("Vroom! I have started my engine.")
+        
     endfunction()
 
     ct_add_section(NAME "access_from_base_class")
@@ -100,5 +103,8 @@ function("${derived_class}")
         Automobile(start "${my_car}")
 
         # Output: Vroom! I have started my engine.
+
+        ct_assert_prints("Vroom! I have started my engine.")
+
     endfunction()
 endfunction()

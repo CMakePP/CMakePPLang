@@ -1,3 +1,5 @@
+include(cmake_test/cmake_test)
+
 # Define the Vehicle class
 cpp_class(Vehicle)
 
@@ -17,8 +19,22 @@ cpp_class(Truck Vehicle)
 
 cpp_end_class()
 
-# Create an instance of the Truck class and call describe_self
-Truck(CTOR my_inst)
-Truck(describe_self "${my_inst}")
+ct_add_test(NAME "pure_virtual_member_functions")
+function("${pure_virtual_member_functions}")
 
-# Output: I am a truck!
+    # Create an instance of the Truck class and call describe_self
+    Truck(CTOR my_inst)
+    Truck(describe_self "${my_inst}")
+
+    # Output: I am a truck!
+
+    ct_assert_prints("I am a truck!")
+
+    # Call from parent
+    Vehicle(describe_self "${my_inst}")
+
+    # Output: I am a truck!
+
+    ct_assert_prints("I am a truck!")
+
+endfunction()

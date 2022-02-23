@@ -1,3 +1,5 @@
+include(cmake_test/cmake_test)
+
 # Begin class definition
 cpp_class(Automobile)
 
@@ -13,10 +15,17 @@ cpp_class(Automobile)
 # End class definition
 cpp_end_class()
 
-# Create an instance of the class called "my_auto" using the default CTOR
-Automobile(CTOR my_auto)
+ct_add_test(NAME "function_referencing_attributes")
+function("${function_referencing_attributes}")
 
-# Call the function using our Automobile instance
-Automobile(start "${my_auto}")
+    # Create an instance of the class called "my_auto" using the default CTOR
+    Automobile(CTOR my_auto)
 
-# Output: Vroom! I have started my engine.
+    # Call the function using our Automobile instance
+    Automobile(start "${my_auto}")
+
+    # Output: Vroom! I have started my engine.
+
+    ct_assert_prints("Vroom! I have started my engine.")
+
+endfunction()

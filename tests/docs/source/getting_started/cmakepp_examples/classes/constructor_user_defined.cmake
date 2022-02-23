@@ -1,3 +1,5 @@
+include(cmake_test/cmake_test)
+
 # Begin class definition
 cpp_class(Automobile)
 
@@ -60,15 +62,24 @@ cpp_class(Automobile)
 # End class definition
 cpp_end_class()
 
-# Create an instance of the class called "my_auto" using the default CTOR
-Automobile(CTOR my_auto)
+ct_add_test(NAME "constructor_user_defined")
+function("${constructor_user_defined}")
 
-# Call the new function implementation
-Automobile(start "${my_auto}" 10)
+    # Create an instance of the class called "my_auto" using the default CTOR
+    Automobile(CTOR my_auto)
 
-# Output: Vroom! I started my engine and I just drove 10 km.
+    # Call the new function implementation
+    Automobile(start "${my_auto}" 10)
 
-# We can still call the original function implementation as well
-Automobile(start "${my_auto}")
+    # Output: Vroom! I started my engine and I just drove 10 km.
 
-# Output: Vroom! I started my engine.
+    ct_assert_prints("Vroom! I started my engine and I just drove 10 km.")
+
+    # We can still call the original function implementation as well
+    Automobile(start "${my_auto}")
+
+    # Output: Vroom! I have started my engine.
+
+    ct_assert_prints("Vroom! I have started my engine.")
+
+endfunction()

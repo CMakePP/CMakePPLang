@@ -43,13 +43,14 @@ and will simply print a message indicating that our ``Automobile`` has started
 its engine. The updated class definition with this new function added is:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/member_functions.cmake
-   :lines: 1-14
+   :lines: 3-16
 
 After creating an instance of the ``Automobile`` class named ``my_auto`` (as we
 did in the previous example) we can call our function using the following:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/member_functions.cmake
-   :lines: 16-22
+   :lines: 21-27
+   :dedent:
 
 See :ref:`features-classes-member-functions` for more information about writing 
 class member functions.
@@ -64,14 +65,15 @@ and a ``str`` and prints a message using those two arguments. We can do that by
 adding the following to our class:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/function_arguments.cmake
-   :lines: 13-17
+   :lines: 15-19
    :dedent:
 
 Using our Automobile instance ``my_auto`` we can call the function in the
 following way:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/function_arguments.cmake
-   :lines: 25-28
+   :lines: 30-33
+   :dedent:
 
 See :ref:`features-types` for a list and descriptions of data types 
 supported by the CMakePP language and :ref:`features-classes-member-functions` 
@@ -99,13 +101,13 @@ all the attributes and store them in the current scope with the prefix
 prepended to their name. Here is the function:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/function_referencing_attributes.cmake
-   :lines: 22-33
+   :lines: 24-35
    :dedent:
 
 This function can be accessed in the same way as previous examples:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/function_referencing_attributes.cmake
-   :lines: 41-44
+   :lines: 46-49
 
 .. _examples-classes-return-value:
 
@@ -210,7 +212,7 @@ classes. This is done using the ``cpp_constructor`` command. Here we add a
 constructor that takes two integers to our ``Automobile`` class:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/constructor_user_defined.cmake
-   :lines: 10-13
+   :lines: 12-15
    :dedent:
 
 Multiple constructors can be added to a class. Calls to constructors will use
@@ -269,14 +271,14 @@ methods (and the methods inherited from its base class) through the ``Car``
 class:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/derived_class.cmake
-   :lines: 69-83
+   :lines: 69-77, 80-83
    :dedent:
 
 Alternatively we can access the methods of the ``Car`` class through
 its base class ``Automobile``:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/derived_class.cmake
-   :lines: 90-104
+   :lines: 94-98, 102-105
    :dedent:
 
 .. _examples-classes-multiple-inheritance:
@@ -323,7 +325,7 @@ like we would any other attribute:
 We can access the functions defined in each of the parent classes as well:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/multiple_inheritance_basics.cmake
-   :lines: 65-71
+   :lines: 65-66, 68, 70-73
    :dedent:
 
 .. _examples-classes-multiple-inheritance-conflicting:
@@ -367,12 +369,12 @@ So, if we create an instance of ``ElectricTruck`` and attempt to access
    :dedent:
 
 Alternatively, we could define our subclass with
-``cpp_class(ElectricTruck Truck ElectricVehicle)``. Note that we now placed
+``cpp_class(TruckElectric Truck ElectricVehicle)``. Note that we now placed
 ``Truck`` in front of ``ElectricVehicle``, so the CMakePP language will would 
 look in ``Truck`` first when searching for attributes and functions:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/multiple_inheritance_conflicting.cmake
-   :lines: 70-79, 82-85
+   :lines: 72-81, 84-87
    :dedent:
 
 .. _examples-classes-pure-virtual-member-functions:
@@ -386,19 +388,20 @@ overriden by implementations in derived classes. Let's start by defining a
 ``Vehicle`` class with a virtual member function ``describe_self``:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/pure_virtual_member_functions.cmake
-   :lines: 1-8
+   :lines: 3-10
 
 Now we can define a ``Truck`` class that is derived from the ``Vehicle`` class
 that overrides ``describe_self`` with an implementation:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/pure_virtual_member_functions.cmake
-   :lines: 10-18
+   :lines: 12-20
 
 Now we can create an instance of the ``Truck`` class and call the
 ``describe_self`` function:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/pure_virtual_member_functions.cmake
-   :lines: 20-24
+   :lines: 25-30, 33-36
+   :dedent:
 
 .. warning::
 

@@ -64,11 +64,14 @@ function("${multiple_inheritance_basics}")
 
         # Access the functions of each parent class through the ElectricTruck class
         ElectricTruck(drive "${my_inst}")
+        ct_assert_prints("I am driving.")
         ElectricTruck(tow "${my_inst}")
+        ct_assert_prints("I am towing.")
 
         # Output:
         # I am driving.
         # I am towing.
+
     endfunction()
 
 endfunction()
