@@ -75,7 +75,7 @@ function("${derived_class}")
 
         # Output: I am a car with 4 doors, I am green, and I have driven 0 km.
 
-        ct_assert_equal(my_result "I am a car with 4 doors, I am green, and I have driven 0 km.")
+        ct_assert_equal(car_result "I am a car with 4 doors, I am green, and I have driven 0 km.")
 
         # Access the inherited method "start" through the derived class
         Car(start "${my_car}")
@@ -94,7 +94,7 @@ function("${derived_class}")
 
         # Output: I am a car with 4 doors, I am red, and I have driven 0 km.
 
-        ct_assert_equal(my_result "I am a car with 4 doors, I am red, and I have driven 0 km.")
+        ct_assert_equal(auto_result "I am a car with 4 doors, I am green, and I have driven 0 km.")
 
         # Access the inherited method "start" through the base class
         Automobile(start "${my_car}")
