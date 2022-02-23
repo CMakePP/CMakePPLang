@@ -1,10 +1,13 @@
-.. _using-utilities:
+.. _examples-utilities:
 
 ***************
 Using Utilities
 ***************
 
-This page provides examples of using CMakePP's utility functions.
+This page provides examples of using utility functions available in the 
+CMakePP language.
+
+.. _examples-utilities-variable-equality:
 
 Checking if Variables are Equal
 ===============================
@@ -12,50 +15,25 @@ Checking if Variables are Equal
 We can use the ``cpp_equal`` function to check for equality between any two
 variables, including objects and maps.
 
-.. code-block:: cmake
-
-  # Create three strings, two that are equivalent and on that is not
-  set(string_a "Hello World")
-  set(string_b "Hello World")
-  set(string_c "Goodbye World")
-
-  # Check if certain strings are equivalent
-  cpp_equal(result_ab "${string_a}" "${string_b}")
-  cpp_equal(result_ac "${string_a}" "${string_c}")
-
-  # Print out the results
-  message("A equals B? ${result_ab}")
-  message("A equals C? ${result_ac}")
-
-  # Output:
-  # A equals B? TRUE
-  # A equals C? FALSE
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/utilities/variable_equality.cmake
+   :lines: 6-21
+   :dedent:
 
 .. note::
 
   For native CMake types, such as booleans and integers, equality is defined as
   being the same string.
 
+.. _examples-utilities-variable-serialization:
+
 Serializing a Variable
 ======================
 
 We can use ``cpp_serialize`` to serialize a variable into a JSON string:
 
-.. code-block:: cmake
-
-  # Create a map containing a desc
-  cpp_map(CTOR my_map desc_key "Hello World")
-
-  # Create a list and it to the map
-  set(my_list 1 2 3)
-  cpp_map(SET "${my_map}" list_key "${my_list}")
-
-  # Serialize the map and print out the result
-  cpp_serialize(serialized "${my_map}")
-  message("${serialized}")
-
-  # Output:
-  # { "desc_key" : "Hello World", "list_key" : [ "1", "2", "3" ] }
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/utilities/variable_serialization.cmake
+   :lines: 6-18
+   :dedent:
 
 Copying a Variable
 ==================
@@ -63,23 +41,9 @@ Copying a Variable
 We can use the ``cpp_copy`` to create a deep copy of an existing variable
 regardless of what type it is:
 
-.. code-block:: cmake
-
-  # Create a list
-  set(my_list 1 2 3)
-
-  # Create a map containing a desc and a list
-  cpp_map(CTOR my_map desc_key "desc" list_key "${my_list}")
-
-  # Create a copy of the map
-  cpp_copy(map_copy "${my_map}")
-
-  # Serialize the copy and print out the result
-  cpp_serialize(serialized map_copy)
-  message("${serialized}")
-
-  # Output:
-  # { "desc_key" : "Hello World", "list_key" : [ "1", "2", "3" ] }
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/utilities/variable_copy.cmake
+   :lines: 6-20
+   :dedent:
 
 Checking if Variable Contains a Value
 =====================================
