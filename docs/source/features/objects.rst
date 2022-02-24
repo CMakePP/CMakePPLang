@@ -11,7 +11,7 @@ these features are called:
 - ``_cpp_object_copy``
 - ``_cpp_object_serialize``
 
-Currently, these functions cannot be overridden in user defined classes.
+Currently, these functions cannot be overridden in user-defined classes.
 
 .. TODO add when object methods can be overridden
 .. The implementations of these functionalities within the object class are what
