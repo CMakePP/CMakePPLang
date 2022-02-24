@@ -1,7 +1,7 @@
 include(cmake_test/cmake_test)
 
-ct_add_test(NAME "nested_try_catch")
-function("${nested_try_catch}")
+ct_add_test(NAME "maps")
+function("${maps}")
 
     set(my_key "my_key")
     set(key_a "key_a")

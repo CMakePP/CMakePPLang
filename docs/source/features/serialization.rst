@@ -2,11 +2,11 @@
 Serialization
 *************
 
-CMakePP provides the ability to serialize objects, maps, and other values into
-JSON strings via the ``cpp_serialize`` function. We will start by covering the
-serialization of maps, lists, and native CMake types since these are fairly
-simple. Lastly, we'll cover the serialization of objects as their serialization
-process is a bit more complicated.
+The CMakePP language provides the ability to serialize objects, maps, and other
+values into JSON strings via the ``cpp_serialize`` function. We will start by 
+covering the serialization of maps, lists, and native CMake types since these 
+are fairly simple. Finally, we'll cover the serialization of objects as their 
+serialization process is a bit more complicated.
 
 The Serialization Function
 ==========================
@@ -22,17 +22,22 @@ Serialization of Maps
 Maps are serialized into JSON dictionaries (otherwise known as associative
 arrays).
 
-For example a map created with
-``cpp_map(CTOR my_map key_a value_a key_b value_b)`` serializes to
-``{ "key_a" : "value_a", "key_b" : "value_b" }``
+For example, if we want to serialize a map called ``my_map``, we could do:
+
+.. literalinclude:: /../../tests/docs/source/features/serialization.cmake
+   :lines: 8-14
+   :dedent:
 
 Serialization of Lists
 ======================
 
 Lists are serialized into JSON lists.
 
-For example ``"this;is;a;list"`` serializes to
-``[ "this", "is", "a", "list" ]``
+For example, a list can be serialized as follows:
+
+.. literalinclude:: /../../tests/docs/source/features/serialization.cmake
+   :lines: 24-30
+   :dedent:
 
 Serialization of other Native CMake Types
 =========================================
@@ -66,10 +71,10 @@ All values of other types are serialized into simple JSON strings.
 Serialization of Objects
 ========================
 
-CMakePP serializes objects by creating a JSON dictionary with a single
-key-value pair.
+The CMakePP language serializes objects by creating a JSON dictionary with a 
+single key-value pair.
 
-The key in this pair is the unique identifier that CMakePP uses
+The key in this pair is the unique identifier that the CMakePP language uses
 to refer to the object (the value of ``${my_obj}`` where ``my_obj`` is the name
 of an obj).
 
@@ -90,29 +95,9 @@ state of an **instance of a class** consists of:
 
 Take the following class for example:
 
-.. code-block:: cmake
-
-  cpp_class(Automobile)
-
-      cpp_attr(Automobile color red)
-      cpp_attr(Automobile num_doors 4)
-
-      cpp_member(start Automobile)
-      function("${start}" self)
-          set(result "Vroom! I have started my engine." PARENT_SCOPE)
-      endfunction()
-
-      cpp_member(start Automobile int)
-      function("${start}" self distance_km)
-          set(result "Vroom! I started my engine and I just drove ${distance_km} km!" PARENT_SCOPE)
-      endfunction()
-
-      cpp_member(drive Automobile int str)
-      function("${drive}" self distance_km destination)
-          set(result "I just drove ${distance_km} km to ${destination}!" PARENT_SCOPE)
-      endfunction()
-
-  cpp_end_class()
+.. literalinclude:: /../../tests/docs/source/features/serialization.cmake
+   :lines: 40-60
+   :dedent:
 
 An instance of the ``Automobile`` class serializes into the following JSON
 object:
