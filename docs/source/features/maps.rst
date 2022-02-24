@@ -14,7 +14,7 @@ Map Creation
 The map constructor is used to create an empty map:
 
 .. literalinclude:: /../../tests/docs/source/features/maps.cmake
-   :lines: 6-7
+   :lines: 11-12
    :dedent:
 
 Optionally, key-value pairs can be provided to the map constructor. You must
@@ -22,7 +22,7 @@ simply add keys and their corresponding values as arguments passed to the
 constructor:
 
 .. literalinclude:: /../../tests/docs/source/features/maps.cmake
-   :lines: 9-10
+   :lines: 14-15
    :dedent:
 
 Setting Values
@@ -31,7 +31,7 @@ Setting Values
 Values can be set by using the ``SET`` keyword:
 
 .. literalinclude:: /../../tests/docs/source/features/maps.cmake
-   :lines: 12-13
+   :lines: 17-18
    :dedent:
 
 Accessing Values
@@ -40,7 +40,7 @@ Accessing Values
 Values can be accessed using ``GET`` keyword:
 
 .. literalinclude:: /../../tests/docs/source/features/maps.cmake
-   :lines: 15-19
+   :lines: 20-21
    :dedent:
 
 Appending Values
@@ -49,7 +49,7 @@ Appending Values
 Values can be appended by using the ``APPEND`` keyword:
 
 .. literalinclude:: /../../tests/docs/source/features/maps.cmake
-   :lines: 23-24
+   :lines: 25-26
    :dedent:
 
 Copying a Map
@@ -58,7 +58,7 @@ Copying a Map
 Maps can be copied using the ``COPY`` keyword:
 
 .. literalinclude:: /../../tests/docs/source/features/maps.cmake
-   :lines: 32-33
+   :lines: 34-35
    :dedent:
 
 Checking Equality of Maps
@@ -66,27 +66,24 @@ Checking Equality of Maps
 
 Map equality can be checked using the ``EQUAL`` keyword:
 
-.. code-block:: cmake
-
-    # Check if map_a is equivalent to map_b
-    cpp_map(EQUAL "${map_a}" equal_result "${map_b}")
+.. literalinclude:: /../../tests/docs/source/features/maps.cmake
+   :lines: 37-38
+   :dedent:
 
 Checking if a Map has a Key
 ===========================
 
 Check whether the map contains a key with the ``HAS_KEY`` keyword:
 
-.. code-block:: cmake
-
-    # Check whether the map has the key "my_key"
-    cpp_map(HAS_KEY "${my_map}" has_key_result my_key)
+.. literalinclude:: /../../tests/docs/source/features/maps.cmake
+   :lines: 42-43
+   :dedent:
 
 Getting a Map's Keys
 ====================
 
 A list of a map's keys can be retrieved using the ``KEYS`` keyword:
 
-.. code-block:: cmake
-
-    # Put the list of the map's keys in keys_list
-    cpp_map(KEYS "${my_map}" keys_list)
+.. literalinclude:: /../../tests/docs/source/features/maps.cmake
+   :lines: 47-48
+   :dedent:
