@@ -26,7 +26,7 @@ For example, if we want to serialize a map called ``my_map``, we could do:
 
 .. literalinclude:: /../../tests/docs/source/features/serialization.cmake
    :lines: 8-14
-   :dedent:
+   :dedent: 8
 
 Serialization of Lists
 ======================
@@ -37,7 +37,7 @@ For example, a list can be serialized as follows:
 
 .. literalinclude:: /../../tests/docs/source/features/serialization.cmake
    :lines: 24-30
-   :dedent:
+   :dedent: 8
 
 Serialization of other Native CMake Types
 =========================================
@@ -97,7 +97,7 @@ Take the following class for example:
 
 .. literalinclude:: /../../tests/docs/source/features/serialization.cmake
    :lines: 40-60
-   :dedent:
+   :dedent: 8
 
 An instance of the ``Automobile`` class serializes into the following JSON
 object:

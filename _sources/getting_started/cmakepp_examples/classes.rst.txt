@@ -23,13 +23,13 @@ color attribute, and print out that value:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/writing_basic_class.cmake
    :lines: 15-24
-   :dedent:
+   :dedent: 4
 
 We can also set the value of the attribute:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/writing_basic_class.cmake
-   :lines: 28-37
-   :dedent:
+   :lines: 26-35
+   :dedent: 4
 
 See :ref:`features-classes` for more information about CMakePP classes.
 
@@ -50,7 +50,7 @@ did in the previous example) we can call our function using the following:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/member_functions.cmake
    :lines: 21-27
-   :dedent:
+   :dedent: 4
 
 See :ref:`features-classes-member-functions` for more information about writing 
 class member functions.
@@ -66,14 +66,14 @@ adding the following to our class:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/function_arguments.cmake
    :lines: 15-19
-   :dedent:
+   :dedent: 4
 
 Using our Automobile instance ``my_auto`` we can call the function in the
 following way:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/function_arguments.cmake
    :lines: 30-33
-   :dedent:
+   :dedent: 4
 
 See :ref:`features-types` for a list and descriptions of data types 
 supported by the CMakePP language and :ref:`features-classes-member-functions` 
@@ -102,12 +102,13 @@ prepended to their name. Here is the function:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/function_referencing_attributes.cmake
    :lines: 24-35
-   :dedent:
+   :dedent: 4
 
 This function can be accessed in the same way as previous examples:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/function_referencing_attributes.cmake
    :lines: 46-49
+   :dedent: 4
 
 .. _examples-classes-return-value:
 
@@ -128,7 +129,7 @@ This is demonstrated by the following redefinition of ``describe_self``:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/function_return_value.cmake
    :lines: 24-35
-   :dedent:
+   :dedent: 4
 
 .. note::
 
@@ -142,7 +143,7 @@ We can call this function and access its return value using the following:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/function_return_value.cmake
    :lines: 46-52
-   :dedent:
+   :dedent: 4
 
 .. _examples-classes-multiple-return-points:
 
@@ -171,13 +172,13 @@ as follows:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/function_multiple_return_points.cmake
    :lines: 24-49
-   :dedent:
+   :dedent: 4
 
 We can call the function in the following way:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/function_multiple_return_points.cmake
    :lines: 60-65, 68-72
-   :dedent:
+   :dedent: 4
 
 .. _examples-classes-function-overloading:
 
@@ -192,7 +193,7 @@ definition:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/function_overloading.cmake
    :lines: 18-22
-   :dedent:
+   :dedent: 4
 
 Now we can call the new function by passing in arguments with the correct types
 to match the signature of the new function we wrote. In this case we need to
@@ -200,7 +201,7 @@ pass in one integer to match the new signature:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/function_overloading.cmake
    :lines: 66-70, 73-76
-   :dedent:
+   :dedent: 4
 
 .. _examples-classes-constructor-user-defined:
 
@@ -213,7 +214,7 @@ constructor that takes two integers to our ``Automobile`` class:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/constructor_user_defined.cmake
    :lines: 12-15
-   :dedent:
+   :dedent: 4
 
 Multiple constructors can be added to a class. Calls to constructors will use
 function resolution in the same way the member function calls do. That is when a
@@ -240,7 +241,7 @@ automobile class has three attributes: ``color``, ``num_doors``, and
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/constructor_kwargs.cmake
    :lines: 40
-   :dedent:
+   :dedent: 4
 
 This would set the value of ``color`` to ``red``, ``num_doors`` to ``4``, and
 ``owners`` to ``Alice;Bob;Chuck``.
@@ -264,7 +265,6 @@ precise description. We can define the class by writing the following:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/derived_class.cmake
    :lines: 40-62
-   :dedent:
 
 We can now create an instance of our derived ``Car`` class and access its
 methods (and the methods inherited from its base class) through the ``Car``
@@ -272,14 +272,14 @@ class:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/derived_class.cmake
    :lines: 69-77, 80-83
-   :dedent:
+   :dedent: 8
 
 Alternatively we can access the methods of the ``Car`` class through
 its base class ``Automobile``:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/derived_class.cmake
    :lines: 94-98, 102-105
-   :dedent:
+   :dedent: 8
 
 .. _examples-classes-multiple-inheritance:
 
@@ -313,20 +313,20 @@ class:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/multiple_inheritance_basics.cmake
    :lines: 43-44
-   :dedent:
+   :dedent: 8
 
 We can then access the attributes that are defined in each of the parent classes
 like we would any other attribute:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/multiple_inheritance_basics.cmake
    :lines: 46-54
-   :dedent:
+   :dedent: 8
 
 We can access the functions defined in each of the parent classes as well:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/multiple_inheritance_basics.cmake
    :lines: 65-66, 68, 70-73
-   :dedent:
+   :dedent: 8
 
 .. _examples-classes-multiple-inheritance-conflicting:
 
@@ -352,7 +352,7 @@ following:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/multiple_inheritance_conflicting.cmake
    :lines: 36-41
-   :dedent:
+   :dedent: 8
 
 Now if we attempt to access the ``power_source`` attribute or call the 
 ``start`` function, the CMakePP language will search the parent classes in 
@@ -366,7 +366,7 @@ So, if we create an instance of ``ElectricTruck`` and attempt to access
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/multiple_inheritance_conflicting.cmake
    :lines: 43-52, 55-58
-   :dedent:
+   :dedent: 8
 
 Alternatively, we could define our subclass with
 ``cpp_class(TruckElectric Truck ElectricVehicle)``. Note that we now placed
@@ -375,7 +375,7 @@ look in ``Truck`` first when searching for attributes and functions:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/multiple_inheritance_conflicting.cmake
    :lines: 72-81, 84-87
-   :dedent:
+   :dedent: 8
 
 .. _examples-classes-pure-virtual-member-functions:
 
@@ -401,7 +401,7 @@ Now we can create an instance of the ``Truck`` class and call the
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/pure_virtual_member_functions.cmake
    :lines: 25-30, 33-36
-   :dedent:
+   :dedent: 4
 
 .. warning::
 

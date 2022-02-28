@@ -130,15 +130,16 @@ color attribute, and print out that value:</p>
 </pre></div>
 </div>
 <p>We can also set the value of the attribute:</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="c"># Access the &quot;color&quot; attribute again and save it to the var &quot;my_autos_color&quot;</span>
-<span class="w">    </span><span class="nb">Automobile</span><span class="p">(</span><span class="s">GET</span><span class="w"> </span><span class="s2">&quot;${my_auto}&quot;</span><span class="w"> </span><span class="s">my_autos_color</span><span class="w"> </span><span class="s">color</span><span class="p">)</span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Set a new value for the &quot;color&quot; attribute</span>
+<span class="nb">Automobile</span><span class="p">(</span><span class="s">SET</span><span class="w"> </span><span class="s2">&quot;${my_auto}&quot;</span><span class="w"> </span><span class="s">color</span><span class="w"> </span><span class="s">blue</span><span class="p">)</span>
 
-<span class="w">    </span><span class="c"># Print out the value of the var &quot;my_autos_color&quot;</span>
-<span class="w">    </span><span class="nb">message</span><span class="p">(</span><span class="s2">&quot;The color of my_auto is: ${my_autos_color}&quot;</span><span class="p">)</span>
+<span class="c"># Access the &quot;color&quot; attribute again and save it to the var &quot;my_autos_color&quot;</span>
+<span class="nb">Automobile</span><span class="p">(</span><span class="s">GET</span><span class="w"> </span><span class="s2">&quot;${my_auto}&quot;</span><span class="w"> </span><span class="s">my_autos_color</span><span class="w"> </span><span class="s">color</span><span class="p">)</span>
 
-<span class="w">    </span><span class="c"># Output: The color of my_auto is: blue</span>
+<span class="c"># Print out the value of the var &quot;my_autos_color&quot;</span>
+<span class="nb">message</span><span class="p">(</span><span class="s2">&quot;The color of my_auto is: ${my_autos_color}&quot;</span><span class="p">)</span>
 
-<span class="nb">endfunction</span><span class="p">()</span>
+<span class="c"># Output: The color of my_auto is: blue</span>
 </pre></div>
 </div>
 <p>See <a class="reference internal" href="../../features/classes.html#features-classes"><span class="std std-ref">Classes</span></a> for more information about CMakePP classes.</p>
@@ -234,10 +235,10 @@ prepended to their name. Here is the function:</p>
 </pre></div>
 </div>
 <p>This function can be accessed in the same way as previous examples:</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="c"># Call the function using the instance &quot;my_auto&quot;</span>
-<span class="w">    </span><span class="nb">Automobile</span><span class="p">(</span><span class="s">describe_self</span><span class="w"> </span><span class="s2">&quot;${my_auto}&quot;</span><span class="p">)</span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Call the function using the instance &quot;my_auto&quot;</span>
+<span class="nb">Automobile</span><span class="p">(</span><span class="s">describe_self</span><span class="w"> </span><span class="s2">&quot;${my_auto}&quot;</span><span class="p">)</span>
 
-<span class="w">    </span><span class="c"># Output: I am an automobile, I am red, and I have driven 0 km.</span>
+<span class="c"># Output: I am an automobile, I am red, and I have driven 0 km.</span>
 </pre></div>
 </div>
 </section>

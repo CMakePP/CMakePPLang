@@ -16,7 +16,7 @@ this:
 
 .. literalinclude:: /../../tests/docs/source/features/exceptions/basic_try_catch.cmake
    :lines: 6-17
-   :dedent:
+   :dedent: 4
 
 Handling Multiple Types of Exceptions
 =====================================
@@ -25,7 +25,7 @@ Multiple exception handlers for different types of exceptions can be declared:
 
 .. literalinclude:: /../../tests/docs/source/features/exceptions/handle_multiple_exception_types.cmake
    :lines: 6-20, 24-26
-   :dedent:
+   :dedent: 4
 
 Nested Try-Catch Blocks
 =======================
@@ -36,7 +36,7 @@ block will be called:
 
 .. literalinclude:: /../../tests/docs/source/features/exceptions/nested_try_catch.cmake
    :lines: 6-26, 29-31
-   :dedent:
+   :dedent: 4
 
 Adding Exception Handler for All Exceptions
 ===========================================
@@ -47,4 +47,4 @@ specific handler declared for their exception type can be declared by using the
 
 .. literalinclude:: /../../tests/docs/source/features/exceptions/handle_all_exceptions.cmake
    :lines: 6-15, 18-19
-   :dedent:
+   :dedent: 4
