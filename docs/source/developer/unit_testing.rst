@@ -10,71 +10,43 @@ Testing Signatures
 ==================
 
 The CMake language is weakly typed, the CMakePP language is strongly typed.
-Because CMakePP is unit tested, users can be confident that CMakePP functions
-will correctly enforce type safety (and if they don't that is a bug).
-Unfortunately, this means that all other functions intended to implement CMakePP
-functions need to have their type-safety checked manually. This section focuses
-on how to unit-test the signatures of functions which are strongly typed, but
-are not CMakePP functions.
+Because CMakePP is unit tested, users can be confident that CMakePP language 
+functions will correctly enforce type safety (and if they don't that is a bug).
+Unfortunately, this means that all other functions intended to implement
+CMakePP functions need to have their type-safety checked manually. This section
+focuses on how to unit-test the signatures of functions which are strongly
+typed, but are not CMakePP language functions.
 
 cpp_assert_signature
 --------------------
 
-CMakePP provides the function ``cpp_assert_signature`` to facilitate the testing
-of signatures. ``cpp_assert_signature`` does the actual type-checking for you.
-In your unit test you simply need to make sure you are calling
-``cpp_assert_signature`` correctly.
+The CMakePP language provides the function ``cpp_assert_signature`` to 
+facilitate the testing of signatures. ``cpp_assert_signature`` does the actual 
+type-checking for you. In your unit test, you simply need to make sure you are 
+calling ``cpp_assert_signature`` correctly. Type-checking is only performed 
+in debug mode, so ``CMAKEPP_LANG_DEBUG_MODE`` must be toggled on when testing
+function signatures as well. Due to the performance drop that debugging mode
+can cause, it should only be enabled in the scopes where it is needed. See
+:ref:`debugging` for more information.
 
 As an example of using ``cpp_assert_signature`` consider the implementation of a
-function with the signature ``my_function(desc, bool)``. This would look like:
+function with the signature ``my_function(desc bool)``. This would look like:
 
-.. code-block:: cmake
+.. literalinclude:: /../../tests/docs/source/developer/unit_testing.cmake
+   :lines: 3-8
+   :dedent:
 
-   include(cmakepp_lang/asserts/signature)
-   function(my_function arg0 arg1)
-       cpp_assert_signature("${ARGV}" desc bool)
-       # Function implementation goes here
-   endfunction()
-
-The basic pattern is your function's first line should call
+The basic pattern is that your function's first line should call
 ``cpp_assert_signature`` with the arguments provided to your function (this is
 always ``"${ARGV}"``) and the types that each argument should be (of course you
-should use your function's actual types and not ). To make sure you are calling
-``cpp_assert_signature`` your unit-test should look like:
+should use your function's actual types). To make sure you are calling
+``cpp_assert_signature``, your unit-test should look like:
 
-.. code-block:: cmake
+.. literalinclude:: /../../tests/docs/source/developer/unit_testing.cmake
+   :lines: 1-2, 10-35
+   :dedent:
 
-   include(cmake_test/cmake_test)
-
-   ct_add_test("my_function")
-       include(path/to/my_function/implementation)
-
-       ct_add_section("signature")
-
-           ct_add_section("First argument must be a desc")
-               my_function(TRUE TRUE)
-               ct_assert_fails_as(
-                   "Assertion: bool is convertible to desc failed."
-               )
-           ct_end_section()
-
-           ct_add_section("Second argument must be a bool")
-               my_function(hello world)
-               ct_assert_fails_as(
-                   "Assertion: desc is convertible to bool failed."
-               )
-           ct_end_section()
-
-           ct_add_section("Function only takes two arguments")
-               my_function(hello TRUE 42)
-               ct_assert_fails_as(
-                   "Function takes 2 argument(s), but 3 was/were provided."
-               )
-           ct_end_section()
-       ct_end_section()
-   ct_end_test()
-
-This is admittedly boilerplate heavy, but it is also the minimum required to
+This is boilerplate heavy, but it is also the minimum required to
 make sure that you have correctly set the types of each argument and that your
 function is not variadic (in this example we did not define our function as
 variadic; if yours is variadic you can skip this check).
