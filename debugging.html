@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Debugging Code Written in CMakePP &mdash; CMakePPLang 1.0.0alpha documentation</title>
+  <title>Debugging Code Written in CMakePPLang &mdash; CMakePPLang 1.0.0alpha documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -45,8 +45,8 @@
 <li class="toctree-l1"><a class="reference internal" href="features/index.html">Language Features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conventions.html">Language Conventions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/index.html">API</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Debugging Code Written in CMakePP</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#basics">Basics</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Debugging Code Written in CMakePPLang</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#debugging-basics">Debugging Basics</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="developer/index.html">Developing CMakePP</a></li>
@@ -66,7 +66,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Debugging Code Written in CMakePP</li>
+      <li>Debugging Code Written in CMakePPLang</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/debugging.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -76,16 +76,16 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="debugging-code-written-in-cmakepp">
-<h1>Debugging Code Written in CMakePP<a class="headerlink" href="#debugging-code-written-in-cmakepp" title="Permalink to this headline"></a></h1>
+  <section id="debugging-code-written-in-cmakepplang">
+<span id="debugging"></span><h1>Debugging Code Written in CMakePPLang<a class="headerlink" href="#debugging-code-written-in-cmakepplang" title="Permalink to this headline"></a></h1>
 <p>Native CMake has limited debugging capabilities, which are limited to printing
 variables out and very verbose printing of every line that is executed by the
-interpreter. While writing CMakePP we attempted to build in more robust
-programming error checking and debugging features. These features come at a
-computational cost so they should only be used to debug/unit test your build
-systems.</p>
-<section id="basics">
-<h2>Basics<a class="headerlink" href="#basics" title="Permalink to this headline"></a></h2>
+interpreter. While writing the CMakePP language, we attempted to build in
+more robust programming error checking and debugging features. These
+features come at a computational cost so they should only be used to
+debug/unit test your build systems.</p>
+<section id="debugging-basics">
+<span id="id1"></span><h2>Debugging Basics<a class="headerlink" href="#debugging-basics" title="Permalink to this headline"></a></h2>
 <p>The variable <code class="docutils literal notranslate"><span class="pre">CMAKEPP_LANG_DEBUG_MODE</span></code> can be used to cause all CMakePP
 functions to run in debug mode. If you are familiar with the C/C++ preprocessor
 macro definition <code class="docutils literal notranslate"><span class="pre">NDEBUG</span></code> it’s the same idea, without the odd negative logic.

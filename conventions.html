@@ -50,7 +50,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="debugging.html">Debugging Code Written in CMakePP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">Debugging Code Written in CMakePPLang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="developer/index.html">Developing CMakePP</a></li>
 </ul>
 
@@ -80,37 +80,37 @@
              
   <section id="language-conventions">
 <h1>Language Conventions<a class="headerlink" href="#language-conventions" title="Permalink to this headline"></a></h1>
-<p>While you can always check the CMakePPLang documentation for how to use a
-function, CMakePP strives to also make it as easy as possible to “guess” how to
-use functions. Key to this effort is understanding the various conventions
-underlying how CMakePP decides on APIs. This chapter goes into more details
-regarding the CMakePP language conventions.</p>
+<p>While you can always check the the CMakePP language documentation for how to
+use a function, the CMakePP language strives to also make it as easy as
+possible to “guess” how to use functions. Key to this effort is understanding
+the various conventions underlying how CMakePP decides on APIs. This chapter
+goes into more details regarding CMakePP language conventions.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>CMakePP strives to have no exceptions to these conventions. If an exception
-exists (and it is not documented why it is an exception) assume it is a bug
-and please file an issue on GitHub.</p>
+<p>The CMakePP language strives to have no exceptions to these conventions.
+If an exception exists (and it is not documented why it is an exception)
+assume it is a bug and please file an <a class="reference external" href="https://github.com/CMakePP/CMakePPLang/issues">issue on GitHub</a>.</p>
 </div>
 <section id="namespaces">
 <h2>Namespaces<a class="headerlink" href="#namespaces" title="Permalink to this headline"></a></h2>
-<p>CMake has a concept of variable scope, but does not have a namespace concept.
-The most straightforward way to introduce namespaces is to mangle a prefix onto
-function and variable names. CMakePP uses the prefix <code class="docutils literal notranslate"><span class="pre">cpp_</span></code> for all commands
-that are part of the public API. This helps avoid conflicts with existing CMake
-commands, commands from other modules, as well as commands users may write.
-Similarly CMakePP uses the prefix <code class="docutils literal notranslate"><span class="pre">_cpp_</span></code> for “protected” commands and
-<code class="docutils literal notranslate"><span class="pre">__cpp_</span></code> for private commands. Note that commands in native CMake (as well
-as CMakePP) are case-insensitive meaning <code class="docutils literal notranslate"><span class="pre">CPP_</span></code> (on a command) is still the
-same namespace as <code class="docutils literal notranslate"><span class="pre">cpp_</span></code>.</p>
+<p>The CMakePP language has a concept of variable scope, but does not have a
+namespace concept. The most straightforward way to introduce namespaces is to
+mangle a prefix onto function and variable names. CMakePP uses the prefix
+<code class="docutils literal notranslate"><span class="pre">cpp_</span></code> for all commands that are part of the public API. This helps avoid
+conflicts with existing CMake commands, commands from other modules, as well
+as commands users may write. Similarly, the CMakePP language uses the prefix
+<code class="docutils literal notranslate"><span class="pre">_cpp_</span></code> for “protected” commands and <code class="docutils literal notranslate"><span class="pre">__cpp_</span></code> for private commands. Note
+that commands in native CMake (as well as CMakePP) are case-insensitive meaning
+<code class="docutils literal notranslate"><span class="pre">CPP_</span></code> (on a command) is still the same namespace as <code class="docutils literal notranslate"><span class="pre">cpp_</span></code>.</p>
 <p>In CMake variables are case-sensitive. Native CMake tends to prefix their
-configuration variables with <code class="docutils literal notranslate"><span class="pre">CMAKE_</span></code>. CMakePP follows suit with prefixes
-<code class="docutils literal notranslate"><span class="pre">CMAKEPP_LANG_</span></code> and <code class="docutils literal notranslate"><span class="pre">__CMAKEPP_LANG</span></code> respectively for public and private
-configuration variables (<code class="docutils literal notranslate"><span class="pre">_CMAKEPP_LANG</span></code> will be used if there is ever need
-for a protected variable).</p>
+configuration variables with <code class="docutils literal notranslate"><span class="pre">CMAKE_</span></code>. The CMakePP language follows suit
+with prefixes <code class="docutils literal notranslate"><span class="pre">CMAKEPP_LANG_</span></code> and <code class="docutils literal notranslate"><span class="pre">__CMAKEPP_LANG</span></code> respectively for public
+and private configuration variables (<code class="docutils literal notranslate"><span class="pre">_CMAKEPP_LANG</span></code> will be used if there
+is ever need for a protected variable).</p>
 </section>
 <section id="function-argument-order">
 <h2>Function Argument Order<a class="headerlink" href="#function-argument-order" title="Permalink to this headline"></a></h2>
-<p>The signatures of functions found in the CMakePP library all follow the same
+<p>The signatures of functions found in the CMakePP language all follow the same
 conventions when it comes to argument orders. For a non-member CMakePP function
 taking <span class="math notranslate nohighlight">\(m\)</span> arguments and returning <span class="math notranslate nohighlight">\(n\)</span> values (<span class="math notranslate nohighlight">\(n\le m\)</span>), the
 first <span class="math notranslate nohighlight">\(n\)</span> arguments will be the <span class="math notranslate nohighlight">\(n\)</span> values returned by the function
@@ -132,14 +132,14 @@ the return variable before the input arguments.</p>
 and <code class="docutils literal notranslate"><span class="pre">string</span></code> instances respectively. Within this view, a call like
 <code class="docutils literal notranslate"><span class="pre">list(LENGTH</span> <span class="pre">&lt;list_instance&gt;</span> <span class="pre">&lt;return_variable&gt;)</span></code> is calling the member
 function named <code class="docutils literal notranslate"><span class="pre">LENGTH</span></code> of the provided <code class="docutils literal notranslate"><span class="pre">list</span></code> instance and returning the
-result in the provided variable. CMakePP generalizes this convention to
-additional types, including user-defined classes.</p>
-<p>For member functions associated with a type <code class="docutils literal notranslate"><span class="pre">T</span></code>, CMakePP convention is to
-access the members via a function named <code class="docutils literal notranslate"><span class="pre">T</span></code> whose first argument is the name
-of the member function and whose second argument is the instance the member is
-being called on (<em>e.g.</em>, the <code class="docutils literal notranslate"><span class="pre">this</span></code> instance in C++ or the <code class="docutils literal notranslate"><span class="pre">self</span></code> instance
-in Python). Arguments following the object instance obey the same ordering
-conventions as non-member functions (returns followed by input).</p>
+result in the provided variable. The CMakePP language generalizes this
+convention to additional types, including user-defined classes.</p>
+<p>For member functions associated with a type <code class="docutils literal notranslate"><span class="pre">T</span></code>, CMakePP language convention
+is to access the members via a function named <code class="docutils literal notranslate"><span class="pre">T</span></code> whose first argument is the
+name of the member function and whose second argument is the instance the
+member is being called on (<em>e.g.</em>, the <code class="docutils literal notranslate"><span class="pre">this</span></code> instance in C++ or the <code class="docutils literal notranslate"><span class="pre">self</span></code>
+instance in Python). Arguments following the object instance obey the same
+ordering conventions as non-member functions (returns followed by input).</p>
 </section>
 </section>
 

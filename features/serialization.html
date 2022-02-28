@@ -43,7 +43,7 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Language Features</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="types.html">Types in CMakePP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="types.html">Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classes.html">Classes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="exceptions.html">Exception Handling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maps.html">Maps</a></li>
@@ -61,7 +61,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../conventions.html">Language Conventions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../debugging.html">Debugging Code Written in CMakePP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging.html">Debugging Code Written in CMakePPLang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developing CMakePP</a></li>
 </ul>
 
@@ -92,11 +92,11 @@
              
   <section id="serialization">
 <h1>Serialization<a class="headerlink" href="#serialization" title="Permalink to this headline"></a></h1>
-<p>CMakePP provides the ability to serialize objects, maps, and other values into
-JSON strings via the <code class="docutils literal notranslate"><span class="pre">cpp_serialize</span></code> function. We will start by covering the
-serialization of maps, lists, and native CMake types since these are fairly
-simple. Lastly, we’ll cover the serialization of objects as their serialization
-process is a bit more complicated.</p>
+<p>The CMakePP language provides the ability to serialize objects, maps, and other
+values into JSON strings via the <code class="docutils literal notranslate"><span class="pre">cpp_serialize</span></code> function. We will start by
+covering the serialization of maps, lists, and native CMake types since these
+are fairly simple. Finally, we’ll cover the serialization of objects as their
+serialization process is a bit more complicated.</p>
 <section id="the-serialization-function">
 <h2>The Serialization Function<a class="headerlink" href="#the-serialization-function" title="Permalink to this headline"></a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">cpp_serialize</span></code> function takes two arguments in the following order:</p>
@@ -109,15 +109,30 @@ process is a bit more complicated.</p>
 <h2>Serialization of Maps<a class="headerlink" href="#serialization-of-maps" title="Permalink to this headline"></a></h2>
 <p>Maps are serialized into JSON dictionaries (otherwise known as associative
 arrays).</p>
-<p>For example a map created with
-<code class="docutils literal notranslate"><span class="pre">cpp_map(CTOR</span> <span class="pre">my_map</span> <span class="pre">key_a</span> <span class="pre">value_a</span> <span class="pre">key_b</span> <span class="pre">value_b)</span></code> serializes to
-<code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">&quot;key_a&quot;</span> <span class="pre">:</span> <span class="pre">&quot;value_a&quot;,</span> <span class="pre">&quot;key_b&quot;</span> <span class="pre">:</span> <span class="pre">&quot;value_b&quot;</span> <span class="pre">}</span></code></p>
+<p>For example, if we want to serialize a map called <code class="docutils literal notranslate"><span class="pre">my_map</span></code>, we could do:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Create a map with initial key value pairs</span>
+<span class="nb">cpp_map</span><span class="p">(</span><span class="s">CTOR</span><span class="w"> </span><span class="s">my_map</span><span class="w"> </span><span class="s2">&quot;key_a&quot;</span><span class="w"> </span><span class="s2">&quot;value_a&quot;</span><span class="w"> </span><span class="s2">&quot;key_b&quot;</span><span class="w"> </span><span class="s2">&quot;value_b&quot;</span><span class="p">)</span>
+
+<span class="c"># Serialize the map</span>
+<span class="nb">cpp_serialize</span><span class="p">(</span><span class="s">my_map_serialized</span><span class="w"> </span><span class="s2">&quot;${my_map}&quot;</span><span class="p">)</span>
+
+<span class="c"># ${my_map_serialized} = { &quot;key_a&quot;: &quot;value_a&quot;, &quot;key_b&quot;: &quot;value_b&quot; }</span>
+</pre></div>
+</div>
 </section>
 <section id="serialization-of-lists">
 <h2>Serialization of Lists<a class="headerlink" href="#serialization-of-lists" title="Permalink to this headline"></a></h2>
 <p>Lists are serialized into JSON lists.</p>
-<p>For example <code class="docutils literal notranslate"><span class="pre">&quot;this;is;a;list&quot;</span></code> serializes to
-<code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">&quot;this&quot;,</span> <span class="pre">&quot;is&quot;,</span> <span class="pre">&quot;a&quot;,</span> <span class="pre">&quot;list&quot;</span> <span class="pre">]</span></code></p>
+<p>For example, a list can be serialized as follows:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Create a list</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">my_list</span><span class="w"> </span><span class="s2">&quot;this;is;a;list&quot;</span><span class="p">)</span>
+
+<span class="c"># Serialize the list</span>
+<span class="nb">cpp_serialize</span><span class="p">(</span><span class="s">my_list_serialized</span><span class="w"> </span><span class="s2">&quot;${my_list}&quot;</span><span class="p">)</span>
+
+<span class="c"># ${my_list_serialized} = [ &quot;this&quot;, &quot;is&quot;, &quot;a&quot;, &quot;list&quot; ]</span>
+</pre></div>
+</div>
 </section>
 <section id="serialization-of-other-native-cmake-types">
 <h2>Serialization of other Native CMake Types<a class="headerlink" href="#serialization-of-other-native-cmake-types" title="Permalink to this headline"></a></h2>
@@ -176,9 +191,9 @@ arrays).</p>
 </section>
 <section id="serialization-of-objects">
 <h2>Serialization of Objects<a class="headerlink" href="#serialization-of-objects" title="Permalink to this headline"></a></h2>
-<p>CMakePP serializes objects by creating a JSON dictionary with a single
-key-value pair.</p>
-<p>The key in this pair is the unique identifier that CMakePP uses
+<p>The CMakePP language serializes objects by creating a JSON dictionary with a
+single key-value pair.</p>
+<p>The key in this pair is the unique identifier that the CMakePP language uses
 to refer to the object (the value of <code class="docutils literal notranslate"><span class="pre">${my_obj}</span></code> where <code class="docutils literal notranslate"><span class="pre">my_obj</span></code> is the name
 of an obj).</p>
 <p>The value in the pair is the serialized state of the object. The serialized

@@ -12,7 +12,7 @@ interoperability.
 This documentation is primarily meant to introduce users to the CMakePP
 language. It includes some basic usage examples, an overview of the features and
 conventions of the language, auto-generated API documentation, notes on
-debugging code written in CMakePP, as well as notes for developers.
+debugging code written in the CMakePP language, as well as notes for developers.
 
 .. toctree::
    :maxdepth: 2

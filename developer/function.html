@@ -18,9 +18,7 @@
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Unit Testing CMakePPLang Functions" href="unit_testing.html" />
-    <link rel="prev" title="Developing CMakePP" href="index.html" /> 
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -41,22 +39,13 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul class="current">
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../features/index.html">Language Features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../conventions.html">Language Conventions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../debugging.html">Debugging Code Written in CMakePP</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Developing CMakePP</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">CMakePP Function Implementation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#what-it-looks-like-to-the-user">What it Looks Like to the User</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#implementation">Implementation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#understanding-ambiguities">Understanding Ambiguities</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="unit_testing.html">Unit Testing CMakePPLang Functions</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging.html">Debugging Code Written in CMakePPLang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Developing CMakePP</a></li>
 </ul>
 
         </div>
@@ -73,7 +62,6 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">Developing CMakePP</a> &raquo;</li>
       <li>CMakePP Function Implementation</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/developer/function.rst.txt" rel="nofollow"> View page source</a>
@@ -86,13 +74,18 @@
              
   <section id="cmakepp-function-implementation">
 <h1>CMakePP Function Implementation<a class="headerlink" href="#cmakepp-function-implementation" title="Permalink to this headline"></a></h1>
-<p>This page describes how CMakePP functions work.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since <cite>cpp_function</cite> does not appear to exist anymore, this page is not
+included in the documentation.</p>
+</div>
+<p>This page describes how functions work in the CMakePP language.</p>
 <section id="what-it-looks-like-to-the-user">
 <h2>What it Looks Like to the User<a class="headerlink" href="#what-it-looks-like-to-the-user" title="Permalink to this headline"></a></h2>
 <p>To frame our developer discussion let’s reiterate how CMakePP functions look to
-users of CMakePP. To that end, let’s assume our user is declaring a function
-<code class="docutils literal notranslate"><span class="pre">foo</span></code>, which takes an <code class="docutils literal notranslate"><span class="pre">int</span></code> and a <code class="docutils literal notranslate"><span class="pre">bool</span></code>. For this scenario, the user
-writes code something akin to:</p>
+users of the CMakePP language. To that end, let’s assume our user is declaring
+a function <code class="docutils literal notranslate"><span class="pre">foo</span></code>, which takes an <code class="docutils literal notranslate"><span class="pre">int</span></code> and a <code class="docutils literal notranslate"><span class="pre">bool</span></code>. For this scenario,
+the user writes code something akin to:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">include</span><span class="p">(</span><span class="s">cmakepp_lang/function/function</span><span class="p">)</span>
 
 <span class="nb">cpp_function</span><span class="p">(</span><span class="s">foo</span><span class="w"> </span><span class="s">int</span><span class="w"> </span><span class="s">bool</span><span class="p">)</span>
@@ -102,21 +95,22 @@ writes code something akin to:</p>
 </pre></div>
 </div>
 <p>When this code is run it will introduce a function <code class="docutils literal notranslate"><span class="pre">foo</span></code> into the current
-scope. It is expected that users will writing CMakePP functions in CMake
+scope. It is expected that users will be writing CMakePP functions in CMake
 modules, hence usage of <code class="docutils literal notranslate"><span class="pre">foo</span></code> looks something like:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">include</span><span class="p">(</span><span class="s">path/to/foo/module</span><span class="p">)</span>
 
 <span class="nb">foo</span><span class="p">(</span><span class="s">3</span><span class="w"> </span><span class="s">TRUE</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>It bears mentioning that CMakePP functions can be variadic and they can be
-overloaded for different numbers/types of positional arguments.</p>
+<p>It bears mentioning that functions in the CMakePP language can be variadic and
+they can be overloaded for different numbers/types of positional arguments.</p>
 </section>
 <section id="implementation">
 <h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline"></a></h2>
 <p>Like C++, each overload of a function is actually mapped to a unique name. The
-process of mapping overloads to unique names is called name mangling. It is the
-mangled name that is returned from <cite>cpp_function</cite>. Hence when a user does:</p>
+process of mapping overloads to unique names is called <strong>name mangling</strong>. It
+is the mangled name that is returned from <cite>cpp_function</cite>. Hence, when a user
+does:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cpp_function</span><span class="p">(</span><span class="s">foo</span><span class="w"> </span><span class="s">int</span><span class="p">)</span>
 <span class="nb">function</span><span class="p">(</span><span class="s2">&quot;${foo}&quot;</span><span class="w"> </span><span class="s">arg0</span><span class="p">)</span>
 <span class="nb">endfunction</span><span class="p">()</span>
@@ -124,28 +118,30 @@ mangled name that is returned from <cite>cpp_function</cite>. Hence when a user 
 </div>
 <p>What they are really doing is defining a function whose name is the mangled
 name. In order to give the user the illusion of overloads, as part of
-<cite>cpp_function</cite> CMakePP creates a wrapper function <code class="docutils literal notranslate"><span class="pre">foo</span></code> whose contents are:</p>
+<cite>cpp_function</cite>, the CMakePP language creates a wrapper function <code class="docutils literal notranslate"><span class="pre">foo</span></code> whose
+contents are:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">macro</span><span class="p">(</span><span class="s">foo</span><span class="p">)</span>
 <span class="w">    </span><span class="nb">_cpp_function_call_overload</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="w"> </span><span class="o">${</span><span class="nv">ARGN</span><span class="o">}</span><span class="p">)</span>
 <span class="nb">endmacro</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>This wrapper ultimately mangles the name of the function with the arguments and
+<p>This wrapper ultimately mangles the name of the function with the arguments,
 then uses the initializer function pattern to call the implementation defined
 under the mangled name.</p>
 <p>Determining the mangled name is a little bit tricky because the same set of
-objects could conceivably be given to multiple overloads. For example passing an
-<code class="docutils literal notranslate"><span class="pre">foo(3</span> <span class="pre">hello)</span></code> could be perceived as trying to call <code class="docutils literal notranslate"><span class="pre">foo(int,</span> <span class="pre">desc)</span></code>,
-<code class="docutils literal notranslate"><span class="pre">foo(int,</span> <span class="pre">args)</span></code>, or <code class="docutils literal notranslate"><span class="pre">foo(args)</span></code>. While CMakePP forbids the user from
-defining more than one of these overloads at any given time, we still need to
-know which overload the user defined. Rather than try all of the possible
-overloads (the number of which grows linearly with the number of arguments,
-ignoring implicit casts, or exponentially when we need to try combinations of
-implicit casts) CMakePP simply keeps a record of the overloads the user has
-defined so far for the function. This record is held in a global map whose keys
-are the types provided to the signature and the values are the mangled names. In
-practice users tend to only define a couple overloads for a function so we only
-need to consider an approximately constant number of overloads.</p>
+objects could conceivably be given to multiple overloads. For example, calling
+<code class="docutils literal notranslate"><span class="pre">foo(3</span> <span class="pre">hello)</span></code> could be perceived as trying to call <code class="docutils literal notranslate"><span class="pre">foo(int</span> <span class="pre">desc)</span></code>,
+<code class="docutils literal notranslate"><span class="pre">foo(int</span> <span class="pre">args)</span></code>, or <code class="docutils literal notranslate"><span class="pre">foo(args)</span></code>. While the CMakePP language forbids the
+user from defining more than one of these overloads at any given time, we
+still need to know which overload the user defined. Rather than try all of the
+possible overloads (the number of which grows linearly with the number of
+arguments, ignoring implicit casts, or exponentially when we need to try
+combinations of implicit casts) the CMakePP language simply keeps a record of
+the overloads the user has defined so far for the function. This record is held
+in a global map whose keys are the types provided to the signature and the
+values are the mangled names. In practice, users tend to only define a couple
+overloads for a function so we only need to consider an approximately constant
+number of overloads.</p>
 <p>The process is summarized in the following UML diagram.</p>
 <img alt="../_images/cpp_function.png" src="../_images/cpp_function.png" />
 </section>
@@ -164,14 +160,14 @@ is the type of the <span class="math notranslate nohighlight">\(i\)</span>-th po
 <span class="math notranslate nohighlight">\(n\)</span>-tuple such that the first <span class="math notranslate nohighlight">\((n-1)\)</span> elements of the tuple are the
 types of the required positional arguments and the <span class="math notranslate nohighlight">\(n\)</span>-th element is an
 opaque object holding the provided variadic arguments.</p>
-<p>Without loss of generality, we assume that our two overloads,:math:<cite>O_a</cite> and
+<p>Without loss of generality, we assume that our two overloads, <span class="math notranslate nohighlight">\(O_a\)</span> and
 <span class="math notranslate nohighlight">\(O_b\)</span> respectively take <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(m\)</span> total arguments such that
 <span class="math notranslate nohighlight">\(n\le m\)</span>. As previously discussed, variadic arguments, if present, are
-wrapped into a single opaque object. For variadic functions the opaque object is
-always the last element of the tuple. The first <span class="math notranslate nohighlight">\(\ell\)</span> elements of a tuple
-will be denoted with a superscript, for example the first <span class="math notranslate nohighlight">\(\ell\)</span> elements
-of <span class="math notranslate nohighlight">\(O_a\)</span> is denoted <span class="math notranslate nohighlight">\(O_a^{(\ell)}\)</span>.</p>
-<p>If <span class="math notranslate nohighlight">\(n\)</span> equals <span class="math notranslate nohighlight">\(m\)</span> there exists a trivial ambiguity when
+wrapped into a single opaque object. For variadic functions, the opaque object
+is always the last element of the tuple. The first <span class="math notranslate nohighlight">\(\ell\)</span> elements of a
+tuple will be denoted with a superscript, for example the first <span class="math notranslate nohighlight">\(\ell\)</span>
+elements of <span class="math notranslate nohighlight">\(O_a\)</span> are denoted <span class="math notranslate nohighlight">\(O_a^{(\ell)}\)</span>.</p>
+<p>If <span class="math notranslate nohighlight">\(n\)</span> equals <span class="math notranslate nohighlight">\(m\)</span>, there exists a trivial ambiguity when
 <span class="math notranslate nohighlight">\(O_a^{(n)}\)</span> equals <span class="math notranslate nohighlight">\(O_b^{(m)}\)</span>, <em>i.e.</em>, the overloads are exactly
 the same signature. For non-variadic functions this looks something like:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Overload a with n == 2</span>
@@ -292,10 +288,7 @@ table.</p>
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index.html" class="btn btn-neutral float-left" title="Developing CMakePP" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="unit_testing.html" class="btn btn-neutral float-right" title="Unit Testing CMakePPLang Functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 

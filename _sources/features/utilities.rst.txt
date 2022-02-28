@@ -2,7 +2,7 @@
 Utilities
 *********
 
-CMakePP provides the following utility commands:
+The CMakePP language provides the following utility commands:
 
 - ``cpp_equal`` for checking for equality between two variables
 - ``cpp_serialize`` for serializing a variable into a JSON string
@@ -19,4 +19,4 @@ CMakePP provides the following utility commands:
 - ``cpp_append_global`` for appending a value to a global variable
 - ``cpp_unique_id`` for creating a unique identifier
 
-Examples of using these functions can be found :ref:`using-utilities`.
+Examples of using these functions can be found :ref:`examples-utilities`.

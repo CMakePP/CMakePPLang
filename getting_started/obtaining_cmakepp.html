@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Obtaining CMakePP &mdash; CMakePPLang 1.0.0alpha documentation</title>
+  <title>Obtaining CMakePPLang &mdash; CMakePPLang 1.0.0alpha documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -18,7 +18,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="CMakePP Examples" href="cmakepp_examples/index.html" />
+    <link rel="next" title="CMakePPLang Examples" href="cmakepp_examples/index.html" />
     <link rel="prev" title="Getting Started" href="index.html" /> 
 </head>
 
@@ -42,17 +42,17 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Getting Started</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Obtaining CMakePP</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#automatically-downloading-and-including-cmakepp">Automatically Downloading and Including CMakePP</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Obtaining CMakePPLang</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#automatically-downloading-and-including-cmakepplang">Automatically Downloading and Including CMakePPLang</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="cmakepp_examples/index.html">CMakePP Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmakepp_examples/index.html">CMakePPLang Examples</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../features/index.html">Language Features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../conventions.html">Language Conventions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../debugging.html">Debugging Code Written in CMakePP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging.html">Debugging Code Written in CMakePPLang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developing CMakePP</a></li>
 </ul>
 
@@ -71,7 +71,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="index.html">Getting Started</a> &raquo;</li>
-      <li>Obtaining CMakePP</li>
+      <li>Obtaining CMakePPLang</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/getting_started/obtaining_cmakepp.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -81,13 +81,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="obtaining-cmakepp">
-<h1>Obtaining CMakePP<a class="headerlink" href="#obtaining-cmakepp" title="Permalink to this headline"></a></h1>
-<p>This section details two ways of obtaining CMakePP for use in your build system.
-The easiest way to use CMakePP in your project is to
-<a class="reference internal" href="#auto-downloading-cmakepp"><span class="std std-ref">Automatically Downloading and Including CMakePP</span></a>.</p>
-<section id="automatically-downloading-and-including-cmakepp">
-<span id="auto-downloading-cmakepp"></span><h2>Automatically Downloading and Including CMakePP<a class="headerlink" href="#automatically-downloading-and-including-cmakepp" title="Permalink to this headline"></a></h2>
+  <section id="obtaining-cmakepplang">
+<h1>Obtaining CMakePPLang<a class="headerlink" href="#obtaining-cmakepplang" title="Permalink to this headline"></a></h1>
+<p>This section details two ways of obtaining CMakePPLang for use in your build
+system. The easiest way to use the CMakePP language in your project is to
+<a class="reference internal" href="#auto-downloading-cmakepp"><span class="std std-ref">Automatically Downloading and Including CMakePPLang</span></a>.</p>
+<section id="automatically-downloading-and-including-cmakepplang">
+<span id="auto-downloading-cmakepp"></span><h2>Automatically Downloading and Including CMakePPLang<a class="headerlink" href="#automatically-downloading-and-including-cmakepplang" title="Permalink to this headline"></a></h2>
 <p>As a convenience to your users you can make it so that your build system
 automatically downloads CMakePP and includes it. The easiest way to do this is
 to put the following CMake script in a file <code class="docutils literal notranslate"><span class="pre">cmake/get_cpp.cmake</span></code>:</p>
@@ -109,8 +109,8 @@ to put the following CMake script in a file <code class="docutils literal notran
 <span class="w">    </span><span class="c"># Download CMakePP and bring it into scope</span>
 <span class="w">    </span><span class="nb">include</span><span class="p">(</span><span class="s">FetchContent</span><span class="p">)</span>
 <span class="w">    </span><span class="nb">FetchContent_Declare</span><span class="p">(</span>
-<span class="w">         </span><span class="s">cpp</span>
-<span class="w">         </span><span class="s">GIT_REPOSITORY</span><span class="w"> </span><span class="s">https://github.com/CMakePP/CMakePackagingProject</span>
+<span class="w">        </span><span class="s">cpp</span>
+<span class="w">        </span><span class="s">GIT_REPOSITORY</span><span class="w"> </span><span class="s">https://github.com/CMakePP/CMakePackagingProject</span>
 <span class="w">    </span><span class="p">)</span>
 <span class="w">    </span><span class="nb">FetchContent_MakeAvailable</span><span class="p">(</span><span class="s">cpp</span><span class="p">)</span>
 
@@ -141,7 +141,7 @@ configuration. Users can use an already downloaded CMakePP by setting
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="index.html" class="btn btn-neutral float-left" title="Getting Started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="cmakepp_examples/index.html" class="btn btn-neutral float-right" title="CMakePP Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="cmakepp_examples/index.html" class="btn btn-neutral float-right" title="CMakePPLang Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
