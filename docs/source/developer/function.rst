@@ -2,15 +2,20 @@
 CMakePP Function Implementation
 *******************************
 
-This page describes how CMakePP functions work.
+.. note::
+
+   Since `cpp_function` does not appear to exist anymore, this page is not 
+   included in the documentation.
+
+This page describes how functions work in the CMakePP language.
 
 What it Looks Like to the User
 ==============================
 
 To frame our developer discussion let's reiterate how CMakePP functions look to
-users of CMakePP. To that end, let's assume our user is declaring a function
-``foo``, which takes an ``int`` and a ``bool``. For this scenario, the user
-writes code something akin to:
+users of the CMakePP language. To that end, let's assume our user is declaring 
+a function ``foo``, which takes an ``int`` and a ``bool``. For this scenario, 
+the user writes code something akin to:
 
 .. code-block:: cmake
 
@@ -22,7 +27,7 @@ writes code something akin to:
    endfunction()
 
 When this code is run it will introduce a function ``foo`` into the current
-scope. It is expected that users will writing CMakePP functions in CMake
+scope. It is expected that users will be writing CMakePP functions in CMake
 modules, hence usage of ``foo`` looks something like:
 
 .. code-block:: cmake
@@ -31,15 +36,16 @@ modules, hence usage of ``foo`` looks something like:
 
    foo(3 TRUE)
 
-It bears mentioning that CMakePP functions can be variadic and they can be
-overloaded for different numbers/types of positional arguments.
+It bears mentioning that functions in the CMakePP language can be variadic and 
+they can be overloaded for different numbers/types of positional arguments.
 
 Implementation
 ==============
 
 Like C++, each overload of a function is actually mapped to a unique name. The
-process of mapping overloads to unique names is called name mangling. It is the
-mangled name that is returned from `cpp_function`. Hence when a user does:
+process of mapping overloads to unique names is called **name mangling**. It 
+is the mangled name that is returned from `cpp_function`. Hence, when a user 
+does:
 
 .. code-block:: cmake
 
@@ -49,7 +55,8 @@ mangled name that is returned from `cpp_function`. Hence when a user does:
 
 What they are really doing is defining a function whose name is the mangled
 name. In order to give the user the illusion of overloads, as part of
-`cpp_function` CMakePP creates a wrapper function ``foo`` whose contents are:
+`cpp_function`, the CMakePP language creates a wrapper function ``foo`` whose 
+contents are:
 
 .. code-block:: cmake
 
@@ -57,23 +64,24 @@ name. In order to give the user the illusion of overloads, as part of
        _cpp_function_call_overload("foo" ${ARGN})
    endmacro()
 
-This wrapper ultimately mangles the name of the function with the arguments and
+This wrapper ultimately mangles the name of the function with the arguments,
 then uses the initializer function pattern to call the implementation defined
 under the mangled name.
 
 Determining the mangled name is a little bit tricky because the same set of
-objects could conceivably be given to multiple overloads. For example passing an
-``foo(3 hello)`` could be perceived as trying to call ``foo(int, desc)``,
-``foo(int, args)``, or ``foo(args)``. While CMakePP forbids the user from
-defining more than one of these overloads at any given time, we still need to
-know which overload the user defined. Rather than try all of the possible
-overloads (the number of which grows linearly with the number of arguments,
-ignoring implicit casts, or exponentially when we need to try combinations of
-implicit casts) CMakePP simply keeps a record of the overloads the user has
-defined so far for the function. This record is held in a global map whose keys
-are the types provided to the signature and the values are the mangled names. In
-practice users tend to only define a couple overloads for a function so we only
-need to consider an approximately constant number of overloads.
+objects could conceivably be given to multiple overloads. For example, calling 
+``foo(3 hello)`` could be perceived as trying to call ``foo(int desc)``,
+``foo(int args)``, or ``foo(args)``. While the CMakePP language forbids the 
+user from defining more than one of these overloads at any given time, we 
+still need to know which overload the user defined. Rather than try all of the 
+possible overloads (the number of which grows linearly with the number of 
+arguments, ignoring implicit casts, or exponentially when we need to try 
+combinations of implicit casts) the CMakePP language simply keeps a record of 
+the overloads the user has defined so far for the function. This record is held 
+in a global map whose keys are the types provided to the signature and the 
+values are the mangled names. In practice, users tend to only define a couple 
+overloads for a function so we only need to consider an approximately constant 
+number of overloads.
 
 The process is summarized in the following UML diagram.
 
@@ -96,15 +104,15 @@ is the type of the :math:`i`-th positional argument. A variadic overload with
 types of the required positional arguments and the :math:`n`-th element is an
 opaque object holding the provided variadic arguments.
 
-Without loss of generality, we assume that our two overloads,:math:`O_a` and
+Without loss of generality, we assume that our two overloads, :math:`O_a` and
 :math:`O_b` respectively take :math:`n` and :math:`m` total arguments such that
 :math:`n\le m`. As previously discussed, variadic arguments, if present, are
-wrapped into a single opaque object. For variadic functions the opaque object is
-always the last element of the tuple. The first :math:`\ell` elements of a tuple
-will be denoted with a superscript, for example the first :math:`\ell` elements
-of :math:`O_a` is denoted :math:`O_a^{(\ell)}`.
+wrapped into a single opaque object. For variadic functions, the opaque object 
+is always the last element of the tuple. The first :math:`\ell` elements of a 
+tuple will be denoted with a superscript, for example the first :math:`\ell` 
+elements of :math:`O_a` are denoted :math:`O_a^{(\ell)}`.
 
-If :math:`n` equals :math:`m` there exists a trivial ambiguity when
+If :math:`n` equals :math:`m`, there exists a trivial ambiguity when
 :math:`O_a^{(n)}` equals :math:`O_b^{(m)}`, *i.e.*, the overloads are exactly
 the same signature. For non-variadic functions this looks something like:
 

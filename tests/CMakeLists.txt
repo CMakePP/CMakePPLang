@@ -27,6 +27,7 @@ set(BUILD_TESTING "${build_testing_old}" CACHE BOOL "" FORCE)
 ct_add_dir(algorithm)
 ct_add_dir(asserts)
 ct_add_dir(class)
+ct_add_dir(docs)
 ct_add_dir(examples)
 ct_add_dir(exceptions)
 ct_add_dir(map)
@@ -37,4 +38,4 @@ ct_add_dir(utilities)
 
 
 # Stress tests can take a long time to run
-ct_add_dir(stress_tests)
+#ct_add_dir(stress_tests)

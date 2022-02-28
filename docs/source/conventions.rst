@@ -2,41 +2,42 @@
 Language Conventions
 ********************
 
-While you can always check the CMakePPLang documentation for how to use a
-function, CMakePP strives to also make it as easy as possible to "guess" how to
-use functions. Key to this effort is understanding the various conventions
-underlying how CMakePP decides on APIs. This chapter goes into more details
-regarding the CMakePP language conventions.
+While you can always check the the CMakePP language documentation for how to 
+use a function, the CMakePP language strives to also make it as easy as 
+possible to "guess" how to use functions. Key to this effort is understanding 
+the various conventions underlying how CMakePP decides on APIs. This chapter 
+goes into more details regarding CMakePP language conventions.
 
 .. note::
 
-   CMakePP strives to have no exceptions to these conventions. If an exception
-   exists (and it is not documented why it is an exception) assume it is a bug
-   and please file an issue on GitHub.
+   The CMakePP language strives to have no exceptions to these conventions. 
+   If an exception exists (and it is not documented why it is an exception) 
+   assume it is a bug and please file an `issue on GitHub 
+   <https://github.com/CMakePP/CMakePPLang/issues>`__.
 
 Namespaces
 ==========
 
-CMake has a concept of variable scope, but does not have a namespace concept.
-The most straightforward way to introduce namespaces is to mangle a prefix onto
-function and variable names. CMakePP uses the prefix ``cpp_`` for all commands
-that are part of the public API. This helps avoid conflicts with existing CMake
-commands, commands from other modules, as well as commands users may write.
-Similarly CMakePP uses the prefix ``_cpp_`` for "protected" commands and
-``__cpp_`` for private commands. Note that commands in native CMake (as well
-as CMakePP) are case-insensitive meaning ``CPP_`` (on a command) is still the
-same namespace as ``cpp_``.
+The CMakePP language has a concept of variable scope, but does not have a 
+namespace concept. The most straightforward way to introduce namespaces is to 
+mangle a prefix onto function and variable names. CMakePP uses the prefix 
+``cpp_`` for all commands that are part of the public API. This helps avoid 
+conflicts with existing CMake commands, commands from other modules, as well 
+as commands users may write. Similarly, the CMakePP language uses the prefix 
+``_cpp_`` for "protected" commands and ``__cpp_`` for private commands. Note 
+that commands in native CMake (as well as CMakePP) are case-insensitive meaning
+``CPP_`` (on a command) is still the same namespace as ``cpp_``.
 
 In CMake variables are case-sensitive. Native CMake tends to prefix their
-configuration variables with ``CMAKE_``. CMakePP follows suit with prefixes
-``CMAKEPP_LANG_`` and ``__CMAKEPP_LANG`` respectively for public and private
-configuration variables (``_CMAKEPP_LANG`` will be used if there is ever need
-for a protected variable).
+configuration variables with ``CMAKE_``. The CMakePP language follows suit
+with prefixes ``CMAKEPP_LANG_`` and ``__CMAKEPP_LANG`` respectively for public
+and private configuration variables (``_CMAKEPP_LANG`` will be used if there
+is ever need for a protected variable).
 
 Function Argument Order
 =======================
 
-The signatures of functions found in the CMakePP library all follow the same
+The signatures of functions found in the CMakePP language all follow the same
 conventions when it comes to argument orders. For a non-member CMakePP function
 taking :math:`m` arguments and returning :math:`n` values (:math:`n\le m`), the
 first :math:`n` arguments will be the :math:`n` values returned by the function
@@ -59,12 +60,12 @@ For all intents and purposes we can think of CMake's native ``list()`` and
 and ``string`` instances respectively. Within this view, a call like
 ``list(LENGTH <list_instance> <return_variable>)`` is calling the member
 function named ``LENGTH`` of the provided ``list`` instance and returning the
-result in the provided variable. CMakePP generalizes this convention to
-additional types, including user-defined classes.
+result in the provided variable. The CMakePP language generalizes this
+convention to additional types, including user-defined classes.
 
-For member functions associated with a type ``T``, CMakePP convention is to
-access the members via a function named ``T`` whose first argument is the name
-of the member function and whose second argument is the instance the member is
-being called on (*e.g.*, the ``this`` instance in C++ or the ``self`` instance
-in Python). Arguments following the object instance obey the same ordering
-conventions as non-member functions (returns followed by input).
+For member functions associated with a type ``T``, CMakePP language convention 
+is to access the members via a function named ``T`` whose first argument is the
+name of the member function and whose second argument is the instance the 
+member is being called on (*e.g.*, the ``this`` instance in C++ or the ``self``
+instance in Python). Arguments following the object instance obey the same 
+ordering conventions as non-member functions (returns followed by input).
