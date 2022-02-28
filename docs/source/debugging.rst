@@ -1,8 +1,8 @@
 .. _debugging:
 
-*********************************
-Debugging Code Written in CMakePP
-*********************************
+*************************************
+Debugging Code Written in CMakePPLang
+*************************************
 
 Native CMake has limited debugging capabilities, which are limited to printing
 variables out and very verbose printing of every line that is executed by the

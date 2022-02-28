@@ -1,9 +1,9 @@
-*****************
-Obtaining CMakePP
-*****************
+*********************
+Obtaining CMakePPLang
+*********************
 
-This section details two ways of obtaining CMakePP for use in your build system.
-The easiest way to use CMakePP in your project is to
+This section details two ways of obtaining CMakePPLang for use in your build 
+system. The easiest way to use the CMakePP language in your project is to
 :ref:`auto-downloading-cmakepp`.
 
 .. TODO Docs on downloading source and manually buildig CMakePP
@@ -12,8 +12,8 @@ The easiest way to use CMakePP in your project is to
 
 .. _auto-downloading-cmakepp:
 
-Automatically Downloading and Including CMakePP
-===============================================
+Automatically Downloading and Including CMakePPLang
+===================================================
 
 As a convenience to your users you can make it so that your build system
 automatically downloads CMakePP and includes it. The easiest way to do this is

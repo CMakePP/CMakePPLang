@@ -1,8 +1,8 @@
 .. _features-types:
 
-****************
-Types in CMakePP
-****************
+*****
+Types
+*****
 
 Native CMake is a weakly typed language where all values are strings, and, in
 certain circumstances, certain strings are interpreted as being of another type.
@@ -201,8 +201,8 @@ type.
 
 .. _features-types-cmakepp:
 
-CMakePP Types
-=============
+CMakePPLang Types
+=================
 
 .. _features-types-cmakepp-class:
 
