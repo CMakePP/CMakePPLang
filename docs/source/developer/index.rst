@@ -8,5 +8,7 @@ to developers contributing to CMakePPLang.
 .. toctree::
    :maxdepth: 2
 
-   function
    unit_testing
+
+.. 'function' has been removed from the toc since 'cpp_function' doesn't 
+.. appear to exist anymore
