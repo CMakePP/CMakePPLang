@@ -17,7 +17,7 @@ variables, including objects and maps.
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/utilities/variable_equality.cmake
    :lines: 6-21
-   :dedent:
+   :dedent: 4
 
 .. note::
 
@@ -33,7 +33,7 @@ We can use ``cpp_serialize`` to serialize a variable into a JSON string:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/utilities/variable_serialization.cmake
    :lines: 6-18
-   :dedent:
+   :dedent: 4
 
 Copying a Variable
 ==================
@@ -43,7 +43,7 @@ regardless of what type it is:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/utilities/variable_copy.cmake
    :lines: 6-20
-   :dedent:
+   :dedent: 4
 
 Checking if Variable Contains a Value
 =====================================
@@ -60,7 +60,7 @@ We can use ``cpp_contains`` to check if a
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/utilities/variable_desc_contains_substring.cmake
    :lines: 6-22
-   :dedent:
+   :dedent: 4
 
 Check if a List Contains a Value
 --------------------------------
@@ -70,7 +70,7 @@ contains a value:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/utilities/variable_list_contains_value.cmake
    :lines: 6-22
-   :dedent:
+   :dedent: 4
 
 .. note::
 
@@ -84,7 +84,7 @@ contains a key:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/utilities/variable_map_contains_key.cmake
    :lines: 6-19
-   :dedent:
+   :dedent: 4
 
 Determining the Type of a Variable
 ==================================
@@ -94,7 +94,7 @@ variable or value:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/utilities/variable_type.cmake
    :lines: 6-10
-   :dedent:
+   :dedent: 4
 
 .. note::
 
@@ -107,7 +107,7 @@ We can use ``cpp_assert`` to assert that a given value is true:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/utilities/assert.cmake
    :lines: 8-11, 16-18
-   :dedent:
+   :dedent: 8
 
 If an assert fails, it will stop the execution of the program and print the
 provided assertion message along with the call stack from where the assertion
@@ -120,7 +120,7 @@ We can use ``cpp_file_exists`` to check if files exist:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/utilities/file_exists.cmake
    :lines: 6-20
-   :dedent:
+   :dedent: 4
 
 .. note::
    
@@ -134,7 +134,7 @@ get, set, and append global values:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/utilities/global_variables.cmake
    :lines: 6-14, 17-24
-   :dedent:
+   :dedent: 4
 
 Creating a Unique Identifier
 ============================
@@ -143,4 +143,4 @@ We can use ``cpp_unique_id`` to create a unique identifier:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/utilities/create_unique_id.cmake
    :lines: 6-10
-   :dedent:
+   :dedent: 4

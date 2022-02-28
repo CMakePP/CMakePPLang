@@ -15,7 +15,7 @@ The map constructor is used to create an empty map:
 
 .. literalinclude:: /../../tests/docs/source/features/maps.cmake
    :lines: 11-12
-   :dedent:
+   :dedent: 4
 
 Optionally, key-value pairs can be provided to the map constructor. You must
 simply add keys and their corresponding values as arguments passed to the
@@ -23,7 +23,7 @@ constructor:
 
 .. literalinclude:: /../../tests/docs/source/features/maps.cmake
    :lines: 14-15
-   :dedent:
+   :dedent: 4
 
 Setting Values
 ==============
@@ -32,7 +32,7 @@ Values can be set by using the ``SET`` keyword:
 
 .. literalinclude:: /../../tests/docs/source/features/maps.cmake
    :lines: 17-18
-   :dedent:
+   :dedent: 4
 
 Accessing Values
 ================
@@ -41,7 +41,7 @@ Values can be accessed using ``GET`` keyword:
 
 .. literalinclude:: /../../tests/docs/source/features/maps.cmake
    :lines: 20-21
-   :dedent:
+   :dedent: 4
 
 Appending Values
 ================
@@ -50,7 +50,7 @@ Values can be appended by using the ``APPEND`` keyword:
 
 .. literalinclude:: /../../tests/docs/source/features/maps.cmake
    :lines: 25-26
-   :dedent:
+   :dedent: 4
 
 Copying a Map
 =============
@@ -59,7 +59,7 @@ Maps can be copied using the ``COPY`` keyword:
 
 .. literalinclude:: /../../tests/docs/source/features/maps.cmake
    :lines: 34-35
-   :dedent:
+   :dedent: 4
 
 Checking Equality of Maps
 =========================
@@ -68,7 +68,7 @@ Map equality can be checked using the ``EQUAL`` keyword:
 
 .. literalinclude:: /../../tests/docs/source/features/maps.cmake
    :lines: 37-38
-   :dedent:
+   :dedent: 4
 
 Checking if a Map has a Key
 ===========================
@@ -77,7 +77,7 @@ Check whether the map contains a key with the ``HAS_KEY`` keyword:
 
 .. literalinclude:: /../../tests/docs/source/features/maps.cmake
    :lines: 42-43
-   :dedent:
+   :dedent: 4
 
 Getting a Map's Keys
 ====================
@@ -86,4 +86,4 @@ A list of a map's keys can be retrieved using the ``KEYS`` keyword:
 
 .. literalinclude:: /../../tests/docs/source/features/maps.cmake
    :lines: 47-48
-   :dedent:
+   :dedent: 4

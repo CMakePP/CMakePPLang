@@ -235,7 +235,7 @@ Member function definitions are structured in the following way:
 
 .. literalinclude:: /../../tests/docs/source/features/classes/define_member_function.cmake
    :lines: 6-21
-   :dedent:
+   :dedent: 4
 
 The structure of the above function definition contains the following pieces:
 
@@ -298,7 +298,6 @@ can be done in the following way:
 
 .. literalinclude:: /../../tests/docs/source/features/classes/function_overloading.cmake
    :lines: 3-17
-   :dedent:
 
 .. _features-classes-function-overload-resolution:
 
@@ -314,7 +313,7 @@ the above implementations in the following way:
 
 .. literalinclude:: /../../tests/docs/source/features/classes/function_overloading.cmake
    :lines: 22-29, 32-35
-   :dedent:
+   :dedent: 4
 
 .. note::
 
@@ -360,7 +359,6 @@ inherit from. We will use the following parent class:
 
 .. literalinclude:: /../../tests/docs/source/features/classes/derived_class.cmake
    :lines: 3-21
-   :dedent:
 
 To create a class called ``ChildClass`` that derives from ``ParentClass`` we
 just need to pass ``ParentClass`` as a parameter into the ``cpp_class``
@@ -368,7 +366,6 @@ statement we use to declare ``ChildClass``. This looks like:
 
 .. literalinclude:: /../../tests/docs/source/features/classes/derived_class.cmake
    :lines: 23-27
-   :dedent:
 
 We can define ``ChildClass`` that:
 
@@ -383,7 +380,6 @@ This can be done with the following:
 
 .. literalinclude:: /../../tests/docs/source/features/classes/derived_class.cmake
    :lines: 29-49
-   :dedent:
 
 .. _features-classes-using-derived-class:
 
@@ -394,21 +390,21 @@ We can create an instance of our derived class using the following:
 
 .. literalinclude:: /../../tests/docs/source/features/classes/derived_class.cmake
    :lines: 54-55
-   :dedent:
+   :dedent: 4
 
 The **inherited** attributes and functions of the parent class can be accessed
 through the derived class as well as the parent class:
 
 .. literalinclude:: /../../tests/docs/source/features/classes/derived_class.cmake
    :lines: 57-63
-   :dedent:
+   :dedent: 4
 
 The **overidden** attributes and functions in the derived class can be through
 the derived class as well as well as the parent class:
 
 .. literalinclude:: /../../tests/docs/source/features/classes/derived_class.cmake
    :lines: 65-71
-   :dedent:
+   :dedent: 4
 
 The **newly declared** attributes and functions in the derived class that are
 not present in the parent class can be accessed through the derived class as
@@ -416,7 +412,7 @@ well as the parent class:
 
 .. literalinclude:: /../../tests/docs/source/features/classes/derived_class.cmake
    :lines: 73-81
-   :dedent:
+   :dedent: 4
 
 .. _features-classes-multiple-class-inheritance:
 
@@ -458,26 +454,24 @@ virtual member function ``my_virtual_fxn`` with the following:
 
 .. literalinclude:: /../../tests/docs/source/features/classes/pure_virtual_member_functions.cmake
    :lines: 3-9
-   :dedent:
 
 Now we can create a class that derives from ``ParentClass`` and overrides
 ``my_virtual_fxn`` called ``ChildClass``:
 
 .. literalinclude:: /../../tests/docs/source/features/classes/pure_virtual_member_functions.cmake
    :lines: 11-19
-   :dedent:
 
 The overridden implementation can be called with an instance of ``ChildClass``:
 
 .. literalinclude:: /../../tests/docs/source/features/classes/pure_virtual_member_functions.cmake
    :lines: 24-27
-   :dedent:
+   :dedent: 4
 
 or using ``ParentClass`` with a ``ChildClass`` instance:
 
 .. literalinclude:: /../../tests/docs/source/features/classes/pure_virtual_member_functions.cmake
    :lines: 31-33
-   :dedent:
+   :dedent: 4
 
 .. warning::
 
