@@ -34,7 +34,6 @@ function with the signature ``my_function(desc bool)``. This would look like:
 
 .. literalinclude:: /../../tests/docs/source/developer/unit_testing.cmake
    :lines: 3-8
-   :dedent:
 
 The basic pattern is that your function's first line should call
 ``cpp_assert_signature`` with the arguments provided to your function (this is
@@ -44,7 +43,6 @@ should use your function's actual types). To make sure you are calling
 
 .. literalinclude:: /../../tests/docs/source/developer/unit_testing.cmake
    :lines: 1-2, 10-35
-   :dedent:
 
 This is boilerplate heavy, but it is also the minimum required to
 make sure that you have correctly set the types of each argument and that your
