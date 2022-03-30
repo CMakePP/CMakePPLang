@@ -5,7 +5,7 @@ cpp_class(MyClass)
     cpp_member(print_msg MyClass str)
     function("${print_msg}" self test_string)
 
-        message("---- ${test_string}")
+        message("${test_string}")
 
     endfunction()
 
@@ -34,6 +34,51 @@ function("${test_str_arg_w_escaped_chars}")
 
         MyClass(print_msg "${my_obj}" "\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"")
         ct_assert_prints("\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"")
+
+    endfunction()
+
+    ct_add_section(NAME "test_multiple_args")
+    function("${test_multiple_args}")
+
+        ct_add_section(NAME "test_two_args")
+        function("${test_two_args}")
+            cpp_member(print_msg MyClass int str)
+            function("${print_msg}" self test_int test_string)
+
+                message("${test_string}")
+
+            endfunction()
+
+            cpp_member(print_msg MyClass str int)
+            function("${print_msg}" self test_string test_int)
+
+                message("---- ${test_string}")
+
+            endfunction()
+
+            MyClass(CTOR my_obj)
+
+            MyClass(print_msg "${my_obj}" "\"" 42)
+            ct_assert_prints("\"")
+
+            MyClass(print_msg "${my_obj}" 42 "\"")
+            ct_assert_prints("\"")
+        endfunction()
+
+        ct_add_section(NAME "test_three_args")
+        function("${test_three_args}")
+            cpp_member(print_msg MyClass int str int)
+            function("${print_msg}" self test_int test_string test_int2)
+
+                message("${test_string}")
+
+            endfunction()
+
+            MyClass(CTOR my_obj)
+
+            MyClass(print_msg "${my_obj}" 42 "\"" 2)
+            ct_assert_prints("\"")
+        endfunction()
 
     endfunction()
 
