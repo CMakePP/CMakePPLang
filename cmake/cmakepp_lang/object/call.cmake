@@ -2,6 +2,7 @@ include_guard()
 include(cmakepp_lang/object/object)
 include(cmakepp_lang/types/type_of)
 include(cmakepp_lang/utilities/call_fxn)
+include(cmakepp_lang/utilities/encode_special_chars)
 include(cmakepp_lang/utilities/print_fxn_sig)
 include(cmakepp_lang/utilities/sanitize_string)
 
@@ -35,11 +36,13 @@ include(cmakepp_lang/utilities/sanitize_string)
 # member function capable of being called with the provided signature.
 #]]
 function(_cpp_object_call_guts _ocg_this _ocg_result _ocg_method)
+    message("---- _cpp_object_call_guts ARGN: ${ARGN}") # DEBUG
 
     # Make the signature (tuple with name of fxn and arg types) we want
     cpp_sanitize_string(_ocg_nice_method "${_ocg_method}")
     set(_ocg_sig "${_ocg_nice_method}")
     foreach(_ocg_arg_i "${_ocg_this}" ${ARGN})
+        message("---- _cpp_object_call_guts _ocg_arg_i: ${_ocg_arg_i}") # DEBUG
         cpp_type_of(_ocg_type_i "${_ocg_arg_i}")
         cpp_sanitize_string(_ocg_nice_type_i "${_ocg_type_i}")
         list(APPEND _ocg_sig "${_ocg_nice_type_i}")
@@ -96,6 +99,7 @@ endfunction()
 #]]
 macro(_cpp_object_call _oc_this _oc_method)
     cpp_assert_signature("${ARGV}" obj desc args)
+    # message("---- _cpp_object_call ARGN: ${ARGN}") # DEBUG
 
     _cpp_object_call_guts("${_oc_this}" __oc__symbol "${_oc_method}" ${ARGN})
     cpp_call_fxn("${__oc__symbol}" "${_oc_this}" ${ARGN})

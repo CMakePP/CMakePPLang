@@ -1,5 +1,6 @@
 include_guard()
 include(cmakepp_lang/utilities/unique_id)
+include(cmakepp_lang/utilities/decode_special_chars)
 
 #[[[ Performs most of the work for dynamically calling a function.
 #
@@ -15,19 +16,23 @@ include(cmakepp_lang/utilities/unique_id)
 # :param *args: The arguments to forward to the function.
 #]]
 function(_cpp_call_fxn_guts _cfg_fxn2call _cfg_result)
+    message("---- _cpp_call_fxn_guts ARGN: ${ARGN}") # DEBUG
     # Create a new arg list that is a copy of ARGN except all args are
     # surrounded with double quotes (to ensure strings with spaces aren't
     # parsed as lists)
     set(_cfg_args_list "")
     foreach(_cfg_current_arg ${ARGN}) # Loop over all args
+        # message("---- _cpp_call_fxn_guts _cfg_current_arg: ${_cfg_current_arg}") # DEBUG
         string(APPEND _cfg_args_list "\"${_cfg_current_arg}\" ")
     endforeach()
+
+    cpp_decode_special_chars("${_cfg_args_list}" _cfg_decoded_args)
 
     # Write a .cmake file that calls the function
     cpp_unique_id(_cfg_uuid)
     set(_cfg_file "${CMAKE_CURRENT_BINARY_DIR}/cmakepp/fxn_calls")
     set(_cfg_file "${_cfg_file}/${_cfg_fxn2call}_${_cfg_uuid}.cmake")
-    file(WRITE "${_cfg_file}" "${_cfg_fxn2call}(${_cfg_args_list})")
+    file(WRITE "${_cfg_file}" "${_cfg_fxn2call}(${_cfg_decoded_args})")
     set("${_cfg_result}" "${_cfg_file}" PARENT_SCOPE)
 endfunction()
 
@@ -49,6 +54,7 @@ endfunction()
 #    significantly complicate the implementation.
 #]]
 macro(cpp_call_fxn _cf_fxn2call)
+    # message("---- cpp_call_fxn ARGN: ${ARGN}") # DEBUG
     # Create a .cmake file that calls the function with the provided args
     _cpp_call_fxn_guts("${_cf_fxn2call}" __cpp_call_fxn_file ${ARGN})
     # Include that .cmake file
