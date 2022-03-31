@@ -43,16 +43,22 @@ include_guard()
 # The only argument to this function should always be ``"${ARGn}``.
 #]]
 function(cpp_encode_special_chars _esc_argn _esc_return_argn)
-    # message("---- cpp_encode_special_chars _esc_argn: ${_esc_argn}") # DEBUG
+    message("---- cpp_encode_special_chars _esc_argn: ${_esc_argn}") # DEBUG
 
-    string(ASCII 7 _quote_replace)
+    string(ASCII 6 _quote_replace)
+    string(ASCII 7 _dollar_replace)
+    string(ASCII 11 _at_replace)
+    string(ASCII 12 _semicolon_replace)
 
     foreach(_arg ${_esc_argn})
-        # message("       Parsing arg: ${_arg}") # DEBUG
+        message("       Parsing arg: ${_arg}") # DEBUG
         string(REPLACE "\"" "${_quote_replace}" _encoded_arg "${_arg}")
+        string(REPLACE "\$" "${_dollar_replace}" _encoded_arg "${_encoded_arg}")
+        string(REPLACE "\@" "${_at_replace}" _encoded_arg "${_encoded_arg}")
+        string(REPLACE "\;" "${_semicolon_replace}" _encoded_arg "${_encoded_arg}")
 
         list(APPEND _encoded_args "${_encoded_arg}")
-        # message("       Encoded to: ${_encoded_arg}") # DEBUG
+        message("       Encoded to: ${_encoded_arg}") # DEBUG
     endforeach()
 
     set("${_esc_return_argn}" "${_encoded_args}" PARENT_SCOPE)

@@ -32,8 +32,24 @@ function("${test_str_arg_w_escaped_chars}")
         MyClass(print_msg "${my_obj}" "String \"with quotes\"")
         ct_assert_prints("String \"with quotes\"")
 
-        MyClass(print_msg "${my_obj}" "\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"")
-        ct_assert_prints("\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"")
+        MyClass(print_msg "${my_obj}" "\"\"\"\"\"\"\"\"\"\"")
+        ct_assert_prints("\"\"\"\"\"\"\"\"\"\"")
+
+    endfunction()
+
+    ct_add_section(NAME "test_escaped_quotes")
+    function("${test_escaped_quotes}")
+
+        MyClass(CTOR my_obj)
+
+        MyClass(print_msg "${my_obj}" "test \$dollar")
+        ct_assert_prints("test \$dollar")
+
+        MyClass(print_msg "${my_obj}" "String \$with dollar\$")
+        ct_assert_prints("String \$with dollar\$")
+
+        MyClass(print_msg "${my_obj}" "\$\$\$\$\$\$\$\$\$\$")
+        ct_assert_prints("\$\$\$\$\$\$\$\$\$\$")
 
     endfunction()
 
@@ -52,17 +68,17 @@ function("${test_str_arg_w_escaped_chars}")
             cpp_member(print_msg MyClass str int)
             function("${print_msg}" self test_string test_int)
 
-                message("---- ${test_string}")
+                message("${test_string}")
 
             endfunction()
 
             MyClass(CTOR my_obj)
 
-            MyClass(print_msg "${my_obj}" "\"" 42)
-            ct_assert_prints("\"")
+            MyClass(print_msg "${my_obj}" "\"\$" 42)
+            ct_assert_prints("\"\$")
 
-            MyClass(print_msg "${my_obj}" 42 "\"")
-            ct_assert_prints("\"")
+            MyClass(print_msg "${my_obj}" 42 "\"\$")
+            ct_assert_prints("\"\$")
         endfunction()
 
         ct_add_section(NAME "test_three_args")
@@ -76,8 +92,8 @@ function("${test_str_arg_w_escaped_chars}")
 
             MyClass(CTOR my_obj)
 
-            MyClass(print_msg "${my_obj}" 42 "\"" 2)
-            ct_assert_prints("\"")
+            MyClass(print_msg "${my_obj}" 42 "\"\$" 2)
+            ct_assert_prints("\"\$")
         endfunction()
 
     endfunction()

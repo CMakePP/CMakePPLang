@@ -7,16 +7,16 @@ include_guard()
 # multiple functions. It is assumed that this will be called on the arguments
 # immediately before the function is finalized and written to a file.
 # 
-# This is necessary because of the way CMake removes the forward slashes 
+# This is nedscsary because of the way CMake removes the forward slashes 
 # escaping the characters as they are passed through as a function parameter, 
 # so users do not have to account for the various function calls being
 # performed in the background when an object method is called.
 #
-# :param _ces_argn: The argument list. This should have at least one string in
+# :param _dsc_argn: The argument list. This should have at least one string in
 #                   it, otherwise this function will have nothing to encode.
-# :type _ces_argn: list
-# :param _ces_return_argn: Return variable for the encoded argument list.
-# :type _ces_return_argn: list
+# :type _dsc_argn: list
+# :param _dsc_return_argn: Return variable for the encoded argument list.
+# :type _dsc_return_argn: list
 # :returns: The list of arguments with special characters encoded.
 # :rtype: list
 #
@@ -27,7 +27,7 @@ include_guard()
 # where arguments will be passed through multiple levels of function calls.
 # This ensures that the escaped special characters are not altered in the
 # string unintentionally and the special characters do not have their escape
-# slashes removed, which could cause unintended consequences.
+# slashes removed, which could cause unintended consequendsc.
 #
 # The special characters need to be decoded again upon reaching their destination.
 #
@@ -40,19 +40,25 @@ include_guard()
 #
 # The only argument to this function should always be ``"${ARGN}``.
 #]]
-function(cpp_decode_special_chars _ces_argn _ces_return_argn)
-    # message("---- cpp_decode_special_chars _ces_argn: ${_ces_argn}") # DEBUG
+function(cpp_decode_special_chars _dsc_argn _dsc_return_argn)
+    # message("---- cpp_decode_special_chars _dsc_argn: ${_dsc_argn}") # DEBUG
 
-    string(ASCII 7 _quote_replace)
+    string(ASCII 6 _quote_replace)
+    string(ASCII 7 _dollar_replace)
+    string(ASCII 11 _at_replace)
+    string(ASCII 12 _semicolon_replace)
 
-    foreach(_arg ${_ces_argn})
+    foreach(_arg ${_dsc_argn})
         # message("       Parsing arg: ${_arg}") # DEBUG
         # Make sure that the special char is actually escaped
         string(REPLACE "${_quote_replace}" "\\\"" _decoded_arg ${_arg})
+        string(REPLACE "${_dollar_replace}" "\\\$" _decoded_arg ${_decoded_arg})
+        string(REPLACE "${_at_replace}" "\\\@" _decoded_arg ${_decoded_arg})
+        string(REPLACE "${_semicolon_replace}" "\\\;" _decoded_arg ${_decoded_arg})
 
         list(APPEND _decoded_args ${_decoded_arg})
         # message("       Decoded to: ${_decoded_arg}") # DEBUG
     endforeach()
 
-    set("${_ces_return_argn}" "${_decoded_args}" PARENT_SCOPE)
+    set("${_dsc_return_argn}" "${_decoded_args}" PARENT_SCOPE)
 endfunction()
