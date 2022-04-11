@@ -48,13 +48,13 @@ function(cpp_decode_special_chars _dsc_argn _dsc_return_argn)
     cpp_map(GET "${special_chars_lookup}" _quote_replace "dquote")
     cpp_map(GET "${special_chars_lookup}" _dollar_replace "dollar")
     cpp_map(GET "${special_chars_lookup}" _semicolon_replace "scolon")
-    cpp_map(GET "${special_chars_lookup}" _fslash_replace "fslash")
+    cpp_map(GET "${special_chars_lookup}" _bslash_replace "bslash")
 
     foreach(_arg ${_dsc_argn})
         # message("       Parsing arg: ${_arg}") # DEBUG
         # Make sure that the special char is actually escaped
         string(REPLACE "${_quote_replace}" "\\\"" _decoded_arg ${_arg})
-        string(REPLACE "${_fslash_replace}" "\\\\" _decoded_arg ${_decoded_arg})
+        string(REPLACE "${_bslash_replace}" "\\\\" _decoded_arg ${_decoded_arg})
         string(REPLACE "${_dollar_replace}" "\\\$" _decoded_arg ${_decoded_arg})
         string(REPLACE "${_semicolon_replace}" "\\\;" _decoded_arg ${_decoded_arg})
 

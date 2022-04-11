@@ -50,14 +50,14 @@ function(cpp_encode_special_chars _esc_argn _esc_return_argn)
     cpp_map(GET "${special_chars_lookup}" _quote_replace "dquote")
     cpp_map(GET "${special_chars_lookup}" _dollar_replace "dollar")
     cpp_map(GET "${special_chars_lookup}" _semicolon_replace "scolon")
-    cpp_map(GET "${special_chars_lookup}" _fslash_replace "fslash")
+    cpp_map(GET "${special_chars_lookup}" _bslash_replace "bslash")
 
     foreach(_arg ${_esc_argn})
         message("       Parsing arg: ${_arg}") # DEBUG
         string(REPLACE ";" "${_semicolon_replace}" _encoded_arg "${_arg}")
         string(REPLACE "\$" "${_dollar_replace}" _encoded_arg "${_encoded_arg}")
         string(REPLACE "\"" "${_quote_replace}" _encoded_arg "${_encoded_arg}")
-        string(REPLACE "\\" "${_fslash_replace}" _encoded_arg "${_encoded_arg}")
+        string(REPLACE "\\" "${_bslash_replace}" _encoded_arg "${_encoded_arg}")
 
         list(APPEND _encoded_args "${_encoded_arg}")
         message("       Encoded to: ${_encoded_arg}") # DEBUG

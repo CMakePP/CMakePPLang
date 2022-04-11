@@ -13,5 +13,5 @@ cpp_map(CTOR special_chars_lookup
     "dquote" "${_scl_enquiry}"
     "dollar" "${_scl_acknowledge}"
     "scolon" "${_scl_bell}"
-    "fslash" "${_scl_data_link_escape}"
+    "bslash" "${_scl_data_link_escape}"
 )
