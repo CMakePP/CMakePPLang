@@ -37,8 +37,8 @@ function("${test_str_arg_w_escaped_chars}")
 
     endfunction()
 
-    ct_add_section(NAME "test_escaped_quotes")
-    function("${test_escaped_quotes}")
+    ct_add_section(NAME "test_escaped_dollar")
+    function("${test_escaped_dollar}")
 
         MyClass(CTOR my_obj)
 
