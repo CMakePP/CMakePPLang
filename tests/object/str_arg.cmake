@@ -35,6 +35,10 @@ function("${test_str_arg_w_escaped_chars}")
         MyClass(print_msg "${my_obj}" "\"\"\"\"\"\"\"\"\"\"")
         ct_assert_prints("\"\"\"\"\"\"\"\"\"\"")
 
+        set(a_var "String \"with quotes\"")
+        MyClass(print_msg "${my_obj}" "${a_var}")
+        ct_assert_prints("String \"with quotes\"")
+
     endfunction()
 
     ct_add_section(NAME "test_escaped_dollar")
@@ -50,6 +54,10 @@ function("${test_str_arg_w_escaped_chars}")
 
         MyClass(print_msg "${my_obj}" "\$\$\$\$\$\$\$\$\$\$")
         ct_assert_prints("\$\$\$\$\$\$\$\$\$\$")
+
+        set(a_var "String \$with dollar\$")
+        MyClass(print_msg "${my_obj}" "${a_var}")
+        ct_assert_prints("String \$with dollar\$")
 
     endfunction()
 
