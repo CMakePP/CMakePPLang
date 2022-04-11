@@ -1,5 +1,7 @@
 include_guard()
 
+include(cmakepp_lang/utilities/special_chars_lookup)
+
 #[[[ Decodes special characters to protect them during function passes.
 #
 # This function decodes special characters that need to be escaped in a CMake
@@ -43,17 +45,17 @@ include_guard()
 function(cpp_decode_special_chars _dsc_argn _dsc_return_argn)
     # message("---- cpp_decode_special_chars _dsc_argn: ${_dsc_argn}") # DEBUG
 
-    string(ASCII 6 _quote_replace)
-    string(ASCII 7 _dollar_replace)
-    string(ASCII 11 _at_replace)
-    string(ASCII 12 _semicolon_replace)
+    cpp_map(GET "${special_chars_lookup}" _quote_replace "dquote")
+    cpp_map(GET "${special_chars_lookup}" _dollar_replace "dollar")
+    cpp_map(GET "${special_chars_lookup}" _semicolon_replace "scolon")
+    cpp_map(GET "${special_chars_lookup}" _fslash_replace "fslash")
 
     foreach(_arg ${_dsc_argn})
         # message("       Parsing arg: ${_arg}") # DEBUG
         # Make sure that the special char is actually escaped
         string(REPLACE "${_quote_replace}" "\\\"" _decoded_arg ${_arg})
+        string(REPLACE "${_fslash_replace}" "\\\\" _decoded_arg ${_decoded_arg})
         string(REPLACE "${_dollar_replace}" "\\\$" _decoded_arg ${_decoded_arg})
-        string(REPLACE "${_at_replace}" "\\\@" _decoded_arg ${_decoded_arg})
         string(REPLACE "${_semicolon_replace}" "\\\;" _decoded_arg ${_decoded_arg})
 
         list(APPEND _decoded_args ${_decoded_arg})

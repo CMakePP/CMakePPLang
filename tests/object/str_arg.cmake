@@ -15,8 +15,8 @@ cpp_class(MyClass)
 ct_add_test(NAME "test_str_arg_w_escaped_chars")
 function("${test_str_arg_w_escaped_chars}")
 
-    ct_add_section(NAME "test_escaped_quotes")
-    function("${test_escaped_quotes}")
+    ct_add_section(NAME "test_no_escapes")
+    function("${test_no_escapes}")
 
         MyClass(CTOR my_obj)
 
@@ -25,6 +25,13 @@ function("${test_str_arg_w_escaped_chars}")
 
         MyClass(print_msg "${my_obj}" "test string")
         ct_assert_prints("test string")
+
+    endfunction()
+
+    ct_add_section(NAME "test_escaped_quotes")
+    function("${test_escaped_quotes}")
+
+        MyClass(CTOR my_obj)
 
         MyClass(print_msg "${my_obj}" "test \"string")
         ct_assert_prints("test \"string")
@@ -58,6 +65,84 @@ function("${test_str_arg_w_escaped_chars}")
         set(a_var "String \$with dollar\$")
         MyClass(print_msg "${my_obj}" "${a_var}")
         ct_assert_prints("String \$with dollar\$")
+
+    endfunction()
+
+    ct_add_section(NAME "test_escaped_semicolon")
+    function("${test_escaped_semicolon}")
+
+        MyClass(CTOR my_obj)
+
+        MyClass(print_msg "${my_obj}" "test \;semicolon")
+        ct_assert_prints("test \;semicolon")
+
+        MyClass(print_msg "${my_obj}" "String \;with semicolon\;")
+        ct_assert_prints("String \;with semicolon\;")
+
+        MyClass(print_msg "${my_obj}" "\;\;\;\;\;\;\;\;\;\;")
+        ct_assert_prints("\;\;\;\;\;\;\;\;\;\;")
+
+        set(a_var "String \;with semicolon\;")
+        MyClass(print_msg "${my_obj}" "${a_var}")
+        ct_assert_prints("String \;with semicolon\;")
+
+    endfunction()
+
+    ct_add_section(NAME "test_escaped_var_ref")
+    function("${test_escaped_var_ref}")
+
+        MyClass(CTOR my_obj)
+
+        MyClass(print_msg "${my_obj}" "test \\\${var}")
+        ct_assert_prints("test \${var}")
+
+        MyClass(print_msg "${my_obj}" "test \\\${var}")
+        ct_assert_prints("test \${var}")
+
+        MyClass(print_msg "${my_obj}" "\\\${var}\\\${var}\\\${var}\\\${var}\\\${var}\\\${var}\\\${var}\\\${var}\\\${var}\\\${var}")
+        ct_assert_prints("\${var}\${var}\${var}\${var}\${var}\${var}\${var}\${var}\${var}\${var}")
+
+        set(a_var "test \\\${var}")
+        MyClass(print_msg "${my_obj}" "${a_var}")
+        ct_assert_prints("test \${var}")
+
+    endfunction()
+
+    ct_add_section(NAME "test_other_chars")
+    function("${test_other_chars}")
+
+        MyClass(CTOR my_obj)
+
+        MyClass(print_msg "${my_obj}" "test (var)")
+        ct_assert_prints("test (var)")
+        
+        MyClass(print_msg "${my_obj}" "test {var{")
+        ct_assert_prints("test {var{")
+
+        MyClass(print_msg "${my_obj}" "test }var}")
+        ct_assert_prints("test }var}")
+
+        MyClass(print_msg "${my_obj}" "test {var}")
+        ct_assert_prints("test {var}")
+
+        MyClass(print_msg "${my_obj}" "test #var")
+        ct_assert_prints("test #var")
+
+        MyClass(print_msg "${my_obj}" "test 'var")
+        ct_assert_prints("test 'var")
+
+        # Invalid character escape '\v'
+        # MyClass(print_msg "${my_obj}" "test \\var")
+        # ct_assert_prints("test \\var")
+
+        MyClass(print_msg "${my_obj}" "test \\\\var")
+        ct_assert_prints("test \\\\var")
+
+        MyClass(print_msg "${my_obj}" "test @var@")
+        ct_assert_prints("test @var@")
+
+        MyClass(print_msg "${my_obj}" "test ^var^")
+        ct_assert_prints("test ^var^")
 
     endfunction()
 
