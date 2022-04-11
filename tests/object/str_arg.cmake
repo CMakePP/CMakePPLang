@@ -88,13 +88,34 @@ function("${test_str_arg_w_escaped_chars}")
 
     endfunction()
 
+    ct_add_section(NAME "test_escaped_backslash")
+    function("${test_escaped_backslash}")
+
+        MyClass(CTOR my_obj)
+
+        # Invalid character escape '\v'
+        # MyClass(print_msg "${my_obj}" "test \\var")
+        # ct_assert_prints("test \\var")
+
+        MyClass(print_msg "${my_obj}" "test \\\\backslash")
+        ct_assert_prints("test \\backslash")
+
+        MyClass(print_msg "${my_obj}" "test \\\\backslash\\\\")
+        ct_assert_prints("test \\backslash\\")
+
+        MyClass(print_msg "${my_obj}" "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\")
+        ct_assert_prints("\\\\\\\\\\\\\\\\\\\\")
+
+        set(a_var "test \\\\backslash\\\\")
+        MyClass(print_msg "${my_obj}" "${a_var}")
+        ct_assert_prints("test \\backslash\\")
+
+    endfunction()
+
     ct_add_section(NAME "test_escaped_var_ref")
     function("${test_escaped_var_ref}")
 
         MyClass(CTOR my_obj)
-
-        MyClass(print_msg "${my_obj}" "test \\\${var}")
-        ct_assert_prints("test \${var}")
 
         MyClass(print_msg "${my_obj}" "test \\\${var}")
         ct_assert_prints("test \${var}")
@@ -130,13 +151,6 @@ function("${test_str_arg_w_escaped_chars}")
 
         MyClass(print_msg "${my_obj}" "test 'var")
         ct_assert_prints("test 'var")
-
-        # Invalid character escape '\v'
-        # MyClass(print_msg "${my_obj}" "test \\var")
-        # ct_assert_prints("test \\var")
-
-        MyClass(print_msg "${my_obj}" "test \\\\var")
-        ct_assert_prints("test \\\\var")
 
         MyClass(print_msg "${my_obj}" "test @var@")
         ct_assert_prints("test @var@")
