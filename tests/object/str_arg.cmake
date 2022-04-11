@@ -146,10 +146,10 @@ function("${test_str_arg_w_escaped_chars}")
         MyClass(print_msg "${my_obj}" "test {var}")
         ct_assert_prints("test {var}")
 
-        MyClass(print_msg "${my_obj}" "test #var")
+        MyClass(print_msg "${my_obj}" "test #var#")
         ct_assert_prints("test #var")
 
-        MyClass(print_msg "${my_obj}" "test 'var")
+        MyClass(print_msg "${my_obj}" "test 'var'")
         ct_assert_prints("test 'var")
 
         MyClass(print_msg "${my_obj}" "test @var@")
@@ -157,6 +157,9 @@ function("${test_str_arg_w_escaped_chars}")
 
         MyClass(print_msg "${my_obj}" "test ^var^")
         ct_assert_prints("test ^var^")
+
+        MyClass(print_msg "${my_obj}" "test /var/")
+        ct_assert_prints("test /var/")
 
     endfunction()
 
