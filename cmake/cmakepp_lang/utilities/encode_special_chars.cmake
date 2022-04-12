@@ -45,7 +45,6 @@ include(cmakepp_lang/utilities/special_chars_lookup)
 # The only argument to this function should always be ``"${ARGN}``.
 #]]
 function(cpp_encode_special_chars _esc_argn _esc_return_argn)
-    # message("---- cpp_encode_special_chars _esc_argn: ${_esc_argn}") # DEBUG
 
     cpp_map(GET "${special_chars_lookup}" _quote_replace "dquote")
     cpp_map(GET "${special_chars_lookup}" _dollar_replace "dollar")
@@ -53,14 +52,12 @@ function(cpp_encode_special_chars _esc_argn _esc_return_argn)
     cpp_map(GET "${special_chars_lookup}" _bslash_replace "bslash")
 
     foreach(_arg ${_esc_argn})
-        message("       Parsing arg: ${_arg}") # DEBUG
         string(REPLACE ";" "${_semicolon_replace}" _encoded_arg "${_arg}")
         string(REPLACE "\$" "${_dollar_replace}" _encoded_arg "${_encoded_arg}")
         string(REPLACE "\"" "${_quote_replace}" _encoded_arg "${_encoded_arg}")
         string(REPLACE "\\" "${_bslash_replace}" _encoded_arg "${_encoded_arg}")
 
         list(APPEND _encoded_args "${_encoded_arg}")
-        message("       Encoded to: ${_encoded_arg}") # DEBUG
     endforeach()
 
     set("${_esc_return_argn}" "${_encoded_args}" PARENT_SCOPE)

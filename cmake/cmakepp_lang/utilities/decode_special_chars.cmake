@@ -43,7 +43,6 @@ include(cmakepp_lang/utilities/special_chars_lookup)
 # The only argument to this function should always be ``"${ARGN}``.
 #]]
 function(cpp_decode_special_chars _dsc_argn _dsc_return_argn)
-    # message("---- cpp_decode_special_chars _dsc_argn: ${_dsc_argn}") # DEBUG
 
     cpp_map(GET "${special_chars_lookup}" _quote_replace "dquote")
     cpp_map(GET "${special_chars_lookup}" _dollar_replace "dollar")
@@ -51,7 +50,6 @@ function(cpp_decode_special_chars _dsc_argn _dsc_return_argn)
     cpp_map(GET "${special_chars_lookup}" _bslash_replace "bslash")
 
     foreach(_arg ${_dsc_argn})
-        # message("       Parsing arg: ${_arg}") # DEBUG
         # Make sure that the special char is actually escaped
         string(REPLACE "${_quote_replace}" "\\\"" _decoded_arg ${_arg})
         string(REPLACE "${_bslash_replace}" "\\\\" _decoded_arg ${_decoded_arg})
@@ -59,7 +57,6 @@ function(cpp_decode_special_chars _dsc_argn _dsc_return_argn)
         string(REPLACE "${_semicolon_replace}" "\\\;" _decoded_arg ${_decoded_arg})
 
         list(APPEND _decoded_args ${_decoded_arg})
-        # message("       Decoded to: ${_decoded_arg}") # DEBUG
     endforeach()
 
     set("${_dsc_return_argn}" "${_decoded_args}" PARENT_SCOPE)
