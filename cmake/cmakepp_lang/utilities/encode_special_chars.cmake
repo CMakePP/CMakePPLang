@@ -11,10 +11,12 @@ include(cmakepp_lang/utilities/special_chars_lookup)
 # function calls, protecting the special characters until they are decoded at
 # their destination.
 # 
-# This is neescsary because of the way CMake removes the forward slashes 
-# escaping the characters as they are passed through as a function parameter, 
-# so users do not have to account for the various function calls being
-# performed in the background when an object method is called.
+# This is necessary because of the way CMake removes the backslashes
+# escaping the characters as they are passed through as a function or macro
+# parameter, so users do not have to account for the various function calls
+# being performed in the background when an object method is called.
+#
+# Specifically, the special characters handled are ``$;"\\``
 #
 # :param _esc_argn: The argument list. This should have at least one string in
 #                   it, otherwise this function will have nothing to encode.
@@ -42,7 +44,7 @@ include(cmakepp_lang/utilities/special_chars_lookup)
 #        cpp_encode_special_chars(${ARGN})
 #    endfunction()
 #
-# The only argument to this function should always be ``"${ARGN}``.
+# The only argument to this function should always be ``"${ARGN}"``.
 #]]
 function(cpp_encode_special_chars _esc_argn _esc_return_argn)
 
