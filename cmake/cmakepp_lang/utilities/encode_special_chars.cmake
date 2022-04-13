@@ -11,12 +11,13 @@ include(cmakepp_lang/utilities/special_chars_lookup)
 # function calls, protecting the special characters until they are decoded at
 # their destination.
 # 
-# This is necessary because of the way CMake removes the backslashes
-# escaping the characters as they are passed through as a function or macro
-# parameter, so users do not have to account for the various function calls
-# being performed in the background when an object method is called.
+# This is necessary because CMake removes the backslashes escaping
+# characters from strings as they are passed as a function or macro
+# parameters. Encoding special characters removes the burden on the user
+# to have to add backslashes based on the various function calls being
+# performed in the background when an object method is called.
 #
-# Specifically, the special characters handled are ``$;"\\``
+# Specifically, the special characters handled are ``$;"\\``.
 #
 # :param _esc_argn: The argument list. This should have at least one string in
 #                   it, otherwise this function will have nothing to encode.
@@ -31,9 +32,8 @@ include(cmakepp_lang/utilities/special_chars_lookup)
 #
 # This function is intended to be called near the top of a function call chain
 # where arguments will be passed through multiple levels of function calls.
-# This ensures that the escaped special characters are not altered in the
-# string unintentionally and the special characters do not have their escape
-# slashes removed, which could cause unintended consequenesc.
+# This ensures that special characters are not altered and do not cause
+# unintended side effects while being passed through functions and macros.
 #
 # The special characters need to be decoded again upon reaching their destination.
 #
@@ -41,18 +41,26 @@ include(cmakepp_lang/utilities/special_chars_lookup)
 #
 #    include(cmakepp_lang/asserts/signature)
 #    function(my_fxn a_str a_bool)
-#        cpp_encode_special_chars(${ARGN})
+#        cpp_encode_special_chars("${ARGN}" encoded_args) # Encode the arguments
+#        do_stuff(encoded_args)
+#    endfunction()
+#
+#    function(do_stuff encoded_arg_list)
+#        cpp_decode_special_chars("${encoded_arg_list}" decoded_args)
+#        # Do stuff with decoded_args
 #    endfunction()
 #
 # The only argument to this function should always be ``"${ARGN}"``.
 #]]
 function(cpp_encode_special_chars _esc_argn _esc_return_argn)
 
+    # Get the replacement characters from the lookup map
     cpp_map(GET "${special_chars_lookup}" _quote_replace "dquote")
     cpp_map(GET "${special_chars_lookup}" _dollar_replace "dollar")
     cpp_map(GET "${special_chars_lookup}" _semicolon_replace "scolon")
     cpp_map(GET "${special_chars_lookup}" _bslash_replace "bslash")
 
+    # Encode each special character in the string
     foreach(_arg ${_esc_argn})
         string(REPLACE ";" "${_semicolon_replace}" _encoded_arg "${_arg}")
         string(REPLACE "\$" "${_dollar_replace}" _encoded_arg "${_encoded_arg}")
