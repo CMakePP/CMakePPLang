@@ -2,6 +2,7 @@ include_guard()
 include(cmakepp_lang/object/object)
 include(cmakepp_lang/types/type_of)
 include(cmakepp_lang/utilities/call_fxn)
+include(cmakepp_lang/utilities/encode_special_chars)
 include(cmakepp_lang/utilities/print_fxn_sig)
 include(cmakepp_lang/utilities/sanitize_string)
 

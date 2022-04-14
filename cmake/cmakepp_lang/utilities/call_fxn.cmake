@@ -1,5 +1,6 @@
 include_guard()
 include(cmakepp_lang/utilities/unique_id)
+include(cmakepp_lang/utilities/decode_special_chars)
 
 #[[[ Performs most of the work for dynamically calling a function.
 #
@@ -23,11 +24,13 @@ function(_cpp_call_fxn_guts _cfg_fxn2call _cfg_result)
         string(APPEND _cfg_args_list "\"${_cfg_current_arg}\" ")
     endforeach()
 
+    cpp_decode_special_chars("${_cfg_args_list}" _cfg_decoded_args)
+
     # Write a .cmake file that calls the function
     cpp_unique_id(_cfg_uuid)
     set(_cfg_file "${CMAKE_CURRENT_BINARY_DIR}/cmakepp/fxn_calls")
     set(_cfg_file "${_cfg_file}/${_cfg_fxn2call}_${_cfg_uuid}.cmake")
-    file(WRITE "${_cfg_file}" "${_cfg_fxn2call}(${_cfg_args_list})")
+    file(WRITE "${_cfg_file}" "${_cfg_fxn2call}(${_cfg_decoded_args})")
     set("${_cfg_result}" "${_cfg_file}" PARENT_SCOPE)
 endfunction()
 
