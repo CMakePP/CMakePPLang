@@ -1,4 +1,4 @@
-name: CMakePPCore Documentation Test
+name: CMakePPLang Documentation Test
 on:
   pull_request:
     branches:

@@ -1,0 +1,24 @@
+include_guard()
+include(cmakepp_lang/object/object)
+include(cmakepp_lang/class/ctor)
+include(cmakepp_lang/utilities/encode_special_chars)
+
+#[[[ The template for the macro created for CMakePP classes.
+#
+# This file is used by the cpp_class command to create a macro that handles
+# calls to the a cpp_class. It handles CTOR, GET, SET and any function calls
+# for that class.
+#]]
+macro(@_cg_type@ _@_cg_type@_mode _@_cg_type@_this)
+    cpp_assert_signature("${ARGV}" desc desc args)
+    cpp_encode_special_chars("${ARGN}" _@_cg_type@_encoded_args)
+
+    cpp_sanitize_string(_@_cg_type@_nice_mode "${_@_cg_type@_mode}")
+    if("${_@_cg_type@_nice_mode}" STREQUAL "ctor")
+        # Handle CTOR call
+        cpp_class_ctor("${_@_cg_type@_this}" "@_cg_type@" ${_@_cg_type@_encoded_args})
+    else()
+        # Handle regular function call or set/get of attribute
+        _cpp_object("${_@_cg_type@_nice_mode}" "${_@_cg_type@_this}" ${_@_cg_type@_encoded_args})
+    endif()
+endmacro()

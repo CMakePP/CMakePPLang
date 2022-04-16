@@ -1,16 +1,17 @@
 #TUTORIAL_START_SKIP
 include(cmake_test/cmake_test)
-ct_add_test("writing a class")
+ct_add_test(NAME "writing_a_class")
+function("${writing_a_class}")
 #TUTORIAL_STOP_SKIP
 
 #TUTORIAL
 #
 # The machinery for declaring and defining a CMakePP class lives in
-# ``cmakepp_core/class/class``. Let's start by writing a simple class
+# ``cmakepp_lang/class/class``. Let's start by writing a simple class
 # ``Greeter`` which has a single member function ``say_hello``. ``say_hello``
 # simply returns ``"Hello World"`` via the variable ``result``. The code to do
 # this is:
-include(cmakepp_core/class/class)
+include(cmakepp_lang/class/class)
 
 cpp_class(Greeter)
 
@@ -55,19 +56,20 @@ Greeter(SAY_HELLO "${new_instance}")
 message("${result}")  # Prints "Hello World"
 
 #TUTORIAL_START_SKIP
-ct_add_section("value of result is correct")
+ct_add_section(NAME "val_result_correct")
+function("${val_result_correct}")
 ct_assert_equal(result "Hello World")
-ct_end_section()
+endfunction()
 
-ct_add_section("Error to call with non-Greeter")
+ct_add_section(NAME "no_method" EXPECTFAIL)
+function("${no_method}")
 Greeter(SAY_HELLO TRUE)
-ct_assert_fails_as("No suitable overload of say_hello(bool)")
-ct_end_section()
+endfunction()
 
-ct_add_section("Error to pass multiple arguments")
+ct_add_section(NAME "no_overload_multi_args" EXPECTFAIL)
+function("${no_overload_multi_args}")
 Greeter(SAY_HELLO "${new_instance}" foo bar)
-ct_assert_fails_as("No suitable overload of say_hello(greeter, desc, desc)")
-ct_end_section()
+endfunction()
 #TUTORIAL_STOP_SKIP
 
 #TUTORIAL
@@ -135,14 +137,15 @@ UsefulGreeter(SAY_HELLO "${useful}")
 message("${result}")  # Prints "Hello Alice"
 
 #TUTORIAL_START_SKIP
-ct_add_section("value of result through derived class")
+ct_add_section(NAME "val_result_derived")
+function("${val_result_derived}")
 ct_assert_equal(result "Hello Alice")
-ct_end_section()
+endfunction()
 
-#ct_add_section("error to call with greeter instance")
+#ct_add_section(NAME "no_overload_for_greeter_arg" EXPECTFAIL)
+#function("${no_overload_for_greeter_arg}")
 #UsefulGreeter(SAY_HELLO "${new_instance}")
-#ct_assert_fails_as("No suitable overload for SAY_HELLO(Greeter)")
-#ct_end_section()
+#endfunction()
 #TUTORIAL_STOP_SKIP
 
 #TUTORIAL
@@ -155,8 +158,9 @@ Greeter(SAY_HELLO "${useful}")
 message("${result}")  # Prints "Hello Alice"
 
 #TUTORIAL_START_SKIP
-ct_add_section("value of result through base class")
+ct_add_section(NAME "val_result_base")
+function("${val_result_base}")
 ct_assert_equal(result "Hello Alice")
-ct_end_section()
-ct_end_test()
+endfunction()
+endfunction()
 #TUTORIAL_STOP_SKIP
