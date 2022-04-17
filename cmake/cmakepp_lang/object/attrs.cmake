@@ -35,7 +35,8 @@ include(cmakepp_lang/utilities/return)
 #    checking on its own.
 #]]
 function(_cpp_object_get_attr_guts _ogag_this _ogag_value _ogag_done _ogag_attr)
-    cpp_assert_signature("${ARGV}" obj desc desc)
+    #attr could be anything so use str instead of desc
+    cpp_assert_signature("${ARGV}" obj desc desc str)
 
     # Get the list of attributes and determine if the target attr is in it.
     _cpp_object_get_meta_attr("${_ogag_this}" _ogag_attrs "attrs")
