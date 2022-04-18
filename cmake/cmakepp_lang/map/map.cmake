@@ -40,7 +40,7 @@ function(cpp_map_append _ma_this _ma_key _ma_value)
     cpp_assert_signature("${ARGV}" map str str)
 
     cpp_append_global("${_ma_this}_keys" "${_ma_key}")
-    cpp_append_global("${_ma_this}_${_ma_key}" "${_ma_value}")
+    cpp_append_global("${_ma_this}_keys_${_ma_key}" "${_ma_value}")
 endfunction()
 
 #[[[ Constructs a new Map instance with the specified state (if provided)
@@ -119,7 +119,7 @@ endfunction()
 function(cpp_map_get _mg_this _mg_value _mg_key)
     cpp_assert_signature("${ARGV}" map desc str)
 
-    cpp_get_global("${_mg_value}" "${_mg_this}_${_mg_key}")
+    cpp_get_global("${_mg_value}" "${_mg_this}_keys_${_mg_key}")
     cpp_return("${_mg_value}")
 endfunction()
 
@@ -152,7 +152,7 @@ function(cpp_map_set _ms_this _ms_key _ms_value)
     cpp_assert_signature("${ARGV}" map str str args)
 
     cpp_append_global("${_ms_this}_keys" "${_ms_key}")
-    cpp_set_global("${_ms_this}_${_ms_key}" "${_ms_value}")
+    cpp_set_global("${_ms_this}_keys_${_ms_key}" "${_ms_value}")
 
     if("${ARGC}" GREATER 3)
         cpp_map_set("${_ms_this}" ${ARGN})
