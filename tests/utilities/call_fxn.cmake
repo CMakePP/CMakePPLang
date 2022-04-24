@@ -40,4 +40,20 @@ function("${test_cpp_call_fxn}")
         endfunction()
 
     endfunction()
+
+    # This test will crash if it isn't working properly
+    ct_add_section(NAME "unmatched_escaped_quotes")
+    function("${unmatched_escaped_quotes}")
+        cpp_catch(TEST_EXCEPTION)
+
+        function("${TEST_EXCEPTION}" message)
+            message("This does not execute")
+        endfunction()
+
+        cpp_raise(TEST_EXCEPTION "\"test")
+
+        ct_assert_prints("This does not execute")
+    endfunction()
 endfunction()
+
+
