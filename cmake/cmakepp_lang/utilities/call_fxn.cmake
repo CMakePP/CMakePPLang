@@ -52,8 +52,10 @@ endfunction()
 #    significantly complicate the implementation.
 #]]
 macro(cpp_call_fxn _cf_fxn2call)
+    # Encode special characters to protect them from getting un-escaped
+    cpp_encode_special_chars("${ARGN}" _cf_encoded_args)
     # Create a .cmake file that calls the function with the provided args
-    _cpp_call_fxn_guts("${_cf_fxn2call}" __cpp_call_fxn_file ${ARGN})
+    _cpp_call_fxn_guts("${_cf_fxn2call}" __cpp_call_fxn_file ${_cf_encoded_args})
     # Include that .cmake file
     include("${__cpp_call_fxn_file}")
 endmacro()
