@@ -63,11 +63,8 @@ function("${test_cpp_map}")
         ct_assert_equal(result TRUE)
     endfunction()
 
-    #Setting name as "keys" conflicts
-    #with cpp_map's list of keys
-    #and causes data corruption
-    ct_add_section(NAME "test_keys")
-    function("${test_keys}")
+    ct_add_section(NAME "keys")
+    function("${keys}")
         cpp_map(CTOR a_map foo bar)
         cpp_map(KEYS "${a_map}" map_keys)
         ct_assert_equal(map_keys foo)
