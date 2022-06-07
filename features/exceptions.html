@@ -14,6 +14,7 @@
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -90,14 +91,14 @@
            <div itemprop="articleBody">
              
   <section id="exception-handling">
-<h1>Exception Handling<a class="headerlink" href="#exception-handling" title="Permalink to this headline"></a></h1>
+<h1>Exception Handling<a class="headerlink" href="#exception-handling" title="Permalink to this heading"></a></h1>
 <p>The CMakePP language provides commands for handling exceptions. Users can use
 the <code class="docutils literal notranslate"><span class="pre">cpp_catch</span></code> command to declare an exception type and a handler function
 for that exception type. Users can then use the <code class="docutils literal notranslate"><span class="pre">cpp_try</span></code> to initiate a try
 block and <code class="docutils literal notranslate"><span class="pre">cpp_end_try_catch</span></code> to end a try block. Anywhere within that try
 block, an exception can be thrown using the <code class="docutils literal notranslate"><span class="pre">cpp_raise</span></code> command.</p>
 <section id="basic-try-catch-block">
-<h2>Basic Try-Catch Block<a class="headerlink" href="#basic-try-catch-block" title="Permalink to this headline"></a></h2>
+<h2>Basic Try-Catch Block<a class="headerlink" href="#basic-try-catch-block" title="Permalink to this heading"></a></h2>
 <p>A basic try-catch block for an exception type named <code class="docutils literal notranslate"><span class="pre">FileNotFound</span></code> looks like
 this:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Add an exception handler</span>
@@ -116,7 +117,7 @@ this:</p>
 </div>
 </section>
 <section id="handling-multiple-types-of-exceptions">
-<h2>Handling Multiple Types of Exceptions<a class="headerlink" href="#handling-multiple-types-of-exceptions" title="Permalink to this headline"></a></h2>
+<h2>Handling Multiple Types of Exceptions<a class="headerlink" href="#handling-multiple-types-of-exceptions" title="Permalink to this heading"></a></h2>
 <p>Multiple exception handlers for different types of exceptions can be declared:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Add two exception handlers</span>
 <span class="nb">cpp_catch</span><span class="p">(</span><span class="s">FileNotFound</span><span class="w"> </span><span class="s">ConnectionFailure</span><span class="p">)</span>
@@ -140,7 +141,7 @@ this:</p>
 </div>
 </section>
 <section id="nested-try-catch-blocks">
-<h2>Nested Try-Catch Blocks<a class="headerlink" href="#nested-try-catch-blocks" title="Permalink to this headline"></a></h2>
+<h2>Nested Try-Catch Blocks<a class="headerlink" href="#nested-try-catch-blocks" title="Permalink to this heading"></a></h2>
 <p>If a try-catch block for an exception type is nested within a try-catch block
 of the same exception type, the handler declared by the deepest try-catch
 block will be called:</p>
@@ -172,7 +173,7 @@ block will be called:</p>
 </div>
 </section>
 <section id="adding-exception-handler-for-all-exceptions">
-<h2>Adding Exception Handler for All Exceptions<a class="headerlink" href="#adding-exception-handler-for-all-exceptions" title="Permalink to this headline"></a></h2>
+<h2>Adding Exception Handler for All Exceptions<a class="headerlink" href="#adding-exception-handler-for-all-exceptions" title="Permalink to this heading"></a></h2>
 <p>A general exception handler that catches all exceptions that don’t have a
 specific handler declared for their exception type can be declared by using the
 <code class="docutils literal notranslate"><span class="pre">ALL_EXCEPTIONS</span></code> keyword in the try-catch block:</p>

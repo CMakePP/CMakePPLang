@@ -14,6 +14,7 @@
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -115,14 +116,14 @@
            <div itemprop="articleBody">
              
   <section id="classes">
-<span id="features-classes"></span><h1>Classes<a class="headerlink" href="#classes" title="Permalink to this headline"></a></h1>
+<span id="features-classes"></span><h1>Classes<a class="headerlink" href="#classes" title="Permalink to this heading"></a></h1>
 <p>The CMakePP langauge enables users to define classes and create instances of
 the classes. Classes in CMakePP can contain attributes and functions. CMakePP
 also supports inheritance. Examples of using classes are provided in the
 <a class="reference internal" href="../getting_started/cmakepp_examples/classes.html#examples-classes"><span class="std std-ref">Using Classes</span></a> the section. A basic overview of the features of
 classes are provided below.</p>
 <section id="class-definition">
-<span id="features-classes-definition"></span><h2>Class Definition<a class="headerlink" href="#class-definition" title="Permalink to this headline"></a></h2>
+<span id="features-classes-definition"></span><h2>Class Definition<a class="headerlink" href="#class-definition" title="Permalink to this heading"></a></h2>
 <p>Class definitions start with <code class="docutils literal notranslate"><span class="pre">cpp_class(MyClass)</span></code> where <code class="docutils literal notranslate"><span class="pre">MyClass</span></code> is what
 you want to name the class. Class definitions are ended with
 <code class="docutils literal notranslate"><span class="pre">cpp_end_class()</span></code>. The following is an example of an empty class definition:</p>
@@ -148,10 +149,10 @@ you want to name the class. Class definitions are ended with
 </div>
 </section>
 <section id="constructors-and-instantiation">
-<span id="features-classes-constructors-and-instantiation"></span><h2>Constructors and Instantiation<a class="headerlink" href="#constructors-and-instantiation" title="Permalink to this headline"></a></h2>
+<span id="features-classes-constructors-and-instantiation"></span><h2>Constructors and Instantiation<a class="headerlink" href="#constructors-and-instantiation" title="Permalink to this heading"></a></h2>
 <p>Classes can be instantiated in a variety of ways.</p>
 <section id="default-constructor">
-<span id="features-classes-default-constructor"></span><h3>Default Constructor<a class="headerlink" href="#default-constructor" title="Permalink to this headline"></a></h3>
+<span id="features-classes-default-constructor"></span><h3>Default Constructor<a class="headerlink" href="#default-constructor" title="Permalink to this heading"></a></h3>
 <p>Once a class is declared, an instance of that class can be created by using the
 default constructor for the class. No constructor definition is required. All
 attributes of the class will simply take their default value. An instance of a
@@ -163,7 +164,7 @@ the default constructor for the class with the following:</p>
 </div>
 </section>
 <section id="custom-constructor">
-<span id="features-classes-custom-constructor"></span><h3>Custom Constructor<a class="headerlink" href="#custom-constructor" title="Permalink to this headline"></a></h3>
+<span id="features-classes-custom-constructor"></span><h3>Custom Constructor<a class="headerlink" href="#custom-constructor" title="Permalink to this heading"></a></h3>
 <p>Users can define custom constructors to do the initial setup of their class
 upon construction. Below is an example of a class with a custom constructor
 and instantiation of that class:</p>
@@ -186,7 +187,7 @@ signatures. The CMakePP language will automatically find the implementation
 whose signature matches the parameters passed in and execute it.</p>
 </section>
 <section id="kwargs-constructor">
-<span id="features-classes-kwargs-constructor"></span><h3>KWARGS Constructor<a class="headerlink" href="#kwargs-constructor" title="Permalink to this headline"></a></h3>
+<span id="features-classes-kwargs-constructor"></span><h3>KWARGS Constructor<a class="headerlink" href="#kwargs-constructor" title="Permalink to this heading"></a></h3>
 <p>Another way to instantiate a class is using the <strong>KWARGS constructor</strong>. This
 constructor allows users to pass in attribute values that will be automatically
 assigned for the newly constructed instance. Say we have the following class
@@ -212,19 +213,19 @@ value of <code class="docutils literal notranslate"><span class="pre">2;3;4</spa
 </section>
 </section>
 <section id="attributes">
-<span id="features-classes-attributes"></span><h2>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline"></a></h2>
+<span id="features-classes-attributes"></span><h2>Attributes<a class="headerlink" href="#attributes" title="Permalink to this heading"></a></h2>
 <p>CMakePP classes can contain <strong>attributes</strong>. These attributes take default values
 that are declared when the class is defined. An instance of a class can have
 its attributes retrieved and modified from within the class or from without the
 class.</p>
 <section id="typing-of-attributes">
-<span id="features-classes-attributes-typing"></span><h3>Typing of Attributes<a class="headerlink" href="#typing-of-attributes" title="Permalink to this headline"></a></h3>
+<span id="features-classes-attributes-typing"></span><h3>Typing of Attributes<a class="headerlink" href="#typing-of-attributes" title="Permalink to this heading"></a></h3>
 <p>Attributes of CMakePP classes of a class are <strong>loosely typed</strong>. No type is
 declared when declaring an attribute, and attributes can be assigned a value of
 any type, regardless of the type of their initial value.</p>
 </section>
 <section id="declaring-attributes">
-<span id="features-classes-declaring-attributes"></span><h3>Declaring Attributes<a class="headerlink" href="#declaring-attributes" title="Permalink to this headline"></a></h3>
+<span id="features-classes-declaring-attributes"></span><h3>Declaring Attributes<a class="headerlink" href="#declaring-attributes" title="Permalink to this heading"></a></h3>
 <p>Attributes are added to class using the <code class="docutils literal notranslate"><span class="pre">cpp_attr(MyClass</span> <span class="pre">my_attr</span> <span class="pre">my_value)</span></code>
 statement where <code class="docutils literal notranslate"><span class="pre">MyClass</span></code> is the name of the class, <code class="docutils literal notranslate"><span class="pre">my_attr</span></code> is the name of
 the attribute, and <code class="docutils literal notranslate"><span class="pre">my_value</span></code> is the initial value of the attribute. The
@@ -242,7 +243,7 @@ following is an example of a class with two attributes:</p>
 </div>
 </section>
 <section id="getting-and-setting-attributes">
-<span id="features-classes-getting-setting-attributes"></span><h3>Getting and Setting Attributes<a class="headerlink" href="#getting-and-setting-attributes" title="Permalink to this headline"></a></h3>
+<span id="features-classes-getting-setting-attributes"></span><h3>Getting and Setting Attributes<a class="headerlink" href="#getting-and-setting-attributes" title="Permalink to this heading"></a></h3>
 <p>The attributes of a class are accessed by using the <code class="docutils literal notranslate"><span class="pre">GET</span></code> and <code class="docutils literal notranslate"><span class="pre">SET</span></code>
 keywords.The value of an attribute is set using:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Set the value of &quot;my_attr&quot; to &quot;my_value&quot;</span>
@@ -275,7 +276,7 @@ being accessed.</p>
 </section>
 </section>
 <section id="member-functions">
-<span id="features-classes-member-functions"></span><h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this headline"></a></h2>
+<span id="features-classes-member-functions"></span><h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading"></a></h2>
 <p>CMakePP classes can contain <strong>member functions</strong>. These functions are similar to
 regular CMake functions. The main differences being that they:</p>
 <ul class="simple">
@@ -286,7 +287,7 @@ function expects</p></li>
 <li><p>can be <strong>overloaded</strong> with multiple implementations for different signatures</p></li>
 </ul>
 <section id="defining-member-functions">
-<span id="features-classes-defining-member-functions"></span><h3>Defining Member Functions<a class="headerlink" href="#defining-member-functions" title="Permalink to this headline"></a></h3>
+<span id="features-classes-defining-member-functions"></span><h3>Defining Member Functions<a class="headerlink" href="#defining-member-functions" title="Permalink to this heading"></a></h3>
 <p>Member functions are declared in the same way as normal CMake functions with
 the addition of the <code class="docutils literal notranslate"><span class="pre">cpp_member</span></code> decorator to declare the <strong>signature</strong> of the
 function (the name of the function and the types of the arguments it takes).
@@ -339,7 +340,7 @@ value of that name (<code class="docutils literal notranslate"><span class="pre"
 </div>
 </section>
 <section id="calling-member-functions">
-<span id="features-classes-calling-member-functions"></span><h3>Calling Member Functions<a class="headerlink" href="#calling-member-functions" title="Permalink to this headline"></a></h3>
+<span id="features-classes-calling-member-functions"></span><h3>Calling Member Functions<a class="headerlink" href="#calling-member-functions" title="Permalink to this heading"></a></h3>
 <p>The function <code class="docutils literal notranslate"><span class="pre">my_fxn</span></code> belonging to a class <code class="docutils literal notranslate"><span class="pre">MyClass</span></code> as defined above can
 be called using:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">MyClass</span><span class="p">(</span><span class="s">my_fxn</span><span class="w"> </span><span class="s2">&quot;${my_instance}&quot;</span><span class="w"> </span><span class="s2">&quot;value_a&quot;</span><span class="w"> </span><span class="s2">&quot;value_b&quot;</span><span class="p">)</span>
@@ -349,7 +350,7 @@ be called using:</p>
 and <code class="docutils literal notranslate"><span class="pre">&quot;value_b&quot;</span></code> are the parameter values being passed to the function.</p>
 </section>
 <section id="function-overloading">
-<span id="features-classes-overloading-functions"></span><h3>Function Overloading<a class="headerlink" href="#function-overloading" title="Permalink to this headline"></a></h3>
+<span id="features-classes-overloading-functions"></span><h3>Function Overloading<a class="headerlink" href="#function-overloading" title="Permalink to this heading"></a></h3>
 <p>The CMakePP language allows for function overloading. This means users can
 define more than one implementation to a function. Each implementation simply
 needs to have a unique signature.</p>
@@ -375,7 +376,7 @@ can be done in the following way:</p>
 </div>
 </section>
 <section id="function-overload-resolution">
-<span id="features-classes-function-overload-resolution"></span><h3>Function Overload Resolution<a class="headerlink" href="#function-overload-resolution" title="Permalink to this headline"></a></h3>
+<span id="features-classes-function-overload-resolution"></span><h3>Function Overload Resolution<a class="headerlink" href="#function-overload-resolution" title="Permalink to this heading"></a></h3>
 <p>When calling a function that has multiple implementations, you simply need to
 call the function with with argument(s) that match the signature of the
 implementation you are trying to invoke. CMakePP will automatically find the
@@ -404,26 +405,26 @@ found, the CMakePP language will throw an error indicating this.</p>
 </section>
 </section>
 <section id="inheritance">
-<span id="features-classes-inheritance"></span><h2>Inheritance<a class="headerlink" href="#inheritance" title="Permalink to this headline"></a></h2>
+<span id="features-classes-inheritance"></span><h2>Inheritance<a class="headerlink" href="#inheritance" title="Permalink to this heading"></a></h2>
 <p>CMakePP classes support inheritance. A class can inherit from one or more
 parent classes. Classes that inherit from another class are referred to as
 <strong>derived classes</strong>.</p>
 <section id="attribute-inheritance">
-<span id="features-classes-attribute-inheritance"></span><h3>Attribute Inheritance<a class="headerlink" href="#attribute-inheritance" title="Permalink to this headline"></a></h3>
+<span id="features-classes-attribute-inheritance"></span><h3>Attribute Inheritance<a class="headerlink" href="#attribute-inheritance" title="Permalink to this heading"></a></h3>
 <p>A class that inherits from a parent class inherits all of the parent class’s
 attributes as well as the default values of those attributes. The default values
 can be overridden by declaring an attribute of the same name in the
 derived class with a new default value.</p>
 </section>
 <section id="function-inheritance">
-<span id="features-classes-function-inheritance"></span><h3>Function Inheritance<a class="headerlink" href="#function-inheritance" title="Permalink to this headline"></a></h3>
+<span id="features-classes-function-inheritance"></span><h3>Function Inheritance<a class="headerlink" href="#function-inheritance" title="Permalink to this heading"></a></h3>
 <p>A class that inherits from a parent class inherits all of the functions defined
 in that parent class. The inherited functions can be overridden with a new
 implementation in the derived class by adding a function definition with a
 signature that matches the signature of the function in the parent class.</p>
 </section>
 <section id="creating-a-derived-class">
-<span id="features-classes-creating-derived-class"></span><h3>Creating a Derived Class<a class="headerlink" href="#creating-a-derived-class" title="Permalink to this headline"></a></h3>
+<span id="features-classes-creating-derived-class"></span><h3>Creating a Derived Class<a class="headerlink" href="#creating-a-derived-class" title="Permalink to this heading"></a></h3>
 <p>To create a derived class, we need a parent class that our derived class will
 inherit from. We will use the following parent class:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cpp_class</span><span class="p">(</span><span class="s">ParentClass</span><span class="p">)</span>
@@ -492,7 +493,7 @@ statement we use to declare <code class="docutils literal notranslate"><span cla
 </div>
 </section>
 <section id="using-a-derived-class">
-<span id="features-classes-using-derived-class"></span><h3>Using a Derived Class<a class="headerlink" href="#using-a-derived-class" title="Permalink to this headline"></a></h3>
+<span id="features-classes-using-derived-class"></span><h3>Using a Derived Class<a class="headerlink" href="#using-a-derived-class" title="Permalink to this heading"></a></h3>
 <p>We can create an instance of our derived class using the following:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Create an instance of ChildClass</span>
 <span class="nb">ChildClass</span><span class="p">(</span><span class="s">CTOR</span><span class="w"> </span><span class="s">child_instance</span><span class="p">)</span>
@@ -536,7 +537,7 @@ well as the parent class:</p>
 </div>
 </section>
 <section id="multiple-class-inheritance">
-<span id="features-classes-multiple-class-inheritance"></span><h3>Multiple Class Inheritance<a class="headerlink" href="#multiple-class-inheritance" title="Permalink to this headline"></a></h3>
+<span id="features-classes-multiple-class-inheritance"></span><h3>Multiple Class Inheritance<a class="headerlink" href="#multiple-class-inheritance" title="Permalink to this heading"></a></h3>
 <p>A class can inherit from multiple classes. If the parent classes both have
 attributes or functions that have the same name, the CMakePP language will
 resolve in the following way:</p>
@@ -559,7 +560,7 @@ attribute / function is found or it runs out of parent classes to search
 and then <code class="docutils literal notranslate"><span class="pre">ParentClass2</span></code>.</p>
 </section>
 <section id="pure-virtual-member-functions">
-<span id="features-classes-pure-virtual-member-functions"></span><h3>Pure Virtual Member Functions<a class="headerlink" href="#pure-virtual-member-functions" title="Permalink to this headline"></a></h3>
+<span id="features-classes-pure-virtual-member-functions"></span><h3>Pure Virtual Member Functions<a class="headerlink" href="#pure-virtual-member-functions" title="Permalink to this heading"></a></h3>
 <p>The CMakePP language allows users to define <strong>pure virtual member functions</strong>.
 These are virtual functions with no implementation that can be overridden with
 an implementation in a derived class. We can create <code class="docutils literal notranslate"><span class="pre">ParentClass</span></code> with a

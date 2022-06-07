@@ -14,6 +14,7 @@
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -84,12 +85,12 @@
            <div itemprop="articleBody">
              
   <section id="unit-testing-cmakepplang-functions">
-<h1>Unit Testing CMakePPLang Functions<a class="headerlink" href="#unit-testing-cmakepplang-functions" title="Permalink to this headline"></a></h1>
+<h1>Unit Testing CMakePPLang Functions<a class="headerlink" href="#unit-testing-cmakepplang-functions" title="Permalink to this heading"></a></h1>
 <p>This page contains guidelines, tips, and tricks which relate to unit testing
 functionality in the CMakePPLang module. The contents of this page is somewhat
 exclusive to CMakePPLang and is in addition to project-wide guidelines.</p>
 <section id="testing-signatures">
-<h2>Testing Signatures<a class="headerlink" href="#testing-signatures" title="Permalink to this headline"></a></h2>
+<h2>Testing Signatures<a class="headerlink" href="#testing-signatures" title="Permalink to this heading"></a></h2>
 <p>The CMake language is weakly typed, the CMakePP language is strongly typed.
 Because CMakePP is unit tested, users can be confident that CMakePP language
 functions will correctly enforce type safety (and if they don’t that is a bug).
@@ -98,7 +99,7 @@ CMakePP functions need to have their type-safety checked manually. This section
 focuses on how to unit-test the signatures of functions which are strongly
 typed, but are not CMakePP language functions.</p>
 <section id="cpp-assert-signature">
-<h3>cpp_assert_signature<a class="headerlink" href="#cpp-assert-signature" title="Permalink to this headline"></a></h3>
+<h3>cpp_assert_signature<a class="headerlink" href="#cpp-assert-signature" title="Permalink to this heading"></a></h3>
 <p>The CMakePP language provides the function <code class="docutils literal notranslate"><span class="pre">cpp_assert_signature</span></code> to
 facilitate the testing of signatures. <code class="docutils literal notranslate"><span class="pre">cpp_assert_signature</span></code> does the actual
 type-checking for you. In your unit test, you simply need to make sure you are
@@ -158,7 +159,7 @@ function is not variadic (in this example we did not define our function as
 variadic; if yours is variadic you can skip this check).</p>
 </section>
 <section id="functions-that-can-not-be-type-checked-with-cpp-assert-signature">
-<h3>Functions that can not be type-checked with cpp_assert_signature<a class="headerlink" href="#functions-that-can-not-be-type-checked-with-cpp-assert-signature" title="Permalink to this headline"></a></h3>
+<h3>Functions that can not be type-checked with cpp_assert_signature<a class="headerlink" href="#functions-that-can-not-be-type-checked-with-cpp-assert-signature" title="Permalink to this heading"></a></h3>
 <p>The following UML diagram summarizes the call graph of <code class="docutils literal notranslate"><span class="pre">cpp_assert_signature</span></code>.</p>
 <img alt="../_images/assert_signature_call_graph.png" src="../_images/assert_signature_call_graph.png" />
 <p>Caveats regarding recursion aside, the call graph of any CMake script must

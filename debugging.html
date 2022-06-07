@@ -14,6 +14,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -77,7 +78,7 @@
            <div itemprop="articleBody">
              
   <section id="debugging-code-written-in-cmakepplang">
-<span id="debugging"></span><h1>Debugging Code Written in CMakePPLang<a class="headerlink" href="#debugging-code-written-in-cmakepplang" title="Permalink to this headline"></a></h1>
+<span id="debugging"></span><h1>Debugging Code Written in CMakePPLang<a class="headerlink" href="#debugging-code-written-in-cmakepplang" title="Permalink to this heading"></a></h1>
 <p>Native CMake has limited debugging capabilities, which are limited to printing
 variables out and very verbose printing of every line that is executed by the
 interpreter. While writing the CMakePP language, we attempted to build in
@@ -85,7 +86,7 @@ more robust programming error checking and debugging features. These
 features come at a computational cost so they should only be used to
 debug/unit test your build systems.</p>
 <section id="debugging-basics">
-<span id="id1"></span><h2>Debugging Basics<a class="headerlink" href="#debugging-basics" title="Permalink to this headline"></a></h2>
+<span id="id1"></span><h2>Debugging Basics<a class="headerlink" href="#debugging-basics" title="Permalink to this heading"></a></h2>
 <p>The variable <code class="docutils literal notranslate"><span class="pre">CMAKEPP_LANG_DEBUG_MODE</span></code> can be used to cause all CMakePP
 functions to run in debug mode. If you are familiar with the C/C++ preprocessor
 macro definition <code class="docutils literal notranslate"><span class="pre">NDEBUG</span></code> it’s the same idea, without the odd negative logic.

@@ -14,6 +14,7 @@
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -94,14 +95,14 @@
            <div itemprop="articleBody">
              
   <section id="maps">
-<h1>Maps<a class="headerlink" href="#maps" title="Permalink to this headline"></a></h1>
+<h1>Maps<a class="headerlink" href="#maps" title="Permalink to this heading"></a></h1>
 <p>The CMakePP language provides the <code class="docutils literal notranslate"><span class="pre">map</span></code> type for storing key-value pairs.
 The CMakePP <code class="docutils literal notranslate"><span class="pre">map</span></code> provides the same basic functionality as C++’s
 <code class="docutils literal notranslate"><span class="pre">std::map</span></code>, Python’s <code class="docutils literal notranslate"><span class="pre">dictionary</span></code>, or JavaScript’s <strong>Associative Array</strong>
 structure. Users can use maps in there code wherever they see fit. A basic
 overview of the features is provided below.</p>
 <section id="map-creation">
-<h2>Map Creation<a class="headerlink" href="#map-creation" title="Permalink to this headline"></a></h2>
+<h2>Map Creation<a class="headerlink" href="#map-creation" title="Permalink to this heading"></a></h2>
 <p>The map constructor is used to create an empty map:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Create an empty map named my_map</span>
 <span class="nb">cpp_map</span><span class="p">(</span><span class="s">CTOR</span><span class="w"> </span><span class="s">my_map</span><span class="p">)</span>
@@ -116,7 +117,7 @@ constructor:</p>
 </div>
 </section>
 <section id="setting-values">
-<h2>Setting Values<a class="headerlink" href="#setting-values" title="Permalink to this headline"></a></h2>
+<h2>Setting Values<a class="headerlink" href="#setting-values" title="Permalink to this heading"></a></h2>
 <p>Values can be set by using the <code class="docutils literal notranslate"><span class="pre">SET</span></code> keyword:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Set the value of my_key to my_value</span>
 <span class="nb">cpp_map</span><span class="p">(</span><span class="s">SET</span><span class="w"> </span><span class="s2">&quot;${my_map}&quot;</span><span class="w"> </span><span class="s">my_key</span><span class="w"> </span><span class="s2">&quot;test_value&quot;</span><span class="p">)</span>
@@ -124,7 +125,7 @@ constructor:</p>
 </div>
 </section>
 <section id="accessing-values">
-<h2>Accessing Values<a class="headerlink" href="#accessing-values" title="Permalink to this headline"></a></h2>
+<h2>Accessing Values<a class="headerlink" href="#accessing-values" title="Permalink to this heading"></a></h2>
 <p>Values can be accessed using <code class="docutils literal notranslate"><span class="pre">GET</span></code> keyword:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Access the value at my_key and store it in my_result</span>
 <span class="nb">cpp_map</span><span class="p">(</span><span class="s">GET</span><span class="w"> </span><span class="s2">&quot;${my_map}&quot;</span><span class="w"> </span><span class="s">my_result</span><span class="w"> </span><span class="s">my_key</span><span class="p">)</span>
@@ -132,7 +133,7 @@ constructor:</p>
 </div>
 </section>
 <section id="appending-values">
-<h2>Appending Values<a class="headerlink" href="#appending-values" title="Permalink to this headline"></a></h2>
+<h2>Appending Values<a class="headerlink" href="#appending-values" title="Permalink to this heading"></a></h2>
 <p>Values can be appended by using the <code class="docutils literal notranslate"><span class="pre">APPEND</span></code> keyword:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Append new_value to the value at my_key</span>
 <span class="nb">cpp_map</span><span class="p">(</span><span class="s">APPEND</span><span class="w"> </span><span class="s2">&quot;${my_map}&quot;</span><span class="w"> </span><span class="s">my_key</span><span class="w"> </span><span class="s2">&quot;new_value&quot;</span><span class="p">)</span>
@@ -140,7 +141,7 @@ constructor:</p>
 </div>
 </section>
 <section id="copying-a-map">
-<h2>Copying a Map<a class="headerlink" href="#copying-a-map" title="Permalink to this headline"></a></h2>
+<h2>Copying a Map<a class="headerlink" href="#copying-a-map" title="Permalink to this heading"></a></h2>
 <p>Maps can be copied using the <code class="docutils literal notranslate"><span class="pre">COPY</span></code> keyword:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Copy my_map to my_map_copy</span>
 <span class="nb">cpp_map</span><span class="p">(</span><span class="s">COPY</span><span class="w"> </span><span class="s2">&quot;${my_map}&quot;</span><span class="w"> </span><span class="s">my_map_copy</span><span class="p">)</span>
@@ -148,7 +149,7 @@ constructor:</p>
 </div>
 </section>
 <section id="checking-equality-of-maps">
-<h2>Checking Equality of Maps<a class="headerlink" href="#checking-equality-of-maps" title="Permalink to this headline"></a></h2>
+<h2>Checking Equality of Maps<a class="headerlink" href="#checking-equality-of-maps" title="Permalink to this heading"></a></h2>
 <p>Map equality can be checked using the <code class="docutils literal notranslate"><span class="pre">EQUAL</span></code> keyword:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Check if map_a is equivalent to map_b</span>
 <span class="nb">cpp_map</span><span class="p">(</span><span class="s">EQUAL</span><span class="w"> </span><span class="s2">&quot;${my_map}&quot;</span><span class="w"> </span><span class="s">equal_result</span><span class="w"> </span><span class="s2">&quot;${my_map_copy}&quot;</span><span class="p">)</span>
@@ -156,7 +157,7 @@ constructor:</p>
 </div>
 </section>
 <section id="checking-if-a-map-has-a-key">
-<h2>Checking if a Map has a Key<a class="headerlink" href="#checking-if-a-map-has-a-key" title="Permalink to this headline"></a></h2>
+<h2>Checking if a Map has a Key<a class="headerlink" href="#checking-if-a-map-has-a-key" title="Permalink to this heading"></a></h2>
 <p>Check whether the map contains a key with the <code class="docutils literal notranslate"><span class="pre">HAS_KEY</span></code> keyword:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Check whether the map has the key &quot;my_key&quot;</span>
 <span class="nb">cpp_map</span><span class="p">(</span><span class="s">HAS_KEY</span><span class="w"> </span><span class="s2">&quot;${my_map}&quot;</span><span class="w"> </span><span class="s">has_key_result</span><span class="w"> </span><span class="s">my_key</span><span class="p">)</span>
@@ -164,7 +165,7 @@ constructor:</p>
 </div>
 </section>
 <section id="getting-a-map-s-keys">
-<h2>Getting a Map’s Keys<a class="headerlink" href="#getting-a-map-s-keys" title="Permalink to this headline"></a></h2>
+<h2>Getting a Map’s Keys<a class="headerlink" href="#getting-a-map-s-keys" title="Permalink to this heading"></a></h2>
 <p>A list of a map’s keys can be retrieved using the <code class="docutils literal notranslate"><span class="pre">KEYS</span></code> keyword:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Put the list of the map&#39;s keys in keys_list</span>
 <span class="nb">cpp_map</span><span class="p">(</span><span class="s">KEYS</span><span class="w"> </span><span class="s2">&quot;${my_map}&quot;</span><span class="w"> </span><span class="s">keys_list</span><span class="p">)</span>

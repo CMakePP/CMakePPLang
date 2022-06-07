@@ -14,6 +14,7 @@
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
@@ -73,7 +74,7 @@
            <div itemprop="articleBody">
              
   <section id="cmakepp-function-implementation">
-<h1>CMakePP Function Implementation<a class="headerlink" href="#cmakepp-function-implementation" title="Permalink to this headline"></a></h1>
+<h1>CMakePP Function Implementation<a class="headerlink" href="#cmakepp-function-implementation" title="Permalink to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Since <cite>cpp_function</cite> does not appear to exist anymore, this page is not
@@ -81,7 +82,7 @@ included in the documentation.</p>
 </div>
 <p>This page describes how functions work in the CMakePP language.</p>
 <section id="what-it-looks-like-to-the-user">
-<h2>What it Looks Like to the User<a class="headerlink" href="#what-it-looks-like-to-the-user" title="Permalink to this headline"></a></h2>
+<h2>What it Looks Like to the User<a class="headerlink" href="#what-it-looks-like-to-the-user" title="Permalink to this heading"></a></h2>
 <p>To frame our developer discussion let’s reiterate how CMakePP functions look to
 users of the CMakePP language. To that end, let’s assume our user is declaring
 a function <code class="docutils literal notranslate"><span class="pre">foo</span></code>, which takes an <code class="docutils literal notranslate"><span class="pre">int</span></code> and a <code class="docutils literal notranslate"><span class="pre">bool</span></code>. For this scenario,
@@ -106,7 +107,7 @@ modules, hence usage of <code class="docutils literal notranslate"><span class="
 they can be overloaded for different numbers/types of positional arguments.</p>
 </section>
 <section id="implementation">
-<h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline"></a></h2>
+<h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this heading"></a></h2>
 <p>Like C++, each overload of a function is actually mapped to a unique name. The
 process of mapping overloads to unique names is called <strong>name mangling</strong>. It
 is the mangled name that is returned from <cite>cpp_function</cite>. Hence, when a user
@@ -146,7 +147,7 @@ number of overloads.</p>
 <img alt="../_images/cpp_function.png" src="../_images/cpp_function.png" />
 </section>
 <section id="understanding-ambiguities">
-<h2>Understanding Ambiguities<a class="headerlink" href="#understanding-ambiguities" title="Permalink to this headline"></a></h2>
+<h2>Understanding Ambiguities<a class="headerlink" href="#understanding-ambiguities" title="Permalink to this heading"></a></h2>
 <p>The largest problem with allowing overloads and variadic functions is that it
 becomes possible for a given set of arguments to resolve to more than one
 overload. We say two overloads of a function, <span class="math notranslate nohighlight">\(O_a\)</span> and <span class="math notranslate nohighlight">\(O_b\)</span>, are

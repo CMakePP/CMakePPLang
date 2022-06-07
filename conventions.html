@@ -14,6 +14,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
@@ -79,7 +80,7 @@
            <div itemprop="articleBody">
              
   <section id="language-conventions">
-<h1>Language Conventions<a class="headerlink" href="#language-conventions" title="Permalink to this headline"></a></h1>
+<h1>Language Conventions<a class="headerlink" href="#language-conventions" title="Permalink to this heading"></a></h1>
 <p>While you can always check the the CMakePP language documentation for how to
 use a function, the CMakePP language strives to also make it as easy as
 possible to “guess” how to use functions. Key to this effort is understanding
@@ -92,7 +93,7 @@ If an exception exists (and it is not documented why it is an exception)
 assume it is a bug and please file an <a class="reference external" href="https://github.com/CMakePP/CMakePPLang/issues">issue on GitHub</a>.</p>
 </div>
 <section id="namespaces">
-<h2>Namespaces<a class="headerlink" href="#namespaces" title="Permalink to this headline"></a></h2>
+<h2>Namespaces<a class="headerlink" href="#namespaces" title="Permalink to this heading"></a></h2>
 <p>The CMakePP language has a concept of variable scope, but does not have a
 namespace concept. The most straightforward way to introduce namespaces is to
 mangle a prefix onto function and variable names. CMakePP uses the prefix
@@ -109,7 +110,7 @@ and private configuration variables (<code class="docutils literal notranslate">
 is ever need for a protected variable).</p>
 </section>
 <section id="function-argument-order">
-<h2>Function Argument Order<a class="headerlink" href="#function-argument-order" title="Permalink to this headline"></a></h2>
+<h2>Function Argument Order<a class="headerlink" href="#function-argument-order" title="Permalink to this heading"></a></h2>
 <p>The signatures of functions found in the CMakePP language all follow the same
 conventions when it comes to argument orders. For a non-member CMakePP function
 taking <span class="math notranslate nohighlight">\(m\)</span> arguments and returning <span class="math notranslate nohighlight">\(n\)</span> values (<span class="math notranslate nohighlight">\(n\le m\)</span>), the

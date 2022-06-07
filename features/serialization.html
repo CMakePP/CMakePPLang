@@ -14,6 +14,7 @@
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -91,14 +92,14 @@
            <div itemprop="articleBody">
              
   <section id="serialization">
-<h1>Serialization<a class="headerlink" href="#serialization" title="Permalink to this headline"></a></h1>
+<h1>Serialization<a class="headerlink" href="#serialization" title="Permalink to this heading"></a></h1>
 <p>The CMakePP language provides the ability to serialize objects, maps, and other
 values into JSON strings via the <code class="docutils literal notranslate"><span class="pre">cpp_serialize</span></code> function. We will start by
 covering the serialization of maps, lists, and native CMake types since these
 are fairly simple. Finally, we’ll cover the serialization of objects as their
 serialization process is a bit more complicated.</p>
 <section id="the-serialization-function">
-<h2>The Serialization Function<a class="headerlink" href="#the-serialization-function" title="Permalink to this headline"></a></h2>
+<h2>The Serialization Function<a class="headerlink" href="#the-serialization-function" title="Permalink to this heading"></a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">cpp_serialize</span></code> function takes two arguments in the following order:</p>
 <ol class="arabic simple">
 <li><p>The name for the variable which will hold the result <strong>(of type desc)</strong></p></li>
@@ -106,7 +107,7 @@ serialization process is a bit more complicated.</p>
 </ol>
 </section>
 <section id="serialization-of-maps">
-<h2>Serialization of Maps<a class="headerlink" href="#serialization-of-maps" title="Permalink to this headline"></a></h2>
+<h2>Serialization of Maps<a class="headerlink" href="#serialization-of-maps" title="Permalink to this heading"></a></h2>
 <p>Maps are serialized into JSON dictionaries (otherwise known as associative
 arrays).</p>
 <p>For example, if we want to serialize a map called <code class="docutils literal notranslate"><span class="pre">my_map</span></code>, we could do:</p>
@@ -121,7 +122,7 @@ arrays).</p>
 </div>
 </section>
 <section id="serialization-of-lists">
-<h2>Serialization of Lists<a class="headerlink" href="#serialization-of-lists" title="Permalink to this headline"></a></h2>
+<h2>Serialization of Lists<a class="headerlink" href="#serialization-of-lists" title="Permalink to this heading"></a></h2>
 <p>Lists are serialized into JSON lists.</p>
 <p>For example, a list can be serialized as follows:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Create a list</span>
@@ -135,7 +136,7 @@ arrays).</p>
 </div>
 </section>
 <section id="serialization-of-other-native-cmake-types">
-<h2>Serialization of other Native CMake Types<a class="headerlink" href="#serialization-of-other-native-cmake-types" title="Permalink to this headline"></a></h2>
+<h2>Serialization of other Native CMake Types<a class="headerlink" href="#serialization-of-other-native-cmake-types" title="Permalink to this heading"></a></h2>
 <p>All values of other types are serialized into simple JSON strings.</p>
 <table class="docutils align-default">
 <colgroup>
@@ -190,7 +191,7 @@ arrays).</p>
 </table>
 </section>
 <section id="serialization-of-objects">
-<h2>Serialization of Objects<a class="headerlink" href="#serialization-of-objects" title="Permalink to this headline"></a></h2>
+<h2>Serialization of Objects<a class="headerlink" href="#serialization-of-objects" title="Permalink to this heading"></a></h2>
 <p>The CMakePP language serializes objects by creating a JSON dictionary with a
 single key-value pair.</p>
 <p>The key in this pair is the unique identifier that the CMakePP language uses

@@ -14,6 +14,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -98,11 +99,11 @@
            <div itemprop="articleBody">
              
   <section id="using-classes">
-<span id="examples-classes"></span><h1><span class="section-number">1. </span>Using Classes<a class="headerlink" href="#using-classes" title="Permalink to this headline"></a></h1>
+<span id="examples-classes"></span><h1><span class="section-number">1. </span>Using Classes<a class="headerlink" href="#using-classes" title="Permalink to this heading"></a></h1>
 <p>This page provides examples of creating and using classes in the CMakePP
 language.</p>
 <section id="writing-a-basic-class">
-<span id="examples-classes-writing-basic-class"></span><h2><span class="section-number">1.1. </span>Writing a Basic Class<a class="headerlink" href="#writing-a-basic-class" title="Permalink to this headline"></a></h2>
+<span id="examples-classes-writing-basic-class"></span><h2><span class="section-number">1.1. </span>Writing a Basic Class<a class="headerlink" href="#writing-a-basic-class" title="Permalink to this heading"></a></h2>
 <p>We’ll begin by writing a simple class <code class="docutils literal notranslate"><span class="pre">Automobile</span></code> that only contains one
 attribute named <code class="docutils literal notranslate"><span class="pre">color</span></code> that takes the default value <code class="docutils literal notranslate"><span class="pre">red</span></code>:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Begin class definition</span>
@@ -145,7 +146,7 @@ color attribute, and print out that value:</p>
 <p>See <a class="reference internal" href="../../features/classes.html#features-classes"><span class="std std-ref">Classes</span></a> for more information about CMakePP classes.</p>
 </section>
 <section id="adding-a-member-function">
-<span id="examples-classes-member-functions"></span><h2><span class="section-number">1.2. </span>Adding a Member Function<a class="headerlink" href="#adding-a-member-function" title="Permalink to this headline"></a></h2>
+<span id="examples-classes-member-functions"></span><h2><span class="section-number">1.2. </span>Adding a Member Function<a class="headerlink" href="#adding-a-member-function" title="Permalink to this heading"></a></h2>
 <p>Next we will add a function to our class. The function will be named <code class="docutils literal notranslate"><span class="pre">start</span></code>
 and will simply print a message indicating that our <code class="docutils literal notranslate"><span class="pre">Automobile</span></code> has started
 its engine. The updated class definition with this new function added is:</p>
@@ -180,7 +181,7 @@ did in the previous example) we can call our function using the following:</p>
 class member functions.</p>
 </section>
 <section id="adding-a-function-that-takes-an-argument">
-<span id="examples-classes-function-arguments"></span><h2><span class="section-number">1.3. </span>Adding a Function That Takes an Argument<a class="headerlink" href="#adding-a-function-that-takes-an-argument" title="Permalink to this headline"></a></h2>
+<span id="examples-classes-function-arguments"></span><h2><span class="section-number">1.3. </span>Adding a Function That Takes an Argument<a class="headerlink" href="#adding-a-function-that-takes-an-argument" title="Permalink to this heading"></a></h2>
 <p>Now we will add a function called <code class="docutils literal notranslate"><span class="pre">drive</span></code> that takes two arguments, an <code class="docutils literal notranslate"><span class="pre">int</span></code>
 and a <code class="docutils literal notranslate"><span class="pre">str</span></code> and prints a message using those two arguments. We can do that by
 adding the following to our class:</p>
@@ -212,7 +213,7 @@ definition.</p>
 </div>
 </section>
 <section id="adding-a-function-that-references-attributes">
-<span id="examples-classes-function-referencing-attributes"></span><h2><span class="section-number">1.4. </span>Adding a Function That References Attributes<a class="headerlink" href="#adding-a-function-that-references-attributes" title="Permalink to this headline"></a></h2>
+<span id="examples-classes-function-referencing-attributes"></span><h2><span class="section-number">1.4. </span>Adding a Function That References Attributes<a class="headerlink" href="#adding-a-function-that-references-attributes" title="Permalink to this heading"></a></h2>
 <p>Functions can access attributes of the class they are a member of. We will add
 an attribute <code class="docutils literal notranslate"><span class="pre">km_driven</span></code> to our class. We can then add a function
 <code class="docutils literal notranslate"><span class="pre">describe_self</span></code> that prints a message describing the color of the car and
@@ -243,7 +244,7 @@ prepended to their name. Here is the function:</p>
 </div>
 </section>
 <section id="returning-a-value-from-a-function">
-<span id="examples-classes-return-value"></span><h2><span class="section-number">1.5. </span>Returning a Value from a Function<a class="headerlink" href="#returning-a-value-from-a-function" title="Permalink to this headline"></a></h2>
+<span id="examples-classes-return-value"></span><h2><span class="section-number">1.5. </span>Returning a Value from a Function<a class="headerlink" href="#returning-a-value-from-a-function" title="Permalink to this heading"></a></h2>
 <p>We will often want to return values from functions so that we can store those
 values for later use. We can modify the <code class="docutils literal notranslate"><span class="pre">describe_self</span></code> function we just
 wrote to return a value instead of printing a message.</p>
@@ -288,7 +289,7 @@ value in the same way that the CMake interpreter would do so.</p>
 </div>
 </section>
 <section id="adding-multiple-return-points-to-a-function">
-<span id="examples-classes-multiple-return-points"></span><h2><span class="section-number">1.6. </span>Adding Multiple Return Points to a Function<a class="headerlink" href="#adding-multiple-return-points-to-a-function" title="Permalink to this headline"></a></h2>
+<span id="examples-classes-multiple-return-points"></span><h2><span class="section-number">1.6. </span>Adding Multiple Return Points to a Function<a class="headerlink" href="#adding-multiple-return-points-to-a-function" title="Permalink to this heading"></a></h2>
 <p>We can employ the <code class="docutils literal notranslate"><span class="pre">cpp_return</span></code> macro to create multiple return points in a
 function. Additionally <code class="docutils literal notranslate"><span class="pre">cpp_return</span></code> also provides us with a more concise way
 to return a value to the parent scope.</p>
@@ -350,7 +351,7 @@ as follows:</p>
 </div>
 </section>
 <section id="overloading-a-function">
-<span id="examples-classes-function-overloading"></span><h2><span class="section-number">1.7. </span>Overloading a Function<a class="headerlink" href="#overloading-a-function" title="Permalink to this headline"></a></h2>
+<span id="examples-classes-function-overloading"></span><h2><span class="section-number">1.7. </span>Overloading a Function<a class="headerlink" href="#overloading-a-function" title="Permalink to this heading"></a></h2>
 <p>We can overload a function by adding a function of the same name with a
 different signature. For example, we can overload our function <code class="docutils literal notranslate"><span class="pre">start</span></code> by
 adding a new function definition with the same name that takes one argument
@@ -379,7 +380,7 @@ pass in one integer to match the new signature:</p>
 </div>
 </section>
 <section id="adding-a-user-defined-constructors">
-<span id="examples-classes-constructor-user-defined"></span><h2><span class="section-number">1.8. </span>Adding a User-Defined Constructors<a class="headerlink" href="#adding-a-user-defined-constructors" title="Permalink to this headline"></a></h2>
+<span id="examples-classes-constructor-user-defined"></span><h2><span class="section-number">1.8. </span>Adding a User-Defined Constructors<a class="headerlink" href="#adding-a-user-defined-constructors" title="Permalink to this heading"></a></h2>
 <p>The CMakePP language allows users to define multiple custom constructors for
 classes. This is done using the <code class="docutils literal notranslate"><span class="pre">cpp_constructor</span></code> command. Here we add a
 constructor that takes two integers to our <code class="docutils literal notranslate"><span class="pre">Automobile</span></code> class:</p>
@@ -399,7 +400,7 @@ no arguments are passed. In that case, the CMakePP language will just call the
 default constructor for the class.</p>
 </section>
 <section id="using-the-kwargs-constructor">
-<span id="examples-classes-constructor-kwargs"></span><h2><span class="section-number">1.9. </span>Using the KWARGS Constructor<a class="headerlink" href="#using-the-kwargs-constructor" title="Permalink to this headline"></a></h2>
+<span id="examples-classes-constructor-kwargs"></span><h2><span class="section-number">1.9. </span>Using the KWARGS Constructor<a class="headerlink" href="#using-the-kwargs-constructor" title="Permalink to this heading"></a></h2>
 <p>The CMakePP language allows users to call a <strong>KWARGS Constructor</strong>. This
 constructor enables users to automatically set the values of attributes of the
 class upon construction. No constructor needs to be defined to use this
@@ -415,7 +416,7 @@ automobile class has three attributes: <code class="docutils literal notranslate
 <code class="docutils literal notranslate"><span class="pre">owners</span></code> to <code class="docutils literal notranslate"><span class="pre">Alice;Bob;Chuck</span></code>.</p>
 </section>
 <section id="writing-a-derived-class">
-<span id="examples-classes-derived-class"></span><h2><span class="section-number">1.10. </span>Writing a Derived Class<a class="headerlink" href="#writing-a-derived-class" title="Permalink to this headline"></a></h2>
+<span id="examples-classes-derived-class"></span><h2><span class="section-number">1.10. </span>Writing a Derived Class<a class="headerlink" href="#writing-a-derived-class" title="Permalink to this heading"></a></h2>
 <p>The CMakePP language supports inheritance which enables us to write
 <strong>subclasses</strong> that are derived from (or <em>inherit from</em>) a base class.
 Subclasses inherit all attributes and functions from their base class. However,
@@ -484,9 +485,9 @@ its base class <code class="docutils literal notranslate"><span class="pre">Auto
 </div>
 </section>
 <section id="inheriting-from-multiple-classes">
-<span id="examples-classes-multiple-inheritance"></span><h2><span class="section-number">1.11. </span>Inheriting from Multiple Classes<a class="headerlink" href="#inheriting-from-multiple-classes" title="Permalink to this headline"></a></h2>
+<span id="examples-classes-multiple-inheritance"></span><h2><span class="section-number">1.11. </span>Inheriting from Multiple Classes<a class="headerlink" href="#inheriting-from-multiple-classes" title="Permalink to this heading"></a></h2>
 <section id="the-basics">
-<span id="examples-classes-multiple-inheritance-basics"></span><h3><span class="section-number">1.11.1. </span>The Basics<a class="headerlink" href="#the-basics" title="Permalink to this headline"></a></h3>
+<span id="examples-classes-multiple-inheritance-basics"></span><h3><span class="section-number">1.11.1. </span>The Basics<a class="headerlink" href="#the-basics" title="Permalink to this heading"></a></h3>
 <p>A class can inherit from multiple parent classes. Suppose we have defined the
 following classes to represent <strong>electric vehicles</strong> and <strong>trucks</strong>:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># The ElectricVehicle class</span>
@@ -561,7 +562,7 @@ like we would any other attribute:</p>
 </div>
 </section>
 <section id="inheriting-from-multiple-classes-with-conflicting-attribute-and-function-names">
-<span id="examples-classes-multiple-inheritance-conflicting"></span><h3><span class="section-number">1.11.2. </span>Inheriting from Multiple Classes with Conflicting Attribute and Function Names<a class="headerlink" href="#inheriting-from-multiple-classes-with-conflicting-attribute-and-function-names" title="Permalink to this headline"></a></h3>
+<span id="examples-classes-multiple-inheritance-conflicting"></span><h3><span class="section-number">1.11.2. </span>Inheriting from Multiple Classes with Conflicting Attribute and Function Names<a class="headerlink" href="#inheriting-from-multiple-classes-with-conflicting-attribute-and-function-names" title="Permalink to this heading"></a></h3>
 <p>Inheriting from multiple classes creates the possibility of inheriting from
 two or more classes that all have an attribute of the same name or a function
 with the same signature. Suppose our <code class="docutils literal notranslate"><span class="pre">ElectricVehicle</span></code> and <code class="docutils literal notranslate"><span class="pre">Truck</span></code> classes
@@ -655,7 +656,7 @@ look in <code class="docutils literal notranslate"><span class="pre">Truck</span
 </section>
 </section>
 <section id="adding-a-pure-virtual-member-function">
-<span id="examples-classes-pure-virtual-member-functions"></span><h2><span class="section-number">1.12. </span>Adding A Pure Virtual Member Function<a class="headerlink" href="#adding-a-pure-virtual-member-function" title="Permalink to this headline"></a></h2>
+<span id="examples-classes-pure-virtual-member-functions"></span><h2><span class="section-number">1.12. </span>Adding A Pure Virtual Member Function<a class="headerlink" href="#adding-a-pure-virtual-member-function" title="Permalink to this heading"></a></h2>
 <p>The CMakePP Language allows users to define pure virtual member functions in
 base classes. These functions have no concrete implementation, but can be
 overriden by implementations in derived classes. Let’s start by defining a

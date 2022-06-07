@@ -14,6 +14,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -52,9 +53,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#checking-if-variable-contains-a-value">2.4. Checking if Variable Contains a Value</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#determining-the-type-of-a-variable">2.5. Determining the Type of a Variable</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#asserting-a-condition">2.6. Asserting a Condition</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#checking-if-a-file-exists">2.7. Checking if a File Exists</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#manipulating-globals">2.8. Manipulating Globals</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#creating-a-unique-identifier">2.9. Creating a Unique Identifier</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#checking-if-a-directory-exists">2.7. Checking if a Directory Exists</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#checking-if-a-file-exists">2.8. Checking if a File Exists</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#manipulating-globals">2.9. Manipulating Globals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-unique-identifier">2.10. Creating a Unique Identifier</a></li>
 </ul>
 </li>
 </ul>
@@ -95,11 +97,11 @@
            <div itemprop="articleBody">
              
   <section id="using-utilities">
-<span id="examples-utilities"></span><h1><span class="section-number">2. </span>Using Utilities<a class="headerlink" href="#using-utilities" title="Permalink to this headline"></a></h1>
+<span id="examples-utilities"></span><h1><span class="section-number">2. </span>Using Utilities<a class="headerlink" href="#using-utilities" title="Permalink to this heading"></a></h1>
 <p>This page provides examples of using utility functions available in the
 CMakePP language.</p>
 <section id="checking-if-variables-are-equal">
-<span id="examples-utilities-variable-equality"></span><h2><span class="section-number">2.1. </span>Checking if Variables are Equal<a class="headerlink" href="#checking-if-variables-are-equal" title="Permalink to this headline"></a></h2>
+<span id="examples-utilities-variable-equality"></span><h2><span class="section-number">2.1. </span>Checking if Variables are Equal<a class="headerlink" href="#checking-if-variables-are-equal" title="Permalink to this heading"></a></h2>
 <p>We can use the <code class="docutils literal notranslate"><span class="pre">cpp_equal</span></code> function to check for equality between any two
 variables, including objects and maps.</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Create three strings, two that are equivalent and on that is not</span>
@@ -127,7 +129,7 @@ being the same string.</p>
 </div>
 </section>
 <section id="serializing-a-variable">
-<span id="examples-utilities-variable-serialization"></span><h2><span class="section-number">2.2. </span>Serializing a Variable<a class="headerlink" href="#serializing-a-variable" title="Permalink to this headline"></a></h2>
+<span id="examples-utilities-variable-serialization"></span><h2><span class="section-number">2.2. </span>Serializing a Variable<a class="headerlink" href="#serializing-a-variable" title="Permalink to this heading"></a></h2>
 <p>We can use <code class="docutils literal notranslate"><span class="pre">cpp_serialize</span></code> to serialize a variable into a JSON string:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Create a map containing a desc</span>
 <span class="nb">cpp_map</span><span class="p">(</span><span class="s">CTOR</span><span class="w"> </span><span class="s">my_map</span><span class="w"> </span><span class="s">desc_key</span><span class="w"> </span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span>
@@ -146,7 +148,7 @@ being the same string.</p>
 </div>
 </section>
 <section id="copying-a-variable">
-<h2><span class="section-number">2.3. </span>Copying a Variable<a class="headerlink" href="#copying-a-variable" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">2.3. </span>Copying a Variable<a class="headerlink" href="#copying-a-variable" title="Permalink to this heading"></a></h2>
 <p>We can use the <code class="docutils literal notranslate"><span class="pre">cpp_copy</span></code> to create a deep copy of an existing variable
 regardless of what type it is:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Create a list</span>
@@ -168,12 +170,12 @@ regardless of what type it is:</p>
 </div>
 </section>
 <section id="checking-if-variable-contains-a-value">
-<h2><span class="section-number">2.4. </span>Checking if Variable Contains a Value<a class="headerlink" href="#checking-if-variable-contains-a-value" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">2.4. </span>Checking if Variable Contains a Value<a class="headerlink" href="#checking-if-variable-contains-a-value" title="Permalink to this heading"></a></h2>
 <p>We can use the <code class="docutils literal notranslate"><span class="pre">cpp_contains</span></code> function to check if a certain value is
 contained within another variable. The behavior changes depending on the type of
 the variable we are examining.</p>
 <section id="check-if-a-desc-contains-a-substring">
-<h3><span class="section-number">2.4.1. </span>Check if a Desc Contains a Substring<a class="headerlink" href="#check-if-a-desc-contains-a-substring" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">2.4.1. </span>Check if a Desc Contains a Substring<a class="headerlink" href="#check-if-a-desc-contains-a-substring" title="Permalink to this heading"></a></h3>
 <p>We can use <code class="docutils literal notranslate"><span class="pre">cpp_contains</span></code> to check if a
 <a class="reference internal" href="../../features/types.html#features-types-quasi-cmake-desc"><span class="std std-ref">Description (desc)</span></a> contains a substring:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Create a desc</span>
@@ -197,7 +199,7 @@ the variable we are examining.</p>
 </div>
 </section>
 <section id="check-if-a-list-contains-a-value">
-<h3><span class="section-number">2.4.2. </span>Check if a List Contains a Value<a class="headerlink" href="#check-if-a-list-contains-a-value" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">2.4.2. </span>Check if a List Contains a Value<a class="headerlink" href="#check-if-a-list-contains-a-value" title="Permalink to this heading"></a></h3>
 <p>We can use <code class="docutils literal notranslate"><span class="pre">cpp_contains</span></code> to check if a <a class="reference internal" href="../../features/types.html#features-types-cmake-list"><span class="std std-ref">List (list)</span></a>
 contains a value:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Create list containing some values</span>
@@ -225,7 +227,7 @@ contains a value:</p>
 </div>
 </section>
 <section id="check-if-a-map-contains-a-key">
-<h3><span class="section-number">2.4.3. </span>Check if a Map Contains a Key<a class="headerlink" href="#check-if-a-map-contains-a-key" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">2.4.3. </span>Check if a Map Contains a Key<a class="headerlink" href="#check-if-a-map-contains-a-key" title="Permalink to this heading"></a></h3>
 <p>We can use <code class="docutils literal notranslate"><span class="pre">cpp_contains</span></code> to check if a <a class="reference internal" href="../../features/types.html#features-types-cmakepp-map"><span class="std std-ref">Map (map)</span></a>
 contains a key:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Create a map containing some initial key value pairs</span>
@@ -247,7 +249,7 @@ contains a key:</p>
 </section>
 </section>
 <section id="determining-the-type-of-a-variable">
-<h2><span class="section-number">2.5. </span>Determining the Type of a Variable<a class="headerlink" href="#determining-the-type-of-a-variable" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">2.5. </span>Determining the Type of a Variable<a class="headerlink" href="#determining-the-type-of-a-variable" title="Permalink to this heading"></a></h2>
 <p>We can use <code class="docutils literal notranslate"><span class="pre">cpp_type_of</span></code> to get the <a class="reference internal" href="../../features/types.html#features-types"><span class="std std-ref">type</span></a> of a
 variable or value:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Get the type of a value and print the result</span>
@@ -263,7 +265,7 @@ variable or value:</p>
 </div>
 </section>
 <section id="asserting-a-condition">
-<h2><span class="section-number">2.6. </span>Asserting a Condition<a class="headerlink" href="#asserting-a-condition" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">2.6. </span>Asserting a Condition<a class="headerlink" href="#asserting-a-condition" title="Permalink to this heading"></a></h2>
 <p>We can use <code class="docutils literal notranslate"><span class="pre">cpp_assert</span></code> to assert that a given value is true:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Assert that 3 is an int</span>
 <span class="nb">cpp_is_int</span><span class="p">(</span><span class="s">is_int</span><span class="w"> </span><span class="s">3</span><span class="p">)</span>
@@ -278,8 +280,33 @@ variable or value:</p>
 provided assertion message along with the call stack from where the assertion
 failed.</p>
 </section>
+<section id="checking-if-a-directory-exists">
+<h2><span class="section-number">2.7. </span>Checking if a Directory Exists<a class="headerlink" href="#checking-if-a-directory-exists" title="Permalink to this heading"></a></h2>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">cpp_directory_exists</span></code> to check if directories exist:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Check if some files exist</span>
+<span class="nb">cpp_directory_exists</span><span class="p">(</span><span class="s">result_1</span><span class="w"> </span><span class="s2">&quot;/home/joe/dir_that_exists&quot;</span><span class="p">)</span>
+<span class="nb">cpp_directory_exists</span><span class="p">(</span><span class="s">result_2</span><span class="w"> </span><span class="s2">&quot;/home/joe/dir_that_does_not_exists&quot;</span><span class="p">)</span>
+
+<span class="c"># Call the function and pass in file</span>
+<span class="nb">cpp_directory_exists</span><span class="p">(</span><span class="s">result_3</span><span class="w"> </span><span class="s2">&quot;/home/joe/file.txt&quot;</span><span class="p">)</span>
+
+<span class="nb">message</span><span class="p">(</span><span class="s2">&quot;${result_1}&quot;</span><span class="p">)</span>
+<span class="nb">message</span><span class="p">(</span><span class="s2">&quot;${result_2}&quot;</span><span class="p">)</span>
+<span class="nb">message</span><span class="p">(</span><span class="s2">&quot;${result_3}&quot;</span><span class="p">)</span>
+
+<span class="c"># Output:</span>
+<span class="c"># TRUE</span>
+<span class="c"># FALSE</span>
+<span class="c"># FALSE</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">cpp_directory_exists</span></code> fails if passed a file!</p>
+</div>
+</section>
 <section id="checking-if-a-file-exists">
-<h2><span class="section-number">2.7. </span>Checking if a File Exists<a class="headerlink" href="#checking-if-a-file-exists" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">2.8. </span>Checking if a File Exists<a class="headerlink" href="#checking-if-a-file-exists" title="Permalink to this heading"></a></h2>
 <p>We can use <code class="docutils literal notranslate"><span class="pre">cpp_file_exists</span></code> to check if files exist:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Check if some files exist</span>
 <span class="nb">cpp_file_exists</span><span class="p">(</span><span class="s">result_1</span><span class="w"> </span><span class="s2">&quot;/home/joe/file_that_exists.txt&quot;</span><span class="p">)</span>
@@ -304,7 +331,7 @@ failed.</p>
 </div>
 </section>
 <section id="manipulating-globals">
-<h2><span class="section-number">2.8. </span>Manipulating Globals<a class="headerlink" href="#manipulating-globals" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">2.9. </span>Manipulating Globals<a class="headerlink" href="#manipulating-globals" title="Permalink to this heading"></a></h2>
 <p>We can use <code class="docutils literal notranslate"><span class="pre">cpp_set_global</span></code>, <code class="docutils literal notranslate"><span class="pre">cpp_get_global</span></code>, and <code class="docutils literal notranslate"><span class="pre">cpp_append_global</span></code> to
 get, set, and append global values:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Set a global value</span>
@@ -328,7 +355,7 @@ get, set, and append global values:</p>
 </div>
 </section>
 <section id="creating-a-unique-identifier">
-<h2><span class="section-number">2.9. </span>Creating a Unique Identifier<a class="headerlink" href="#creating-a-unique-identifier" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">2.10. </span>Creating a Unique Identifier<a class="headerlink" href="#creating-a-unique-identifier" title="Permalink to this heading"></a></h2>
 <p>We can use <code class="docutils literal notranslate"><span class="pre">cpp_unique_id</span></code> to create a unique identifier:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Create a unique ID and print it out</span>
 <span class="nb">cpp_unique_id</span><span class="p">(</span><span class="s">new_uid</span><span class="p">)</span>

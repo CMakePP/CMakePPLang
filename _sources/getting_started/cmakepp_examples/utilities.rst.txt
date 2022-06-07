@@ -113,6 +113,19 @@ If an assert fails, it will stop the execution of the program and print the
 provided assertion message along with the call stack from where the assertion
 failed.
 
+Checking if a Directory Exists
+==============================
+
+We can use ``cpp_directory_exists`` to check if directories exist:
+
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/utilities/directory_exists.cmake
+   :lines: 6-20
+   :dedent: 4
+
+.. note::
+   
+   ``cpp_directory_exists`` fails if passed a file!
+
 Checking if a File Exists
 =========================
 
