@@ -35,12 +35,12 @@ include_guard()
 # .. code-block:: cmake
 #
 #    function(fxn_name return_identifier)
-#        set(${return_identifier} "some value"
+#        set(${return_identifier} "some value")
 #        if(x)
-#            set(${return_identifier} "anoter value")
+#            set(${return_identifier} "another value")
 #            cpp_return(${return_identifier})
 #        endif()
-#        cpp_return(${return_indentifier})
+#        cpp_return(${return_identifier})
 #    endfunction()
 #
 #]]

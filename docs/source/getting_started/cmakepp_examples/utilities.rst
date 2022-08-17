@@ -100,6 +100,20 @@ variable or value:
 
   ``cpp_type_of`` works with CMakePP types as well as native CMake types.
 
+Returning a Value
+=================
+
+We can use ``cpp_return`` to return a value from a function:
+
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/utilities/return.cmake
+   :lines: 3-11
+
+The function can then be called with:
+
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/utilities/return.cmake
+   :lines: 15-19
+   :dedent: 4
+
 Asserting a Condition
 =====================
 
