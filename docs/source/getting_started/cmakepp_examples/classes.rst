@@ -31,6 +31,12 @@ We can also set the value of the attribute:
    :lines: 28-37
    :dedent: 4
 
+.. note::
+
+   Class names are case-insensitive, so ``Automobile``, ``automobile``, and
+   ``AUTOMOBILE`` are all valid ways to refer to the class, as shown in
+   the last code snippet above.
+
 See :ref:`features-classes` for more information about CMakePP classes.
 
 .. _examples-classes-member-functions:
