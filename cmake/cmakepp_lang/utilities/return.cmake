@@ -44,7 +44,9 @@ include_guard()
 #    endfunction()
 #
 #]]
-macro(cpp_return _cr_rv)
-    set("${_cr_rv}" "${${_cr_rv}}" PARENT_SCOPE)
+macro(cpp_return)
+    foreach(_cr_rv ${ARGN})
+        set("${_cr_rv}" "${${_cr_rv}}" PARENT_SCOPE)
+    endforeach()
     return()
 endmacro()
