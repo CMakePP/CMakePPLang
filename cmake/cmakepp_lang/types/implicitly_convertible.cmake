@@ -45,6 +45,9 @@ function(cpp_implicitly_convertible _ic_result _ic_from _ic_to)
     if(_ic_to STREQUAL _ic_from)
         set("${_ic_result}" TRUE PARENT_SCOPE)
         return()
+    elseif(_ic_to STREQUAL "str") # Everything is a str
+        set("${_ic_result}" TRUE PARENT_SCOPE)
+        return()
     endif()
 
     # If from-type is "Class" we are casting from a user-defined class
@@ -67,16 +70,14 @@ function(cpp_implicitly_convertible _ic_result _ic_from _ic_to)
         return()
     endif()
 
-    # Getting here means from-type and to-type are not the same type and
-    # from-type is not a user-defined class. In turn this means there are only a
-    # few edge-cases where we actually allow an implicit conversion. We check
-    # for those now
+    # Getting here means from-type and to-type are not the same type, we are
+    # not converting to a str, and from-type is not a user-defined class. In
+    # turn this means there are only a few edge-cases where we actually
+    # allow an implicit conversion. We check for those now
     set("${_ic_result}" FALSE PARENT_SCOPE)
 
     # These are the edge-cases that make it an okay conversion
-    if(_ic_to STREQUAL "str")      # Everything is a str
-        set("${_ic_result}" TRUE PARENT_SCOPE)
-    elseif(_ic_to STREQUAL "list")  # Any one object is a one-element list
+    if(_ic_to STREQUAL "list")  # Any one object is a one-element list
         set("${_ic_result}" TRUE PARENT_SCOPE)
     # We checked if the type of from_type was a class, but missed if from_type
     # itself was class
