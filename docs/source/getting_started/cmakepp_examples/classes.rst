@@ -28,8 +28,14 @@ color attribute, and print out that value:
 We can also set the value of the attribute:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/writing_basic_class.cmake
-   :lines: 26-35
+   :lines: 28-37
    :dedent: 4
+
+.. note::
+
+   Class names are case-insensitive, so ``Automobile``, ``automobile``, and
+   ``AUTOMOBILE`` are all valid ways to refer to the class, as shown in
+   the last code snippet above.
 
 See :ref:`features-classes` for more information about CMakePP classes.
 
