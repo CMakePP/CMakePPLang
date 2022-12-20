@@ -16,8 +16,11 @@ Class Definition
 ================
 
 Class definitions start with ``cpp_class(MyClass)`` where ``MyClass`` is what
-you want to name the class. Class definitions are ended with
-``cpp_end_class()``. The following is an example of an empty class definition:
+you want to name the class. CMakePPLang handles the class name, ``MyClass``
+case-insensitively, so ``myclass`` and ``MYCLASS`` will also refer to the
+same class created through ``cpp_class(MyClass)``. Class definitions are
+ended with ``cpp_end_class()``. The following is an example of an empty
+class definition:
 
 .. code-block:: cmake
 
