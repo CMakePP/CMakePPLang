@@ -28,7 +28,7 @@ color attribute, and print out that value:
 We can also set the value of the attribute:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/writing_basic_class.cmake
-   :lines: 26-35
+   :lines: 28-37
    :dedent: 4
 
 See :ref:`features-classes` for more information about CMakePP classes.

@@ -23,15 +23,19 @@ function("${writing_basic_class}")
 
     # Output: The color of my_auto is: red
 
+    ct_assert_equal(my_autos_color "red")
+
     # Set a new value for the "color" attribute
     Automobile(SET "${my_auto}" color blue)
 
-    # Access the "color" attribute again and save it to the var "my_autos_color"
-    Automobile(GET "${my_auto}" my_autos_color color)
+    # User-defined class names are case-insensitive, so lowercase works, too
+    automobile(GET "${my_auto}" my_autos_color color)
 
     # Print out the value of the var "my_autos_color"
     message("The color of my_auto is: ${my_autos_color}")
 
     # Output: The color of my_auto is: blue
+
+    ct_assert_equal(my_autos_color "blue")
 
 endfunction()
