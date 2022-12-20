@@ -10,6 +10,8 @@ include_guard()
 # ``A``'s namespace and also returns control back to ``A`` (*i.e.*, any
 # code following the ``cpp_return`` call in ``B`` will not be executed).
 #
+# This works for any number of return values.
+#
 # .. warning::
 #
 #    Extreme care needs to be taken when using this function in a macro as it
@@ -18,8 +20,8 @@ include_guard()
 #    function is reached. As a rule-of-thumb, never call this function from a
 #    macro.
 #
-# :param _cr_rv: The identifier which needs to be set in the parent namespace.
-# :type _cr_rv: desc
+# :param *args: Identifiers which needs to be set in the parent namespace.
+# :type *args: list[desc]
 #
 # ..note::
 #
@@ -28,7 +30,7 @@ include_guard()
 #   scope, *i.e.*, the caller would still have to call ``set`` and ``return``.
 #
 # Example Usage:cpp_function_ctor
-# ==============
+# ===============================
 #
 # The following shows how to write a function which has multiple return points.
 #
@@ -41,6 +43,16 @@ include_guard()
 #            cpp_return(${return_identifier})
 #        endif()
 #        cpp_return(${return_identifier})
+#    endfunction()
+#
+# The following shows how to write a function which returns multiple values:
+#
+# .. code-block:: cmake
+#
+#    function(fxn_name return_id_1 return_id_2)
+#        set("${return_id_1}" "return_value_1")
+#        set("${return_id_2}" "return_value_2")
+#        cpp_return("${return_id_1}" "${return_id_2}")
 #    endfunction()
 #
 #]]
