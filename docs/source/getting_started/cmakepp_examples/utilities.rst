@@ -100,6 +100,16 @@ variable or value:
 
   ``cpp_type_of`` works with CMakePP types as well as native CMake types.
 
+Check for Conflict with a Built-in Type
+=======================================
+
+We can use ``cpp_check_conflicting_types`` to check if a given string
+conflicts with a built-in type of CMakePPLang:
+
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/utilities/check_conflicting_variable_type.cmake
+   :lines: 6-14
+   :dedent: 4
+
 Returning a Value
 =================
 

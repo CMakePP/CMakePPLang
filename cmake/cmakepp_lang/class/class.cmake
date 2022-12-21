@@ -2,6 +2,7 @@ include_guard()
 include(cmakepp_lang/class/detail_/bases)
 include(cmakepp_lang/object/object)
 include(cmakepp_lang/types/cmakepp_type)
+include(cmakepp_lang/utilities/check_conflicting_types)
 
 set(
     __CMAKEPP_LANG_CLASS_TEMPLATE__
@@ -25,6 +26,18 @@ set(
 # :rtype: path
 #]]
 function(_cpp_class_guts _cg_type _cg_wrapper)
+    cpp_sanitize_string(_cg_nice_type "${_cg_type}")
+    cpp_check_conflicting_types(
+        _cg_conflict _cg_conflicting_type "${_cg_nice_type}"
+    )
+    if(_cg_conflict)
+        message(
+            FATAL_ERROR
+            "Class name conflicts with a built-in type: "
+            "'${_cg_type}' conflicts with built-in '${_cg_conflicting_type}'"
+        )
+    endif()
+
     if("${ARGC}" EQUAL 2)
         # No parent classes passed in, only inherit from obj
         set(_cg_bases "obj")

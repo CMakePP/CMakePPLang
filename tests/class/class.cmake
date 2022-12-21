@@ -30,6 +30,11 @@ function(${_test_class})
         endfunction()
     endfunction()
 
+    ct_add_section(NAME "_class_conflict_w_built_in" EXPECTFAIL)
+    function(${_class_conflict_w_built_in})
+        cpp_class(Target)
+    endfunction()
+
     ct_add_section(NAME "_class_base")
     function(${_class_base})
         cpp_class(BaseClass)
