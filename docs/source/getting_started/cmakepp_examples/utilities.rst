@@ -111,7 +111,18 @@ We can use ``cpp_return`` to return a value from a function:
 The function can then be called with:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/utilities/return.cmake
-   :lines: 15-19
+   :lines: 25-29
+   :dedent: 4
+
+Multiple values can also returned using ``cpp_return`` from a function:
+
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/utilities/return.cmake
+   :lines: 12-21
+
+The function can then be called with:
+
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/utilities/return.cmake
+   :lines: 33-38
    :dedent: 4
 
 Asserting a Condition
