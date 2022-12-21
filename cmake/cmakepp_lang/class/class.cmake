@@ -27,7 +27,9 @@ set(
 #]]
 function(_cpp_class_guts _cg_type _cg_wrapper)
     cpp_sanitize_string(_cg_nice_type "${_cg_type}")
-    cpp_check_conflicts(_cg_conflict _cg_conflicting_type "${_cg_nice_type}")
+    cpp_check_conflicting_types(
+        _cg_conflict _cg_conflicting_type "${_cg_nice_type}"
+    )
     if(_cg_conflict)
         message(
             FATAL_ERROR

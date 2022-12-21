@@ -26,7 +26,7 @@ include_guard()
 #                               debug mode or not.
 # :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
-function(cpp_check_conflicts _cc_conflict _cc_conflicting_type _cc_name)
+function(cpp_check_conflicting_types _cc_conflict _cc_conflicting_type _cc_name)
     cpp_assert_signature("${ARGV}" desc desc desc)
 
     # This is a list of all of the "built-in" types for CMakePPLang
