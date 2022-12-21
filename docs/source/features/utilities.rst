@@ -10,7 +10,7 @@ The CMakePP language provides the following utility commands:
 - ``cpp_contains`` for checking if a string contains a certain substring, a list
   contains a certain item, or a map contains a certain key
 - ``cpp_type_of`` for determining the type of a variable
-- ``cpp_return`` for returning a value from a function
+- ``cpp_return`` for returning values from a function
 - ``cpp_assert`` for asserting that a condition is true and stopping the
   build process if that condition is not true
 - ``cpp_directory_exists`` for checking that a directory at a given path
