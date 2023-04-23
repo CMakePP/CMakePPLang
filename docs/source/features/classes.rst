@@ -4,16 +4,18 @@
 Classes
 *******
 
-The CMakePP langauge enables users to define classes and create instances of 
-the classes. Classes in CMakePP can contain attributes and functions. CMakePP 
-also supports inheritance. Examples of using classes are provided in the
-:ref:`examples-classes` the section. A basic overview of the features of 
-classes are provided below.
+CMakePPLang enables users to define classes and create instances of 
+the classes. Classes in CMakePPLang can contain attributes and functions.
+CMakePPLang also supports inheritance. Examples of using classes are provided
+in :ref:`examples-classes`. A basic overview of the features of classes are
+provided below.
 
 .. _features-classes-definition:
 
 Class Definition
 ================
+
+.. TODO: Convert these examples into tests.
 
 Class definitions start with ``cpp_class(MyClass)`` where ``MyClass`` is what
 you want to name the class. CMakePPLang handles the class name, ``MyClass``

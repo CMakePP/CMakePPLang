@@ -2,7 +2,7 @@
 Exception Handling
 ******************
 
-The CMakePP language provides commands for handling exceptions. Users can use 
+CMakePPLang provides commands for handling exceptions. Users can use 
 the ``cpp_catch`` command to declare an exception type and a handler function 
 for that exception type. Users can then use the ``cpp_try`` to initiate a try 
 block and ``cpp_end_try_catch`` to end a try block. Anywhere within that try 

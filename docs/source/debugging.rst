@@ -6,22 +6,21 @@ Debugging Code Written in CMakePPLang
 
 Native CMake has limited debugging capabilities, which are limited to printing
 variables out and very verbose printing of every line that is executed by the
-interpreter. While writing the CMakePP language, we attempted to build in 
-more robust programming error checking and debugging features. These 
-features come at a computational cost so they should only be used to 
-debug/unit test your build systems.
+interpreter. While designing CMakePPLang, we attempted to provide more robust
+programming error checking and debugging features. These features come at a
+computational cost, so they should only be used to debug/unit test your build
+systems.
 
 .. _debugging-basics:
 
 Debugging Basics
 ================
 
-The variable ``CMAKEPP_LANG_DEBUG_MODE`` can be used to cause all CMakePP
+The variable ``CMAKEPP_LANG_DEBUG_MODE`` can be used to cause all CMakePPLang
 functions to run in debug mode. If you are familiar with the C/C++ preprocessor
 macro definition ``NDEBUG`` it's the same idea, without the odd negative logic.
-Basically verbose logging and extra error checks, like type and bounds checks,
-are only done when ``CMAKEPP_LANG_DEBUG_MODE`` is defined and set to a true
-value.
+Verbose logging and extra error checks, like type and bounds checks, are only
+done when ``CMAKEPP_LANG_DEBUG_MODE`` is defined and set to a true value.
 
 .. warning::
 

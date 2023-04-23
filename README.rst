@@ -1,4 +1,3 @@
-
 ..
    Copyright 2023 CMakePP
 
@@ -48,7 +47,7 @@ CMakePPLang can be included in a CMake project by adding:
 
 to your ``CMakeLists.txt`` file. CMakePPLang will then be downloaded as part
 of the CMake configuration step. More detailed instructions, can be found
-`here <https://cmakepp.github.io/CMakePPLang/getting_started/obtaining_cmakepp.html>`__.
+`here <https://cmakepp.github.io/CMakePPLang/getting_started/obtaining_cmakepplanglanglang.html>`__.
 
 *************
 Example Usage

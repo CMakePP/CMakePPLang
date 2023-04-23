@@ -1,4 +1,4 @@
-.. _cmakepp-examples:
+.. _cmakepplang-examples:
 
 ####################
 CMakePPLang Examples
@@ -7,7 +7,7 @@ CMakePPLang Examples
 This part provides usage examples of CMakePPLang classes and maps. These 
 examples assume you have already set up your build system to download and 
 include CMakePPLang automatically. If you have not done this step, please see
-:ref:`auto-downloading-cmakepp`.
+:ref:`auto-downloading-cmakepplang`.
 
 .. toctree::
    :maxdepth: 2
