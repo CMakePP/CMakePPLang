@@ -23,7 +23,7 @@ include_guard()
 # :param *args: Identifiers which needs to be set in the parent namespace.
 # :type *args: list[desc]
 #
-# ..note::
+# .. note::
 #
 #   This function is a macro to avoid creating another scope. If another scope
 #   is created, then the ``cpp_return`` function could not act in the caller's
