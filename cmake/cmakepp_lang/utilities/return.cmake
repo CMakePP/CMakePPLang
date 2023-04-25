@@ -21,7 +21,7 @@ include_guard()
 #    macro.
 #
 # :param \*args: Identifiers which needs to be set in the parent namespace.
-# :type *args: list[desc]
+# :type \*args: list[desc]
 #
 # .. note::
 #
