@@ -27,7 +27,7 @@ cpp_set_global("_CPP_EXCEPTION_HANDLERS_" "${_exception_handlers}")
 #
 # :param *args: The exception types to declare handlers for.
 # :returns: each arg will be set to the mangled name of the declared
-#            exception handler for that exception type.
+#           exception handler for that exception type.
 # :rtype: desc
 #
 # Error Checking
