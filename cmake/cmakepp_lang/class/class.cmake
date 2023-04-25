@@ -1,12 +1,12 @@
 include_guard()
-include(cmakepp_lang/class/detail_/bases)
+include(cmakepp_lang/class/detail/bases)
 include(cmakepp_lang/object/object)
 include(cmakepp_lang/types/cmakepp_type)
 include(cmakepp_lang/utilities/check_conflicting_types)
 
 set(
     __CMAKEPP_LANG_CLASS_TEMPLATE__
-    "${CMAKE_CURRENT_LIST_DIR}/detail_/class.cmake.in"
+    "${CMAKE_CURRENT_LIST_DIR}/detail/class.cmake.in"
 )
 
 #[[[ Creates the new class

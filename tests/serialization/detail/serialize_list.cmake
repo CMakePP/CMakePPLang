@@ -2,7 +2,7 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "test__cpp_serialize_list")
 function("${test__cpp_serialize_list}")
-    include(cmakepp_lang/serialization/detail_/serialize_list)
+    include(cmakepp_lang/serialization/detail/serialize_list)
 
     ct_add_section(NAME "empty_list")
     function("${empty_list}")
