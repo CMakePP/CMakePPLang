@@ -11,5 +11,5 @@ move on to :ref:`cmakepplang-examples` to learn the basics of using CMakePPLang.
 .. toctree::
    :maxdepth: 3
 
-   obtaining_cmakepplanglanglang
+   obtaining_cmakepplang
    cmakepp_examples/index
