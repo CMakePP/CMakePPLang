@@ -53,7 +53,7 @@ endfunction()
 #
 # :param _mc_result: Name for variable which will hold the new map.
 # :type _mc_result: desc
-# :param *args: A list whose elements will be considered pairwise to be the
+# :param \*args: A list whose elements will be considered pairwise to be the
 #               initial key-value pairs populating the map.
 # :returns: ``_mc_result`` will be set to the newly created Map instance.
 # :rtype: map
@@ -166,7 +166,7 @@ endfunction()
 # :type _m_mode: desc
 # :param _m_this: The Map instance the member function is being called on.
 # :type _m_this: map
-# :param *args: Any additional arguments required by the specified member
+# :param \*args: Any additional arguments required by the specified member
 #               function.
 #
 # Error Checking

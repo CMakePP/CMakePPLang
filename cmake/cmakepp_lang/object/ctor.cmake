@@ -18,7 +18,7 @@ include(cmakepp_lang/utilities/sanitize_string)
 # :type _oc_this: desc
 # :param _oc_type: The most-derived type of the object we are creating.
 # :type _oc_type: type
-# :param *args: The initial instances of each direct base class on which this
+# :param \*args: The initial instances of each direct base class on which this
 #               instance should be built.
 # :return: ``_oc_this`` will be set to the newly created instance.
 # :rtype: obj

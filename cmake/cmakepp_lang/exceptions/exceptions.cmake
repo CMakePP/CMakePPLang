@@ -28,7 +28,7 @@ cpp_set_global("_CPP_EXCEPTION_HANDLERS_" "${_exception_handlers}")
 #       message("Exception details: ${message}")
 #    endfunction()
 #
-# :param *args: The exception types to declare handlers for.
+# :param \*args: The exception types to declare handlers for.
 # :returns: each arg will be set to the mangled name of the declared
 #           exception handler for that exception type.
 # :rtype: desc
@@ -155,7 +155,7 @@ endmacro()
 # This command ends a try-catch block and removes the exception handlers for the
 # specified types.
 #
-# :param *args: The exception types to declare handlers for.
+# :param \*args: The exception types to declare handlers for.
 #
 # Example usage:
 #

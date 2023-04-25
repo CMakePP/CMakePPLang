@@ -20,7 +20,7 @@ set(
 # :param _cg_wrapper: Name for variable which will hold the path to the class's
 #                     implementation.
 # :type _cg_wrapper: desc
-# :param *args: The base classes that this class derives from.
+# :param \*args: The base classes that this class derives from.
 # :returns: ``_cg_wrapper`` will be set to the absolute file path for the
 #           generated module which implements the class.
 # :rtype: path
@@ -84,7 +84,7 @@ endfunction()
 #
 # :param _c_type: The name of the class whose declaration is being started.
 # :type _c_type: desc
-# :param *args: The various base classes that the class should inherit from.
+# :param \*args: The various base classes that the class should inherit from.
 #
 # .. note::
 #
@@ -118,7 +118,7 @@ endmacro()
 # :param _m_type: The class we are adding the member function to. This is also
 #                 the type of the "this" pointer.
 # :type _m_type: class
-# :param *args: The types of the arguments to the member function. This list
+# :param \*args: The types of the arguments to the member function. This list
 #               should NOT include the type for the this pointer as this will
 #               automatically be prepended to this list.
 # :returns: ``_m_name`` will be set to the mangled name of the declared
@@ -172,7 +172,7 @@ endmacro()
 # :type _c_name: desc
 # :param _c_type: The class we are adding the constructor to.
 # :type _c_type: class
-# :param *args: The types of the arguments to the constructor function.
+# :param \*args: The types of the arguments to the constructor function.
 # :returns: ``_c_name`` will be set to the mangled name of the declared
 #            constructor to facilitate implementing it.
 # :rtype: desc
@@ -204,7 +204,7 @@ endfunction()
 # :type _a_type: class
 # :param _a_attr: The name of the attribute
 # :type _a_attr: desc
-# :param *args: The initial value of the attribute. If no ``*args`` are provided
+# :param \*args: The initial value of the attribute. If no ``*args`` are provided
 #               the attribute will be initialized to the empty string.
 #
 # Error Checking

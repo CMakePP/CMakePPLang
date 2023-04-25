@@ -15,7 +15,7 @@ include(cmakepp_lang/utilities/sanitize_string)
 # :type _oaf_this: obj
 # :param _oaf_name: The name of the function we are adding.
 # :type _oaf_name: desc
-# :param *args: The types of the arguments to the function.
+# :param \*args: The types of the arguments to the function.
 # :returns: ``_oaf_name`` will be set to the mangled name of the function which
 #           was added. Users should use the mangled name when implementing the
 #           function.

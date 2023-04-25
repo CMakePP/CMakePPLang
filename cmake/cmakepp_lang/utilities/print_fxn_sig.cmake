@@ -11,7 +11,7 @@ include(cmakepp_lang/asserts/signature)
 # :param _pfs_fxn_name: The unmangled name of the function whose signature we
 #                        are printing.
 # :type _pfs_fxn_name: desc
-# :param *args: The types of the arguments to ``_pfs_fxn_name``.
+# :param \*args: The types of the arguments to ``_pfs_fxn_name``.
 # :returns: ``_pfs_result`` will be set to a human-readable, string
 #           representation of this particular overload of ``_pfs_fxn_name``.
 # :rtype: desc

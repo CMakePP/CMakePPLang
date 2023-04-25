@@ -171,7 +171,7 @@ endfunction()
 # :type _osa_this: obj
 # :param _osa_attr: The name of the attribute we are setting.
 # :type _osa_attr: desc
-# :param *args: The value or values the attribute will be set as.
+# :param \*args: The value or values the attribute will be set as.
 #]]
 function(_cpp_object_set_attr _osa_this _osa_attr)
     cpp_assert_signature("${ARGV}" obj desc args)

@@ -20,7 +20,7 @@ include_guard()
 #    function is reached. As a rule-of-thumb, never call this function from a
 #    macro.
 #
-# :param *args: Identifiers which needs to be set in the parent namespace.
+# :param \*args: Identifiers which needs to be set in the parent namespace.
 # :type *args: list[desc]
 #
 # .. note::
