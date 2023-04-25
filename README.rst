@@ -124,3 +124,6 @@ is coming and can help you along the way.
 CMakePPLang is part of the CMakePP organization, whose contributing guidelines can be
 found `here <https://github.com/CMakePP/.github/blob/main/CONTRIBUTING.md>`__.
 
+Developer documentation can be found
+`here <https://cmakepp.github.io/CMakePPLang/developer/index.html>`__ to help
+get started with CMakePPLang development.

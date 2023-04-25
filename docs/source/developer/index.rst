@@ -8,4 +8,5 @@ to developers contributing to CMakePPLang.
 .. toctree::
    :maxdepth: 2
 
+   building_and_testing
    unit_testing

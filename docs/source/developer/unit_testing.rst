@@ -1,3 +1,5 @@
+.. _unit_testing_cmakepplang_functions:
+
 **********************************
 Unit Testing CMakePPLang Functions
 **********************************
