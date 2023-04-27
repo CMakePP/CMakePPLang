@@ -1,6 +1,6 @@
-********************************
-Building and Testing CMakePPLang
-********************************
+**************************************
+Setting Up CMakePPLang for Development
+**************************************
 
 This page contains information to help developers new to CMakePPLang set up
 the project to begin development.
@@ -9,8 +9,8 @@ Downloading the Source Code
 ===========================
 
 During development, the latest version of CMakePPLang should be used.
-CMakePPLang is `hosted on GitHub <CMakePPLang_src_>`
-and can be cloned to your local system using Git_:
+CMakePPLang is `hosted on GitHub <CMakePPLang_src_>`_ and can be cloned to
+your local system using Git_:
 
 .. code-block:: bash
 
@@ -19,7 +19,7 @@ and can be cloned to your local system using Git_:
 Building CMakePPLang
 ====================
 
-CMakePPLang is built on top of and extends the `CMake language <CMake_>`, so
+CMakePPLang is built on top of and extends the `CMake language <CMake_>`_, so
 "building" CMakePPLang is performed during CMake's configuration step. The
 build step usually required by projects using CMake is not required to
 build CMakePPLang itself, so it will not be included here.
@@ -39,8 +39,8 @@ For Windows systems:
 
    cmake -S. -Bbuild -DBUILD_TESTING=ON
 
-In these commands, `-H` and `-S` specify the top-level, root directory for the
-project, called the "source directory" in CMake (not to be confused with a
+In these commands, ``-H`` and ``-S`` specify the top-level, root directory for
+the project, called the "source directory" in CMake (not to be confused with a
 "source code directory", commonly also called the "source directory"). In this
 case, we are assuming that the current directory, ``.``, is the root directory
 of the ``CMakePPLang`` repository. The directory where build artifacts will
@@ -70,7 +70,7 @@ to save time by skipping passing tests.
 .. note::
 
    To learn more about writing unit tests for CMakePPLang, see
-   `unit-testing-cmakepplang-functions`.
+   :ref:`unit-testing-cmakepplang-functions`.
 
 .. References
 
