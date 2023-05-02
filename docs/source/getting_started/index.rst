@@ -13,3 +13,4 @@ move on to :ref:`cmakepplang-examples` to learn the basics of using CMakePPLang.
 
    obtaining_cmakepplang
    cmakepp_examples/index
+   example_project
