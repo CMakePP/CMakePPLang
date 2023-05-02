@@ -21,6 +21,11 @@ function(get_cmakepp_lang)
     )
     FetchContent_MakeAvailable(cmakepp_lang)
 
+    set(
+        CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" "${cmakepp_lang_SOURCE_DIR}/cmake"
+        PARENT_SCOPE
+    )
+
     # Restore the previous value
     set(BUILD_TESTING "${build_testing_old}" CACHE BOOL "" FORCE)
 endfunction()

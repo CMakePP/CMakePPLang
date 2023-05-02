@@ -13,6 +13,12 @@ in a ``name`` attribute and greet them using a ``Greeter(hello`` member function
 The ``Greeter(hello`` function will print the following greeting,
 "Hello, <name>!", where ``<name>`` is the value of the ``name`` attribute.
 
+.. note::
+
+   The full example project can be found under ``examples/cmakepplang_example``
+   to check your work or follow along when creating a new project is not
+   possible/desired.
+
 Project Layout
 ==============
 
@@ -47,7 +53,7 @@ project, effectively namespacing the code. This is where we will create our
 
 The ``docs`` directory will house documentation written for the project and
 generated API documentation. This step will not be covered in this example,
-but see Sphinx and CMinx for methods to write and generate documentation for
+but see Sphinx_ and CMinx_ for methods to write and generate documentation for
 your project.
 
 The ``tests`` directory contains unit testing for your CMake and CMakePPLang
@@ -61,50 +67,133 @@ entry point for the CMake project. Subdirectories sometimes contain additional
 In this project, there is an additional ``CMakeLists.txt`` that will fetch
 ``CMakeTest`` and include the tests to be run.
 
+Initial CMake Boilerplate
+=========================
+
+All CMake projects require that a minimum CMake version be set with
+``cmake_minimum_required()`` and a project must be defined with ``project()``.
+Additionally, it is useful to add a toggle for whether to build the project
+tests or not that the user can change as needed. We add the
+``option(BUILD_TESTING`` call to add this option.
+
+.. literalinclude:: /../../examples/cmakepplang_example/CMakeLists.txt
+   :lines: 1-4
+
 Fetching CMakePPLang
 ====================
 
 We will start by setting up the ability to get CMakePPLang automatically in
 the project following the instructions at :ref:`auto-downloading-cmakepplang`.
-First, add the following text to ``cmake/get_cmakepp_lang.cmake``:abbr:
+First, add the following text to ``cmake/get_cmakepp_lang.cmake``:
 
-.. code-block:: cmake
+.. literalinclude:: /../../tests/docs/source/getting_started/obtaining_cmakepplang_get_cmakepp_lang.cmake
 
-   include_guard()
+Then, add the following line at the bottom of the top-level
+``CMakeLists.txt`` created earlier:
 
-   #[[
-   # This function encapsulates the process of getting CMakePPLang using CMake's
-   # FetchContent module. We have encapsulated it in a function so we can set
-   # the options for its configure step without affecting the options for the
-   # parent project's configure step (namely we do not want to build CMakePPLang's
-   # unit tests).
-   #]]
-   function(get_cmakepp_lang)
+.. literalinclude:: /../../examples/cmakepplang_example/CMakeLists.txt
+   :lines: 6-9
 
-      # Store whether we are building tests or not, then turn off the tests
-      set(build_testing_old "${BUILD_TESTING}")
-      set(BUILD_TESTING OFF CACHE BOOL "" FORCE)
+Defining the Class
+==================
 
-      # Download CMakePPLang and bring it into scope
-      include(FetchContent)
-      FetchContent_Declare(
-         cmakepp_lang
-         GIT_REPOSITORY https://github.com/CMakePP/CMakePPLang
-      )
-      FetchContent_MakeAvailable(cmakepp_lang)
+Now we need to define the ``Greeter`` class with the ``name`` attribute and
+``hello`` member function.
 
-      # Restore the previous value
-      set(BUILD_TESTING "${build_testing_old}" CACHE BOOL "" FORCE)
-   endfunction()
+.. literalinclude:: /../../examples/cmakepplang_example/cmake/greeter/greeter_class.cmake
 
-   # Call the function we just wrote to get CMakePPLang
-   get_cmakepp_lang()
+An example of using the ``Greeter`` class can then be added to the bottom of
+the top-level ``CMakeLists.txt`` file:
 
-   # Include CMakePPLang
-   include(cmakepp_lang/cmakepp_lang)
+.. literalinclude:: /../../examples/cmakepplang_example/CMakeLists.txt
+   :lines: 11-28
 
-Then, add the following line to the top-level ``CMakeLists.txt``:
+Testing the Class
+=================
 
-.. code-block:: cmake
+CMakeTest is going to be used to test the ``Greeter`` class we just wrote, so
+we need to get CMakeTest similarly to how we automatically got CMakePPLang.
+Add the following text to ``cmake/get_cmake_test.cmake``:
 
-   include("${PROJECT_SOURCE_DIR}/cmake/get_cmakepp_lang.cmake")
+.. literalinclude:: /../../examples/cmakepplang_example/cmake/get_cmake_test.cmake
+
+Next is to create the test for ``Greeter`` by adding the following text to
+``tests/greeter/test_greeter_class.cmake``, testing the output of the
+``Greeter(hello`` method:
+
+.. literalinclude:: /../../examples/cmakepplang_example/tests/greeter/test_greeter_class.cmake
+
+Then, we have to add the tests to the project. At the bottom of the
+top-level ``CMakeLists.txt``, we add the final part to add the tests directory
+and allow the tests to be toggled on and off with the ``BUILD_TESTING`` option:
+
+.. literalinclude:: /../../examples/cmakepplang_example/CMakeLists.txt
+   :lines: 30-34
+
+Finally, we can complete adding the tests by populating ``tests/CMakeLists.txt``
+to get CMakeTest and add the ``tests/greeter`` test directory for CMakeTest:
+
+.. literalinclude:: /../../examples/cmakepplang_example/tests/CMakeLists.txt
+
+Building the Project
+====================
+
+Now that we have a complete project, it can be built with CMake after
+navigating into the project directory. In a terminal, run the following
+command for your system:
+
+For \*nix-based systems (including Mac OSX):
+
+.. code-block:: bash
+
+   cmake -H. -Bbuild -DBUILD_TESTING=ON
+
+For Windows systems:
+
+.. code-block:: batch
+
+   cmake -S. -Bbuild -DBUILD_TESTING=ON
+
+In these commands, ``-H`` and ``-S`` specify the top-level, root directory for
+the project, called the "source directory" in CMake (not to be confused with a
+"source code directory", commonly also called the "source directory"). In this
+case, we are assuming that the current directory, ``.``, is the root directory
+of the ``CMakePPLang`` repository. The directory where build artifacts will
+appear is specified by ``-B``, meaning we are directing build artefacts to
+``CMakePPLang/build``. Finally, ``-DBUILD_TESTING=ON`` enables unit testing on
+CMakePPLang, which will be necessary for development. ``BUILD_TESTING``
+defaults to ``OFF``, so this argument can be excluded if testing is not needed.
+
+.. note::
+
+   Since CMakePPLang is built during the CMake configuration step, the build step
+   is usually not needed. However, if it becomes necessary, the build step can
+   be run with:
+
+   .. code-block:: bash
+
+      cmake --build build
+
+Running the Tests
+=================
+
+If tests were built using the ``BUILD_TESTING=ON`` option, then unit tests from
+the build will be included in the ``build`` directory generated above. These
+tests are run using CMake's test driver program, CTest_. Navigate into the
+``build`` directory and run the following command to execute the tests:
+
+.. code-block:: bash
+
+   ctest --output-on-failure
+
+While ``ctest`` can be run with no arguments as well, it is usually useful to
+run it with ``--output-on-failure``, since it will provide all of the output
+from a failing test program instead of simply saying the test failed. After
+the first run of the tests, it is also useful to include ``--rerun-failed``
+to save time by skipping passing tests.
+
+.. References
+
+.. _CMinx: https://github.com/CMakePP/CMinx
+.. _CTest: "https://cmake.org/cmake/help/book/mastering-cmake/chapter/Testing%20With%20CMake%20and%20CTest.html"
+.. _Sphinx: https://www.sphinx-doc.org/en/master/
