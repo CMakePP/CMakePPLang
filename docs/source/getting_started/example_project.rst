@@ -11,7 +11,7 @@ CMakePPLang, as well as a quick reference for experienced users.
 This project will create a `Greeter` class. This class will store a user's name
 in a ``name`` attribute and greet them using a ``Greeter(hello`` member function.
 The ``Greeter(hello`` function will print the following greeting,
-"Hello <name>!", where ``<name>`` is the value of the ``name`` attribute.
+"Hello, <name>!", where ``<name>`` is the value of the ``name`` attribute.
 
 Project Layout
 ==============
@@ -103,7 +103,7 @@ First, add the following text to ``cmake/get_cmakepp_lang.cmake``:abbr:
    # Include CMakePPLang
    include(cmakepp_lang/cmakepp_lang)
 
-Then, add the following line to the top-level ``CMakeLists.txt``:abbr:
+Then, add the following line to the top-level ``CMakeLists.txt``:
 
 .. code-block:: cmake
 
