@@ -2,14 +2,14 @@
 include(FetchContent)
 
 FetchContent_Declare(
-    cpp
+    cmaize
     GIT_REPOSITORY https://github.com/CMakePP/CMaize
 )
 
 set(build_testing_old "${BUILD_TESTING}")
 set(BUILD_TESTING OFF CACHE BOOL "" FORCE)
-FetchContent_MakeAvailable(cpp)
-include(cpp/cpp)
+FetchContent_MakeAvailable(cmaize)
+include(cmaize/cmaize)
 
 
 FetchContent_Declare(
