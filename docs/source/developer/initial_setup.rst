@@ -9,7 +9,7 @@ Downloading the Source Code
 ===========================
 
 During development, the latest version of CMakePPLang should be used.
-CMakePPLang is `hosted on GitHub <CMakePPLang_src_>`_ and can be cloned to
+CMakePPLang is `hosted on GitHub <CMakePPLang_src_>`__ and can be cloned to
 your local system using Git_:
 
 .. code-block:: bash
@@ -19,13 +19,10 @@ your local system using Git_:
 Building CMakePPLang
 ====================
 
-CMakePPLang is built on top of and extends the `CMake language <CMake_>`_, so
-"building" CMakePPLang is performed during CMake's configuration step. The
-build step usually required by projects using CMake is not required to
-build CMakePPLang itself, so it will not be included here.
-
-Once the CMakePPLang source code has been downloaded, navigate into the new
-``CMakePPLang`` directory and run the following command to build it:
+CMakePPLang is built on top of and extends the `CMake language <CMake_>`__, so
+"building" CMakePPLang is performed during CMake's configuration step. Once
+the CMakePPLang source code has been downloaded, navigate into the new
+``CMakePPLang`` directory and run the following command to "build" CMakePPLang:
 
 For \*nix-based systems (including Mac OSX):
 
@@ -44,16 +41,21 @@ the project, called the "source directory" in CMake (not to be confused with a
 "source code directory", commonly also called the "source directory"). In this
 case, we are assuming that the current directory, ``.``, is the root directory
 of the ``CMakePPLang`` repository. The directory where build artifacts will
-appear is specified by ``-B``, meaning we are directing build artefacts to
+appear is specified by ``-B``, meaning we are directing build artifacts to
 ``CMakePPLang/build``. Finally, ``-DBUILD_TESTING=ON`` enables unit testing on
 CMakePPLang, which will be necessary for development. ``BUILD_TESTING``
 defaults to ``OFF``, so this argument can be excluded if testing is not needed.
 
+.. note::
+
+   The build step usually required by projects using CMake is not required to
+   build CMakePPLang itself, so it is not included in this section.
+
 Running CMakePPLang Tests
 =========================
 
-Unit tests from the build will be included in ``CMakePPLang/build`` with the
-rest of the build artefacts. These tests are run using CMake's test driver
+Scripts to run the unit tests will be included in ``CMakePPLang/build`` with
+the rest of the build artifacts. These scripts are run using CMake's test driver
 program, CTest_. Navigate into the ``CMakePPLang/build`` directory and run
 the following command to execute CMakePPLang's tests:
 

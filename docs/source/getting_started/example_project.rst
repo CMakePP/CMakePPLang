@@ -33,16 +33,16 @@ The layout will look like this:
 .. code-block:: bash
 
    .
-   ├── cmake
+   ├── cmake/
    │   ├── get_cmakepp_lang.cmake
    │   ├── get_cmake_test.cmake
-   │   └── greeter
+   │   └── greeter/
    │       └── greeter_class.cmake
    ├── CMakeLists.txt
-   ├── docs
-   └── tests
+   ├── docs/
+   └── tests/
       ├── CMakeLists.txt
-      └── greeter
+      └── greeter/
          └── test_greeter_class.cmake
 
 The ``cmake`` directory is where most CMake and CMakePPLang code will exist.

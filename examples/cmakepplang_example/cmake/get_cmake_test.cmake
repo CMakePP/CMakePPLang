@@ -1,10 +1,10 @@
 include_guard()
 
 #[[
-# This function encapsulates the process of getting CMakePPLang using CMake's
+# This function encapsulates the process of getting CMakeTest using CMake's
 # FetchContent module. We have encapsulated it in a function so we can set
 # the options for its configure step without affecting the options for the
-# parent project's configure step (namely we do not want to build CMakePPLang's
+# parent project's configure step (namely we do not want to build CMakeTest's
 # unit tests).
 #]]
 function(get_cmake_test)
@@ -29,8 +29,8 @@ function(get_cmake_test)
     set(BUILD_TESTING "${build_testing_old}" CACHE BOOL "" FORCE)
 endfunction()
 
-# Call the function we just wrote to get CMakePPLang
+# Call the function we just wrote to get CMakeTest
 get_cmake_test()
 
-# Include CMakePPLang
+# Include CMakeTest
 include(cmake_test/cmake_test)
