@@ -14,9 +14,9 @@ Testing Signatures
 The CMake language is weakly typed, while CMakePPLang is strongly typed.
 Because CMakePPLang is unit tested, users can be confident that CMakePPLang
 functions will correctly enforce type safety (and if they don't, that is a
-bug). Unfortunately, this means that all functions intended to implement
+bug). Unfortunately, this means that all code intended to implement
 CMakePPLang's type-safety mechanism need to have their type-safety checked
-manually. This section focuses on how to unit test such functions.
+manually. This section focuses on how to unit test such code.
 
 cpp_assert_signature
 --------------------
