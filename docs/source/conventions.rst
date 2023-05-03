@@ -18,7 +18,7 @@ chapter goes into more details regarding CMakePPLang conventions.
 Namespaces
 ==========
 
-CMakePPLang has a concept of variable scope, but does not have a 
+Both CMake and CMakePP have a concept of variable scope, but neither have a 
 namespace concept. The most straightforward way to introduce namespaces is to 
 mangle a prefix onto function and variable names. CMakePPLang uses the prefix 
 ``cpp_`` for all commands that are part of the public API. This helps avoid 
