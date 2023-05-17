@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>cmakepp_lang.map/map &mdash; CMakePPLang 1.0.0alpha documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            CMakePPLang
+          </a>
+              <div class="version">
+                1.0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../features/index.html">Language Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../conventions.html">Language Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../debugging.html">Debugging Code Written in CMakePPLang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer/index.html">Developing for CMakePPLang</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">CMakePPLang</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">cmakepp_lang.map/map</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/api/generated_docs/cmakepp_lang/map/map.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-cmakepp_lang.map-map">
+<span id="cmakepp-lang-map-map"></span><h1>cmakepp_lang.map/map<a class="headerlink" href="#module-cmakepp_lang.map-map" title="Permalink to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="cmakepp_lang.map-map.cpp_map_append">
+<span class="sig-prename descclassname"><span class="pre">cmakepp_lang.map/map.</span></span><span class="sig-name descname"><span class="pre">cpp_map_append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_ma_this</span> <span class="pre">_ma_key</span> <span class="pre">_ma_value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang.map-map.cpp_map_append" title="Permalink to this definition"></a></dt>
+<dd><p>Appends to the value stored under the specified key.</p>
+<p>This member function will append the provided value to the list stored under
+the specified key. If the key does not exist, a list will be started with the
+provided value and stored under the specified key.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>_ma_this</strong> (<em>map</em>) – The map we modifying the state of.</p></li>
+<li><p><strong>_ma_key</strong> (<em>str</em>) – The key whose value is being appended to.</p></li>
+<li><p><strong>_ma_value</strong> (<em>str</em>) – Value we are appending to the list stored under <code class="docutils literal notranslate"><span class="pre">_ma_key</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<section id="error-checking">
+<h2>Error Checking<a class="headerlink" href="#error-checking" title="Permalink to this heading"></a></h2>
+<p>If CMakePP is run in debug mode, this function will assert that it is called
+with the correct number of arguments and that each argument has the correct
+type. If an assert fails an error will be raised. The assertions happen only
+when CMakePP is run in debug mode.</p>
+<dl class="field-list simple">
+<dt class="field-odd">var CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Used to determine if CMakePP is being run in
+debug mode or not.</p>
+</dd>
+<dt class="field-even">vartype CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cmakepp_lang.map-map.cpp_map_ctor">
+<span class="sig-prename descclassname"><span class="pre">cmakepp_lang.map/map.</span></span><span class="sig-name descname"><span class="pre">cpp_map_ctor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_mc_result</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang.map-map.cpp_map_ctor" title="Permalink to this definition"></a></dt>
+<dd><p>Constructs a new Map instance with the specified state (if provided)</p>
+<p>This function creates a new Map instance. The caller may provided one or more
+pairs of input to be used as the initial state. If provided, the pairs are
+assumed to be such that the first value is the key and the second value is the
+value to associate with that key. If no key-value pairs are provided the
+resulting map will be empty.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>_mc_result</strong> (<em>desc</em>) – Name for variable which will hold the new map.</p></li>
+<li><p><strong>*args</strong> – A list whose elements will be considered pairwise to be the
+initial key-value pairs populating the map.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">_mc_result</span></code> will be set to the newly created Map instance.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>map</p>
+</dd>
+</dl>
+<section id="id1">
+<h2>Error Checking<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>If CMakePP is run in debug mode this function will assert that it has been
+called with at least one argument, that this argument is of type <code class="docutils literal notranslate"><span class="pre">desc</span></code>,
+and that any additional arguments are of type <code class="docutils literal notranslate"><span class="pre">(desc,</span> <span class="pre">str)</span></code>. If any of these
+assertions fail an error will be raised. These assertions are only performed
+if CMakePP is run in debug mode.</p>
+<dl class="field-list simple">
+<dt class="field-odd">var CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Used to determine if CMakePP is being run in
+debug mode.</p>
+</dd>
+<dt class="field-even">vartype CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cmakepp_lang.map-map.cpp_map_get">
+<span class="sig-prename descclassname"><span class="pre">cmakepp_lang.map/map.</span></span><span class="sig-name descname"><span class="pre">cpp_map_get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_mg_this</span> <span class="pre">_mg_value</span> <span class="pre">_mg_key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang.map-map.cpp_map_get" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieves the value of the specified key.</p>
+<p>This function is used to retrieve the value associated with the provided key.
+If a key has not been set this function will return the empty string. Users
+can use <code class="docutils literal notranslate"><span class="pre">cpp_map_has_key</span></code> to determine whether the map does not have the
+key or if the key was simply set to the empty string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>_mg_this</strong> (<em>map</em>) – The map storing the key-value pairs.</p></li>
+<li><p><strong>_mg_value</strong> (<em>desc</em>) – Name for the identifier to save the value to.</p></li>
+<li><p><strong>_mg_key</strong> (<em>str</em>) – The key whose value we want.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">_mg_value</span></code> will be set to the value associated with <code class="docutils literal notranslate"><span class="pre">_mg_key</span></code>.
+If <code class="docutils literal notranslate"><span class="pre">_mg_key</span></code> has no value associated with it <code class="docutils literal notranslate"><span class="pre">_mg_value</span></code> will be
+set to the empty string.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+<section id="id2">
+<h2>Error Checking<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>If CMakePP is run in debug mode this function will ensure that it has been
+provided exactly three arguments and that those arguments are of the correct
+types. If any of these checks fail an error will be raised. These checks are
+only performed if CMakePP is being run in debug mode.</p>
+<dl class="field-list simple">
+<dt class="field-odd">var CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Used to determine if CMakePP is being run in
+debug mode.</p>
+</dd>
+<dt class="field-even">vartype CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cmakepp_lang.map-map.cpp_map_set">
+<span class="sig-prename descclassname"><span class="pre">cmakepp_lang.map/map.</span></span><span class="sig-name descname"><span class="pre">cpp_map_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_ms_this</span> <span class="pre">_ms_key</span> <span class="pre">_ms_value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang.map-map.cpp_map_set" title="Permalink to this definition"></a></dt>
+<dd><p>Associates a value with the specified key.</p>
+<p>This function can be used to set the value of a map’s key. If the key has a
+value associated with it already that value will be overridden.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>_ms_this</strong> (<em>map</em>) – The map whose key is going to be set.</p></li>
+<li><p><strong>_ms_key</strong> (<em>str</em>) – The key whose value is going to be set.</p></li>
+<li><p><strong>_ms_value</strong> (<em>str</em>) – The value to set the key to.</p></li>
+</ul>
+</dd>
+</dl>
+<section id="id3">
+<h2>Error Checking<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<p>If CMakePP is run in debug mode this function will assert that it was called
+with exactly three arguments, and that those arguments have the correct types.
+If these assertions fail an error will be raised. These checks are only
+performed if CMakePP is run in debug mode.</p>
+<dl class="field-list simple">
+<dt class="field-odd">var CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Used to determine if CMakePP is being run in
+debug mode or not.</p>
+</dd>
+<dt class="field-even">vartype CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cmakepp_lang.map-map.cpp_map">
+<span class="sig-prename descclassname"><span class="pre">cmakepp_lang.map/map.</span></span><span class="sig-name descname"><span class="pre">cpp_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_m_mode</span> <span class="pre">_m_this</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang.map-map.cpp_map" title="Permalink to this definition"></a></dt>
+<dd><p>Public API for interacting with Map instances.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>_m_mode</strong> (<em>desc</em>) – The name of the member function to call.</p></li>
+<li><p><strong>_m_this</strong> (<em>map</em>) – The Map instance the member function is being called on.</p></li>
+<li><p><strong>*args</strong> – Any additional arguments required by the specified member
+function.</p></li>
+</ul>
+</dd>
+</dl>
+<section id="id4">
+<h2>Error Checking<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<p>If CMakePP is being run in debug mode, the individual member functions will
+ensure that they have been called with correct number of, and types of,
+arguments. In the event that the incorrect number or types of arguments have
+been provided an error will be raised. These error checks are only done when
+CMakePP is run in debug mode.</p>
+<dl class="field-list simple">
+<dt class="field-odd">var CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Used to determine if CMakePP is b</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, CMakePP Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

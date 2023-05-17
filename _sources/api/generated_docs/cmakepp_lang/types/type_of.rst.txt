@@ -1,0 +1,32 @@
+
+##########################
+cmakepp_lang.types/type_of
+##########################
+
+.. module:: cmakepp_lang.types/type_of
+
+
+.. function:: cpp_type_of(_to_result _to_obj)
+
+   Returns the type literal for the provided object.
+   
+   This function encapsulates the process of determining the type of an object.
+   It is capable of determining the type of intrinsic CMake objects (integers,
+   booleans, etc.), intrinsic CMakePP objects (Object, Class, and Map), and
+   user-defined classes.
+   
+   :param _to_result: Name for the variable which will hold the result.
+   :type _to_result: desc
+   :param _to_obj: The object we want the type of.
+   :type _to_obj: str
+   :returns: ``_to_result`` will be set to the type literal corresponding to
+             ``_to_obj``'s type.
+   :rtype: type
+   
+   Error Checking
+   ==============
+   
+   ``cpp_type_of`` will ensure that the caller has provided only 2 arguments and,
+   if the caller has provided a different amount, will raise an error.
+   
+

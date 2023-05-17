@@ -1,0 +1,7 @@
+
+################################
+cmakepp_lang.algorithm/algorithm
+################################
+
+.. module:: cmakepp_lang.algorithm/algorithm
+

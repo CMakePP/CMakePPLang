@@ -1,0 +1,10 @@
+
+#######################
+cmakepp_lang.exceptions
+#######################
+
+.. toctree:: 
+   :maxdepth: 2
+
+   exceptions
+

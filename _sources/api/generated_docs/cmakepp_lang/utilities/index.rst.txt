@@ -1,0 +1,27 @@
+
+######################
+cmakepp_lang.utilities
+######################
+
+.. toctree:: 
+   :maxdepth: 2
+
+   assert
+   call_fxn
+   check_conflicting_types
+   compare_lists
+   decode_special_chars
+   directory_exists
+   enable_if_debug
+   encode_special_chars
+   file_exists
+   global
+   pack_list
+   print_fxn_sig
+   return
+   sanitize_string
+   special_chars_lookup
+   timer
+   unique_id
+   utilities
+

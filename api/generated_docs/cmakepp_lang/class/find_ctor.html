@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>cmakepp_lang.class/find_ctor &mdash; CMakePPLang 1.0.0alpha documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            CMakePPLang
+          </a>
+              <div class="version">
+                1.0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../features/index.html">Language Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../conventions.html">Language Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../debugging.html">Debugging Code Written in CMakePPLang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer/index.html">Developing for CMakePPLang</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">CMakePPLang</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">cmakepp_lang.class/find_ctor</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/api/generated_docs/cmakepp_lang/class/find_ctor.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-cmakepp_lang.class-find_ctor">
+<span id="cmakepp-lang-class-find-ctor"></span><h1>cmakepp_lang.class/find_ctor<a class="headerlink" href="#module-cmakepp_lang.class-find_ctor" title="Permalink to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="cmakepp_lang.class-find_ctor._cpp_find_ctor">
+<span class="sig-prename descclassname"><span class="pre">cmakepp_lang.class/find_ctor.</span></span><span class="sig-name descname"><span class="pre">_cpp_find_ctor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_fc_this</span> <span class="pre">_fc_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang.class-find_ctor._cpp_find_ctor" title="Permalink to this definition"></a></dt>
+<dd><p>Finds the proper CTOR function to call for the given object and arguments.</p>
+<p>This function checks if the CTOR call was a KWARGS call, a regular CTOR call
+with arguments, or CTOR with no arguments. If it was a KWARGS call, the
+_cpp_set_kwargs_attrs is called. If it was a CTOR call with arguments, it
+attempts to find the CTOR that matches the call signature and call it. If
+no CTOR is called, an error is thrown. If it is an CTOR call with no arguments
+it attempts to find a CTOR with a matching signature but does not throw an
+error if none is found.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>_fc_this</strong> (<em>obj</em>) – The object being constructed.</p></li>
+<li><p><strong>_fc_type</strong> (<em>obj</em>) – The type of the object being constructed.</p></li>
+</ul>
+</dd>
+</dl>
+<section id="error-checking">
+<h2>Error Checking<a class="headerlink" href="#error-checking" title="Permalink to this heading"></a></h2>
+<p>If CMakePP is being run in debug mode this function will ensure that it was
+called with an obj and a type as the first two parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">var CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Used to determine if CMakePP is being run in
+debug mode or not.</p>
+</dd>
+<dt class="field-even">vartype CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+<p>Additionally, this function will always throw an error if a CTOR call with
+arguments was made an no CTOR can be found matching the signature of the call.</p>
+</section>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, CMakePP Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

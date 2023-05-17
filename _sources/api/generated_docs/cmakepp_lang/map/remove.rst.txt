@@ -1,0 +1,31 @@
+
+#######################
+cmakepp_lang.map/remove
+#######################
+
+.. module:: cmakepp_lang.map/remove
+
+
+.. function:: cpp_map_remove(_r_this)
+
+   Removes the specified keys from a map.
+   
+   This function removes the key-value pairs for specified keys from a map.
+   
+   :param _r_this: The map that will have key-value pairs removed from it
+   :type _r_this: map
+   :param \*args: The keys to remove from _r_this.
+   
+   Error Checking
+   ==============
+   
+   If CMakePP is run in debug mode this function will assert that the first
+   argument passed to this function was a map. If this assertion fails an error
+   will be raised. These checks are only performed if CMakePP is run in debug
+   mode.
+   
+   :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+                                 debug mode or not.
+   :vartype CMAKEPP_LANG_DEBUG_MODE: bool
+   
+

@@ -1,0 +1,38 @@
+
+######################
+cmakepp_lang.types/fxn
+######################
+
+.. module:: cmakepp_lang.types/fxn
+
+
+.. function:: cpp_is_fxn(_if_result _if_str2check)
+
+   Determines if a string is lexically convertible to a command.
+   
+   This function wraps a call to CMake's ``if(COMMAND ...)`` in order to
+   determine if the provided string is lexically convertible to a command or not.
+   Commands can be native CMake functions or user-defined macro/functions. It
+   should be noted that for CMakePP functions it is the mangled name of the
+   function which is identified as a command.
+   
+   :param _if_result: Name for variable which will hold the result of the check.
+   :type _if_result: desc
+   :param _if_str2check: The string which may be a command.
+   :type _if_str: str
+   :returns: ``TRUE`` if ``_if_str2check`` is a command and ``FALSE`` otherwise. 
+              The result is returned via ``_cip_result``.
+   :rtype: bool
+   
+   Example Usage:
+   ==============
+   
+   The following code snippet checks whether ``add_subdirectory`` is a command:
+   
+   .. code-block:: cmake
+   
+      include(cmakepp_lang/types/fxn)
+      cpp_is_fxn(result add_subdirectory)
+      message("Is a command: ${result}")  # Prints TRUE
+   
+

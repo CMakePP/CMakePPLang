@@ -1,0 +1,30 @@
+
+#################################################
+cmakepp_lang.serialization/detail/serialize_value
+#################################################
+
+.. module:: cmakepp_lang.serialization/detail/serialize_value
+
+
+.. function:: _cpp_serialize_value(_sv_return _sv_value)
+
+   Dispatches based on type to the appropriate serialization implementation.
+   
+   This function is used to encapsulate the logic required to dispatch to the
+   correct serialization implementation based on the type of the input value.
+   
+   :param _sv_return: The name for the variable which will hold the result.
+   :type _sv_return: desc
+   :param _sv_value: The value we are serializing.
+   :type _sv_value: str
+   :returns: ``_sv_return`` will be set to the JSON serialized form of
+             ``_sv_value``.
+   :rtype: desc
+   
+   Error Checking
+   ==============
+   
+   This function is considered an implementation detail of ``cpp_serialize`` and
+   performs no error-checking.
+   
+

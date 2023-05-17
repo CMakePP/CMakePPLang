@@ -1,0 +1,13 @@
+
+######################
+cmakepp_lang.algorithm
+######################
+
+.. toctree:: 
+   :maxdepth: 2
+
+   algorithm
+   contains
+   copy
+   equal
+

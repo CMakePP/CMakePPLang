@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>cmakepp_lang.utilities/global &mdash; CMakePPLang 1.0.0alpha documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            CMakePPLang
+          </a>
+              <div class="version">
+                1.0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../features/index.html">Language Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../conventions.html">Language Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../debugging.html">Debugging Code Written in CMakePPLang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer/index.html">Developing for CMakePPLang</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">CMakePPLang</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">cmakepp_lang.utilities/global</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/api/generated_docs/cmakepp_lang/utilities/global.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-cmakepp_lang.utilities-global">
+<span id="cmakepp-lang-utilities-global"></span><h1>cmakepp_lang.utilities/global<a class="headerlink" href="#module-cmakepp_lang.utilities-global" title="Permalink to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="cmakepp_lang.utilities-global.cpp_append_global">
+<span class="sig-prename descclassname"><span class="pre">cmakepp_lang.utilities/global.</span></span><span class="sig-name descname"><span class="pre">cpp_append_global</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_ag_key</span> <span class="pre">_ag_value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang.utilities-global.cpp_append_global" title="Permalink to this definition"></a></dt>
+<dd><p>Appends a value to a global list.</p>
+<p>When we are manipulating a global state, which is actually a list, we often
+want to append to it and not “set” it (set in this context referring to
+overwriting the value with a new value). This function will append to the
+specified global variable the provided value. If the variable does not exist,
+the variable will be created and initialized to the provided value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>_ag_key</strong> (<em>desc</em>) – The name of the global variable to append to. <code class="docutils literal notranslate"><span class="pre">_ag_key</span></code> is
+case-insensitive.</p></li>
+<li><p><strong>_ag_value</strong> (<em>str</em>) – The value to append to <code class="docutils literal notranslate"><span class="pre">_ag_key</span></code>’s current value.</p></li>
+</ul>
+</dd>
+</dl>
+<section id="error-checking">
+<h2>Error Checking<a class="headerlink" href="#error-checking" title="Permalink to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">cpp_append_global</span></code> will assert that it is called with only two arguments.</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cmakepp_lang.utilities-global.cpp_set_global">
+<span class="sig-prename descclassname"><span class="pre">cmakepp_lang.utilities/global.</span></span><span class="sig-name descname"><span class="pre">cpp_set_global</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_sg_key</span> <span class="pre">_sg_value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang.utilities-global.cpp_set_global" title="Permalink to this definition"></a></dt>
+<dd><p>Sets a global variable to the provided value.</p>
+<p>This function will set a global variable to the value provided. If the global
+variable already exists it will overwrite its current value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>_sg_key</strong> (<em>desc</em>) – The name of the global variable to set. <code class="docutils literal notranslate"><span class="pre">_ag_key</span></code> is
+case-insensitive.</p></li>
+<li><p><strong>_sg_value</strong> (<em>str</em>) – The value to set <code class="docutils literal notranslate"><span class="pre">_sg_key</span></code> to.</p></li>
+</ul>
+</dd>
+</dl>
+<section id="id1">
+<h2>Error Checking<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">cpp_set_global</span></code> will assert that it is called with only two arguments.</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cmakepp_lang.utilities-global.cpp_get_global">
+<span class="sig-prename descclassname"><span class="pre">cmakepp_lang.utilities/global.</span></span><span class="sig-name descname"><span class="pre">cpp_get_global</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_gg_result</span> <span class="pre">_gg_key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang.utilities-global.cpp_get_global" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieves the value of the requested global variable.</p>
+<p>This function will get the value of the specified global variable. If the
+variable does not exist the empty string will be returned. It is thus not
+possible to discern between an uninitialized global variable and one set to
+the empty string. In practice this is not a problem because global variables
+are not typically set to the empty string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>_gg_result</strong> – Identifier for the variable which after this call will hold
+the value stored in global variable <code class="docutils literal notranslate"><span class="pre">_gg_key</span></code>.</p></li>
+<li><p><strong>_gg_key</strong> (<em>desc</em>) – The name of the global variable whose value has been
+requested. <code class="docutils literal notranslate"><span class="pre">_gg_key</span></code> is case-insensitive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">_gg_result</span></code> will be set to the value stored in global variable
+<code class="docutils literal notranslate"><span class="pre">_gg_key</span></code>. If <code class="docutils literal notranslate"><span class="pre">_gg_key</span></code> has not been set <code class="docutils literal notranslate"><span class="pre">_gg_result</span></code> will be
+set to the empty string.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+<section id="id2">
+<h2>Error Checking<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">cpp_get_global</span></code> will assert that it is called with only two arguments.</p>
+</section>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, CMakePP Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

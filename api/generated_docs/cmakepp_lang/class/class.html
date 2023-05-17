@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>cmakepp_lang.class/class &mdash; CMakePPLang 1.0.0alpha documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            CMakePPLang
+          </a>
+              <div class="version">
+                1.0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../features/index.html">Language Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../conventions.html">Language Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../debugging.html">Debugging Code Written in CMakePPLang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer/index.html">Developing for CMakePPLang</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">CMakePPLang</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">cmakepp_lang.class/class</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/api/generated_docs/cmakepp_lang/class/class.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-cmakepp_lang.class-class">
+<span id="cmakepp-lang-class-class"></span><h1>cmakepp_lang.class/class<a class="headerlink" href="#module-cmakepp_lang.class-class" title="Permalink to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="cmakepp_lang.class-class._cpp_class_guts">
+<span class="sig-prename descclassname"><span class="pre">cmakepp_lang.class/class.</span></span><span class="sig-name descname"><span class="pre">_cpp_class_guts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_cg_type</span> <span class="pre">_cg_wrapper</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang.class-class._cpp_class_guts" title="Permalink to this definition"></a></dt>
+<dd><p>Creates the new class</p>
+<p>This function is factored out of <code class="docutils literal notranslate"><span class="pre">cpp_class</span></code> and contains the logic required
+to actually create the class. This logic is factored out primarily to avoid
+contaminating the caller’s namespace with intermediate results.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>_cg_type</strong> (<em>desc</em>) – The name of the class being created.</p></li>
+<li><p><strong>_cg_wrapper</strong> (<em>desc</em>) – Name for variable which will hold the path to the class’s
+implementation.</p></li>
+<li><p><strong>*args</strong> – The base classes that this class derives from.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">_cg_wrapper</span></code> will be set to the absolute file path for the
+generated module which implements the class.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>path</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cmakepp_lang.class-class.cpp_class">
+<span class="sig-prename descclassname"><span class="pre">cmakepp_lang.class/class.</span></span><span class="sig-name descname"><span class="pre">cpp_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_c_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang.class-class.cpp_class" title="Permalink to this definition"></a></dt>
+<dd><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is a macro, and so does not introduce a new scope.</p>
+</div>
+<p>Creates a new class of the specified type.</p>
+<p>This command is used to start the declaration of a new user-defined type. The
+resulting user-defined type will automatically inherit from <code class="docutils literal notranslate"><span class="pre">Object</span></code> if no
+base classes are provided, otherwise it will inherit from the specified base
+classes (users of this command should never explicitly specify inheritance
+from <code class="docutils literal notranslate"><span class="pre">Object</span></code>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>_c_type</strong> (<em>desc</em>) – The name of the class whose declaration is being started.</p></li>
+<li><p><strong>*args</strong> – The various base classes that the class should inherit from.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This command is a macro to ensure that the functions generated by this
+command are in scope to the caller.</p>
+</div>
+<section id="error-checking">
+<h2>Error Checking<a class="headerlink" href="#error-checking" title="Permalink to this heading"></a></h2>
+<p>If CMakePP is run in debug mode (and only if it is run in debug mode) this
+function will assert that it was called with at least one argument and that
+the arguments have the correct types.</p>
+<dl class="field-list simple">
+<dt class="field-odd">var CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Used to determine if CMakePP is being run in
+debug mode or not.</p>
+</dd>
+<dt class="field-even">vartype CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cmakepp_lang.class-class.cpp_member">
+<span class="sig-prename descclassname"><span class="pre">cmakepp_lang.class/class.</span></span><span class="sig-name descname"><span class="pre">cpp_member</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_m_name</span> <span class="pre">_m_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang.class-class.cpp_member" title="Permalink to this definition"></a></dt>
+<dd><p>Registers a class’s member function.</p>
+<p>This function is used to declare a new member function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>_m_name</strong> (<em>desc</em>) – The name of the member function. This is the name you will use
+to invoke the member function.</p></li>
+<li><p><strong>_m_type</strong> (<em>class</em>) – The class we are adding the member function to. This is also
+the type of the “this” pointer.</p></li>
+<li><p><strong>*args</strong> – The types of the arguments to the member function. This list
+should NOT include the type for the this pointer as this will
+automatically be prepended to this list.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">_m_name</span></code> will be set to the mangled name of the declared
+function to facilitate implementing it.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>desc</p>
+</dd>
+</dl>
+<section id="id1">
+<h2>Error Checking<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>If CMakePP is run in debug mode (and only if) this function will assert that
+it is called with the correct number and types of arguments. If any of these
+assertions fail an error will be raised.</p>
+<dl class="field-list simple">
+<dt class="field-odd">var CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Used to determine if CMakePP is being run in
+debug mode or not.</p>
+</dd>
+<dt class="field-even">vartype CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cmakepp_lang.class-class.cpp_virtual_member">
+<span class="sig-prename descclassname"><span class="pre">cmakepp_lang.class/class.</span></span><span class="sig-name descname"><span class="pre">cpp_virtual_member</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_vm_fxn_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang.class-class.cpp_virtual_member" title="Permalink to this definition"></a></dt>
+<dd><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is a macro, and so does not introduce a new scope.</p>
+</div>
+<p>Registers a class’s virtual member function.</p>
+<p>This function is used to declare a new virtual member function that has no
+concrete implementation and must be overridden by a derived class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>_vm_fxn_name</strong> (<em>desc</em>) – The name of the virtual member function.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">&quot;${${_vm_fxn_name}}&quot;()</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cmakepp_lang.class-class.cpp_constructor">
+<span class="sig-prename descclassname"><span class="pre">cmakepp_lang.class/class.</span></span><span class="sig-name descname"><span class="pre">cpp_constructor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_c_name</span> <span class="pre">_c_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang.class-class.cpp_constructor" title="Permalink to this definition"></a></dt>
+<dd><p>Registers a class constructor.</p>
+<p>This function is used to declare a class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>_c_name</strong> (<em>desc</em>) – The name of the constructor (CTOR by convention). This will be
+the named used to invoke the member constructor.</p></li>
+<li><p><strong>_c_type</strong> (<em>class</em>) – The class we are adding the constructor to.</p></li>
+<li><p><strong>*args</strong> – The types of the arguments to the constructor function.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">_c_name</span></code> will be set to the mangled name of the declared
+constructor to facilitate implementing it.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>desc</p>
+</dd>
+</dl>
+<section id="id2">
+<h2>Error Checking<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>If CMakePP is run in debug mode (and only if) this function will assert that
+it is called with the correct number and types of arguments. If any of these
+assertions fail an error will be raised.</p>
+<dl class="field-list simple">
+<dt class="field-odd">var CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Used to determine if CMakePP is being run in
+debug mode or not.</p>
+</dd>
+<dt class="field-even">vartype CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cmakepp_lang.class-class.cpp_attr">
+<span class="sig-prename descclassname"><span class="pre">cmakepp_lang.class/class.</span></span><span class="sig-name descname"><span class="pre">cpp_attr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_a_type</span> <span class="pre">_a_attr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang.class-class.cpp_attr" title="Permalink to this definition"></a></dt>
+<dd><p>Registers a class’s attribute.</p>
+<p>This function is used to declare a new attribute for a class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>_a_type</strong> (<em>class</em>) – The name of the class getting the attribute.</p></li>
+<li><p><strong>_a_attr</strong> (<em>desc</em>) – The name of the attribute</p></li>
+<li><p><strong>*args</strong> – The initial value of the attribute. If no <code class="docutils literal notranslate"><span class="pre">*args</span></code> are provided
+the attribute will be initialized to the empty string.</p></li>
+</ul>
+</dd>
+</dl>
+<section id="id3">
+<h2>Error Checking<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<p>If CMakePP is run in debug mode (and only if) this function will assert that
+it is called with the correct number and types of arguments. If any of these
+assertions fail an error will be raised.</p>
+<dl class="field-list simple">
+<dt class="field-odd">var CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Used to determine if CMakePP is being run in
+debug mode or not.</p>
+</dd>
+<dt class="field-even">vartype CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cmakepp_lang.class-class.cpp_end_class">
+<span class="sig-prename descclassname"><span class="pre">cmakepp_lang.class/class.</span></span><span class="sig-name descname"><span class="pre">cpp_end_class</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang.class-class.cpp_end_class" title="Permalink to this definition"></a></dt>
+<dd><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is a macro, and so does not introduce a new scope.</p>
+</div>
+<p>Denotes that we are done declaring a class.</p>
+<p>This function is a no-op that completes the fencing associated with declaring
+a class.</p>
+<section id="id4">
+<h2>Error Checking<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<p>None. This function is a no-op and has no errors to check for.</p>
+</section>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, CMakePP Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

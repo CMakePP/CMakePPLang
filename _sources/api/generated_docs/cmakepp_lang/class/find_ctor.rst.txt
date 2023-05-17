@@ -1,0 +1,39 @@
+
+############################
+cmakepp_lang.class/find_ctor
+############################
+
+.. module:: cmakepp_lang.class/find_ctor
+
+
+.. function:: _cpp_find_ctor(_fc_this _fc_type)
+
+   Finds the proper CTOR function to call for the given object and arguments.
+   
+   This function checks if the CTOR call was a KWARGS call, a regular CTOR call
+   with arguments, or CTOR with no arguments. If it was a KWARGS call, the
+   _cpp_set_kwargs_attrs is called. If it was a CTOR call with arguments, it
+   attempts to find the CTOR that matches the call signature and call it. If
+   no CTOR is called, an error is thrown. If it is an CTOR call with no arguments
+   it attempts to find a CTOR with a matching signature but does not throw an
+   error if none is found.
+   
+   :param _fc_this: The object being constructed.
+   :type _fc_this: obj
+   :param _fc_type: The type of the object being constructed.
+   :type _fc_type: obj
+   
+   Error Checking
+   ==============
+   
+   If CMakePP is being run in debug mode this function will ensure that it was
+   called with an obj and a type as the first two parameters.
+   
+   :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+                                 debug mode or not.
+   :vartype CMAKEPP_LANG_DEBUG_MODE: bool
+   
+   Additionally, this function will always throw an error if a CTOR call with
+   arguments was made an no CTOR can be found matching the signature of the call.
+   
+

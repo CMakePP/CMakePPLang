@@ -1,0 +1,20 @@
+
+###################
+cmakepp_lang.object
+###################
+
+.. toctree:: 
+   :maxdepth: 2
+
+   add_fxn
+   attrs
+   call
+   copy
+   ctor
+   equal
+   get_meta_attr
+   get_symbol
+   object
+   serialize
+   singleton
+
