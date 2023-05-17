@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Utilities &mdash; CMakePPLang 1.0.0alpha documentation</title>
@@ -12,10 +12,8 @@
   <![endif]-->
   
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -28,14 +26,18 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> CMakePPLang
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            CMakePPLang
           </a>
               <div class="version">
                 1.0.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -56,7 +58,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../conventions.html">Language Conventions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../debugging.html">Debugging Code Written in CMakePPLang</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developing CMakePP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developing for CMakePPLang</a></li>
 </ul>
 
         </div>
@@ -72,9 +74,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">Language Features</a> &raquo;</li>
-      <li>Utilities</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Language Features</a></li>
+      <li class="breadcrumb-item active">Utilities</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/features/utilities.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -86,7 +88,7 @@
              
   <section id="utilities">
 <h1>Utilities<a class="headerlink" href="#utilities" title="Permalink to this heading"></a></h1>
-<p>The CMakePP language provides the following utility commands:</p>
+<p>CMakePPLang provides the following utility commands:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">cpp_equal</span></code> for checking for equality between two variables</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">cpp_serialize</span></code> for serializing a variable into a JSON string</p></li>
@@ -94,6 +96,8 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">cpp_contains</span></code> for checking if a string contains a certain substring, a list
 contains a certain item, or a map contains a certain key</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">cpp_type_of</span></code> for determining the type of a variable</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cpp_check_conflicting_types</span></code> for checking if a string conflicts with a <a class="reference internal" href="types.html#features-types"><span class="std std-ref">built-in type</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cpp_return</span></code> for returning values from a function</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">cpp_assert</span></code> for asserting that a condition is true and stopping the
 build process if that condition is not true</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">cpp_directory_exists</span></code> for checking that a directory at a given path

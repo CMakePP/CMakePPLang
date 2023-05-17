@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Debugging Code Written in CMakePPLang &mdash; CMakePPLang 1.0.0alpha documentation</title>
@@ -12,14 +12,12 @@
   <![endif]-->
   
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Developing CMakePP" href="developer/index.html" />
+    <link rel="next" title="Developing for CMakePPLang" href="developer/index.html" />
     <link rel="prev" title="API" href="api/index.html" /> 
 </head>
 
@@ -28,14 +26,18 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> CMakePPLang
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            CMakePPLang
           </a>
               <div class="version">
                 1.0.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -50,7 +52,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#debugging-basics">Debugging Basics</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="developer/index.html">Developing CMakePP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer/index.html">Developing for CMakePPLang</a></li>
 </ul>
 
         </div>
@@ -66,8 +68,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Debugging Code Written in CMakePPLang</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Debugging Code Written in CMakePPLang</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/debugging.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -81,18 +83,17 @@
 <span id="debugging"></span><h1>Debugging Code Written in CMakePPLang<a class="headerlink" href="#debugging-code-written-in-cmakepplang" title="Permalink to this heading"></a></h1>
 <p>Native CMake has limited debugging capabilities, which are limited to printing
 variables out and very verbose printing of every line that is executed by the
-interpreter. While writing the CMakePP language, we attempted to build in
-more robust programming error checking and debugging features. These
-features come at a computational cost so they should only be used to
-debug/unit test your build systems.</p>
+interpreter. While designing CMakePPLang, we attempted to provide more robust
+programming error checking and debugging features. These features come at a
+computational cost, so they should only be used to debug/unit test your build
+systems.</p>
 <section id="debugging-basics">
 <span id="id1"></span><h2>Debugging Basics<a class="headerlink" href="#debugging-basics" title="Permalink to this heading"></a></h2>
-<p>The variable <code class="docutils literal notranslate"><span class="pre">CMAKEPP_LANG_DEBUG_MODE</span></code> can be used to cause all CMakePP
+<p>The variable <code class="docutils literal notranslate"><span class="pre">CMAKEPP_LANG_DEBUG_MODE</span></code> can be used to cause all CMakePPLang
 functions to run in debug mode. If you are familiar with the C/C++ preprocessor
 macro definition <code class="docutils literal notranslate"><span class="pre">NDEBUG</span></code> it’s the same idea, without the odd negative logic.
-Basically verbose logging and extra error checks, like type and bounds checks,
-are only done when <code class="docutils literal notranslate"><span class="pre">CMAKEPP_LANG_DEBUG_MODE</span></code> is defined and set to a true
-value.</p>
+Verbose logging and extra error checks, like type and bounds checks, are only
+done when <code class="docutils literal notranslate"><span class="pre">CMAKEPP_LANG_DEBUG_MODE</span></code> is defined and set to a true value.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>There can be significant computational overhead associated with running your
@@ -108,7 +109,7 @@ ensure that you didn’t make any programming mistakes.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="api/index.html" class="btn btn-neutral float-left" title="API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="developer/index.html" class="btn btn-neutral float-right" title="Developing CMakePP" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="developer/index.html" class="btn btn-neutral float-right" title="Developing for CMakePPLang" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

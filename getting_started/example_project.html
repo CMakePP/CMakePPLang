@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Example Project using CMakePPLang &mdash; CMakePPLang 1.0.0alpha documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Language Features" href="../features/index.html" />
+    <link rel="prev" title="2. Using Utilities" href="cmakepp_examples/utilities.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            CMakePPLang
+          </a>
+              <div class="version">
+                1.0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Getting Started</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="obtaining_cmakepplang.html">Obtaining CMakePPLang</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmakepp_examples/index.html">CMakePPLang Examples</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Example Project using CMakePPLang</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#project-layout">Project Layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#initial-cmake-boilerplate">Initial CMake Boilerplate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fetching-cmakepplang">Fetching CMakePPLang</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#defining-the-class">Defining the Class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#testing-the-class">Testing the Class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-the-project">Building the Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-the-tests">Running the Tests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../features/index.html">Language Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conventions.html">Language Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging.html">Debugging Code Written in CMakePPLang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developing for CMakePPLang</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CMakePPLang</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Getting Started</a></li>
+      <li class="breadcrumb-item active">Example Project using CMakePPLang</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/getting_started/example_project.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="example-project-using-cmakepplang">
+<span id="id1"></span><h1>Example Project using CMakePPLang<a class="headerlink" href="#example-project-using-cmakepplang" title="Permalink to this heading"></a></h1>
+<p>This chapter demonstrates how to set up a project to use CMakePPLang, aiming to
+be both a tutorial for new users setting up their first project using
+CMakePPLang, as well as a quick reference for experienced users.</p>
+<p>This project will create a <cite>Greeter</cite> class. This class will store a user’s name
+in a <code class="docutils literal notranslate"><span class="pre">name</span></code> attribute and greet them using a <code class="docutils literal notranslate"><span class="pre">Greeter(hello</span></code> member
+function. The <code class="docutils literal notranslate"><span class="pre">Greeter(hello</span></code> function will print the following greeting,
+“Hello, &lt;name&gt;!”, where <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code> is the value of the <code class="docutils literal notranslate"><span class="pre">name</span></code> attribute.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The full example project can be found under <code class="docutils literal notranslate"><span class="pre">examples/cmakepplang_example</span></code>
+to check your work or follow along when creating a new project is not
+possible/desired.</p>
+</div>
+<section id="project-layout">
+<h2>Project Layout<a class="headerlink" href="#project-layout" title="Permalink to this heading"></a></h2>
+<p>This project will be a simple layout with a top-level <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file,
+a <code class="docutils literal notranslate"><span class="pre">cmake</span></code> subdirectory where CMake source code will reside, and a <code class="docutils literal notranslate"><span class="pre">tests</span></code>
+directory where the code will be tested. If following along, create these
+files and directories now, but leave the files blank. We will populate them in
+later sections.</p>
+<p>The layout will look like this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.
+├──<span class="w"> </span>cmake/
+│<span class="w">   </span>├──<span class="w"> </span>get_cmakepp_lang.cmake
+│<span class="w">   </span>├──<span class="w"> </span>get_cmake_test.cmake
+│<span class="w">   </span>└──<span class="w"> </span>greeter/
+│<span class="w">       </span>└──<span class="w"> </span>greeter_class.cmake
+├──<span class="w"> </span>CMakeLists.txt
+├──<span class="w"> </span>docs/
+└──<span class="w"> </span>tests/
+<span class="w">   </span>├──<span class="w"> </span>CMakeLists.txt
+<span class="w">   </span>└──<span class="w"> </span>greeter/
+<span class="w">      </span>└──<span class="w"> </span>test_greeter_class.cmake
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">cmake</span></code> directory is where most CMake and CMakePPLang code will exist.
+This includes the code to fetch CMakePPLang, <code class="docutils literal notranslate"><span class="pre">cmake/get_cmakepp_lang.cmake</span></code>.
+The <code class="docutils literal notranslate"><span class="pre">cmake/greeter</span></code> subdirectory is used to contain the core code for this
+project, effectively namespacing the code. This is where we will create our
+<code class="docutils literal notranslate"><span class="pre">Greeter</span></code> class.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">docs</span></code> directory will house documentation written for the project and
+generated API documentation. This step will not be covered in this example,
+but see <a class="reference external" href="https://www.sphinx-doc.org/en/master/">Sphinx</a> and <a class="reference external" href="https://github.com/CMakePP/CMinx">CMinx</a> for methods to write and generate documentation for
+your project.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">tests</span></code> directory contains unit testing for your CMake and CMakePPLang
+code, tested through CMakeTest. This directory should mirror the <code class="docutils literal notranslate"><span class="pre">cmake</span></code>
+directory structure, with test files including the <code class="docutils literal notranslate"><span class="pre">test_</span></code> prefix. We will
+test our <code class="docutils literal notranslate"><span class="pre">Greeter</span></code> class here.</p>
+<p>Finally, a <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file at the root of the project will be the
+entry point for the CMake project. Subdirectories sometimes contain additional
+<code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> files for code specific to a specific directory’s function.
+In this project, there is an additional <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> that will fetch
+<code class="docutils literal notranslate"><span class="pre">CMakeTest</span></code> and include the tests to be run.</p>
+</section>
+<section id="initial-cmake-boilerplate">
+<h2>Initial CMake Boilerplate<a class="headerlink" href="#initial-cmake-boilerplate" title="Permalink to this heading"></a></h2>
+<p>All CMake projects require that a minimum CMake version be set with
+<code class="docutils literal notranslate"><span class="pre">cmake_minimum_required()</span></code> and a project must be defined with <code class="docutils literal notranslate"><span class="pre">project()</span></code>.
+Additionally, it is useful to add a toggle for whether to build the project
+tests or not that the user can change as needed. We add the
+<code class="docutils literal notranslate"><span class="pre">option(BUILD_TESTING</span></code> call to add this option.</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.14</span><span class="p">)</span><span class="w"> </span><span class="c"># b/c of FetchContent_MakeAvailable</span>
+<span class="nb">project</span><span class="p">(</span><span class="s">CMakePPLangExample</span><span class="w"> </span><span class="s">VERSION</span><span class="w"> </span><span class="s">1.0.0</span><span class="w"> </span><span class="s">LANGUAGES</span><span class="w"> </span><span class="s">NONE</span><span class="p">)</span>
+
+<span class="nb">option</span><span class="p">(</span><span class="s">BUILD_TESTING</span><span class="w"> </span><span class="s2">&quot;Should we build and run the unit tests?&quot;</span><span class="w"> </span><span class="s">OFF</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="fetching-cmakepplang">
+<h2>Fetching CMakePPLang<a class="headerlink" href="#fetching-cmakepplang" title="Permalink to this heading"></a></h2>
+<p>We will start by setting up the ability to get CMakePPLang automatically in
+the project following the instructions at <a class="reference internal" href="obtaining_cmakepplang.html#auto-downloading-cmakepplang"><span class="std std-ref">Automatically Downloading and Including CMakePPLang</span></a>.
+First, add the following text to <code class="docutils literal notranslate"><span class="pre">cmake/get_cmakepp_lang.cmake</span></code>:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">include_guard</span><span class="p">()</span>
+
+<span class="c">#[[</span>
+<span class="c"># This function encapsulates the process of getting CMakePPLang using CMake&#39;s</span>
+<span class="c"># FetchContent module. We have encapsulated it in a function so we can set</span>
+<span class="c"># the options for its configure step without affecting the options for the</span>
+<span class="c"># parent project&#39;s configure step (namely we do not want to build CMakePPLang&#39;s</span>
+<span class="c"># unit tests).</span>
+<span class="c">#]]</span>
+<span class="nb">function</span><span class="p">(</span><span class="s">get_cmakepp_lang</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c"># Store whether we are building tests or not, then turn off the tests</span>
+<span class="w">    </span><span class="nb">set</span><span class="p">(</span><span class="s">build_testing_old</span><span class="w"> </span><span class="s2">&quot;${BUILD_TESTING}&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">set</span><span class="p">(</span><span class="s">BUILD_TESTING</span><span class="w"> </span><span class="s">OFF</span><span class="w"> </span><span class="s">CACHE</span><span class="w"> </span><span class="s">BOOL</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="s">FORCE</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c"># Download CMakePPLang and bring it into scope</span>
+<span class="w">    </span><span class="nb">include</span><span class="p">(</span><span class="s">FetchContent</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">FetchContent_Declare</span><span class="p">(</span>
+<span class="w">        </span><span class="s">cmakepp_lang</span>
+<span class="w">        </span><span class="s">GIT_REPOSITORY</span><span class="w"> </span><span class="s">https://github.com/CMakePP/CMakePPLang</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="nb">FetchContent_MakeAvailable</span><span class="p">(</span><span class="s">cmakepp_lang</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nb">set</span><span class="p">(</span>
+<span class="w">        </span><span class="s">CMAKE_MODULE_PATH</span><span class="w"> </span><span class="s2">&quot;${CMAKE_MODULE_PATH}&quot;</span><span class="w"> </span><span class="s2">&quot;${cmakepp_lang_SOURCE_DIR}/cmake&quot;</span>
+<span class="w">        </span><span class="s">PARENT_SCOPE</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="c"># Restore the previous value</span>
+<span class="w">    </span><span class="nb">set</span><span class="p">(</span><span class="s">BUILD_TESTING</span><span class="w"> </span><span class="s2">&quot;${build_testing_old}&quot;</span><span class="w"> </span><span class="s">CACHE</span><span class="w"> </span><span class="s">BOOL</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="s">FORCE</span><span class="p">)</span>
+<span class="nb">endfunction</span><span class="p">()</span>
+
+<span class="c"># Call the function we just wrote to get CMakePPLang</span>
+<span class="nb">get_cmakepp_lang</span><span class="p">()</span>
+
+<span class="c"># Include CMakePPLang</span>
+<span class="nb">include</span><span class="p">(</span><span class="s">cmakepp_lang/cmakepp_lang</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then, add the following line at the bottom of the top-level
+<code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> created earlier:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Bring the &#39;cmake&#39; directory into scope to include files contained</span>
+<span class="c"># within easily</span>
+<span class="nb">list</span><span class="p">(</span><span class="s">APPEND</span><span class="w"> </span><span class="s">CMAKE_MODULE_PATH</span><span class="w"> </span><span class="s2">&quot;${CMAKE_CURRENT_SOURCE_DIR}/cmake&quot;</span><span class="p">)</span>
+<span class="nb">include</span><span class="p">(</span><span class="s">get_cmakepp_lang</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="defining-the-class">
+<h2>Defining the Class<a class="headerlink" href="#defining-the-class" title="Permalink to this heading"></a></h2>
+<p>Now we need to define the <code class="docutils literal notranslate"><span class="pre">Greeter</span></code> class with the <code class="docutils literal notranslate"><span class="pre">name</span></code> attribute and
+<code class="docutils literal notranslate"><span class="pre">hello</span></code> member function.</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">include_guard</span><span class="p">()</span>
+<span class="nb">include</span><span class="p">(</span><span class="s">cmakepp_lang/cmakepp_lang</span><span class="p">)</span>
+
+<span class="c">#[[[</span>
+<span class="c"># Greeter class to greet the user using their name.</span>
+<span class="c">#</span>
+<span class="c"># The class definition for the Greeter class starts here with ``cpp_class``.</span>
+<span class="c">#]]</span>
+<span class="nb">cpp_class</span><span class="p">(</span><span class="s">Greeter</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c">#[[[</span>
+<span class="c">    # :type: str</span>
+<span class="c">    #</span>
+<span class="c">    # Name to use in the greeting. This attribute defaults to a blank string</span>
+<span class="c">    # (&quot;&quot;) if it is not set by the user.</span>
+<span class="c">    #]]</span>
+<span class="w">    </span><span class="nb">cpp_attr</span><span class="p">(</span><span class="s">Greeter</span><span class="w"> </span><span class="s">name</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c">#[[[</span>
+<span class="c">    # Member function used to say hello to the user.</span>
+<span class="c">    # </span>
+<span class="c">    # Notice that there is a ``cpp_member()`` call to provide the function</span>
+<span class="c">    # parameter typings, followed immediately by a ``function()`` call with</span>
+<span class="c">    # the dereferenced function name and parameter names.</span>
+<span class="c">    #</span>
+<span class="c">    # :param self: Greeter object to use.</span>
+<span class="c">    # :type self: Greeter</span>
+<span class="c">    #]]</span>
+<span class="w">    </span><span class="nb">cpp_member</span><span class="p">(</span><span class="s">hello</span><span class="w"> </span><span class="s">Greeter</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">function</span><span class="p">(</span><span class="s2">&quot;${hello}&quot;</span><span class="w"> </span><span class="s">self</span><span class="p">)</span>
+
+<span class="w">        </span><span class="c"># Get the value of the &#39;name&#39; attribute</span>
+<span class="w">        </span><span class="nb">Greeter</span><span class="p">(</span><span class="s">GET</span><span class="w"> </span><span class="s2">&quot;${self}&quot;</span><span class="w"> </span><span class="s">_name_result</span><span class="w"> </span><span class="s">name</span><span class="p">)</span>
+
+<span class="w">        </span><span class="c"># Print the hello message to the user</span>
+<span class="w">        </span><span class="nb">message</span><span class="p">(</span><span class="s2">&quot;Hello, ${_name_result}!&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nb">endfunction</span><span class="p">()</span><span class="w"> </span><span class="c"># End Greeter(hello</span>
+
+<span class="nb">cpp_end_class</span><span class="p">()</span><span class="w"> </span><span class="c"># End Greeter class</span>
+</pre></div>
+</div>
+<p>An example of using the <code class="docutils literal notranslate"><span class="pre">Greeter</span></code> class can then be added to the bottom of
+the top-level <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Include the Greeter class definition</span>
+<span class="nb">include</span><span class="p">(</span><span class="s">greeter/greeter_class</span><span class="p">)</span>
+
+<span class="c"># Create a Greeter instance</span>
+<span class="nb">Greeter</span><span class="p">(</span><span class="s">CTOR</span><span class="w"> </span><span class="s">greeter_obj</span><span class="p">)</span>
+
+<span class="c"># Set the &#39;name&#39; attribute of the Greeter instance</span>
+<span class="nb">Greeter</span><span class="p">(</span><span class="s">SET</span><span class="w"> </span><span class="s2">&quot;${greeter_obj}&quot;</span><span class="w"> </span><span class="s">name</span><span class="w"> </span><span class="s2">&quot;John Doe&quot;</span><span class="p">)</span>
+
+<span class="c"># Get the &#39;name&#39; attribute value of the Greeter instance to check it</span>
+<span class="nb">Greeter</span><span class="p">(</span><span class="s">GET</span><span class="w"> </span><span class="s2">&quot;${greeter_obj}&quot;</span><span class="w"> </span><span class="s">name_result</span><span class="w"> </span><span class="s">name</span><span class="p">)</span>
+<span class="nb">message</span><span class="p">(</span><span class="s2">&quot;Name attribute value: ${name_result}&quot;</span><span class="p">)</span>
+<span class="c"># OUTPUT: Name attribute value: John Doe</span>
+
+<span class="c"># Call the &#39;Greeter(hello&#39; method for the Greeter instance, which uses the</span>
+<span class="c"># &#39;name&#39; attribute to get the name to print</span>
+<span class="nb">Greeter</span><span class="p">(</span><span class="s">hello</span><span class="w"> </span><span class="s2">&quot;${greeter_obj}&quot;</span><span class="p">)</span>
+<span class="c"># OUTPUT: Hello, John Doe!</span>
+</pre></div>
+</div>
+</section>
+<section id="testing-the-class">
+<h2>Testing the Class<a class="headerlink" href="#testing-the-class" title="Permalink to this heading"></a></h2>
+<p>CMakeTest is going to be used to test the <code class="docutils literal notranslate"><span class="pre">Greeter</span></code> class we just wrote, so
+we need to get CMakeTest similarly to how we automatically got CMakePPLang.
+Add the following text to <code class="docutils literal notranslate"><span class="pre">cmake/get_cmake_test.cmake</span></code>:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">include_guard</span><span class="p">()</span>
+
+<span class="c">#[[</span>
+<span class="c"># This function encapsulates the process of getting CMakeTest using CMake&#39;s</span>
+<span class="c"># FetchContent module. We have encapsulated it in a function so we can set</span>
+<span class="c"># the options for its configure step without affecting the options for the</span>
+<span class="c"># parent project&#39;s configure step (namely we do not want to build CMakeTest&#39;s</span>
+<span class="c"># unit tests).</span>
+<span class="c">#]]</span>
+<span class="nb">function</span><span class="p">(</span><span class="s">get_cmake_test</span><span class="p">)</span>
+<span class="w">    </span><span class="c"># Store whether we are building tests or not, then turn off the tests</span>
+<span class="w">    </span><span class="nb">set</span><span class="p">(</span><span class="s">build_testing_old</span><span class="w"> </span><span class="s2">&quot;${BUILD_TESTING}&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">set</span><span class="p">(</span><span class="s">BUILD_TESTING</span><span class="w"> </span><span class="s">OFF</span><span class="w"> </span><span class="s">CACHE</span><span class="w"> </span><span class="s">BOOL</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="s">FORCE</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c"># Download CMakeTest and bring it into scope</span>
+<span class="w">    </span><span class="nb">include</span><span class="p">(</span><span class="s">FetchContent</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">FetchContent_Declare</span><span class="p">(</span>
+<span class="w">        </span><span class="s">cmake_test</span>
+<span class="w">        </span><span class="s">GIT_REPOSITORY</span><span class="w"> </span><span class="s">https://github.com/CMakePP/CMakeTest</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="nb">FetchContent_MakeAvailable</span><span class="p">(</span><span class="s">cmake_test</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nb">set</span><span class="p">(</span>
+<span class="w">        </span><span class="s">CMAKE_MODULE_PATH</span><span class="w"> </span><span class="s2">&quot;${CMAKE_MODULE_PATH}&quot;</span><span class="w"> </span><span class="s2">&quot;${cmake_test_SOURCE_DIR}/cmake&quot;</span>
+<span class="w">        </span><span class="s">PARENT_SCOPE</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="c"># Restore the previous value</span>
+<span class="w">    </span><span class="nb">set</span><span class="p">(</span><span class="s">BUILD_TESTING</span><span class="w"> </span><span class="s2">&quot;${build_testing_old}&quot;</span><span class="w"> </span><span class="s">CACHE</span><span class="w"> </span><span class="s">BOOL</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="s">FORCE</span><span class="p">)</span>
+<span class="nb">endfunction</span><span class="p">()</span>
+
+<span class="c"># Call the function we just wrote to get CMakeTest</span>
+<span class="nb">get_cmake_test</span><span class="p">()</span>
+
+<span class="c"># Include CMakeTest</span>
+<span class="nb">include</span><span class="p">(</span><span class="s">cmake_test/cmake_test</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Next is to create the test for <code class="docutils literal notranslate"><span class="pre">Greeter</span></code> by adding the following text to
+<code class="docutils literal notranslate"><span class="pre">tests/greeter/test_greeter_class.cmake</span></code>, testing the output of the
+<code class="docutils literal notranslate"><span class="pre">Greeter(hello</span></code> method:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">include</span><span class="p">(</span><span class="s">cmake_test/cmake_test</span><span class="p">)</span>
+
+<span class="c">#[[[</span>
+<span class="c"># Tests created with CMakeTest are structured similarly to the C++ testing</span>
+<span class="c"># package, `Catch2 &lt;https://github.com/catchorg/Catch2&gt;`__. This structures</span>
+<span class="c"># the testing framework as a collection of tests, created with</span>
+<span class="c"># ``ct_add_test(NAME &quot;&lt;test_name&gt;&quot;)`` containing sections with individual</span>
+<span class="c"># unit tests added with ``ct_add_section(NAME &quot;&lt;section_name&gt;&quot;)``.</span>
+<span class="c"># ``EXPECT_FAIL`` can be added to the ``ct_add_section()`` calls if the</span>
+<span class="c"># test is expected to fail instead of succeeding.</span>
+<span class="c">#]]</span>
+<span class="nb">ct_add_test</span><span class="p">(</span><span class="s">NAME</span><span class="w"> </span><span class="s2">&quot;test_greeter_class&quot;</span><span class="p">)</span>
+<span class="nb">function</span><span class="p">(</span><span class="s2">&quot;${test_greeter_class}&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">include</span><span class="p">(</span><span class="s">greeter/greeter_class</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c">#[[[</span>
+<span class="c">    # Test that Greeter(hello prints the correct message</span>
+<span class="c">    #]]</span>
+<span class="w">    </span><span class="nb">ct_add_section</span><span class="p">(</span><span class="s">NAME</span><span class="w"> </span><span class="s2">&quot;test_hello&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">function</span><span class="p">(</span><span class="s2">&quot;${test_hello}&quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="c"># Create Greeter instance</span>
+<span class="w">        </span><span class="nb">Greeter</span><span class="p">(</span><span class="s">CTOR</span><span class="w"> </span><span class="s">_greeter_obj</span><span class="p">)</span>
+
+<span class="w">        </span><span class="c"># Set the &#39;name&#39; attribute</span>
+<span class="w">        </span><span class="nb">Greeter</span><span class="p">(</span><span class="s">SET</span><span class="w"> </span><span class="s2">&quot;${_greeter_obj}&quot;</span><span class="w"> </span><span class="s">name</span><span class="w"> </span><span class="s2">&quot;John Doe&quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="c"># Call Greeter(hello</span>
+<span class="w">        </span><span class="nb">Greeter</span><span class="p">(</span><span class="s">hello</span><span class="w"> </span><span class="s2">&quot;${_greeter_obj}&quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="c"># Test if the printed message is correct</span>
+<span class="w">        </span><span class="nb">ct_assert_prints</span><span class="p">(</span><span class="s2">&quot;Hello, John Doe!&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nb">endfunction</span><span class="p">()</span>
+
+<span class="nb">endfunction</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Then, we have to add the tests to the project. At the bottom of the
+top-level <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code>, we add the final part to add the tests directory
+and allow the tests to be toggled on and off with the <code class="docutils literal notranslate"><span class="pre">BUILD_TESTING</span></code> option:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># We can also test the class using CMakeTest</span>
+<span class="nb">if</span><span class="p">(</span><span class="s2">&quot;${BUILD_TESTING}&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">include</span><span class="p">(</span><span class="s">CTest</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">add_subdirectory</span><span class="p">(</span><span class="s">tests</span><span class="p">)</span>
+<span class="nb">endif</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Finally, we can complete adding the tests by populating <code class="docutils literal notranslate"><span class="pre">tests/CMakeLists.txt</span></code>
+to get CMakeTest and add the <code class="docutils literal notranslate"><span class="pre">tests/greeter</span></code> test directory for CMakeTest:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">include</span><span class="p">(</span><span class="s">FetchContent</span><span class="p">)</span>
+
+<span class="c">#[[[</span>
+<span class="c"># These tests are performed using CMakeTest, the CMakePP Organization&#39;s</span>
+<span class="c"># solution for writing tests for your CMake code.</span>
+<span class="c">#]]</span>
+<span class="nb">include</span><span class="p">(</span><span class="s">get_cmake_test</span><span class="p">)</span>
+
+<span class="nb">ct_add_dir</span><span class="p">(</span><span class="s">greeter</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="building-the-project">
+<h2>Building the Project<a class="headerlink" href="#building-the-project" title="Permalink to this heading"></a></h2>
+<p>Now that we have a complete project, it can be built with CMake after
+navigating into the project directory. In a terminal, run the following
+command for your system:</p>
+<p>For *nix-based systems (including Mac OSX):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake<span class="w"> </span>-H.<span class="w"> </span>-Bbuild<span class="w"> </span>-DBUILD_TESTING<span class="o">=</span>ON
+</pre></div>
+</div>
+<p>For Windows systems:</p>
+<div class="highlight-batch notranslate"><div class="highlight"><pre><span></span>cmake -S. -Bbuild -DBUILD_TESTING=ON
+</pre></div>
+</div>
+<p>In these commands, <code class="docutils literal notranslate"><span class="pre">-H</span></code> and <code class="docutils literal notranslate"><span class="pre">-S</span></code> specify the top-level, root directory for
+the project, called the “source directory” in CMake (not to be confused with a
+“source code directory”, commonly also called the “source directory”). In this
+case, we are assuming that the current directory, <code class="docutils literal notranslate"><span class="pre">.</span></code>, is the root directory
+of the <code class="docutils literal notranslate"><span class="pre">CMakePPLang</span></code> repository. The directory where build artifacts will
+appear is specified by <code class="docutils literal notranslate"><span class="pre">-B</span></code>, meaning we are directing build artefacts to
+<code class="docutils literal notranslate"><span class="pre">CMakePPLang/build</span></code>. Finally, <code class="docutils literal notranslate"><span class="pre">-DBUILD_TESTING=ON</span></code> enables unit testing on
+CMakePPLang, which will be necessary for development. <code class="docutils literal notranslate"><span class="pre">BUILD_TESTING</span></code>
+defaults to <code class="docutils literal notranslate"><span class="pre">OFF</span></code>, so this argument can be excluded if testing is not needed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since CMakePPLang is built during the CMake configuration step, the build step
+is usually not needed. However, if it becomes necessary, the build step can
+be run with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake<span class="w"> </span>--build<span class="w"> </span>build
+</pre></div>
+</div>
+</div>
+</section>
+<section id="running-the-tests">
+<h2>Running the Tests<a class="headerlink" href="#running-the-tests" title="Permalink to this heading"></a></h2>
+<p>If tests were built using the <code class="docutils literal notranslate"><span class="pre">BUILD_TESTING=ON</span></code> option, then unit tests from
+the build will be included in the <code class="docutils literal notranslate"><span class="pre">build</span></code> directory generated above. These
+tests are run using CMake’s test driver program, <a class="reference external" href="&quot;https://cmake.org/cmake/help/book/mastering-cmake/chapter/Testing%20With%20CMake%20and%20CTest.html&quot;">CTest</a>. Navigate into the
+<code class="docutils literal notranslate"><span class="pre">build</span></code> directory and run the following command to execute the tests:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ctest<span class="w"> </span>--output-on-failure
+</pre></div>
+</div>
+<p>While <code class="docutils literal notranslate"><span class="pre">ctest</span></code> can be run with no arguments as well, it is usually useful to
+run it with <code class="docutils literal notranslate"><span class="pre">--output-on-failure</span></code>, since it will provide all of the output
+from a failing test program instead of simply saying the test failed. After
+the first run of the tests, it is also useful to include <code class="docutils literal notranslate"><span class="pre">--rerun-failed</span></code>
+to save time by skipping passing tests.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="cmakepp_examples/utilities.html" class="btn btn-neutral float-left" title="2. Using Utilities" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../features/index.html" class="btn btn-neutral float-right" title="Language Features" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, CMakePP Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

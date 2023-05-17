@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Classes &mdash; CMakePPLang 1.0.0alpha documentation</title>
@@ -12,10 +12,8 @@
   <![endif]-->
   
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -28,14 +26,18 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> CMakePPLang
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            CMakePPLang
           </a>
               <div class="version">
                 1.0.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -87,7 +89,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../conventions.html">Language Conventions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../debugging.html">Debugging Code Written in CMakePPLang</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developing CMakePP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developing for CMakePPLang</a></li>
 </ul>
 
         </div>
@@ -103,9 +105,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">Language Features</a> &raquo;</li>
-      <li>Classes</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Language Features</a></li>
+      <li class="breadcrumb-item active">Classes</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/features/classes.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -117,20 +119,23 @@
              
   <section id="classes">
 <span id="features-classes"></span><h1>Classes<a class="headerlink" href="#classes" title="Permalink to this heading"></a></h1>
-<p>The CMakePP langauge enables users to define classes and create instances of
-the classes. Classes in CMakePP can contain attributes and functions. CMakePP
-also supports inheritance. Examples of using classes are provided in the
-<a class="reference internal" href="../getting_started/cmakepp_examples/classes.html#examples-classes"><span class="std std-ref">Using Classes</span></a> the section. A basic overview of the features of
-classes are provided below.</p>
+<p>CMakePPLang enables users to define classes and create instances of
+the classes. Classes in CMakePPLang can contain attributes and functions.
+CMakePPLang also supports inheritance. Examples of using classes are provided
+in <a class="reference internal" href="../getting_started/cmakepp_examples/classes.html#examples-classes"><span class="std std-ref">Using Classes</span></a>. A basic overview of the features of classes are
+provided below.</p>
 <section id="class-definition">
 <span id="features-classes-definition"></span><h2>Class Definition<a class="headerlink" href="#class-definition" title="Permalink to this heading"></a></h2>
 <p>Class definitions start with <code class="docutils literal notranslate"><span class="pre">cpp_class(MyClass)</span></code> where <code class="docutils literal notranslate"><span class="pre">MyClass</span></code> is what
-you want to name the class. Class definitions are ended with
-<code class="docutils literal notranslate"><span class="pre">cpp_end_class()</span></code>. The following is an example of an empty class definition:</p>
+you want to name the class. CMakePPLang handles the class name, <code class="docutils literal notranslate"><span class="pre">MyClass</span></code>
+case-insensitively, so <code class="docutils literal notranslate"><span class="pre">myclass</span></code> and <code class="docutils literal notranslate"><span class="pre">MYCLASS</span></code> will also refer to the
+same class created through <code class="docutils literal notranslate"><span class="pre">cpp_class(MyClass)</span></code>. Class definitions are
+ended with <code class="docutils literal notranslate"><span class="pre">cpp_end_class()</span></code>. The following is an example of an empty
+class definition:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Begin class definition of class MyClass</span>
 <span class="nb">cpp_class</span><span class="p">(</span><span class="s">MyClass</span><span class="p">)</span>
 
-<span class="w">  </span><span class="c"># Class attribute and functions go here</span>
+<span class="w">    </span><span class="c"># Class attribute and functions go here</span>
 
 <span class="c"># End class definition</span>
 <span class="nb">cpp_end_class</span><span class="p">()</span>
@@ -173,7 +178,7 @@ and instantiation of that class:</p>
 <span class="w">    </span><span class="c"># Define a custom constructor</span>
 <span class="w">    </span><span class="nb">cpp_constructor</span><span class="p">(</span><span class="s">CTOR</span><span class="w"> </span><span class="s">MyClass</span><span class="w"> </span><span class="s">int</span><span class="w"> </span><span class="s">int</span><span class="p">)</span>
 <span class="w">    </span><span class="nb">function</span><span class="p">(</span><span class="s2">&quot;${CTOR}&quot;</span><span class="w"> </span><span class="s">self</span><span class="w"> </span><span class="s">a</span><span class="w"> </span><span class="s">b</span><span class="p">)</span>
-<span class="w">       </span><span class="c"># Do set up using arguments passed to constructors</span>
+<span class="w">        </span><span class="c"># Do set up using arguments passed to constructors</span>
 <span class="w">    </span><span class="nb">endfunction</span><span class="p">()</span>
 
 <span class="nb">cpp_end_class</span><span class="p">()</span>
@@ -232,11 +237,11 @@ the attribute, and <code class="docutils literal notranslate"><span class="pre">
 following is an example of a class with two attributes:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cpp_class</span><span class="p">(</span><span class="s">MyClass</span><span class="p">)</span>
 
-<span class="w">  </span><span class="c"># Declare an attribute &quot;color&quot; with the default value &quot;red&quot;</span>
-<span class="w">  </span><span class="nb">cpp_attr</span><span class="p">(</span><span class="s">MyClass</span><span class="w"> </span><span class="s">color</span><span class="w"> </span><span class="s">red</span><span class="p">)</span>
+<span class="w">    </span><span class="c"># Declare an attribute &quot;color&quot; with the default value &quot;red&quot;</span>
+<span class="w">    </span><span class="nb">cpp_attr</span><span class="p">(</span><span class="s">MyClass</span><span class="w"> </span><span class="s">color</span><span class="w"> </span><span class="s">red</span><span class="p">)</span>
 
-<span class="w">  </span><span class="c"># Declare an attribute &quot;size&quot; with the default value &quot;10&quot;</span>
-<span class="w">  </span><span class="nb">cpp_attr</span><span class="p">(</span><span class="s">MyClass</span><span class="w"> </span><span class="s">size</span><span class="w"> </span><span class="s">10</span><span class="p">)</span>
+<span class="w">    </span><span class="c"># Declare an attribute &quot;size&quot; with the default value &quot;10&quot;</span>
+<span class="w">    </span><span class="nb">cpp_attr</span><span class="p">(</span><span class="s">MyClass</span><span class="w"> </span><span class="s">size</span><span class="w"> </span><span class="s">10</span><span class="p">)</span>
 
 <span class="nb">cpp_end_class</span><span class="p">()</span>
 </pre></div>

@@ -4,11 +4,11 @@
 Classes
 *******
 
-The CMakePP langauge enables users to define classes and create instances of 
-the classes. Classes in CMakePP can contain attributes and functions. CMakePP 
-also supports inheritance. Examples of using classes are provided in the
-:ref:`examples-classes` the section. A basic overview of the features of 
-classes are provided below.
+CMakePPLang enables users to define classes and create instances of 
+the classes. Classes in CMakePPLang can contain attributes and functions.
+CMakePPLang also supports inheritance. Examples of using classes are provided
+in :ref:`examples-classes`. A basic overview of the features of classes are
+provided below.
 
 .. _features-classes-definition:
 
@@ -16,31 +16,22 @@ Class Definition
 ================
 
 Class definitions start with ``cpp_class(MyClass)`` where ``MyClass`` is what
-you want to name the class. Class definitions are ended with
-``cpp_end_class()``. The following is an example of an empty class definition:
+you want to name the class. CMakePPLang handles the class name, ``MyClass``
+case-insensitively, so ``myclass`` and ``MYCLASS`` will also refer to the
+same class created through ``cpp_class(MyClass)``. Class definitions are
+ended with ``cpp_end_class()``. The following is an example of an empty
+class definition:
 
-.. code-block:: cmake
-
-  # Begin class definition of class MyClass
-  cpp_class(MyClass)
-
-    # Class attribute and functions go here
-
-  # End class definition
-  cpp_end_class()
+.. literalinclude:: /../../tests/docs/source/features/classes/class_definition.cmake
+   :lines: 10-16
+   :dedent: 8
 
 Optionally, users can provide the name of the class being defined to the
 ``cpp_end_class`` function as well:
 
-.. code-block:: cmake
-
-    # Begin class definition of class MyClass
-    cpp_class(MyClass)
-
-        # Class attribute and functions go here
-
-    # End class definition
-    cpp_end_class(MyClass)
+.. literalinclude:: /../../tests/docs/source/features/classes/class_definition.cmake
+   :lines: 23-29
+   :dedent: 8
 
 .. _features-classes-constructors-and-instantiation:
 
@@ -60,10 +51,9 @@ attributes of the class will simply take their default value. An instance of a
 class ``MyClass`` with the variable name ``my_instance`` can be created using
 the default constructor for the class with the following:
 
-.. code-block:: cmake
-
-  # Create an instance of MyClass with the name "my_instance"
-  MyClass(CTOR my_instance)
+.. literalinclude:: /../../tests/docs/source/features/classes/class_definition.cmake
+   :lines: 44-45
+   :dedent: 8
 
 .. _features-classes-custom-constructor:
 
@@ -74,20 +64,9 @@ Users can define custom constructors to do the initial setup of their class
 upon construction. Below is an example of a class with a custom constructor
 and instantiation of that class:
 
-.. code-block:: cmake
-
-  cpp_class(MyClass)
-
-      # Define a custom constructor
-      cpp_constructor(CTOR MyClass int int)
-      function("${CTOR}" self a b)
-         # Do set up using arguments passed to constructors
-      endfunction()
-
-  cpp_end_class()
-
-  # Create an instance of MyClass using the custom constructor
-  MyClass(CTOR my_instance 100 20)
+.. literalinclude:: /../../tests/docs/source/features/classes/class_definition.cmake
+   :lines: 52-63
+   :dedent: 8
 
 Multiple constructors can be defined for a class as long as they have different
 signatures. The CMakePP language will automatically find the implementation 
@@ -103,24 +82,16 @@ constructor allows users to pass in attribute values that will be automatically
 assigned for the newly constructed instance. Say we have the following class
 with some attributes:
 
-.. code-block:: cmake
-
-    # Define class with some attributes
-    cpp_class(MyClass)
-
-        cpp_attr(MyClass attr_a)
-        cpp_attr(MyClass attr_b)
-        cpp_attr(MyClass attr_c)
-
-    cpp_end_class()
+.. literalinclude:: /../../tests/docs/source/features/classes/class_definition.cmake
+   :lines: 70-77
+   :dedent: 8
 
 Then we can use the **KWARGS constructor** to set the values of those attributes
 upon construction using the following:
 
-.. code-block:: cmake
-
-    # Create an instance of MyClass using the KWARGS constructor
-    MyClass(CTOR my_instance KWARGS attr_a 1 attr_b 2 3 4 attr_c 5 6)
+.. literalinclude:: /../../tests/docs/source/features/classes/class_definition.cmake
+   :lines: 79-80
+   :dedent: 8
 
 Here the ``attr_a`` would take the value of ``1``, ``attr_b`` would take the
 value of ``2;3;4``, and ``attr_c`` would take the value of ``5;6``.
@@ -154,17 +125,9 @@ statement where ``MyClass`` is the name of the class, ``my_attr`` is the name of
 the attribute, and ``my_value`` is the initial value of the attribute. The
 following is an example of a class with two attributes:
 
-.. code-block:: cmake
-
-  cpp_class(MyClass)
-
-    # Declare an attribute "color" with the default value "red"
-    cpp_attr(MyClass color red)
-
-    # Declare an attribute "size" with the default value "10"
-    cpp_attr(MyClass size 10)
-
-  cpp_end_class()
+.. literalinclude:: /../../tests/docs/source/features/classes/class_attributes.cmake
+   :lines: 10-18
+   :dedent: 8
 
 .. _features-classes-getting-setting-attributes:
 

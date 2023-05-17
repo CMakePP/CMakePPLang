@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Types &mdash; CMakePPLang 1.0.0alpha documentation</title>
@@ -12,10 +12,8 @@
   <![endif]-->
   
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -28,14 +26,18 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> CMakePPLang
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            CMakePPLang
           </a>
               <div class="version">
                 1.0.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -87,7 +89,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../conventions.html">Language Conventions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../debugging.html">Debugging Code Written in CMakePPLang</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developing CMakePP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developing for CMakePPLang</a></li>
 </ul>
 
         </div>
@@ -103,9 +105,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">Language Features</a> &raquo;</li>
-      <li>Types</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Language Features</a></li>
+      <li class="breadcrumb-item active">Types</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/features/types.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -120,25 +122,25 @@
 <p>Native CMake is a weakly typed language where all values are strings, and, in
 certain circumstances, certain strings are interpreted as being of another type.
 A common example is when a string is used as an argument to CMake’s <code class="docutils literal notranslate"><span class="pre">if</span></code>
-statement, where the string is implicitly cast to a boolean. In practice this
-weak typing can lead to subtle, hard-to-detect errors. CMakePP implements
-strong types in order to avoid/catch such errors.</p>
-<p>The following sections describe the types recognized by CMake and the CMakePP
-language. Subsections describe the individual types in more detail (the type
+statement, where the string is implicitly cast to a boolean. In practice, this
+weak typing can lead to subtle, hard-to-detect errors. CMakePPLang implements
+strong-typing in order to avoid/catch such errors.</p>
+<p>The following sections describe the types recognized by CMake and CMakePPLang.
+Subsections describe the individual types in more detail (the type
 literal associated with the subsection’s type is listed in parentheses after
 the type’s name).</p>
 <section id="cmake-types">
 <span id="features-types-cmake"></span><h2>CMake Types<a class="headerlink" href="#cmake-types" title="Permalink to this heading"></a></h2>
-<p>To my knowledge, CMake does not provide a list of recognized types. CMake
+<p>To our knowledge, CMake does not provide a list of recognized types. CMake
 does, in some contexts, recognize a string as one of the following types:
 boolean, command, file path, floating-point number, generator expression,
-integer, or a target.</p>
+integer, or target.</p>
 <section id="boolean-bool">
 <span id="features-types-cmake-bool"></span><h3>Boolean (bool)<a class="headerlink" href="#boolean-bool" title="Permalink to this heading"></a></h3>
 <p>Any CMake string which case-insensitively matches one of the established
 boolean literals is deemed to be a boolean. The recognized boolean literals
-adopted by CMakePP are a subset of those recognized by CMake itself. The list
-of CMakePP boolean literals are:</p>
+adopted by CMakePPLang are a subset of those recognized by CMake itself. The
+list of CMakePPLang boolean literals are:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>True boolean literals: <code class="docutils literal notranslate"><span class="pre">ON</span></code>, <code class="docutils literal notranslate"><span class="pre">YES</span></code>, <code class="docutils literal notranslate"><span class="pre">TRUE</span></code>, and <code class="docutils literal notranslate"><span class="pre">Y</span></code></p></li>
@@ -147,7 +149,7 @@ of CMakePP boolean literals are:</p>
 </ul>
 </div></blockquote>
 <p>CMake’s documentation additionally lists integer literals as being boolean
-literals; however, the CMakePP language adopts the philosophy that <code class="docutils literal notranslate"><span class="pre">0</span></code> and
+literals; however, CMakePPLang adopts the philosophy that <code class="docutils literal notranslate"><span class="pre">0</span></code> and
 <code class="docutils literal notranslate"><span class="pre">1</span></code> are integer literals.</p>
 </section>
 <section id="command-fxn">
@@ -157,9 +159,9 @@ CMake command. The name is case-insensitive and is considered to define a
 command if it is the name of a built-in CMake function (<em>e.g.</em>,
 <code class="docutils literal notranslate"><span class="pre">add_subdirectory</span></code>) or a user-defined macro/function. The type “Command” has
 been chosen to avoid confusion with CMake’s native <code class="docutils literal notranslate"><span class="pre">function</span></code> command. It
-should be noted that the CMakePP language uses name-mangling to implement
-overloads, so the mangled function name that is a command and not the unmangled
-one. For example, if you define a CMakePP function <code class="docutils literal notranslate"><span class="pre">a_fxn</span></code>, the literal
+should be noted that CMakePPLang uses name-mangling to implement
+overloads, so the mangled function name is a command and not the unmangled
+one. For example, if you define a CMakePPLang function <code class="docutils literal notranslate"><span class="pre">a_fxn</span></code>, the literal
 string <code class="docutils literal notranslate"><span class="pre">&quot;a_fxn&quot;</span></code> is not recognized as a command (it will be a <code class="docutils literal notranslate"><span class="pre">desc</span></code>).
 Instead, the actual, mangled command is something like <code class="docutils literal notranslate"><span class="pre">&quot;_a_fxn_int_bool_&quot;</span></code>
 (this is just an illustrative example of what the name mangling looks like, the
@@ -168,11 +170,11 @@ actual mangled name will be different, and less human-readable than this).</p>
 <p class="admonition-title">Note</p>
 <p>CMake convention is that member functions of a type <code class="docutils literal notranslate"><span class="pre">T</span></code> are called using a
 function named <code class="docutils literal notranslate"><span class="pre">T</span></code>. This creates an ambiguity; for example, is <code class="docutils literal notranslate"><span class="pre">list</span></code> a
-command or a type? The CMakePP language resolves this ambiguity by deciding
+command or a type? CMakePPLang resolves this ambiguity by deciding
 that <code class="docutils literal notranslate"><span class="pre">list</span></code> is a type and that <code class="docutils literal notranslate"><span class="pre">list(LENGTH</span></code> is the command. This
 interpretation is consistent with Python (and C++) where <code class="docutils literal notranslate"><span class="pre">MyClass.fxn</span></code>
 (<code class="docutils literal notranslate"><span class="pre">MyClass::fxn</span></code>) is the function belonging to a type <code class="docutils literal notranslate"><span class="pre">MyClass</span></code>. This
-means, in the CMakePP langauge, that type and class take precedence over
+means that, in CMakePPLang, type and class take precedence over
 function. In practice, the actual member functions have mangled names and
 this is only an ambiguity for the syntactic sugar to call them.</p>
 </div>
@@ -182,7 +184,7 @@ this is only an ambiguity for the syntactic sugar to call them.</p>
 <p>CMake has builtin support for determining whether a string is a valid file path
 for a target operating system. While CMake natively has some support for
 relative file paths, best CMake practice is to always use absolute file paths.
-Therefore, the CMakePP language stipulates that any CMake string that can be
+Therefore, CMakePPLang stipulates that any CMake string that can be
 interpreted as an absolute file path is an object of type <code class="docutils literal notranslate"><span class="pre">path</span></code>. It is
 worth noting that the path does <strong>NOT</strong> need to exist in order for it to be a
 file path object. Additionally, elements of the path should be separated by
@@ -206,29 +208,29 @@ values, so floating point numbers are uncommon in typical CMake scripts.</p>
 <span id="features-types-cmake-int"></span><h3>Integers (int)<a class="headerlink" href="#integers-int" title="Permalink to this heading"></a></h3>
 <p>Any CMake string comprised entirely of the digits 0-9 is an integer. Integers
 may optionally be prefixed with a single minus sign (<code class="docutils literal notranslate"><span class="pre">-</span></code>). Integers are
-ultimately stored as strings and are of infinite precision. That said
+ultimately stored as strings and are of infinite precision. That said,
 CMake’s backend is written in C++ and it is likely that passing integers into
 native CMake functions will result in a loss of precision.</p>
 </section>
 <section id="list-list">
 <span id="features-types-cmake-list"></span><h3>List (list)<a class="headerlink" href="#list-list" title="Permalink to this heading"></a></h3>
-<p>In CMake, strings which contain at least one un-escaped semicolon are lists. In
-the CMakePP language, we avoid lists as much as possible owing to the many
+<p>In CMake, strings that contain at least one un-escaped semicolon are lists. In
+CMakePPLang, we avoid lists as much as possible due to the many potential
 gotchas associated with them. Nonetheless, particularly at interfaces with
 standard CMake code, the use of lists is unavoidable. It is worth noting that
-CMakePP’s definition of a list means that a single-element list will be
+CMakePPLang’s definition of a list means that a single-element list will be
 identified as being of the type of that element. In practice, this poses no
 problem because we allow any single object to be implicitly cast to a
 single-element list in order to satisfy a function’s signature.</p>
 </section>
 <section id="string-str">
 <span id="features-types-cmake-str"></span><h3>String (str)<a class="headerlink" href="#string-str" title="Permalink to this heading"></a></h3>
-<p>This is the fundamental type that all valid CMake values share. In the CMakePP
-langauge, the type <code class="docutils literal notranslate"><span class="pre">str</span></code> functions like <code class="docutils literal notranslate"><span class="pre">void*</span></code> in C/C++. If a CMakePP
+<p>This is the fundamental type that all valid CMake values share. In CMakePPLang,
+the type <code class="docutils literal notranslate"><span class="pre">str</span></code> functions like <code class="docutils literal notranslate"><span class="pre">void*</span></code> in C/C++. If a CMakePPLang
 function accepts an argument of type <code class="docutils literal notranslate"><span class="pre">str</span></code> that means it accepts any valid
 CMake value. It should be noted that <code class="docutils literal notranslate"><span class="pre">str</span></code> is not the same thing as <code class="docutils literal notranslate"><span class="pre">desc</span></code>.
-In particular all <code class="docutils literal notranslate"><span class="pre">desc</span></code> are <code class="docutils literal notranslate"><span class="pre">str</span></code>, but not all <code class="docutils literal notranslate"><span class="pre">str</span></code> are <code class="docutils literal notranslate"><span class="pre">desc</span></code>. For
-example the <code class="docutils literal notranslate"><span class="pre">str</span></code>, <code class="docutils literal notranslate"><span class="pre">TRUE</span></code> is a <code class="docutils literal notranslate"><span class="pre">bool</span></code>. In the CMakePP language the
+In particular, all <code class="docutils literal notranslate"><span class="pre">desc</span></code> are <code class="docutils literal notranslate"><span class="pre">str</span></code>, but not all <code class="docutils literal notranslate"><span class="pre">str</span></code> are <code class="docutils literal notranslate"><span class="pre">desc</span></code>. For
+example, the <code class="docutils literal notranslate"><span class="pre">str</span></code>, <code class="docutils literal notranslate"><span class="pre">TRUE</span></code>, is a <code class="docutils literal notranslate"><span class="pre">bool</span></code>. In CMakePPLang, the
 intrinsic type of an object will never be <code class="docutils literal notranslate"><span class="pre">str</span></code>.</p>
 </section>
 <section id="target-target">
@@ -240,7 +242,7 @@ as the name of a target is of the <code class="docutils literal notranslate"><sp
 <section id="quasi-cmake-types">
 <span id="features-types-quasi-cmake"></span><h2>Quasi-CMake Types<a class="headerlink" href="#quasi-cmake-types" title="Permalink to this heading"></a></h2>
 <p>The types in this section straddle the line between being native to CMake
-and being part of the CMakePP language extension.</p>
+and being part of CMakePPLang.</p>
 <section id="description-desc">
 <span id="features-types-quasi-cmake-desc"></span><h3>Description (desc)<a class="headerlink" href="#description-desc" title="Permalink to this heading"></a></h3>
 <p>CMake itself takes the point of view that everything is a string, so <code class="docutils literal notranslate"><span class="pre">str</span></code> is
@@ -266,7 +268,7 @@ with them, that’s what the “type” type is for (in actual code the type nam
 “type” is far more natural and less confusing than it comes off here). More
 generally, a CMake string is of type “type” if it matches (case-insensitively)
 any of the type abbreviations in this chapter. The list of which is: bool,
-class desc, float, fxn, genexpr, int, list, map, obj, path, str, target, and
+class, desc, float, fxn, genexpr, int, list, map, obj, path, str, target, and
 type.</p>
 </section>
 </section>
@@ -277,26 +279,26 @@ type.</p>
 <p>The “Class” type is the type of an object which holds the specification of a
 user-defined type (<em>i.e.</em> it’s the type of a class in the object-oriented sense
 of the word). This should not be confused with the type of an instance of a
-class. For example, if you declared a class <code class="docutils literal notranslate"><span class="pre">MyClass</span></code> CMakePP would treat
+class. For example, if you declared a class <code class="docutils literal notranslate"><span class="pre">MyClass</span></code> CMakePPLang would treat
 the literal, case-insensitive string <code class="docutils literal notranslate"><span class="pre">&quot;MyClass&quot;</span></code> as being of
 type “Class”. Instances of the <code class="docutils literal notranslate"><span class="pre">MyClass</span></code> class would be of type <code class="docutils literal notranslate"><span class="pre">MyClass</span></code>.
-The “class” type generalize objects of type “Type” (and the CMakePP language
+The “class” type generalizes objects of type “Type” (and CMakePPLang
 allows implicit conversion from <code class="docutils literal notranslate"><span class="pre">class</span></code> to <code class="docutils literal notranslate"><span class="pre">type</span></code>). The reason for the
-distinction between “Class” and “Type” is that CMakePP needs to keep track of
-additional meta-data for a “Class” (such as base classes) which is not
+distinction between “Class” and “Type” is that CMakePPLang needs to keep track
+of additional meta-data for a “Class” (such as base classes) which is not
 associated with a type. In other words, the distinction between a class and a
 type is to most users immaterial (and in fact you almost always want to take
 instances of type “Type” and just let classes be implicitly converted) so
-ignore it if it is confusing you and know that the string “class” is reserved
+ignore it if it is confusing and know that the string “class” is reserved
 and can’t be used.</p>
 </section>
 <section id="map-map">
 <span id="features-types-cmakepp-map"></span><h3>Map (map)<a class="headerlink" href="#map-map" title="Permalink to this heading"></a></h3>
-<p>Stealing from Python’s design, it becomes much simpler to implement objects if
+<p>Borrowing from Python’s design, it becomes much simpler to implement objects if
 we have an associative array object. These arrays hold the state of the object
-instances. For this reason, the CMakePP language supports a map type. The map
+instances. For this reason, CMakePPLang supports a map type. The map
 type is essentially a fundamental, built-in type. You cannot inherit from it,
-but you can use instances of it in your code. The CMakePP language prefers to
+but you can use instances of it in your code. CMakePPLang prefers to
 use maps instead of lists whenever feasible, as maps can be arbitrarily nested
 without further consideration and tend to work cleaner than CMake’s native
 lists (although there is an abstraction penalty).</p>
@@ -314,15 +316,15 @@ equality comparisons.</p>
 </section>
 <section id="other-types">
 <span id="features-types-other"></span><h2>Other Types<a class="headerlink" href="#other-types" title="Permalink to this heading"></a></h2>
-<p>Particularly for documentation purposes, the CMakePP language introduces
+<p>Particularly for documentation purposes, CMakePPLang introduces
 several other types. These types may only be conceptual or they may have some
 code support.</p>
 <section id="pointers">
 <span id="features-types-other-pointer"></span><h3>Pointers<a class="headerlink" href="#pointers" title="Permalink to this heading"></a></h3>
-<p>Pointers are more of a conceptual type in the CMakePP language and typically
-show up when we are dealing with lists. In the CMakePP language, a pointer is
+<p>Pointers are more of a conceptual type in CMakePPLang and typically
+show up when we are dealing with lists. In CMakePPLang, a pointer is
 a variable which dereferences to a value. In CMake, the <code class="docutils literal notranslate"><span class="pre">${...}</span></code> syntax can
-be thought of as dereferencing what ever variable is in the brackets. If a
+be thought of as dereferencing whatever variable is in the brackets. If a
 function takes a pointer to, for example, a list, then you do not pass in the
 list explicitly, but rather the name of the variable which holds the list. In
 code:</p>
@@ -341,11 +343,11 @@ code:</p>
 </pre></div>
 </div>
 <p>To document the type of <code class="docutils literal notranslate"><span class="pre">pointer_to_list</span></code> in the above code we use the syntax
-<code class="docutils literal notranslate"><span class="pre">list*</span></code>, which is stolen from C/C++ and should be read as “pointer to a list”.
-At the moment if a function takes an argument of type <code class="docutils literal notranslate"><span class="pre">T*</span></code> (and it does type
-checking) it will only enforce that the provided argument is of type <code class="docutils literal notranslate"><span class="pre">desc</span></code>
-(which it must be in order to be used as a sane variable name).</p>
-<p>It should be noted that the official CMake documentation does no differentiate
+<code class="docutils literal notranslate"><span class="pre">list*</span></code>, which is borrowed from C/C++ and should be read as “pointer to a
+list”. At the moment, if a function takes an argument of type <code class="docutils literal notranslate"><span class="pre">T*</span></code> (and it
+does type checking) it will only enforce that the provided argument is of type
+<code class="docutils literal notranslate"><span class="pre">desc</span></code> (which it must be in order to be used as a sane variable name).</p>
+<p>It should be noted that the official CMake documentation does not differentiate
 well between the variable holding a list and the list itself. By introducing
 the concept of a pointer to CMake it becomes easier to make this distinction.
 In almost all circumstances, native CMake functions take pointers to lists and
@@ -357,21 +359,22 @@ not the lists themselves.</p>
 return values. The standard way to document the return type of a function is
 using the <code class="docutils literal notranslate"><span class="pre">:rtype:</span></code> field which takes the type of the returned value(s) as
 an argument. To get multiple returns in a single return, one wraps them in a
-tuple. The CMakePP language documentation syntax for this is stolen from
-Python. For example, <code class="docutils literal notranslate"><span class="pre">(int,</span> <span class="pre">bool)</span></code> means the function returns two values,
-the first value is of type <code class="docutils literal notranslate"><span class="pre">int</span></code> and the second value is of type <code class="docutils literal notranslate"><span class="pre">bool</span></code>.
-As a slight aside, multiple returns in CMake are done simply by having multiple
-arguments to a function be denoted as results.</p>
+tuple. CMakePPLang documentation is intended to be parsed using
+<a class="reference external" href="https://github.com/CMakePP/CMinx.git">CMinx</a>, which borrows this syntax
+from Python and the Sphinx package. For example, <code class="docutils literal notranslate"><span class="pre">(int,</span> <span class="pre">bool)</span></code> means the
+function returns two values, the first value is of type <code class="docutils literal notranslate"><span class="pre">int</span></code> and the second
+value is of type <code class="docutils literal notranslate"><span class="pre">bool</span></code>. As a slight aside, multiple values are returned in
+CMake by having multiple arguments to a function be denoted as results.</p>
 </section>
 </section>
 <section id="summary">
 <span id="features-types-summary"></span><h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading"></a></h2>
 <p>The following UML diagram is intended to help summarize the type system of
-CMakePP.</p>
+CMakePPLang.</p>
 <img alt="../_images/type_relations.png" src="../_images/type_relations.png" />
 <p>At the top, in blue, are the types native to CMake. For all intents and
 purposes they all derive from a single type, String. In the middle, in red,
-are the types native to the CMakePP language. The native CMakePP types derive
+are the types native to CMakePPLang. Native CMakePPLang types derive
 from String as well, with “Class” also deriving from “Type”. User-defined
 classes are symbolized by the green box at the bottom, all of which derive
 from “Object”, and may have relationships among themselves as well.</p>

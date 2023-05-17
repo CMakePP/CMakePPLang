@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Maps &mdash; CMakePPLang 1.0.0alpha documentation</title>
@@ -12,10 +12,8 @@
   <![endif]-->
   
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -28,14 +26,18 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> CMakePPLang
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            CMakePPLang
           </a>
               <div class="version">
                 1.0.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -66,7 +68,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../conventions.html">Language Conventions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../debugging.html">Debugging Code Written in CMakePPLang</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developing CMakePP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developing for CMakePPLang</a></li>
 </ul>
 
         </div>
@@ -82,9 +84,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">Language Features</a> &raquo;</li>
-      <li>Maps</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Language Features</a></li>
+      <li class="breadcrumb-item active">Maps</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/features/maps.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -96,10 +98,10 @@
              
   <section id="maps">
 <h1>Maps<a class="headerlink" href="#maps" title="Permalink to this heading"></a></h1>
-<p>The CMakePP language provides the <code class="docutils literal notranslate"><span class="pre">map</span></code> type for storing key-value pairs.
-The CMakePP <code class="docutils literal notranslate"><span class="pre">map</span></code> provides the same basic functionality as C++’s
+<p>CMakePPLang provides the <code class="docutils literal notranslate"><span class="pre">map</span></code> type for storing key-value pairs.
+The CMakePPLang <code class="docutils literal notranslate"><span class="pre">map</span></code> provides the same basic functionality as C++’s
 <code class="docutils literal notranslate"><span class="pre">std::map</span></code>, Python’s <code class="docutils literal notranslate"><span class="pre">dictionary</span></code>, or JavaScript’s <strong>Associative Array</strong>
-structure. Users can use maps in there code wherever they see fit. A basic
+structure. Users can use maps in their code wherever they see fit. A basic
 overview of the features is provided below.</p>
 <section id="map-creation">
 <h2>Map Creation<a class="headerlink" href="#map-creation" title="Permalink to this heading"></a></h2>
