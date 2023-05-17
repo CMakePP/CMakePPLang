@@ -9,8 +9,8 @@ be both a tutorial for new users setting up their first project using
 CMakePPLang, as well as a quick reference for experienced users.
 
 This project will create a `Greeter` class. This class will store a user's name
-in a ``name`` attribute and greet them using a ``Greeter(hello`` member function.
-The ``Greeter(hello`` function will print the following greeting,
+in a ``name`` attribute and greet them using a ``Greeter(hello`` member
+function. The ``Greeter(hello`` function will print the following greeting,
 "Hello, <name>!", where ``<name>`` is the value of the ``name`` attribute.
 
 .. note::
