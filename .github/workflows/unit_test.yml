@@ -8,23 +8,31 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        cmake: [3.14.7, 3.15.5, 3.16.3]
+        cmake: [3.14.7, latest, latestrc]
     env:
       cmake_version: ${{ matrix.cmake }}
       os: Linux-x86_64
     steps:
       - uses: actions/checkout@v1
-      - name: get cmake
-        env:
-          url_prefix: https://github.com/Kitware/CMake/releases/download
-        run: |
-          cmake_script=cmake-${cmake_version}-${os}.sh
-          wget "${url_prefix}/v${cmake_version}/${cmake_script}"
-          yes | /bin/sh "${cmake_script}"
+      
+#       - name: get cmake
+#         env:
+#           url_prefix: https://github.com/Kitware/CMake/releases/download
+#         run: |
+#           cmake_script=cmake-${cmake_version}-${os}.sh
+#           wget "${url_prefix}/v${cmake_version}/${cmake_script}"
+#           yes | /bin/sh "${cmake_script}"
+
+      - name: Get latest CMake and Ninja
+        uses: lukka/get-cmake@latest
+        with:
+          cmakeVersion: ${{ env.cmake_version }}
+          
       - name: configure
         run: |
-          cmake-${cmake_version}-${os}/bin/cmake -H. -Bbuild -DBUILD_TESTING=ON
+          cmake -H. -Bbuild -DBUILD_TESTING=ON
+          
       - name: unit_test
         run: |
           cd build
-          ../cmake-${cmake_version}-${os}/bin/ctest  -j 2 --output-on-failure
+          ctest -j 2 --output-on-failure
