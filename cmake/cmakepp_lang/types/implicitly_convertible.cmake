@@ -1,5 +1,5 @@
 include_guard()
-include(cmakepp_lang/class/detail_/bases)
+include(cmakepp_lang/class/detail/bases)
 include(cmakepp_lang/types/type_of)
 include(cmakepp_lang/utilities/global)
 include(cmakepp_lang/utilities/sanitize_string)

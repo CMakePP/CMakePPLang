@@ -12,7 +12,7 @@ include(cmakepp_lang/utilities/sanitize_string)
 # :param _ag_key: The name of the global variable to append to. ``_ag_key`` is
 #                 case-insensitive.
 # :type _ag_key: desc
-# :param _ag_value: The value to append to ``_ag_key`'s current value.
+# :param _ag_value: The value to append to ``_ag_key``'s current value.
 # :type _ag_value: str
 #
 # Error Checking

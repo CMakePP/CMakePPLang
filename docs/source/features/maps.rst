@@ -2,10 +2,16 @@
 Maps
 ****
 
-The CMakePP language provides the ``map`` type for storing key-value pairs. 
-The CMakePP ``map`` provides the same basic functionality as C++'s 
+.. TODO: What is this "basic functionality" that is provided in these other
+..       map implementations? We should explicitly state it instead of
+..       assuming that the user has experience with one of these language's
+..       equivalent structures (although the odds are pretty good that the
+..       reader will have this experience).
+
+CMakePPLang provides the ``map`` type for storing key-value pairs. 
+The CMakePPLang ``map`` provides the same basic functionality as C++'s 
 ``std::map``, Python's ``dictionary``, or JavaScript's **Associative Array** 
-structure. Users can use maps in there code wherever they see fit. A basic 
+structure. Users can use maps in their code wherever they see fit. A basic 
 overview of the features is provided below.
 
 Map Creation

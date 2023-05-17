@@ -19,7 +19,7 @@ include(cmakepp_lang/utilities/sanitize_string)
 # :param _ocg_method: The name of the method to call. The actual name is
 #                     case-insensitive.
 # :type _ocg_method: desc
-# :param *args: The arguments which are being forwarded to the member function.
+# :param \*args: The arguments which are being forwarded to the member function.
 # :returns: ``_ocg_result`` will be set to the symbol (mangled name) of the
 #           member function to call.
 # :rtype: fxn
@@ -68,7 +68,7 @@ endfunction()
 # :type _oc_this: obj
 # :param _oc_method: The name of the member function to call.
 # :type _oc_method: desc
-# :param *args: The arguments to forward to the member function (the required
+# :param \*args: The arguments to forward to the member function (the required
 #               first argument of the ``this`` pointer is forwarded
 #               automatically and should not be provided in this list)
 # :returns: This function will return whatever the member function returns

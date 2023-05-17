@@ -2,7 +2,7 @@ include(cmake_test/cmake_test)
 
 ct_add_test(NAME "test__cpp_serialize_value")
 function("${test__cpp_serialize_value}")
-    include(cmakepp_lang/serialization/detail_/serialize_value)
+    include(cmakepp_lang/serialization/detail/serialize_value)
 
     ct_add_section(NAME "serialize_obj")
     function("${serialize_obj}")

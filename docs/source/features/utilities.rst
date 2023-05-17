@@ -2,7 +2,7 @@
 Utilities
 *********
 
-The CMakePP language provides the following utility commands:
+CMakePPLang provides the following utility commands:
 
 - ``cpp_equal`` for checking for equality between two variables
 - ``cpp_serialize`` for serializing a variable into a JSON string

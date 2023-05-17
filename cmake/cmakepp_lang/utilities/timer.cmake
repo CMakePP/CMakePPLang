@@ -93,7 +93,7 @@ endfunction()
 #
 # :param _tf_fxn_name: The name of the function we are timing.
 # :type _tf_fxn_name: fxn
-# :param *args: The arguments which should be forwarded to the function.
+# :param \*args: The arguments which should be forwarded to the function.
 #
 #]]
 function(cpp_time_fxn _tf_fxn_name)

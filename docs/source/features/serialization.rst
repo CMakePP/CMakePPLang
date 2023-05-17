@@ -2,7 +2,7 @@
 Serialization
 *************
 
-The CMakePP language provides the ability to serialize objects, maps, and other
+CMakePPLang provides the ability to serialize objects, maps, and other
 values into JSON strings via the ``cpp_serialize`` function. We will start by 
 covering the serialization of maps, lists, and native CMake types since these 
 are fairly simple. Finally, we'll cover the serialization of objects as their 
@@ -14,7 +14,7 @@ The Serialization Function
 The ``cpp_serialize`` function takes two arguments in the following order:
 
 1. The name for the variable which will hold the result **(of type desc)**
-2. The value we to be serialized **(of any type)**
+2. The value to be serialized **(of any type)**
 
 Serialization of Maps
 =====================
@@ -71,12 +71,12 @@ All values of other types are serialized into simple JSON strings.
 Serialization of Objects
 ========================
 
-The CMakePP language serializes objects by creating a JSON dictionary with a 
+CMakePPLang serializes objects by creating a JSON dictionary with a 
 single key-value pair.
 
-The key in this pair is the unique identifier that the CMakePP language uses
+The key in this pair is the unique identifier that CMakePPLang uses
 to refer to the object (the value of ``${my_obj}`` where ``my_obj`` is the name
-of an obj).
+of an object instance).
 
 The value in the pair is the serialized state of the object. The serialized
 state of an **instance of a class** consists of:
