@@ -14,20 +14,23 @@ cpp_set_global("_CPP_EXCEPTION_HANDLERS_" "${_exception_handlers}")
 # exception types will call the handler function declared for that type.
 #
 # Example usage:
+# ==============
+# 
+# .. code-block:: cmake
+# 
+#    cpp_catch(my_exec_type_1 my_exec_type_2)
+#    function("${my_exec_type_1}" message)
+#       message("In my_exception_handler for exception type: my_exec_type_1")
+#       message("Exception details: ${message}")
+#    endfunction()
+#    function("${my_exec_type_2}" message)
+#       message("In my_exception_handler for exception type: my_exec_type_2")
+#       message("Exception details: ${message}")
+#    endfunction()
 #
-# cpp_catch(my_exec_type_1 my_exec_type_2)
-# function("${my_exec_type_1}" message)
-#    message("In my_exception_handler for exception type: my_exec_type_1")
-#    message("Exception details: ${message}")
-# endfunction()
-# function("${my_exec_type_2}" message)
-#    message("In my_exception_handler for exception type: my_exec_type_2")
-#    message("Exception details: ${message}")
-# endfunction()
-#
-# :param *args: The exception types to declare handlers for.
+# :param \*args: The exception types to declare handlers for.
 # :returns: each arg will be set to the mangled name of the declared
-#            exception handler for that exception type.
+#           exception handler for that exception type.
 # :rtype: desc
 #
 # Error Checking
@@ -152,7 +155,7 @@ endmacro()
 # This command ends a try-catch block and removes the exception handlers for the
 # specified types.
 #
-# :param *args: The exception types to declare handlers for.
+# :param \*args: The exception types to declare handlers for.
 #
 # Example usage:
 #

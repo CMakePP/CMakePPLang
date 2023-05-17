@@ -15,7 +15,7 @@
 
 include_guard()
 include(cmakepp_lang/asserts/signature)
-include(cmakepp_lang/serialization/detail_/serialize_value)
+include(cmakepp_lang/serialization/detail/serialize_value)
 
 #[[[ Public API for serializing a value to JSON.
 #

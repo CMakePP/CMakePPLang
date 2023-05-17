@@ -1,5 +1,5 @@
 include_guard()
-include(cmakepp_lang/class/detail_/bases)
+include(cmakepp_lang/class/detail/bases)
 include(cmakepp_lang/object/object)
 include(cmakepp_lang/map/map)
 include(cmakepp_lang/types/cmakepp_type)
@@ -15,7 +15,7 @@ include(cmakepp_lang/class/flatten_attrs)
 # :type _cc_this: desc
 # :param _cc_type: The class we are calling the constructor for.
 # :type _cc_type: class
-# :param *args: The arguments the constructor was called with (not including
+# :param \*args: The arguments the constructor was called with (not including
 #               the instance name and class).
 # :returns: ``_cc_this`` will be set to the mangled name of the newly
             constructed instance.

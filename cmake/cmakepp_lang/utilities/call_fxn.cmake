@@ -13,7 +13,7 @@ include(cmakepp_lang/utilities/decode_special_chars)
 #
 # :param _cfg_fxn2call: The name of the function we are calling.
 # :type _cfg_fxn2call: desc
-# :param *args: The arguments to forward to the function.
+# :param \*args: The arguments to forward to the function.
 #]]
 function(_cpp_call_fxn_guts _cfg_fxn2call _cfg_result)
     # Create a new arg list that is a copy of ARGN except all args are
@@ -43,7 +43,7 @@ endfunction()
 #
 # :param _ccf_fxn2call: The name of the function to call.
 # :type _ccf_fxn2call: desc
-# :param *args: The arguments to forward to the function.
+# :param \*args: The arguments to forward to the function.
 #
 # .. note::
 #

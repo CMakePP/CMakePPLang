@@ -21,7 +21,7 @@ highlight_language = 'cmake'
 templates_path = ['.templates']
 source_suffix = '.rst'
 master_doc = 'index'
-language = None
+language = 'en'
 exclude_patterns = []
 pygments_style = 'sphinx'
 html_theme = 'sphinx_rtd_theme'
@@ -29,6 +29,5 @@ html_static_path = []
 htmlhelp_basename = project + 'doc'
 extensions = [
     'sphinx.ext.mathjax',
-    'sphinx.ext.githubpages',
-    'sphinx.ext.autosectionlabel'
+    'sphinx.ext.githubpages'
 ]

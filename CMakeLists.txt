@@ -1,15 +1,22 @@
 cmake_minimum_required(VERSION 3.14) # b/c of FetchContent_MakeAvailable
 project(CMakePPLang VERSION 1.0.0 LANGUAGES NONE)
 
+# Testing defaults to OFF so project including CMakePPLang do not build
+# its tests
 option(BUILD_TESTING "Should we build and run the unit tests?" OFF)
 
+# Adds CMakePPLang to the module path so it can be included as
+# include(cmakepp_lang/cmakepp_lang)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" CACHE STRING "" FORCE)
 
 if(NOT CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
-        set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" PARENT_SCOPE) #For projects including CMakePPLang
+    # For projects including CMakePPLang, add CMakePPLang to the module path
+    # for ease of use
+    set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" PARENT_SCOPE)
 endif()
 
+# Toggle to build tests for CMakeLists
 if("${BUILD_TESTING}")
     include(CTest)
     add_subdirectory(tests)

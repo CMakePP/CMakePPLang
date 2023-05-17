@@ -2,7 +2,7 @@
 Language Features
 #################
 
-This part gives an overview of the features of the CMakePP language.
+This part gives an overview of the features of CMakePPLang.
 
 .. toctree::
    :maxdepth: 2

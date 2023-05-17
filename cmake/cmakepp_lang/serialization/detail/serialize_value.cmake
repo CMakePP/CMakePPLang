@@ -15,9 +15,9 @@
 
 include_guard()
 include(cmakepp_lang/object/object)
-include(cmakepp_lang/serialization/detail_/serialize_list)
-include(cmakepp_lang/serialization/detail_/serialize_map)
-include(cmakepp_lang/serialization/detail_/serialize_string)
+include(cmakepp_lang/serialization/detail/serialize_list)
+include(cmakepp_lang/serialization/detail/serialize_map)
+include(cmakepp_lang/serialization/detail/serialize_string)
 include(cmakepp_lang/types/implicitly_convertible)
 include(cmakepp_lang/types/type_of)
 include(cmakepp_lang/utilities/return)
