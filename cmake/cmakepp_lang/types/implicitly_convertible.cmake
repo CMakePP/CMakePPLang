@@ -4,7 +4,8 @@ include(cmakepp_lang/types/type_of)
 include(cmakepp_lang/utilities/global)
 include(cmakepp_lang/utilities/sanitize_string)
 
-#[[[ Determines if an object of a given type can be passed as a different type.
+#[[[
+# Determines if an object of a given type can be passed as a different type.
 #
 # CMakePP is a strongly-typed language with minimal implicit conversions. This
 # function knows of all allowed implicit conversions and should be used to

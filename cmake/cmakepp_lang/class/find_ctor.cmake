@@ -4,7 +4,8 @@ include(cmakepp_lang/object/object)
 include(cmakepp_lang/types/cmakepp_type)
 include(cmakepp_lang/class/set_kwargs_attrs)
 
-#[[[ Finds the proper CTOR function to call for the given object and arguments.
+#[[[
+# Finds the proper CTOR function to call for the given object and arguments.
 #
 # This function checks if the CTOR call was a KWARGS call, a regular CTOR call
 # with arguments, or CTOR with no arguments. If it was a KWARGS call, the

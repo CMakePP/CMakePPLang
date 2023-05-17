@@ -1,6 +1,7 @@
 include_guard()
 
-#[[[ Checks if the given name conflicts with any built-in CMakePPLang types.
+#[[[
+# Checks if the given name conflicts with any built-in CMakePPLang types.
 #
 # :param _cc_conflict: Return value for whether a conflict exists.
 # :type _cc_conflict: bool*

@@ -2,7 +2,8 @@ include_guard()
 include(cmakepp_lang/asserts/signature)
 include(cmakepp_lang/utilities/return)
 
-#[[[ Generates a unique identifier.
+#[[[
+# Generates a unique identifier.
 #
 # This function will create a unique identifier which can be used, for example,
 # as the "this" pointer for an object. The uniqueness of the identifier relies

@@ -1,6 +1,7 @@
 include_guard()
 
-#[[[ Determines if a string can lexically be cast to an integer.
+#[[[
+# Determines if a string can lexically be cast to an integer.
 #
 # For our purposes an integer is any string whose only characters are taken from
 # the numbers 0 through 9, optionally prefixed with a ``-`` sign. In particular,

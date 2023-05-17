@@ -22,7 +22,8 @@ include(cmakepp_lang/types/implicitly_convertible)
 include(cmakepp_lang/types/type_of)
 include(cmakepp_lang/utilities/return)
 
-#[[[ Dispatches based on type to the appropriate serialization implementation.
+#[[[
+# Dispatches based on type to the appropriate serialization implementation.
 #
 # This function is used to encapsulate the logic required to dispatch to the
 # correct serialization implementation based on the type of the input value.

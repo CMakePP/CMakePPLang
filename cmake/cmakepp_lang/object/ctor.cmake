@@ -7,7 +7,8 @@ include(cmakepp_lang/utilities/global)
 include(cmakepp_lang/utilities/return)
 include(cmakepp_lang/utilities/sanitize_string)
 
-#[[[ Constructs a new instance of the specified type.
+#[[[
+# Constructs a new instance of the specified type.
 #
 # This function constructs a new instance of the specified type. This should not
 # be confused with creating a new, default initialized Object instance which is

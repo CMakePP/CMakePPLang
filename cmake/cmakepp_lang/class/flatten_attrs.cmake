@@ -3,7 +3,8 @@ include(cmakepp_lang/object/object)
 include(cmakepp_lang/map/map)
 include(cmakepp_lang/asserts/asserts)
 
-#[[[ Flattens the attributes from an objects subobjects into that objects
+#[[[
+# Flattens the attributes from an objects subobjects into that objects
 # attributes.
 #
 # This function removes all the attributes from an object's subobjects and

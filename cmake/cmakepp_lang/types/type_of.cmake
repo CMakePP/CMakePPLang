@@ -11,7 +11,8 @@ include(cmakepp_lang/types/target)
 include(cmakepp_lang/types/type)
 include(cmakepp_lang/utilities/global)
 
-#[[[ Returns the type literal for the provided object.
+#[[[
+# Returns the type literal for the provided object.
 #
 # This function encapsulates the process of determining the type of an object.
 # It is capable of determining the type of intrinsic CMake objects (integers,

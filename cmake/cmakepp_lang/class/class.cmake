@@ -9,7 +9,8 @@ set(
     "${CMAKE_CURRENT_LIST_DIR}/detail/class.cmake.in"
 )
 
-#[[[ Creates the new class
+#[[[
+# Creates the new class
 #
 # This function is factored out of ``cpp_class`` and contains the logic required
 # to actually create the class. This logic is factored out primarily to avoid
@@ -74,7 +75,8 @@ function(_cpp_class_guts _cg_type _cg_wrapper)
     cpp_return("${_cg_wrapper}")
 endfunction()
 
-#[[[ Creates a new class of the specified type.
+#[[[
+# Creates a new class of the specified type.
 #
 # This command is used to start the declaration of a new user-defined type. The
 # resulting user-defined type will automatically inherit from ``Object`` if no
@@ -108,7 +110,8 @@ macro(cpp_class _c_type)
     include("${_${_c_type}_wrapper}")
 endmacro()
 
-#[[[ Registers a class's member function.
+#[[[
+# Registers a class's member function.
 #
 # This function is used to declare a new member function.
 #
@@ -144,7 +147,8 @@ function(cpp_member _m_name _m_type)
     cpp_return("${_m_name}")
 endfunction()
 
-#[[[ Registers a class's virtual member function.
+#[[[
+# Registers a class's virtual member function.
 #
 # This function is used to declare a new virtual member function that has no
 # concrete implementation and must be overridden by a derived class.
@@ -163,7 +167,8 @@ macro(cpp_virtual_member _vm_fxn_name)
     endfunction()
 endmacro()
 
-#[[[ Registers a class constructor.
+#[[[
+# Registers a class constructor.
 #
 # This function is used to declare a class constructor.
 #
@@ -196,7 +201,8 @@ function(cpp_constructor _c_name _c_type)
     cpp_return("${_c_name}")
 endfunction()
 
-#[[[ Registers a class's attribute.
+#[[[
+# Registers a class's attribute.
 #
 # This function is used to declare a new attribute for a class.
 #
@@ -225,7 +231,8 @@ function(cpp_attr _a_type _a_attr)
     _cpp_object_set_attr("${_a_state}" "${_a_attr}" "${ARGN}")
 endfunction()
 
-#[[[ Denotes that we are done declaring a class.
+#[[[
+# Denotes that we are done declaring a class.
 #
 # This function is a no-op that completes the fencing associated with declaring
 # a class.

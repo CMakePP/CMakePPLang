@@ -4,7 +4,8 @@ include(cmakepp_lang/map/map)
 include(cmakepp_lang/utilities/global)
 include(cmakepp_lang/utilities/return)
 
-#[[[ Encapsulates the process of retrieving an object's meta attributes.
+#[[[
+# Encapsulates the process of retrieving an object's meta attributes.
 #
 # Each Object instance has several attributes which are meant purely for use by
 # CMakePP to make the Object work. These attributes are special and sequestered

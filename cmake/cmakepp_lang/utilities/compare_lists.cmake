@@ -3,7 +3,8 @@ include(cmakepp_lang/algorithm/equal)
 include(cmakepp_lang/asserts/signature)
 include(cmakepp_lang/utilities/return)
 
-#[[[ Encapsulates the process of comparing two CMake lists to one another.
+#[[[
+# Encapsulates the process of comparing two CMake lists to one another.
 #
 # Two CMake lists are equal if they contain the same number of elements and if
 # the :math:`i`-th element in ``_cl_lhs`` compares equal to the :math:`i`-th

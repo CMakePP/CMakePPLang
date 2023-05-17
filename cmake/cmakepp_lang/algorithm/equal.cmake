@@ -7,7 +7,8 @@ include(cmakepp_lang/types/implicitly_convertible)
 include(cmakepp_lang/utilities/compare_lists)
 include(cmakepp_lang/utilities/return)
 
-#[[[ Compares two values for equivalency.
+#[[[
+# Compares two values for equivalency.
 #
 # This function can be used to compare any two CMakePP objects for equality. For
 # native CMake types, like booleans and integers, equality is defined as being

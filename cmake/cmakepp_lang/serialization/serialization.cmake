@@ -17,7 +17,8 @@ include_guard()
 include(cmakepp_lang/asserts/signature)
 include(cmakepp_lang/serialization/detail/serialize_value)
 
-#[[[ Public API for serializing a value to JSON.
+#[[[
+# Public API for serializing a value to JSON.
 #
 # When a caller outside of the serialization submodule needs an object
 # serialized they should go through this API. This API wraps the (usually)

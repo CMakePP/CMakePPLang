@@ -4,7 +4,8 @@ include(cmakepp_lang/map/map)
 include(cmakepp_lang/object/get_meta_attr)
 include(cmakepp_lang/utilities/sanitize_string)
 
-#[[[ Register's a member function with the object.
+#[[[
+# Register's a member function with the object.
 #
 # This function is used to add a member function to an object. The member
 # function will override member functions in base classes with the same

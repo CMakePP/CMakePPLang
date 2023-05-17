@@ -10,7 +10,8 @@ include(cmakepp_lang/utilities/global)
 include(cmakepp_lang/utilities/return)
 include(cmakepp_lang/utilities/unique_id)
 
-#[[[ Appends to the value stored under the specified key.
+#[[[
+# Appends to the value stored under the specified key.
 #
 # This member function will append the provided value to the list stored under
 # the specified key. If the key does not exist, a list will be started with the
@@ -43,7 +44,8 @@ function(cpp_map_append _ma_this _ma_key _ma_value)
     cpp_append_global("${_ma_this}_keys_${_ma_key}" "${_ma_value}")
 endfunction()
 
-#[[[ Constructs a new Map instance with the specified state (if provided)
+#[[[
+# Constructs a new Map instance with the specified state (if provided)
 #
 # This function creates a new Map instance. The caller may provided one or more
 # pairs of input to be used as the initial state. If provided, the pairs are
@@ -86,7 +88,8 @@ function(cpp_map_ctor _mc_result)
     cpp_return("${_mc_result}")
 endfunction()
 
-#[[[ Retrieves the value of the specified key.
+#[[[
+# Retrieves the value of the specified key.
 #
 # This function is used to retrieve the value associated with the provided key.
 # If a key has not been set this function will return the empty string. Users
@@ -123,7 +126,8 @@ function(cpp_map_get _mg_this _mg_value _mg_key)
     cpp_return("${_mg_value}")
 endfunction()
 
-#[[[ Associates a value with the specified key.
+#[[[
+# Associates a value with the specified key.
 #
 # This function can be used to set the value of a map's key. If the key has a
 # value associated with it already that value will be overridden.
@@ -159,7 +163,8 @@ function(cpp_map_set _ms_this _ms_key _ms_value)
     endif()
 endfunction()
 
-#[[[ Public API for interacting with Map instances.
+#[[[
+# Public API for interacting with Map instances.
 #
 #
 # :param _m_mode: The name of the member function to call.

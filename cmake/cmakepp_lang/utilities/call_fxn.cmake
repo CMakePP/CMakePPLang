@@ -2,7 +2,8 @@ include_guard()
 include(cmakepp_lang/utilities/unique_id)
 include(cmakepp_lang/utilities/decode_special_chars)
 
-#[[[ Performs most of the work for dynamically calling a function.
+#[[[
+# Performs most of the work for dynamically calling a function.
 #
 # ``cpp_call_fxn`` is a macro to avoid needing to forward returns. In
 # order to actually call the function we need to write the call to disk. This
@@ -34,7 +35,8 @@ function(_cpp_call_fxn_guts _cfg_fxn2call _cfg_result)
     set("${_cfg_result}" "${_cfg_file}" PARENT_SCOPE)
 endfunction()
 
-#[[[ Calls a function who's name is provided at runtime.
+#[[[
+# Calls a function who's name is provided at runtime.
 #
 # CMake does not allow you to dynamically determine the name of a function. For
 # example one can NOT do ``${name_of_fxn}(<args...>)`` or any other variation

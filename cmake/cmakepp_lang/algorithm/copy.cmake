@@ -5,7 +5,8 @@ include(cmakepp_lang/object/copy)
 include(cmakepp_lang/types/type_of)
 include(cmakepp_lang/utilities/return)
 
-#[[[ Creates a new object which is a deep copy of an already existing object.
+#[[[
+# Creates a new object which is a deep copy of an already existing object.
 #
 # This function will create a deep copy of an existing object regardless of
 # what type it is.

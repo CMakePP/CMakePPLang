@@ -6,7 +6,8 @@ include(cmakepp_lang/utilities/encode_special_chars)
 include(cmakepp_lang/utilities/print_fxn_sig)
 include(cmakepp_lang/utilities/sanitize_string)
 
-#[[[ Determines the correct member function to call for the input.
+#[[[
+# Determines the correct member function to call for the input.
 #
 # This function is factored out of ``_cpp_object_call`` to avoid contaminating
 # the caller's namespace with temporary variables needed to lookup the symbol of
@@ -57,7 +58,8 @@ function(_cpp_object_call_guts _ocg_this _ocg_result _ocg_method)
     set("${_ocg_result}" "${_ocg_symbol}" PARENT_SCOPE)
 endfunction()
 
-#[[[ Calls the specified member function.
+#[[[
+# Calls the specified member function.
 #
 # This is the "public" API (users of CMakePP should rarely need to go through
 # the Object class directly) for calling an Object instance's member function.

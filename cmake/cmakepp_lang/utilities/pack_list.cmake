@@ -1,7 +1,8 @@
 include_guard()
 include(cmakepp_lang/serialization/serialization)
 
-#[[[ Transforms a CMake list into a string that can be passed down through
+#[[[
+# Transforms a CMake list into a string that can be passed down through
 #    function calls and then transformed back to the original CMake list that
 #    retains the original nesting structure of the list.
 #
@@ -83,7 +84,8 @@ function(cpp_pack_list _pl_result _pl_list)
     set("${_pl_result}" "${_pl_packed_list}" PARENT_SCOPE)
 endfunction()
 
-#[[[ Transforms a string generated from a list being passed to cpp_pack_list
+#[[[
+# Transforms a string generated from a list being passed to cpp_pack_list
 #    back into the original CMake list, retaining the nesting structure.
 #
 # This function will take a packed list string and replace the "_CPP_{N}_CPP_"

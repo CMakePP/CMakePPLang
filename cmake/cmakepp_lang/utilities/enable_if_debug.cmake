@@ -1,6 +1,7 @@
 include_guard()
 
-#[[[ Logic for enabling/disabling code when CMakePP is run in debug mode.
+#[[[
+# Logic for enabling/disabling code when CMakePP is run in debug mode.
 #
 # CMakePP supports a "debug mode" which enables potentially computationally
 # expensive logging and error checks. In release mode these operations are

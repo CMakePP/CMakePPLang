@@ -4,7 +4,8 @@ include(cmakepp_lang/utilities/return)
 include(cmakepp_lang/utilities/sanitize_string)
 include(cmakepp_lang/utilities/unique_id)
 
-#[[[ Starts a timer using the provided name.
+#[[[
+# Starts a timer using the provided name.
 #
 # This function is used to start a timer under the provided name. If another
 # timer has previously been created using this name it will be overridden.
@@ -21,7 +22,8 @@ function(cpp_start_timing _st_name)
 endfunction()
 
 
-#[[[ Stops and computes the time since the specified timer was started.
+#[[[
+# Stops and computes the time since the specified timer was started.
 #
 # This function will compute the time (in seconds) since the specified timer was
 # started. Despite the name of this function, the timer will persist meaning it
@@ -63,7 +65,8 @@ function(cpp_stop_timing _st_time _st_name)
     set("${_st_time}" "${${_st_time}}" PARENT_SCOPE)
 endfunction()
 
-#[[[ Convenience function for printing the time since a timer was started.
+#[[[
+# Convenience function for printing the time since a timer was started.
 #
 # Usually when we are timing something we want to log the time. This function is
 # a convenience function which will do that by printing the timer to standard
@@ -84,7 +87,8 @@ function(cpp_stop_and_print_timing _sapt_name)
     message("Time for ${_sapt_name} : ${_sapt_time} s")
 endfunction()
 
-#[[[ Convenience function for timing a function.
+#[[[
+# Convenience function for timing a function.
 #
 # A very common timing scenario is that we want to know how long it takes a
 # function to run. This function is a convenience function for doing that and

@@ -2,7 +2,8 @@ include_guard()
 include(cmakepp_lang/algorithm/copy)
 include(cmakepp_lang/asserts/signature)
 
-#[[[ Removes the specified keys from a map.
+#[[[
+# Removes the specified keys from a map.
 #
 # This function removes the key-value pairs for specified keys from a map.
 #

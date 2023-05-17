@@ -2,7 +2,8 @@ include_guard()
 include(cmakepp_lang/algorithm/copy)
 include(cmakepp_lang/asserts/signature)
 
-#[[[ Adds the key-value pairs from one dictionary to another.
+#[[[
+# Adds the key-value pairs from one dictionary to another.
 #
 # This function adds all the key-value pairs from _m_this into
 # _m_other. If a key is present in both dictionary, the value from _m_other

@@ -15,7 +15,8 @@
 
 include_guard()
 
-#[[[ Serializes a string according to the JSON standard.
+#[[[
+# Serializes a string according to the JSON standard.
 #
 # This is the catch-all serialization for all CMakePP objects that do not have a
 # serialize routine and are not Map or List instances. A string in JSON is

@@ -2,7 +2,8 @@ include_guard()
 include(cmakepp_lang/asserts/signature)
 include(cmakepp_lang/serialization/serialization)
 
-#[[[ Serializes an object into JSON format.
+#[[[
+# Serializes an object into JSON format.
 #
 # This function is the default implementation for serializing an object. Derived
 # classes are free to override it with their own implementations. This
@@ -39,7 +40,8 @@ function(_cpp_object_serialize _os_this _os_result)
     set("${_os_result}" "${_os_temp}" PARENT_SCOPE)
 endfunction()
 
-#[[[ Prints an object to standard out.
+#[[[
+# Prints an object to standard out.
 #
 # This function is code factorization for serializing an object and printing the
 # serialized form to standard out.

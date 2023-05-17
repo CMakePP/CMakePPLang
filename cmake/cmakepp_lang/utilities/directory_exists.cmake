@@ -1,7 +1,8 @@
 include_guard()
 include(cmakepp_lang/asserts/signature)
 
-#[[[ Determines if a provided path points to an existing directory.
+#[[[
+# Determines if a provided path points to an existing directory.
 #
 # :param _cde_result: Name for variable which will hold the result.
 # :type _cde_result: bool*

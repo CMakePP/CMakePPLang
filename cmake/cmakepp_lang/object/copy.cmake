@@ -5,7 +5,8 @@ include(cmakepp_lang/utilities/global)
 include(cmakepp_lang/utilities/return)
 include(cmakepp_lang/utilities/unique_id)
 
-#[[[ Deep copies an Object instance.
+#[[[
+# Deep copies an Object instance.
 #
 # This function is the default copy implementation for all user-defined objects.
 # It can be overridden in the base class if desired. The default implementation

@@ -3,7 +3,8 @@ include(cmakepp_lang/asserts/signature)
 include(cmakepp_lang/object/object)
 include(cmakepp_lang/utilities/return)
 
-#[[[ Returns a new default constructed Object instance.
+#[[[
+# Returns a new default constructed Object instance.
 #
 # This function creates a new default constructed Object instance. This instance
 # is only an Object instance (contrast this with derived class instances created

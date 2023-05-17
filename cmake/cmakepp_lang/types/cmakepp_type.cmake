@@ -1,7 +1,8 @@
 include_guard()
 include(cmakepp_lang/utilities/global)
 
-#[[[ Encapsulates the process of getting a CMakePP object's type.
+#[[[
+# Encapsulates the process of getting a CMakePP object's type.
 #
 # CMakePP introduces several additional built-in types as well as the ability
 # for users to define their own types. This function encapsulates the logic
@@ -51,7 +52,8 @@ macro(_cpp_get_cmakepp_type _gct_is_cpp_obj _gct_type _gct_obj)
     endif()
 endmacro()
 
-#[[[ Encapsulates the process of setting a CMakePP object's type.
+#[[[
+# Encapsulates the process of setting a CMakePP object's type.
 #
 # CMakePP introduces several additional built-in types as well as the ability
 # for users to define their own types. This function encapsulates the logic

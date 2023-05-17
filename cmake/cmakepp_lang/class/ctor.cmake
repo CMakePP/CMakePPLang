@@ -6,7 +6,8 @@ include(cmakepp_lang/types/cmakepp_type)
 include(cmakepp_lang/class/find_ctor)
 include(cmakepp_lang/class/flatten_attrs)
 
-#[[[ Handles the construction of a class instance.
+#[[[
+# Handles the construction of a class instance.
 #
 # This function handles the construction of a new class and calls to the
 # constructors for base classes.

@@ -2,7 +2,8 @@ include_guard()
 include(cmakepp_lang/types/literals)
 include(cmakepp_lang/utilities/global)
 
-#[[[ Determines if a string is lexically convertible to a type literal.
+#[[[
+# Determines if a string is lexically convertible to a type literal.
 #
 # CMakePP defines a series of type literals for types recognized by CMake and
 # for types recognized by CMake and CMakePP. Additionally, users can create

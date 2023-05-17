@@ -1,7 +1,8 @@
 include_guard()
 include(cmakepp_lang/utilities/global)
 
-#[[[ Encapsulates the logic for retrieving the base classes of a user-defined
+#[[[
+# Encapsulates the logic for retrieving the base classes of a user-defined
 #    type.
 #
 # The type system needs to know which base classes a user-defined class can be
@@ -43,7 +44,8 @@ macro(_cpp_class_get_bases _cgb_this _cgb_bases)
     cpp_get_global("${_cgb_bases}" "${_cgb_this}__bases")
 endmacro()
 
-#[[[ Encapsulates the logic for setting the base classes of a user-defined
+#[[[
+# Encapsulates the logic for setting the base classes of a user-defined
 #    type.
 #
 # The type system needs to know which base classes a user-defined class can be

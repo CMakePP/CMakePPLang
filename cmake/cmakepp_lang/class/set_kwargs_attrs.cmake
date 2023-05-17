@@ -3,7 +3,8 @@ include(cmakepp_lang/class/detail/bases)
 include(cmakepp_lang/object/object)
 include(cmakepp_lang/types/cmakepp_type)
 
-#[[[ Reads KWARGS and assigns sets the appropriate attributes values.
+#[[[
+# Reads KWARGS and assigns sets the appropriate attributes values.
 #
 # This function takes in an object (an instance of a class) and the KWARGS
 # passed to that object's CTOR. It parses the keywords and values from those

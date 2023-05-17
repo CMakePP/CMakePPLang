@@ -2,7 +2,8 @@ include_guard()
 include(cmakepp_lang/map/map)
 include(cmakepp_lang/serialization/detail/serialize_value)
 
-#[[[ Serializes a map using JSON serialization.
+#[[[
+# Serializes a map using JSON serialization.
 #
 # This function encapsulates the algorithm required to serialize a CMakePP map
 # into JSON. In JSON a map is a container whose contents are enclosed in "{}".

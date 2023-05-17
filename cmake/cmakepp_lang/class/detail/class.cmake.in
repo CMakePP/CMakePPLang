@@ -3,7 +3,8 @@ include(cmakepp_lang/object/object)
 include(cmakepp_lang/class/ctor)
 include(cmakepp_lang/utilities/encode_special_chars)
 
-#[[[ The template for the macro created for CMakePP classes.
+#[[[
+# The template for the macro created for CMakePP classes.
 #
 # This file is used by the cpp_class command to create a macro that handles
 # calls to the a cpp_class. It handles CTOR, GET, SET and any function calls

@@ -1,6 +1,7 @@
 include_guard()
 
-#[[[ Converts the input string into a uniform, filesystem-safe string.
+#[[[
+# Converts the input string into a uniform, filesystem-safe string.
 #
 # Strings in CMake are case-sensitive in some contexts and case-insensitive in
 # others. This function encapsulates the logic for converting a string to a

@@ -1,7 +1,8 @@
 include_guard()
 include(cmakepp_lang/asserts/signature)
 
-#[[[ Creates a pretty, human-readable representation of a function's signature.
+#[[[
+# Creates a pretty, human-readable representation of a function's signature.
 #
 # This function will combine a function's name, and the types of its arguments,
 # to create a string representation of the function declaration.

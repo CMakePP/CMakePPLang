@@ -1,6 +1,7 @@
 include_guard()
 
-#[[[ A variable containing the recognized bool literals.
+#[[[
+# A variable containing the recognized bool literals.
 #
 # The variable ``CMAKEPP_BOOL_LITERALS`` contains a list of the keywords which
 # are recognized by CMakePP as being boolean literals. ``CMAKEPP_BOOL_LITERALS``
@@ -11,7 +12,8 @@ include_guard()
 set(CMAKEPP_BOOL_LITERALS ON YES TRUE Y OFF NO FALSE N IGNORE NOTFOUND)
 
 
-#[[[ A variable containing the list of types recognized by CMake itself.
+#[[[
+# A variable containing the list of types recognized by CMake itself.
 #
 # The content of CMAKE_TYPE_LITERALS is a list of the literal type for each of
 # the recognized intrinsic CMake types. Each type is listed using the official
@@ -21,7 +23,8 @@ set(CMAKEPP_BOOL_LITERALS ON YES TRUE Y OFF NO FALSE N IGNORE NOTFOUND)
 #]]
 set(CMAKE_TYPE_LITERALS bool float fxn genex int list path target type)
 
-#[[[ A variable containing the list of intrinsic types recognized by CMakePP.
+#[[[
+# A variable containing the list of intrinsic types recognized by CMakePP.
 #
 # The content of CMAKEPP_TYPE_LITERALS is a list of the literal type for each of
 # the recognized intrinsic CMakePP types. Each type is listed using the official

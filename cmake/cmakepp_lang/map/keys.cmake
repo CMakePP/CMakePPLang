@@ -3,7 +3,8 @@ include(cmakepp_lang/asserts/signature)
 include(cmakepp_lang/utilities/global)
 include(cmakepp_lang/utilities/return)
 
-#[[[ Gets a list of all keys known to a map.
+#[[[
+# Gets a list of all keys known to a map.
 #
 # This function can be used to get a list of keys which have been set for this
 # map.

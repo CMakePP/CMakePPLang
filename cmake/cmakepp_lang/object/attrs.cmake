@@ -3,7 +3,8 @@ include(cmakepp_lang/map/map)
 include(cmakepp_lang/object/get_meta_attr)
 include(cmakepp_lang/utilities/return)
 
-#[[[ Core of the routine which retrieves the attributes.
+#[[[
+# Core of the routine which retrieves the attributes.
 #
 # Attributes need to be searched for using depth-first search. This function
 # implements the part of the search which is done recursively for each class of
@@ -72,7 +73,8 @@ function(_cpp_object_get_attr_guts _ogag_this _ogag_value _ogag_done _ogag_attr)
     set("${_ogag_done}" FALSE PARENT_SCOPE)
 endfunction()
 
-#[[[ Retrieves the value of an object's attribute.
+#[[[
+# Retrieves the value of an object's attribute.
 #
 # This is the "public" API (for the most part users shouldn't be going through
 # the Object API at all) for accessing the attributes of an Object instance.
@@ -80,14 +82,20 @@ endfunction()
 # of the call.
 #
 # Single Attribute GET Signature:
-#_cpp_object_get_attr(this value attribute)
+#
+# .. code-block:: cmake
+#
+#    _cpp_object_get_attr(this value attribute)
 #
 # Here "this" is the object to retrieve the attribute from, "value" is the
 # handle where the attribute is to be returned to the parent scope, and
 # "attribute" is the name of the attribute to be retrieved.
 #
 # Multiple Attribute GET Signature:
-# _cpp_object_get_attr(this prefix attrs)
+# 
+# .. code-block:: cmake
+# 
+#    _cpp_object_get_attr(this prefix attrs)
 #
 # Here is the object to retrieve the attributes from, prefix will be prepended
 # to the each attributes name and used as the handle where that attribute is
@@ -159,7 +167,8 @@ function(_cpp_object_get_attr _oga_this)
     endif()
 endfunction()
 
-#[[[ Sets the value of an Object instance's attribute.
+#[[[
+# Sets the value of an Object instance's attribute.
 #
 # This function is the "public" API (generally speaking users of CMakePP should
 # not be going through the Object API) for setting an Object's attribute. This

@@ -4,7 +4,8 @@ include(cmakepp_lang/types/implicitly_convertible)
 include(cmakepp_lang/utilities/return)
 include(cmakepp_lang/utilities/sanitize_string)
 
-#[[[ Handles logic for comparing the human-readable names of the functions.
+#[[[
+# Handles logic for comparing the human-readable names of the functions.
 #
 # This function compares the name part of two signatures (*i.e.*, the 0th
 # element) in a case-insensitive manner.
@@ -38,7 +39,8 @@ function(_cpp_compare_names _cn_result _cn_lhs _cn_rhs)
     endif()
 endfunction()
 
-#[[[ Attempts to rule out a signature match based on length arguments alone.
+#[[[
+# Attempts to rule out a signature match based on length arguments alone.
 #
 # For non-variadic functions we know that if one signature is longer than the
 # other they can't possibly be a match. For a variadic function with :math:`n`
@@ -97,7 +99,8 @@ function(_cpp_compare_lengths _cl_result _cl_fxn _cl_args)
     set("${_cl_result}" TRUE PARENT_SCOPE)
 endfunction()
 
-#[[[ Determines if a function can be run as the specified signature.
+#[[[
+# Determines if a function can be run as the specified signature.
 #
 # This function takes two lists ``_ic_fxn`` and ``_ic_args``. Each list is
 # interpreted as being a function signature such that the first element is the

@@ -1,7 +1,8 @@
 include_guard()
 include(cmakepp_lang/utilities/sanitize_string)
 
-#[[[ Appends a value to a global list.
+#[[[
+# Appends a value to a global list.
 #
 # When we are manipulating a global state, which is actually a list, we often
 # want to append to it and not "set" it (set in this context referring to
@@ -31,7 +32,8 @@ function(cpp_append_global _ag_key _ag_value)
     )
 endfunction()
 
-#[[[ Sets a global variable to the provided value.
+#[[[
+# Sets a global variable to the provided value.
 #
 # This function will set a global variable to the value provided. If the global
 # variable already exists it will overwrite its current value.
@@ -56,7 +58,8 @@ function(cpp_set_global _sg_key _sg_value)
     set_property(GLOBAL PROPERTY "__cpp_${_sg_key}_global__" "${_sg_value}")
 endfunction()
 
-#[[[ Retrieves the value of the requested global variable.
+#[[[
+# Retrieves the value of the requested global variable.
 #
 # This function will get the value of the specified global variable. If the
 # variable does not exist the empty string will be returned. It is thus not

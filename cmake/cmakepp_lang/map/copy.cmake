@@ -2,7 +2,8 @@ include_guard()
 include(cmakepp_lang/algorithm/copy)
 include(cmakepp_lang/asserts/signature)
 
-#[[[ Makes a deep copy of a Map instance.
+#[[[
+# Makes a deep copy of a Map instance.
 #
 # This function will deep copy (recursively) the contents of a map into a new
 # Map instance. The resulting instance will not alias the original map in any

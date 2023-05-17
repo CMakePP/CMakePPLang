@@ -4,7 +4,8 @@ include(cmakepp_lang/map/map)
 include(cmakepp_lang/utilities/global)
 include(cmakepp_lang/utilities/return)
 
-#[[[ Compares two objects for equality.
+#[[[
+# Compares two objects for equality.
 #
 # This function is the default equality comparison for all user-defined classes.
 # It can be overridden by the derived class if a different implementation is

@@ -1,7 +1,8 @@
 include_guard()
 include(cmakepp_lang/asserts/signature)
 
-#[[[ Determines if a provided path points to an existing file.
+#[[[
+# Determines if a provided path points to an existing file.
 #
 # :param _fe_result: Name for variable which will hold the result.
 # :type _fe_result: desc
