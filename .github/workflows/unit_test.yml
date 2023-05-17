@@ -28,6 +28,11 @@ jobs:
         with:
           cmakeVersion: ${{ env.cmake_version }}
           
+      - name: Check CMake and CTest Versions
+        run: |
+          cmake --version
+          ctest --version
+          
       - name: configure
         run: |
           cmake -H. -Bbuild -DBUILD_TESTING=ON
