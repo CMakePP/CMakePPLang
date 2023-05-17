@@ -30,6 +30,5 @@ jobs:
       api_docs_module: 'cmakepp_lang'
       docs_dir: 'docs'
       python_version: '3.10'
-      docs_dir: 'docs'
     secrets:
       token: ${{ secrets.GITHUB_TOKEN }}
