@@ -27,6 +27,8 @@ jobs:
     if: github.event.pull_request.merged == true
     uses: CMakePP/.github/.github/workflows/deploy_docs_master.yaml@main
     with:
+      api_docs_module: 'cmakepp_lang'
+      docs_dir: 'docs'
       python_version: '3.10'
       docs_dir: 'docs'
     secrets:
