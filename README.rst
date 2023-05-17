@@ -17,9 +17,11 @@
 CMakePPLang
 ###########
 
-![CMakePPLang Unit Tests](https://github.com/CMakePP/CMakePPLang/workflows/CMakePPLang%20Unit%20Tests/badge.svg)
+.. image:: https://github.com/CMakePP/CMakePPLang/workflows/CMakePPLang%20Unit%20Tests/badge.svg
+   :target: https://github.com/CMakePP/CMakePPLang/workflows/CMakePPLang%20Unit%20Tests/badge.svg
 
-[![Documentation](https://github.com/CMakePP/CMakePPLang/actions/workflows/deploy_docs.yml/badge.svg?branch=master)](https://github.com/CMakePP/CMakePPLang/actions/workflows/deploy_docs.yml)
+.. image:: https://github.com/CMakePP/CMakePPLang/actions/workflows/deploy_docs.yml/badge.svg?branch=master
+   :target: https://github.com/CMakePP/CMakePPLang/actions/workflows/deploy_docs.yml/badge.svg?branch=master
 
 *****************
 Statement of Need
