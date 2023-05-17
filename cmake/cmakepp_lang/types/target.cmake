@@ -1,6 +1,7 @@
 include_guard()
 
-#[[[ Determines if a string is the name of a target.
+#[[[
+# Determines if a string is the name of a target.
 #
 # CMake maintains an internal list of targets and allows us to query whether a
 # particular identifier is a target via CMake's native ``if`` statement. This
@@ -14,14 +15,8 @@ include_guard()
 #           target and ``FALSE`` otherwise.
 # :rtype: bool
 #
-# Error Checking
-# ==============
-#
-# ``cpp_is_target`` will assert that the caller has provided exactly two
-# arguments. If this is not the case an error will be raised.
-#
-# Example Usage:
-# ==============
+# Example Usage
+# =============
 #
 # The following is an example showcasing how one would check if the identifier
 # ``my_target`` is a target:
@@ -32,6 +27,12 @@ include_guard()
 #    add_library(my_target STATIC IMPORTED)
 #    cpp_is_target(return ${my_target})
 #    message("my_target is a target: ${return}")  # prints TRUE
+#
+# Error Checking
+# ==============
+#
+# ``cpp_is_target`` will assert that the caller has provided exactly two
+# arguments. If this is not the case an error will be raised.
 #]]
 function(cpp_is_target _it_return _it_str2check)
     if(NOT "${ARGC}" EQUAL 2)

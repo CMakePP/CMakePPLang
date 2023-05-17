@@ -1,6 +1,7 @@
 include_guard()
 
-#[[[ Determines if a string can be lexically cast to a float.
+#[[[
+# Determines if a string can be lexically cast to a float.
 #
 # For our purposes a float is any string whose only characters include a decimal
 # point, and the numbers 0 through 9. Optionally the float may be prefixed with
@@ -14,14 +15,8 @@ include_guard()
 #           float and ``FALSE`` otherwise.
 # :rtype: bool
 #
-# Error Checking
-# ==============
-#
-# ``cpp_is_float`` will assert that it is called with exactly two arguments. If
-# it is not an error will be raised.
-#
-# Example Usage:
-# ==============
+# Example Usage
+# =============
 #
 # The following is an example showcasing how one would check if the identifier
 # ``x`` contained a float.
@@ -32,6 +27,12 @@ include_guard()
 #    set(x 3.14)
 #    cpp_is_float(return ${x})
 #    message("3.14 is a float: ${return}")  # prints TRUE
+# 
+# Error Checking
+# ==============
+#
+# ``cpp_is_float`` will assert that it is called with exactly two arguments. If
+# it is not an error will be raised.
 #]]
 function(cpp_is_float _if_return _if_str2check)
     if(NOT "${ARGC}" EQUAL 2)

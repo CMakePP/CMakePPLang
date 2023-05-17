@@ -1,6 +1,7 @@
 include_guard()
 
-#[[[ Asserts that provided value is true.
+#[[[
+# Asserts that provided value is true.
 #
 # The ``cpp_assert`` function is code factorization for the very common scenario
 # where we want to crash the program if a condition is not met.
@@ -13,8 +14,8 @@ include_guard()
 # :param _ca_desc: Human-readable description of the assertion.
 # :type _ca_desc: str
 #
-# Example Usage:
-# ==============
+# Example Usage
+# =============
 #
 # This first example shows how to use ``cpp_assert`` to ensure that an object is
 # a particular type (in this case an integer). It should be noted that this same

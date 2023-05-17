@@ -7,14 +7,20 @@ include(cmakepp_lang/utilities/call_fxn)
 cpp_map(CTOR _exception_handlers)
 cpp_set_global("_CPP_EXCEPTION_HANDLERS_" "${_exception_handlers}")
 
-#[[[ Declares an exception handler function
+#[[[
+# Declares an exception handler function
 #
 # This command enables users to declare a handler function for specified
 # exception types. Subsequent calls to the ``cpp_raise`` command for those
 # exception types will call the handler function declared for that type.
 #
-# Example usage:
-# ==============
+# :param \*args: The exception types to declare handlers for.
+# :returns: each arg will be set to the mangled name of the declared
+#           exception handler for that exception type.
+# :rtype: desc
+# 
+# Example Usage
+# =============
 # 
 # .. code-block:: cmake
 # 
@@ -27,11 +33,6 @@ cpp_set_global("_CPP_EXCEPTION_HANDLERS_" "${_exception_handlers}")
 #       message("In my_exception_handler for exception type: my_exec_type_2")
 #       message("Exception details: ${message}")
 #    endfunction()
-#
-# :param \*args: The exception types to declare handlers for.
-# :returns: each arg will be set to the mangled name of the declared
-#           exception handler for that exception type.
-# :rtype: desc
 #
 # Error Checking
 # ==============
@@ -84,23 +85,29 @@ function(cpp_catch)
     endforeach()
 endfunction()
 
-#[[[ Raises an exception
+#[[[
+# Raises an exception.
+# 
 # This command raises an exception of the specified type. This will call
 # the exception handler for that type if it is declared.
 #
-# Example usage:
-#
-# cpp_raise(my_exec_type)
-#
-# An exception message may be optionally added via calling with additonal parameters.
-#
-# Example usage:
-#
-# cpp_raise(my_exec_type "My exception message")
 # :param _r_exec_type: The exception type to be raised
 # :type _r_exec_type: desc
 # :param _r_exec_message: The exception message
 # :type _r_exec_message: optional desc
+# 
+# Example Usage
+# =============
+#
+# .. code-block:: cmake
+#
+#    cpp_raise(my_exec_type)
+#
+# An exception message may be optionally added via calling with additonal parameters.
+# 
+# .. code-block:: cmake
+#
+#    cpp_raise(my_exec_type "My exception message")
 #
 # Error Checking
 # ==============
@@ -137,7 +144,8 @@ function(cpp_raise _r_exce_type)
     endif()
 endfunction()
 
-#[[[ Denotes that we are starting a try block.
+#[[[
+# Denotes that we are starting a try block.
 #
 # This function is a no-op that completes the fencing associated with a try
 # block.
@@ -150,16 +158,20 @@ endfunction()
 macro(cpp_try)
 endmacro()
 
-#[[[ Ends a try-catch block
+#[[[
+# Ends a try-catch block
 #
 # This command ends a try-catch block and removes the exception handlers for the
 # specified types.
 #
 # :param \*args: The exception types to declare handlers for.
 #
-# Example usage:
+# Example Usage
+# =============
 #
-# cpp_end_try_catch(my_exce_type)
+# .. code-block::
+# 
+#    cpp_end_try_catch(my_exce_type)
 #
 # Error Checking
 # ==============

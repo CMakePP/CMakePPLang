@@ -1,7 +1,8 @@
 include_guard()
 include(cmakepp_lang/types/literals)
 
-#[[[ Determines if the provided string can lexically be cast to a boolean.
+#[[[
+# Determines if the provided string can lexically be cast to a boolean.
 #
 # This function will compare the provided string against the list of boolean
 # literals known to CMakePP. The actual string comparison is done in a
@@ -16,25 +17,24 @@ include(cmakepp_lang/types/literals)
 # :rtype: bool
 # :var CMAKEPP_BOOL_LITERALS: Used to get the list of boolean literals.
 #
-# Error Checking
-# ==============
-#
-# ``cpp_is_bool`` will ensure that it has been called with exactly two
-# arguments.
-#
-# Example Usage:
-# ==============
+# Example Usage
+# =============
 #
 # The following code snippet shows how to use ``cpp_is_bool`` to determine if
 # the provided variable is a boolean.
-
+# 
 # .. code-block:: cmake
 #
 #    include(cmakepp_lang/types/bool)
 #    set(var2check TRUE)
 #    cpp_is_bool(result "${var2check}")
 #    message("var2check is a bool: ${result}")  # will print TRUE
+# 
+# Error Checking
+# ==============
 #
+# ``cpp_is_bool`` will ensure that it has been called with exactly two
+# arguments.
 #]]
 function(cpp_is_bool _ib_return _ib_str2check)
     if(NOT "${ARGC}" EQUAL 2)

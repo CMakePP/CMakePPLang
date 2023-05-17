@@ -4,7 +4,8 @@ include(cmakepp_lang/map/has_key)
 include(cmakepp_lang/types/types)
 include(cmakepp_lang/utilities/return)
 
-#[[[ Determines if an element appears in a set-like object.
+#[[[
+# Determines if an element appears in a set-like object.
 #
 # This function is meant to function like Python's ``in`` operation. Basically
 # it encapsulates the process of checking if ``x`` is in ``y``. What "is in"
@@ -23,19 +24,8 @@ include(cmakepp_lang/utilities/return)
 #           ``_c_list`` and ``FALSE`` otherwise.
 # :rtype: bool
 #
-# Error Checking
-# ==============
-#
-# If CMakePP is run in debug mode this function will ensure that it is called
-# with the correct number of arguments and that those arguments have the correct
-# types. These error checks are only performed if CMakePP is run in debug mode.
-#
-# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
-#                               debug mode or not.
-# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
-#
-# Example Usage:
-# ==============
+# Example Usage
+# =============
 #
 # The following snippet shows how to determine if the word ``"hello"`` is in the
 # list ``"hello;world"``.
@@ -46,6 +36,17 @@ include(cmakepp_lang/utilities/return)
 #    set(a_list "hello" "world")
 #    cpp_contains(result "hello" "${a_list}")
 #    message("The list contains 'hello': ${result}")  # Will print TRUE
+# 
+# Error Checking
+# ==============
+#
+# If CMakePP is run in debug mode this function will ensure that it is called
+# with the correct number of arguments and that those arguments have the correct
+# types. These error checks are only performed if CMakePP is run in debug mode.
+#
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                               debug mode or not.
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(cpp_contains _c_result _c_item _c_list)
     cpp_assert_signature("${ARGV}" desc str str)
