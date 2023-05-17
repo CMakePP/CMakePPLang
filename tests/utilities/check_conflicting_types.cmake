@@ -11,9 +11,9 @@ function("${test_cpp_check_conflicting_types}")
         # Ease-of-testing function to test that verifies that a given string
         # exactly matches a built-in type with ``cpp_check_conflicting_types``.
         #
-        # :param _tc_type: String that must exactly match a built-in type for
+        # :param type: String that must exactly match a built-in type for
         #                  the test to succeed.
-        # :type _tc_type: desc
+        # :type type: desc
         #]]
         function(test_exact_conflict _tc_type)
 

@@ -9,10 +9,10 @@ include(cmakepp_lang/asserts/signature)
 # Map instance. The resulting instance will not alias the original map in any
 # way.
 #
-# :param _mc_this: The Map instance being copied.
-# :type _mc_this: map
-# :param _mc_other: The name of the variable which will hold the deep copy.
-# :type _mc_other: desc
+# :param this: The Map instance being copied.
+# :type this: map
+# :param other: The name of the variable which will hold the deep copy.
+# :type other: desc
 # :returns: ``_mc_other`` will be set to a deep copy of ``_mc_this``.
 # :rtype: map
 #

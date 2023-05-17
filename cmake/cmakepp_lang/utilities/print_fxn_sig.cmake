@@ -7,11 +7,11 @@ include(cmakepp_lang/asserts/signature)
 # This function will combine a function's name, and the types of its arguments,
 # to create a string representation of the function declaration.
 #
-# :param _pfs_result: Name of the variable which will hold the result.
-# :type _pfs_result: desc
-# :param _pfs_fxn_name: The unmangled name of the function whose signature we
+# :param result: Name of the variable which will hold the result.
+# :type result: desc
+# :param fxn_name: The unmangled name of the function whose signature we
 #                        are printing.
-# :type _pfs_fxn_name: desc
+# :type fxn_name: desc
 # :param \*args: The types of the arguments to ``_pfs_fxn_name``.
 # :returns: ``_pfs_result`` will be set to a human-readable, string
 #           representation of this particular overload of ``_pfs_fxn_name``.

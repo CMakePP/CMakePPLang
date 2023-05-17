@@ -7,8 +7,8 @@ include(cmakepp_lang/asserts/signature)
 #
 # This function removes the key-value pairs for specified keys from a map.
 #
-# :param _r_this: The map that will have key-value pairs removed from it
-# :type _r_this: map
+# :param this: The map that will have key-value pairs removed from it
+# :type this: map
 # :param \*args: The keys to remove from _r_this.
 #
 # Error Checking

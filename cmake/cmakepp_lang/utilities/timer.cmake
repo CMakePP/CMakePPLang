@@ -10,8 +10,8 @@ include(cmakepp_lang/utilities/unique_id)
 # This function is used to start a timer under the provided name. If another
 # timer has previously been created using this name it will be overridden.
 #
-# :param _st_name: The name for the timer.
-# :type _st_name: desc
+# :param name: The name for the timer.
+# :type name: desc
 #
 #]]
 function(cpp_start_timing _st_name)
@@ -30,11 +30,11 @@ endfunction()
 # is possible to continue to measure time since the timer was started with
 # additional calls.
 #
-# :param _st_time: Name for variable which will hold how long (in seconds) the
+# :param time: Name for variable which will hold how long (in seconds) the
 #                  the timer has been running.
-# :type _st_time: desc
-# :param _st_name: The name of the timer we want to measure
-# :type _st_name: desc
+# :type time: desc
+# :param name: The name of the timer we want to measure
+# :type name: desc
 # :returns: ``_st_time`` will be set to the time (in seconds) since the timer
 #           was started.
 # :rtype: int
@@ -72,8 +72,8 @@ endfunction()
 # a convenience function which will do that by printing the timer to standard
 # out.
 #
-# :param _sapt_name: The name of the timer we are measuring.
-# :type _sapt_name: desc
+# :param name: The name of the timer we are measuring.
+# :type name: desc
 #
 # Error Checking
 # ==============
@@ -95,8 +95,8 @@ endfunction()
 # will start a timer, call the function to be timed, and print how long the
 # function ran for.
 #
-# :param _tf_fxn_name: The name of the function we are timing.
-# :type _tf_fxn_name: fxn
+# :param fxn_name: The name of the function we are timing.
+# :type fxn_name: fxn
 # :param \*args: The arguments which should be forwarded to the function.
 #
 #]]

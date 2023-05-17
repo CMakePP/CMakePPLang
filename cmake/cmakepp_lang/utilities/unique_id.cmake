@@ -12,8 +12,8 @@ include(cmakepp_lang/utilities/return)
 # during the same second. No check for uniqueness is currently present although
 # one could be added.
 #
-# :param _ui_id: The name for the variable which will hold the result.
-# :type _ui_id: desc
+# :param id: The name for the variable which will hold the result.
+# :type id: desc
 # :returns: ``_ui_id`` will be set to the generated unique id.
 # :rtype: desc
 #

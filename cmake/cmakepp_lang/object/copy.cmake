@@ -12,10 +12,10 @@ include(cmakepp_lang/utilities/unique_id)
 # It can be overridden in the base class if desired. The default implementation
 # simply deep copies recursively the entirety of the Object's state.
 #
-# :param _oc_this: The Object instance which is being copied.
-# :type _oc_this: obj
-# :param _oc_other: Name for the variable which will hold the copy.
-# :type _oc_other: desc
+# :param this: The Object instance which is being copied.
+# :type this: obj
+# :param other: Name for the variable which will hold the copy.
+# :type other: desc
 # :returns: ``_oc_other`` will be set to a deep copy of ``_oc_this``.
 # :rtype: obj
 #

@@ -12,10 +12,10 @@ include(cmakepp_lang/utilities/sanitize_string)
 # signature and overload member functions with the same name, but different
 # signatures.
 #
-# :param _oaf_this: The Object instance we are adding the function to.
-# :type _oaf_this: obj
-# :param _oaf_name: The name of the function we are adding.
-# :type _oaf_name: desc
+# :param this: The Object instance we are adding the function to.
+# :type this: obj
+# :param name: The name of the function we are adding.
+# :type name: desc
 # :param \*args: The types of the arguments to the function.
 # :returns: ``_oaf_name`` will be set to the mangled name of the function which
 #           was added. Users should use the mangled name when implementing the

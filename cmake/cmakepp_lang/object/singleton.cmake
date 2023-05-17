@@ -12,8 +12,8 @@ include(cmakepp_lang/utilities/return)
 # state and thus for efficiency reasons it makes sense to have a single Object
 # instance that all derived class instances alias.
 #
-# :param _os_this: Name for the variable which will hold the new instance.
-# :type _os_this: desc
+# :param this: Name for the variable which will hold the new instance.
+# :type this: desc
 # :returns: ``_os_this`` will be set to the newly created Object instance.
 # :rtype: obj
 #

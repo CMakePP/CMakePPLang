@@ -10,11 +10,11 @@ include(cmakepp_lang/utilities/sanitize_string)
 # specified global variable the provided value. If the variable does not exist,
 # the variable will be created and initialized to the provided value.
 #
-# :param _ag_key: The name of the global variable to append to. ``_ag_key`` is
+# :param key: The name of the global variable to append to. ``_ag_key`` is
 #                 case-insensitive.
-# :type _ag_key: desc
-# :param _ag_value: The value to append to ``_ag_key``'s current value.
-# :type _ag_value: str
+# :type key: desc
+# :param value: The value to append to ``_ag_key``'s current value.
+# :type value: str
 #
 # Error Checking
 # ==============
@@ -38,11 +38,11 @@ endfunction()
 # This function will set a global variable to the value provided. If the global
 # variable already exists it will overwrite its current value.
 #
-# :param _sg_key: The name of the global variable to set. ``_ag_key`` is
+# :param key: The name of the global variable to set. ``_ag_key`` is
 #                 case-insensitive.
-# :type _sg_key: desc
-# :param _sg_value: The value to set ``_sg_key`` to.
-# :type _sg_value: str
+# :type key: desc
+# :param value: The value to set ``_sg_key`` to.
+# :type value: str
 #
 # Error Checking
 # ==============
@@ -67,12 +67,12 @@ endfunction()
 # the empty string. In practice this is not a problem because global variables
 # are not typically set to the empty string.
 #
-# :param _gg_result: Identifier for the variable which after this call will hold
+# :param result: Identifier for the variable which after this call will hold
 #                    the value stored in global variable ``_gg_key``.
-# :type _gg_value: desc
-# :param _gg_key: The name of the global variable whose value has been
+# :type value: desc
+# :param key: The name of the global variable whose value has been
 #                 requested. ``_gg_key`` is case-insensitive.
-# :type _gg_key: desc
+# :type key: desc
 # :returns: ``_gg_result`` will be set to the value stored in global variable
 #           ``_gg_key``. If ``_gg_key`` has not been set ``_gg_result`` will be
 #           set to the empty string.

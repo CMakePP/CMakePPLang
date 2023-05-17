@@ -4,10 +4,10 @@ include(cmakepp_lang/asserts/signature)
 #[[[
 # Determines if a provided path points to an existing file.
 #
-# :param _fe_result: Name for variable which will hold the result.
-# :type _fe_result: desc
-# :param _fe_file: Path which may be pointing to an existing file.
-# :type _fe_file: path
+# :param result: Name for variable which will hold the result.
+# :type result: desc
+# :param file: Path which may be pointing to an existing file.
+# :type file: path
 # :returns: ``_fe_result`` will be set to ``TRUE`` if ``_fe_file`` is the
 #           absolute path of a file and ``FALSE`` otherwise. Of note if
 #           ``_ce_file`` is the absolute path to a directory the result is also

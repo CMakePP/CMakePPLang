@@ -12,16 +12,16 @@ include(cmakepp_lang/utilities/return)
 # regardless of whether or not the object has the requested attribute. If the
 # object does not
 #
-# :param _ogag_this: The instance in which we are looking for the attribute.
-# :type _ogag_this: obj
-# :param _ogag_value: Identifier for the variable which will hold the value of
+# :param this: The instance in which we are looking for the attribute.
+# :type this: obj
+# :param value: Identifier for the variable which will hold the value of
 #                     the attribute.
-# :type _ogag_value: desc
-# :param _ogag_done: Identifier which will hold whether or not the recursion is
+# :type value: desc
+# :param done: Identifier which will hold whether or not the recursion is
 #                    done.
-# :type _ogag_done: desc
-# :param _ogag_attr: Name of the attribute we are looking for.
-# :type _ogag_attr: desc
+# :type done: desc
+# :param attr: Name of the attribute we are looking for.
+# :type attr: desc
 # :returns: ``_ogag_value`` will be set to the value of the attribute, if the
 #           object has the attribute and the empty string otherwise.
 #           ``_ogag_done`` will be set to ``TRUE`` if the object has the
@@ -102,8 +102,8 @@ endfunction()
 # returned to the parent scope, and attributes is the list of attributes to
 # retrieve.
 #
-# :param _oga_this: The object whose attribute is being accessed.
-# :type _oga_this: obj
+# :param this: The object whose attribute is being accessed.
+# :type this: obj
 #
 # Error Checking
 # ==============
@@ -176,10 +176,10 @@ endfunction()
 # member function. If the object already has the specified attribute, this
 # function will overwrite its value.
 #
-# :param _osa_this: The Object instance whose attribute is being set.
-# :type _osa_this: obj
-# :param _osa_attr: The name of the attribute we are setting.
-# :type _osa_attr: desc
+# :param this: The Object instance whose attribute is being set.
+# :type this: obj
+# :param attr: The name of the attribute we are setting.
+# :type attr: desc
 # :param \*args: The value or values the attribute will be set as.
 #]]
 function(_cpp_object_set_attr _osa_this _osa_attr)

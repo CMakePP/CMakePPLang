@@ -8,10 +8,10 @@ include(cmakepp_lang/types/list)
 # determine if the provided string is lexically convertible to an absolute
 # filepath.
 #
-# :param _ip_result: An identifier to hold the result.
-# :type _ip_result: identifier
-# :param _ip_str2check: The string which may be an absolute filepath.
-# :type _ip_str: str
+# :param result: An identifier to hold the result.
+# :type result: identifier
+# :param str2check: The string which may be an absolute filepath.
+# :type str: str
 # :returns: ``TRUE`` if ``_ip_str2check`` is an absolute filepath and
 #           ``FALSE`` otherwise. The result is returned via ``_cip_result``.
 # :rtype: bool

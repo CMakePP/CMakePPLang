@@ -16,13 +16,13 @@ include(cmakepp_lang/utilities/return)
 # empty string. At the moment there is no way to distinguish between a
 # meta-attribute set to the empty string and a non-existing meta-attribute.
 #
-# :param _ogma_this: The object instance whose meta-attribute is being
+# :param this: The object instance whose meta-attribute is being
 #                    retrieved.
-# :type _ogma_this: obj
-# :param _ogma_result: Name for the variable which will hold the value.
-# :type _ogma_result: desc
-# :param _ogma_attr: The name of the meta-attribute we are retrieving.
-# :type _ogma_attr: desc
+# :type this: obj
+# :param result: Name for the variable which will hold the value.
+# :type result: desc
+# :param attr: The name of the meta-attribute we are retrieving.
+# :type attr: desc
 # :returns: ``_ogma_result`` will be set to the value of the attribute (if the
 #           attribute exists) and the empty string otherwise.
 # :rtype: str

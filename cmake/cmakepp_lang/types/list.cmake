@@ -9,10 +9,10 @@ include_guard()
 # least two elements (*i.e.*, there must be a semicolon in it). This function
 # determines if the provided string meets this definition of a list.
 #
-# :param _il_result: Used as the name of the returned identifier.
-# :type _il_result: desc
-# :param _il_str2check: The string whose listy-ness is being questioned.
-# :type _il_str2check: str
+# :param result: Used as the name of the returned identifier.
+# :type result: desc
+# :param str2check: The string whose listy-ness is being questioned.
+# :type str2check: str
 # :returns: ``_il_result`` will be set to ``TRUE`` if ``_il_str2check`` is a
 #           list and ``FALSE`` otherwise.
 # :rtype: bool

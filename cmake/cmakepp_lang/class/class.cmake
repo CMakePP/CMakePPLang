@@ -16,11 +16,11 @@ set(
 # to actually create the class. This logic is factored out primarily to avoid
 # contaminating the caller's namespace with intermediate results.
 #
-# :param _cg_type: The name of the class being created.
-# :type _cg_type: desc
-# :param _cg_wrapper: Name for variable which will hold the path to the class's
+# :param type: The name of the class being created.
+# :type type: desc
+# :param wrapper: Name for variable which will hold the path to the class's
 #                     implementation.
-# :type _cg_wrapper: desc
+# :type wrapper: desc
 # :param \*args: The base classes that this class derives from.
 # :returns: ``_cg_wrapper`` will be set to the absolute file path for the
 #           generated module which implements the class.
@@ -84,8 +84,8 @@ endfunction()
 # classes (users of this command should never explicitly specify inheritance
 # from ``Object``).
 #
-# :param _c_type: The name of the class whose declaration is being started.
-# :type _c_type: desc
+# :param type: The name of the class whose declaration is being started.
+# :type type: desc
 # :param \*args: The various base classes that the class should inherit from.
 #
 # .. note::
@@ -115,12 +115,12 @@ endmacro()
 #
 # This function is used to declare a new member function.
 #
-# :param _m_name: The name of the member function. This is the name you will use
+# :param name: The name of the member function. This is the name you will use
 #                 to invoke the member function.
-# :type _m_name: desc
-# :param _m_type: The class we are adding the member function to. This is also
+# :type name: desc
+# :param type: The class we are adding the member function to. This is also
 #                 the type of the "this" pointer.
-# :type _m_type: class
+# :type type: class
 # :param \*args: The types of the arguments to the member function. This list
 #               should NOT include the type for the this pointer as this will
 #               automatically be prepended to this list.
@@ -153,8 +153,8 @@ endfunction()
 # This function is used to declare a new virtual member function that has no
 # concrete implementation and must be overridden by a derived class.
 #
-# :param _vm_fxn_name: The name of the virtual member function.
-# :type _vm_fxn_name: desc
+# :param fxn_name: The name of the virtual member function.
+# :type fxn_name: desc
 #]]
 macro(cpp_virtual_member _vm_fxn_name)
     cpp_assert_signature("${ARGV}" desc class)
@@ -172,11 +172,11 @@ endmacro()
 #
 # This function is used to declare a class constructor.
 #
-# :param _c_name: The name of the constructor (CTOR by convention). This will be
+# :param name: The name of the constructor (CTOR by convention). This will be
 #                 the named used to invoke the member constructor.
-# :type _c_name: desc
-# :param _c_type: The class we are adding the constructor to.
-# :type _c_type: class
+# :type name: desc
+# :param type: The class we are adding the constructor to.
+# :type type: class
 # :param \*args: The types of the arguments to the constructor function.
 # :returns: ``_c_name`` will be set to the mangled name of the declared
 #            constructor to facilitate implementing it.
@@ -206,10 +206,10 @@ endfunction()
 #
 # This function is used to declare a new attribute for a class.
 #
-# :param _a_type: The name of the class getting the attribute.
-# :type _a_type: class
-# :param _a_attr: The name of the attribute
-# :type _a_attr: desc
+# :param type: The name of the class getting the attribute.
+# :type type: class
+# :param attr: The name of the attribute
+# :type attr: desc
 # :param \*args: The initial value of the attribute. If no ``*args`` are provided
 #               the attribute will be initialized to the empty string.
 #

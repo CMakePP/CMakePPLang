@@ -19,10 +19,10 @@ include(cmakepp_lang/utilities/global)
 # booleans, etc.), intrinsic CMakePP objects (Object, Class, and Map), and
 # user-defined classes.
 #
-# :param _to_result: Name for the variable which will hold the result.
-# :type _to_result: desc
-# :param _to_obj: The object we want the type of.
-# :type _to_obj: str
+# :param result: Name for the variable which will hold the result.
+# :type result: desc
+# :param obj: The object we want the type of.
+# :type obj: str
 # :returns: ``_to_result`` will be set to the type literal corresponding to
 #           ``_to_obj``'s type.
 # :rtype: type

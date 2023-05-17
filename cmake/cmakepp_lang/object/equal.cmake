@@ -13,12 +13,12 @@ include(cmakepp_lang/utilities/return)
 # most-derived type and that their states compare equal (their states are stored
 # in maps and we simply compare the maps).
 #
-# :param _oe_this: One of the two Object instances being compared.
-# :type _oe_this: obj
-# :param _oe_result: Name for variable which will hold the comparison's result.
-# :type _oe_result: desc
-# :param _oe_other: The other Object instance being compared.
-# :type _oe_other: obj
+# :param this: One of the two Object instances being compared.
+# :type this: obj
+# :param result: Name for variable which will hold the comparison's result.
+# :type result: desc
+# :param other: The other Object instance being compared.
+# :type other: obj
 # :returns: ``_oe_result`` will be set to ``TRUE`` if the instances are equal
 #           and ``FALSE`` otherwise.
 # :rtype: bool

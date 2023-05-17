@@ -9,10 +9,10 @@ include(cmakepp_lang/asserts/signature)
 # _m_other. If a key is present in both dictionary, the value from _m_other
 # will overwrite the value in _m_this.
 #
-# :param _m_this: The map that will have the key-value pairs added to it.
-# :type _m_this: map
-# :param _m_other: The map whose key-value pairs will be added to _m_this.
-# :type _m_other: map
+# :param this: The map that will have the key-value pairs added to it.
+# :type this: map
+# :param other: The map whose key-value pairs will be added to _m_this.
+# :type other: map
 #
 # Error Checking
 # ==============

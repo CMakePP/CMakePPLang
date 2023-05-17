@@ -16,12 +16,12 @@ include(cmakepp_lang/utilities/sanitize_string)
 #    This function is used to implement ``cpp_assert_signature`` and thus can
 #    not rely on ``cpp_assert_signature`` for type-checking.
 #
-# :param _ic_result: Name to use for the variable which will hold the result.
-# :type _ic_result: desc
-# :param _ic_from: The type we are attempting to cast from.
-# :type _ic_from: type
-# :param _ic_to: The type we are attempting to cast to.
-# :type _ic_to: type
+# :param result: Name to use for the variable which will hold the result.
+# :type result: desc
+# :param from: The type we are attempting to cast from.
+# :type from: type
+# :param to: The type we are attempting to cast to.
+# :type to: type
 # :returns: ``_ic_result`` will be set to ``TRUE`` if an instance of
 #           ``_ic_from`` can be implicitly converted to an instance of
 #           ``_ic_to`` and ``FALSE`` otherwise.

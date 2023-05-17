@@ -13,13 +13,13 @@ include(cmakepp_lang/utilities/sanitize_string)
 # the caller's namespace with temporary variables needed to lookup the symbol of
 # the member function we are calling.
 #
-# :param _ocg_this: The Object instance whose member function is being called.
-# :type _ocg_this: obj
-# :param _ocg_result: Identifier to hold the symbol of the function to call.
-# :type _ocg_result: desc
-# :param _ocg_method: The name of the method to call. The actual name is
+# :param this: The Object instance whose member function is being called.
+# :type this: obj
+# :param result: Identifier to hold the symbol of the function to call.
+# :type result: desc
+# :param method: The name of the method to call. The actual name is
 #                     case-insensitive.
-# :type _ocg_method: desc
+# :type method: desc
 # :param \*args: The arguments which are being forwarded to the member function.
 # :returns: ``_ocg_result`` will be set to the symbol (mangled name) of the
 #           member function to call.
@@ -66,10 +66,10 @@ endfunction()
 # This function encapsulates the process of determining the correct overload to
 # call and actually invoking it.
 #
-# :param _oc_this: The Object instance whose member function is being called.
-# :type _oc_this: obj
-# :param _oc_method: The name of the member function to call.
-# :type _oc_method: desc
+# :param this: The Object instance whose member function is being called.
+# :type this: obj
+# :param method: The name of the member function to call.
+# :type method: desc
 # :param \*args: The arguments to forward to the member function (the required
 #               first argument of the ``this`` pointer is forwarded
 #               automatically and should not be provided in this list)

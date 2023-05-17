@@ -4,10 +4,10 @@ include(cmakepp_lang/asserts/signature)
 #[[[
 # Determines if a provided path points to an existing directory.
 #
-# :param _cde_result: Name for variable which will hold the result.
-# :type _cde_result: bool*
-# :param _cde_dir: Path which may be pointing to an existing directory.
-# :type _cde_dir: path
+# :param result: Name for variable which will hold the result.
+# :type result: bool*
+# :param dir: Path which may be pointing to an existing directory.
+# :type dir: path
 # :returns: ``_cde_result`` will be set to ``TRUE`` if ``_cde_dir`` is the
 #           absolute path of a directory and ``FALSE`` otherwise. Of note if
 #           ``_cde_dir`` is the absolute path to a file the result is also

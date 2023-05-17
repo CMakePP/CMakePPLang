@@ -7,10 +7,10 @@ include_guard()
 # point, and the numbers 0 through 9. Optionally the float may be prefixed with
 # a minus sign.
 #
-# :param _if_return: Name for the variable used to store the result.
-# :type _if_return: desc
-# :param _if_str2check: The string we are checking for its floaty-ness
-# :type _if_str2check: str
+# :param return: Name for the variable used to store the result.
+# :type return: desc
+# :param str2check: The string we are checking for its floaty-ness
+# :type str2check: str
 # :returns: ``_if_return`` will be set to ``TRUE`` if ``_if_str2check`` is a
 #           float and ``FALSE`` otherwise.
 # :rtype: bool

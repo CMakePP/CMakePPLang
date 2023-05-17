@@ -11,11 +11,11 @@ include(cmakepp_lang/serialization/serialization)
 # comprised of the "this" pointer (as the key) and the serialized state of the
 # object as the value.
 #
-# :param _os_this: The object we are serializing.
-# :type _os_this: obj
-# :param _os_result: Name for the identifier which will hold the serialized
+# :param this: The object we are serializing.
+# :type this: obj
+# :param result: Name for the identifier which will hold the serialized
 #                    value.
-# :type _os_result: desc
+# :type result: desc
 # :returns: ``_os_result`` will be set to the JSON serialized representation of
 #           ``_os_this``.
 #
@@ -46,8 +46,8 @@ endfunction()
 # This function is code factorization for serializing an object and printing the
 # serialized form to standard out.
 #
-# :param _op_this: The object we are printing to standard out.
-# :type _op_this: obj
+# :param this: The object we are printing to standard out.
+# :type this: obj
 #
 # Error Checking
 # ==============

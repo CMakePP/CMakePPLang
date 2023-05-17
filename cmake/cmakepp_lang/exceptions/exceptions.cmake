@@ -91,10 +91,10 @@ endfunction()
 # This command raises an exception of the specified type. This will call
 # the exception handler for that type if it is declared.
 #
-# :param _r_exec_type: The exception type to be raised
-# :type _r_exec_type: desc
-# :param _r_exec_message: The exception message
-# :type _r_exec_message: optional desc
+# :param exec_type: The exception type to be raised
+# :type exec_type: desc
+# :param exec_message: The exception message
+# :type exec_message: optional desc
 # 
 # Example Usage
 # =============

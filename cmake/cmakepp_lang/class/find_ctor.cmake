@@ -15,10 +15,10 @@ include(cmakepp_lang/class/set_kwargs_attrs)
 # it attempts to find a CTOR with a matching signature but does not throw an
 # error if none is found.
 #
-# :param _fc_this: The object being constructed.
-# :type _fc_this: obj
-# :param _fc_type: The type of the object being constructed.
-# :type _fc_type: obj
+# :param this: The object being constructed.
+# :type this: obj
+# :param type: The type of the object being constructed.
+# :type type: obj
 #
 # Error Checking
 # ==============

@@ -14,12 +14,12 @@ include(cmakepp_lang/utilities/return)
 # ``y`` is a string then this function will check if ``x`` is a substring of
 # ``y``.
 #
-# :param _c_result: Name for the variable to hold the result.
-# :type _c_result: desc
-# :param _c_item: The item whose inclusion in ``_c_list`` is in question.
-# :type _c_item: str
-# :param _c_list: The collection we are looking for ``_c_item`` in.
-# :type _c_list: str
+# :param result: Name for the variable to hold the result.
+# :type result: desc
+# :param item: The item whose inclusion in ``_c_list`` is in question.
+# :type item: str
+# :param list: The collection we are looking for ``_c_item`` in.
+# :type list: str
 # :returns: ``_c_result`` will be set to ``TRUE`` if ``_c_item`` is in
 #           ``_c_list`` and ``FALSE`` otherwise.
 # :rtype: bool

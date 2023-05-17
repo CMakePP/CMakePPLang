@@ -12,12 +12,12 @@ include(cmakepp_lang/utilities/return)
 # particular this means that the lists must have the same order and that we
 # compare the values of CMakePP objects, not their this-pointers.
 #
-# :param _cl_result: Name for variable which will hold the result.
-# :type _cl_result: desc
-# :param _cl_lhs: Identifier containing the first list to compare.
-# :type _cl_lhs: list*
-# :param _cl_rhs: Identifier containing the second list to comapre.
-# :type _cl_rhs: list*
+# :param result: Name for variable which will hold the result.
+# :type result: desc
+# :param lhs: Identifier containing the first list to compare.
+# :type lhs: list*
+# :param rhs: Identifier containing the second list to comapre.
+# :type rhs: list*
 # :returns: ``_cl_result`` will be set to ``TRUE`` if the two lists are equal
 #           and ``FALSE`` otherwise.
 # :rtype: bool

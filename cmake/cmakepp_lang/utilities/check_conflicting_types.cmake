@@ -3,13 +3,13 @@ include_guard()
 #[[[
 # Checks if the given name conflicts with any built-in CMakePPLang types.
 #
-# :param _cc_conflict: Return value for whether a conflict exists.
-# :type _cc_conflict: bool*
-# :param _cc_conflicting_type: Return value for the type that the name
+# :param conflict: Return value for whether a conflict exists.
+# :type conflict: bool*
+# :param conflicting_type: Return value for the type that the name
 #                              conflicts with.
-# :type _cc_conflicting_type: desc*
-# :param _cc_name: Name to check for conflicts with.
-# :type _cc_name: desc
+# :type conflicting_type: desc*
+# :param name: Name to check for conflicts with.
+# :type name: desc
 #
 # :returns: Whether there was a conflict (TRUE) or not (FALSE) and the
 #           conflicting type, or an empty string ("") if no conflicts

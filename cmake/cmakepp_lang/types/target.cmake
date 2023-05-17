@@ -7,10 +7,10 @@ include_guard()
 # particular identifier is a target via CMake's native ``if`` statement. This
 # function simply wraps a call to ``if(TARGET ...)``.
 #
-# :param _it_return: Name to use for the resulting identifier.
-# :type _it_return: desc
-# :param _it_str2check: The string whose targety-ness is in question
-# :type _it_str2check: str
+# :param return: Name to use for the resulting identifier.
+# :type return: desc
+# :param str2check: The string whose targety-ness is in question
+# :type str2check: str
 # :returns: ``_it_return`` will be set to ``TRUE`` if ``_it_str2check`` is a
 #           target and ``FALSE`` otherwise.
 # :rtype: bool

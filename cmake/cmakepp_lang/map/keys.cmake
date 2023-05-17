@@ -9,10 +9,10 @@ include(cmakepp_lang/utilities/return)
 # This function can be used to get a list of keys which have been set for this
 # map.
 #
-# :param _mk_this: The map whose keys are being retrieved.
-# :type _mk_this: map
-# :param _mk_keys: Name for the variable which will hold the keys.
-# :type _mk_keys: desc
+# :param this: The map whose keys are being retrieved.
+# :type this: map
+# :param keys: Name for the variable which will hold the keys.
+# :type keys: desc
 # :returns: ``_mk_keys`` will be set to the list of keys which have been set for
 #           ``_mk_this``.
 # :rtype: [desc]

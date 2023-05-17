@@ -12,8 +12,8 @@ include(cmakepp_lang/utilities/decode_special_chars)
 # function, ``_cpp_call_fxn_guts``. ``_cpp_call_fxn_guts`` is not intended to be
 # called from outside of ``cpp_call_fxn``.
 #
-# :param _cfg_fxn2call: The name of the function we are calling.
-# :type _cfg_fxn2call: desc
+# :param fxn2call: The name of the function we are calling.
+# :type fxn2call: desc
 # :param \*args: The arguments to forward to the function.
 #]]
 function(_cpp_call_fxn_guts _cfg_fxn2call _cfg_result)
@@ -43,8 +43,8 @@ endfunction()
 # which retrieves part of the function's name from a variable. The ``cpp_call``
 # macro allows us to circumvent this limitation at the cost of some I/O.
 #
-# :param _ccf_fxn2call: The name of the function to call.
-# :type _ccf_fxn2call: desc
+# :param fxn2call: The name of the function to call.
+# :type fxn2call: desc
 # :param \*args: The arguments to forward to the function.
 #
 # .. note::

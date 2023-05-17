@@ -15,10 +15,10 @@ include(cmakepp_lang/utilities/sanitize_string)
 # done with the ``_cpp_object_singleton`` function. The resulting instance will
 # be initialized to the default state for the specified type.
 #
-# :param _oc_this: Name for the variable which will hold the resulting instance.
-# :type _oc_this: desc
-# :param _oc_type: The most-derived type of the object we are creating.
-# :type _oc_type: type
+# :param this: Name for the variable which will hold the resulting instance.
+# :type this: desc
+# :param type: The most-derived type of the object we are creating.
+# :type type: type
 # :param \*args: The initial instances of each direct base class on which this
 #               instance should be built.
 # :return: ``_oc_this`` will be set to the newly created instance.

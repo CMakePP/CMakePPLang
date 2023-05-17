@@ -10,12 +10,12 @@ include(cmakepp_lang/utilities/sanitize_string)
 # This function compares the name part of two signatures (*i.e.*, the 0th
 # element) in a case-insensitive manner.
 #
-# :param _cn_result: The name for the variable which will hold the result.
-# :type _cn_result: desc
-# :param _cn_lhs: The signature of the first function.
-# :type _cn_fxn: list*
-# :param _cn_rhs: The signature of the second function.
-# :type _cn_fxn: list*
+# :param result: The name for the variable which will hold the result.
+# :type result: desc
+# :param lhs: The signature of the first function.
+# :type fxn: list*
+# :param rhs: The signature of the second function.
+# :type fxn: list*
 # :returns: ``_cn_result`` will be set to ``TRUE`` if the two signatures have
 #           the same name (up to case-sensitivity) and ``FALSE`` otherwise.
 # :rtype: bool
@@ -48,12 +48,12 @@ endfunction()
 # :math:`n` arguments, this function can not possibly be called with the
 # provided arguments.
 #
-# :param _cl_result: Name for variable which will hold the result.
-# :type _cl_result: desc
-# :param _cl_fxn: The signature of the function we are trying to call.
-# :type _cl_fxn: list*
-# :param _cl_args: The signature of how we are trying to call the function.
-# :type _cl_args: list*
+# :param result: Name for variable which will hold the result.
+# :type result: desc
+# :param fxn: The signature of the function we are trying to call.
+# :type fxn: list*
+# :param args: The signature of how we are trying to call the function.
+# :type args: list*
 # :returns: ``_cl_result`` will be set to ``TRUE`` if we can call the function
 #           with the provided arguments and ``FALSE`` otherwise.
 # :rtype: bool
@@ -113,12 +113,12 @@ endfunction()
 # of casts then ``_ic_fxn`` is not callable with the signature provided by
 # ``_ic_args``.
 #
-# :param _ic_result: Name of the variable which will hold the result.
-# :type _ic_result: desc
-# :param _ic_fxn: The signature of the function we are trying to cast to.
-# :type _ic_fxn: list*
-# :param _ic_args: The signature of the function we are trying to cast from.
-# :type _ic_args: list*
+# :param result: Name of the variable which will hold the result.
+# :type result: desc
+# :param fxn: The signature of the function we are trying to cast to.
+# :type fxn: list*
+# :param args: The signature of the function we are trying to cast from.
+# :type args: list*
 # :returns: ``_ic_result`` will be set to ``TRUE`` if ``_ic_args`` can be cast
 #           to ``_ic_fxn`` and ``FALSE`` otherwise.
 # :rtype: bool

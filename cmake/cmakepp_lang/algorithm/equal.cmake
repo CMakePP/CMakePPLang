@@ -16,12 +16,12 @@ include(cmakepp_lang/utilities/return)
 # instances of user-defined classes to ensure they have the same state. If two
 # objects have different types they are defined to be unequal.
 #
-# :param _e_result: The name to use for variable holding the result.
-# :type _e_result: desc
-# :param _e_lhs: One of the two values involved in the comparison.
-# :type _e_lhs: str
-# :param _e_rhs: The other value involved in the comparison
-# :type _e_rhs: str
+# :param result: The name to use for variable holding the result.
+# :type result: desc
+# :param lhs: One of the two values involved in the comparison.
+# :type lhs: str
+# :param rhs: The other value involved in the comparison
+# :type rhs: str
 # :returns: ``_e_result`` will be set to ``TRUE`` if ``_e_lhs`` compares equal
 #           to ``_e_rhs`` and ``FALSE`` otherwise.
 # :rtype: bool

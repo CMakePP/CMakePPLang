@@ -11,10 +11,10 @@ include(cmakepp_lang/utilities/return)
 # This function will create a deep copy of an existing object regardless of
 # what type it is.
 #
-# :param _c_result: The name of the variable to return the result in.
-# :type _c_result: desc
-# :param _c_obj2copy: The object we are deep copying
-# :type _c_obj2copy: str
+# :param result: The name of the variable to return the result in.
+# :type result: desc
+# :param obj2copy: The object we are deep copying
+# :type obj2copy: str
 # :returns: ``_c_result`` will be set to a deep copy of ``_c_obj2copy``.
 # :rtype: str
 #

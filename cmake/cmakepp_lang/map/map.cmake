@@ -17,12 +17,12 @@ include(cmakepp_lang/utilities/unique_id)
 # the specified key. If the key does not exist, a list will be started with the
 # provided value and stored under the specified key.
 #
-# :param _ma_this: The map we modifying the state of.
-# :type _ma_this: map
-# :param _ma_key: The key whose value is being appended to.
-# :type _ma_key: str
-# :param _ma_value: Value we are appending to the list stored under ``_ma_key``.
-# :type _ma_value: str
+# :param this: The map we modifying the state of.
+# :type this: map
+# :param key: The key whose value is being appended to.
+# :type key: str
+# :param value: Value we are appending to the list stored under ``_ma_key``.
+# :type value: str
 #
 # Error Checking
 # ==============
@@ -53,8 +53,8 @@ endfunction()
 # value to associate with that key. If no key-value pairs are provided the
 # resulting map will be empty.
 #
-# :param _mc_result: Name for variable which will hold the new map.
-# :type _mc_result: desc
+# :param result: Name for variable which will hold the new map.
+# :type result: desc
 # :param \*args: A list whose elements will be considered pairwise to be the
 #               initial key-value pairs populating the map.
 # :returns: ``_mc_result`` will be set to the newly created Map instance.
@@ -96,12 +96,12 @@ endfunction()
 # can use ``cpp_map_has_key`` to determine whether the map does not have the
 # key or if the key was simply set to the empty string.
 #
-# :param _mg_this: The map storing the key-value pairs.
-# :type _mg_this: map
-# :param _mg_value: Name for the identifier to save the value to.
-# :type _mg_value: desc
-# :param _mg_key: The key whose value we want.
-# :type _mg_key: str
+# :param this: The map storing the key-value pairs.
+# :type this: map
+# :param value: Name for the identifier to save the value to.
+# :type value: desc
+# :param key: The key whose value we want.
+# :type key: str
 # :returns: ``_mg_value`` will be set to the value associated with ``_mg_key``.
 #           If ``_mg_key`` has no value associated with it ``_mg_value`` will be
 #           set to the empty string.
@@ -132,12 +132,12 @@ endfunction()
 # This function can be used to set the value of a map's key. If the key has a
 # value associated with it already that value will be overridden.
 #
-# :param _ms_this: The map whose key is going to be set.
-# :type _ms_this: map
-# :param _ms_key: The key whose value is going to be set.
-# :type _ms_key: str
-# :param _ms_value: The value to set the key to.
-# :type _ms_value: str
+# :param this: The map whose key is going to be set.
+# :type this: map
+# :param key: The key whose value is going to be set.
+# :type key: str
+# :param value: The value to set the key to.
+# :type value: str
 #
 # Error Checking
 # ==============
@@ -167,10 +167,10 @@ endfunction()
 # Public API for interacting with Map instances.
 #
 #
-# :param _m_mode: The name of the member function to call.
-# :type _m_mode: desc
-# :param _m_this: The Map instance the member function is being called on.
-# :type _m_this: map
+# :param mode: The name of the member function to call.
+# :type mode: desc
+# :param this: The Map instance the member function is being called on.
+# :type this: map
 # :param \*args: Any additional arguments required by the specified member
 #               function.
 #

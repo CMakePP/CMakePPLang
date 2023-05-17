@@ -20,10 +20,10 @@ include(cmakepp_lang/serialization/serialization)
 # my_list will be transformed to the packed list string:
 # a_CPP_0_CPP_b_CPP_1_CPP_c_CPP_2_CPP_cc_CPP_1_CPP_bb_CPP_0_CPP_aa
 #
-# :param _pl_result: The name for the variable which will hold the result.
-# :type _pl_result: desc
-# :param _pl_list: The list we want to pack into a string.
-# :type _pl_result: list
+# :param result: The name for the variable which will hold the result.
+# :type result: desc
+# :param list: The list we want to pack into a string.
+# :type result: list
 # :returns: ``_pl_result`` will be set to the resulting packed list string.
 # :rtype: desc
 #
@@ -99,10 +99,10 @@ endfunction()
 # This string will be transformed into a list that serializes to:
 # [ "a", [ "b", [ "c", "cc" ], "bb" ], "aa" ]
 #
-# :param _up_result: The name for the variable which will hold the result.
-# :type _up_result: desc
-# :param _up_packed_list: The string we want to transform to a CMake list.
-# :type _up_packed_list: desc
+# :param result: The name for the variable which will hold the result.
+# :type result: desc
+# :param packed_list: The string we want to transform to a CMake list.
+# :type packed_list: desc
 # :returns: ``_up_result`` will be set to the resulting CMake list.
 # :rtype: desc
 #

@@ -8,10 +8,10 @@ include(cmakepp_lang/types/literals)
 # literals known to CMakePP. The actual string comparison is done in a
 # case-insensitive manner.
 #
-# :param _ib_return: Name of the variable used to hold the return.
+# :param return: Name of the variable used to hold the return.
 # :type  _ib_return: desc
-# :param _ib_str2check: The string we are checking for its bool-ness
-# :type _ib_str2check: str
+# :param str2check: The string we are checking for its bool-ness
+# :type str2check: str
 # :returns: ``_ib_return`` will contain ``TRUE`` if ``_ib_str2check`` is one
 #           of the recognized boolean literals and ``FALSE`` otherwise.
 # :rtype: bool

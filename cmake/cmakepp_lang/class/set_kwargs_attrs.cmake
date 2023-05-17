@@ -16,8 +16,8 @@ include(cmakepp_lang/types/cmakepp_type)
 # This function would assign the following for my_instance's attributes"
 # a = red, b = orange;yellow;green, c = blue
 #
-# :param _ska_this: The object whose KWARG CTOR was called
-# :type _ska_this: obj
+# :param this: The object whose KWARG CTOR was called
+# :type this: obj
 #
 # Error Checking
 # ==============

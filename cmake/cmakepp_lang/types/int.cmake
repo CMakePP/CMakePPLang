@@ -8,10 +8,10 @@ include_guard()
 # this means that strings like ``" 2"`` are not recognized as integers by this
 # function (note the space in ``" 2"``).
 #
-# :param _ii_return: The name to use for the variable holding the result.
-# :type _ii_return: desc
-# :param _ii_str2check: The string which may be an integer.
-# :type _ii_str2check: str
+# :param return: The name to use for the variable holding the result.
+# :type return: desc
+# :param str2check: The string which may be an integer.
+# :type str2check: str
 # :returns: ``_ii_return`` will be set to ``TRUE`` if ``_ii_str2check`` is an
 #           integer and ``FALSE`` otherwise.
 # :rtype: bool

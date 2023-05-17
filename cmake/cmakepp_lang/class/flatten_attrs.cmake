@@ -10,8 +10,8 @@ include(cmakepp_lang/asserts/asserts)
 # This function removes all the attributes from an object's subobjects and
 # adds them to that object.
 #
-# :param _fa_this: The objects whose attributes will be flattened.
-# :type _fa_this: obj
+# :param this: The objects whose attributes will be flattened.
+# :type this: obj
 #
 # Error Checking
 # ==============
