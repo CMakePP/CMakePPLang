@@ -3,7 +3,8 @@ include(cmakepp_lang/asserts/type)
 include(cmakepp_lang/utilities/assert)
 include(cmakepp_lang/utilities/enable_if_debug)
 
-#[[[ Ensures a function was called with the correct number and types of objects.
+#[[[
+# Ensures a function was called with the correct number and types of objects.
 #
 # This function encapsulates the logic required to make sure that a CMake
 # function was called with the correct numer and types of arguments. It should
@@ -12,15 +13,15 @@ include(cmakepp_lang/utilities/enable_if_debug)
 # that. This function involves somewhat expensive error-checking and will only
 # run if CMakePP is run in debug mode.
 #
-# :param _cas_argv: The values of the arguments which were passed to the caller.
-# :type _cas_argv: list
+# :param argv: The values of the arguments which were passed to the caller.
+# :type argv: list
 # :param \*args: The types that each argument should obey. Users can pass
 #               ``args`` as a type to indicate that their function is variadic.
 #               If provided, ``args`` must be the last type.
 # :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is in debug mode.
 #
-# Example Usage:
-# ==============
+# Example Usage
+# =============
 #
 # This function is intended to be called first thing inside as many CMakePP and
 # user functions as possible. A typical use case looks like:

@@ -1,7 +1,8 @@
 include_guard()
 include(cmakepp_lang/serialization/serialization)
 
-#[[[ Transforms a CMake list into a string that can be passed down through
+#[[[
+# Transforms a CMake list into a string that can be passed down through
 #    function calls and then transformed back to the original CMake list that
 #    retains the original nesting structure of the list.
 #
@@ -19,12 +20,16 @@ include(cmakepp_lang/serialization/serialization)
 # my_list will be transformed to the packed list string:
 # a_CPP_0_CPP_b_CPP_1_CPP_c_CPP_2_CPP_cc_CPP_1_CPP_bb_CPP_0_CPP_aa
 #
-# :param _pl_result: The name for the variable which will hold the result.
-# :type _pl_result: desc
-# :param _pl_list: The list we want to pack into a string.
-# :type _pl_result: list
+# :param result: The name for the variable which will hold the result.
+# :type result: desc
+# :param list: The list we want to pack into a string.
+# :type result: list
 # :returns: ``_pl_result`` will be set to the resulting packed list string.
 # :rtype: desc
+#
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                               debug mode or not.
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #
 # Error Checking
 # ==============
@@ -32,9 +37,6 @@ include(cmakepp_lang/serialization/serialization)
 # If CMakePP is run in debug mode ``cpp_pack_list`` will assert that it has
 # been called with two arguments and that those arguments are of the correct
 # types.
-#
-# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
-#                               debug mode or not.
 #]]
 function(cpp_pack_list _pl_result _pl_list)
     cpp_assert_signature("${ARGV}" desc list)
@@ -83,7 +85,8 @@ function(cpp_pack_list _pl_result _pl_list)
     set("${_pl_result}" "${_pl_packed_list}" PARENT_SCOPE)
 endfunction()
 
-#[[[ Transforms a string generated from a list being passed to cpp_pack_list
+#[[[
+# Transforms a string generated from a list being passed to cpp_pack_list
 #    back into the original CMake list, retaining the nesting structure.
 #
 # This function will take a packed list string and replace the "_CPP_{N}_CPP_"
@@ -97,10 +100,10 @@ endfunction()
 # This string will be transformed into a list that serializes to:
 # [ "a", [ "b", [ "c", "cc" ], "bb" ], "aa" ]
 #
-# :param _up_result: The name for the variable which will hold the result.
-# :type _up_result: desc
-# :param _up_packed_list: The string we want to transform to a CMake list.
-# :type _up_packed_list: desc
+# :param result: The name for the variable which will hold the result.
+# :type result: desc
+# :param packed_list: The string we want to transform to a CMake list.
+# :type packed_list: desc
 # :returns: ``_up_result`` will be set to the resulting CMake list.
 # :rtype: desc
 #

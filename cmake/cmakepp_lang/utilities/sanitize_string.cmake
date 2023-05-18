@@ -1,6 +1,7 @@
 include_guard()
 
-#[[[ Converts the input string into a uniform, filesystem-safe string.
+#[[[
+# Converts the input string into a uniform, filesystem-safe string.
 #
 # Strings in CMake are case-sensitive in some contexts and case-insensitive in
 # others. This function encapsulates the logic for converting a string to a
@@ -9,10 +10,10 @@ include_guard()
 # "sanitized" string is suitable for use as a key in a map, part of a variable's
 # name, or a C/C++ function name.
 #
-# :param _ss_result: Name for variable which will hold the result.
-# :type _ss_result: desc
-# :param _ss_input: The string we are sanitizing.
-# :type _ss_input: str
+# :param result: Name for variable which will hold the result.
+# :type result: desc
+# :param input: The string we are sanitizing.
+# :type input: str
 # :returns: ``_ss_result`` will be set to the sanitized string.
 # :rtype: str
 #]]

@@ -3,15 +3,20 @@ include(cmakepp_lang/object/object)
 include(cmakepp_lang/map/map)
 include(cmakepp_lang/asserts/asserts)
 
-#[[[ Flattens the attributes from an objects subobjects into that objects
+#[[[
+# Flattens the attributes from an objects subobjects into that objects
 # attributes.
 #
 # This function removes all the attributes from an object's subobjects and
 # adds them to that object.
 #
-# :param _fa_this: The objects whose attributes will be flattened.
-# :type _fa_this: obj
+# :param this: The objects whose attributes will be flattened.
+# :type this: obj
 #
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                               debug mode or not.
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
+# 
 # Error Checking
 # ==============
 #
@@ -19,10 +24,6 @@ include(cmakepp_lang/asserts/asserts)
 # with exactly one argument and that that argument is an object. If this
 # assertion fails an error will be raised. These checks are only performed if
 # CMakePP is run in debug mode.
-#
-# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
-#                               debug mode or not.
-# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(_cpp_flatten_attrs _fa_this)
     cpp_assert_signature("${ARGV}" obj)

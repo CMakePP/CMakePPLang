@@ -6,15 +6,16 @@ include(cmakepp_lang/types/cmakepp_type)
 include(cmakepp_lang/class/find_ctor)
 include(cmakepp_lang/class/flatten_attrs)
 
-#[[[ Handles the construction of a class instance.
+#[[[
+# Handles the construction of a class instance.
 #
 # This function handles the construction of a new class and calls to the
 # constructors for base classes.
 #
-# :param _cc_this: The handle to the object that will be constructed.
-# :type _cc_this: desc
-# :param _cc_type: The class we are calling the constructor for.
-# :type _cc_type: class
+# :param this: The handle to the object that will be constructed.
+# :type this: desc
+# :param type: The class we are calling the constructor for.
+# :type type: class
 # :param \*args: The arguments the constructor was called with (not including
 #               the instance name and class).
 # :returns: ``_cc_this`` will be set to the mangled name of the newly

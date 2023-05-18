@@ -3,7 +3,8 @@ include(cmakepp_lang/class/detail/bases)
 include(cmakepp_lang/object/object)
 include(cmakepp_lang/types/cmakepp_type)
 
-#[[[ Reads KWARGS and assigns sets the appropriate attributes values.
+#[[[
+# Reads KWARGS and assigns sets the appropriate attributes values.
 #
 # This function takes in an object (an instance of a class) and the KWARGS
 # passed to that object's CTOR. It parses the keywords and values from those
@@ -15,18 +16,18 @@ include(cmakepp_lang/types/cmakepp_type)
 # This function would assign the following for my_instance's attributes"
 # a = red, b = orange;yellow;green, c = blue
 #
-# :param _ska_this: The object whose KWARG CTOR was called
-# :type _ska_this: obj
+# :param this: The object whose KWARG CTOR was called
+# :type this: obj
+#
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                               debug mode or not.
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #
 # Error Checking
 # ==============
 #
 # If CMakePP is being run in debug mode this function will ensure that it was
 # called with and object as the first argument.
-#
-# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
-#                               debug mode or not.
-# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #
 # Additionally, this function will ensure that the proper syntax is used for
 # the list of KWARGS. That is the KWARGS must consist of pairings of attribute

@@ -1,22 +1,23 @@
 include_guard()
 include(cmakepp_lang/utilities/global)
 
-#[[[ Encapsulates the process of getting a CMakePP object's type.
+#[[[
+# Encapsulates the process of getting a CMakePP object's type.
 #
 # CMakePP introduces several additional built-in types as well as the ability
 # for users to define their own types. This function encapsulates the logic
 # to determine if an object is a CMakePP type, and if it is, how to determine
 # that type.
 #
-# :param _gct_is_cpp_obj: Identifier for the variable which will hold whether or
+# :param is_cpp_obj: Identifier for the variable which will hold whether or
 #                         not ``_gct_obj`` is a CMakePP object.
-# :type _gct_is_cpp_obj: desc
-# :param _gct_type: Identifier to hold the type of ``_gct_obj`` if it is indeed
+# :type is_cpp_obj: desc
+# :param type: Identifier to hold the type of ``_gct_obj`` if it is indeed
 #                   a CMakePP object.
-# :type _gct_type: desc
-# :param _gct_obj: The object for which we want to know if it is a CMakePP
+# :type type: desc
+# :param obj: The object for which we want to know if it is a CMakePP
 #                  object, and if it is, what is its type.
-# :type _gct_obj: str
+# :type obj: str
 #
 # :returns: ``_gct_is_cpp_obj`` will be set to ``TRUE`` if ``_gct_obj`` is a
 #           CMakePP built-in type or a user-defined type and ``FALSE``
@@ -51,7 +52,8 @@ macro(_cpp_get_cmakepp_type _gct_is_cpp_obj _gct_type _gct_obj)
     endif()
 endmacro()
 
-#[[[ Encapsulates the process of setting a CMakePP object's type.
+#[[[
+# Encapsulates the process of setting a CMakePP object's type.
 #
 # CMakePP introduces several additional built-in types as well as the ability
 # for users to define their own types. This function encapsulates the logic
@@ -63,11 +65,11 @@ endmacro()
 #   description. It is this function which makes the CMakePP runtime recognize
 #   the "this"-pointer as actually-being of the specified type.
 #
-# :param _sct_this: The "this"-pointer for the CMakePP object we are setting the
+# :param this: The "this"-pointer for the CMakePP object we are setting the
 #                   type of.
-# :type _sct_this: desc
-# :param _sct_type: The type we are making ``_sct_this``.
-# :type _sct_type: type
+# :type this: desc
+# :param type: The type we are making ``_sct_this``.
+# :type type: type
 #
 # Error Checking
 # ==============

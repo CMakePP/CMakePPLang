@@ -22,15 +22,16 @@ include(cmakepp_lang/types/implicitly_convertible)
 include(cmakepp_lang/types/type_of)
 include(cmakepp_lang/utilities/return)
 
-#[[[ Dispatches based on type to the appropriate serialization implementation.
+#[[[
+# Dispatches based on type to the appropriate serialization implementation.
 #
 # This function is used to encapsulate the logic required to dispatch to the
 # correct serialization implementation based on the type of the input value.
 #
-# :param _sv_return: The name for the variable which will hold the result.
-# :type _sv_return: desc
-# :param _sv_value: The value we are serializing.
-# :type _sv_value: str
+# :param return: The name for the variable which will hold the result.
+# :type return: desc
+# :param value: The value we are serializing.
+# :type value: str
 # :returns: ``_sv_return`` will be set to the JSON serialized form of
 #           ``_sv_value``.
 # :rtype: desc

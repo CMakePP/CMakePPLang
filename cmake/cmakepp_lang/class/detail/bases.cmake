@@ -1,7 +1,8 @@
 include_guard()
 include(cmakepp_lang/utilities/global)
 
-#[[[ Encapsulates the logic for retrieving the base classes of a user-defined
+#[[[
+# Encapsulates the logic for retrieving the base classes of a user-defined
 #    type.
 #
 # The type system needs to know which base classes a user-defined class can be
@@ -16,11 +17,11 @@ include(cmakepp_lang/utilities/global)
 #    macro because all it does is set a variable for the caller, thus we save a
 #    call to ``cpp_return``.
 #
-# :param _cgb_this: The class instance we are retrieving the bases of.
-# :type _cgb_this: class
-# :param _cgb_bases: An identifier to which the list of base classes will be
+# :param this: The class instance we are retrieving the bases of.
+# :type this: class
+# :param bases: An identifier to which the list of base classes will be
 #                    assigned.
-# :param _cgb_bases: desc
+# :param bases: desc
 # :returns: ``_cgb_bases`` will be set to the list of base classes that the
 #           user-defined type stored in ``_cgb_this`` derives from. This is not
 #           the list of base classes that the ``Class`` class derives from.
@@ -43,7 +44,8 @@ macro(_cpp_class_get_bases _cgb_this _cgb_bases)
     cpp_get_global("${_cgb_bases}" "${_cgb_this}__bases")
 endmacro()
 
-#[[[ Encapsulates the logic for setting the base classes of a user-defined
+#[[[
+# Encapsulates the logic for setting the base classes of a user-defined
 #    type.
 #
 # The type system needs to know which base classes a user-defined class can be
@@ -51,11 +53,14 @@ endmacro()
 # list to avoid a direct coupling to how that list is stored. If the bases for a
 # class have already been set this function will overwrite the previous list.
 #
+# :param this: The class instance we are setting the bases of.
+# :type this: class
+# :param bases: An identifier containing the list of base classes.
+# :param bases: [type]*
 #
-# :param _csb_this: The class instance we are setting the bases of.
-# :type _csb_this: class
-# :param _csb_bases: An identifier containing the list of base classes.
-# :param _csb_bases: [type]*
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                               debug mode or not.
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #
 # Error Checking
 # ==============
@@ -63,10 +68,6 @@ endmacro()
 # If CMakePP is run in debug mode (and only when it is) this function will
 # assert that the caller supplied exactly two arguments and that those arguments
 # have the correct types.
-#
-# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
-#                               debug mode or not.
-# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(_cpp_class_set_bases _csb_this _csb_bases)
     include(cmakepp_lang/asserts/signature)

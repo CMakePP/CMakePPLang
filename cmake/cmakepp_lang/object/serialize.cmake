@@ -2,7 +2,8 @@ include_guard()
 include(cmakepp_lang/asserts/signature)
 include(cmakepp_lang/serialization/serialization)
 
-#[[[ Serializes an object into JSON format.
+#[[[
+# Serializes an object into JSON format.
 #
 # This function is the default implementation for serializing an object. Derived
 # classes are free to override it with their own implementations. This
@@ -10,13 +11,17 @@ include(cmakepp_lang/serialization/serialization)
 # comprised of the "this" pointer (as the key) and the serialized state of the
 # object as the value.
 #
-# :param _os_this: The object we are serializing.
-# :type _os_this: obj
-# :param _os_result: Name for the identifier which will hold the serialized
+# :param this: The object we are serializing.
+# :type this: obj
+# :param result: Name for the identifier which will hold the serialized
 #                    value.
-# :type _os_result: desc
+# :type result: desc
 # :returns: ``_os_result`` will be set to the JSON serialized representation of
 #           ``_os_this``.
+#
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                               debug mode or not.
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #
 # Error Checking
 # ==============
@@ -24,10 +29,6 @@ include(cmakepp_lang/serialization/serialization)
 # If CMakePP is run in debug mode (and only if it is) this function will assert
 # that the caller has provided exactly two arguments and that those arguments
 # have the correct types. If any assertion fails an error is raised.
-#
-# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
-#                               debug mode or not.
-# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(_cpp_object_serialize _os_this _os_result)
     cpp_assert_signature("${ARGV}" obj desc)
@@ -39,13 +40,14 @@ function(_cpp_object_serialize _os_this _os_result)
     set("${_os_result}" "${_os_temp}" PARENT_SCOPE)
 endfunction()
 
-#[[[ Prints an object to standard out.
+#[[[
+# Prints an object to standard out.
 #
 # This function is code factorization for serializing an object and printing the
 # serialized form to standard out.
 #
-# :param _op_this: The object we are printing to standard out.
-# :type _op_this: obj
+# :param this: The object we are printing to standard out.
+# :type this: obj
 #
 # Error Checking
 # ==============

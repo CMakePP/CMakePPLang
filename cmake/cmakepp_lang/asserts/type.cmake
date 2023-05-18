@@ -4,18 +4,19 @@ include(cmakepp_lang/types/type_of)
 include(cmakepp_lang/utilities/assert)
 include(cmakepp_lang/utilities/enable_if_debug)
 
-#[[[ Tests that the provided object can be implicitly cast to the provided type.
+#[[[
+# Tests that the provided object can be implicitly cast to the provided type.
 #
 # If CMakePP is run in debug mode, this function will throw an error if the
 # provided object is not implicitly convertible to the provided type. If CMakePP
 # is not being run in debug mode, then this function is a no-op.
 #
-# :param _at_type: The type that the type of the object must be implicitly
+# :param type: The type that the type of the object must be implicitly
 #                  convertible to.
-# :type _at_type: type
-# :param _at_obj: The object whose type must be implicitly convertible to
+# :type type: type
+# :param obj: The object whose type must be implicitly convertible to
 #                 ``_at_type``.
-# :type _at_obj: str
+# :type obj: str
 # :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode
 # :vartype CMAKEPP_LANG_DEBUG_MODE: bool

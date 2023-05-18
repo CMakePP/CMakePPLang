@@ -17,17 +17,18 @@ include_guard()
 include(cmakepp_lang/asserts/signature)
 include(cmakepp_lang/serialization/detail/serialize_value)
 
-#[[[ Public API for serializing a value to JSON.
+#[[[
+# Public API for serializing a value to JSON.
 #
 # When a caller outside of the serialization submodule needs an object
 # serialized they should go through this API. This API wraps the (usually)
 # recursive procedure required to serialize a complicated object factoring out
 # the pieces that only need to be done once.
 #
-# :param _s_result: The name for the variable which will hold the result.
-# :type _s_result: desc
-# :param _s_value: The value we are serializing.
-# :type _s_value: str
+# :param result: The name for the variable which will hold the result.
+# :type result: desc
+# :param value: The value we are serializing.
+# :type value: str
 # :returns: ``_s_result`` will be set to the serialized form of``_s_value``.
 # :rtype: desc
 #]]

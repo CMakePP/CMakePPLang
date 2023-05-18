@@ -7,7 +7,8 @@ include(cmakepp_lang/types/implicitly_convertible)
 include(cmakepp_lang/utilities/compare_lists)
 include(cmakepp_lang/utilities/return)
 
-#[[[ Compares two values for equivalency.
+#[[[
+# Compares two values for equivalency.
 #
 # This function can be used to compare any two CMakePP objects for equality. For
 # native CMake types, like booleans and integers, equality is defined as being
@@ -15,16 +16,20 @@ include(cmakepp_lang/utilities/return)
 # instances of user-defined classes to ensure they have the same state. If two
 # objects have different types they are defined to be unequal.
 #
-# :param _e_result: The name to use for variable holding the result.
-# :type _e_result: desc
-# :param _e_lhs: One of the two values involved in the comparison.
-# :type _e_lhs: str
-# :param _e_rhs: The other value involved in the comparison
-# :type _e_rhs: str
+# :param result: The name to use for variable holding the result.
+# :type result: desc
+# :param lhs: One of the two values involved in the comparison.
+# :type lhs: str
+# :param rhs: The other value involved in the comparison
+# :type rhs: str
 # :returns: ``_e_result`` will be set to ``TRUE`` if ``_e_lhs`` compares equal
 #           to ``_e_rhs`` and ``FALSE`` otherwise.
 # :rtype: bool
 #
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                               debug mode or not.
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
+# 
 # Error Checking
 # ==============
 #
@@ -32,10 +37,6 @@ include(cmakepp_lang/utilities/return)
 # being called with exactly three arguments and that those arguments are of the
 # correct types. If any of these asserts fail an error will be raised. These
 # errors are only checked for in debug mode.
-#
-# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
-#                               debug mode or not.
-# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(cpp_equal _e_result _e_lhs _e_rhs)
     cpp_assert_signature("${ARGV}" desc str str)

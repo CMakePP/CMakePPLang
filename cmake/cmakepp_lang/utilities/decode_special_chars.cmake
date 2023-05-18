@@ -2,7 +2,8 @@ include_guard()
 
 include(cmakepp_lang/utilities/special_chars_lookup)
 
-#[[[ Decodes special characters to protect them during function passes.
+#[[[
+# Decodes special characters to protect them during function passes.
 #
 # This function decodes special characters that need to be escaped in a CMake
 # string to protect them while being passed as function parameters through 
@@ -12,16 +13,16 @@ include(cmakepp_lang/utilities/special_chars_lookup)
 # The special characters handled are ``$;"\\``. For more information about
 # why this is necessary, see documentation for ``cpp_encode_special_chars``.
 #
-# :param _dsc_argn: The argument list. This should have at least one string in
+# :param argn: The argument list. This should have at least one string in
 #                   it, otherwise this function will have nothing to encode.
-# :type _dsc_argn: list
-# :param _dsc_return_argn: Return variable for the encoded argument list.
-# :type _dsc_return_argn: list
+# :type argn: list
+# :param return_argn: Return variable for the encoded argument list.
+# :type return_argn: list
 # :returns: The list of arguments with special characters encoded.
 # :rtype: list
 #
-# Example Usage:
-# ==============
+# Example Usage
+# =============
 #
 # See documentation for ``cpp_encode_special_chars`` for usage of both the
 # encoding and decoding functions.

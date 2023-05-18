@@ -16,17 +16,18 @@
 include_guard()
 include(cmakepp_lang/serialization/detail/serialize_value)
 
-#[[[ Serializes a CMake list into JSON format.
+#[[[
+# Serializes a CMake list into JSON format.
 #
 # This function will serialize a native CMake list into a JSON list. This means
 # the contents of the list will be enclosed in ``[]`` and the contents of the
 # list stored in a comma-separated list whose elements are the serialized
 # values.
 #
-# :param _sl_return: The name for the variable which will hold the result.
-# :type _sl_return: desc
-# :param _sl_value: The CMake list we are serializing.
-# :type _sl_value: list
+# :param return: The name for the variable which will hold the result.
+# :type return: desc
+# :param value: The CMake list we are serializing.
+# :type value: list
 # :returns: ``_sl_return`` will be set to the JSON serialized form of
 #           ``_sl_value``.
 # :rtype: desc

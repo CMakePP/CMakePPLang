@@ -4,7 +4,8 @@ include(cmakepp_lang/map/map)
 include(cmakepp_lang/utilities/global)
 include(cmakepp_lang/utilities/return)
 
-#[[[ Compares two objects for equality.
+#[[[
+# Compares two objects for equality.
 #
 # This function is the default equality comparison for all user-defined classes.
 # It can be overridden by the derived class if a different implementation is
@@ -12,15 +13,19 @@ include(cmakepp_lang/utilities/return)
 # most-derived type and that their states compare equal (their states are stored
 # in maps and we simply compare the maps).
 #
-# :param _oe_this: One of the two Object instances being compared.
-# :type _oe_this: obj
-# :param _oe_result: Name for variable which will hold the comparison's result.
-# :type _oe_result: desc
-# :param _oe_other: The other Object instance being compared.
-# :type _oe_other: obj
+# :param this: One of the two Object instances being compared.
+# :type this: obj
+# :param result: Name for variable which will hold the comparison's result.
+# :type result: desc
+# :param other: The other Object instance being compared.
+# :type other: obj
 # :returns: ``_oe_result`` will be set to ``TRUE`` if the instances are equal
 #           and ``FALSE`` otherwise.
 # :rtype: bool
+#
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                               debug mode or not.
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #
 # Error Checking
 # ==============
@@ -29,10 +34,6 @@ include(cmakepp_lang/utilities/return)
 # ensure that the caller has provided exactly three arguments and that the
 # arguments are of the correct types. If this is not the case an error will be
 # raised.
-#
-# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
-#                               debug mode or not.
-# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(_cpp_object_equal _oe_this _oe_result _oe_other)
     cpp_assert_signature("${ARGV}" obj desc obj)

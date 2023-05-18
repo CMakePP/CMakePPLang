@@ -3,7 +3,8 @@ include(cmakepp_lang/map/map)
 include(cmakepp_lang/object/get_meta_attr)
 include(cmakepp_lang/utilities/return)
 
-#[[[ Core of the routine which retrieves the attributes.
+#[[[
+# Core of the routine which retrieves the attributes.
 #
 # Attributes need to be searched for using depth-first search. This function
 # implements the part of the search which is done recursively for each class of
@@ -11,16 +12,16 @@ include(cmakepp_lang/utilities/return)
 # regardless of whether or not the object has the requested attribute. If the
 # object does not
 #
-# :param _ogag_this: The instance in which we are looking for the attribute.
-# :type _ogag_this: obj
-# :param _ogag_value: Identifier for the variable which will hold the value of
+# :param this: The instance in which we are looking for the attribute.
+# :type this: obj
+# :param value: Identifier for the variable which will hold the value of
 #                     the attribute.
-# :type _ogag_value: desc
-# :param _ogag_done: Identifier which will hold whether or not the recursion is
+# :type value: desc
+# :param done: Identifier which will hold whether or not the recursion is
 #                    done.
-# :type _ogag_done: desc
-# :param _ogag_attr: Name of the attribute we are looking for.
-# :type _ogag_attr: desc
+# :type done: desc
+# :param attr: Name of the attribute we are looking for.
+# :type attr: desc
 # :returns: ``_ogag_value`` will be set to the value of the attribute, if the
 #           object has the attribute and the empty string otherwise.
 #           ``_ogag_done`` will be set to ``TRUE`` if the object has the
@@ -72,7 +73,8 @@ function(_cpp_object_get_attr_guts _ogag_this _ogag_value _ogag_done _ogag_attr)
     set("${_ogag_done}" FALSE PARENT_SCOPE)
 endfunction()
 
-#[[[ Retrieves the value of an object's attribute.
+#[[[
+# Retrieves the value of an object's attribute.
 #
 # This is the "public" API (for the most part users shouldn't be going through
 # the Object API at all) for accessing the attributes of an Object instance.
@@ -80,22 +82,32 @@ endfunction()
 # of the call.
 #
 # Single Attribute GET Signature:
-#_cpp_object_get_attr(this value attribute)
+#
+# .. code-block:: cmake
+#
+#    _cpp_object_get_attr(this value attribute)
 #
 # Here "this" is the object to retrieve the attribute from, "value" is the
 # handle where the attribute is to be returned to the parent scope, and
 # "attribute" is the name of the attribute to be retrieved.
 #
 # Multiple Attribute GET Signature:
-# _cpp_object_get_attr(this prefix attrs)
+# 
+# .. code-block:: cmake
+# 
+#    _cpp_object_get_attr(this prefix attrs)
 #
 # Here is the object to retrieve the attributes from, prefix will be prepended
 # to the each attributes name and used as the handle where that attribute is
 # returned to the parent scope, and attributes is the list of attributes to
 # retrieve.
 #
-# :param _oga_this: The object whose attribute is being accessed.
-# :type _oga_this: obj
+# :param this: The object whose attribute is being accessed.
+# :type this: obj
+#
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                               debug mode or not.
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #
 # Error Checking
 # ==============
@@ -104,10 +116,6 @@ endfunction()
 # called with exactly three arguments and that the arguments have the correct
 # type. If any of these assertions fail an error will be raised. These errors
 # are only considered if CMakePP is being run in debug mode.
-#
-# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
-#                               debug mode or not.
-# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #
 # Additionally, this function will always assert that the object possesses the
 # requested attribute. If the object does not posses the attribute an error will
@@ -159,7 +167,8 @@ function(_cpp_object_get_attr _oga_this)
     endif()
 endfunction()
 
-#[[[ Sets the value of an Object instance's attribute.
+#[[[
+# Sets the value of an Object instance's attribute.
 #
 # This function is the "public" API (generally speaking users of CMakePP should
 # not be going through the Object API) for setting an Object's attribute. This
@@ -167,10 +176,10 @@ endfunction()
 # member function. If the object already has the specified attribute, this
 # function will overwrite its value.
 #
-# :param _osa_this: The Object instance whose attribute is being set.
-# :type _osa_this: obj
-# :param _osa_attr: The name of the attribute we are setting.
-# :type _osa_attr: desc
+# :param this: The Object instance whose attribute is being set.
+# :type this: obj
+# :param attr: The name of the attribute we are setting.
+# :type attr: desc
 # :param \*args: The value or values the attribute will be set as.
 #]]
 function(_cpp_object_set_attr _osa_this _osa_attr)

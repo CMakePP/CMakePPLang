@@ -1,6 +1,7 @@
 include_guard()
 
-#[[[ Syntactic sugar for returning a value from a function
+#[[[
+# Syntactic sugar for returning a value from a function
 #
 # CMake allows you to return variables by adding them to the parent namespace.
 # The best way to do this is to have the caller provide the function with an
@@ -29,8 +30,8 @@ include_guard()
 #   is created, then the ``cpp_return`` function could not act in the caller's
 #   scope, *i.e.*, the caller would still have to call ``set`` and ``return``.
 #
-# Example Usage:cpp_function_ctor
-# ===============================
+# Example Usage
+# =============
 #
 # The following shows how to write a function which has multiple return points.
 #
@@ -54,7 +55,6 @@ include_guard()
 #        set("${return_id_2}" "return_value_2")
 #        cpp_return("${return_id_1}" "${return_id_2}")
 #    endfunction()
-#
 #]]
 macro(cpp_return)
     foreach(_cr_rv ${ARGN})

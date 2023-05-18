@@ -1,28 +1,23 @@
 include_guard()
 include(cmakepp_lang/types/list)
 
-#[[[ Determines if a string is lexically convertible to an absolute filepath.
+#[[[
+# Determines if a string is lexically convertible to an absolute filepath.
 #
 # This function wraps a call to CMake's ``if(IS_ABSOLUTE ...)`` in order to
 # determine if the provided string is lexically convertible to an absolute
 # filepath.
 #
-# :param _ip_result: An identifier to hold the result.
-# :type _ip_result: identifier
-# :param _ip_str2check: The string which may be an absolute filepath.
-# :type _ip_str: str
+# :param result: An identifier to hold the result.
+# :type result: identifier
+# :param str2check: The string which may be an absolute filepath.
+# :type str: str
 # :returns: ``TRUE`` if ``_ip_str2check`` is an absolute filepath and
 #           ``FALSE`` otherwise. The result is returned via ``_cip_result``.
 # :rtype: bool
 #
-# Error Checking
-# ==============
-#
-# ``cpp_is_path`` will assert that the caller has provided exactly two
-# arguments. If this is not the case an error will be raised.
-#
-# Example Usage:
-# ==============
+# Example Usage
+# =============
 #
 # The following code snippet checks whether ${CMAKE_BINARY_DIR} is a relative
 # directory (it always is by default):
@@ -32,6 +27,12 @@ include(cmakepp_lang/types/list)
 #    include(cmakepp_lang/types/filepath)
 #    cpp_is_path(result "${CMAKE_BINARY_DIR}")
 #    message("Is a filepath: ${result}")  # Prints TRUE
+#
+# Error Checking
+# ==============
+#
+# ``cpp_is_path`` will assert that the caller has provided exactly two
+# arguments. If this is not the case an error will be raised.
 #]]
 function(cpp_is_path _ip_result _ip_str2check)
     if(NOT "${ARGC}" EQUAL 2)

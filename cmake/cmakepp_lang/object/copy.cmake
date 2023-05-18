@@ -5,18 +5,23 @@ include(cmakepp_lang/utilities/global)
 include(cmakepp_lang/utilities/return)
 include(cmakepp_lang/utilities/unique_id)
 
-#[[[ Deep copies an Object instance.
+#[[[
+# Deep copies an Object instance.
 #
 # This function is the default copy implementation for all user-defined objects.
 # It can be overridden in the base class if desired. The default implementation
 # simply deep copies recursively the entirety of the Object's state.
 #
-# :param _oc_this: The Object instance which is being copied.
-# :type _oc_this: obj
-# :param _oc_other: Name for the variable which will hold the copy.
-# :type _oc_other: desc
+# :param this: The Object instance which is being copied.
+# :type this: obj
+# :param other: Name for the variable which will hold the copy.
+# :type other: desc
 # :returns: ``_oc_other`` will be set to a deep copy of ``_oc_this``.
 # :rtype: obj
+#
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                               debug mode or not.
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #
 # Error Checking
 # ==============
@@ -24,10 +29,6 @@ include(cmakepp_lang/utilities/unique_id)
 # If CMakePP is run in debug mode (and only if CMakePP is run in debug mode)
 # this function will ensure that it was called with the correct number and types
 # of arguments.
-#
-# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
-#                               debug mode or not.
-# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(_cpp_object_copy _oc_this _oc_other)
     cpp_assert_signature("${ARGV}" obj desc)

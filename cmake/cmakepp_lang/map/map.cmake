@@ -10,18 +10,19 @@ include(cmakepp_lang/utilities/global)
 include(cmakepp_lang/utilities/return)
 include(cmakepp_lang/utilities/unique_id)
 
-#[[[ Appends to the value stored under the specified key.
+#[[[
+# Appends to the value stored under the specified key.
 #
 # This member function will append the provided value to the list stored under
 # the specified key. If the key does not exist, a list will be started with the
 # provided value and stored under the specified key.
 #
-# :param _ma_this: The map we modifying the state of.
-# :type _ma_this: map
-# :param _ma_key: The key whose value is being appended to.
-# :type _ma_key: str
-# :param _ma_value: Value we are appending to the list stored under ``_ma_key``.
-# :type _ma_value: str
+# :param this: The map we modifying the state of.
+# :type this: map
+# :param key: The key whose value is being appended to.
+# :type key: str
+# :param value: Value we are appending to the list stored under ``_ma_key``.
+# :type value: str
 #
 # Error Checking
 # ==============
@@ -43,7 +44,8 @@ function(cpp_map_append _ma_this _ma_key _ma_value)
     cpp_append_global("${_ma_this}_keys_${_ma_key}" "${_ma_value}")
 endfunction()
 
-#[[[ Constructs a new Map instance with the specified state (if provided)
+#[[[
+# Constructs a new Map instance with the specified state (if provided)
 #
 # This function creates a new Map instance. The caller may provided one or more
 # pairs of input to be used as the initial state. If provided, the pairs are
@@ -51,8 +53,8 @@ endfunction()
 # value to associate with that key. If no key-value pairs are provided the
 # resulting map will be empty.
 #
-# :param _mc_result: Name for variable which will hold the new map.
-# :type _mc_result: desc
+# :param result: Name for variable which will hold the new map.
+# :type result: desc
 # :param \*args: A list whose elements will be considered pairwise to be the
 #               initial key-value pairs populating the map.
 # :returns: ``_mc_result`` will be set to the newly created Map instance.
@@ -86,19 +88,20 @@ function(cpp_map_ctor _mc_result)
     cpp_return("${_mc_result}")
 endfunction()
 
-#[[[ Retrieves the value of the specified key.
+#[[[
+# Retrieves the value of the specified key.
 #
 # This function is used to retrieve the value associated with the provided key.
 # If a key has not been set this function will return the empty string. Users
 # can use ``cpp_map_has_key`` to determine whether the map does not have the
 # key or if the key was simply set to the empty string.
 #
-# :param _mg_this: The map storing the key-value pairs.
-# :type _mg_this: map
-# :param _mg_value: Name for the identifier to save the value to.
-# :type _mg_value: desc
-# :param _mg_key: The key whose value we want.
-# :type _mg_key: str
+# :param this: The map storing the key-value pairs.
+# :type this: map
+# :param value: Name for the identifier to save the value to.
+# :type value: desc
+# :param key: The key whose value we want.
+# :type key: str
 # :returns: ``_mg_value`` will be set to the value associated with ``_mg_key``.
 #           If ``_mg_key`` has no value associated with it ``_mg_value`` will be
 #           set to the empty string.
@@ -123,17 +126,18 @@ function(cpp_map_get _mg_this _mg_value _mg_key)
     cpp_return("${_mg_value}")
 endfunction()
 
-#[[[ Associates a value with the specified key.
+#[[[
+# Associates a value with the specified key.
 #
 # This function can be used to set the value of a map's key. If the key has a
 # value associated with it already that value will be overridden.
 #
-# :param _ms_this: The map whose key is going to be set.
-# :type _ms_this: map
-# :param _ms_key: The key whose value is going to be set.
-# :type _ms_key: str
-# :param _ms_value: The value to set the key to.
-# :type _ms_value: str
+# :param this: The map whose key is going to be set.
+# :type this: map
+# :param key: The key whose value is going to be set.
+# :type key: str
+# :param value: The value to set the key to.
+# :type value: str
 #
 # Error Checking
 # ==============
@@ -159,16 +163,21 @@ function(cpp_map_set _ms_this _ms_key _ms_value)
     endif()
 endfunction()
 
-#[[[ Public API for interacting with Map instances.
+#[[[
+# Public API for interacting with Map instances.
 #
 #
-# :param _m_mode: The name of the member function to call.
-# :type _m_mode: desc
-# :param _m_this: The Map instance the member function is being called on.
-# :type _m_this: map
+# :param mode: The name of the member function to call.
+# :type mode: desc
+# :param this: The Map instance the member function is being called on.
+# :type this: map
 # :param \*args: Any additional arguments required by the specified member
 #               function.
 #
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                               debug mode or not.
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
+# 
 # Error Checking
 # ==============
 #
@@ -177,8 +186,6 @@ endfunction()
 # arguments. In the event that the incorrect number or types of arguments have
 # been provided an error will be raised. These error checks are only done when
 # CMakePP is run in debug mode.
-#
-# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is b
 #]]
 function(cpp_map _m_mode _m_this)
     string(TOLOWER "${_m_mode}" _m_lc_mode)

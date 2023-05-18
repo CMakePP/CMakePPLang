@@ -15,16 +15,17 @@
 
 include_guard()
 
-#[[[ Serializes a string according to the JSON standard.
+#[[[
+# Serializes a string according to the JSON standard.
 #
 # This is the catch-all serialization for all CMakePP objects that do not have a
 # serialize routine and are not Map or List instances. A string in JSON is
 # simply the value enclosed in double quotes.
 #
-# :param _ss_return: Name for the variable which will hold the returned value.
-# :type _ss_return: desc
-# :param _ss_value: The value we are serializing.
-# :type _ss_value: str
+# :param return: Name for the variable which will hold the returned value.
+# :type return: desc
+# :param value: The value we are serializing.
+# :type value: str
 # :returns: ``_ss_return`` will be set to JSON serialized form of ``_ss_value``.
 # :rtype: desc
 #

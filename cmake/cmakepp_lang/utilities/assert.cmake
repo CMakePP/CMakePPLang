@@ -1,20 +1,21 @@
 include_guard()
 
-#[[[ Asserts that provided value is true.
+#[[[
+# Asserts that provided value is true.
 #
 # The ``cpp_assert`` function is code factorization for the very common scenario
 # where we want to crash the program if a condition is not met.
 #
-# :param _ca_cond: The condition which should be true. This can be anything that
+# :param cond: The condition which should be true. This can be anything that
 #                  can be passed to CMake's ``if`` statement; however, if the
 #                  condition is not a single argument it must be provided as a
 #                  list, *e.g.*, ``x STREQUAL x`` becomes ``x;STREQUAL;x``.
-# :type _ca_cond: bool or str or list(str)
-# :param _ca_desc: Human-readable description of the assertion.
-# :type _ca_desc: str
+# :type cond: bool or str or list(str)
+# :param desc: Human-readable description of the assertion.
+# :type desc: str
 #
-# Example Usage:
-# ==============
+# Example Usage
+# =============
 #
 # This first example shows how to use ``cpp_assert`` to ensure that an object is
 # a particular type (in this case an integer). It should be noted that this same

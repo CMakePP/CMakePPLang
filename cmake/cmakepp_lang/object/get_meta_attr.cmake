@@ -4,7 +4,8 @@ include(cmakepp_lang/map/map)
 include(cmakepp_lang/utilities/global)
 include(cmakepp_lang/utilities/return)
 
-#[[[ Encapsulates the process of retrieving an object's meta attributes.
+#[[[
+# Encapsulates the process of retrieving an object's meta attributes.
 #
 # Each Object instance has several attributes which are meant purely for use by
 # CMakePP to make the Object work. These attributes are special and sequestered
@@ -15,16 +16,20 @@ include(cmakepp_lang/utilities/return)
 # empty string. At the moment there is no way to distinguish between a
 # meta-attribute set to the empty string and a non-existing meta-attribute.
 #
-# :param _ogma_this: The object instance whose meta-attribute is being
+# :param this: The object instance whose meta-attribute is being
 #                    retrieved.
-# :type _ogma_this: obj
-# :param _ogma_result: Name for the variable which will hold the value.
-# :type _ogma_result: desc
-# :param _ogma_attr: The name of the meta-attribute we are retrieving.
-# :type _ogma_attr: desc
+# :type this: obj
+# :param result: Name for the variable which will hold the value.
+# :type result: desc
+# :param attr: The name of the meta-attribute we are retrieving.
+# :type attr: desc
 # :returns: ``_ogma_result`` will be set to the value of the attribute (if the
 #           attribute exists) and the empty string otherwise.
 # :rtype: str
+#
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                               debug mode or not.
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #
 # Error Checking
 # ==============
@@ -33,10 +38,6 @@ include(cmakepp_lang/utilities/return)
 # this function will assert that it has been called with exactly three arguments
 # and that those arguments have the correct types. If any assertion fails an
 # error will be raised.
-#
-# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
-#                               debug mode or not.
-# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(_cpp_object_get_meta_attr _ogma_this _ogma_result _ogma_attr)
     cpp_assert_signature("${ARGV}" obj desc desc)

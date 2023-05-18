@@ -7,21 +7,26 @@ include(cmakepp_lang/utilities/global)
 include(cmakepp_lang/utilities/return)
 include(cmakepp_lang/utilities/sanitize_string)
 
-#[[[ Constructs a new instance of the specified type.
+#[[[
+# Constructs a new instance of the specified type.
 #
 # This function constructs a new instance of the specified type. This should not
 # be confused with creating a new, default initialized Object instance which is
 # done with the ``_cpp_object_singleton`` function. The resulting instance will
 # be initialized to the default state for the specified type.
 #
-# :param _oc_this: Name for the variable which will hold the resulting instance.
-# :type _oc_this: desc
-# :param _oc_type: The most-derived type of the object we are creating.
-# :type _oc_type: type
+# :param this: Name for the variable which will hold the resulting instance.
+# :type this: desc
+# :param type: The most-derived type of the object we are creating.
+# :type type: type
 # :param \*args: The initial instances of each direct base class on which this
 #               instance should be built.
 # :return: ``_oc_this`` will be set to the newly created instance.
 # :rtype: obj
+#
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                               debug mode or not.
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #
 # Error Checking
 # ==============
@@ -29,10 +34,6 @@ include(cmakepp_lang/utilities/sanitize_string)
 # If CMakePP is being run in debug mode (and only if CMakePP is being run in
 # debug mode) this function will assert that it has been called with the correct
 # number and types of arguments. If an assertion fails an error will be raised.
-#
-# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
-#                               debug mode or not.
-# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(_cpp_object_ctor _oc_this _oc_type)
     cpp_assert_signature("${ARGV}" desc type args)

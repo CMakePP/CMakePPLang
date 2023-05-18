@@ -2,18 +2,23 @@ include_guard()
 include(cmakepp_lang/algorithm/copy)
 include(cmakepp_lang/asserts/signature)
 
-#[[[ Makes a deep copy of a Map instance.
+#[[[
+# Makes a deep copy of a Map instance.
 #
 # This function will deep copy (recursively) the contents of a map into a new
 # Map instance. The resulting instance will not alias the original map in any
 # way.
 #
-# :param _mc_this: The Map instance being copied.
-# :type _mc_this: map
-# :param _mc_other: The name of the variable which will hold the deep copy.
-# :type _mc_other: desc
+# :param this: The Map instance being copied.
+# :type this: map
+# :param other: The name of the variable which will hold the deep copy.
+# :type other: desc
 # :returns: ``_mc_other`` will be set to a deep copy of ``_mc_this``.
 # :rtype: map
+#
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                               debug mode or not.
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #
 # Error Checking
 # ==============
@@ -22,10 +27,6 @@ include(cmakepp_lang/asserts/signature)
 # has provided only two arguments and that those arguments are of the correct
 # types. This error check is only performed if CMakePP is being run in debug
 # mode.
-#
-# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
-#                               debug mode or not.
-# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(cpp_map_copy _mc_this _mc_other)
     cpp_assert_signature("${ARGV}" map desc)

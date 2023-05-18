@@ -10,7 +10,8 @@ include(cmakepp_lang/object/get_symbol)
 include(cmakepp_lang/object/serialize)
 include(cmakepp_lang/object/singleton)
 
-#[[[ Holds an instance of the ``obj`` class.
+#[[[
+# Holds an instance of the ``obj`` class.
 #
 # All instances of the ``obj`` class are identical and static (well strictly
 # speaking a malicious user could modify them). Thus for efficiency we make a

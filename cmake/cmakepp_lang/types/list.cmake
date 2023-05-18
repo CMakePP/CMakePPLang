@@ -1,6 +1,7 @@
 include_guard()
 
-#[[[ Determines if a string is lexically convertible to a CMake list.
+#[[[
+# Determines if a string is lexically convertible to a CMake list.
 #
 # CMake lists are strings that contain semicolons. While CMake's list command
 # will treat a string without a semicolon as a list with one element, for the
@@ -8,23 +9,16 @@ include_guard()
 # least two elements (*i.e.*, there must be a semicolon in it). This function
 # determines if the provided string meets this definition of a list.
 #
-# :param _il_result: Used as the name of the returned identifier.
-# :type _il_result: desc
-# :param _il_str2check: The string whose listy-ness is being questioned.
-# :type _il_str2check: str
+# :param result: Used as the name of the returned identifier.
+# :type result: desc
+# :param str2check: The string whose listy-ness is being questioned.
+# :type str2check: str
 # :returns: ``_il_result`` will be set to ``TRUE`` if ``_il_str2check`` is a
 #           list and ``FALSE`` otherwise.
 # :rtype: bool
 #
-# Error Checking
-# ==============
-#
-# ``cpp_is_list`` will assert that the caller has provided exactly two
-# arguments. If the caller has provided a different number of arguments than an
-# error will be raised.
-#
-# Example Usage:
-# ==============
+# Example Usage
+# =============
 #
 # The following snippet shows how to determine if a variable contains a list.
 #
@@ -34,6 +28,13 @@ include_guard()
 #    set(a_list 1 2 3)
 #    cpp_is_list(result "${a_list}")
 #    message("Is a list: ${result}")  # Will print TRUE
+#
+# Error Checking
+# ==============
+#
+# ``cpp_is_list`` will assert that the caller has provided exactly two
+# arguments. If the caller has provided a different number of arguments than an
+# error will be raised.
 #]]
 function(cpp_is_list _il_result _il_str2check)
     if(NOT "${ARGC}" EQUAL 2)

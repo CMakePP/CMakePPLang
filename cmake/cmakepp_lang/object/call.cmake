@@ -6,19 +6,20 @@ include(cmakepp_lang/utilities/encode_special_chars)
 include(cmakepp_lang/utilities/print_fxn_sig)
 include(cmakepp_lang/utilities/sanitize_string)
 
-#[[[ Determines the correct member function to call for the input.
+#[[[
+# Determines the correct member function to call for the input.
 #
 # This function is factored out of ``_cpp_object_call`` to avoid contaminating
 # the caller's namespace with temporary variables needed to lookup the symbol of
 # the member function we are calling.
 #
-# :param _ocg_this: The Object instance whose member function is being called.
-# :type _ocg_this: obj
-# :param _ocg_result: Identifier to hold the symbol of the function to call.
-# :type _ocg_result: desc
-# :param _ocg_method: The name of the method to call. The actual name is
+# :param this: The Object instance whose member function is being called.
+# :type this: obj
+# :param result: Identifier to hold the symbol of the function to call.
+# :type result: desc
+# :param method: The name of the method to call. The actual name is
 #                     case-insensitive.
-# :type _ocg_method: desc
+# :type method: desc
 # :param \*args: The arguments which are being forwarded to the member function.
 # :returns: ``_ocg_result`` will be set to the symbol (mangled name) of the
 #           member function to call.
@@ -57,17 +58,18 @@ function(_cpp_object_call_guts _ocg_this _ocg_result _ocg_method)
     set("${_ocg_result}" "${_ocg_symbol}" PARENT_SCOPE)
 endfunction()
 
-#[[[ Calls the specified member function.
+#[[[
+# Calls the specified member function.
 #
 # This is the "public" API (users of CMakePP should rarely need to go through
 # the Object class directly) for calling an Object instance's member function.
 # This function encapsulates the process of determining the correct overload to
 # call and actually invoking it.
 #
-# :param _oc_this: The Object instance whose member function is being called.
-# :type _oc_this: obj
-# :param _oc_method: The name of the member function to call.
-# :type _oc_method: desc
+# :param this: The Object instance whose member function is being called.
+# :type this: obj
+# :param method: The name of the member function to call.
+# :type method: desc
 # :param \*args: The arguments to forward to the member function (the required
 #               first argument of the ``this`` pointer is forwarded
 #               automatically and should not be provided in this list)
@@ -75,6 +77,10 @@ endfunction()
 #           using the mechanism of that function. If the member function does
 #           not return this function will not return.
 # :rtype: str
+# 
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                              debug mode or not.
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #
 # .. note::
 #
@@ -87,10 +93,6 @@ endfunction()
 # If CMakePP is run in debug mode (and only if CMakePP is run in debug mode)
 # this function will ensure that it was called with the correct number and types
 # of arguments. If it is not an error will be raised.
-#
-# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
-#                              debug mode or not.
-# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #
 # Additionally, this function will raise an error if the Object instance does
 # not contain a suitable overload for the provided arguments.

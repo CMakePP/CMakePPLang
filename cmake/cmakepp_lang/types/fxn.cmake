@@ -1,7 +1,8 @@
 include_guard()
 include(cmakepp_lang/types/cmakepp_type)
 
-#[[[ Determines if a string is lexically convertible to a command.
+#[[[
+# Determines if a string is lexically convertible to a command.
 #
 # This function wraps a call to CMake's ``if(COMMAND ...)`` in order to
 # determine if the provided string is lexically convertible to a command or not.
@@ -9,16 +10,16 @@ include(cmakepp_lang/types/cmakepp_type)
 # should be noted that for CMakePP functions it is the mangled name of the
 # function which is identified as a command.
 #
-# :param _if_result: Name for variable which will hold the result of the check.
-# :type _if_result: desc
-# :param _if_str2check: The string which may be a command.
-# :type _if_str: str
+# :param result: Name for variable which will hold the result of the check.
+# :type result: desc
+# :param str2check: The string which may be a command.
+# :type str: str
 # :returns: ``TRUE`` if ``_if_str2check`` is a command and ``FALSE`` otherwise. 
 #            The result is returned via ``_cip_result``.
 # :rtype: bool
 #
-# Example Usage:
-# ==============
+# Example Usage
+# =============
 #
 # The following code snippet checks whether ``add_subdirectory`` is a command:
 #

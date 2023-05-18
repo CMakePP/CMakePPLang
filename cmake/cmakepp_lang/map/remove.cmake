@@ -2,14 +2,19 @@ include_guard()
 include(cmakepp_lang/algorithm/copy)
 include(cmakepp_lang/asserts/signature)
 
-#[[[ Removes the specified keys from a map.
+#[[[
+# Removes the specified keys from a map.
 #
 # This function removes the key-value pairs for specified keys from a map.
 #
-# :param _r_this: The map that will have key-value pairs removed from it
-# :type _r_this: map
+# :param this: The map that will have key-value pairs removed from it
+# :type this: map
 # :param \*args: The keys to remove from _r_this.
 #
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                               debug mode or not.
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
+# 
 # Error Checking
 # ==============
 #
@@ -17,10 +22,6 @@ include(cmakepp_lang/asserts/signature)
 # argument passed to this function was a map. If this assertion fails an error
 # will be raised. These checks are only performed if CMakePP is run in debug
 # mode.
-#
-# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
-#                               debug mode or not.
-# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(cpp_map_remove _r_this)
     cpp_assert_signature("${ARGV}" map args)
