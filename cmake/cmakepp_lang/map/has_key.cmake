@@ -20,6 +20,10 @@ include(cmakepp_lang/utilities/sanitize_string)
 #           set for this map and ``FALSE`` otherwise.
 # :rtype: bool
 #
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                               debug mode or not.
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
+#
 # Error Checking
 # ==============
 #
@@ -27,10 +31,6 @@ include(cmakepp_lang/utilities/sanitize_string)
 # with exactly two arguments, and that those arguments have the correct types.
 # If these assertions fail an error will be raised. These checks are only
 # performed if CMakePP is run in debug mode.
-#
-# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
-#                               debug mode or not.
-# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(cpp_map_has_key _mhk_this _mhk_result _mhk_key)
     cpp_assert_signature("${ARGV}" map desc str)

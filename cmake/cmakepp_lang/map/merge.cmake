@@ -14,6 +14,10 @@ include(cmakepp_lang/asserts/signature)
 # :param other: The map whose key-value pairs will be added to _m_this.
 # :type other: map
 #
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                               debug mode or not.
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
+# 
 # Error Checking
 # ==============
 #
@@ -21,10 +25,6 @@ include(cmakepp_lang/asserts/signature)
 # with exactly two arguments, and that those arguments have the correct types.
 # If these assertions fail an error will be raised. These checks are only
 # performed if CMakePP is run in debug mode.
-#
-# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
-#                               debug mode or not.
-# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(cpp_map_merge _m_this _m_other)
     cpp_assert_signature("${ARGV}" map map)

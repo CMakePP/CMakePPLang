@@ -53,11 +53,14 @@ endmacro()
 # list to avoid a direct coupling to how that list is stored. If the bases for a
 # class have already been set this function will overwrite the previous list.
 #
-#
 # :param this: The class instance we are setting the bases of.
 # :type this: class
 # :param bases: An identifier containing the list of base classes.
 # :param bases: [type]*
+#
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                               debug mode or not.
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #
 # Error Checking
 # ==============
@@ -65,10 +68,6 @@ endmacro()
 # If CMakePP is run in debug mode (and only when it is) this function will
 # assert that the caller supplied exactly two arguments and that those arguments
 # have the correct types.
-#
-# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
-#                               debug mode or not.
-# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(_cpp_class_set_bases _csb_this _csb_bases)
     include(cmakepp_lang/asserts/signature)

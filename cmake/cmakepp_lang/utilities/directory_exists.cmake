@@ -14,15 +14,16 @@ include(cmakepp_lang/asserts/signature)
 #           ``FALSE``.
 # :rtype: bool*
 #
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                               debug mode or not.
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
+#
 # Error Checking
 # ==============
 #
 # If CMakePP is run in debug mode ``cpp_directory_exists`` will assert that it
 # has been called with two arguments and that those arguments are of the correct
 # types.
-#
-# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
-#                               debug mode or not.
 #]]
 function(cpp_directory_exists _cde_result _cde_dir)
     cpp_assert_signature("${ARGV}" desc path)

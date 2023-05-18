@@ -27,6 +27,10 @@ include(cmakepp_lang/utilities/return)
 #           ``FALSE`` if there is no suitable overload.
 # :rtype: str
 #
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                               debug mode or not.
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
+#
 # Error Checking
 # ==============
 #
@@ -34,10 +38,6 @@ include(cmakepp_lang/utilities/return)
 # this function will assert that it is called with exactly three arguments and
 # that these three arguments have the correct types. If any of these assertions
 # fail an error will be raised.
-#
-# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
-#                               debug mode or not.
-# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(_cpp_object_get_symbol _ogs_this _ogs_result _ogs_sig)
     cpp_assert_signature("${ARGV}" obj desc desc)

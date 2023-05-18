@@ -16,16 +16,16 @@ include_guard()
 #           occured.
 # :rtype: (bool, desc)
 #
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                               debug mode or not.
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
+# 
 # Error Checking
 # ==============
 #
 # If CMakePP is run in debug mode (and only if it is run in debug mode) this
 # function will assert that it was called with all three arguments and that
 # the arguments have the correct types.
-#
-# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
-#                               debug mode or not.
-# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(cpp_check_conflicting_types _cc_conflict _cc_conflicting_type _cc_name)
     cpp_assert_signature("${ARGV}" desc desc desc)

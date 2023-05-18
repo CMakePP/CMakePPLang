@@ -166,6 +166,10 @@ endmacro()
 #
 # :param \*args: The exception types to declare handlers for.
 #
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                               debug mode or not.
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
+# 
 # Example Usage
 # =============
 #
@@ -178,10 +182,6 @@ endmacro()
 #
 # If CMakePP is run in debug mode (and only if it is run in debug mode) this
 # function will assert that it was called with one or more desc arguments.
-#
-# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
-#                               debug mode or not.
-# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(cpp_end_try_catch)
     # If debug, ensure that at least one arg was passed and each arg is a desc

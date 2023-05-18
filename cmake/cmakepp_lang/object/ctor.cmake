@@ -24,16 +24,16 @@ include(cmakepp_lang/utilities/sanitize_string)
 # :return: ``_oc_this`` will be set to the newly created instance.
 # :rtype: obj
 #
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                               debug mode or not.
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
+#
 # Error Checking
 # ==============
 #
 # If CMakePP is being run in debug mode (and only if CMakePP is being run in
 # debug mode) this function will assert that it has been called with the correct
 # number and types of arguments. If an assertion fails an error will be raised.
-#
-# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
-#                               debug mode or not.
-# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(_cpp_object_ctor _oc_this _oc_type)
     cpp_assert_signature("${ARGV}" desc type args)

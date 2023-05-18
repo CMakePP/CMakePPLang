@@ -17,6 +17,10 @@ include(cmakepp_lang/utilities/return)
 # :returns: ``_os_this`` will be set to the newly created Object instance.
 # :rtype: obj
 #
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                              debug mode or not.
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
+#
 # .. note::
 #
 #    This command is a macro so that the member function definitions permeate
@@ -29,10 +33,6 @@ include(cmakepp_lang/utilities/return)
 # this function will ensure that it was called with exactly one argument and
 # that the one argument is of type ``desc``. If either of these asserts fails an
 # error will be raised.
-#
-# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
-#                              debug mode or not.
-# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 macro(_cpp_object_singleton _os_this)
     cpp_assert_signature("${ARGV}" desc)

@@ -24,6 +24,10 @@ include(cmakepp_lang/utilities/return)
 #           ``_c_list`` and ``FALSE`` otherwise.
 # :rtype: bool
 #
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                               debug mode or not.
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
+#
 # Example Usage
 # =============
 #
@@ -43,10 +47,6 @@ include(cmakepp_lang/utilities/return)
 # If CMakePP is run in debug mode this function will ensure that it is called
 # with the correct number of arguments and that those arguments have the correct
 # types. These error checks are only performed if CMakePP is run in debug mode.
-#
-# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
-#                               debug mode or not.
-# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(cpp_contains _c_result _c_item _c_list)
     cpp_assert_signature("${ARGV}" desc str str)

@@ -12,6 +12,3 @@ include(cmakepp_lang/types/path)
 include(cmakepp_lang/types/target)
 include(cmakepp_lang/types/type)
 include(cmakepp_lang/types/type_of)
-
-
-

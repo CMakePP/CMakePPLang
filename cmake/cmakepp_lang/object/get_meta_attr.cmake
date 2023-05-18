@@ -27,6 +27,10 @@ include(cmakepp_lang/utilities/return)
 #           attribute exists) and the empty string otherwise.
 # :rtype: str
 #
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                               debug mode or not.
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
+#
 # Error Checking
 # ==============
 #
@@ -34,10 +38,6 @@ include(cmakepp_lang/utilities/return)
 # this function will assert that it has been called with exactly three arguments
 # and that those arguments have the correct types. If any assertion fails an
 # error will be raised.
-#
-# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
-#                               debug mode or not.
-# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(_cpp_object_get_meta_attr _ogma_this _ogma_result _ogma_attr)
     cpp_assert_signature("${ARGV}" obj desc desc)

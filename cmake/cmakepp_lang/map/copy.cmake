@@ -16,6 +16,10 @@ include(cmakepp_lang/asserts/signature)
 # :returns: ``_mc_other`` will be set to a deep copy of ``_mc_this``.
 # :rtype: map
 #
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                               debug mode or not.
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
+#
 # Error Checking
 # ==============
 #
@@ -23,10 +27,6 @@ include(cmakepp_lang/asserts/signature)
 # has provided only two arguments and that those arguments are of the correct
 # types. This error check is only performed if CMakePP is being run in debug
 # mode.
-#
-# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
-#                               debug mode or not.
-# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(cpp_map_copy _mc_this _mc_other)
     cpp_assert_signature("${ARGV}" map desc)

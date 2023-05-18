@@ -10,8 +10,9 @@ include_guard()
 # to run if debug mode has been enable (done by setting
 # ``CMAKE_CORE_DEBUG_MODE`` to ``TRUE``/``ON``).
 #
-# :var CMAKE_CORE_DEBUG_MODE: Whether or not CMakePP is being run in debug mode.
-# :type CMAKE_CORE_DEBUG_MODE: bool
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                               debug mode or not.
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #
 # .. warning::
 #

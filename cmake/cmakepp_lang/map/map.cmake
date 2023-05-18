@@ -174,6 +174,10 @@ endfunction()
 # :param \*args: Any additional arguments required by the specified member
 #               function.
 #
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                               debug mode or not.
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
+# 
 # Error Checking
 # ==============
 #
@@ -182,8 +186,6 @@ endfunction()
 # arguments. In the event that the incorrect number or types of arguments have
 # been provided an error will be raised. These error checks are only done when
 # CMakePP is run in debug mode.
-#
-# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is b
 #]]
 function(cpp_map _m_mode _m_this)
     string(TOLOWER "${_m_mode}" _m_lc_mode)

@@ -123,6 +123,10 @@ endfunction()
 #           to ``_ic_fxn`` and ``FALSE`` otherwise.
 # :rtype: bool
 #
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                               debug mode.
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
+#
 # Error Checking
 # ==============
 #
@@ -130,10 +134,6 @@ endfunction()
 # arguments are provided and that each argument has the correct type. If any of
 # these asserts fail an error will be raised. These assertions are only done in
 # debug mode.
-#
-# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
-#                               debug mode.
-# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(cpp_is_callable _ic_result _ic_fxn _ic_args)
     cpp_assert_signature("${ARGV}" desc desc desc)

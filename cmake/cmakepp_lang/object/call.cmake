@@ -77,6 +77,10 @@ endfunction()
 #           using the mechanism of that function. If the member function does
 #           not return this function will not return.
 # :rtype: str
+# 
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                              debug mode or not.
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #
 # .. note::
 #
@@ -89,10 +93,6 @@ endfunction()
 # If CMakePP is run in debug mode (and only if CMakePP is run in debug mode)
 # this function will ensure that it was called with the correct number and types
 # of arguments. If it is not an error will be raised.
-#
-# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
-#                              debug mode or not.
-# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #
 # Additionally, this function will raise an error if the Object instance does
 # not contain a suitable overload for the provided arguments.

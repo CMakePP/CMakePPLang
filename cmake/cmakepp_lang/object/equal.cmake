@@ -23,6 +23,10 @@ include(cmakepp_lang/utilities/return)
 #           and ``FALSE`` otherwise.
 # :rtype: bool
 #
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                               debug mode or not.
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
+#
 # Error Checking
 # ==============
 #
@@ -30,10 +34,6 @@ include(cmakepp_lang/utilities/return)
 # ensure that the caller has provided exactly three arguments and that the
 # arguments are of the correct types. If this is not the case an error will be
 # raised.
-#
-# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
-#                               debug mode or not.
-# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(_cpp_object_equal _oe_this _oe_result _oe_other)
     cpp_assert_signature("${ARGV}" obj desc obj)

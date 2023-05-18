@@ -19,15 +19,15 @@ include(cmakepp_lang/types/cmakepp_type)
 # :param this: The object whose KWARG CTOR was called
 # :type this: obj
 #
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                               debug mode or not.
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
+#
 # Error Checking
 # ==============
 #
 # If CMakePP is being run in debug mode this function will ensure that it was
 # called with and object as the first argument.
-#
-# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
-#                               debug mode or not.
-# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #
 # Additionally, this function will ensure that the proper syntax is used for
 # the list of KWARGS. That is the KWARGS must consist of pairings of attribute

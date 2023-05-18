@@ -22,6 +22,10 @@ include(cmakepp_lang/utilities/return)
 #           and ``FALSE`` otherwise.
 # :rtype: bool
 #
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                               debug mode or not.
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
+#
 # Error Checking
 # ==============
 #
@@ -29,9 +33,6 @@ include(cmakepp_lang/utilities/return)
 # is only provided three arguments (preventing the user from accidentally
 # dereferencing one of the input lists in most cases) and that the arguments are
 # all of type ``desc``.
-#
-# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
-#                               debug mode.
 #]]
 function(cpp_compare_lists _cl_result _cl_lhs _cl_rhs)
     cpp_assert_signature("${ARGV}" desc desc desc)

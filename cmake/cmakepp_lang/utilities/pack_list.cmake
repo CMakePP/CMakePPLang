@@ -27,15 +27,16 @@ include(cmakepp_lang/serialization/serialization)
 # :returns: ``_pl_result`` will be set to the resulting packed list string.
 # :rtype: desc
 #
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                               debug mode or not.
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
+#
 # Error Checking
 # ==============
 #
 # If CMakePP is run in debug mode ``cpp_pack_list`` will assert that it has
 # been called with two arguments and that those arguments are of the correct
 # types.
-#
-# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
-#                               debug mode or not.
 #]]
 function(cpp_pack_list _pl_result _pl_list)
     cpp_assert_signature("${ARGV}" desc list)

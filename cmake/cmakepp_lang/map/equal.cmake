@@ -20,6 +20,10 @@ include(cmakepp_lang/map/map)
 #           compare equal and ``FALSE`` otherwise.
 # :rtype: bool
 #
+# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+#                               debug mode or not.
+# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
+# 
 # Error Checking
 # ==============
 #
@@ -27,10 +31,6 @@ include(cmakepp_lang/map/map)
 # exactly three arguments, and that those arguments have the correct types. If
 # these assertions fail an error will be raised. These error checks are only
 # done if CMakePP is run in debug mode.
-#
-# :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
-#                               debug mode or not.
-# :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #]]
 function(cpp_map_equal _me_this _me_result _me_other)
     cpp_assert_signature("${ARGV}" map desc map)
