@@ -15,12 +15,13 @@
 name: Tag and Release
 
 on:
-  push:
-    branches:
-      - master
+  pull_request:
+    types:
+      - closed
 
 jobs:
   tag:
+    if: github.event.pull_request.merged == true
     uses: CMakePP/.github/.github/workflows/tag_and_release_master.yaml@main
     secrets:
       token: ${{ secrets.GITHUB_TOKEN }}
