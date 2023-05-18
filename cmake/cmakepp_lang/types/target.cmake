@@ -11,7 +11,7 @@ include_guard()
 # :type return: desc
 # :param str2check: The string whose targety-ness is in question
 # :type str2check: str
-# :returns: ``_it_return`` will be set to ``TRUE`` if ``_it_str2check`` is a
+# :returns: ``return`` will be set to ``TRUE`` if ``str2check`` is a
 #           target and ``FALSE`` otherwise.
 # :rtype: bool
 #

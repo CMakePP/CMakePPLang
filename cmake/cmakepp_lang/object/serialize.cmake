@@ -14,10 +14,10 @@ include(cmakepp_lang/serialization/serialization)
 # :param this: The object we are serializing.
 # :type this: obj
 # :param result: Name for the identifier which will hold the serialized
-#                    value.
+#                value.
 # :type result: desc
-# :returns: ``_os_result`` will be set to the JSON serialized representation of
-#           ``_os_this``.
+# :returns: ``result`` will be set to the JSON serialized representation of
+#           ``this``.
 #
 # :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.

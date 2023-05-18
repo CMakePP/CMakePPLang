@@ -7,9 +7,9 @@ include_guard()
 # where we want to crash the program if a condition is not met.
 #
 # :param cond: The condition which should be true. This can be anything that
-#                  can be passed to CMake's ``if`` statement; however, if the
-#                  condition is not a single argument it must be provided as a
-#                  list, *e.g.*, ``x STREQUAL x`` becomes ``x;STREQUAL;x``.
+#              can be passed to CMake's ``if`` statement; however, if the
+#              condition is not a single argument it must be provided as a
+#              list, *e.g.*, ``x STREQUAL x`` becomes ``x;STREQUAL;x``.
 # :type cond: bool or str or list(str)
 # :param desc: Human-readable description of the assertion.
 # :type desc: str

@@ -32,8 +32,8 @@ include(cmakepp_lang/utilities/return)
 # :type return: desc
 # :param value: The value we are serializing.
 # :type value: str
-# :returns: ``_sv_return`` will be set to the JSON serialized form of
-#           ``_sv_value``.
+# :returns: ``return`` will be set to the JSON serialized form of
+#           ``value``.
 # :rtype: desc
 #
 # Error Checking

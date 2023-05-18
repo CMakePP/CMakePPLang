@@ -28,8 +28,8 @@ include(cmakepp_lang/serialization/detail/serialize_value)
 # :type return: desc
 # :param value: The CMake list we are serializing.
 # :type value: list
-# :returns: ``_sl_return`` will be set to the JSON serialized form of
-#           ``_sl_value``.
+# :returns: ``return`` will be set to the JSON serialized form of
+#           ``value``.
 # :rtype: desc
 #]]
 function(_cpp_serialize_list _csl_return _csl_value)

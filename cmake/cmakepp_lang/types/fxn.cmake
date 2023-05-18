@@ -14,8 +14,8 @@ include(cmakepp_lang/types/cmakepp_type)
 # :type result: desc
 # :param str2check: The string which may be a command.
 # :type str: str
-# :returns: ``TRUE`` if ``_if_str2check`` is a command and ``FALSE`` otherwise. 
-#            The result is returned via ``_cip_result``.
+# :returns: ``TRUE`` if ``str2check`` is a command and ``FALSE`` otherwise. 
+#            The result is returned via ``result``.
 # :rtype: bool
 #
 # Example Usage

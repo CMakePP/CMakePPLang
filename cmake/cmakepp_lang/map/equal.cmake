@@ -16,7 +16,7 @@ include(cmakepp_lang/map/map)
 # :type result: desc
 # :param other: The map we are comparing to.
 # :type other: map
-# :returns: ``_me_result`` will be set to ``TRUE`` if the two map instances
+# :returns: ``result`` will be set to ``TRUE`` if the two map instances
 #           compare equal and ``FALSE`` otherwise.
 # :rtype: bool
 #

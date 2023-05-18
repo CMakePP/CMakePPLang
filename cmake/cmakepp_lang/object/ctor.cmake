@@ -20,8 +20,8 @@ include(cmakepp_lang/utilities/sanitize_string)
 # :param type: The most-derived type of the object we are creating.
 # :type type: type
 # :param \*args: The initial instances of each direct base class on which this
-#               instance should be built.
-# :return: ``_oc_this`` will be set to the newly created instance.
+#                instance should be built.
+# :return: ``this`` will be set to the newly created instance.
 # :rtype: obj
 #
 # :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in

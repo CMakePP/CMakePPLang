@@ -9,8 +9,8 @@ include(cmakepp_lang/utilities/decode_special_chars)
 # order to actually call the function we need to write the call to disk. This
 # involves setting a few variables, so in order to avoid contaminating the
 # caller's namespace we wrap this part of ``cpp_call_fxn`` in this
-# function, ``_cpp_call_fxn_guts``. ``_cpp_call_fxn_guts`` is not intended to be
-# called from outside of ``cpp_call_fxn``.
+# function, ``_cpp_call_fxn_guts``. ``_cpp_call_fxn_guts`` is not intended to
+# be called from outside of ``cpp_call_fxn``.
 #
 # :param fxn2call: The name of the function we are calling.
 # :type fxn2call: desc

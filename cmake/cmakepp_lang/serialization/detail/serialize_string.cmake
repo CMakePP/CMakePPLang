@@ -26,7 +26,7 @@ include_guard()
 # :type return: desc
 # :param value: The value we are serializing.
 # :type value: str
-# :returns: ``_ss_return`` will be set to JSON serialized form of ``_ss_value``.
+# :returns: ``return`` will be set to JSON serialized form of ``value``.
 # :rtype: desc
 #
 # Error Checking

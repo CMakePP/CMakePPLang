@@ -14,7 +14,7 @@ include(cmakepp_lang/utilities/return)
 #
 # :param id: The name for the variable which will hold the result.
 # :type id: desc
-# :returns: ``_ui_id`` will be set to the generated unique id.
+# :returns: ``id`` will be set to the generated unique id.
 # :rtype: desc
 #
 # :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in

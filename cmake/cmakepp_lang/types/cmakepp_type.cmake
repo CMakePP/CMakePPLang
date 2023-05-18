@@ -10,20 +10,20 @@ include(cmakepp_lang/utilities/global)
 # that type.
 #
 # :param is_cpp_obj: Identifier for the variable which will hold whether or
-#                         not ``_gct_obj`` is a CMakePP object.
+#                    not ``obj`` is a CMakePP object.
 # :type is_cpp_obj: desc
-# :param type: Identifier to hold the type of ``_gct_obj`` if it is indeed
-#                   a CMakePP object.
+# :param type: Identifier to hold the type of ``obj`` if it is indeed
+#              a CMakePP object.
 # :type type: desc
 # :param obj: The object for which we want to know if it is a CMakePP
-#                  object, and if it is, what is its type.
+#             object, and if it is, what is its type.
 # :type obj: str
 #
-# :returns: ``_gct_is_cpp_obj`` will be set to ``TRUE`` if ``_gct_obj`` is a
+# :returns: ``is_cpp_obj`` will be set to ``TRUE`` if ``obj`` is a
 #           CMakePP built-in type or a user-defined type and ``FALSE``
-#           otherwise. If ``_gct_is_cpp_obj`` is ``TRUE`` than ``_gct_type``
-#           will be set to the type of ``_gct_obj``. If ``_gct_is_cpp_obj`` is
-#           ``FALSE`` than ``_gct_type`` will be set to the empty string.
+#           otherwise. If ``is_cpp_obj`` is ``TRUE`` than ``type``
+#           will be set to the type of ``obj``. If ``is_cpp_obj`` is
+#           ``FALSE`` than ``type`` will be set to the empty string.
 # :rtype: (bool, type) or (bool, desc)
 #
 # .. note::
@@ -68,7 +68,7 @@ endmacro()
 # :param this: The "this"-pointer for the CMakePP object we are setting the
 #                   type of.
 # :type this: desc
-# :param type: The type we are making ``_sct_this``.
+# :param type: The type we are making ``this``.
 # :type type: type
 #
 # Error Checking

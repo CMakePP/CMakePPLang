@@ -17,8 +17,8 @@ include(cmakepp_lang/class/flatten_attrs)
 # :param type: The class we are calling the constructor for.
 # :type type: class
 # :param \*args: The arguments the constructor was called with (not including
-#               the instance name and class).
-# :returns: ``_cc_this`` will be set to the mangled name of the newly
+#                the instance name and class).
+# :returns: ``this`` will be set to the mangled name of the newly
             constructed instance.
 # :rtype: desc
 #]]

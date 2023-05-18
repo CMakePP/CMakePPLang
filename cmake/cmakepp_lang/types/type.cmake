@@ -14,7 +14,7 @@ include(cmakepp_lang/utilities/global)
 # :type result: desc
 # :param type: The object for which we want to know if it is a type literal.
 # :type type: str
-# :returns: ``_it_result`` will be set to ``TRUE`` if ``_it_type`` is a type and
+# :returns: ``result`` will be set to ``TRUE`` if ``type`` is a type and
 #           ``FALSE`` otherwise.
 # :rtype: bool
 #

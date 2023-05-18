@@ -21,7 +21,7 @@ include(cmakepp_lang/utilities/unique_id)
 # :type this: map
 # :param key: The key whose value is being appended to.
 # :type key: str
-# :param value: Value we are appending to the list stored under ``_ma_key``.
+# :param value: Value we are appending to the list stored under ``key``.
 # :type value: str
 #
 # Error Checking
@@ -57,7 +57,7 @@ endfunction()
 # :type result: desc
 # :param \*args: A list whose elements will be considered pairwise to be the
 #               initial key-value pairs populating the map.
-# :returns: ``_mc_result`` will be set to the newly created Map instance.
+# :returns: ``result`` will be set to the newly created Map instance.
 # :rtype: map
 #
 # Error Checking
@@ -102,8 +102,8 @@ endfunction()
 # :type value: desc
 # :param key: The key whose value we want.
 # :type key: str
-# :returns: ``_mg_value`` will be set to the value associated with ``_mg_key``.
-#           If ``_mg_key`` has no value associated with it ``_mg_value`` will be
+# :returns: ``value`` will be set to the value associated with ``key``.
+#           If ``key`` has no value associated with it ``value`` will be
 #           set to the empty string.
 # :rtype: str
 #

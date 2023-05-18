@@ -13,8 +13,8 @@ include(cmakepp_lang/utilities/return)
 # :type this: map
 # :param keys: Name for the variable which will hold the keys.
 # :type keys: desc
-# :returns: ``_mk_keys`` will be set to the list of keys which have been set for
-#           ``_mk_this``.
+# :returns: ``keys`` will be set to the list of keys which have been set for
+#           ``this``.
 # :rtype: [desc]
 #
 # :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in

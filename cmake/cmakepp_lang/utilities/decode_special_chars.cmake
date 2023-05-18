@@ -14,7 +14,7 @@ include(cmakepp_lang/utilities/special_chars_lookup)
 # why this is necessary, see documentation for ``cpp_encode_special_chars``.
 #
 # :param argn: The argument list. This should have at least one string in
-#                   it, otherwise this function will have nothing to encode.
+#              it, otherwise this function will have nothing to encode.
 # :type argn: list
 # :param return_argn: Return variable for the encoded argument list.
 # :type return_argn: list

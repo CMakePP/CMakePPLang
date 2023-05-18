@@ -15,17 +15,17 @@ include(cmakepp_lang/utilities/return)
 # :param this: The instance in which we are looking for the attribute.
 # :type this: obj
 # :param value: Identifier for the variable which will hold the value of
-#                     the attribute.
+#               the attribute.
 # :type value: desc
 # :param done: Identifier which will hold whether or not the recursion is
-#                    done.
+#              done.
 # :type done: desc
 # :param attr: Name of the attribute we are looking for.
 # :type attr: desc
-# :returns: ``_ogag_value`` will be set to the value of the attribute, if the
+# :returns: ``value`` will be set to the value of the attribute, if the
 #           object has the attribute and the empty string otherwise.
-#           ``_ogag_done`` will be set to ``TRUE`` if the object has the
-#           attribute and ``FALSE`` otherwise. Hence one can use ``_ogag_done``
+#           ``done`` will be set to ``TRUE`` if the object has the
+#           attribute and ``FALSE`` otherwise. Hence one can use ``done``
 #           to determine if the attribute does not exist, or if it was just set
 #           to an empty string.
 # :rtype: (str, bool)

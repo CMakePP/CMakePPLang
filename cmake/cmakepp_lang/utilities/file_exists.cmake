@@ -8,9 +8,9 @@ include(cmakepp_lang/asserts/signature)
 # :type result: desc
 # :param file: Path which may be pointing to an existing file.
 # :type file: path
-# :returns: ``_fe_result`` will be set to ``TRUE`` if ``_fe_file`` is the
+# :returns: ``result`` will be set to ``TRUE`` if ``file`` is the
 #           absolute path of a file and ``FALSE`` otherwise. Of note if
-#           ``_ce_file`` is the absolute path to a directory the result is also
+#           ``file`` is the absolute path to a directory the result is also
 #           ``FALSE``.
 # :rtype: bool
 #

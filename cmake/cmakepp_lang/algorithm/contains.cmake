@@ -16,12 +16,12 @@ include(cmakepp_lang/utilities/return)
 #
 # :param result: Name for the variable to hold the result.
 # :type result: desc
-# :param item: The item whose inclusion in ``_c_list`` is in question.
+# :param item: The item whose inclusion in ``list`` is in question.
 # :type item: str
-# :param list: The collection we are looking for ``_c_item`` in.
+# :param list: The collection we are looking for ``item`` in.
 # :type list: str
-# :returns: ``_c_result`` will be set to ``TRUE`` if ``_c_item`` is in
-#           ``_c_list`` and ``FALSE`` otherwise.
+# :returns: ``result`` will be set to ``TRUE`` if ``item`` is in
+#           ``list`` and ``FALSE`` otherwise.
 # :rtype: bool
 #
 # :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in

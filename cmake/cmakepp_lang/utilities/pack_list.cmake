@@ -24,7 +24,7 @@ include(cmakepp_lang/serialization/serialization)
 # :type result: desc
 # :param list: The list we want to pack into a string.
 # :type result: list
-# :returns: ``_pl_result`` will be set to the resulting packed list string.
+# :returns: ``result`` will be set to the resulting packed list string.
 # :rtype: desc
 #
 # :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
@@ -104,7 +104,7 @@ endfunction()
 # :type result: desc
 # :param packed_list: The string we want to transform to a CMake list.
 # :type packed_list: desc
-# :returns: ``_up_result`` will be set to the resulting CMake list.
+# :returns: ``result`` will be set to the resulting CMake list.
 # :rtype: desc
 #
 # Error Checking

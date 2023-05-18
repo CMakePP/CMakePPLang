@@ -12,11 +12,12 @@ include(cmakepp_lang/utilities/enable_if_debug)
 # is not being run in debug mode, then this function is a no-op.
 #
 # :param type: The type that the type of the object must be implicitly
-#                  convertible to.
+#              convertible to.
 # :type type: type
 # :param obj: The object whose type must be implicitly convertible to
-#                 ``_at_type``.
+#             ``type``.
 # :type obj: str
+# 
 # :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode
 # :vartype CMAKEPP_LANG_DEBUG_MODE: bool
@@ -26,7 +27,7 @@ include(cmakepp_lang/utilities/enable_if_debug)
 #
 # In addition to asserting that the provided object's type is implicitly
 # convertible to the provided type. This function will also ensure that the
-# caller has only provided two arguments and that ``_at_type`` is actually a
+# caller has only provided two arguments and that ``type`` is actually a
 # type. These additional error checks are also only done when CMakePP is run in
 # debug mode.
 #]]

@@ -23,8 +23,8 @@ include(cmakepp_lang/utilities/global)
 # :type result: desc
 # :param obj: The object we want the type of.
 # :type obj: str
-# :returns: ``_to_result`` will be set to the type literal corresponding to
-#           ``_to_obj``'s type.
+# :returns: ``result`` will be set to the type literal corresponding to
+#           ``obj``'s type.
 # :rtype: type
 #
 # Error Checking

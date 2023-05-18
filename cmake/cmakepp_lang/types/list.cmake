@@ -13,7 +13,7 @@ include_guard()
 # :type result: desc
 # :param str2check: The string whose listy-ness is being questioned.
 # :type str2check: str
-# :returns: ``_il_result`` will be set to ``TRUE`` if ``_il_str2check`` is a
+# :returns: ``result`` will be set to ``TRUE`` if ``str2check`` is a
 #           list and ``FALSE`` otherwise.
 # :rtype: bool
 #

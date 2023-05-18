@@ -10,13 +10,13 @@ include(cmakepp_lang/utilities/sanitize_string)
 # map.
 #
 # :param this: The map for which we want to know if it has the specified
-#                   key.
+#              key.
 # :type this: map
 # :param result: Name to use for the variable which will hold the result.
 # :type result: desc
 # :param key: The key we want to know if the map has.
 # :type key: str
-# :returns: ``_mhk_result`` will be set to ``TRUE`` if ``_mhk_key`` has been
+# :returns: ``result`` will be set to ``TRUE`` if ``key`` has been
 #           set for this map and ``FALSE`` otherwise.
 # :rtype: bool
 #

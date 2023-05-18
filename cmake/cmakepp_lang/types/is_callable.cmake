@@ -16,7 +16,7 @@ include(cmakepp_lang/utilities/sanitize_string)
 # :type fxn: list*
 # :param rhs: The signature of the second function.
 # :type fxn: list*
-# :returns: ``_cn_result`` will be set to ``TRUE`` if the two signatures have
+# :returns: ``result`` will be set to ``TRUE`` if the two signatures have
 #           the same name (up to case-sensitivity) and ``FALSE`` otherwise.
 # :rtype: bool
 #
@@ -54,7 +54,7 @@ endfunction()
 # :type fxn: list*
 # :param args: The signature of how we are trying to call the function.
 # :type args: list*
-# :returns: ``_cl_result`` will be set to ``TRUE`` if we can call the function
+# :returns: ``result`` will be set to ``TRUE`` if we can call the function
 #           with the provided arguments and ``FALSE`` otherwise.
 # :rtype: bool
 #
@@ -102,16 +102,16 @@ endfunction()
 #[[[
 # Determines if a function can be run as the specified signature.
 #
-# This function takes two lists ``_ic_fxn`` and ``_ic_args``. Each list is
+# This function takes two lists ``fxn`` and ``args``. Each list is
 # interpreted as being a function signature such that the first element is the
 # name of the function and the remaining arguments are: the types of the
-# arguments the function was declared to take (for ``_ic_fxn``) or the types of
-# the arguments being passed in (for ``_ic_args``). This function ultimately
+# arguments the function was declared to take (for ``fxn``) or the types of
+# the arguments being passed in (for ``args``). This function ultimately
 # determines whether there is a series of implicit casts which will convert the
-# types in ``_ic_args`` into those in ``_ic_fxn``. If there is than ``_ic_fxn``
-# is callable as the signature provided by ``_ic_args``. If there is no such set
-# of casts then ``_ic_fxn`` is not callable with the signature provided by
-# ``_ic_args``.
+# types in ``args`` into those in ``fxn``. If there is than ``fxn``
+# is callable as the signature provided by ``args``. If there is no such set
+# of casts then ``fxn`` is not callable with the signature provided by
+# ``args``.
 #
 # :param result: Name of the variable which will hold the result.
 # :type result: desc
@@ -119,8 +119,8 @@ endfunction()
 # :type fxn: list*
 # :param args: The signature of the function we are trying to cast from.
 # :type args: list*
-# :returns: ``_ic_result`` will be set to ``TRUE`` if ``_ic_args`` can be cast
-#           to ``_ic_fxn`` and ``FALSE`` otherwise.
+# :returns: ``result`` will be set to ``TRUE`` if ``args`` can be cast
+#           to ``fxn`` and ``FALSE`` otherwise.
 # :rtype: bool
 #
 # :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in

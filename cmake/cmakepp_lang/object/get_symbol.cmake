@@ -14,15 +14,15 @@ include(cmakepp_lang/utilities/return)
 # return the corresponding symbol. Otherwise it will return ``FALSE``.
 #
 # :param this: The Object instance whose member functions are being
-#                   considered.
+#              considered.
 # :type this: obj
 # :param result: Name for the variable which will hold the result.
 # :type result: desc
 # :param sig: A list whose first element is the name of the function and
-#                  whose remaining elements are the types of each positional
-#                  argument.
+#             whose remaining elements are the types of each positional
+#             argument.
 # :type sig: list*
-# :returns: ``_ogs_result`` will be set to the symbol of the member function
+# :returns: ``result`` will be set to the symbol of the member function
 #           matching the provided signature (if a suitable match exists) or
 #           ``FALSE`` if there is no suitable overload.
 # :rtype: str

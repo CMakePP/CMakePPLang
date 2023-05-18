@@ -29,7 +29,7 @@ include(cmakepp_lang/serialization/detail/serialize_value)
 # :type result: desc
 # :param value: The value we are serializing.
 # :type value: str
-# :returns: ``_s_result`` will be set to the serialized form of``_s_value``.
+# :returns: ``result`` will be set to the serialized form of``value``.
 # :rtype: desc
 #]]
 function(cpp_serialize _s_result _s_value)

@@ -6,7 +6,7 @@ include_guard()
 # :param conflict: Return value for whether a conflict exists.
 # :type conflict: bool*
 # :param conflicting_type: Return value for the type that the name
-#                              conflicts with.
+#                          conflicts with.
 # :type conflicting_type: desc*
 # :param name: Name to check for conflicts with.
 # :type name: desc

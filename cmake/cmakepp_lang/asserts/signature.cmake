@@ -16,8 +16,8 @@ include(cmakepp_lang/utilities/enable_if_debug)
 # :param argv: The values of the arguments which were passed to the caller.
 # :type argv: list
 # :param \*args: The types that each argument should obey. Users can pass
-#               ``args`` as a type to indicate that their function is variadic.
-#               If provided, ``args`` must be the last type.
+#                ``args`` as a type to indicate that their function is variadic.
+#                If provided, ``args`` must be the last type.
 # :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is in debug mode.
 #
 # Example Usage
