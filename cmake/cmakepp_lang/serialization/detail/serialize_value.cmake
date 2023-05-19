@@ -28,6 +28,7 @@
 ################################################################################
 
 include_guard()
+
 include(cmakepp_lang/object/object)
 include(cmakepp_lang/serialization/detail/serialize_list)
 include(cmakepp_lang/serialization/detail/serialize_map)

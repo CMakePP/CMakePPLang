@@ -13,6 +13,7 @@
 # limitations under the License.
 
 include_guard()
+
 include(cmakepp_lang/algorithm/equal)
 include(cmakepp_lang/asserts/signature)
 include(cmakepp_lang/utilities/return)

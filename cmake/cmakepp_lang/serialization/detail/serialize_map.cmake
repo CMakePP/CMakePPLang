@@ -13,6 +13,7 @@
 # limitations under the License.
 
 include_guard()
+
 include(cmakepp_lang/map/map)
 include(cmakepp_lang/serialization/detail/serialize_value)
 

@@ -1,3 +1,7 @@
+#[[[
+# Defines functions for manipulating a CMakePPLang object's type.
+#]]
+
 # Copyright 2023 CMakePP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,6 +17,7 @@
 # limitations under the License.
 
 include_guard()
+
 include(cmakepp_lang/utilities/global)
 
 #[[[

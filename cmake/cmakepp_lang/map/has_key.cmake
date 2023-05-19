@@ -13,6 +13,7 @@
 # limitations under the License.
 
 include_guard()
+
 include(cmakepp_lang/asserts/signature)
 include(cmakepp_lang/map/keys)
 include(cmakepp_lang/utilities/sanitize_string)

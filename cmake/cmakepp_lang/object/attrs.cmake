@@ -1,3 +1,7 @@
+#[[[ @module
+# Defines functions to manipulate the attributes on a CMakePPLang Object.
+#]]
+
 # Copyright 2023 CMakePP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,6 +17,7 @@
 # limitations under the License.
 
 include_guard()
+
 include(cmakepp_lang/map/map)
 include(cmakepp_lang/object/get_meta_attr)
 include(cmakepp_lang/utilities/return)

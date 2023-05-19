@@ -13,6 +13,7 @@
 # limitations under the License.
 
 include_guard()
+
 include(cmakepp_lang/asserts/type)
 include(cmakepp_lang/utilities/assert)
 include(cmakepp_lang/utilities/enable_if_debug)

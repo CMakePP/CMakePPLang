@@ -13,6 +13,7 @@
 # limitations under the License.
 
 include_guard()
+
 include(cmakepp_lang/class/detail/bases)
 include(cmakepp_lang/types/type_of)
 include(cmakepp_lang/utilities/global)

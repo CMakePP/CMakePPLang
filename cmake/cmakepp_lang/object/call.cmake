@@ -1,3 +1,8 @@
+#[[[ @module
+# Defines functions used to process calls to member functions assigned to an
+# object.
+#]]
+
 # Copyright 2023 CMakePP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,6 +18,7 @@
 # limitations under the License.
 
 include_guard()
+
 include(cmakepp_lang/object/object)
 include(cmakepp_lang/types/type_of)
 include(cmakepp_lang/utilities/call_fxn)

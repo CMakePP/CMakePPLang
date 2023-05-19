@@ -13,6 +13,7 @@
 # limitations under the License.
 
 include_guard()
+
 include(cmakepp_lang/utilities/unique_id)
 include(cmakepp_lang/utilities/decode_special_chars)
 

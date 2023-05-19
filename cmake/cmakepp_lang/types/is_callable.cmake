@@ -1,3 +1,9 @@
+#[[[
+# Defines functions for checking if a function can be run with the specified
+# signature. This is used, for example, to enforce strong typing on class
+# member functions.
+#]]
+
 # Copyright 2023 CMakePP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,6 +19,7 @@
 # limitations under the License.
 
 include_guard()
+
 include(cmakepp_lang/asserts/signature)
 include(cmakepp_lang/types/implicitly_convertible)
 include(cmakepp_lang/utilities/return)

@@ -1,3 +1,7 @@
+#[[[ @module
+# Defines functions for serializing and printing a CMakePPLang Object.
+#]]
+
 # Copyright 2023 CMakePP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,6 +17,7 @@
 # limitations under the License.
 
 include_guard()
+
 include(cmakepp_lang/asserts/signature)
 include(cmakepp_lang/serialization/serialization)
 

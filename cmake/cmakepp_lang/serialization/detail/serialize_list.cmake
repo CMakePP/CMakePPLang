@@ -28,6 +28,7 @@
 ################################################################################
 
 include_guard()
+
 include(cmakepp_lang/serialization/detail/serialize_value)
 
 #[[[

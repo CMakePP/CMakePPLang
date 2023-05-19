@@ -1,3 +1,8 @@
+#[[[
+# Defines functions for packing and unpacking a CMake list into a string that
+# can be passed through function calls.
+#]]
+
 # Copyright 2023 CMakePP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,12 +18,13 @@
 # limitations under the License.
 
 include_guard()
+
 include(cmakepp_lang/serialization/serialization)
 
 #[[[
 # Transforms a CMake list into a string that can be passed down through
-#    function calls and then transformed back to the original CMake list that
-#    retains the original nesting structure of the list.
+# function calls and then transformed back to the original CMake list that
+# retains the original nesting structure of the list.
 #
 # This function will take a CMake list and replace list separator characters at
 # various levels of nesting with "_CPP_{N}_CPP_" where N is the level of

@@ -1,3 +1,8 @@
+#[[[
+# Defines variables containing lists of valid literals for different data
+# types and the type keywords themselves.
+#]]
+
 # Copyright 2023 CMakePP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
