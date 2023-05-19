@@ -1,7 +1,3 @@
-#[[[ @module
-# Defines the public API for CMakePPLang exception handling.
-#]]
-
 # Copyright 2023 CMakePP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,6 +11,10 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
+#[[[ @module
+# Defines the public API for CMakePPLang exception handling.
+#]]
 
 include_guard()
 

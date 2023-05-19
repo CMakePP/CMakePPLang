@@ -1,8 +1,3 @@
-#[[[ @module
-# Defines the public API for serializing CMake values of various types into a
-# JSON formatted string. 
-#]]
-
 # Copyright 2023 CMakePP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,6 +26,11 @@
 #     See the License for the specific language governing permissions and      #
 #                        limitations under the License.                        #
 ################################################################################
+
+#[[[ @module
+# Defines the public API for serializing CMake values of various types into a
+# JSON formatted string. 
+#]]
 
 include_guard()
 include(cmakepp_lang/asserts/signature)

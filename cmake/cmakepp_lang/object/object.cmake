@@ -1,9 +1,3 @@
-#[[[ @module
-# Provides an easy way to include the CMakePPLang Object, which all
-# user-defined classes will inherit from, as well as related functions to
-# manage the Object.
-#]]
-
 # Copyright 2023 CMakePP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,6 +11,12 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
+#[[[ @module
+# Provides an easy way to include the CMakePPLang Object, which all
+# user-defined classes will inherit from, as well as related functions to
+# manage the Object.
+#]]
 
 include_guard()
 

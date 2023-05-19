@@ -1,9 +1,3 @@
-#[[[ @module
-# Provides an easy way for users to include the various assertion statements
-# provided by CMakePPLang. These assertion statements ensure that a certain
-# condition is met in the code before moving on.
-#]]
-
 # Copyright 2023 CMakePP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,6 +11,12 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
+#[[[ @module
+# Provides an easy way for users to include the various assertion statements
+# provided by CMakePPLang. These assertion statements ensure that a certain
+# condition is met in the code before moving on.
+#]]
 
 include_guard()
 

@@ -1,8 +1,3 @@
-#[[[
-# Defines functions for packing and unpacking a CMake list into a string that
-# can be passed through function calls.
-#]]
-
 # Copyright 2023 CMakePP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,6 +11,11 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
+#[[[ @module
+# Defines functions for packing and unpacking a CMake list into a string that
+# can be passed through function calls.
+#]]
 
 include_guard()
 

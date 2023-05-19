@@ -1,8 +1,3 @@
-#[[[ @module
-# Provides an easy way for the user to include the general algorithms provided
-# by CMakePPLang, including value comparisons and copying, in a single file.
-#]]
-
 # Copyright 2023 CMakePP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,6 +11,11 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
+#[[[ @module
+# Provides an easy way for the user to include the general algorithms provided
+# by CMakePPLang, including value comparisons and copying, in a single file.
+#]]
 
 include_guard()
 
