@@ -121,9 +121,9 @@ in maps and we simply compare the maps).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>_oe_this</strong> (<em>obj</em>) – One of the two Object instances being compared.</p></li>
-<li><p><strong>_oe_result</strong> (<em>desc</em>) – Name for variable which will hold the comparison’s result.</p></li>
-<li><p><strong>_oe_other</strong> (<em>obj</em>) – The other Object instance being compared.</p></li>
+<li><p><strong>this</strong> (<em>obj</em>) – One of the two Object instances being compared.</p></li>
+<li><p><strong>result</strong> (<em>desc</em>) – Name for variable which will hold the comparison’s result.</p></li>
+<li><p><strong>other</strong> (<em>obj</em>) – The other Object instance being compared.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -133,6 +133,10 @@ and <code class="docutils literal notranslate"><span class="pre">FALSE</span></c
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
 </dd>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>CMAKEPP_LANG_DEBUG_MODE</strong> (<em>bool</em>) – Used to determine if CMakePP is being run in
+debug mode or not.</p>
+</dd>
 </dl>
 <section id="error-checking">
 <h2>Error Checking<a class="headerlink" href="#error-checking" title="Permalink to this heading"></a></h2>
@@ -140,15 +144,6 @@ and <code class="docutils literal notranslate"><span class="pre">FALSE</span></c
 ensure that the caller has provided exactly three arguments and that the
 arguments are of the correct types. If this is not the case an error will be
 raised.</p>
-<dl class="field-list simple">
-<dt class="field-odd">var CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Used to determine if CMakePP is being run in
-debug mode or not.</p>
-</dd>
-<dt class="field-even">vartype CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-even"><p>bool</p>
-</dd>
-</dl>
 </section>
 </dd></dl>
 

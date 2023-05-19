@@ -124,8 +124,8 @@ determines if the provided string meets this definition of a list.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>_il_result</strong> (<em>desc</em>) – Used as the name of the returned identifier.</p></li>
-<li><p><strong>_il_str2check</strong> (<em>str</em>) – The string whose listy-ness is being questioned.</p></li>
+<li><p><strong>result</strong> (<em>desc</em>) – Used as the name of the returned identifier.</p></li>
+<li><p><strong>str2check</strong> (<em>str</em>) – The string whose listy-ness is being questioned.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -136,14 +136,8 @@ list and <code class="docutils literal notranslate"><span class="pre">FALSE</spa
 <dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
-<section id="error-checking">
-<h2>Error Checking<a class="headerlink" href="#error-checking" title="Permalink to this heading"></a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">cpp_is_list</span></code> will assert that the caller has provided exactly two
-arguments. If the caller has provided a different number of arguments than an
-error will be raised.</p>
-</section>
 <section id="example-usage">
-<h2>Example Usage:<a class="headerlink" href="#example-usage" title="Permalink to this heading"></a></h2>
+<h2>Example Usage<a class="headerlink" href="#example-usage" title="Permalink to this heading"></a></h2>
 <p>The following snippet shows how to determine if a variable contains a list.</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">include</span><span class="p">(</span><span class="s">cmakepp_lang/types/list</span><span class="p">)</span>
 <span class="nb">set</span><span class="p">(</span><span class="s">a_list</span><span class="w"> </span><span class="s">1</span><span class="w"> </span><span class="s">2</span><span class="w"> </span><span class="s">3</span><span class="p">)</span>
@@ -151,6 +145,12 @@ error will be raised.</p>
 <span class="nb">message</span><span class="p">(</span><span class="s2">&quot;Is a list: ${result}&quot;</span><span class="p">)</span><span class="w">  </span><span class="c"># Will print TRUE</span>
 </pre></div>
 </div>
+</section>
+<section id="error-checking">
+<h2>Error Checking<a class="headerlink" href="#error-checking" title="Permalink to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">cpp_is_list</span></code> will assert that the caller has provided exactly two
+arguments. If the caller has provided a different number of arguments than an
+error will be raised.</p>
 </section>
 </dd></dl>
 

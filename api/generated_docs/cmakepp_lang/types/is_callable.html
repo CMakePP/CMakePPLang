@@ -122,9 +122,9 @@ element) in a case-insensitive manner.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>_cn_result</strong> (<em>desc</em>) – The name for the variable which will hold the result.</p></li>
-<li><p><strong>_cn_lhs</strong> – The signature of the first function.</p></li>
-<li><p><strong>_cn_rhs</strong> – The signature of the second function.</p></li>
+<li><p><strong>result</strong> (<em>desc</em>) – The name for the variable which will hold the result.</p></li>
+<li><p><strong>lhs</strong> – The signature of the first function.</p></li>
+<li><p><strong>rhs</strong> – The signature of the second function.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -154,9 +154,9 @@ provided arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>_cl_result</strong> (<em>desc</em>) – Name for variable which will hold the result.</p></li>
-<li><p><strong>_cl_fxn</strong> (<em>list*</em>) – The signature of the function we are trying to call.</p></li>
-<li><p><strong>_cl_args</strong> (<em>list*</em>) – The signature of how we are trying to call the function.</p></li>
+<li><p><strong>result</strong> (<em>desc</em>) – Name for variable which will hold the result.</p></li>
+<li><p><strong>fxn</strong> (<em>list*</em>) – The signature of the function we are trying to call.</p></li>
+<li><p><strong>args</strong> (<em>list*</em>) – The signature of how we are trying to call the function.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -191,9 +191,9 @@ of casts then <code class="docutils literal notranslate"><span class="pre">_ic_f
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>_ic_result</strong> (<em>desc</em>) – Name of the variable which will hold the result.</p></li>
-<li><p><strong>_ic_fxn</strong> (<em>list*</em>) – The signature of the function we are trying to cast to.</p></li>
-<li><p><strong>_ic_args</strong> (<em>list*</em>) – The signature of the function we are trying to cast from.</p></li>
+<li><p><strong>result</strong> (<em>desc</em>) – Name of the variable which will hold the result.</p></li>
+<li><p><strong>fxn</strong> (<em>list*</em>) – The signature of the function we are trying to cast to.</p></li>
+<li><p><strong>args</strong> (<em>list*</em>) – The signature of the function we are trying to cast from.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -203,6 +203,10 @@ to <code class="docutils literal notranslate"><span class="pre">_ic_fxn</span></
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
 </dd>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>CMAKEPP_LANG_DEBUG_MODE</strong> (<em>bool</em>) – Used to determine if CMakePP is being run in
+debug mode.</p>
+</dd>
 </dl>
 <section id="error-checking">
 <h2>Error Checking<a class="headerlink" href="#error-checking" title="Permalink to this heading"></a></h2>
@@ -210,15 +214,6 @@ to <code class="docutils literal notranslate"><span class="pre">_ic_fxn</span></
 arguments are provided and that each argument has the correct type. If any of
 these asserts fail an error will be raised. These assertions are only done in
 debug mode.</p>
-<dl class="field-list simple">
-<dt class="field-odd">var CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Used to determine if CMakePP is being run in
-debug mode.</p>
-</dd>
-<dt class="field-even">vartype CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-even"><p>bool</p>
-</dd>
-</dl>
 </section>
 </dd></dl>
 

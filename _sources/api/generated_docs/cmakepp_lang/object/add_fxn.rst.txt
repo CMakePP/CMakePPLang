@@ -15,15 +15,19 @@ cmakepp_lang.object/add_fxn
    signature and overload member functions with the same name, but different
    signatures.
    
-   :param _oaf_this: The Object instance we are adding the function to.
-   :type _oaf_this: obj
-   :param _oaf_name: The name of the function we are adding.
-   :type _oaf_name: desc
+   :param this: The Object instance we are adding the function to.
+   :type this: obj
+   :param name: The name of the function we are adding.
+   :type name: desc
    :param \*args: The types of the arguments to the function.
    :returns: ``_oaf_name`` will be set to the mangled name of the function which
              was added. Users should use the mangled name when implementing the
              function.
    :rtype: desc
+   
+   :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+                                 debug mode or not.
+   :vartype CMAKEPP_LANG_DEBUG_MODE: bool
    
    Error Checking
    ==============
@@ -32,9 +36,5 @@ cmakepp_lang.object/add_fxn
    called with the correct number and types of arguments. If this is not the case
    an error will be raised. These error checks are only performed if CMakePP is
    being run in debug mode.
-   
-   :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
-                                 debug mode or not.
-   :vartype CMAKEPP_LANG_DEBUG_MODE: bool
    
 

@@ -115,9 +115,9 @@ be the same.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>_me_this</strong> (<em>map</em>) – One of the two maps being compared.</p></li>
-<li><p><strong>_me_result</strong> (<em>desc</em>) – Name for the variable which will hold the result.</p></li>
-<li><p><strong>_me_other</strong> (<em>map</em>) – The map we are comparing to.</p></li>
+<li><p><strong>this</strong> (<em>map</em>) – One of the two maps being compared.</p></li>
+<li><p><strong>result</strong> (<em>desc</em>) – Name for the variable which will hold the result.</p></li>
+<li><p><strong>other</strong> (<em>map</em>) – The map we are comparing to.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -127,6 +127,10 @@ compare equal and <code class="docutils literal notranslate"><span class="pre">F
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
 </dd>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>CMAKEPP_LANG_DEBUG_MODE</strong> (<em>bool</em>) – Used to determine if CMakePP is being run in
+debug mode or not.</p>
+</dd>
 </dl>
 <section id="error-checking">
 <h2>Error Checking<a class="headerlink" href="#error-checking" title="Permalink to this heading"></a></h2>
@@ -134,15 +138,6 @@ compare equal and <code class="docutils literal notranslate"><span class="pre">F
 exactly three arguments, and that those arguments have the correct types. If
 these assertions fail an error will be raised. These error checks are only
 done if CMakePP is run in debug mode.</p>
-<dl class="field-list simple">
-<dt class="field-odd">var CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Used to determine if CMakePP is being run in
-debug mode or not.</p>
-</dd>
-<dt class="field-even">vartype CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-even"><p>bool</p>
-</dd>
-</dl>
 </section>
 </dd></dl>
 

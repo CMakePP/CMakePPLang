@@ -124,10 +124,10 @@ meta-attribute set to the empty string and a non-existing meta-attribute.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>_ogma_this</strong> (<em>obj</em>) – The object instance whose meta-attribute is being
+<li><p><strong>this</strong> (<em>obj</em>) – The object instance whose meta-attribute is being
 retrieved.</p></li>
-<li><p><strong>_ogma_result</strong> (<em>desc</em>) – Name for the variable which will hold the value.</p></li>
-<li><p><strong>_ogma_attr</strong> (<em>desc</em>) – The name of the meta-attribute we are retrieving.</p></li>
+<li><p><strong>result</strong> (<em>desc</em>) – Name for the variable which will hold the value.</p></li>
+<li><p><strong>attr</strong> (<em>desc</em>) – The name of the meta-attribute we are retrieving.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -137,6 +137,10 @@ attribute exists) and the empty string otherwise.</p>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str</p>
 </dd>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>CMAKEPP_LANG_DEBUG_MODE</strong> (<em>bool</em>) – Used to determine if CMakePP is being run in
+debug mode or not.</p>
+</dd>
 </dl>
 <section id="error-checking">
 <h2>Error Checking<a class="headerlink" href="#error-checking" title="Permalink to this heading"></a></h2>
@@ -144,15 +148,6 @@ attribute exists) and the empty string otherwise.</p>
 this function will assert that it has been called with exactly three arguments
 and that those arguments have the correct types. If any assertion fails an
 error will be raised.</p>
-<dl class="field-list simple">
-<dt class="field-odd">var CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Used to determine if CMakePP is being run in
-debug mode or not.</p>
-</dd>
-<dt class="field-even">vartype CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-even"><p>bool</p>
-</dd>
-</dl>
 </section>
 </dd></dl>
 

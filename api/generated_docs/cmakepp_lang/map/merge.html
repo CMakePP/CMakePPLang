@@ -115,9 +115,13 @@ will overwrite the value in _m_this.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>_m_this</strong> (<em>map</em>) – The map that will have the key-value pairs added to it.</p></li>
-<li><p><strong>_m_other</strong> (<em>map</em>) – The map whose key-value pairs will be added to _m_this.</p></li>
+<li><p><strong>this</strong> (<em>map</em>) – The map that will have the key-value pairs added to it.</p></li>
+<li><p><strong>other</strong> (<em>map</em>) – The map whose key-value pairs will be added to _m_this.</p></li>
 </ul>
+</dd>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>CMAKEPP_LANG_DEBUG_MODE</strong> (<em>bool</em>) – Used to determine if CMakePP is being run in
+debug mode or not.</p>
 </dd>
 </dl>
 <section id="error-checking">
@@ -126,15 +130,6 @@ will overwrite the value in _m_this.</p>
 with exactly two arguments, and that those arguments have the correct types.
 If these assertions fail an error will be raised. These checks are only
 performed if CMakePP is run in debug mode.</p>
-<dl class="field-list simple">
-<dt class="field-odd">var CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Used to determine if CMakePP is being run in
-debug mode or not.</p>
-</dd>
-<dt class="field-even">vartype CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-even"><p>bool</p>
-</dd>
-</dl>
 </section>
 </dd></dl>
 

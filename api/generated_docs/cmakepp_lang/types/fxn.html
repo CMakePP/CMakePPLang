@@ -124,8 +124,8 @@ function which is identified as a command.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>_if_result</strong> (<em>desc</em>) – Name for variable which will hold the result of the check.</p></li>
-<li><p><strong>_if_str2check</strong> – The string which may be a command.</p></li>
+<li><p><strong>result</strong> (<em>desc</em>) – Name for variable which will hold the result of the check.</p></li>
+<li><p><strong>str2check</strong> – The string which may be a command.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -137,7 +137,7 @@ The result is returned via <code class="docutils literal notranslate"><span clas
 </dd>
 </dl>
 <section id="example-usage">
-<h2>Example Usage:<a class="headerlink" href="#example-usage" title="Permalink to this heading"></a></h2>
+<h2>Example Usage<a class="headerlink" href="#example-usage" title="Permalink to this heading"></a></h2>
 <p>The following code snippet checks whether <code class="docutils literal notranslate"><span class="pre">add_subdirectory</span></code> is a command:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">include</span><span class="p">(</span><span class="s">cmakepp_lang/types/fxn</span><span class="p">)</span>
 <span class="nb">cpp_is_fxn</span><span class="p">(</span><span class="s">result</span><span class="w"> </span><span class="s">add_subdirectory</span><span class="p">)</span>

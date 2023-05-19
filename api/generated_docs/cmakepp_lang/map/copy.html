@@ -115,8 +115,8 @@ way.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>_mc_this</strong> (<em>map</em>) – The Map instance being copied.</p></li>
-<li><p><strong>_mc_other</strong> (<em>desc</em>) – The name of the variable which will hold the deep copy.</p></li>
+<li><p><strong>this</strong> (<em>map</em>) – The Map instance being copied.</p></li>
+<li><p><strong>other</strong> (<em>desc</em>) – The name of the variable which will hold the deep copy.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -125,6 +125,10 @@ way.</p>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>map</p>
 </dd>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>CMAKEPP_LANG_DEBUG_MODE</strong> (<em>bool</em>) – Used to determine if CMakePP is being run in
+debug mode or not.</p>
+</dd>
 </dl>
 <section id="error-checking">
 <h2>Error Checking<a class="headerlink" href="#error-checking" title="Permalink to this heading"></a></h2>
@@ -132,15 +136,6 @@ way.</p>
 has provided only two arguments and that those arguments are of the correct
 types. This error check is only performed if CMakePP is being run in debug
 mode.</p>
-<dl class="field-list simple">
-<dt class="field-odd">var CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Used to determine if CMakePP is being run in
-debug mode or not.</p>
-</dd>
-<dt class="field-even">vartype CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-even"><p>bool</p>
-</dd>
-</dl>
 </section>
 </dd></dl>
 

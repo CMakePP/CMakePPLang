@@ -121,12 +121,12 @@ object does not</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>_ogag_this</strong> (<em>obj</em>) – The instance in which we are looking for the attribute.</p></li>
-<li><p><strong>_ogag_value</strong> (<em>desc</em>) – Identifier for the variable which will hold the value of
+<li><p><strong>this</strong> (<em>obj</em>) – The instance in which we are looking for the attribute.</p></li>
+<li><p><strong>value</strong> (<em>desc</em>) – Identifier for the variable which will hold the value of
 the attribute.</p></li>
-<li><p><strong>_ogag_done</strong> (<em>desc</em>) – Identifier which will hold whether or not the recursion is
+<li><p><strong>done</strong> (<em>desc</em>) – Identifier which will hold whether or not the recursion is
 done.</p></li>
-<li><p><strong>_ogag_attr</strong> (<em>desc</em>) – Name of the attribute we are looking for.</p></li>
+<li><p><strong>attr</strong> (<em>desc</em>) – Name of the attribute we are looking for.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -156,20 +156,28 @@ checking on its own.</p>
 the Object API at all) for accessing the attributes of an Object instance.
 This function can get one attribute or multiple depending on the signature
 of the call.</p>
-<p>Single Attribute GET Signature:
-_cpp_object_get_attr(this value attribute)</p>
+<p>Single Attribute GET Signature:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">_cpp_object_get_attr</span><span class="p">(</span><span class="s">this</span><span class="w"> </span><span class="s">value</span><span class="w"> </span><span class="s">attribute</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>Here “this” is the object to retrieve the attribute from, “value” is the
 handle where the attribute is to be returned to the parent scope, and
 “attribute” is the name of the attribute to be retrieved.</p>
-<p>Multiple Attribute GET Signature:
-_cpp_object_get_attr(this prefix attrs)</p>
+<p>Multiple Attribute GET Signature:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">_cpp_object_get_attr</span><span class="p">(</span><span class="s">this</span><span class="w"> </span><span class="s">prefix</span><span class="w"> </span><span class="s">attrs</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>Here is the object to retrieve the attributes from, prefix will be prepended
 to the each attributes name and used as the handle where that attribute is
 returned to the parent scope, and attributes is the list of attributes to
 retrieve.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>_oga_this</strong> (<em>obj</em>) – The object whose attribute is being accessed.</p>
+<dd class="field-odd"><p><strong>this</strong> (<em>obj</em>) – The object whose attribute is being accessed.</p>
+</dd>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>CMAKEPP_LANG_DEBUG_MODE</strong> (<em>bool</em>) – Used to determine if CMakePP is being run in
+debug mode or not.</p>
 </dd>
 </dl>
 <section id="error-checking">
@@ -178,15 +186,6 @@ retrieve.</p>
 called with exactly three arguments and that the arguments have the correct
 type. If any of these assertions fail an error will be raised. These errors
 are only considered if CMakePP is being run in debug mode.</p>
-<dl class="field-list simple">
-<dt class="field-odd">var CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Used to determine if CMakePP is being run in
-debug mode or not.</p>
-</dd>
-<dt class="field-even">vartype CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-even"><p>bool</p>
-</dd>
-</dl>
 <p>Additionally, this function will always assert that the object possesses the
 requested attribute. If the object does not posses the attribute an error will
 be raised.</p>
@@ -205,8 +204,8 @@ function will overwrite its value.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>_osa_this</strong> (<em>obj</em>) – The Object instance whose attribute is being set.</p></li>
-<li><p><strong>_osa_attr</strong> (<em>desc</em>) – The name of the attribute we are setting.</p></li>
+<li><p><strong>this</strong> (<em>obj</em>) – The Object instance whose attribute is being set.</p></li>
+<li><p><strong>attr</strong> (<em>desc</em>) – The name of the attribute we are setting.</p></li>
 <li><p><strong>*args</strong> – The value or values the attribute will be set as.</p></li>
 </ul>
 </dd>

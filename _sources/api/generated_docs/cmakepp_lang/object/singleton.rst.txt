@@ -19,10 +19,14 @@ cmakepp_lang.object/singleton
    state and thus for efficiency reasons it makes sense to have a single Object
    instance that all derived class instances alias.
    
-   :param _os_this: Name for the variable which will hold the new instance.
-   :type _os_this: desc
+   :param this: Name for the variable which will hold the new instance.
+   :type this: desc
    :returns: ``_os_this`` will be set to the newly created Object instance.
    :rtype: obj
+   
+   :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+                                debug mode or not.
+   :vartype CMAKEPP_LANG_DEBUG_MODE: bool
    
    .. note::
    
@@ -36,10 +40,6 @@ cmakepp_lang.object/singleton
    this function will ensure that it was called with exactly one argument and
    that the one argument is of type ``desc``. If either of these asserts fails an
    error will be raised.
-   
-   :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
-                                debug mode or not.
-   :vartype CMAKEPP_LANG_DEBUG_MODE: bool
    
 
 

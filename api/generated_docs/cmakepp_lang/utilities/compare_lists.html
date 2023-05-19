@@ -129,9 +129,9 @@ compare the values of CMakePP objects, not their this-pointers.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>_cl_result</strong> (<em>desc</em>) – Name for variable which will hold the result.</p></li>
-<li><p><strong>_cl_lhs</strong> (<em>list*</em>) – Identifier containing the first list to compare.</p></li>
-<li><p><strong>_cl_rhs</strong> (<em>list*</em>) – Identifier containing the second list to comapre.</p></li>
+<li><p><strong>result</strong> (<em>desc</em>) – Name for variable which will hold the result.</p></li>
+<li><p><strong>lhs</strong> (<em>list*</em>) – Identifier containing the first list to compare.</p></li>
+<li><p><strong>rhs</strong> (<em>list*</em>) – Identifier containing the second list to comapre.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -141,6 +141,10 @@ and <code class="docutils literal notranslate"><span class="pre">FALSE</span></c
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
 </dd>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>CMAKEPP_LANG_DEBUG_MODE</strong> (<em>bool</em>) – Used to determine if CMakePP is being run in
+debug mode or not.</p>
+</dd>
 </dl>
 <section id="error-checking">
 <h2>Error Checking<a class="headerlink" href="#error-checking" title="Permalink to this heading"></a></h2>
@@ -148,12 +152,6 @@ and <code class="docutils literal notranslate"><span class="pre">FALSE</span></c
 is only provided three arguments (preventing the user from accidentally
 dereferencing one of the input lists in most cases) and that the arguments are
 all of type <code class="docutils literal notranslate"><span class="pre">desc</span></code>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">var CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Used to determine if CMakePP is being run in
-debug mode.</p>
-</dd>
-</dl>
 </section>
 </dd></dl>
 

@@ -118,24 +118,19 @@ error if none is found.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>_fc_this</strong> (<em>obj</em>) – The object being constructed.</p></li>
-<li><p><strong>_fc_type</strong> (<em>obj</em>) – The type of the object being constructed.</p></li>
+<li><p><strong>this</strong> (<em>obj</em>) – The object being constructed.</p></li>
+<li><p><strong>type</strong> (<em>obj</em>) – The type of the object being constructed.</p></li>
 </ul>
+</dd>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>CMAKEPP_LANG_DEBUG_MODE</strong> (<em>bool</em>) – Used to determine if CMakePP is being run in
+debug mode or not.</p>
 </dd>
 </dl>
 <section id="error-checking">
 <h2>Error Checking<a class="headerlink" href="#error-checking" title="Permalink to this heading"></a></h2>
 <p>If CMakePP is being run in debug mode this function will ensure that it was
 called with an obj and a type as the first two parameters.</p>
-<dl class="field-list simple">
-<dt class="field-odd">var CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Used to determine if CMakePP is being run in
-debug mode or not.</p>
-</dd>
-<dt class="field-even">vartype CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-even"><p>bool</p>
-</dd>
-</dl>
 <p>Additionally, this function will always throw an error if a CTOR call with
 arguments was made an no CTOR can be found matching the signature of the call.</p>
 </section>

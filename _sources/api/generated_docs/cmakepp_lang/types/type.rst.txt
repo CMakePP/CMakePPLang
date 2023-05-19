@@ -15,10 +15,10 @@ cmakepp_lang.types/type
    classes to add even more type literals. This function will determine if an
    identifier is also a type literal.
    
-   :param _it_result: Name for the variable which will hold the result.
-   :type _it_result: desc
-   :param _it_type: The object for which we want to know if it is a type literal.
-   :type _it_type: str
+   :param result: Name for the variable which will hold the result.
+   :type result: desc
+   :param type: The object for which we want to know if it is a type literal.
+   :type type: str
    :returns: ``_it_result`` will be set to ``TRUE`` if ``_it_type`` is a type and
              ``FALSE`` otherwise.
    :rtype: bool

@@ -106,8 +106,20 @@
 <p>This command enables users to declare a handler function for specified
 exception types. Subsequent calls to the <code class="docutils literal notranslate"><span class="pre">cpp_raise</span></code> command for those
 exception types will call the handler function declared for that type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>*args</strong> – The exception types to declare handlers for.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>each arg will be set to the mangled name of the declared
+exception handler for that exception type.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>desc</p>
+</dd>
+</dl>
 <section id="example-usage">
-<h2>Example usage:<a class="headerlink" href="#example-usage" title="Permalink to this heading"></a></h2>
+<h2>Example Usage<a class="headerlink" href="#example-usage" title="Permalink to this heading"></a></h2>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cpp_catch</span><span class="p">(</span><span class="s">my_exec_type_1</span><span class="w"> </span><span class="s">my_exec_type_2</span><span class="p">)</span>
 <span class="nb">function</span><span class="p">(</span><span class="s2">&quot;${my_exec_type_1}&quot;</span><span class="w"> </span><span class="s">message</span><span class="p">)</span>
 <span class="w">   </span><span class="nb">message</span><span class="p">(</span><span class="s2">&quot;In my_exception_handler for exception type: my_exec_type_1&quot;</span><span class="p">)</span>
@@ -119,18 +131,6 @@ exception types will call the handler function declared for that type.</p>
 <span class="nb">endfunction</span><span class="p">()</span>
 </pre></div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">param *args<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The exception types to declare handlers for.</p>
-</dd>
-<dt class="field-even">returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>each arg will be set to the mangled name of the declared
-exception handler for that exception type.</p>
-</dd>
-<dt class="field-odd">rtype<span class="colon">:</span></dt>
-<dd class="field-odd"><p>desc</p>
-</dd>
-</dl>
 </section>
 <section id="error-checking">
 <h2>Error Checking<a class="headerlink" href="#error-checking" title="Permalink to this heading"></a></h2>
@@ -151,20 +151,29 @@ debug mode or not.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="cmakepp_lang.exceptions-exceptions.cpp_raise">
 <span class="sig-prename descclassname"><span class="pre">cmakepp_lang.exceptions/exceptions.</span></span><span class="sig-name descname"><span class="pre">cpp_raise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_r_exce_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang.exceptions-exceptions.cpp_raise" title="Permalink to this definition"></a></dt>
-<dd><p>Raises an exception
-This command raises an exception of the specified type. This will call
+<dd><p>Raises an exception.</p>
+<p>This command raises an exception of the specified type. This will call
 the exception handler for that type if it is declared.</p>
-<p>Example usage:</p>
-<p>cpp_raise(my_exec_type)</p>
-<p>An exception message may be optionally added via calling with additonal parameters.</p>
-<p>Example usage:</p>
-<p>cpp_raise(my_exec_type “My exception message”)
-:param _r_exec_type: The exception type to be raised
-:type _r_exec_type: desc
-:param _r_exec_message: The exception message
-:type _r_exec_message: optional desc</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>exec_type</strong> (<em>desc</em>) – The exception type to be raised</p></li>
+<li><p><strong>exec_message</strong> (<em>optional desc</em>) – The exception message</p></li>
+</ul>
+</dd>
+</dl>
 <section id="id1">
-<h2>Error Checking<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<h2>Example Usage<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cpp_raise</span><span class="p">(</span><span class="s">my_exec_type</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>An exception message may be optionally added via calling with additonal parameters.</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cpp_raise</span><span class="p">(</span><span class="s">my_exec_type</span><span class="w"> </span><span class="s2">&quot;My exception message&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h2>Error Checking<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
 <p>If CMakePP is run in debug mode (and only if it is run in debug mode) this
 function will assert that it was called with at least one argument and that
 the argument is of type desc.</p>
@@ -190,8 +199,8 @@ debug mode or not.</p>
 <p>Denotes that we are starting a try block.</p>
 <p>This function is a no-op that completes the fencing associated with a try
 block.</p>
-<section id="id2">
-<h2>Error Checking<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<section id="id3">
+<h2>Error Checking<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
 <p>None. This function is a no-op and has no errors to check for.</p>
 </section>
 </dd></dl>
@@ -206,22 +215,21 @@ specified types.</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>*args</strong> – The exception types to declare handlers for.</p>
 </dd>
-</dl>
-<p>Example usage:</p>
-<p>cpp_end_try_catch(my_exce_type)</p>
-<section id="id3">
-<h2>Error Checking<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
-<p>If CMakePP is run in debug mode (and only if it is run in debug mode) this
-function will assert that it was called with one or more desc arguments.</p>
-<dl class="field-list simple">
-<dt class="field-odd">var CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Used to determine if CMakePP is being run in
+<dt class="field-even">Variables<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>CMAKEPP_LANG_DEBUG_MODE</strong> (<em>bool</em>) – Used to determine if CMakePP is being run in
 debug mode or not.</p>
 </dd>
-<dt class="field-even">vartype CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-even"><p>bool</p>
-</dd>
 </dl>
+<section id="id4">
+<h2>Example Usage<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cpp_end_try_catch</span><span class="p">(</span><span class="s">my_exce_type</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h2>Error Checking<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<p>If CMakePP is run in debug mode (and only if it is run in debug mode) this
+function will assert that it was called with one or more desc arguments.</p>
 </section>
 </dd></dl>
 

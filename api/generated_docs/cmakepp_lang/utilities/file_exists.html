@@ -123,8 +123,8 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>_fe_result</strong> (<em>desc</em>) – Name for variable which will hold the result.</p></li>
-<li><p><strong>_fe_file</strong> (<em>path</em>) – Path which may be pointing to an existing file.</p></li>
+<li><p><strong>result</strong> (<em>desc</em>) – Name for variable which will hold the result.</p></li>
+<li><p><strong>file</strong> (<em>path</em>) – Path which may be pointing to an existing file.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -136,18 +136,16 @@ absolute path of a file and <code class="docutils literal notranslate"><span cla
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
 </dd>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>CMAKEPP_LANG_DEBUG_MODE</strong> (<em>bool</em>) – Used to determine if CMakePP is being run in
+debug mode or not.</p>
+</dd>
 </dl>
 <section id="error-checking">
 <h2>Error Checking<a class="headerlink" href="#error-checking" title="Permalink to this heading"></a></h2>
 <p>If CMakePP is run in debug mode <code class="docutils literal notranslate"><span class="pre">cpp_file_exists</span></code> will assert that it has
 been called with two arguments and that those arguments are of the correct
 types.</p>
-<dl class="field-list simple">
-<dt class="field-odd">var CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Used to determine if CMakePP is being run in
-debug mode or not.</p>
-</dd>
-</dl>
 </section>
 </dd></dl>
 

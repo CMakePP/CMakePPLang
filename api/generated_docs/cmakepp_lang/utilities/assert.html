@@ -125,16 +125,16 @@ where we want to crash the program if a condition is not met.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>_ca_cond</strong> (<em>bool</em><em> or </em><em>str</em><em> or </em><em>list</em><em>(</em><em>str</em><em>)</em>) – The condition which should be true. This can be anything that
+<li><p><strong>cond</strong> (<em>bool</em><em> or </em><em>str</em><em> or </em><em>list</em><em>(</em><em>str</em><em>)</em>) – The condition which should be true. This can be anything that
 can be passed to CMake’s <code class="docutils literal notranslate"><span class="pre">if</span></code> statement; however, if the
 condition is not a single argument it must be provided as a
 list, <em>e.g.</em>, <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">STREQUAL</span> <span class="pre">x</span></code> becomes <code class="docutils literal notranslate"><span class="pre">x;STREQUAL;x</span></code>.</p></li>
-<li><p><strong>_ca_desc</strong> (<em>str</em>) – Human-readable description of the assertion.</p></li>
+<li><p><strong>desc</strong> (<em>str</em>) – Human-readable description of the assertion.</p></li>
 </ul>
 </dd>
 </dl>
 <section id="example-usage">
-<h2>Example Usage:<a class="headerlink" href="#example-usage" title="Permalink to this heading"></a></h2>
+<h2>Example Usage<a class="headerlink" href="#example-usage" title="Permalink to this heading"></a></h2>
 <p>This first example shows how to use <code class="docutils literal notranslate"><span class="pre">cpp_assert</span></code> to ensure that an object is
 a particular type (in this case an integer). It should be noted that this same
 functionality is provided by the <code class="docutils literal notranslate"><span class="pre">cpp_assert_int</span></code> function and does not need

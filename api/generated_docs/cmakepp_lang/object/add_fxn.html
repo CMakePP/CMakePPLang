@@ -120,8 +120,8 @@ signatures.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>_oaf_this</strong> (<em>obj</em>) – The Object instance we are adding the function to.</p></li>
-<li><p><strong>_oaf_name</strong> (<em>desc</em>) – The name of the function we are adding.</p></li>
+<li><p><strong>this</strong> (<em>obj</em>) – The Object instance we are adding the function to.</p></li>
+<li><p><strong>name</strong> (<em>desc</em>) – The name of the function we are adding.</p></li>
 <li><p><strong>*args</strong> – The types of the arguments to the function.</p></li>
 </ul>
 </dd>
@@ -133,6 +133,10 @@ function.</p>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>desc</p>
 </dd>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>CMAKEPP_LANG_DEBUG_MODE</strong> (<em>bool</em>) – Used to determine if CMakePP is being run in
+debug mode or not.</p>
+</dd>
 </dl>
 <section id="error-checking">
 <h2>Error Checking<a class="headerlink" href="#error-checking" title="Permalink to this heading"></a></h2>
@@ -140,15 +144,6 @@ function.</p>
 called with the correct number and types of arguments. If this is not the case
 an error will be raised. These error checks are only performed if CMakePP is
 being run in debug mode.</p>
-<dl class="field-list simple">
-<dt class="field-odd">var CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Used to determine if CMakePP is being run in
-debug mode or not.</p>
-</dd>
-<dt class="field-even">vartype CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-even"><p>bool</p>
-</dd>
-</dl>
 </section>
 </dd></dl>
 

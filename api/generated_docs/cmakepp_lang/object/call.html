@@ -119,9 +119,9 @@ the member function we are calling.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>_ocg_this</strong> (<em>obj</em>) – The Object instance whose member function is being called.</p></li>
-<li><p><strong>_ocg_result</strong> (<em>desc</em>) – Identifier to hold the symbol of the function to call.</p></li>
-<li><p><strong>_ocg_method</strong> (<em>desc</em>) – The name of the method to call. The actual name is
+<li><p><strong>this</strong> (<em>obj</em>) – The Object instance whose member function is being called.</p></li>
+<li><p><strong>result</strong> (<em>desc</em>) – Identifier to hold the symbol of the function to call.</p></li>
+<li><p><strong>method</strong> (<em>desc</em>) – The name of the method to call. The actual name is
 case-insensitive.</p></li>
 <li><p><strong>*args</strong> – The arguments which are being forwarded to the member function.</p></li>
 </ul>
@@ -161,8 +161,8 @@ call and actually invoking it.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>_oc_this</strong> (<em>obj</em>) – The Object instance whose member function is being called.</p></li>
-<li><p><strong>_oc_method</strong> (<em>desc</em>) – The name of the member function to call.</p></li>
+<li><p><strong>this</strong> (<em>obj</em>) – The Object instance whose member function is being called.</p></li>
+<li><p><strong>method</strong> (<em>desc</em>) – The name of the member function to call.</p></li>
 <li><p><strong>*args</strong> – The arguments to forward to the member function (the required
 first argument of the <code class="docutils literal notranslate"><span class="pre">this</span></code> pointer is forwarded
 automatically and should not be provided in this list)</p></li>
@@ -176,6 +176,10 @@ not return this function will not return.</p>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str</p>
 </dd>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>CMAKEPP_LANG_DEBUG_MODE</strong> (<em>bool</em>) – Used to determine if CMakePP is being run in
+debug mode or not.</p>
+</dd>
 </dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -187,15 +191,6 @@ subcall.</p>
 <p>If CMakePP is run in debug mode (and only if CMakePP is run in debug mode)
 this function will ensure that it was called with the correct number and types
 of arguments. If it is not an error will be raised.</p>
-<dl class="field-list simple">
-<dt class="field-odd">var CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Used to determine if CMakePP is being run in
-debug mode or not.</p>
-</dd>
-<dt class="field-even">vartype CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-even"><p>bool</p>
-</dd>
-</dl>
 <p>Additionally, this function will raise an error if the Object instance does
 not contain a suitable overload for the provided arguments.</p>
 </section>

@@ -14,8 +14,13 @@ cmakepp_lang.exceptions/exceptions
    exception types. Subsequent calls to the ``cpp_raise`` command for those
    exception types will call the handler function declared for that type.
    
-   Example usage:
-   ==============
+   :param \*args: The exception types to declare handlers for.
+   :returns: each arg will be set to the mangled name of the declared
+             exception handler for that exception type.
+   :rtype: desc
+   
+   Example Usage
+   =============
    
    .. code-block:: cmake
    
@@ -28,11 +33,6 @@ cmakepp_lang.exceptions/exceptions
          message("In my_exception_handler for exception type: my_exec_type_2")
          message("Exception details: ${message}")
       endfunction()
-   
-   :param \*args: The exception types to declare handlers for.
-   :returns: each arg will be set to the mangled name of the declared
-             exception handler for that exception type.
-   :rtype: desc
    
    Error Checking
    ==============
@@ -48,23 +48,28 @@ cmakepp_lang.exceptions/exceptions
 
 .. function:: cpp_raise(_r_exce_type)
 
-   Raises an exception
+   Raises an exception.
+   
    This command raises an exception of the specified type. This will call
    the exception handler for that type if it is declared.
    
-   Example usage:
+   :param exec_type: The exception type to be raised
+   :type exec_type: desc
+   :param exec_message: The exception message
+   :type exec_message: optional desc
    
-   cpp_raise(my_exec_type)
+   Example Usage
+   =============
+   
+   .. code-block:: cmake
+   
+      cpp_raise(my_exec_type)
    
    An exception message may be optionally added via calling with additonal parameters.
    
-   Example usage:
+   .. code-block:: cmake
    
-   cpp_raise(my_exec_type "My exception message")
-   :param _r_exec_type: The exception type to be raised
-   :type _r_exec_type: desc
-   :param _r_exec_message: The exception message
-   :type _r_exec_message: optional desc
+      cpp_raise(my_exec_type "My exception message")
    
    Error Checking
    ==============
@@ -105,18 +110,21 @@ cmakepp_lang.exceptions/exceptions
    
    :param \*args: The exception types to declare handlers for.
    
-   Example usage:
+   :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+                                 debug mode or not.
+   :vartype CMAKEPP_LANG_DEBUG_MODE: bool
    
-   cpp_end_try_catch(my_exce_type)
+   Example Usage
+   =============
+   
+   .. code-block::
+   
+      cpp_end_try_catch(my_exce_type)
    
    Error Checking
    ==============
    
    If CMakePP is run in debug mode (and only if it is run in debug mode) this
    function will assert that it was called with one or more desc arguments.
-   
-   :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
-                                 debug mode or not.
-   :vartype CMAKEPP_LANG_DEBUG_MODE: bool
    
 

@@ -111,8 +111,8 @@ what type it is.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>_c_result</strong> (<em>desc</em>) – The name of the variable to return the result in.</p></li>
-<li><p><strong>_c_obj2copy</strong> (<em>str</em>) – The object we are deep copying</p></li>
+<li><p><strong>result</strong> (<em>desc</em>) – The name of the variable to return the result in.</p></li>
+<li><p><strong>obj2copy</strong> (<em>str</em>) – The object we are deep copying</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -121,6 +121,10 @@ what type it is.</p>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str</p>
 </dd>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>CMAKEPP_LANG_DEBUG_MODE</strong> (<em>bool</em>) – Used to determine if CMakePP is being run in
+debug mode.</p>
+</dd>
 </dl>
 <section id="error-checking">
 <h2>Error Checking<a class="headerlink" href="#error-checking" title="Permalink to this heading"></a></h2>
@@ -128,15 +132,6 @@ what type it is.</p>
 been called with exactly two arguments and that those arguments have the
 correct types. If any of these assertions fail, an error will be raised. These
 error checks are done only if CMakePP is being run in debug mode.</p>
-<dl class="field-list simple">
-<dt class="field-odd">var CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Used to determine if CMakePP is being run in
-debug mode.</p>
-</dd>
-<dt class="field-even">vartype CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-even"><p>bool</p>
-</dd>
-</dl>
 </section>
 </dd></dl>
 

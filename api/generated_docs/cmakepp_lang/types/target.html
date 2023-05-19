@@ -122,8 +122,8 @@ function simply wraps a call to <code class="docutils literal notranslate"><span
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>_it_return</strong> (<em>desc</em>) – Name to use for the resulting identifier.</p></li>
-<li><p><strong>_it_str2check</strong> (<em>str</em>) – The string whose targety-ness is in question</p></li>
+<li><p><strong>return</strong> (<em>desc</em>) – Name to use for the resulting identifier.</p></li>
+<li><p><strong>str2check</strong> (<em>str</em>) – The string whose targety-ness is in question</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -134,13 +134,8 @@ target and <code class="docutils literal notranslate"><span class="pre">FALSE</s
 <dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
-<section id="error-checking">
-<h2>Error Checking<a class="headerlink" href="#error-checking" title="Permalink to this heading"></a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">cpp_is_target</span></code> will assert that the caller has provided exactly two
-arguments. If this is not the case an error will be raised.</p>
-</section>
 <section id="example-usage">
-<h2>Example Usage:<a class="headerlink" href="#example-usage" title="Permalink to this heading"></a></h2>
+<h2>Example Usage<a class="headerlink" href="#example-usage" title="Permalink to this heading"></a></h2>
 <p>The following is an example showcasing how one would check if the identifier
 <code class="docutils literal notranslate"><span class="pre">my_target</span></code> is a target:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">include</span><span class="p">(</span><span class="s">cmakepp_lang/types/target</span><span class="p">)</span>
@@ -149,6 +144,11 @@ arguments. If this is not the case an error will be raised.</p>
 <span class="nb">message</span><span class="p">(</span><span class="s2">&quot;my_target is a target: ${return}&quot;</span><span class="p">)</span><span class="w">  </span><span class="c"># prints TRUE</span>
 </pre></div>
 </div>
+</section>
+<section id="error-checking">
+<h2>Error Checking<a class="headerlink" href="#error-checking" title="Permalink to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">cpp_is_target</span></code> will assert that the caller has provided exactly two
+arguments. If this is not the case an error will be raised.</p>
 </section>
 </dd></dl>
 

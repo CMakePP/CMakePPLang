@@ -10,18 +10,22 @@ cmakepp_lang.utilities/check_conflicting_types
 
    Checks if the given name conflicts with any built-in CMakePPLang types.
    
-   :param _cc_conflict: Return value for whether a conflict exists.
-   :type _cc_conflict: bool*
-   :param _cc_conflicting_type: Return value for the type that the name
+   :param conflict: Return value for whether a conflict exists.
+   :type conflict: bool*
+   :param conflicting_type: Return value for the type that the name
                                 conflicts with.
-   :type _cc_conflicting_type: desc*
-   :param _cc_name: Name to check for conflicts with.
-   :type _cc_name: desc
+   :type conflicting_type: desc*
+   :param name: Name to check for conflicts with.
+   :type name: desc
    
    :returns: Whether there was a conflict (TRUE) or not (FALSE) and the
              conflicting type, or an empty string ("") if no conflicts
              occured.
    :rtype: (bool, desc)
+   
+   :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+                                 debug mode or not.
+   :vartype CMAKEPP_LANG_DEBUG_MODE: bool
    
    Error Checking
    ==============
@@ -29,9 +33,5 @@ cmakepp_lang.utilities/check_conflicting_types
    If CMakePP is run in debug mode (and only if it is run in debug mode) this
    function will assert that it was called with all three arguments and that
    the arguments have the correct types.
-   
-   :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
-                                 debug mode or not.
-   :vartype CMAKEPP_LANG_DEBUG_MODE: bool
    
 

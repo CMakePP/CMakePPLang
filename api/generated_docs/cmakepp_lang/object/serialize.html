@@ -121,8 +121,8 @@ object as the value.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>_os_this</strong> (<em>obj</em>) – The object we are serializing.</p></li>
-<li><p><strong>_os_result</strong> (<em>desc</em>) – Name for the identifier which will hold the serialized
+<li><p><strong>this</strong> (<em>obj</em>) – The object we are serializing.</p></li>
+<li><p><strong>result</strong> (<em>desc</em>) – Name for the identifier which will hold the serialized
 value.</p></li>
 </ul>
 </dd>
@@ -130,21 +130,16 @@ value.</p></li>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">_os_result</span></code> will be set to the JSON serialized representation of
 <code class="docutils literal notranslate"><span class="pre">_os_this</span></code>.</p>
 </dd>
+<dt class="field-odd">Variables<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>CMAKEPP_LANG_DEBUG_MODE</strong> (<em>bool</em>) – Used to determine if CMakePP is being run in
+debug mode or not.</p>
+</dd>
 </dl>
 <section id="error-checking">
 <h2>Error Checking<a class="headerlink" href="#error-checking" title="Permalink to this heading"></a></h2>
 <p>If CMakePP is run in debug mode (and only if it is) this function will assert
 that the caller has provided exactly two arguments and that those arguments
 have the correct types. If any assertion fails an error is raised.</p>
-<dl class="field-list simple">
-<dt class="field-odd">var CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Used to determine if CMakePP is being run in
-debug mode or not.</p>
-</dd>
-<dt class="field-even">vartype CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-even"><p>bool</p>
-</dd>
-</dl>
 </section>
 </dd></dl>
 
@@ -156,7 +151,7 @@ debug mode or not.</p>
 serialized form to standard out.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>_op_this</strong> (<em>obj</em>) – The object we are printing to standard out.</p>
+<dd class="field-odd"><p><strong>this</strong> (<em>obj</em>) – The object we are printing to standard out.</p>
 </dd>
 </dl>
 <section id="id1">

@@ -124,13 +124,17 @@ state and thus for efficiency reasons it makes sense to have a single Object
 instance that all derived class instances alias.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>_os_this</strong> (<em>desc</em>) – Name for the variable which will hold the new instance.</p>
+<dd class="field-odd"><p><strong>this</strong> (<em>desc</em>) – Name for the variable which will hold the new instance.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">_os_this</span></code> will be set to the newly created Object instance.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>obj</p>
+</dd>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>CMAKEPP_LANG_DEBUG_MODE</strong> (<em>bool</em>) – Used to determine if CMakePP is being run in
+debug mode or not.</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -144,15 +148,6 @@ into the caller’s scope.</p>
 this function will ensure that it was called with exactly one argument and
 that the one argument is of type <code class="docutils literal notranslate"><span class="pre">desc</span></code>. If either of these asserts fails an
 error will be raised.</p>
-<dl class="field-list simple">
-<dt class="field-odd">var CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Used to determine if CMakePP is being run in
-debug mode or not.</p>
-</dd>
-<dt class="field-even">vartype CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-even"><p>bool</p>
-</dd>
-</dl>
 </section>
 </dd></dl>
 

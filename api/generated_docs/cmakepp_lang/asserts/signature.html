@@ -114,7 +114,7 @@ run if CMakePP is run in debug mode.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>_cas_argv</strong> (<em>list</em>) – The values of the arguments which were passed to the caller.</p></li>
+<li><p><strong>argv</strong> (<em>list</em>) – The values of the arguments which were passed to the caller.</p></li>
 <li><p><strong>*args</strong> – The types that each argument should obey. Users can pass
 <code class="docutils literal notranslate"><span class="pre">args</span></code> as a type to indicate that their function is variadic.
 If provided, <code class="docutils literal notranslate"><span class="pre">args</span></code> must be the last type.</p></li>
@@ -125,7 +125,7 @@ If provided, <code class="docutils literal notranslate"><span class="pre">args</
 </dd>
 </dl>
 <section id="example-usage">
-<h2>Example Usage:<a class="headerlink" href="#example-usage" title="Permalink to this heading"></a></h2>
+<h2>Example Usage<a class="headerlink" href="#example-usage" title="Permalink to this heading"></a></h2>
 <p>This function is intended to be called first thing inside as many CMakePP and
 user functions as possible. A typical use case looks like:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">include</span><span class="p">(</span><span class="s">cmakepp_lang/asserts/signature</span><span class="p">)</span>

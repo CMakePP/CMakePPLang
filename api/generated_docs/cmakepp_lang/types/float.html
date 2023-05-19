@@ -122,8 +122,8 @@ a minus sign.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>_if_return</strong> (<em>desc</em>) – Name for the variable used to store the result.</p></li>
-<li><p><strong>_if_str2check</strong> (<em>str</em>) – The string we are checking for its floaty-ness</p></li>
+<li><p><strong>return</strong> (<em>desc</em>) – Name for the variable used to store the result.</p></li>
+<li><p><strong>str2check</strong> (<em>str</em>) – The string we are checking for its floaty-ness</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -134,13 +134,8 @@ float and <code class="docutils literal notranslate"><span class="pre">FALSE</sp
 <dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
-<section id="error-checking">
-<h2>Error Checking<a class="headerlink" href="#error-checking" title="Permalink to this heading"></a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">cpp_is_float</span></code> will assert that it is called with exactly two arguments. If
-it is not an error will be raised.</p>
-</section>
 <section id="example-usage">
-<h2>Example Usage:<a class="headerlink" href="#example-usage" title="Permalink to this heading"></a></h2>
+<h2>Example Usage<a class="headerlink" href="#example-usage" title="Permalink to this heading"></a></h2>
 <p>The following is an example showcasing how one would check if the identifier
 <code class="docutils literal notranslate"><span class="pre">x</span></code> contained a float.</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">include</span><span class="p">(</span><span class="s">cmakepp_lang/types/float</span><span class="p">)</span>
@@ -149,6 +144,11 @@ it is not an error will be raised.</p>
 <span class="nb">message</span><span class="p">(</span><span class="s2">&quot;3.14 is a float: ${return}&quot;</span><span class="p">)</span><span class="w">  </span><span class="c"># prints TRUE</span>
 </pre></div>
 </div>
+</section>
+<section id="error-checking">
+<h2>Error Checking<a class="headerlink" href="#error-checking" title="Permalink to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">cpp_is_float</span></code> will assert that it is called with exactly two arguments. If
+it is not an error will be raised.</p>
 </section>
 </dd></dl>
 

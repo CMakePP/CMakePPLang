@@ -137,8 +137,8 @@ a_CPP_0_CPP_b_CPP_1_CPP_c_CPP_2_CPP_cc_CPP_1_CPP_bb_CPP_0_CPP_aa</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>_pl_result</strong> (<em>list</em>) – The name for the variable which will hold the result.</p></li>
-<li><p><strong>_pl_list</strong> – The list we want to pack into a string.</p></li>
+<li><p><strong>result</strong> (<em>list</em>) – The name for the variable which will hold the result.</p></li>
+<li><p><strong>list</strong> – The list we want to pack into a string.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -147,18 +147,16 @@ a_CPP_0_CPP_b_CPP_1_CPP_c_CPP_2_CPP_cc_CPP_1_CPP_bb_CPP_0_CPP_aa</p>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>desc</p>
 </dd>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>CMAKEPP_LANG_DEBUG_MODE</strong> (<em>bool</em>) – Used to determine if CMakePP is being run in
+debug mode or not.</p>
+</dd>
 </dl>
 <section id="error-checking">
 <h2>Error Checking<a class="headerlink" href="#error-checking" title="Permalink to this heading"></a></h2>
 <p>If CMakePP is run in debug mode <code class="docutils literal notranslate"><span class="pre">cpp_pack_list</span></code> will assert that it has
 been called with two arguments and that those arguments are of the correct
 types.</p>
-<dl class="field-list simple">
-<dt class="field-odd">var CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Used to determine if CMakePP is being run in
-debug mode or not.</p>
-</dd>
-</dl>
 </section>
 </dd></dl>
 
@@ -180,8 +178,8 @@ a_CPP_0_CPP_b_CPP_1_CPP_c_CPP_2_CPP_cc_CPP_1_CPP_bb_CPP_0_CPP_aa</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>_up_result</strong> (<em>desc</em>) – The name for the variable which will hold the result.</p></li>
-<li><p><strong>_up_packed_list</strong> (<em>desc</em>) – The string we want to transform to a CMake list.</p></li>
+<li><p><strong>result</strong> (<em>desc</em>) – The name for the variable which will hold the result.</p></li>
+<li><p><strong>packed_list</strong> (<em>desc</em>) – The string we want to transform to a CMake list.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>

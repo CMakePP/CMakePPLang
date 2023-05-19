@@ -114,9 +114,9 @@ objects have different types they are defined to be unequal.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>_e_result</strong> (<em>desc</em>) – The name to use for variable holding the result.</p></li>
-<li><p><strong>_e_lhs</strong> (<em>str</em>) – One of the two values involved in the comparison.</p></li>
-<li><p><strong>_e_rhs</strong> (<em>str</em>) – The other value involved in the comparison</p></li>
+<li><p><strong>result</strong> (<em>desc</em>) – The name to use for variable holding the result.</p></li>
+<li><p><strong>lhs</strong> (<em>str</em>) – One of the two values involved in the comparison.</p></li>
+<li><p><strong>rhs</strong> (<em>str</em>) – The other value involved in the comparison</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -126,6 +126,10 @@ to <code class="docutils literal notranslate"><span class="pre">_e_rhs</span></c
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
 </dd>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>CMAKEPP_LANG_DEBUG_MODE</strong> (<em>bool</em>) – Used to determine if CMakePP is being run in
+debug mode or not.</p>
+</dd>
 </dl>
 <section id="error-checking">
 <h2>Error Checking<a class="headerlink" href="#error-checking" title="Permalink to this heading"></a></h2>
@@ -133,15 +137,6 @@ to <code class="docutils literal notranslate"><span class="pre">_e_rhs</span></c
 being called with exactly three arguments and that those arguments are of the
 correct types. If any of these asserts fail an error will be raised. These
 errors are only checked for in debug mode.</p>
-<dl class="field-list simple">
-<dt class="field-odd">var CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Used to determine if CMakePP is being run in
-debug mode or not.</p>
-</dd>
-<dt class="field-even">vartype CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-even"><p>bool</p>
-</dd>
-</dl>
 </section>
 </dd></dl>
 

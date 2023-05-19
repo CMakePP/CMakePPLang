@@ -120,8 +120,8 @@ be initialized to the default state for the specified type.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>_oc_this</strong> (<em>desc</em>) – Name for the variable which will hold the resulting instance.</p></li>
-<li><p><strong>_oc_type</strong> (<em>type</em>) – The most-derived type of the object we are creating.</p></li>
+<li><p><strong>this</strong> (<em>desc</em>) – Name for the variable which will hold the resulting instance.</p></li>
+<li><p><strong>type</strong> (<em>type</em>) – The most-derived type of the object we are creating.</p></li>
 <li><p><strong>*args</strong> – The initial instances of each direct base class on which this
 instance should be built.</p></li>
 </ul>
@@ -132,21 +132,16 @@ instance should be built.</p></li>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>obj</p>
 </dd>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>CMAKEPP_LANG_DEBUG_MODE</strong> (<em>bool</em>) – Used to determine if CMakePP is being run in
+debug mode or not.</p>
+</dd>
 </dl>
 <section id="error-checking">
 <h2>Error Checking<a class="headerlink" href="#error-checking" title="Permalink to this heading"></a></h2>
 <p>If CMakePP is being run in debug mode (and only if CMakePP is being run in
 debug mode) this function will assert that it has been called with the correct
 number and types of arguments. If an assertion fails an error will be raised.</p>
-<dl class="field-list simple">
-<dt class="field-odd">var CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Used to determine if CMakePP is being run in
-debug mode or not.</p>
-</dd>
-<dt class="field-even">vartype CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-even"><p>bool</p>
-</dd>
-</dl>
 </section>
 </dd></dl>
 

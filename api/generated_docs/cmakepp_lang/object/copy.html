@@ -119,8 +119,8 @@ simply deep copies recursively the entirety of the Object’s state.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>_oc_this</strong> (<em>obj</em>) – The Object instance which is being copied.</p></li>
-<li><p><strong>_oc_other</strong> (<em>desc</em>) – Name for the variable which will hold the copy.</p></li>
+<li><p><strong>this</strong> (<em>obj</em>) – The Object instance which is being copied.</p></li>
+<li><p><strong>other</strong> (<em>desc</em>) – Name for the variable which will hold the copy.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -129,21 +129,16 @@ simply deep copies recursively the entirety of the Object’s state.</p>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>obj</p>
 </dd>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>CMAKEPP_LANG_DEBUG_MODE</strong> (<em>bool</em>) – Used to determine if CMakePP is being run in
+debug mode or not.</p>
+</dd>
 </dl>
 <section id="error-checking">
 <h2>Error Checking<a class="headerlink" href="#error-checking" title="Permalink to this heading"></a></h2>
 <p>If CMakePP is run in debug mode (and only if CMakePP is run in debug mode)
 this function will ensure that it was called with the correct number and types
 of arguments.</p>
-<dl class="field-list simple">
-<dt class="field-odd">var CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Used to determine if CMakePP is being run in
-debug mode or not.</p>
-</dd>
-<dt class="field-even">vartype CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-even"><p>bool</p>
-</dd>
-</dl>
 </section>
 </dd></dl>
 

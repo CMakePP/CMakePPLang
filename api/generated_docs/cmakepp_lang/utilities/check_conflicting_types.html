@@ -123,10 +123,10 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>_cc_conflict</strong> (<em>bool*</em>) – Return value for whether a conflict exists.</p></li>
-<li><p><strong>_cc_conflicting_type</strong> (<em>desc*</em>) – Return value for the type that the name
+<li><p><strong>conflict</strong> (<em>bool*</em>) – Return value for whether a conflict exists.</p></li>
+<li><p><strong>conflicting_type</strong> (<em>desc*</em>) – Return value for the type that the name
 conflicts with.</p></li>
-<li><p><strong>_cc_name</strong> (<em>desc</em>) – Name to check for conflicts with.</p></li>
+<li><p><strong>name</strong> (<em>desc</em>) – Name to check for conflicts with.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -137,21 +137,16 @@ occured.</p>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>(bool, desc)</p>
 </dd>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>CMAKEPP_LANG_DEBUG_MODE</strong> (<em>bool</em>) – Used to determine if CMakePP is being run in
+debug mode or not.</p>
+</dd>
 </dl>
 <section id="error-checking">
 <h2>Error Checking<a class="headerlink" href="#error-checking" title="Permalink to this heading"></a></h2>
 <p>If CMakePP is run in debug mode (and only if it is run in debug mode) this
 function will assert that it was called with all three arguments and that
 the arguments have the correct types.</p>
-<dl class="field-list simple">
-<dt class="field-odd">var CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Used to determine if CMakePP is being run in
-debug mode or not.</p>
-</dd>
-<dt class="field-even">vartype CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-even"><p>bool</p>
-</dd>
-</dl>
 </section>
 </dd></dl>
 

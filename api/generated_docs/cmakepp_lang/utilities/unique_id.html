@@ -128,7 +128,7 @@ during the same second. No check for uniqueness is currently present although
 one could be added.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>_ui_id</strong> (<em>desc</em>) – The name for the variable which will hold the result.</p>
+<dd class="field-odd"><p><strong>id</strong> (<em>desc</em>) – The name for the variable which will hold the result.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">_ui_id</span></code> will be set to the generated unique id.</p>
@@ -136,17 +136,15 @@ one could be added.</p>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>desc</p>
 </dd>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>CMAKEPP_LANG_DEBUG_MODE</strong> (<em>bool</em>) – Used to determine if CMakePP is being run in
+debug mode or not.</p>
+</dd>
 </dl>
 <section id="error-checking">
 <h2>Error Checking<a class="headerlink" href="#error-checking" title="Permalink to this heading"></a></h2>
 <p>If CMakePP is run in debug mode <code class="docutils literal notranslate"><span class="pre">cpp_unique_id</span></code> will ensure that it was
 passed only one argument and that that argument is of type <code class="docutils literal notranslate"><span class="pre">desc</span></code>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">var CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Used to determine if CMakePP is being run in
-debug mode or not.</p>
-</dd>
-</dl>
 </section>
 </dd></dl>
 

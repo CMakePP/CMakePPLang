@@ -122,8 +122,8 @@ case-insensitive manner.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>_ib_return</strong> (<em>desc</em>) – Name of the variable used to hold the return.</p></li>
-<li><p><strong>_ib_str2check</strong> (<em>str</em>) – The string we are checking for its bool-ness</p></li>
+<li><p><strong>return</strong> – Name of the variable used to hold the return.</p></li>
+<li><p><strong>str2check</strong> (<em>str</em>) – The string we are checking for its bool-ness</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -137,13 +137,8 @@ of the recognized boolean literals and <code class="docutils literal notranslate
 <dd class="field-even"><p><strong>CMAKEPP_BOOL_LITERALS</strong> – Used to get the list of boolean literals.</p>
 </dd>
 </dl>
-<section id="error-checking">
-<h2>Error Checking<a class="headerlink" href="#error-checking" title="Permalink to this heading"></a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">cpp_is_bool</span></code> will ensure that it has been called with exactly two
-arguments.</p>
-</section>
 <section id="example-usage">
-<h2>Example Usage:<a class="headerlink" href="#example-usage" title="Permalink to this heading"></a></h2>
+<h2>Example Usage<a class="headerlink" href="#example-usage" title="Permalink to this heading"></a></h2>
 <p>The following code snippet shows how to use <code class="docutils literal notranslate"><span class="pre">cpp_is_bool</span></code> to determine if
 the provided variable is a boolean.</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">include</span><span class="p">(</span><span class="s">cmakepp_lang/types/bool</span><span class="p">)</span>
@@ -152,6 +147,11 @@ the provided variable is a boolean.</p>
 <span class="nb">message</span><span class="p">(</span><span class="s2">&quot;var2check is a bool: ${result}&quot;</span><span class="p">)</span><span class="w">  </span><span class="c"># will print TRUE</span>
 </pre></div>
 </div>
+</section>
+<section id="error-checking">
+<h2>Error Checking<a class="headerlink" href="#error-checking" title="Permalink to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">cpp_is_bool</span></code> will ensure that it has been called with exactly two
+arguments.</p>
 </section>
 </dd></dl>
 

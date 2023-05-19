@@ -130,10 +130,10 @@ call to <code class="docutils literal notranslate"><span class="pre">cpp_return<
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>_cgb_this</strong> (<em>class</em>) – The class instance we are retrieving the bases of.</p></li>
-<li><p><strong>_cgb_bases</strong> – An identifier to which the list of base classes will be
+<li><p><strong>this</strong> (<em>class</em>) – The class instance we are retrieving the bases of.</p></li>
+<li><p><strong>bases</strong> – An identifier to which the list of base classes will be
 assigned.</p></li>
-<li><p><strong>_cgb_bases</strong> – desc</p></li>
+<li><p><strong>bases</strong> – desc</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -166,10 +166,14 @@ class have already been set this function will overwrite the previous list.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>_csb_this</strong> (<em>class</em>) – The class instance we are setting the bases of.</p></li>
-<li><p><strong>_csb_bases</strong> – An identifier containing the list of base classes.</p></li>
-<li><p><strong>_csb_bases</strong> – [type]*</p></li>
+<li><p><strong>this</strong> (<em>class</em>) – The class instance we are setting the bases of.</p></li>
+<li><p><strong>bases</strong> – An identifier containing the list of base classes.</p></li>
+<li><p><strong>bases</strong> – [type]*</p></li>
 </ul>
+</dd>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>CMAKEPP_LANG_DEBUG_MODE</strong> (<em>bool</em>) – Used to determine if CMakePP is being run in
+debug mode or not.</p>
 </dd>
 </dl>
 <section id="id1">
@@ -177,15 +181,6 @@ class have already been set this function will overwrite the previous list.</p>
 <p>If CMakePP is run in debug mode (and only when it is) this function will
 assert that the caller supplied exactly two arguments and that those arguments
 have the correct types.</p>
-<dl class="field-list simple">
-<dt class="field-odd">var CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Used to determine if CMakePP is being run in
-debug mode or not.</p>
-</dd>
-<dt class="field-even">vartype CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-even"><p>bool</p>
-</dd>
-</dl>
 </section>
 </dd></dl>
 

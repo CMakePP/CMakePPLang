@@ -114,8 +114,8 @@ contaminating the caller’s namespace with intermediate results.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>_cg_type</strong> (<em>desc</em>) – The name of the class being created.</p></li>
-<li><p><strong>_cg_wrapper</strong> (<em>desc</em>) – Name for variable which will hold the path to the class’s
+<li><p><strong>type</strong> (<em>desc</em>) – The name of the class being created.</p></li>
+<li><p><strong>wrapper</strong> (<em>desc</em>) – Name for variable which will hold the path to the class’s
 implementation.</p></li>
 <li><p><strong>*args</strong> – The base classes that this class derives from.</p></li>
 </ul>
@@ -146,9 +146,13 @@ from <code class="docutils literal notranslate"><span class="pre">Object</span><
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>_c_type</strong> (<em>desc</em>) – The name of the class whose declaration is being started.</p></li>
+<li><p><strong>type</strong> (<em>desc</em>) – The name of the class whose declaration is being started.</p></li>
 <li><p><strong>*args</strong> – The various base classes that the class should inherit from.</p></li>
 </ul>
+</dd>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>CMAKEPP_LANG_DEBUG_MODE</strong> (<em>bool</em>) – Used to determine if CMakePP is being run in
+debug mode or not.</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -161,15 +165,6 @@ command are in scope to the caller.</p>
 <p>If CMakePP is run in debug mode (and only if it is run in debug mode) this
 function will assert that it was called with at least one argument and that
 the arguments have the correct types.</p>
-<dl class="field-list simple">
-<dt class="field-odd">var CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Used to determine if CMakePP is being run in
-debug mode or not.</p>
-</dd>
-<dt class="field-even">vartype CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-even"><p>bool</p>
-</dd>
-</dl>
 </section>
 </dd></dl>
 
@@ -181,9 +176,9 @@ debug mode or not.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>_m_name</strong> (<em>desc</em>) – The name of the member function. This is the name you will use
+<li><p><strong>name</strong> (<em>desc</em>) – The name of the member function. This is the name you will use
 to invoke the member function.</p></li>
-<li><p><strong>_m_type</strong> (<em>class</em>) – The class we are adding the member function to. This is also
+<li><p><strong>type</strong> (<em>class</em>) – The class we are adding the member function to. This is also
 the type of the “this” pointer.</p></li>
 <li><p><strong>*args</strong> – The types of the arguments to the member function. This list
 should NOT include the type for the this pointer as this will
@@ -197,21 +192,16 @@ function to facilitate implementing it.</p>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>desc</p>
 </dd>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>CMAKEPP_LANG_DEBUG_MODE</strong> (<em>bool</em>) – Used to determine if CMakePP is being run in
+debug mode or not.</p>
+</dd>
 </dl>
 <section id="id1">
 <h2>Error Checking<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
 <p>If CMakePP is run in debug mode (and only if) this function will assert that
 it is called with the correct number and types of arguments. If any of these
 assertions fail an error will be raised.</p>
-<dl class="field-list simple">
-<dt class="field-odd">var CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Used to determine if CMakePP is being run in
-debug mode or not.</p>
-</dd>
-<dt class="field-even">vartype CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-even"><p>bool</p>
-</dd>
-</dl>
 </section>
 </dd></dl>
 
@@ -227,7 +217,7 @@ debug mode or not.</p>
 concrete implementation and must be overridden by a derived class.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>_vm_fxn_name</strong> (<em>desc</em>) – The name of the virtual member function.</p>
+<dd class="field-odd"><p><strong>fxn_name</strong> (<em>desc</em>) – The name of the virtual member function.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -245,9 +235,9 @@ concrete implementation and must be overridden by a derived class.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>_c_name</strong> (<em>desc</em>) – The name of the constructor (CTOR by convention). This will be
+<li><p><strong>name</strong> (<em>desc</em>) – The name of the constructor (CTOR by convention). This will be
 the named used to invoke the member constructor.</p></li>
-<li><p><strong>_c_type</strong> (<em>class</em>) – The class we are adding the constructor to.</p></li>
+<li><p><strong>type</strong> (<em>class</em>) – The class we are adding the constructor to.</p></li>
 <li><p><strong>*args</strong> – The types of the arguments to the constructor function.</p></li>
 </ul>
 </dd>
@@ -258,21 +248,16 @@ constructor to facilitate implementing it.</p>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>desc</p>
 </dd>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>CMAKEPP_LANG_DEBUG_MODE</strong> (<em>bool</em>) – Used to determine if CMakePP is being run in
+debug mode or not.</p>
+</dd>
 </dl>
 <section id="id2">
 <h2>Error Checking<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
 <p>If CMakePP is run in debug mode (and only if) this function will assert that
 it is called with the correct number and types of arguments. If any of these
 assertions fail an error will be raised.</p>
-<dl class="field-list simple">
-<dt class="field-odd">var CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Used to determine if CMakePP is being run in
-debug mode or not.</p>
-</dd>
-<dt class="field-even">vartype CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-even"><p>bool</p>
-</dd>
-</dl>
 </section>
 </dd></dl>
 
@@ -284,11 +269,15 @@ debug mode or not.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>_a_type</strong> (<em>class</em>) – The name of the class getting the attribute.</p></li>
-<li><p><strong>_a_attr</strong> (<em>desc</em>) – The name of the attribute</p></li>
+<li><p><strong>type</strong> (<em>class</em>) – The name of the class getting the attribute.</p></li>
+<li><p><strong>attr</strong> (<em>desc</em>) – The name of the attribute</p></li>
 <li><p><strong>*args</strong> – The initial value of the attribute. If no <code class="docutils literal notranslate"><span class="pre">*args</span></code> are provided
 the attribute will be initialized to the empty string.</p></li>
 </ul>
+</dd>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>CMAKEPP_LANG_DEBUG_MODE</strong> (<em>bool</em>) – Used to determine if CMakePP is being run in
+debug mode or not.</p>
 </dd>
 </dl>
 <section id="id3">
@@ -296,15 +285,6 @@ the attribute will be initialized to the empty string.</p></li>
 <p>If CMakePP is run in debug mode (and only if) this function will assert that
 it is called with the correct number and types of arguments. If any of these
 assertions fail an error will be raised.</p>
-<dl class="field-list simple">
-<dt class="field-odd">var CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Used to determine if CMakePP is being run in
-debug mode or not.</p>
-</dd>
-<dt class="field-even">vartype CMAKEPP_LANG_DEBUG_MODE<span class="colon">:</span></dt>
-<dd class="field-even"><p>bool</p>
-</dd>
-</dl>
 </section>
 </dd></dl>
 

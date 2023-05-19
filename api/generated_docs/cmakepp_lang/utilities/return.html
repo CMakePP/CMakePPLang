@@ -151,8 +151,8 @@ macro.</p>
 is created, then the <code class="docutils literal notranslate"><span class="pre">cpp_return</span></code> function could not act in the caller’s
 scope, <em>i.e.</em>, the caller would still have to call <code class="docutils literal notranslate"><span class="pre">set</span></code> and <code class="docutils literal notranslate"><span class="pre">return</span></code>.</p>
 </div>
-<section id="example-usage-cpp-function-ctor">
-<h2>Example Usage:cpp_function_ctor<a class="headerlink" href="#example-usage-cpp-function-ctor" title="Permalink to this heading"></a></h2>
+<section id="example-usage">
+<h2>Example Usage<a class="headerlink" href="#example-usage" title="Permalink to this heading"></a></h2>
 <p>The following shows how to write a function which has multiple return points.</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">function</span><span class="p">(</span><span class="s">fxn_name</span><span class="w"> </span><span class="s">return_identifier</span><span class="p">)</span>
 <span class="w">    </span><span class="nb">set</span><span class="p">(</span><span class="o">${</span><span class="nv">return_identifier</span><span class="o">}</span><span class="w"> </span><span class="s2">&quot;some value&quot;</span><span class="p">)</span>

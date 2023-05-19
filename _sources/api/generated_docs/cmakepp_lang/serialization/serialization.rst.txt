@@ -15,10 +15,10 @@ cmakepp_lang.serialization/serialization
    recursive procedure required to serialize a complicated object factoring out
    the pieces that only need to be done once.
    
-   :param _s_result: The name for the variable which will hold the result.
-   :type _s_result: desc
-   :param _s_value: The value we are serializing.
-   :type _s_value: str
+   :param result: The name for the variable which will hold the result.
+   :type result: desc
+   :param value: The value we are serializing.
+   :type value: str
    :returns: ``_s_result`` will be set to the serialized form of``_s_value``.
    :rtype: desc
    

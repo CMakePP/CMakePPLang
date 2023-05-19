@@ -122,8 +122,8 @@ filepath.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>_ip_result</strong> (<em>identifier</em>) – An identifier to hold the result.</p></li>
-<li><p><strong>_ip_str2check</strong> – The string which may be an absolute filepath.</p></li>
+<li><p><strong>result</strong> (<em>identifier</em>) – An identifier to hold the result.</p></li>
+<li><p><strong>str2check</strong> – The string which may be an absolute filepath.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -134,13 +134,8 @@ filepath.</p>
 <dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
-<section id="error-checking">
-<h2>Error Checking<a class="headerlink" href="#error-checking" title="Permalink to this heading"></a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">cpp_is_path</span></code> will assert that the caller has provided exactly two
-arguments. If this is not the case an error will be raised.</p>
-</section>
 <section id="example-usage">
-<h2>Example Usage:<a class="headerlink" href="#example-usage" title="Permalink to this heading"></a></h2>
+<h2>Example Usage<a class="headerlink" href="#example-usage" title="Permalink to this heading"></a></h2>
 <p>The following code snippet checks whether ${CMAKE_BINARY_DIR} is a relative
 directory (it always is by default):</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">include</span><span class="p">(</span><span class="s">cmakepp_lang/types/filepath</span><span class="p">)</span>
@@ -148,6 +143,11 @@ directory (it always is by default):</p>
 <span class="nb">message</span><span class="p">(</span><span class="s2">&quot;Is a filepath: ${result}&quot;</span><span class="p">)</span><span class="w">  </span><span class="c"># Prints TRUE</span>
 </pre></div>
 </div>
+</section>
+<section id="error-checking">
+<h2>Error Checking<a class="headerlink" href="#error-checking" title="Permalink to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">cpp_is_path</span></code> will assert that the caller has provided exactly two
+arguments. If this is not the case an error will be raised.</p>
 </section>
 </dd></dl>
 
