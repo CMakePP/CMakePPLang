@@ -13,7 +13,6 @@
 # limitations under the License.
 
 include_guard()
-include(cmakepp_lang/asserts/signature)
 include(cmakepp_lang/map/append)
 include(cmakepp_lang/map/copy)
 include(cmakepp_lang/map/ctor)
@@ -23,9 +22,7 @@ include(cmakepp_lang/map/has_key)
 include(cmakepp_lang/map/keys)
 include(cmakepp_lang/map/merge)
 include(cmakepp_lang/map/remove)
-include(cmakepp_lang/utilities/global)
 include(cmakepp_lang/utilities/return)
-include(cmakepp_lang/utilities/unique_id)
 
 #[[[
 # Public API for interacting with Map instances.
