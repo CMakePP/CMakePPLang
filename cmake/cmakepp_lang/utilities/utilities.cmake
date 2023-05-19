@@ -1,3 +1,8 @@
+#[[[ @module
+# Provides an easy way for the user to include the quality-of-life utility
+# functions that CMakePPLang provides to the user.
+#]]
+
 include_guard()
 
 include(cmakepp_lang/utilities/assert)

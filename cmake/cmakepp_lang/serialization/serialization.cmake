@@ -1,3 +1,8 @@
+#[[[ @module
+# Defines the public API for serializing CMake values of various types into a
+# JSON formatted string. 
+#]]
+
 ################################################################################
 #                        Copyright 2018 Ryan M. Richard                        #
 #       Licensed under the Apache License, Version 2.0 (the "License");        #

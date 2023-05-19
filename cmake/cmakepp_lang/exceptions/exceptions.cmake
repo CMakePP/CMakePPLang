@@ -1,4 +1,9 @@
+#[[[ @module
+# Defines the public API for CMakePPLang exception handling.
+#]]
+
 include_guard()
+
 include(cmakepp_lang/map/map)
 include(cmakepp_lang/utilities/global)
 include(cmakepp_lang/utilities/call_fxn)

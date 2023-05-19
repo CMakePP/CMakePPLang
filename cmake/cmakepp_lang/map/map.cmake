@@ -1,4 +1,10 @@
+#[[[ @module
+# Provides an easy way for the user to include the various functions used 
+# to create and maintain an instance of a CMakePPLang map.
+#]]
+
 include_guard()
+
 include(cmakepp_lang/asserts/signature)
 include(cmakepp_lang/map/copy)
 include(cmakepp_lang/map/equal)

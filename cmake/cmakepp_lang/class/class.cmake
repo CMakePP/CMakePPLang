@@ -1,4 +1,10 @@
+#[[[ @module
+# Defines the public API for creating and managing a CMakePPLang 
+# user-defined class.
+#]]
+
 include_guard()
+
 include(cmakepp_lang/class/detail/bases)
 include(cmakepp_lang/object/object)
 include(cmakepp_lang/types/cmakepp_type)
