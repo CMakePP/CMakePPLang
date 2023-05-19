@@ -17,7 +17,7 @@ name: Tag and Release
 on:
   pull_request:
     types:
-      - closed
+      - closed # N.B. below we check that it was merged too
 
 jobs:
   tag:
