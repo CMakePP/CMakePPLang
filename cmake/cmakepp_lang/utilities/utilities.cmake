@@ -14,7 +14,7 @@
 
 include_guard()
 
-include(cmakepp_lang/utilities/assert)
+include(cmakepp_lang/asserts/assert)
 include(cmakepp_lang/utilities/call_fxn)
 include(cmakepp_lang/utilities/compare_lists)
 include(cmakepp_lang/utilities/directory_exists)
