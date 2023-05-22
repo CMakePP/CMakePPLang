@@ -13,11 +13,12 @@
 # limitations under the License.
 
 include_guard()
+
 include(cmakepp_lang/utilities/global)
 
 #[[[
 # Encapsulates the logic for retrieving the base classes of a user-defined
-#    type.
+# type.
 #
 # The type system needs to know which base classes a user-defined class can be
 # implicitly converted to. This function encapsulates the logic of retrieving
@@ -34,10 +35,10 @@ include(cmakepp_lang/utilities/global)
 # :param this: The class instance we are retrieving the bases of.
 # :type this: class
 # :param bases: An identifier to which the list of base classes will be
-#                    assigned.
+#               assigned.
 # :param bases: desc
-# :returns: ``_cgb_bases`` will be set to the list of base classes that the
-#           user-defined type stored in ``_cgb_this`` derives from. This is not
+# :returns: ``bases`` will be set to the list of base classes that the
+#           user-defined type stored in ``this`` derives from. This is not
 #           the list of base classes that the ``Class`` class derives from.
 # :rtype: [type]
 #

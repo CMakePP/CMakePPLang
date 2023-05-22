@@ -13,6 +13,7 @@
 # limitations under the License.
 
 include_guard()
+
 include(cmakepp_lang/asserts/signature)
 include(cmakepp_lang/map/copy)
 include(cmakepp_lang/object/copy)
@@ -29,7 +30,7 @@ include(cmakepp_lang/utilities/return)
 # :type result: desc
 # :param obj2copy: The object we are deep copying
 # :type obj2copy: str
-# :returns: ``_c_result`` will be set to a deep copy of ``_c_obj2copy``.
+# :returns: ``result`` will be set to a deep copy of ``obj2copy``.
 # :rtype: str
 #
 # :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in

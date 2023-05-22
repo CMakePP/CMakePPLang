@@ -25,7 +25,7 @@ include_guard()
 # :type return: desc
 # :param str2check: The string we are checking for its floaty-ness
 # :type str2check: str
-# :returns: ``_if_return`` will be set to ``TRUE`` if ``_if_str2check`` is a
+# :returns: ``return`` will be set to ``TRUE`` if ``str2check`` is a
 #           float and ``FALSE`` otherwise.
 # :rtype: bool
 #

@@ -13,6 +13,7 @@
 # limitations under the License.
 
 include_guard()
+
 include(cmakepp_lang/map/map)
 include(cmakepp_lang/serialization/detail/serialize_value)
 
@@ -30,8 +31,8 @@ include(cmakepp_lang/serialization/detail/serialize_value)
 # :type return: desc
 # :param value: The map we are serializing.
 # :type value: map
-# :returns: ``_sm_return`` will be set to the JSON serialized form of
-#           ``_sm_value``.
+# :returns: ``return`` will be set to the JSON serialized form of
+#           ``value``.
 # :rtype: desc
 #
 # Error Checking

@@ -12,13 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+#[[[ @module
+# Defines functions for packing and unpacking a CMake list into a string that
+# can be passed through function calls.
+#]]
+
 include_guard()
+
 include(cmakepp_lang/serialization/serialization)
 
 #[[[
 # Transforms a CMake list into a string that can be passed down through
-#    function calls and then transformed back to the original CMake list that
-#    retains the original nesting structure of the list.
+# function calls and then transformed back to the original CMake list that
+# retains the original nesting structure of the list.
 #
 # This function will take a CMake list and replace list separator characters at
 # various levels of nesting with "_CPP_{N}_CPP_" where N is the level of
@@ -38,7 +44,7 @@ include(cmakepp_lang/serialization/serialization)
 # :type result: desc
 # :param list: The list we want to pack into a string.
 # :type result: list
-# :returns: ``_pl_result`` will be set to the resulting packed list string.
+# :returns: ``result`` will be set to the resulting packed list string.
 # :rtype: desc
 #
 # :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
@@ -118,7 +124,7 @@ endfunction()
 # :type result: desc
 # :param packed_list: The string we want to transform to a CMake list.
 # :type packed_list: desc
-# :returns: ``_up_result`` will be set to the resulting CMake list.
+# :returns: ``result`` will be set to the resulting CMake list.
 # :rtype: desc
 #
 # Error Checking

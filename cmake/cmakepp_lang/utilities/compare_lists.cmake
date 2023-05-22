@@ -13,6 +13,7 @@
 # limitations under the License.
 
 include_guard()
+
 include(cmakepp_lang/algorithm/equal)
 include(cmakepp_lang/asserts/signature)
 include(cmakepp_lang/utilities/return)
@@ -21,8 +22,8 @@ include(cmakepp_lang/utilities/return)
 # Encapsulates the process of comparing two CMake lists to one another.
 #
 # Two CMake lists are equal if they contain the same number of elements and if
-# the :math:`i`-th element in ``_cl_lhs`` compares equal to the :math:`i`-th
-# element of ``_cl_rhs`` under ``cpp_equal`` for all elements in the list. In
+# the :math:`i`-th element in ``lhs`` compares equal to the :math:`i`-th
+# element of ``rhs`` under ``cpp_equal`` for all elements in the list. In
 # particular this means that the lists must have the same order and that we
 # compare the values of CMakePP objects, not their this-pointers.
 #
@@ -32,7 +33,7 @@ include(cmakepp_lang/utilities/return)
 # :type lhs: list*
 # :param rhs: Identifier containing the second list to comapre.
 # :type rhs: list*
-# :returns: ``_cl_result`` will be set to ``TRUE`` if the two lists are equal
+# :returns: ``result`` will be set to ``TRUE`` if the two lists are equal
 #           and ``FALSE`` otherwise.
 # :rtype: bool
 #

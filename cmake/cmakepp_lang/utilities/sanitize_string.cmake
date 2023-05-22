@@ -28,7 +28,7 @@ include_guard()
 # :type result: desc
 # :param input: The string we are sanitizing.
 # :type input: str
-# :returns: ``_ss_result`` will be set to the sanitized string.
+# :returns: ``result`` will be set to the sanitized string.
 # :rtype: str
 #]]
 function(cpp_sanitize_string _ss_result _ss_input)

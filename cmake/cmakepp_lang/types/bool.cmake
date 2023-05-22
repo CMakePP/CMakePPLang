@@ -13,6 +13,7 @@
 # limitations under the License.
 
 include_guard()
+
 include(cmakepp_lang/types/literals)
 
 #[[[
@@ -23,10 +24,10 @@ include(cmakepp_lang/types/literals)
 # case-insensitive manner.
 #
 # :param return: Name of the variable used to hold the return.
-# :type  _ib_return: desc
+# :type return: desc
 # :param str2check: The string we are checking for its bool-ness
 # :type str2check: str
-# :returns: ``_ib_return`` will contain ``TRUE`` if ``_ib_str2check`` is one
+# :returns: ``return`` will contain ``TRUE`` if ``str2check`` is one
 #           of the recognized boolean literals and ``FALSE`` otherwise.
 # :rtype: bool
 # :var CMAKEPP_BOOL_LITERALS: Used to get the list of boolean literals.

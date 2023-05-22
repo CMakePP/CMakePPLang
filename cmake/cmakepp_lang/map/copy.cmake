@@ -13,6 +13,7 @@
 # limitations under the License.
 
 include_guard()
+
 include(cmakepp_lang/algorithm/copy)
 include(cmakepp_lang/asserts/signature)
 
@@ -27,7 +28,7 @@ include(cmakepp_lang/asserts/signature)
 # :type this: map
 # :param other: The name of the variable which will hold the deep copy.
 # :type other: desc
-# :returns: ``_mc_other`` will be set to a deep copy of ``_mc_this``.
+# :returns: ``other`` will be set to a deep copy of ``this``.
 # :rtype: map
 #
 # :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in

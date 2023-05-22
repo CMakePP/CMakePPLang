@@ -13,6 +13,7 @@
 # limitations under the License.
 
 include_guard()
+
 include(cmakepp_lang/asserts/signature)
 include(cmakepp_lang/map/equal)
 include(cmakepp_lang/object/equal)
@@ -36,8 +37,8 @@ include(cmakepp_lang/utilities/return)
 # :type lhs: str
 # :param rhs: The other value involved in the comparison
 # :type rhs: str
-# :returns: ``_e_result`` will be set to ``TRUE`` if ``_e_lhs`` compares equal
-#           to ``_e_rhs`` and ``FALSE`` otherwise.
+# :returns: ``result`` will be set to ``TRUE`` if ``lhs`` compares equal
+#           to ``rhs`` and ``FALSE`` otherwise.
 # :rtype: bool
 #
 # :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in

@@ -12,7 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+#[[[ @module
+# Defines functions for managing code timing through CMakePPLang.
+#]]
+
 include_guard()
+
 include(cmakepp_lang/utilities/call_fxn)
 include(cmakepp_lang/utilities/return)
 include(cmakepp_lang/utilities/sanitize_string)
@@ -26,7 +31,6 @@ include(cmakepp_lang/utilities/unique_id)
 #
 # :param name: The name for the timer.
 # :type name: desc
-#
 #]]
 function(cpp_start_timing _st_name)
     cpp_sanitize_string(_st_nice_name "${_st_name}")
@@ -45,11 +49,11 @@ endfunction()
 # additional calls.
 #
 # :param time: Name for variable which will hold how long (in seconds) the
-#                  the timer has been running.
+#              the timer has been running.
 # :type time: desc
 # :param name: The name of the timer we want to measure
 # :type name: desc
-# :returns: ``_st_time`` will be set to the time (in seconds) since the timer
+# :returns: ``time`` will be set to the time (in seconds) since the timer
 #           was started.
 # :rtype: int
 #
@@ -58,7 +62,6 @@ endfunction()
 #
 # This function will assert that the specified timer exists. If the timer does
 # not exist an error will be raised. This error check is always performed.
-#
 #]]
 function(cpp_stop_timing _st_time _st_name)
     # Record the time right away to increase accuracy
@@ -94,7 +97,6 @@ endfunction()
 #
 # This function will assert that the specified timer exists. If the timer does
 # not exist an error will be raised. This error check is always performed.
-#
 #]]
 function(cpp_stop_and_print_timing _sapt_name)
     cpp_stop_timing(_sapt_time "${_sapt_name}")
@@ -112,7 +114,6 @@ endfunction()
 # :param fxn_name: The name of the function we are timing.
 # :type fxn_name: fxn
 # :param \*args: The arguments which should be forwarded to the function.
-#
 #]]
 function(cpp_time_fxn _tf_fxn_name)
 

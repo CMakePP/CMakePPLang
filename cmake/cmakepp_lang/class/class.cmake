@@ -12,7 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+#[[[ @module
+# Defines the public API for creating and managing a CMakePPLang 
+# user-defined class.
+#]]
+
 include_guard()
+
 include(cmakepp_lang/class/detail/bases)
 include(cmakepp_lang/object/object)
 include(cmakepp_lang/types/cmakepp_type)
@@ -33,10 +39,10 @@ set(
 # :param type: The name of the class being created.
 # :type type: desc
 # :param wrapper: Name for variable which will hold the path to the class's
-#                     implementation.
+#                 implementation.
 # :type wrapper: desc
 # :param \*args: The base classes that this class derives from.
-# :returns: ``_cg_wrapper`` will be set to the absolute file path for the
+# :returns: ``wrapper`` will be set to the absolute file path for the
 #           generated module which implements the class.
 # :rtype: path
 #]]
@@ -130,16 +136,16 @@ endmacro()
 # This function is used to declare a new member function.
 #
 # :param name: The name of the member function. This is the name you will use
-#                 to invoke the member function.
+#              to invoke the member function.
 # :type name: desc
 # :param type: The class we are adding the member function to. This is also
-#                 the type of the "this" pointer.
+#              the type of the "this" pointer.
 # :type type: class
 # :param \*args: The types of the arguments to the member function. This list
-#               should NOT include the type for the this pointer as this will
-#               automatically be prepended to this list.
-# :returns: ``_m_name`` will be set to the mangled name of the declared
-#            function to facilitate implementing it.
+#                should NOT include the type for the this pointer as this will
+#                automatically be prepended to this list.
+# :returns: ``name`` will be set to the mangled name of the declared
+#           function to facilitate implementing it.
 # :rtype: desc
 #
 # :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
@@ -187,13 +193,13 @@ endmacro()
 # This function is used to declare a class constructor.
 #
 # :param name: The name of the constructor (CTOR by convention). This will be
-#                 the named used to invoke the member constructor.
+#              the named used to invoke the member constructor.
 # :type name: desc
 # :param type: The class we are adding the constructor to.
 # :type type: class
 # :param \*args: The types of the arguments to the constructor function.
-# :returns: ``_c_name`` will be set to the mangled name of the declared
-#            constructor to facilitate implementing it.
+# :returns: ``name`` will be set to the mangled name of the declared
+#           constructor to facilitate implementing it.
 # :rtype: desc
 # 
 # :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
@@ -225,7 +231,7 @@ endfunction()
 # :param attr: The name of the attribute
 # :type attr: desc
 # :param \*args: The initial value of the attribute. If no ``*args`` are provided
-#               the attribute will be initialized to the empty string.
+#                the attribute will be initialized to the empty string.
 #
 # :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
 #                               debug mode or not.

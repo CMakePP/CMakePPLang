@@ -12,6 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+#[[[ @module
+# CMakePPLang defines the basic extensions of the CMake language which
+# comprise the CMakePP language, adding object-oriented functionality
+# and quality of life features in a backwards-compatible way to CMake.
+# Including this file will include the entire public API of CMakePPLang.
+#]]
+
 include_guard()
 
 include(cmakepp_lang/algorithm/algorithm)

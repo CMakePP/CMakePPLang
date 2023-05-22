@@ -13,6 +13,7 @@
 # limitations under the License.
 
 include_guard()
+
 include(cmakepp_lang/asserts/signature)
 include(cmakepp_lang/map/map)
 include(cmakepp_lang/utilities/global)
@@ -37,7 +38,7 @@ include(cmakepp_lang/utilities/return)
 # :type result: desc
 # :param attr: The name of the meta-attribute we are retrieving.
 # :type attr: desc
-# :returns: ``_ogma_result`` will be set to the value of the attribute (if the
+# :returns: ``result`` will be set to the value of the attribute (if the
 #           attribute exists) and the empty string otherwise.
 # :rtype: str
 #

@@ -12,7 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+#[[[ @module
+# Defines the public API for CMakePPLang exception handling.
+#]]
+
 include_guard()
+
 include(cmakepp_lang/map/map)
 include(cmakepp_lang/utilities/global)
 include(cmakepp_lang/utilities/call_fxn)
