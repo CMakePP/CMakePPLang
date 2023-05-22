@@ -36,8 +36,8 @@ include(cmakepp_lang/utilities/return)
 # :type value: desc
 # :param key: The key whose value we want.
 # :type key: str
-# :returns: ``_mg_value`` will be set to the value associated with ``_mg_key``.
-#           If ``_mg_key`` has no value associated with it ``_mg_value`` will be
+# :returns: ``value`` will be set to the value associated with ``key``.
+#           If ``key`` has no value associated with it ``value`` will be
 #           set to the empty string.
 # :rtype: str
 #
