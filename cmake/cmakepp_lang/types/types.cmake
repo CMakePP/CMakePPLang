@@ -12,7 +12,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+#[[[ @module
+# Since CMakePPLang is strongly typed and CMake is not, various functions are
+# needed to determine which CMakePPLang type is contained in a CMake variable.
+# This file provides an easy way for the user to include these functions for
+# each type, as well as other functions necessary to support this strong
+# typing.
+#]]
+
 include_guard()
+
 include(cmakepp_lang/types/bool)
 include(cmakepp_lang/types/cmakepp_type)
 include(cmakepp_lang/types/float)

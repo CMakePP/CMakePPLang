@@ -13,6 +13,7 @@
 # limitations under the License.
 
 include_guard()
+
 include(cmakepp_lang/asserts/signature)
 include(cmakepp_lang/object/object)
 include(cmakepp_lang/utilities/return)
@@ -28,11 +29,11 @@ include(cmakepp_lang/utilities/return)
 #
 # :param this: Name for the variable which will hold the new instance.
 # :type this: desc
-# :returns: ``_os_this`` will be set to the newly created Object instance.
+# :returns: ``this`` will be set to the newly created Object instance.
 # :rtype: obj
 #
 # :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
-#                              debug mode or not.
+#                               debug mode or not.
 # :vartype CMAKEPP_LANG_DEBUG_MODE: bool
 #
 # .. note::

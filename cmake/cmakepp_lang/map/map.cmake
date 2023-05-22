@@ -12,6 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+#[[[ @module
+# Provides an easy way for the user to include the various functions used 
+# to create and maintain an instance of a CMakePPLang map.
+#]]
+
 include_guard()
 include(cmakepp_lang/map/append)
 include(cmakepp_lang/map/copy)

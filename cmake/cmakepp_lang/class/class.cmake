@@ -12,6 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+#[[[ @module
+# Defines the public API for creating and managing a CMakePPLang 
+# user-defined class.
+#]]
+
 include_guard()
 include(cmakepp_lang/class/attr)
 include(cmakepp_lang/class/class_decl)

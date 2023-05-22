@@ -27,12 +27,14 @@ these features are called:
 
 Currently, these functions cannot be overridden in user-defined classes.
 
-The implementations of these functionalities within the object class are what
-are called by the ``cpp_equal``, ``cpp_copy``, and ``cpp_serialize`` utilities.
-It is useful to note that these member functions may be **overridden** by any
-class (since all classes inherit from ``object``). Examples of overriding
-these methods are provided in
-:ref:`examples-classes-overriding-object-methods`.
+.. TODO: Uncomment this when overriding the methods is possible
 
-Other than the above, the object class is not assumed to be of much interest
-to most users of CMakePPLang.
+.. The implementations of these functionalities within the object class are what
+.. are called by the ``cpp_equal``, ``cpp_copy``, and ``cpp_serialize`` utilities.
+.. It is useful to note that these member functions may be **overridden** by any
+.. class (since all classes inherit from ``object``). Examples of overriding
+.. these methods are provided in
+.. :ref:`examples-classes-overriding-object-methods`.
+
+.. Other than the above, the object class is not assumed to be of much interest
+.. to most users of CMakePPLang.

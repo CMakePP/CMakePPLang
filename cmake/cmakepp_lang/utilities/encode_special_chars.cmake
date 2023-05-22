@@ -35,7 +35,7 @@ include(cmakepp_lang/utilities/special_chars_lookup)
 # Specifically, the special characters handled are ``$;"\\``.
 #
 # :param argn: The argument list. This should have at least one string in
-#                   it, otherwise this function will have nothing to encode.
+#              it, otherwise this function will have nothing to encode.
 # :type argn: list
 # :param return_argn: Return variable for the encoded argument list.
 # :type return_argn: list

@@ -13,6 +13,7 @@
 # limitations under the License.
 
 include_guard()
+
 include(cmakepp_lang/class/detail/bases)
 include(cmakepp_lang/types/type_of)
 include(cmakepp_lang/utilities/global)
@@ -36,9 +37,9 @@ include(cmakepp_lang/utilities/sanitize_string)
 # :type from: type
 # :param to: The type we are attempting to cast to.
 # :type to: type
-# :returns: ``_ic_result`` will be set to ``TRUE`` if an instance of
-#           ``_ic_from`` can be implicitly converted to an instance of
-#           ``_ic_to`` and ``FALSE`` otherwise.
+# :returns: ``result`` will be set to ``TRUE`` if an instance of
+#           ``from`` can be implicitly converted to an instance of
+#           ``to`` and ``FALSE`` otherwise.
 # :rtype: bool
 #
 # Error Checking

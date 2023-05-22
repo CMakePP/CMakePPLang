@@ -26,7 +26,7 @@ include_guard()
 # :type return: desc
 # :param str2check: The string which may be an integer.
 # :type str2check: str
-# :returns: ``_ii_return`` will be set to ``TRUE`` if ``_ii_str2check`` is an
+# :returns: ``return`` will be set to ``TRUE`` if ``str2check`` is an
 #           integer and ``FALSE`` otherwise.
 # :rtype: bool
 #

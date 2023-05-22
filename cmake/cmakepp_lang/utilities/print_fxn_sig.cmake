@@ -13,6 +13,7 @@
 # limitations under the License.
 
 include_guard()
+
 include(cmakepp_lang/asserts/signature)
 
 #[[[
@@ -26,9 +27,9 @@ include(cmakepp_lang/asserts/signature)
 # :param fxn_name: The unmangled name of the function whose signature we
 #                        are printing.
 # :type fxn_name: desc
-# :param \*args: The types of the arguments to ``_pfs_fxn_name``.
-# :returns: ``_pfs_result`` will be set to a human-readable, string
-#           representation of this particular overload of ``_pfs_fxn_name``.
+# :param \*args: The types of the arguments to ``fxn_name``.
+# :returns: ``result`` will be set to a human-readable, string
+#           representation of this particular overload of ``fxn_name``.
 # :rtype: desc
 #]]
 function(cpp_print_fxn_sig _pfs_result _pfs_fxn_name)

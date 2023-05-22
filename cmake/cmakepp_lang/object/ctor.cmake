@@ -13,6 +13,7 @@
 # limitations under the License.
 
 include_guard()
+
 include(cmakepp_lang/asserts/signature)
 include(cmakepp_lang/map/map)
 include(cmakepp_lang/object/get_meta_attr)
@@ -34,8 +35,8 @@ include(cmakepp_lang/utilities/sanitize_string)
 # :param type: The most-derived type of the object we are creating.
 # :type type: type
 # :param \*args: The initial instances of each direct base class on which this
-#               instance should be built.
-# :return: ``_oc_this`` will be set to the newly created instance.
+#                instance should be built.
+# :return: ``this`` will be set to the newly created instance.
 # :rtype: obj
 #
 # :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in

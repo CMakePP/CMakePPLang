@@ -13,6 +13,7 @@
 # limitations under the License.
 
 include_guard()
+
 include(cmakepp_lang/asserts/signature)
 include(cmakepp_lang/map/map)
 include(cmakepp_lang/utilities/global)
@@ -33,7 +34,7 @@ include(cmakepp_lang/utilities/return)
 # :type result: desc
 # :param other: The other Object instance being compared.
 # :type other: obj
-# :returns: ``_oe_result`` will be set to ``TRUE`` if the instances are equal
+# :returns: ``result`` will be set to ``TRUE`` if the instances are equal
 #           and ``FALSE`` otherwise.
 # :rtype: bool
 #

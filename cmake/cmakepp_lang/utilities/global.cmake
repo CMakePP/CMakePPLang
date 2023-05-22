@@ -12,7 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+#[[[ @module
+# Defines functions used to manipulate CMakePPLang global variables.
+#]]
+
 include_guard()
+
 include(cmakepp_lang/utilities/sanitize_string)
 
 #[[[
@@ -24,10 +29,10 @@ include(cmakepp_lang/utilities/sanitize_string)
 # specified global variable the provided value. If the variable does not exist,
 # the variable will be created and initialized to the provided value.
 #
-# :param key: The name of the global variable to append to. ``_ag_key`` is
-#                 case-insensitive.
+# :param key: The name of the global variable to append to. ``key`` is
+#             case-insensitive.
 # :type key: desc
-# :param value: The value to append to ``_ag_key``'s current value.
+# :param value: The value to append to ``key``'s current value.
 # :type value: str
 #
 # Error Checking
@@ -52,10 +57,10 @@ endfunction()
 # This function will set a global variable to the value provided. If the global
 # variable already exists it will overwrite its current value.
 #
-# :param key: The name of the global variable to set. ``_ag_key`` is
+# :param key: The name of the global variable to set. ``key`` is
 #                 case-insensitive.
 # :type key: desc
-# :param value: The value to set ``_sg_key`` to.
+# :param value: The value to set ``key`` to.
 # :type value: str
 #
 # Error Checking
@@ -82,13 +87,13 @@ endfunction()
 # are not typically set to the empty string.
 #
 # :param result: Identifier for the variable which after this call will hold
-#                    the value stored in global variable ``_gg_key``.
+#                    the value stored in global variable ``key``.
 # :type value: desc
 # :param key: The name of the global variable whose value has been
-#                 requested. ``_gg_key`` is case-insensitive.
+#                 requested. ``key`` is case-insensitive.
 # :type key: desc
-# :returns: ``_gg_result`` will be set to the value stored in global variable
-#           ``_gg_key``. If ``_gg_key`` has not been set ``_gg_result`` will be
+# :returns: ``result`` will be set to the value stored in global variable
+#           ``key``. If ``key`` has not been set ``result`` will be
 #           set to the empty string.
 # :rtype: str
 #

@@ -12,7 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+#[[[ @module
+# Defines functions used to process calls to member functions assigned to an
+# object.
+#]]
+
 include_guard()
+
 include(cmakepp_lang/object/object)
 include(cmakepp_lang/types/type_of)
 include(cmakepp_lang/utilities/call_fxn)
@@ -32,17 +38,17 @@ include(cmakepp_lang/utilities/sanitize_string)
 # :param result: Identifier to hold the symbol of the function to call.
 # :type result: desc
 # :param method: The name of the method to call. The actual name is
-#                     case-insensitive.
+#                case-insensitive.
 # :type method: desc
 # :param \*args: The arguments which are being forwarded to the member function.
-# :returns: ``_ocg_result`` will be set to the symbol (mangled name) of the
+# :returns: ``result`` will be set to the symbol (mangled name) of the
 #           member function to call.
 # :rtype: fxn
 #
 # .. note::
 #
 #    This function is considered an implementation detail of
-#    ``_cpp_object_call`` and does not perform any type checking.
+#    ``object_call`` and does not perform any type checking.
 #
 # Error Checking
 # ==============
@@ -85,8 +91,8 @@ endfunction()
 # :param method: The name of the member function to call.
 # :type method: desc
 # :param \*args: The arguments to forward to the member function (the required
-#               first argument of the ``this`` pointer is forwarded
-#               automatically and should not be provided in this list)
+#                first argument of the ``this`` pointer is forwarded
+#                automatically and should not be provided in this list)
 # :returns: This function will return whatever the member function returns
 #           using the mechanism of that function. If the member function does
 #           not return this function will not return.

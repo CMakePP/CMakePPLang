@@ -13,6 +13,7 @@
 # limitations under the License.
 
 include_guard()
+
 include(cmakepp_lang/types/list)
 
 #[[[
@@ -26,8 +27,8 @@ include(cmakepp_lang/types/list)
 # :type result: identifier
 # :param str2check: The string which may be an absolute filepath.
 # :type str: str
-# :returns: ``TRUE`` if ``_ip_str2check`` is an absolute filepath and
-#           ``FALSE`` otherwise. The result is returned via ``_cip_result``.
+# :returns: ``TRUE`` if ``str2check`` is an absolute filepath and
+#           ``FALSE`` otherwise. The result is returned via ``result``.
 # :rtype: bool
 #
 # Example Usage

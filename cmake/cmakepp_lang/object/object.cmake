@@ -12,7 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+#[[[ @module
+# Provides an easy way to include the CMakePPLang Object, which all
+# user-defined classes will inherit from, as well as related functions to
+# manage the Object.
+#]]
+
 include_guard()
+
 include(cmakepp_lang/object/add_fxn)
 include(cmakepp_lang/object/attrs)
 include(cmakepp_lang/object/call)
