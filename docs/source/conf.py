@@ -15,6 +15,8 @@
 import os
 import sys
 
+import cminx
+
 # -- Path setup --------------------------------------------------------------
 
 dir_path = os.path.dirname(os.path.realpath(__file__))  # directory for conf.py
@@ -22,10 +24,11 @@ sys.path.insert(0,dir_path)                             # add to Python path
 doc_path = os.path.dirname(dir_path)                    # path to docs dir
 root_path = os.path.dirname(doc_path)                   # root dir of project
 build_path = os.path.join(doc_path, 'build')            # doc build directory
+src_dir  = os.path.abspath(os.path.dirname(__file__))
 
 # -- Project Info ------------------------------------------------------------
-copyright = u'2019, CMakePP Team'
-author = u'CMakePP Team'
+copyright = u'2019, CMakePP Organization'
+author = u'CMakePP Organization'
 project = 'CMakePPLang'
 version = '1.0.0'
 release = '1.0.0alpha'
@@ -45,3 +48,10 @@ extensions = [
     'sphinx.ext.mathjax',
     'sphinx.ext.githubpages'
 ]
+
+# -- Run CMinx on CMake Source Code -------------------------------------------
+
+cminx_out_dir = os.path.join(src_dir, "developer", "cmakepp_lang")
+cminx_in_dir = os.path.join(root_path, "cmake", "cmakepp_lang")
+args = ["-s", "config.yml", "-r", cminx_in_dir]
+cminx.main(args)
