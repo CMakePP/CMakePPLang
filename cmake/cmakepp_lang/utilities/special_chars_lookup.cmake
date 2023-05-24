@@ -14,6 +14,8 @@
 
 include_guard()
 
+include(cmakepp_lang/map/map)
+
 string(ASCII 5 _scl_enquiry)
 string(ASCII 6 _scl_acknowledge)
 string(ASCII 7 _scl_bell)

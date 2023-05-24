@@ -12,14 +12,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#[[[ @module
-# Provides an easy way for users to include the various assertion statements
-# provided by CMakePPLang. These assertion statements ensure that a certain
-# condition is met in the code before moving on.
-#]]
-
 include_guard()
 
-include(cmakepp_lang/asserts/assert)
 include(cmakepp_lang/asserts/signature)
-include(cmakepp_lang/asserts/type)
+
+#[[[
+# Registers a class's virtual member function.
+#
+# This function is used to declare a new virtual member function that has no
+# concrete implementation and must be overridden by a derived class.
+#
+# :param fxn_name: The name of the virtual member function.
+# :type fxn_name: desc
+#]]
+macro(cpp_virtual_member _vm_fxn_name)
+    cpp_assert_signature("${ARGV}" desc class)
+
+    function("${${_vm_fxn_name}}")
+        message(
+            FATAL_ERROR
+            "${_vm_fxn_name} is pure virtual and must be overriden by derived class"
+        )
+    endfunction()
+endmacro()

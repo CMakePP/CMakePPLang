@@ -12,9 +12,9 @@
 .. See the License for the specific language governing permissions and
 .. limitations under the License.
 
-##########################
-Developing for CMakePPLang
-##########################
+#######################
+Developer Documentation
+#######################
 
 This part contains notes on topics which are assumed to be primarily of interest
 to developers contributing to CMakePPLang.
@@ -24,3 +24,11 @@ to developers contributing to CMakePPLang.
 
    initial_setup
    unit_testing
+
+CMakePPLang API
+---------------
+
+.. toctree::
+   :maxdepth: 2
+
+   cmakepp_lang/index
