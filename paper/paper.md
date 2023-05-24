@@ -26,4 +26,16 @@ language on top of CMake, called CMake++ (formerly oo-cmake).
 This project appears to have been abandoned, as there have only been two
 commits since July 2017, both in 2021.
 
+CMakePPLang has been developed to provide extensions to the CMake language
+which provide objected-oriented functionality and other quality-of-life
+improvements. The main features of CMakePPLang are the object-oriented
+functionality, addition of a map structure, strong data typing, and 
+backwards-compatability with CMake. These features allow for easier general
+programming in CMake, which is key to writing complex build tools in the
+language.
 
+Currently, CMakePPLang is used within the CMakePP organization as the 
+foundation for two in-progress projects, CMakeTest, which provides a solution
+for unit testing CMake and CMakePPLang code, as well as CMaize, a CMake tool
+to simplify interoperability between projects and writing their CMake
+build files.
