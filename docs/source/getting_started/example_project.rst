@@ -158,7 +158,7 @@ Now that we have a complete project, it can be built with CMake after
 navigating into the project directory. In a terminal, run the following
 command for your system:
 
-For \*nix-based systems (including Mac OSX):
+For Unix- or Linux-based systems (including Mac OSX):
 
 .. code-block:: bash
 
