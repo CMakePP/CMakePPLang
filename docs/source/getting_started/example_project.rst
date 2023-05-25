@@ -113,7 +113,8 @@ Defining the Class
 ==================
 
 Now we need to define the ``Greeter`` class with the ``name`` attribute and
-``hello`` member function.
+``hello`` member function. Create a ``cmake/greeter/greeter_class.cmake``
+file and add the following text:
 
 .. literalinclude:: /../../examples/cmakepplang_example/cmake/greeter/greeter_class.cmake
 
