@@ -170,9 +170,17 @@ We can call this function and access its return value using the following:
 Adding Multiple Return Points to a Function
 ===========================================
 
-We can employ the ``cpp_return`` macro to create multiple return points in a
-function. Additionally ``cpp_return`` also provides us with a more concise way
-to return a value to the parent scope.
+To include multiple return points in a function, CMake provides a `return
+function <CMake return>`_ (``return()``) that forces the processing of a
+function to stop when it is reached.
+
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/function_multiple_return_points_vanilla.cmake
+   :lines: 24-45
+   :dedent: 4
+
+Alternatively, we can employ the ``cpp_return`` macro to create multiple return
+points in a function. Additionally ``cpp_return`` also provides us with a more
+concise way to return a value to the parent scope.
 
 When we want to return from a function and return a value to the variable with
 the name ``${return_id}`` to the parent scope we just need to do the following:
@@ -463,3 +471,7 @@ Now we can create an instance of the ``Truck`` class and call the
 .. --------------------
 ..
 .. We can override  ``_cpp_object_serialize``
+
+.. References:
+
+.. _CMake return: https://cmake.org/cmake/help/latest/command/return.html
