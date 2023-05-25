@@ -117,7 +117,7 @@ an attribute ``km_driven`` to our class. We can then add a function
 ``describe_self`` that prints a message describing the color of the car and
 how far it has driven. Within our function, we'll use the ``GET`` function, but
 this time we'll pass a prefix and a list of attribute names. This call will get
-all the attributes and store them in the current scope with the prefix
+all the attributes and store them in the current, local scope with the prefix
 prepended to their name. Here is the function:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/function_referencing_attributes.cmake
