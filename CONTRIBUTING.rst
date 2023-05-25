@@ -131,20 +131,10 @@ Before you work on any non-trivial code contribution it's best to first create
 a report in the `issue tracker`_ to start a discussion on the subject.
 This often provides additional considerations and avoids unnecessary work.
 
-Create an environment
+Install Prerequisites
 ---------------------
 
-Before you start coding, we recommend creating an isolated `virtual
-environment`_ to avoid any problems with your installed Python packages.
-This can easily be done via either |virtualenv|_::
-
-    virtualenv <PATH TO VENV>
-    source <PATH TO VENV>/bin/activate
-
-or Miniconda_::
-
-    conda create -n CMakePPLang python=3 six virtualenv pytest pytest-cov
-    conda activate CMakePPLang
+Before you start coding, you will need to install CMake_.
 
 Clone the repository
 --------------------
@@ -154,24 +144,8 @@ Clone the repository
    page. This creates a copy of the code under your account on |the repository service|.
 #. Clone this copy to your local disk::
 
-    git clone git@github.com:YourLogin/CMakePPLang.git
+    git clone git@github.com:YourUsername/CMakePPLang.git
     cd CMakePPLang
-
-#. You should run::
-
-    pip install -U pip setuptools -e .
-
-   to be able to import the package under development in the Python REPL.
-
-   .. todo:: if you are not using pre-commit, please remove the following item:
-
-#. Install |pre-commit|_::
-
-    pip install pre-commit
-    pre-commit install
-
-   ``CMakePPLang`` comes with a lot of hooks configured to automatically help the
-   developer to check the code being written.
 
 Implement your changes
 ----------------------
@@ -182,24 +156,17 @@ Implement your changes
 
    and start making changes. Never work on the main branch!
 
-#. Start your work on this branch. Don't forget to add docstrings_ to new
+#. Start your work on this branch. Don't forget to add doccomments_ to new
    functions, modules and classes, especially if they are part of public APIs.
 
 #. Add yourself to the list of contributors in ``AUTHORS.rst``.
 
-#. When you’re done editing, do::
+#. When you are done editing, do::
 
     git add <MODIFIED FILES>
     git commit
 
    to record your changes in git_.
-
-   .. todo:: if you are not using pre-commit, please remove the following item:
-
-   Please make sure to see the validation messages from |pre-commit|_ and fix
-   any eventual issues.
-   This should automatically use flake8_/black_ to check/fix the code style
-   in a way that is compatible with the project.
 
    .. important:: Don't forget to add unit tests and documentation in case your
       contribution adds an additional feature and is not just a bugfix.
@@ -211,14 +178,19 @@ Implement your changes
 
       to look for recurring communication patterns.
 
-#. Please check that your changes don't break any unit tests with::
+#. Please check that your changes don't break any unit tests with:
 
-    tox
+   .. code-block:: bash
 
-   (after having installed |tox|_ with ``pip install tox`` or ``pipx``).
+      # Configure the build system (this "builds" CMakePPLang)
+      cmake -H. -Bbuild -DBUILD_TESTING=ON
 
-   You can also use |tox|_ to run several other pre-configured tasks in the
-   repository. Try ``tox -av`` to see a list of the available checks.
+      # Navigate into the build directory
+      cd build
+
+      # Run the tests
+      ctest -j 8 --output-on-failure --rerun-failed
+
 
 Submit your contribution
 ------------------------
@@ -230,11 +202,9 @@ Submit your contribution
 #. Go to the web page of your fork and click |contribute button|
    to send your changes for review.
 
-   .. todo:: if you are using GitHub, you can uncomment the following paragraph
-
-      Find more detailed information in `creating a PR`_. You might also want to open
-      the PR as a draft first and mark it as ready for review after the feedbacks
-      from the continuous integration (CI) system or any required fixes.
+Find more detailed information in `creating a PR`_. You might also want to open
+the PR as a draft first and mark it as ready for review after the feedbacks
+from the continuous integration (CI) system or any required fixes.
 
 
 Troubleshooting
@@ -247,71 +217,9 @@ package:
    The command ``git describe --abbrev=0 --tags`` should return the version you
    are expecting. If you are trying to run CI scripts in a fork repository,
    make sure to push all the tags.
-   You can also try to remove all the egg files or the complete egg folder, i.e.,
-   ``.eggs``, as well as the ``*.egg-info`` folders in the ``src`` folder or
-   potentially in the root of your project.
 
-#. Sometimes |tox|_ misses out when new dependencies are added, especially to
-   ``setup.cfg`` and ``docs/requirements.txt``. If you find any problems with
-   missing dependencies when running a command with |tox|_, try to recreate the
-   ``tox`` environment using the ``-r`` flag. For example, instead of::
-
-    tox -e docs
-
-   Try running::
-
-    tox -r -e docs
-
-#. Make sure to have a reliable |tox|_ installation that uses the correct
-   Python version (e.g., 3.7+). When in doubt you can run::
-
-    tox --version
-    # OR
-    which tox
-
-   If you have trouble and are seeing weird errors upon running |tox|_, you can
-   also try to create a dedicated `virtual environment`_ with a |tox|_ binary
-   freshly installed. For example::
-
-    virtualenv .venv
-    source .venv/bin/activate
-    .venv/bin/pip install tox
-    .venv/bin/tox -e all
-
-#. `Pytest can drop you`_ in an interactive session in the case an error occurs.
-   In order to do that you need to pass a ``--pdb`` option (for example by
-   running ``tox -- -k <NAME OF THE FALLING TEST> --pdb``).
-   You can also setup breakpoints manually instead of using the ``--pdb`` option.
-
-
-Maintainer tasks
-================
-
-Releases
---------
-
-.. todo:: This section assumes you are using PyPI to publicly release your package.
-
-   If instead you are using a different/private package index, please update
-   the instructions accordingly.
-
-If you are part of the group of maintainers and have correct user permissions
-on PyPI_, the following steps can be used to release a new version for
-``CMakePPLang``:
-
-#. Make sure all unit tests are successful.
-#. Tag the current commit on the main branch with a release tag, e.g., ``v1.2.3``.
-#. Push the new tag to the upstream repository_, e.g., ``git push upstream v1.2.3``
-#. Clean up the ``dist`` and ``build`` folders with ``tox -e clean``
-   (or ``rm -rf dist build``)
-   to avoid confusion with old builds and Sphinx docs.
-#. Run ``tox -e build`` and check that the files in ``dist`` have
-   the correct version (no ``.dirty`` or git_ hash) according to the git_ tag.
-   Also check the sizes of the distributions, if they are too big (e.g., >
-   500KB), unwanted clutter may have been accidentally included.
-#. Run ``tox -e publish -- --repository pypi`` and check that everything was
-   uploaded to PyPI_ correctly.
-
+#. If a change you made doesn't seem to be appearing when building the
+   code, try deleting the ``build`` directory to start with a clean build.
 
 
 .. [#contrib1] Even though these resources focus on open source projects and
@@ -326,41 +234,27 @@ on PyPI_, the following steps can be used to release a new version for
 .. |the repository service| replace:: GitHub
 .. |contribute button| replace:: "Create pull request"
 
-.. _repository: https://github.com/<USERNAME>/CMakePPLang
-.. _issue tracker: https://github.com/<USERNAME>/CMakePPLang/issues
+.. _repository: https://github.com/CMakePP/CMakePPLang
+.. _issue tracker: https://github.com/CMakePP/CMakePPLang/issues
 .. <-- end -->
 
 
-.. |virtualenv| replace:: ``virtualenv``
-.. |pre-commit| replace:: ``pre-commit``
-.. |tox| replace:: ``tox``
-
-
-.. _black: https://pypi.org/project/black/
-.. _CommonMark: https://commonmark.org/
+.. _CMake: https://cmake.org/
+.. _CMinx: https://cmakepp.github.io/CMinx/index.html
 .. _contribution-guide.org: https://www.contribution-guide.org/
 .. _creating a PR: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request
 .. _descriptive commit message: https://chris.beams.io/posts/git-commit
-.. _docstrings: https://www.sphinx-doc.org/en/master/usage/extensions/napoleon.html
+.. _doccomments: https://cmakepp.github.io/CMinx/documenting/index.html
 .. _first-contributions tutorial: https://github.com/firstcontributions/first-contributions
-.. _flake8: https://flake8.pycqa.org/en/stable/
 .. _git: https://git-scm.com
 .. _GitHub's fork and pull request workflow: https://guides.github.com/activities/forking/
 .. _guide created by FreeCodeCamp: https://github.com/FreeCodeCamp/how-to-contribute-to-open-source
-.. _Miniconda: https://docs.conda.io/en/latest/miniconda.html
-.. _MyST: https://myst-parser.readthedocs.io/en/latest/syntax/syntax.html
 .. _other kinds of contributions: https://opensource.guide/how-to-contribute
-.. _pre-commit: https://pre-commit.com/
-.. _PyPI: https://pypi.org/
 .. _PyScaffold's contributor's guide: https://pyscaffold.org/en/stable/contributing.html
-.. _Pytest can drop you: https://docs.pytest.org/en/stable/how-to/failures.html#using-python-library-pdb-with-pytest
 .. _Python: https://www.python.org/
 .. _Python Software Foundation's Code of Conduct: https://www.python.org/psf/conduct/
 .. _reStructuredText: https://www.sphinx-doc.org/en/master/usage/restructuredtext/
 .. _Sphinx: https://www.sphinx-doc.org/en/master/
-.. _tox: https://tox.wiki/en/stable/
-.. _virtual environment: https://realpython.com/python-virtual-environments-a-primer/
-.. _virtualenv: https://virtualenv.pypa.io/en/stable/
 
 .. _GitHub web interface: https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files
 .. _GitHub's code editor: https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files
