@@ -269,10 +269,15 @@ feature. We just need to use the ``KWARGS`` keyword as the third argument to
 the call and provide a list consisting of the name of each attribute we want to 
 set followed immediately by the value or values we want to set. Suppose our 
 automobile class has three attributes: ``color``, ``num_doors``, and 
-``owners``. Then we could set these upon construction using the following:
+``owners``, along with a ``describe_self`` method to print these values:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/constructor_kwargs.cmake
-   :lines: 40
+   :lines: 3-34
+
+Then we could set these upon construction using the following:
+
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/constructor_kwargs.cmake
+   :lines: 40-48
    :dedent: 4
 
 This would set the value of ``color`` to ``red``, ``num_doors`` to ``4``, and
