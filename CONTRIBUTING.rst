@@ -108,9 +108,11 @@ Windows system:
    .\make.bat html
 
 and, finally, use Python's built-in web server for a preview in your web
-browser at ``http://localhost:8000``::
+browser at ``http://localhost:8000``:
 
-   python3 -m http.server --directory 'docs/_build/html'
+.. code-block:: bash
+
+   python3 -m http.server --directory 'docs/build/html'
 
 
 Code Contributions
