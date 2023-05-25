@@ -17,10 +17,10 @@ Obtaining CMakePPLang
 *********************
 
 This section details two ways of obtaining CMakePPLang for use in your build 
-system. The easiest way to use the CMakePP language in your project is to
+system. The easiest way to use the CMakePP language in your project is
 :ref:`auto-downloading-cmakepplang`.
 
-Alternatively you can choose to :ref:`manually-downloading-cmakepplang`, which is
+Alternatively you can choose :ref:`manually-downloading-cmakepplang`, which is
 a bit more complicated.
 
 .. _auto-downloading-cmakepplang:
