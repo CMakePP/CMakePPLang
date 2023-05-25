@@ -33,7 +33,8 @@ CMakePPLang is an object-oriented extension to the CMake language providing
 strong, static typing written entirely using the original CMake language.
 CMakePPLang has different coding practices, paradigms, and standards than
 the native CMake language, much in the same way that C++ coding differs
-from C coding despite some level of interoperability.
+from C coding despite some level of interoperability. CMakePPLang is also
+designed with a C++-like feel to aid C++ programmers in using the language.
 
 This documentation is primarily meant to introduce users to the CMakePP
 language. It includes some basic usage examples, an overview of the features and
