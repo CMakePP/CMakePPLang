@@ -31,7 +31,7 @@ Automatically Downloading and Including CMakePPLang
 As a convenience to your users you can make it so that your build system
 automatically downloads CMakePPLang and includes it. The easiest way to do
 this is to put the following CMake script in a file
-``cmake/get_cmakepp_lang.cmake``:
+``PROJECT_ROOT/cmake/get_cmakepp_lang.cmake``:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/obtaining_cmakepplang_get_cmakepp_lang.cmake
 
