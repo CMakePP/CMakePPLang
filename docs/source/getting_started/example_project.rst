@@ -23,9 +23,10 @@ be both a tutorial for new users setting up their first project using
 CMakePPLang, as well as a quick reference for experienced users.
 
 This project will create a `Greeter` class. This class will store a user's name
-in a ``name`` attribute and greet them using a ``Greeter(hello`` member
-function. The ``Greeter(hello`` function will print the following greeting,
-"Hello, <name>!", where ``<name>`` is the value of the ``name`` attribute.
+in a ``name`` attribute and greet them using a ``Greeter(hello ...)`` member
+function. The ``Greeter(hello ...)`` function will print the following
+greeting, "Hello, <name>!", where ``<name>`` is the value of the ``name``
+attribute.
 
 .. note::
 
@@ -133,7 +134,7 @@ Add the following text to ``cmake/get_cmake_test.cmake``:
 
 Next is to create the test for ``Greeter`` by adding the following text to
 ``tests/greeter/test_greeter_class.cmake``, testing the output of the
-``Greeter(hello`` method:
+``Greeter(hello ...)`` method:
 
 .. literalinclude:: /../../examples/cmakepplang_example/tests/greeter/test_greeter_class.cmake
 
