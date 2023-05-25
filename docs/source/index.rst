@@ -16,8 +16,9 @@
 CMakePPLang
 ###########
 
-At the heart of the CMake Packaging Project is the CMakePP language,
-CMakePPLang. CMakePPLang is an object-oriented extension to the CMake
+The `CMakePP organization`_ is committed to making the act of packaging projects
+with CMake easier. At the heart of the CMake Packaging Project is the CMakePP
+language, CMakePPLang. CMakePPLang is an object-oriented extension to the CMake
 language written entirely using the original CMake language. That said,
 CMakePPLang has different coding practices, paradigms, and standards than
 the native CMake language, much in the same way that C++ coding differs
@@ -37,3 +38,7 @@ debugging code written in CMakePPLang, as well as notes for developers.
    api/index
    debugging
    developer/index
+
+.. References:
+
+.. _CMakePP organization: https://github.com/CMakePP
