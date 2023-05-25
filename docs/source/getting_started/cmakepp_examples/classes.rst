@@ -233,15 +233,15 @@ pass in one integer to match the new signature:
 
 .. _examples-classes-constructor-user-defined:
 
-Adding a User-Defined Constructors
-==================================
+Adding a User-Defined Constructor
+=================================
 
 The CMakePP language allows users to define multiple custom constructors for 
 classes. This is done using the ``cpp_constructor`` command. Here we add a 
-constructor that takes two integers to our ``Automobile`` class:
+constructor that takes a new color to our ``Automobile`` class:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/constructor_user_defined.cmake
-   :lines: 12-15
+   :lines: 12-16
    :dedent: 4
 
 Multiple constructors can be added to a class. Calls to constructors will use
@@ -251,7 +251,11 @@ constructor that matches the signature of that call and then call that
 constructor. If no matching constructor is found, an error will be thrown. The 
 only exception to this is when a call is made to the constructor of a class and 
 no arguments are passed. In that case, the CMakePP language will just call the 
-default constructor for the class.
+default constructor for the class:
+
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/constructor_user_defined.cmake
+   :lines: 69-75, 78-84
+   :dedent: 4
 
 .. _examples-classes-constructor-kwargs:
 

@@ -9,9 +9,10 @@ cpp_class(Automobile)
     # Define an attribute "km_driven" that takes a starting value of 0
     cpp_attr(Automobile km_driven 0)
 
-    cpp_constructor(CTOR Automobile int int)
-    function("${CTOR}" self a b)
-        # Do set up using arguments passed to constructors
+    cpp_constructor(CTOR Automobile desc)
+    function("${CTOR}" self new_color)
+        # Set the color attribute to the value provided
+        Automobile(SET "${self}" color "${new_color}")
     endfunction()
 
     # Define a function "start" that prints a message
@@ -68,18 +69,20 @@ function("${constructor_user_defined}")
     # Create an instance of the class called "my_auto" using the default CTOR
     Automobile(CTOR my_auto)
 
-    # Call the new function implementation
-    Automobile(start "${my_auto}" 10)
+    Automobile(GET "${my_auto}" my_color color)
 
-    # Output: Vroom! I started my engine and I just drove 10 km.
+    # 'color' is the default 'red'
 
-    ct_assert_prints("Vroom! I started my engine and I just drove 10 km.")
+    ct_assert_equal(my_color "red")
 
-    # We can still call the original function implementation as well
-    Automobile(start "${my_auto}")
+    # Create an instance of the class called "my_auto_2" using the default
+    # user-defined CTOR
+    Automobile(CTOR my_auto_2 blue)
 
-    # Output: Vroom! I have started my engine.
+    Automobile(GET "${my_auto_2}" my_color color)
 
-    ct_assert_prints("Vroom! I have started my engine.")
+    # 'color' is the provided 'blue'
+
+    ct_assert_equal(my_color "blue")
 
 endfunction()
