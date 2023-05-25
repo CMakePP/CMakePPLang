@@ -37,3 +37,10 @@ debugging code written in CMakePPLang, as well as notes for developers.
    api/index
    debugging
    developer/index
+   contributing
+   Authors <authors>
+   license
+
+.. References:
+
+.. _CMakePP organization: https://github.com/CMakePP
