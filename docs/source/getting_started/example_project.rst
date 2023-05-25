@@ -155,8 +155,8 @@ Building the Project
 ====================
 
 Now that we have a complete project, it can be built with CMake after
-navigating into the project directory. In a terminal, run the following
-command for your system:
+navigating to the top of the project directory, which we will refer to here
+as ``PROJECT_ROOT``. In a terminal, run the following command for your system:
 
 For Unix- or Linux-based systems (including Mac OSX):
 
@@ -173,12 +173,12 @@ For Windows systems:
 In these commands, ``-H`` and ``-S`` specify the top-level, root directory for
 the project, called the "source directory" in CMake (not to be confused with a
 "source code directory", commonly also called the "source directory"). In this
-case, we are assuming that the current directory, ``.``, is the root directory
-of the ``CMakePPLang`` repository. The directory where build artifacts will
-appear is specified by ``-B``, meaning we are directing build artefacts to
-``CMakePPLang/build``. Finally, ``-DBUILD_TESTING=ON`` enables unit testing on
-CMakePPLang, which will be necessary for development. ``BUILD_TESTING``
-defaults to ``OFF``, so this argument can be excluded if testing is not needed.
+case, we are assuming that the current directory, ``.``, is ``PROJECT_ROOT``.
+The directory where build artifacts will appear is specified by ``-B``,
+meaning we are directing build artefacts to ``PROJECT_ROOT/build``. Finally,
+``-DBUILD_TESTING=ON`` enables unit testing on CMakePPLang, which will be
+necessary for development. ``BUILD_TESTING`` defaults to ``OFF``, so this
+argument can be excluded if testing is not needed.
 
 .. note::
 
