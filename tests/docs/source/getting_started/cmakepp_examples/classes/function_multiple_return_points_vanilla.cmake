@@ -9,22 +9,10 @@ cpp_class(Automobile)
     # Define an attribute "km_driven" that takes a starting value of 0
     cpp_attr(Automobile km_driven 0)
 
-    cpp_constructor(CTOR Automobile desc)
-    function("${CTOR}" self new_color)
-        # Set the color attribute to the value provided
-        Automobile(SET "${self}" color "${new_color}")
-    endfunction()
-
     # Define a function "start" that prints a message
     cpp_member(start Automobile)
     function("${start}" self)
         message("Vroom! I have started my engine.")
-    endfunction()
-
-    # Overload the "start" function
-    cpp_member(start Automobile int)
-    function("${start}" self distance_km)
-        message("Vroom! I started my engine and I just drove ${distance_km} km.")
     endfunction()
 
     # Define a function "drive" that takes an int and a str and prints a message
@@ -45,44 +33,40 @@ cpp_class(Automobile)
             Automobile(GET "${self}" my_color color)
 
             # Set the value of the var with the name ${return_id} in the current scope
-            set("${return_id}" "I am an automobile, I am ${my_color}, and I have driven ${my_km_driven} km.")
-
-            # Return the value and exit the function
-            cpp_return("${return_id}")
+            set("${return_id}" "I am an automobile, I am ${my_color}, and I have driven ${my_km_driven} km." PARENT_SCOPE)
+            return()
         endif()
 
         # This only executes if include_color is false
         # Set the value of the var with the name ${return_id} in the current scope
-        set("${return_id}" "I am an automobile and I have driven ${my_km_driven} km.")
-
-        # Return the value and exit the function
-        cpp_return("${return_id}")
+        set("${return_id}" "I am an automobile and I have driven ${my_km_driven} km." PARENT_SCOPE)
+        return()
 
     endfunction()
 
 # End class definition
 cpp_end_class()
 
-ct_add_test(NAME "constructor_user_defined")
-function("${constructor_user_defined}")
+ct_add_test(NAME "function_multiple_return_points")
+function("${function_multiple_return_points}")
 
     # Create an instance of the class called "my_auto" using the default CTOR
     Automobile(CTOR my_auto)
 
-    Automobile(GET "${my_auto}" my_color color)
+    # Call the function and specify that color should be included
+    Automobile(describe_self "${my_auto}" my_result TRUE)
+    message("${my_result}")
 
-    # 'color' is the default 'red'
+    # Output: I am an automobile, I am red, and I have driven 0 km.
 
-    ct_assert_equal(my_color "red")
+    ct_assert_equal(my_result "I am an automobile, I am red, and I have driven 0 km.")
 
-    # Create an instance of the class called "my_auto_2" using the default
-    # user-defined CTOR
-    Automobile(CTOR my_auto_2 blue)
+    # Call the function and specify that color should NOT be included
+    Automobile(describe_self "${my_auto}" my_result FALSE)
+    message("${my_result}")
 
-    Automobile(GET "${my_auto_2}" my_color color)
+    # Output: I am an automobile and I have driven 0 km.
 
-    # 'color' is the provided 'blue'
-
-    ct_assert_equal(my_color "blue")
+    ct_assert_equal(my_result "I am an automobile and I have driven 0 km.")
 
 endfunction()
