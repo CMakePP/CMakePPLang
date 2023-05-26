@@ -27,7 +27,7 @@ build_path = os.path.join(doc_path, 'build')            # doc build directory
 src_dir  = os.path.abspath(os.path.dirname(__file__))
 
 # -- Project Info ------------------------------------------------------------
-copyright = u'2023, CMakePP Organization'
+copyright = u'2019-2020, 2022-2023, CMakePP Organization'
 author = u'CMakePP Organization'
 project = 'CMakePPLang'
 version = '1.0.0'
