@@ -17,10 +17,10 @@ Obtaining CMakePPLang
 *********************
 
 This section details two ways of obtaining CMakePPLang for use in your build 
-system. The easiest way to use the CMakePP language in your project is to
+system. The easiest way to use the CMakePP language in your project is
 :ref:`auto-downloading-cmakepplang`.
 
-Alternatively you can choose to :ref:`manually-downloading-cmakepplang`, which is
+Alternatively you can choose :ref:`manually-downloading-cmakepplang`, which is
 a bit more complicated.
 
 .. _auto-downloading-cmakepplang:
@@ -31,7 +31,7 @@ Automatically Downloading and Including CMakePPLang
 As a convenience to your users you can make it so that your build system
 automatically downloads CMakePPLang and includes it. The easiest way to do
 this is to put the following CMake script in a file
-``cmake/get_cmakepp_lang.cmake``:
+``PROJECT_ROOT/cmake/get_cmakepp_lang.cmake``:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/obtaining_cmakepplang_get_cmakepp_lang.cmake
 
@@ -43,7 +43,7 @@ add the line:
 
    include("${PROJECT_SOURCE_DIR}/cmake/get_cmakepp_lang.cmake")
 
-Your project will now download CMakePP automatically as part of the CMake
+Your project will now download CMakePPLang automatically as part of the CMake
 configuration.
 
 .. _manually-downloading-cmakepplang:
@@ -60,11 +60,46 @@ through the web interface or by using the ``git clone`` command:
 
    git clone https://github.com/CMakePP/CMakePPLang.git
 
-Once CMakePPLang has been downloaded and changes have been made, set up your
-project that uses CMakePPLang as described in :ref:`auto-downloading-cmakepplang`.
-Your project will then use your local CMakePPLang if you set
-``FETCHCONTENT_SOURCE_DIR_CMAKEPP_LANG`` to the directory containing your local
-changes. This can be set in a ``toolchain.cmake`` file, directly in a
-``CMakeLists.txt`` file (although it is not recommended to hard-code local
-paths into your CMake files), or as an argument to the CMake configure step
-with ``-DFETCHCONTENT_SOURCE_DIR_CMAKEPP_LANG=<local_path>``.
+Once CMakePPLang has been downloaded and changes have been made, create or
+navigate to your project that relies on the new CMakePPLang functionality,
+which we will refer to here as ``ExampleProject``. Create a CMake file to
+fetch CMakePPLang in ``ExampleProject`` that will use CMakePPLang at
+``ExampleProject/cmake/get_cmakepp_lang.cmake``, and add the following text:
+
+.. literalinclude:: /../../tests/docs/source/getting_started/obtaining_cmakepplang_get_cmakepp_lang.cmake
+
+Then, in the top-level ``CMakeLists.txt`` at the root of ``ExampleProject``,
+add the following line before any code using CMakePPLang:
+
+.. code-block:: cmake
+
+   include("${PROJECT_SOURCE_DIR}/cmake/get_cmakepp_lang.cmake")
+
+So far, ``ExampleProject`` is set up to automatically fetch the latest version
+of CMakePPLang from https://github.com/CMakePP/CMakePPLang, but we want to use
+your modified, local version. ``ExampleProject`` can be instructed to use your
+local CMakePPLang if you set the ``FETCHCONTENT_SOURCE_DIR_CMAKEPP_LANG``
+variable to the directory containing your modified, local version. There are
+multiple ways to set the ``FETCHCONTENT_SOURCE_DIR_CMAKEPP_LANG`` variable,
+ranked here from most recommended to least recommended:
+
+#. Set the value in a `CMake toolchain file`_ (``toolchain.cmake``). You can
+   specify for your project to use this toolchain by adding one of the
+   following arguments to your CMake configure step command: 
+   ``-DCMAKE_TOOLCHAIN_FILE=path/to/file`` or
+   ``--toolchain /path/to/file``.
+
+#. Set the value as an argument to the CMake configure command
+   with the argument: ``-DFETCHCONTENT_SOURCE_DIR_CMAKEPP_LANG=path/to/
+   cmakepp_lang``
+
+#. Set the value directly in a ``CMakeLists.txt`` file. However, since CMake
+   build files should be portable to different systems, it is strongly
+   discouraged to hard-code local paths into your CMake files.
+
+Your project will now use your modified, local version of CMakePPLang during
+CMake configuration.
+
+.. References:
+
+.. _CMake toolchain file: https://cmake.org/cmake/help/latest/manual/cmake-toolchains.7.html

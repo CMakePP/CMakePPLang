@@ -18,9 +18,10 @@ Getting Started
 
 This part provides some helpful information for users who want to get started
 using CMakePPLang. If you are unfamiliar with the CMake language, it is best to
-start by learning the basics of the CMake language. If you are already familiar
-with the CMake language, start by :ref:`auto-downloading-cmakepplang` and then
-move on to :ref:`cmakepplang-examples` to learn the basics of using CMakePPLang.
+start by learning the basics of the CMake language (`CMake introduction`_,
+`CMake development tutorial`_). If you are already familiar with the CMake
+language, start by :ref:`auto-downloading-cmakepplang` and then move on to
+:ref:`cmakepplang-examples` to learn the basics of using CMakePPLang.
 
 .. toctree::
    :maxdepth: 3
@@ -28,3 +29,8 @@ move on to :ref:`cmakepplang-examples` to learn the basics of using CMakePPLang.
    obtaining_cmakepplang
    cmakepp_examples/index
    example_project
+
+.. References:
+
+.. _CMake introduction: https://cmake.org/cmake/help/latest/index.html
+.. _CMake development tutorial: https://cmake.org/cmake/help/latest/guide/tutorial/index.html
