@@ -29,7 +29,7 @@ affiliations:
  - name: Chemical and Biological Sciences, Ames National Laboratory, USA
    index: 2
 date: 12 June 2023
-bibliography: paper.bib # This will need to be tested, it might be relative to this file (just "paper.bib")
+bibliography: paper.bib
 ---
 
 
@@ -98,9 +98,9 @@ language.
 CMakePPLang is developed using CMake, so it is inherently backwards-compatible
 with CMake code and can be combined with CMake in the same `CMakeLists.txt`
 or `*.cmake` files. To use CMakePPLang, it is simply included like any
-other CMake code (\autoref{fig:include_cmakepplang})
+other CMake code after it is downloaded (\autoref{fig:include_cmakepplang}).
 
-![Example of including CMakePPLang in an existing CMake file.\label{fig:include_cmakepplang}](paper/fig/include_cmakepplang.png))
+![Example of including CMakePPLang in an existing CMake file.\label{fig:include_cmakepplang}](fig/include_cmakepplang.png))
 
 CMakePPLang is designed primarily to provide object-oriented funcionality
 for tools designed in CMake. The first step in this process is defining a
@@ -108,12 +108,12 @@ class (\autoref{fig:class_example}). Strong typing of the member function
 parameters can be seen in the example as well.
 
 ![Example of defining a CMakePPLang class, creating an instance, and
-calling a member function to print "Hello world!".\label{fig:class_example}](paper/fig/class_example.png))
+calling a member function to print "Hello world!".\label{fig:class_example}](fig/class_example.png))
 
 Users can also define a map to hold some basic information, like <insert example description here> (\autoref{fig:map_example}).
 
 ![Example of creating a CMakePPLang map, adding a key-value pair, and 
-retrieving the value using the key.\label{fig:map_example}](paper/fig/map_example.png))
+retrieving the value using the key.\label{fig:map_example}](fig/map_example.png))
 
 *ZDC: I don't know if this level of discussion is necessary, but I pulled
 some of the typing discussion from the documentation here.*
