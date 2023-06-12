@@ -144,7 +144,7 @@ CMakePPLang can contain attributes and functions and support inheritance.
 Instances of these user-defined classes can be created to be used in CMake
 modules. Currently, Classes are represented using Maps. An object of the
 Map type is an associative array for storing key-value pairs. The CMakePPLang
-Map provides the same basic functionality as a C++ `std::map`[@c++_stdmap_2023], Python
+Map provides the same basic functionality as a C++ `std::map`[@cpp_stdmap_2023], Python
 `dictionary`[@python_map_2023], or JavaScript `Map`[@javascript_map_2023]. Users can use maps in
 their code wherever they see fit, and maps are used in CMakePPLang to hold the
 state of object instances. Finally, the Object type is the base class for all
