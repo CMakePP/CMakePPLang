@@ -31,7 +31,7 @@ build files.
 
 ## Statement of Need
 
-CMake is small, extensible, and exceeds at generating build systems for many combinations of platforms, compilers, and build configurations.
+CMake is an extensible build tool that exceeds at generating build systems for many combinations of platforms, compilers, and build configurations.
 
 CMake has become the *de facto* standard tool for building C, C++, and Fortran
 programs of moderate to large size. However, as the size of a project increases, the
@@ -41,7 +41,7 @@ easier and less error prone, these tools will need to be designed in a
 maintainable and testable way. 
 The complexity of builds will also increase as
 we move toward heterogeneous systems, requiring programs to leverage a
-combination of CPUs, GPUs, and other accelerator hardware. Object-
+combination of CPUs, GPUs, and other specialized hardware. Object-
 oriented programming excels at managing and maintaining large, complex code bases, and there
 is an increasing need for this in the CMake language.
 
