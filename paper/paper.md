@@ -94,6 +94,29 @@ language.
 # Basic Usage
 
 *TLW: Give a short description of the design (maybe a picture?) and then briefly discuss each of the Features mentioned above.*
+
+CMakePPLang is developed using CMake, so it is inherently backwards-compatible
+with CMake code and can be combined with CMake in the same `CMakeLists.txt`
+or `*.cmake` files. To use CMakePPLang, it is simply included like any
+other CMake code (\autoref{fig:include_cmakepplang})
+
+![Example of including CMakePPLang in an existing CMake file.\label{fig:include_cmakepplang}](paper/fig/include_cmakepplang.png))
+
+CMakePPLang is designed primarily to provide object-oriented funcionality
+for tools designed in CMake. The first step in this process is defining a
+class (\autoref{fig:class_example}). Strong typing of the member function
+parameters can be seen in the example as well.
+
+![Example of defining a CMakePPLang class, creating an instance, and
+calling a member function to print "Hello world!".\label{fig:class_example}](paper/fig/class_example.png))
+
+Users can also define a map to hold some basic information, like <insert example description here> (\autoref{fig:map_example}).
+
+![Example of creating a CMakePPLang map, adding a key-value pair, and 
+retrieving the value using the key.\label{fig:map_example}](paper/fig/map_example.png))
+
+*ZDC: I don't know if this level of discussion is necessary, but I pulled
+some of the typing discussion from the documentation here.*
 Native CMake is a weakly typed language where all values are strings, and,
 in certain circumstances, certain strings are interpreted as being of another
 type. A common example is when a string is used as an argument to CMake’s if
@@ -116,8 +139,7 @@ like `str` for a string, `int` for an integer, and `desc` for a description.
 
 CMakePPLang also defines types that are outside of what can easily be
 represented in CMake: Class, Map, and Object. The Class type is used for
-objects which hold the specification of a user-defined type (the name of
-a user-defined class, `MyClass`, would be of type "Class"). Classes in
+objects which hold the specification of a user-defined type. Classes in
 CMakePPLang can contain attributes and functions and support inheritance.
 Instances of these user-defined classes can be created to be used in CMake
 modules. Currently, Classes are represented using Maps. An object of the
