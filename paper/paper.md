@@ -29,6 +29,7 @@ date: 12 June 2023
 bibliography: paper/paper.bib # This will need to be tested, it might be relative to this file (just "paper.bib")
 ---
 
+
 # Summary
 
 CMakePPLang is an object-oriented extension to the CMake language written entirely using the original CMake language
@@ -86,6 +87,7 @@ backwards-compatability with CMake. These features allow for easier general
 programming in CMake, which is key to writing complex build tools in the
 language.
 
+
 # Basic Usage
 
 *TLW: Give a short description of the design (maybe a picture?) and then briefly discuss each of the Features mentioned above.*
@@ -118,7 +120,7 @@ Instances of these user-defined classes can be created to be used in CMake
 modules. Currently, Classes are represented using Maps. An object of the
 Map type is an associative array for storing key-value pairs. The CMakePPLang
 Map provides the same basic functionality as a C++ `std::map`, Python
-dictionary, or JavaScript Associative Array structure. Users can use maps in
+`dictionary`, or JavaScript Associative Array structure. Users can use maps in
 their code wherever they see fit, and maps are used in CMakePPLang to hold the
 state of object instances. Finally, the Object type is the base class for all
 user-defined classes. The CMakePPLang Object defines the default
@@ -131,5 +133,6 @@ This research was supported by the Exascale Computing Project (17-SC-20-SC), a c
 effort of the U.S. Department of Energy Office of Science and the National Nuclear Security Administration.
 The software was developed in the NWChemEx subproject and the research was performed at the Ames National Laboratory, 
 which is operated for the US DOE by Iowa State University under [Contract No. DE-AC02-07CH11358].
+
 
 # References
