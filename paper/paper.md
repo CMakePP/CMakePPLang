@@ -29,7 +29,7 @@ affiliations:
  - name: Chemical and Biological Sciences, Ames National Laboratory, USA
    index: 2
 date: 12 June 2023
-bibliography: paper/paper.bib # This will need to be tested, it might be relative to this file (just "paper.bib")
+bibliography: paper.bib # This will need to be tested, it might be relative to this file (just "paper.bib")
 ---
 
 
