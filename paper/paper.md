@@ -88,8 +88,42 @@ language.
 
 # Basic Usage
 
-
 *TLW: Give a short description of the design (maybe a picture?) and then briefly discuss each of the Features mentioned above.*
+Native CMake is a weakly typed language where all values are strings, and,
+in certain circumstances, certain strings are interpreted as being of another
+type. A common example is when a string is used as an argument to CMake’s if
+statement, where the string is implicitly cast to a boolean. In practice, this
+weak typing can lead to subtle, hard-to-detect errors. CMakePPLang implements
+strong-typing in order to avoid/catch such errors. CMakePPLang conceptually
+has three classifications of types: CMake types, Quasi-CMake types, and
+pure CMakePPLang types.
+
+First, CMakePPLang recognizes the types that CMake may interpret a
+string as in certain contexts. These types include: Boolean, Command,
+File path, Floating-point numbers, Generator expressions, Integers, and
+Targets.
+
+Quasi-CMake types are primarily conceptual descriptions of CMake
+types with specific roles not defined in CMake. These types are: Description and Type.
+A Description is string that falls under no other intrinsic type than a string. Types
+are strings that are reserved for the in-code type keywords for the types described here,
+like `str` for a string, `int` for an integer, and `desc` for a description.
+
+CMakePPLang also defines types that are outside of what can easily be
+represented in CMake: Class, Map, and Object. The Class type is used for
+objects which hold the specification of a user-defined type (the name of
+a user-defined class, `MyClass`, would be of type "Class"). Classes in
+CMakePPLang can contain attributes and functions and support inheritance.
+Instances of these user-defined classes can be created to be used in CMake
+modules. Currently, Classes are represented using Maps. An object of the
+Map type is an associative array for storing key-value pairs. The CMakePPLang
+Map provides the same basic functionality as a C++ `std::map`, Python
+dictionary, or JavaScript Associative Array structure. Users can use maps in
+their code wherever they see fit, and maps are used in CMakePPLang to hold the
+state of object instances. Finally, the Object type is the base class for all
+user-defined classes. The CMakePPLang Object defines the default
+implementations for the equality, copy, and serialization functionalities.
+
 
 # Acknowledgement
 
