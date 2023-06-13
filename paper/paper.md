@@ -37,7 +37,7 @@ bibliography: paper.bib
 
 CMakePPLang is an object-oriented extension to the CMake language written entirely using the original CMake language
 with the goal of making projects built on CMake easier to create and maintain. 
-That said, CMakePPLang has different coding practices, paradigms, and standards than the native CMake language, 
+That said, CMakePPLang has different coding practices, paradigms, and standards than the original CMake language, 
 much in the same way that C++ coding differs from C coding despite some level of interoperability. 
 Currently, CMakePPLang is used within the CMakePP organization as the 
 foundation for two in-progress projects: CMakeTest and CMakeTest. CMakeTest
