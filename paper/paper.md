@@ -40,7 +40,7 @@ with the goal of making projects built on CMake easier to create and maintain.
 That said, CMakePPLang has different coding practices, paradigms, and standards than the original CMake language, 
 much in the same way that C++ coding differs from C coding despite some level of interoperability. 
 Currently, CMakePPLang is used within the CMakePP organization as the 
-foundation for two in-progress projects: CMakeTest and CMakeTest. CMakeTest
+foundation for two in-progress projects: CMakeTest and CMaize. CMakeTest
 provides a solution for unit testing CMake and CMakePPLang code. CMaize
 is a CMake tool to simplify interoperability between projects and writing 
 their CMake build files.
