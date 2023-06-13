@@ -119,7 +119,7 @@ retrieving the value using the key.\label{fig:map_example}](fig/map_example.png)
 some of the typing discussion from the documentation here.*
 Native CMake is a weakly typed language where all values are strings, and,
 in certain circumstances, select values are interpreted as being of another
-type. A common example is when a string is used as an argument to CMake’s if
+type. A common example is when a string is used as an argument to CMake’s `if`
 statement, where the string is implicitly cast to a boolean. In practice, this
 weak typing can lead to subtle, hard-to-detect errors. CMakePPLang implements
 strong-typing in order to avoid/catch such errors. CMakePPLang conceptually
