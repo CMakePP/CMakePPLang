@@ -98,7 +98,7 @@ language.
 CMakePPLang is developed using CMake, so it is inherently backwards-compatible
 with CMake code and can be combined with CMake in the same `CMakeLists.txt`
 or `*.cmake` files. To use CMakePPLang, it is simply included like any
-other CMake code after it is downloaded (\autoref{fig:include_cmakepplang}).
+other CMake module after it is downloaded (\autoref{fig:include_cmakepplang}).
 
 ![Example of including CMakePPLang in an existing CMake file.\label{fig:include_cmakepplang}](fig/include_cmakepplang.png){width=50%}
 
