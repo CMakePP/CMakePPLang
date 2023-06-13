@@ -93,8 +93,6 @@ language.
 
 # Basic Usage
 
-*TLW: Give a short description of the design (maybe a picture?) and then briefly discuss each of the Features mentioned above.*
-
 CMakePPLang is developed using CMake, so it is inherently backwards-compatible
 with CMake code and can be combined with CMake in the same `CMakeLists.txt`
 or `*.cmake` files. To use CMakePPLang, it is simply included like any
@@ -102,21 +100,6 @@ other CMake module after it is downloaded (\autoref{fig:include_cmakepplang}).
 
 ![Example of including CMakePPLang in an existing CMake file.\label{fig:include_cmakepplang}](fig/include_cmakepplang.png){width=50%}
 
-CMakePPLang is designed primarily to provide object-oriented funcionality
-for tools designed in CMake. The first step in this process is defining a
-class (\autoref{fig:class_example}). Strong typing of the member function
-parameters can be seen in the example as well.
-
-![Example of defining a CMakePPLang class, creating an instance, and
-calling a member function to print "Hello world!".\label{fig:class_example}](fig/class_example.png){width=50%}
-
-Users can also define a map to hold some basic information, like <insert example description here> (\autoref{fig:map_example}).
-
-![Example of creating a CMakePPLang map, adding a key-value pair, and 
-retrieving the value using the key.\label{fig:map_example}](fig/map_example.png){width=50%}
-
-*ZDC: I don't know if this level of discussion is necessary, but I pulled
-some of the typing discussion from the documentation here.*
 Native CMake is a weakly typed language where all values are strings, and,
 in certain circumstances, select values are interpreted as being of another
 type. A common example is when a string is used as an argument to CMake’s `if`
@@ -149,6 +132,19 @@ their code wherever they see fit, and maps are used in CMakePPLang to hold the
 state of object instances. Finally, the Object type is the base class for all
 user-defined classes. The CMakePPLang Object defines the default
 implementations for the equality, copy, and serialization functionalities.
+
+CMakePPLang is designed primarily to provide object-oriented funcionality
+for tools designed in CMake. The first step in this process is defining a
+class (\autoref{fig:class_example}). Strong typing of the member function
+parameters can be seen in the example as well.
+
+![Example of defining a CMakePPLang class, creating an instance, and
+calling a member function to print "Hello world!".\label{fig:class_example}](fig/class_example.png){width=50%}
+
+Users can also define a map to hold some basic information, like <insert example description here> (\autoref{fig:map_example}).
+
+![Example of creating a CMakePPLang map, adding a key-value pair, and 
+retrieving the value using the key.\label{fig:map_example}](fig/map_example.png){width=50%}
 
 
 # Acknowledgement
