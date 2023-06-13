@@ -53,8 +53,8 @@ for many combinations of platforms, compilers, and build configurations.
 CMake has become the *de facto* standard tool for building C, C++, and Fortran
 programs of moderate to large size. However, as the size of a project increases, the
 complexity of the CMake code to build it tends to also increase. 
-In addition, as more tooling is built around CMake to make building projects with CMake
-easier and less error prone, these tools will need to be designed in a
+In addition, as more tooling is built around CMake, there is a need to make building projects with CMake
+easier and less error prone, while also ensuring these tools are designed in a
 maintainable and testable way.[@ref_needed] 
 The complexity of builds will also increase as
 we move toward heterogeneous systems, requiring programs to leverage a
