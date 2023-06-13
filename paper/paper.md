@@ -131,10 +131,9 @@ string as in certain contexts. These types include: Boolean, Command,
 File path, Floating-point numbers, Generator expressions, Integers, and
 Targets.
 
-Quasi-CMake types are primarily conceptual descriptions of CMake
-types with specific roles not defined in CMake. These types are: Description and Type.
-A Description is string that falls under no other intrinsic type than a string. Types
-are strings that are reserved for the in-code type keywords for the types described here,
+Quasi-CMake types are types which conceptually exist in traditional CMake,
+but are not explicitly defined. These types are: Description and Type.
+Descriptions are the subset of strings that have no other intrinsic type aside from being a string, *i.e.*, they can only be interpreted as text. Types are string values used to represent the type of an object, in CMakePP they amount to strings reserved for the in-code keywords representing a type,
 like `str` for a string, `int` for an integer, and `desc` for a description.
 
 CMakePPLang also defines types that are outside of what can easily be
