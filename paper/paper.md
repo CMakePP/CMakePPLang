@@ -50,18 +50,18 @@ their build systems.
 
 CMake is an extensible build tool that exceeds at generating build systems
 for many combinations of platforms, compilers, and build configurations.
-CMake has become the *de facto* standard tool for building C, C++, and Fortran
-programs of moderate to large size. However, as the size of a project increases, the
-complexity of the CMake code to build it tends to also increase. 
-In addition, as more tooling is built around CMake, there is a need to make building projects with CMake
-easier and less error prone, while also ensuring these tools are designed in a
-maintainable and testable way.[@ref_needed] 
-The complexity of builds will also increase as
-we move toward heterogeneous systems, requiring programs to leverage a
-combination of CPUs, GPUs, and other specialized hardware. Object-
-oriented programming excels at managing and maintaining large, complex code
-bases[@wirth_good_2006; @ambler_realistic_1998], and there is an increasing
-need for this in the CMake language.
+CMake has become the *de facto* standard tool for building C, C++, and
+Fortran programs of moderate to large size. However, as the size of a project
+increases, the complexity of the CMake build code tends to increase as well,
+and the need arises to make building projects with CMake easier and less
+error prone. The complexity of builds will also increase as scientific
+computing moves toward heterogeneous systems, requiring programs to leverage
+a combination of CPUs, GPUs, and other specialized hardware. [@ref?] Better
+utilities and extensions in CMake can help alleviate these issues, but these
+tools must be able to be designed in a maintainable and testable way.
+[@pressman_142_2005] Object-oriented programming excels at managing and
+maintaining large, complex code bases[@wirth_good_2006; @ambler_realistic_1998],
+and there is an increasing need for this in the CMake language.
 
 Tobias Becker recognized these issues and wrote a purely object-oriented
 language on top of CMake, called CMake++ (formerly oo-cmake).[@becker_cmake_2021]
@@ -141,7 +141,9 @@ parameters can be seen in the example as well.
 ![Example of defining a CMakePPLang class, creating an instance, and
 calling a member function to print "Hello world!".\label{fig:class_example}](fig/class_example.png){width=50%}
 
-Users can also define a map to hold some basic information, like <insert example description here> (\autoref{fig:map_example}).
+Users can also define a map to hold information, like a map that stores a
+color value under the "color" key (\autoref{fig:map_example}), along with
+other relevant values.
 
 ![Example of creating a CMakePPLang map, adding a key-value pair, and 
 retrieving the value using the key.\label{fig:map_example}](fig/map_example.png){width=50%}
