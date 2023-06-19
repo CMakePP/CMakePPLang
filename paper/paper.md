@@ -116,7 +116,7 @@ Targets.
 
 Quasi-CMake types are types which conceptually exist in traditional CMake,
 but are not explicitly defined. These types are: Description and Type.
-Descriptions are the subset of strings that have no other intrinsic type aside from being a string, *i.e.*, they can only be interpreted as text. Types are string values used to represent the type of an object, in CMakePP they amount to strings reserved for the in-code keywords representing a type,
+Descriptions are the subset of strings that have no other intrinsic type aside from being a string, *i.e.*, they can only be interpreted as text. Types are string values used to represent the type of an object, in CMakePPLang they amount to strings reserved for the in-code keywords representing a type,
 like `str` for a string, `int` for an integer, and `desc` for a description.
 
 CMakePPLang also defines types that are outside of what can easily be
