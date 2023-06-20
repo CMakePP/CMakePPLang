@@ -26,6 +26,7 @@ header:
     - docs/Makefile
     - docs/requirements.txt
     - examples/
+    - paper/
     - tests/
     - LICENSE
 
