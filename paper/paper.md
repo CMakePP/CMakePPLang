@@ -78,10 +78,6 @@ what is going on. Initially, forking and expanding on CMake++ was
 considered, but it was determined that it would take similar time to come 
 decipher CMake++ as it would to develop CMakePPLang.
 
-*ZDC: There are other related project, listed [here](https://github.com/CMakePP/.github/blob/main/docs/source/about/other_projects.rst).
-Do we want to discuss each of them? If so, I think we need to shorten the discussion of each one instead of the keeping each one around
-the length of the CMake++ comparison*
-
 CMakePPLang has been developed to provide extensions to the CMake language
 which provide objected-oriented functionality and other quality-of-life
 improvements. The main features of CMakePPLang are the object-oriented
