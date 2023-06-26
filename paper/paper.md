@@ -17,6 +17,7 @@ authors:
     equal-contrib: false
     affiliation: "1, 2"
   - name: Theresa L. Windus
+    orcid: 0000-0001-6065-3167
     equal-contrib: false
     affiliation: "1, 2"
   - name: Ryan M. Richard
