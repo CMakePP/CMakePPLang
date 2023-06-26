@@ -75,7 +75,7 @@ One of the primary issues with CMake++ is the lack of documentation. While
 there is some high-level documentation, there is little to no API or detailed
 developer documentation. This makes it very challenging for a new developer to figure out
 what is going on. Initially, forking and expanding on CMake++ was
-considered, but it was determined that it would take similar time to come 
+considered, but it was determined that it would take similar time to 
 decipher CMake++ as it would to develop CMakePPLang.
 
 CMakePPLang has been developed to provide extensions to the CMake language
@@ -106,7 +106,7 @@ has three classifications of types: CMake types, Quasi-CMake types, and
 pure CMakePPLang types.
 
 First, CMakePPLang recognizes the types that CMake may interpret a
-string as in certain contexts. These types include: Boolean, Command,
+string to be in certain contexts. These types include: Boolean, Command,
 File path, Floating-point numbers, Generator expressions, Integers, and
 Targets.
 
