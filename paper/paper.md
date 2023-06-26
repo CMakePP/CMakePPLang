@@ -145,6 +145,9 @@ other relevant values.
 ![Example of creating a CMakePPLang map, adding a key-value pair, and 
 retrieving the value using the key.\label{fig:map_example}](fig/map_example.png){width=60%}
 
+Using these tools, CMakePPLang users can leverage the benefits of object-
+oriented programming to create more easily maintainable and testable utilities
+for CMake development. 
 
 # Acknowledgement
 
