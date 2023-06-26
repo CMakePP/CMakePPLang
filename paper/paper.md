@@ -48,7 +48,7 @@ their build systems.
 
 # Statement of Need
 
-CMake is an extensible build tool that exceeds at generating build systems
+CMake[@cmake] is an extensible build tool that exceeds at generating build systems
 for many combinations of platforms, compilers, and build configurations.
 CMake has become the *de facto* standard tool for building C, C++, and
 Fortran programs of moderate to large size. However, as the size of a project
