@@ -1,5 +1,5 @@
 ---
-title: 'CMakePPLang'
+title: 'CMakePPLang: An object-oriented extension to CMake'
 tags:
   - CMake
   - build tools
