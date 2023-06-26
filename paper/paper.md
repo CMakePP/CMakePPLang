@@ -56,7 +56,7 @@ increases, the complexity of the CMake build code tends to increase as well,
 and the need arises to make building projects with CMake easier and less
 error prone. The complexity of builds will also increase as scientific
 computing moves toward heterogeneous systems, requiring programs to leverage
-a combination of CPUs, GPUs, and other specialized hardware. [@ref?] Better
+a combination of CPUs, GPUs, and other specialized hardware. [@richard_pluginplay_2023] Better
 utilities and extensions in CMake can help alleviate these issues, but these
 tools must be able to be designed in a maintainable and testable way.
 [@pressman_142_2005] Object-oriented programming excels at managing and
