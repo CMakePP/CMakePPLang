@@ -13,10 +13,10 @@ authors:
   - name: Blake Mulnix
     equal-contrib: false
     affiliation: "1, 2"
-  - name: Theresa L. Windus
+  - name: Branden Butler
     equal-contrib: false
     affiliation: "1, 2"
-  - name: Branden Butler
+  - name: Theresa L. Windus
     equal-contrib: false
     affiliation: "1, 2"
   - name: Ryan M. Richard
