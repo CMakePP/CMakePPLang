@@ -1,5 +1,5 @@
 ---
-title: 'CMakePPLang'
+title: 'CMakePPLang: An object-oriented extension to CMake'
 tags:
   - CMake
   - build tools
@@ -13,10 +13,11 @@ authors:
   - name: Blake Mulnix
     equal-contrib: false
     affiliation: "1, 2"
-  - name: Theresa L. Windus
+  - name: Branden Butler
     equal-contrib: false
     affiliation: "1, 2"
-  - name: Branden Butler
+  - name: Theresa L. Windus
+    orcid: 0000-0001-6065-3167
     equal-contrib: false
     affiliation: "1, 2"
   - name: Ryan M. Richard
@@ -39,8 +40,8 @@ CMakePPLang is an object-oriented extension to the CMake language written entire
 with the goal of making projects built on CMake easier to create and maintain. 
 That said, CMakePPLang has different coding practices, paradigms, and standards than the original CMake language, 
 much in the same way that C++ coding differs from C coding despite some level of interoperability. 
-Currently, CMakePPLang is used within the CMakePP organization as the 
-foundation for two in-progress projects: CMakeTest and CMaize. CMakeTest
+Currently, CMakePPLang is used within the CMakePP organization[@cmakepp_org] as the 
+foundation for two in-progress projects: CMakeTest[@cmaketest] and CMaize[@cmaize]. CMakeTest
 provides a solution for unit testing CMake and CMakePPLang code. CMaize
 is a CMake tool to simplify interoperability between projects and writing 
 their build systems.
@@ -48,7 +49,7 @@ their build systems.
 
 # Statement of Need
 
-CMake is an extensible build tool that exceeds at generating build systems
+CMake[@cmake] is an extensible build tool that exceeds at generating build systems
 for many combinations of platforms, compilers, and build configurations.
 CMake has become the *de facto* standard tool for building C, C++, and
 Fortran programs of moderate to large size. However, as the size of a project
@@ -56,7 +57,7 @@ increases, the complexity of the CMake build code tends to increase as well,
 and the need arises to make building projects with CMake easier and less
 error prone. The complexity of builds will also increase as scientific
 computing moves toward heterogeneous systems, requiring programs to leverage
-a combination of CPUs, GPUs, and other specialized hardware. [@ref?] Better
+a combination of CPUs, GPUs, and other specialized hardware. [@richard_pluginplay_2023] Better
 utilities and extensions in CMake can help alleviate these issues, but these
 tools must be able to be designed in a maintainable and testable way.
 [@pressman_142_2005] Object-oriented programming excels at managing and
@@ -75,7 +76,7 @@ One of the primary issues with CMake++ is the lack of documentation. While
 there is some high-level documentation, there is little to no API or detailed
 developer documentation. This makes it very challenging for a new developer to figure out
 what is going on. Initially, forking and expanding on CMake++ was
-considered, but it was determined that it would take similar time to come 
+considered, but it was determined that it would take similar time to 
 decipher CMake++ as it would to develop CMakePPLang.
 
 CMakePPLang has been developed to provide extensions to the CMake language
@@ -94,7 +95,7 @@ with CMake code and can be combined with CMake in the same `CMakeLists.txt`
 or `*.cmake` files. To use CMakePPLang, it is simply included like any
 other CMake module after it is downloaded (\autoref{fig:include_cmakepplang}).
 
-![Example of including CMakePPLang in an existing CMake file.\label{fig:include_cmakepplang}](fig/include_cmakepplang.png){width=50%}
+![Example of including CMakePPLang in an existing CMake file.\label{fig:include_cmakepplang}](fig/include_cmakepplang.png){width=60%}
 
 Native CMake is a weakly typed language where all values are strings, and,
 in certain circumstances, select values are interpreted as being of another
@@ -106,7 +107,7 @@ has three classifications of types: CMake types, Quasi-CMake types, and
 pure CMakePPLang types.
 
 First, CMakePPLang recognizes the types that CMake may interpret a
-string as in certain contexts. These types include: Boolean, Command,
+string to be in certain contexts. These types include: Boolean, Command,
 File path, Floating-point numbers, Generator expressions, Integers, and
 Targets.
 
@@ -135,14 +136,18 @@ class (\autoref{fig:class_example}). Strong typing of the member function
 parameters can be seen in the example as well.
 
 ![Example of defining a CMakePPLang class, creating an instance, and
-calling a member function to print "Hello world!".\label{fig:class_example}](fig/class_example.png){width=50%}
+calling a member function to print "Hello world!".\label{fig:class_example}](fig/class_example.png){width=60%}
 
 Users can also define a map to hold information, like a map that stores a
 color value under the "color" key (\autoref{fig:map_example}), along with
 other relevant values.
 
 ![Example of creating a CMakePPLang map, adding a key-value pair, and 
-retrieving the value using the key.\label{fig:map_example}](fig/map_example.png){width=50%}
+retrieving the value using the key.\label{fig:map_example}](fig/map_example.png){width=60%}
+
+Using these tools, CMakePPLang users can leverage the benefits of object-
+oriented programming to create more easily maintainable and testable utilities
+for CMake development. 
 
 
 # Acknowledgement
