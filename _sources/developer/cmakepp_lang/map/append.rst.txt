@@ -1,0 +1,37 @@
+
+#######################
+cmakepp_lang/map/append
+#######################
+
+.. module:: cmakepp_lang/map/append
+
+
+.. function:: cpp_map_append(this key value)
+
+   Appends to the value stored under the specified key.
+   
+   This member function will append the provided value to the list stored under
+   the specified key. If the key does not exist, a list will be started with the
+   provided value and stored under the specified key.
+   
+   :param this: The map we modifying the state of.
+   :type this: map
+   :param key: The key whose value is being appended to.
+   :type key: str
+   :param value: Value we are appending to the list stored under ``_ma_key``.
+   :type value: str
+   
+   Error Checking
+   ==============
+   
+   If CMakePP is run in debug mode, this function will assert that it is called
+   with the correct number of arguments and that each argument has the correct
+   type. If an assert fails an error will be raised. The assertions happen only
+   when CMakePP is run in debug mode.
+   
+   :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+                                 debug mode or not.
+   :vartype CMAKEPP_LANG_DEBUG_MODE: bool
+   
+   
+

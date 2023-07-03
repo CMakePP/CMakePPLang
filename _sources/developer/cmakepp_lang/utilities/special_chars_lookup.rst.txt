@@ -1,0 +1,7 @@
+
+###########################################
+cmakepp_lang/utilities/special_chars_lookup
+###########################################
+
+.. module:: cmakepp_lang/utilities/special_chars_lookup
+

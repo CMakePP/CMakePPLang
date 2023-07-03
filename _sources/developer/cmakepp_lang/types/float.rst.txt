@@ -1,0 +1,44 @@
+
+########################
+cmakepp_lang/types/float
+########################
+
+.. module:: cmakepp_lang/types/float
+
+
+.. function:: cpp_is_float(return str2check)
+
+   Determines if a string can be lexically cast to a float.
+   
+   For our purposes a float is any string whose only characters include a decimal
+   point, and the numbers 0 through 9. Optionally the float may be prefixed with
+   a minus sign.
+   
+   :param return: Name for the variable used to store the result.
+   :type return: desc
+   :param str2check: The string we are checking for its floaty-ness
+   :type str2check: str
+   :returns: ``return`` will be set to ``TRUE`` if ``str2check`` is a
+             float and ``FALSE`` otherwise.
+   :rtype: bool
+   
+   Example Usage
+   =============
+   
+   The following is an example showcasing how one would check if the identifier
+   ``x`` contained a float.
+   
+   .. code-block:: cmake
+   
+      include(cmakepp_lang/types/float)
+      set(x 3.14)
+      cpp_is_float(return ${x})
+      message("3.14 is a float: ${return}")  # prints TRUE
+   
+   Error Checking
+   ==============
+   
+   ``cpp_is_float`` will assert that it is called with exactly two arguments. If
+   it is not an error will be raised.
+   
+

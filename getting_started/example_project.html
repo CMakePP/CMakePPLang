@@ -11,6 +11,8 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/sphinx_highlight.js"></script>
@@ -61,9 +63,11 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../features/index.html">Language Features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../conventions.html">Language Conventions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../debugging.html">Debugging Code Written in CMakePPLang</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developing for CMakePPLang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://cmakepp.github.io/.github/code_of_conduct/index.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
 </ul>
 
         </div>
@@ -97,9 +101,10 @@
 be both a tutorial for new users setting up their first project using
 CMakePPLang, as well as a quick reference for experienced users.</p>
 <p>This project will create a <cite>Greeter</cite> class. This class will store a user’s name
-in a <code class="docutils literal notranslate"><span class="pre">name</span></code> attribute and greet them using a <code class="docutils literal notranslate"><span class="pre">Greeter(hello</span></code> member
-function. The <code class="docutils literal notranslate"><span class="pre">Greeter(hello</span></code> function will print the following greeting,
-“Hello, &lt;name&gt;!”, where <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code> is the value of the <code class="docutils literal notranslate"><span class="pre">name</span></code> attribute.</p>
+in a <code class="docutils literal notranslate"><span class="pre">name</span></code> attribute and greet them using a <code class="docutils literal notranslate"><span class="pre">Greeter(hello</span> <span class="pre">...)</span></code> member
+function. The <code class="docutils literal notranslate"><span class="pre">Greeter(hello</span> <span class="pre">...)</span></code> function will print the following
+greeting, “Hello, &lt;name&gt;!”, where <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code> is the value of the <code class="docutils literal notranslate"><span class="pre">name</span></code>
+attribute.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The full example project can be found under <code class="docutils literal notranslate"><span class="pre">examples/cmakepplang_example</span></code>
@@ -217,7 +222,8 @@ First, add the following text to <code class="docutils literal notranslate"><spa
 <section id="defining-the-class">
 <h2>Defining the Class<a class="headerlink" href="#defining-the-class" title="Permalink to this heading"></a></h2>
 <p>Now we need to define the <code class="docutils literal notranslate"><span class="pre">Greeter</span></code> class with the <code class="docutils literal notranslate"><span class="pre">name</span></code> attribute and
-<code class="docutils literal notranslate"><span class="pre">hello</span></code> member function.</p>
+<code class="docutils literal notranslate"><span class="pre">hello</span></code> member function. Create a <code class="docutils literal notranslate"><span class="pre">cmake/greeter/greeter_class.cmake</span></code>
+file and add the following text:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">include_guard</span><span class="p">()</span>
 <span class="nb">include</span><span class="p">(</span><span class="s">cmakepp_lang/cmakepp_lang</span><span class="p">)</span>
 
@@ -328,7 +334,7 @@ Add the following text to <code class="docutils literal notranslate"><span class
 </div>
 <p>Next is to create the test for <code class="docutils literal notranslate"><span class="pre">Greeter</span></code> by adding the following text to
 <code class="docutils literal notranslate"><span class="pre">tests/greeter/test_greeter_class.cmake</span></code>, testing the output of the
-<code class="docutils literal notranslate"><span class="pre">Greeter(hello</span></code> method:</p>
+<code class="docutils literal notranslate"><span class="pre">Greeter(hello</span> <span class="pre">...)</span></code> method:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">include</span><span class="p">(</span><span class="s">cmake_test/cmake_test</span><span class="p">)</span>
 
 <span class="c">#[[[</span>
@@ -394,9 +400,9 @@ to get CMakeTest and add the <code class="docutils literal notranslate"><span cl
 <section id="building-the-project">
 <h2>Building the Project<a class="headerlink" href="#building-the-project" title="Permalink to this heading"></a></h2>
 <p>Now that we have a complete project, it can be built with CMake after
-navigating into the project directory. In a terminal, run the following
-command for your system:</p>
-<p>For *nix-based systems (including Mac OSX):</p>
+navigating to the top of the project directory, which we will refer to here
+as <code class="docutils literal notranslate"><span class="pre">PROJECT_ROOT</span></code>. In a terminal, run the following command for your system:</p>
+<p>For Unix- or Linux-based systems (including Mac OSX):</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake<span class="w"> </span>-H.<span class="w"> </span>-Bbuild<span class="w"> </span>-DBUILD_TESTING<span class="o">=</span>ON
 </pre></div>
 </div>
@@ -407,12 +413,12 @@ command for your system:</p>
 <p>In these commands, <code class="docutils literal notranslate"><span class="pre">-H</span></code> and <code class="docutils literal notranslate"><span class="pre">-S</span></code> specify the top-level, root directory for
 the project, called the “source directory” in CMake (not to be confused with a
 “source code directory”, commonly also called the “source directory”). In this
-case, we are assuming that the current directory, <code class="docutils literal notranslate"><span class="pre">.</span></code>, is the root directory
-of the <code class="docutils literal notranslate"><span class="pre">CMakePPLang</span></code> repository. The directory where build artifacts will
-appear is specified by <code class="docutils literal notranslate"><span class="pre">-B</span></code>, meaning we are directing build artefacts to
-<code class="docutils literal notranslate"><span class="pre">CMakePPLang/build</span></code>. Finally, <code class="docutils literal notranslate"><span class="pre">-DBUILD_TESTING=ON</span></code> enables unit testing on
-CMakePPLang, which will be necessary for development. <code class="docutils literal notranslate"><span class="pre">BUILD_TESTING</span></code>
-defaults to <code class="docutils literal notranslate"><span class="pre">OFF</span></code>, so this argument can be excluded if testing is not needed.</p>
+case, we are assuming that the current directory, <code class="docutils literal notranslate"><span class="pre">.</span></code>, is <code class="docutils literal notranslate"><span class="pre">PROJECT_ROOT</span></code>.
+The directory where build artifacts will appear is specified by <code class="docutils literal notranslate"><span class="pre">-B</span></code>,
+meaning we are directing build artefacts to <code class="docutils literal notranslate"><span class="pre">PROJECT_ROOT/build</span></code>. Finally,
+<code class="docutils literal notranslate"><span class="pre">-DBUILD_TESTING=ON</span></code> enables unit testing on CMakePPLang, which will be
+necessary for development. <code class="docutils literal notranslate"><span class="pre">BUILD_TESTING</span></code> defaults to <code class="docutils literal notranslate"><span class="pre">OFF</span></code>, so this
+argument can be excluded if testing is not needed.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Since CMakePPLang is built during the CMake configuration step, the build step
@@ -451,7 +457,7 @@ to save time by skipping passing tests.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2019, CMakePP Team.</p>
+    <p>&#169; Copyright 2019-2020, 2022-2023, CMakePP Organization.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

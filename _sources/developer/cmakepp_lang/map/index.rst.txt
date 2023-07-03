@@ -1,0 +1,19 @@
+
+################
+cmakepp_lang/map
+################
+
+.. toctree:: 
+   :maxdepth: 2
+
+   append
+   copy
+   ctor
+   equal
+   get_set
+   has_key
+   keys
+   map
+   merge
+   remove
+

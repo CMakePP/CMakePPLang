@@ -11,6 +11,8 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/sphinx_highlight.js"></script>
@@ -56,9 +58,11 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../features/index.html">Language Features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../conventions.html">Language Conventions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../debugging.html">Debugging Code Written in CMakePPLang</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developing for CMakePPLang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://cmakepp.github.io/.github/code_of_conduct/index.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
 </ul>
 
         </div>
@@ -89,16 +93,16 @@
   <section id="obtaining-cmakepplang">
 <h1>Obtaining CMakePPLang<a class="headerlink" href="#obtaining-cmakepplang" title="Permalink to this heading"></a></h1>
 <p>This section details two ways of obtaining CMakePPLang for use in your build
-system. The easiest way to use the CMakePP language in your project is to
+system. The easiest way to use the CMakePP language in your project is
 <a class="reference internal" href="#auto-downloading-cmakepplang"><span class="std std-ref">Automatically Downloading and Including CMakePPLang</span></a>.</p>
-<p>Alternatively you can choose to <a class="reference internal" href="#manually-downloading-cmakepplang"><span class="std std-ref">Downloading CMakePPLang and Building Manually</span></a>, which is
+<p>Alternatively you can choose <a class="reference internal" href="#manually-downloading-cmakepplang"><span class="std std-ref">Downloading CMakePPLang and Building Manually</span></a>, which is
 a bit more complicated.</p>
 <section id="automatically-downloading-and-including-cmakepplang">
 <span id="auto-downloading-cmakepplang"></span><h2>Automatically Downloading and Including CMakePPLang<a class="headerlink" href="#automatically-downloading-and-including-cmakepplang" title="Permalink to this heading"></a></h2>
 <p>As a convenience to your users you can make it so that your build system
 automatically downloads CMakePPLang and includes it. The easiest way to do
 this is to put the following CMake script in a file
-<code class="docutils literal notranslate"><span class="pre">cmake/get_cmakepp_lang.cmake</span></code>:</p>
+<code class="docutils literal notranslate"><span class="pre">PROJECT_ROOT/cmake/get_cmakepp_lang.cmake</span></code>:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">include_guard</span><span class="p">()</span>
 
 <span class="c">#[[</span>
@@ -144,7 +148,7 @@ add the line:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">include</span><span class="p">(</span><span class="s2">&quot;${PROJECT_SOURCE_DIR}/cmake/get_cmakepp_lang.cmake&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Your project will now download CMakePP automatically as part of the CMake
+<p>Your project will now download CMakePPLang automatically as part of the CMake
 configuration.</p>
 </section>
 <section id="downloading-cmakepplang-and-building-manually">
@@ -156,14 +160,77 @@ through the web interface or by using the <code class="docutils literal notransl
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/CMakePP/CMakePPLang.git
 </pre></div>
 </div>
-<p>Once CMakePPLang has been downloaded and changes have been made, set up your
-project that uses CMakePPLang as described in <a class="reference internal" href="#auto-downloading-cmakepplang"><span class="std std-ref">Automatically Downloading and Including CMakePPLang</span></a>.
-Your project will then use your local CMakePPLang if you set
-<code class="docutils literal notranslate"><span class="pre">FETCHCONTENT_SOURCE_DIR_CMAKEPP_LANG</span></code> to the directory containing your local
-changes. This can be set in a <code class="docutils literal notranslate"><span class="pre">toolchain.cmake</span></code> file, directly in a
-<code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file (although it is not recommended to hard-code local
-paths into your CMake files), or as an argument to the CMake configure step
-with <code class="docutils literal notranslate"><span class="pre">-DFETCHCONTENT_SOURCE_DIR_CMAKEPP_LANG=&lt;local_path&gt;</span></code>.</p>
+<p>Once CMakePPLang has been downloaded and changes have been made, create or
+navigate to your project that relies on the new CMakePPLang functionality,
+which we will refer to here as <code class="docutils literal notranslate"><span class="pre">ExampleProject</span></code>. Create a CMake file to
+fetch CMakePPLang in <code class="docutils literal notranslate"><span class="pre">ExampleProject</span></code> that will use CMakePPLang at
+<code class="docutils literal notranslate"><span class="pre">ExampleProject/cmake/get_cmakepp_lang.cmake</span></code>, and add the following text:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">include_guard</span><span class="p">()</span>
+
+<span class="c">#[[</span>
+<span class="c"># This function encapsulates the process of getting CMakePPLang using CMake&#39;s</span>
+<span class="c"># FetchContent module. We have encapsulated it in a function so we can set</span>
+<span class="c"># the options for its configure step without affecting the options for the</span>
+<span class="c"># parent project&#39;s configure step (namely we do not want to build CMakePPLang&#39;s</span>
+<span class="c"># unit tests).</span>
+<span class="c">#]]</span>
+<span class="nb">function</span><span class="p">(</span><span class="s">get_cmakepp_lang</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c"># Store whether we are building tests or not, then turn off the tests</span>
+<span class="w">    </span><span class="nb">set</span><span class="p">(</span><span class="s">build_testing_old</span><span class="w"> </span><span class="s2">&quot;${BUILD_TESTING}&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">set</span><span class="p">(</span><span class="s">BUILD_TESTING</span><span class="w"> </span><span class="s">OFF</span><span class="w"> </span><span class="s">CACHE</span><span class="w"> </span><span class="s">BOOL</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="s">FORCE</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c"># Download CMakePPLang and bring it into scope</span>
+<span class="w">    </span><span class="nb">include</span><span class="p">(</span><span class="s">FetchContent</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">FetchContent_Declare</span><span class="p">(</span>
+<span class="w">        </span><span class="s">cmakepp_lang</span>
+<span class="w">        </span><span class="s">GIT_REPOSITORY</span><span class="w"> </span><span class="s">https://github.com/CMakePP/CMakePPLang</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="nb">FetchContent_MakeAvailable</span><span class="p">(</span><span class="s">cmakepp_lang</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nb">set</span><span class="p">(</span>
+<span class="w">        </span><span class="s">CMAKE_MODULE_PATH</span><span class="w"> </span><span class="s2">&quot;${CMAKE_MODULE_PATH}&quot;</span><span class="w"> </span><span class="s2">&quot;${cmakepp_lang_SOURCE_DIR}/cmake&quot;</span>
+<span class="w">        </span><span class="s">PARENT_SCOPE</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="c"># Restore the previous value</span>
+<span class="w">    </span><span class="nb">set</span><span class="p">(</span><span class="s">BUILD_TESTING</span><span class="w"> </span><span class="s2">&quot;${build_testing_old}&quot;</span><span class="w"> </span><span class="s">CACHE</span><span class="w"> </span><span class="s">BOOL</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="s">FORCE</span><span class="p">)</span>
+<span class="nb">endfunction</span><span class="p">()</span>
+
+<span class="c"># Call the function we just wrote to get CMakePPLang</span>
+<span class="nb">get_cmakepp_lang</span><span class="p">()</span>
+
+<span class="c"># Include CMakePPLang</span>
+<span class="nb">include</span><span class="p">(</span><span class="s">cmakepp_lang/cmakepp_lang</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then, in the top-level <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> at the root of <code class="docutils literal notranslate"><span class="pre">ExampleProject</span></code>,
+add the following line before any code using CMakePPLang:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">include</span><span class="p">(</span><span class="s2">&quot;${PROJECT_SOURCE_DIR}/cmake/get_cmakepp_lang.cmake&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>So far, <code class="docutils literal notranslate"><span class="pre">ExampleProject</span></code> is set up to automatically fetch the latest version
+of CMakePPLang from <a class="reference external" href="https://github.com/CMakePP/CMakePPLang">https://github.com/CMakePP/CMakePPLang</a>, but we want to use
+your modified, local version. <code class="docutils literal notranslate"><span class="pre">ExampleProject</span></code> can be instructed to use your
+local CMakePPLang if you set the <code class="docutils literal notranslate"><span class="pre">FETCHCONTENT_SOURCE_DIR_CMAKEPP_LANG</span></code>
+variable to the directory containing your modified, local version. There are
+multiple ways to set the <code class="docutils literal notranslate"><span class="pre">FETCHCONTENT_SOURCE_DIR_CMAKEPP_LANG</span></code> variable,
+ranked here from most recommended to least recommended:</p>
+<ol class="arabic simple">
+<li><p>Set the value in a <a class="reference external" href="https://cmake.org/cmake/help/latest/manual/cmake-toolchains.7.html">CMake toolchain file</a> (<code class="docutils literal notranslate"><span class="pre">toolchain.cmake</span></code>). You can
+specify for your project to use this toolchain by adding one of the
+following arguments to your CMake configure step command:
+<code class="docutils literal notranslate"><span class="pre">-DCMAKE_TOOLCHAIN_FILE=path/to/file</span></code> or
+<code class="docutils literal notranslate"><span class="pre">--toolchain</span> <span class="pre">/path/to/file</span></code>.</p></li>
+<li><p>Set the value as an argument to the CMake configure command
+with the argument: <code class="docutils literal notranslate"><span class="pre">-DFETCHCONTENT_SOURCE_DIR_CMAKEPP_LANG=path/to/</span>
+<span class="pre">cmakepp_lang</span></code></p></li>
+<li><p>Set the value directly in a <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file. However, since CMake
+build files should be portable to different systems, it is strongly
+discouraged to hard-code local paths into your CMake files.</p></li>
+</ol>
+<p>Your project will now use your modified, local version of CMakePPLang during
+CMake configuration.</p>
 </section>
 </section>
 
@@ -178,7 +245,7 @@ with <code class="docutils literal notranslate"><span class="pre">-DFETCHCONTENT
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2019, CMakePP Team.</p>
+    <p>&#169; Copyright 2019-2020, 2022-2023, CMakePP Organization.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

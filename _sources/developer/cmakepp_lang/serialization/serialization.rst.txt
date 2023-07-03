@@ -1,0 +1,29 @@
+
+########################################
+cmakepp_lang/serialization/serialization
+########################################
+
+.. module:: cmakepp_lang/serialization/serialization
+
+   Defines the public API for serializing CMake values of various types into a
+   JSON formatted string. 
+   
+
+
+.. function:: cpp_serialize(result value)
+
+   Public API for serializing a value to JSON.
+   
+   When a caller outside of the serialization submodule needs an object
+   serialized they should go through this API. This API wraps the (usually)
+   recursive procedure required to serialize a complicated object factoring out
+   the pieces that only need to be done once.
+   
+   :param result: The name for the variable which will hold the result.
+   :type result: desc
+   :param value: The value we are serializing.
+   :type value: str
+   :returns: ``result`` will be set to the serialized form of``value``.
+   :rtype: desc
+   
+

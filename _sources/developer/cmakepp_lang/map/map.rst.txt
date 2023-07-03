@@ -1,0 +1,37 @@
+
+####################
+cmakepp_lang/map/map
+####################
+
+.. module:: cmakepp_lang/map/map
+
+   Provides an easy way for the user to include the various functions used 
+   to create and maintain an instance of a CMakePPLang map.
+   
+
+
+.. function:: cpp_map(mode this)
+
+   Public API for interacting with Map instances.
+   
+   :param mode: The name of the member function to call.
+   :type mode: desc
+   :param this: The Map instance the member function is being called on.
+   :type this: map
+   :param \*args: Any additional arguments required by the specified member
+                 function.
+   
+   :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+                                 debug mode or not.
+   :vartype CMAKEPP_LANG_DEBUG_MODE: bool
+   
+   Error Checking
+   ==============
+   
+   If CMakePP is being run in debug mode, the individual member functions will
+   ensure that they have been called with correct number of, and types of,
+   arguments. In the event that the incorrect number or types of arguments have
+   been provided an error will be raised. These error checks are only done when
+   CMakePP is run in debug mode.
+   
+

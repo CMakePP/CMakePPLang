@@ -11,6 +11,8 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/sphinx_highlight.js"></script>
@@ -55,7 +57,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#returning-a-value-from-a-function">1.5. Returning a Value from a Function</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#adding-multiple-return-points-to-a-function">1.6. Adding Multiple Return Points to a Function</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#overloading-a-function">1.7. Overloading a Function</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#adding-a-user-defined-constructors">1.8. Adding a User-Defined Constructors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-a-user-defined-constructor">1.8. Adding a User-Defined Constructor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#using-the-kwargs-constructor">1.9. Using the KWARGS Constructor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#writing-a-derived-class">1.10. Writing a Derived Class</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#inheriting-from-multiple-classes">1.11. Inheriting from Multiple Classes</a></li>
@@ -70,9 +72,11 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../features/index.html">Language Features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../conventions.html">Language Conventions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../debugging.html">Debugging Code Written in CMakePPLang</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developing for CMakePPLang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://cmakepp.github.io/.github/code_of_conduct/index.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
 </ul>
 
         </div>
@@ -228,7 +232,7 @@ an attribute <code class="docutils literal notranslate"><span class="pre">km_dri
 <code class="docutils literal notranslate"><span class="pre">describe_self</span></code> that prints a message describing the color of the car and
 how far it has driven. Within our function, we’ll use the <code class="docutils literal notranslate"><span class="pre">GET</span></code> function, but
 this time we’ll pass a prefix and a list of attribute names. This call will get
-all the attributes and store them in the current scope with the prefix
+all the attributes and store them in the current, local scope with the prefix
 prepended to their name. Here is the function:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Define a function &quot;describe_self&quot; that references attributes of the class</span>
 <span class="nb">cpp_member</span><span class="p">(</span><span class="s">describe_self</span><span class="w"> </span><span class="s">Automobile</span><span class="p">)</span>
@@ -299,9 +303,36 @@ value in the same way that the CMake interpreter would do so.</p>
 </section>
 <section id="adding-multiple-return-points-to-a-function">
 <span id="examples-classes-multiple-return-points"></span><h2><span class="section-number">1.6. </span>Adding Multiple Return Points to a Function<a class="headerlink" href="#adding-multiple-return-points-to-a-function" title="Permalink to this heading"></a></h2>
-<p>We can employ the <code class="docutils literal notranslate"><span class="pre">cpp_return</span></code> macro to create multiple return points in a
-function. Additionally <code class="docutils literal notranslate"><span class="pre">cpp_return</span></code> also provides us with a more concise way
-to return a value to the parent scope.</p>
+<p>To include multiple return points in a function, CMake provides a <a class="reference external" href="CMakereturn">return
+function</a> (<code class="docutils literal notranslate"><span class="pre">return()</span></code>) that forces the processing of a
+function to stop when it is reached.</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Redefine &quot;describe_self&quot; to have multiple return points</span>
+<span class="nb">cpp_member</span><span class="p">(</span><span class="s">describe_self</span><span class="w"> </span><span class="s">Automobile</span><span class="w"> </span><span class="s">str</span><span class="w"> </span><span class="s">bool</span><span class="p">)</span>
+<span class="nb">function</span><span class="p">(</span><span class="s2">&quot;${describe_self}&quot;</span><span class="w"> </span><span class="s">self</span><span class="w"> </span><span class="s">return_id</span><span class="w"> </span><span class="s">include_color</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c"># Access the km_driven attribute</span>
+<span class="w">    </span><span class="nb">Automobile</span><span class="p">(</span><span class="s">GET</span><span class="w"> </span><span class="s2">&quot;${self}&quot;</span><span class="w"> </span><span class="s">my_km_driven</span><span class="w"> </span><span class="s">km_driven</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nb">if</span><span class="p">(</span><span class="s">include_color</span><span class="p">)</span>
+<span class="w">        </span><span class="c"># Access the color attribute</span>
+<span class="w">        </span><span class="nb">Automobile</span><span class="p">(</span><span class="s">GET</span><span class="w"> </span><span class="s2">&quot;${self}&quot;</span><span class="w"> </span><span class="s">my_color</span><span class="w"> </span><span class="s">color</span><span class="p">)</span>
+
+<span class="w">        </span><span class="c"># Set the value of the var with the name ${return_id} in the current scope</span>
+<span class="w">        </span><span class="nb">set</span><span class="p">(</span><span class="s2">&quot;${return_id}&quot;</span><span class="w"> </span><span class="s2">&quot;I am an automobile, I am ${my_color}, and I have driven ${my_km_driven} km.&quot;</span><span class="w"> </span><span class="s">PARENT_SCOPE</span><span class="p">)</span>
+<span class="w">        </span><span class="nb">return</span><span class="p">()</span>
+<span class="w">    </span><span class="nb">endif</span><span class="p">()</span>
+
+<span class="w">    </span><span class="c"># This only executes if include_color is false</span>
+<span class="w">    </span><span class="c"># Set the value of the var with the name ${return_id} in the current scope</span>
+<span class="w">    </span><span class="nb">set</span><span class="p">(</span><span class="s2">&quot;${return_id}&quot;</span><span class="w"> </span><span class="s2">&quot;I am an automobile and I have driven ${my_km_driven} km.&quot;</span><span class="w"> </span><span class="s">PARENT_SCOPE</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">return</span><span class="p">()</span>
+
+<span class="nb">endfunction</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Alternatively, we can employ the <code class="docutils literal notranslate"><span class="pre">cpp_return</span></code> macro to create multiple return
+points in a function. Additionally <code class="docutils literal notranslate"><span class="pre">cpp_return</span></code> also provides us with a more
+concise way to return a value to the parent scope.</p>
 <p>When we want to return from a function and return a value to the variable with
 the name <code class="docutils literal notranslate"><span class="pre">${return_id}</span></code> to the parent scope we just need to do the following:</p>
 <ol class="arabic simple">
@@ -388,14 +419,15 @@ pass in one integer to match the new signature:</p>
 </pre></div>
 </div>
 </section>
-<section id="adding-a-user-defined-constructors">
-<span id="examples-classes-constructor-user-defined"></span><h2><span class="section-number">1.8. </span>Adding a User-Defined Constructors<a class="headerlink" href="#adding-a-user-defined-constructors" title="Permalink to this heading"></a></h2>
+<section id="adding-a-user-defined-constructor">
+<span id="examples-classes-constructor-user-defined"></span><h2><span class="section-number">1.8. </span>Adding a User-Defined Constructor<a class="headerlink" href="#adding-a-user-defined-constructor" title="Permalink to this heading"></a></h2>
 <p>The CMakePP language allows users to define multiple custom constructors for
 classes. This is done using the <code class="docutils literal notranslate"><span class="pre">cpp_constructor</span></code> command. Here we add a
-constructor that takes two integers to our <code class="docutils literal notranslate"><span class="pre">Automobile</span></code> class:</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cpp_constructor</span><span class="p">(</span><span class="s">CTOR</span><span class="w"> </span><span class="s">Automobile</span><span class="w"> </span><span class="s">int</span><span class="w"> </span><span class="s">int</span><span class="p">)</span>
-<span class="nb">function</span><span class="p">(</span><span class="s2">&quot;${CTOR}&quot;</span><span class="w"> </span><span class="s">self</span><span class="w"> </span><span class="s">a</span><span class="w"> </span><span class="s">b</span><span class="p">)</span>
-<span class="w">    </span><span class="c"># Do set up using arguments passed to constructors</span>
+constructor that takes a new color to our <code class="docutils literal notranslate"><span class="pre">Automobile</span></code> class:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cpp_constructor</span><span class="p">(</span><span class="s">CTOR</span><span class="w"> </span><span class="s">Automobile</span><span class="w"> </span><span class="s">desc</span><span class="p">)</span>
+<span class="nb">function</span><span class="p">(</span><span class="s2">&quot;${CTOR}&quot;</span><span class="w"> </span><span class="s">self</span><span class="w"> </span><span class="s">new_color</span><span class="p">)</span>
+<span class="w">    </span><span class="c"># Set the color attribute to the value provided</span>
+<span class="w">    </span><span class="nb">Automobile</span><span class="p">(</span><span class="s">SET</span><span class="w"> </span><span class="s2">&quot;${self}&quot;</span><span class="w"> </span><span class="s">color</span><span class="w"> </span><span class="s2">&quot;${new_color}&quot;</span><span class="p">)</span>
 <span class="nb">endfunction</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -406,7 +438,23 @@ constructor that matches the signature of that call and then call that
 constructor. If no matching constructor is found, an error will be thrown. The
 only exception to this is when a call is made to the constructor of a class and
 no arguments are passed. In that case, the CMakePP language will just call the
-default constructor for the class.</p>
+default constructor for the class:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Create an instance of the class called &quot;my_auto&quot; using the default CTOR</span>
+<span class="nb">Automobile</span><span class="p">(</span><span class="s">CTOR</span><span class="w"> </span><span class="s">my_auto</span><span class="p">)</span>
+
+<span class="nb">Automobile</span><span class="p">(</span><span class="s">GET</span><span class="w"> </span><span class="s2">&quot;${my_auto}&quot;</span><span class="w"> </span><span class="s">my_color</span><span class="w"> </span><span class="s">color</span><span class="p">)</span>
+
+<span class="c"># &#39;color&#39; is the default &#39;red&#39;</span>
+
+<span class="c"># Create an instance of the class called &quot;my_auto_2&quot; using the default</span>
+<span class="c"># user-defined CTOR</span>
+<span class="nb">Automobile</span><span class="p">(</span><span class="s">CTOR</span><span class="w"> </span><span class="s">my_auto_2</span><span class="w"> </span><span class="s">blue</span><span class="p">)</span>
+
+<span class="nb">Automobile</span><span class="p">(</span><span class="s">GET</span><span class="w"> </span><span class="s2">&quot;${my_auto_2}&quot;</span><span class="w"> </span><span class="s">my_color</span><span class="w"> </span><span class="s">color</span><span class="p">)</span>
+
+<span class="c"># &#39;color&#39; is the provided &#39;blue&#39;</span>
+</pre></div>
+</div>
 </section>
 <section id="using-the-kwargs-constructor">
 <span id="examples-classes-constructor-kwargs"></span><h2><span class="section-number">1.9. </span>Using the KWARGS Constructor<a class="headerlink" href="#using-the-kwargs-constructor" title="Permalink to this heading"></a></h2>
@@ -417,8 +465,51 @@ feature. We just need to use the <code class="docutils literal notranslate"><spa
 the call and provide a list consisting of the name of each attribute we want to
 set followed immediately by the value or values we want to set. Suppose our
 automobile class has three attributes: <code class="docutils literal notranslate"><span class="pre">color</span></code>, <code class="docutils literal notranslate"><span class="pre">num_doors</span></code>, and
-<code class="docutils literal notranslate"><span class="pre">owners</span></code>. Then we could set these upon construction using the following:</p>
+<code class="docutils literal notranslate"><span class="pre">owners</span></code>, along with a <code class="docutils literal notranslate"><span class="pre">describe_self</span></code> method to print these values:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Begin class definition</span>
+<span class="nb">cpp_class</span><span class="p">(</span><span class="s">Automobile</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c"># Define an attribute &quot;color&quot; with the value &quot;red&quot;</span>
+<span class="w">    </span><span class="nb">cpp_attr</span><span class="p">(</span><span class="s">Automobile</span><span class="w"> </span><span class="s">color</span><span class="w"> </span><span class="s">red</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c"># Define an attribute &quot;num_doors&quot; with a starting value of 4</span>
+<span class="w">    </span><span class="nb">cpp_attr</span><span class="p">(</span><span class="s">Automobile</span><span class="w"> </span><span class="s">num_doors</span><span class="w"> </span><span class="s">4</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c"># Define an attribute &quot;owners&quot; with a blank starting value</span>
+<span class="w">    </span><span class="nb">cpp_attr</span><span class="p">(</span><span class="s">Automobile</span><span class="w"> </span><span class="s">owners</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c"># Redefine &quot;describe_self&quot; to have multiple return points</span>
+<span class="w">    </span><span class="nb">cpp_member</span><span class="p">(</span><span class="s">describe_self</span><span class="w"> </span><span class="s">Automobile</span><span class="w"> </span><span class="s">str</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">function</span><span class="p">(</span><span class="s2">&quot;${describe_self}&quot;</span><span class="w"> </span><span class="s">self</span><span class="w"> </span><span class="s">return_id</span><span class="p">)</span>
+
+<span class="w">        </span><span class="c"># Access the color attribute</span>
+<span class="w">        </span><span class="nb">Automobile</span><span class="p">(</span><span class="s">GET</span><span class="w"> </span><span class="s2">&quot;${self}&quot;</span><span class="w"> </span><span class="s">my_color</span><span class="w"> </span><span class="s">color</span><span class="p">)</span>
+
+<span class="w">        </span><span class="c"># Access the num_doors attribute</span>
+<span class="w">        </span><span class="nb">Automobile</span><span class="p">(</span><span class="s">GET</span><span class="w"> </span><span class="s2">&quot;${self}&quot;</span><span class="w"> </span><span class="s">my_num_doors</span><span class="w"> </span><span class="s">num_doors</span><span class="p">)</span>
+
+<span class="w">        </span><span class="c"># Access the owners attribute</span>
+<span class="w">        </span><span class="nb">Automobile</span><span class="p">(</span><span class="s">GET</span><span class="w"> </span><span class="s2">&quot;${self}&quot;</span><span class="w"> </span><span class="s">my_owners</span><span class="w"> </span><span class="s">owners</span><span class="p">)</span>
+
+<span class="w">        </span><span class="c"># Set the value of the var with the name ${return_id} in the current scope</span>
+<span class="w">        </span><span class="nb">set</span><span class="p">(</span><span class="s2">&quot;${return_id}&quot;</span><span class="w"> </span><span class="s2">&quot;I am a ${my_color} automobile with ${my_num_doors} doors, owned by ${my_owners}.&quot;</span><span class="w"> </span><span class="s">PARENT_SCOPE</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nb">endfunction</span><span class="p">()</span>
+
+<span class="c"># End class definition</span>
+<span class="nb">cpp_end_class</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Then we could set these upon construction using the following:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">Automobile</span><span class="p">(</span><span class="s">CTOR</span><span class="w"> </span><span class="s">my_auto</span><span class="w"> </span><span class="s">KWARGS</span><span class="w"> </span><span class="s">color</span><span class="w"> </span><span class="s">red</span><span class="w"> </span><span class="s">num_doors</span><span class="w"> </span><span class="s">4</span><span class="w"> </span><span class="s">owners</span><span class="w"> </span><span class="s">Alice</span><span class="w"> </span><span class="s">Bob</span><span class="w"> </span><span class="s">Chuck</span><span class="p">)</span>
+
+<span class="c"># We can still call the original function implementation as well</span>
+<span class="nb">Automobile</span><span class="p">(</span><span class="s">describe_self</span><span class="w"> </span><span class="s2">&quot;${my_auto}&quot;</span><span class="w"> </span><span class="s">my_result</span><span class="p">)</span>
+
+<span class="c"># Print out the value of &quot;my_result&quot;</span>
+<span class="nb">message</span><span class="p">(</span><span class="s2">&quot;${my_result}&quot;</span><span class="p">)</span>
+
+<span class="c"># Output: I am a red automobile with 4 doors, owned by Alice;Bob;Chuck.</span>
 </pre></div>
 </div>
 <p>This would set the value of <code class="docutils literal notranslate"><span class="pre">color</span></code> to <code class="docutils literal notranslate"><span class="pre">red</span></code>, <code class="docutils literal notranslate"><span class="pre">num_doors</span></code> to <code class="docutils literal notranslate"><span class="pre">4</span></code>, and
@@ -727,7 +818,7 @@ this function is virtual and must be overridden in a derived class.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2019, CMakePP Team.</p>
+    <p>&#169; Copyright 2019-2020, 2022-2023, CMakePP Organization.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

@@ -1,0 +1,43 @@
+
+##############################
+cmakepp_lang/asserts/signature
+##############################
+
+.. module:: cmakepp_lang/asserts/signature
+
+
+.. function:: cpp_assert_signature(argv)
+
+   Ensures a function was called with the correct number and types of objects.
+   
+   This function encapsulates the logic required to make sure that a CMake
+   function was called with the correct numer and types of arguments. It should
+   be noted that CMake itself already ensures that the user passed enough
+   arguments to satisfy all positional arguments so this function does not check
+   that. This function involves somewhat expensive error-checking and will only
+   run if CMakePP is run in debug mode.
+   
+   :param argv: The values of the arguments which were passed to the caller.
+   :type argv: list
+   :param \*args: The types that each argument should obey. Users can pass
+                  ``args`` as a type to indicate that their function is variadic.
+                  If provided, ``args`` must be the last type.
+   :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is in debug mode.
+   
+   Example Usage
+   =============
+   
+   This function is intended to be called first thing inside as many CMakePP and
+   user functions as possible. A typical use case looks like:
+   
+   .. code-block::
+   
+      include(cmakepp_lang/asserts/signature)
+      function(my_fxn a_int a_bool)
+          cpp_assert_signature("${ARGV}" int bool)
+      endfunction()
+   
+   The first argument to ``cpp_assert_signature`` should always be ``"${ARGV}``
+   the remaining arguments should be the types
+   
+

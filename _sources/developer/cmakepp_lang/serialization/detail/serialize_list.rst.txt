@@ -1,0 +1,26 @@
+
+################################################
+cmakepp_lang/serialization/detail/serialize_list
+################################################
+
+.. module:: cmakepp_lang/serialization/detail/serialize_list
+
+
+.. function:: _cpp_serialize_list(return value)
+
+   Serializes a CMake list into JSON format.
+   
+   This function will serialize a native CMake list into a JSON list. This means
+   the contents of the list will be enclosed in ``[]`` and the contents of the
+   list stored in a comma-separated list whose elements are the serialized
+   values.
+   
+   :param return: The name for the variable which will hold the result.
+   :type return: desc
+   :param value: The CMake list we are serializing.
+   :type value: list
+   :returns: ``return`` will be set to the JSON serialized form of
+             ``value``.
+   :rtype: desc
+   
+

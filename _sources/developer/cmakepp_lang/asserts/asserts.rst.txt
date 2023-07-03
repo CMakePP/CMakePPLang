@@ -1,0 +1,12 @@
+
+############################
+cmakepp_lang/asserts/asserts
+############################
+
+.. module:: cmakepp_lang/asserts/asserts
+
+   Provides an easy way for users to include the various assertion statements
+   provided by CMakePPLang. These assertion statements ensure that a certain
+   condition is met in the code before moving on.
+   
+

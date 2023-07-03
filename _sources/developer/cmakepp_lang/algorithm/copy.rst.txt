@@ -1,0 +1,35 @@
+
+###########################
+cmakepp_lang/algorithm/copy
+###########################
+
+.. module:: cmakepp_lang/algorithm/copy
+
+
+.. function:: cpp_copy(result obj2copy)
+
+   Creates a new object which is a deep copy of an already existing object.
+   
+   This function will create a deep copy of an existing object regardless of
+   what type it is.
+   
+   :param result: The name of the variable to return the result in.
+   :type result: desc
+   :param obj2copy: The object we are deep copying
+   :type obj2copy: str
+   :returns: ``result`` will be set to a deep copy of ``obj2copy``.
+   :rtype: str
+   
+   :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+                                 debug mode.
+   :vartype CMAKEPP_LANG_DEBUG_MODE: bool
+   
+   Error Checking
+   ==============
+   
+   If CMakePP is being run in debug mode this function will ensure that it has
+   been called with exactly two arguments and that those arguments have the
+   correct types. If any of these assertions fail, an error will be raised. These
+   error checks are done only if CMakePP is being run in debug mode.
+   
+

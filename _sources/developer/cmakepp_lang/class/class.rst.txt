@@ -1,0 +1,11 @@
+
+########################
+cmakepp_lang/class/class
+########################
+
+.. module:: cmakepp_lang/class/class
+
+   Defines the public API for creating and managing a CMakePPLang 
+   user-defined class.
+   
+

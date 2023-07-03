@@ -1,0 +1,36 @@
+
+################################
+cmakepp_lang/class/register_ctor
+################################
+
+.. module:: cmakepp_lang/class/register_ctor
+
+
+.. function:: cpp_constructor(name type)
+
+   Registers a class constructor.
+   
+   This function is used to declare a class constructor.
+   
+   :param name: The name of the constructor (CTOR by convention). This will be
+                   the named used to invoke the member constructor.
+   :type name: desc
+   :param type: The class we are adding the constructor to.
+   :type type: class
+   :param \*args: The types of the arguments to the constructor function.
+   :returns: ``_c_name`` will be set to the mangled name of the declared
+              constructor to facilitate implementing it.
+   :rtype: desc
+   
+   :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+                                 debug mode or not.
+   :vartype CMAKEPP_LANG_DEBUG_MODE: bool
+   
+   Error Checking
+   ==============
+   
+   If CMakePP is run in debug mode (and only if) this function will assert that
+   it is called with the correct number and types of arguments. If any of these
+   assertions fail an error will be raised.
+   
+

@@ -1,0 +1,114 @@
+
+#########################
+cmakepp_lang/object/attrs
+#########################
+
+.. module:: cmakepp_lang/object/attrs
+
+   Defines functions to manipulate the attributes on a CMakePPLang Object.
+   
+
+
+.. function:: _cpp_object_get_attr_guts(this value done attr)
+
+   Core of the routine which retrieves the attributes.
+   
+   Attributes need to be searched for using depth-first search. This function
+   implements the part of the search which is done recursively for each class of
+   the hierarchy associated with this instance's class. This function will work
+   regardless of whether or not the object has the requested attribute. If the
+   object does not
+   
+   :param this: The instance in which we are looking for the attribute.
+   :type this: obj
+   :param value: Identifier for the variable which will hold the value of
+                 the attribute.
+   :type value: desc
+   :param done: Identifier which will hold whether or not the recursion is
+                done.
+   :type done: desc
+   :param attr: Name of the attribute we are looking for.
+   :type attr: desc
+   :returns: ``value`` will be set to the value of the attribute, if the
+             object has the attribute and the empty string otherwise.
+             ``done`` will be set to ``TRUE`` if the object has the
+             attribute and ``FALSE`` otherwise. Hence one can use ``done``
+             to determine if the attribute does not exist, or if it was just set
+             to an empty string.
+   :rtype: (str, bool)
+   
+   .. note::
+   
+      This function is considered an implementation detail and performs no error
+      checking on its own.
+   
+
+
+.. function:: _cpp_object_get_attr(this)
+
+   Retrieves the value of an object's attribute.
+   
+   This is the "public" API (for the most part users shouldn't be going through
+   the Object API at all) for accessing the attributes of an Object instance.
+   This function can get one attribute or multiple depending on the signature
+   of the call.
+   
+   Single Attribute GET Signature:
+   
+   .. code-block:: cmake
+   
+      _cpp_object_get_attr(this value attribute)
+   
+   Here "this" is the object to retrieve the attribute from, "value" is the
+   handle where the attribute is to be returned to the parent scope, and
+   "attribute" is the name of the attribute to be retrieved.
+   
+   Multiple Attribute GET Signature:
+   
+   .. code-block:: cmake
+   
+      _cpp_object_get_attr(this prefix attrs)
+   
+   Here is the object to retrieve the attributes from, prefix will be prepended
+   to the each attributes name and used as the handle where that attribute is
+   returned to the parent scope, and attributes is the list of attributes to
+   retrieve.
+   
+   :param this: The object whose attribute is being accessed.
+   :type this: obj
+   
+   :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+                                 debug mode or not.
+   :vartype CMAKEPP_LANG_DEBUG_MODE: bool
+   
+   Error Checking
+   ==============
+   
+   If CMakePP is being run in debug mode this function will ensure that it was
+   called with exactly three arguments and that the arguments have the correct
+   type. If any of these assertions fail an error will be raised. These errors
+   are only considered if CMakePP is being run in debug mode.
+   
+   Additionally, this function will always assert that the object possesses the
+   requested attribute. If the object does not posses the attribute an error will
+   be raised.
+   
+
+
+.. function:: _cpp_object_set_attr(this attr)
+
+   Sets the value of an Object instance's attribute.
+   
+   This function is the "public" API (generally speaking users of CMakePP should
+   not be going through the Object API) for setting an Object's attribute. This
+   is the function that is ultimately called by ``cpp_attr`` and by the ``SET``
+   member function. If the object already has the specified attribute, this
+   function will overwrite its value.
+   
+   :param this: The Object instance whose attribute is being set.
+   :type this: obj
+   :param attr: The name of the attribute we are setting.
+   :type attr: desc
+   :param \*args: The value or values the attribute will be set as.
+   
+

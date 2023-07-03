@@ -1,0 +1,20 @@
+
+##################
+cmakepp_lang/class
+##################
+
+.. toctree:: 
+   :maxdepth: 2
+
+   detail/index.rst
+   attr
+   class
+   class_decl
+   ctor
+   find_ctor
+   flatten_attrs
+   member
+   register_ctor
+   set_kwargs_attrs
+   virtual_member
+

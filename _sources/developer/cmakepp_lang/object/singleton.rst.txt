@@ -1,0 +1,44 @@
+
+#############################
+cmakepp_lang/object/singleton
+#############################
+
+.. module:: cmakepp_lang/object/singleton
+
+
+.. function:: _cpp_object_singleton(this)
+
+
+   .. note:: This is a macro, and so does not introduce a new scope.
+
+   Returns a new default constructed Object instance.
+   
+   This function creates a new default constructed Object instance. This instance
+   is only an Object instance (contrast this with derived class instances created
+   using ``_cpp_object_ctor``). All instances of the Object class have identical
+   state and thus for efficiency reasons it makes sense to have a single Object
+   instance that all derived class instances alias.
+   
+   :param this: Name for the variable which will hold the new instance.
+   :type this: desc
+   :returns: ``this`` will be set to the newly created Object instance.
+   :rtype: obj
+   
+   :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+                                 debug mode or not.
+   :vartype CMAKEPP_LANG_DEBUG_MODE: bool
+   
+   .. note::
+   
+      This command is a macro so that the member function definitions permeate
+      into the caller's scope.
+   
+   Error Checking
+   ==============
+   
+   If CMakePP is run in debug mode (and only if CMakePP is run in debug mode)
+   this function will ensure that it was called with exactly one argument and
+   that the one argument is of type ``desc``. If either of these asserts fails an
+   error will be raised.
+   
+

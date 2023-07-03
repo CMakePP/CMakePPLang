@@ -1,0 +1,33 @@
+
+#######################
+cmakepp_lang/class/attr
+#######################
+
+.. module:: cmakepp_lang/class/attr
+
+
+.. function:: cpp_attr(type attr)
+
+   Registers a class's attribute.
+   
+   This function is used to declare a new attribute for a class.
+   
+   :param type: The name of the class getting the attribute.
+   :type type: class
+   :param attr: The name of the attribute
+   :type attr: desc
+   :param \*args: The initial value of the attribute. If no ``*args`` are provided
+                 the attribute will be initialized to the empty string.
+   
+   :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+                                 debug mode or not.
+   :vartype CMAKEPP_LANG_DEBUG_MODE: bool
+   
+   Error Checking
+   ==============
+   
+   If CMakePP is run in debug mode (and only if) this function will assert that
+   it is called with the correct number and types of arguments. If any of these
+   assertions fail an error will be raised.
+   
+

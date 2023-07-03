@@ -1,0 +1,30 @@
+
+##########################
+cmakepp_lang/object/object
+##########################
+
+.. module:: cmakepp_lang/object/object
+
+   Provides an easy way to include the CMakePPLang Object, which all
+   user-defined classes will inherit from, as well as related functions to
+   manage the Object.
+   
+
+
+.. function:: _cpp_object_singleton(__CMAKEPP_LANG_OBJECT_SINGLETON__)
+
+
+   .. warning:: This is a generic command invocation. It is not a function or macro definition.
+
+   Holds an instance of the ``obj`` class.
+   
+   All instances of the ``obj`` class are identical and static (well strictly
+   speaking a malicious user could modify them). Thus for efficiency we make a
+   single instance of the ``obj`` class and have all derived classes alias it.
+   For all intents and purposes this makes the object class a singleton. That
+   said aside from ``cpp_class()`` needing this variable
+   (``__CMAKEPP_LANG_OBJECT_SINGLETON__``) to hold an ``obj`` instance no part of
+   CMakePP actually requires there to only be one ``obj`` instance in play at any
+   time.
+   
+

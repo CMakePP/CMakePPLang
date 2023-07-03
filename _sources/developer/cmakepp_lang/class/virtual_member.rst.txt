@@ -1,0 +1,22 @@
+
+#################################
+cmakepp_lang/class/virtual_member
+#################################
+
+.. module:: cmakepp_lang/class/virtual_member
+
+
+.. function:: cpp_virtual_member(fxn_name)
+
+
+   .. note:: This is a macro, and so does not introduce a new scope.
+
+   Registers a class's virtual member function.
+   
+   This function is used to declare a new virtual member function that has no
+   concrete implementation and must be overridden by a derived class.
+   
+   :param fxn_name: The name of the virtual member function.
+   :type fxn_name: desc
+   
+

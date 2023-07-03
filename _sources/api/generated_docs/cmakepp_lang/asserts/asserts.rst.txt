@@ -1,7 +1,0 @@
-
-############################
-cmakepp_lang.asserts/asserts
-############################
-
-.. module:: cmakepp_lang.asserts/asserts
-

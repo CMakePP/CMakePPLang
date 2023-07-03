@@ -1,0 +1,35 @@
+
+########################
+cmakepp_lang/object/copy
+########################
+
+.. module:: cmakepp_lang/object/copy
+
+
+.. function:: _cpp_object_copy(this other)
+
+   Deep copies an Object instance.
+   
+   This function is the default copy implementation for all user-defined objects.
+   It can be overridden in the base class if desired. The default implementation
+   simply deep copies recursively the entirety of the Object's state.
+   
+   :param this: The Object instance which is being copied.
+   :type this: obj
+   :param other: Name for the variable which will hold the copy.
+   :type other: desc
+   :returns: ``other`` will be set to a deep copy of ``this``.
+   :rtype: obj
+   
+   :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+                                 debug mode or not.
+   :vartype CMAKEPP_LANG_DEBUG_MODE: bool
+   
+   Error Checking
+   ==============
+   
+   If CMakePP is run in debug mode (and only if CMakePP is run in debug mode)
+   this function will ensure that it was called with the correct number and types
+   of arguments.
+   
+

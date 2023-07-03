@@ -1,0 +1,11 @@
+
+################################
+cmakepp_lang/utilities/utilities
+################################
+
+.. module:: cmakepp_lang/utilities/utilities
+
+   Provides an easy way for the user to include the quality-of-life utility
+   functions that CMakePPLang provides to the user.
+   
+

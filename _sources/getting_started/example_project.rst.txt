@@ -23,9 +23,10 @@ be both a tutorial for new users setting up their first project using
 CMakePPLang, as well as a quick reference for experienced users.
 
 This project will create a `Greeter` class. This class will store a user's name
-in a ``name`` attribute and greet them using a ``Greeter(hello`` member
-function. The ``Greeter(hello`` function will print the following greeting,
-"Hello, <name>!", where ``<name>`` is the value of the ``name`` attribute.
+in a ``name`` attribute and greet them using a ``Greeter(hello ...)`` member
+function. The ``Greeter(hello ...)`` function will print the following
+greeting, "Hello, <name>!", where ``<name>`` is the value of the ``name``
+attribute.
 
 .. note::
 
@@ -112,7 +113,8 @@ Defining the Class
 ==================
 
 Now we need to define the ``Greeter`` class with the ``name`` attribute and
-``hello`` member function.
+``hello`` member function. Create a ``cmake/greeter/greeter_class.cmake``
+file and add the following text:
 
 .. literalinclude:: /../../examples/cmakepplang_example/cmake/greeter/greeter_class.cmake
 
@@ -133,7 +135,7 @@ Add the following text to ``cmake/get_cmake_test.cmake``:
 
 Next is to create the test for ``Greeter`` by adding the following text to
 ``tests/greeter/test_greeter_class.cmake``, testing the output of the
-``Greeter(hello`` method:
+``Greeter(hello ...)`` method:
 
 .. literalinclude:: /../../examples/cmakepplang_example/tests/greeter/test_greeter_class.cmake
 
@@ -153,10 +155,10 @@ Building the Project
 ====================
 
 Now that we have a complete project, it can be built with CMake after
-navigating into the project directory. In a terminal, run the following
-command for your system:
+navigating to the top of the project directory, which we will refer to here
+as ``PROJECT_ROOT``. In a terminal, run the following command for your system:
 
-For \*nix-based systems (including Mac OSX):
+For Unix- or Linux-based systems (including Mac OSX):
 
 .. code-block:: bash
 
@@ -171,12 +173,12 @@ For Windows systems:
 In these commands, ``-H`` and ``-S`` specify the top-level, root directory for
 the project, called the "source directory" in CMake (not to be confused with a
 "source code directory", commonly also called the "source directory"). In this
-case, we are assuming that the current directory, ``.``, is the root directory
-of the ``CMakePPLang`` repository. The directory where build artifacts will
-appear is specified by ``-B``, meaning we are directing build artefacts to
-``CMakePPLang/build``. Finally, ``-DBUILD_TESTING=ON`` enables unit testing on
-CMakePPLang, which will be necessary for development. ``BUILD_TESTING``
-defaults to ``OFF``, so this argument can be excluded if testing is not needed.
+case, we are assuming that the current directory, ``.``, is ``PROJECT_ROOT``.
+The directory where build artifacts will appear is specified by ``-B``,
+meaning we are directing build artefacts to ``PROJECT_ROOT/build``. Finally,
+``-DBUILD_TESTING=ON`` enables unit testing on CMakePPLang, which will be
+necessary for development. ``BUILD_TESTING`` defaults to ``OFF``, so this
+argument can be excluded if testing is not needed.
 
 .. note::
 

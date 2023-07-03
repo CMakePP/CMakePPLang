@@ -1,0 +1,103 @@
+
+##############################
+cmakepp_lang/types/is_callable
+##############################
+
+.. module:: cmakepp_lang/types/is_callable
+
+   Defines functions for checking if a function can be run with the specified
+   signature. This is used, for example, to enforce strong typing on class
+   member functions.
+   
+
+
+.. function:: _cpp_compare_names(result lhs rhs)
+
+   Handles logic for comparing the human-readable names of the functions.
+   
+   This function compares the name part of two signatures (*i.e.*, the 0th
+   element) in a case-insensitive manner.
+   
+   :param result: The name for the variable which will hold the result.
+   :type result: desc
+   :param lhs: The signature of the first function.
+   :type fxn: list*
+   :param rhs: The signature of the second function.
+   :type fxn: list*
+   :returns: ``result`` will be set to ``TRUE`` if the two signatures have
+             the same name (up to case-sensitivity) and ``FALSE`` otherwise.
+   :rtype: bool
+   
+   .. note::
+   
+      This routine has been factored out to facilitate testing of is_callable. It
+      is not meant for use outside of the scope of comparing function signatures.
+   
+   
+
+
+.. function:: _cpp_compare_lengths(result fxn args)
+
+   Attempts to rule out a signature match based on length arguments alone.
+   
+   For non-variadic functions we know that if one signature is longer than the
+   other they can't possibly be a match. For a variadic function with :math:`n`
+   required positional arguments we know that if the user provided less than
+   :math:`n` arguments, this function can not possibly be called with the
+   provided arguments.
+   
+   :param result: Name for variable which will hold the result.
+   :type result: desc
+   :param fxn: The signature of the function we are trying to call.
+   :type fxn: list*
+   :param args: The signature of how we are trying to call the function.
+   :type args: list*
+   :returns: ``result`` will be set to ``TRUE`` if we can call the function
+             with the provided arguments and ``FALSE`` otherwise.
+   :rtype: bool
+   
+   .. note::
+   
+      This routine has been factored out to facilitate testing of is_callable. It
+      is not meant for use outside of the scope of comparing function signatures.
+   
+
+
+.. function:: cpp_is_callable(result fxn args)
+
+   Determines if a function can be run as the specified signature.
+   
+   This function takes two lists ``fxn`` and ``args``. Each list is
+   interpreted as being a function signature such that the first element is the
+   name of the function and the remaining arguments are: the types of the
+   arguments the function was declared to take (for ``fxn``) or the types of
+   the arguments being passed in (for ``args``). This function ultimately
+   determines whether there is a series of implicit casts which will convert the
+   types in ``args`` into those in ``fxn``. If there is than ``fxn``
+   is callable as the signature provided by ``args``. If there is no such set
+   of casts then ``fxn`` is not callable with the signature provided by
+   ``args``.
+   
+   :param result: Name of the variable which will hold the result.
+   :type result: desc
+   :param fxn: The signature of the function we are trying to cast to.
+   :type fxn: list*
+   :param args: The signature of the function we are trying to cast from.
+   :type args: list*
+   :returns: ``result`` will be set to ``TRUE`` if ``args`` can be cast
+             to ``fxn`` and ``FALSE`` otherwise.
+   :rtype: bool
+   
+   :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+                                 debug mode.
+   :vartype CMAKEPP_LANG_DEBUG_MODE: bool
+   
+   Error Checking
+   ==============
+   
+   If CMakePP is run in debug mode this function will ensure that only three
+   arguments are provided and that each argument has the correct type. If any of
+   these asserts fail an error will be raised. These assertions are only done in
+   debug mode.
+   
+

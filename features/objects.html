@@ -11,6 +11,8 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/sphinx_highlight.js"></script>
@@ -56,9 +58,11 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../conventions.html">Language Conventions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../debugging.html">Debugging Code Written in CMakePPLang</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developing for CMakePPLang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://cmakepp.github.io/.github/code_of_conduct/index.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
 </ul>
 
         </div>
@@ -98,14 +102,6 @@ these features are called:</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">_cpp_object_serialize</span></code></p></li>
 </ul>
 <p>Currently, these functions cannot be overridden in user-defined classes.</p>
-<p>The implementations of these functionalities within the object class are what
-are called by the <code class="docutils literal notranslate"><span class="pre">cpp_equal</span></code>, <code class="docutils literal notranslate"><span class="pre">cpp_copy</span></code>, and <code class="docutils literal notranslate"><span class="pre">cpp_serialize</span></code> utilities.
-It is useful to note that these member functions may be <strong>overridden</strong> by any
-class (since all classes inherit from <code class="docutils literal notranslate"><span class="pre">object</span></code>). Examples of overriding
-these methods are provided in
-<span class="xref std std-ref">examples-classes-overriding-object-methods</span>.</p>
-<p>Other than the above, the object class is not assumed to be of much interest
-to most users of CMakePPLang.</p>
 </section>
 
 
@@ -119,7 +115,7 @@ to most users of CMakePPLang.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2019, CMakePP Team.</p>
+    <p>&#169; Copyright 2019-2020, 2022-2023, CMakePP Organization.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

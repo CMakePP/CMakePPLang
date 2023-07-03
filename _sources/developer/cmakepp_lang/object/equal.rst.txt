@@ -1,0 +1,41 @@
+
+#########################
+cmakepp_lang/object/equal
+#########################
+
+.. module:: cmakepp_lang/object/equal
+
+
+.. function:: _cpp_object_equal(this result other)
+
+   Compares two objects for equality.
+   
+   This function is the default equality comparison for all user-defined classes.
+   It can be overridden by the derived class if a different implementation is
+   needed. The default implementation ensures that the objects have the same
+   most-derived type and that their states compare equal (their states are stored
+   in maps and we simply compare the maps).
+   
+   :param this: One of the two Object instances being compared.
+   :type this: obj
+   :param result: Name for variable which will hold the comparison's result.
+   :type result: desc
+   :param other: The other Object instance being compared.
+   :type other: obj
+   :returns: ``result`` will be set to ``TRUE`` if the instances are equal
+             and ``FALSE`` otherwise.
+   :rtype: bool
+   
+   :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+                                 debug mode or not.
+   :vartype CMAKEPP_LANG_DEBUG_MODE: bool
+   
+   Error Checking
+   ==============
+   
+   If CMakePP is being run in debug mode (and only then) this function will
+   ensure that the caller has provided exactly three arguments and that the
+   arguments are of the correct types. If this is not the case an error will be
+   raised.
+   
+

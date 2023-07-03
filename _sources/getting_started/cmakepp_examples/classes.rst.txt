@@ -117,7 +117,7 @@ an attribute ``km_driven`` to our class. We can then add a function
 ``describe_self`` that prints a message describing the color of the car and
 how far it has driven. Within our function, we'll use the ``GET`` function, but
 this time we'll pass a prefix and a list of attribute names. This call will get
-all the attributes and store them in the current scope with the prefix
+all the attributes and store them in the current, local scope with the prefix
 prepended to their name. Here is the function:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/function_referencing_attributes.cmake
@@ -170,9 +170,17 @@ We can call this function and access its return value using the following:
 Adding Multiple Return Points to a Function
 ===========================================
 
-We can employ the ``cpp_return`` macro to create multiple return points in a
-function. Additionally ``cpp_return`` also provides us with a more concise way
-to return a value to the parent scope.
+To include multiple return points in a function, CMake provides a `return
+function <CMake return>`_ (``return()``) that forces the processing of a
+function to stop when it is reached.
+
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/function_multiple_return_points_vanilla.cmake
+   :lines: 24-45
+   :dedent: 4
+
+Alternatively, we can employ the ``cpp_return`` macro to create multiple return
+points in a function. Additionally ``cpp_return`` also provides us with a more
+concise way to return a value to the parent scope.
 
 When we want to return from a function and return a value to the variable with
 the name ``${return_id}`` to the parent scope we just need to do the following:
@@ -225,15 +233,15 @@ pass in one integer to match the new signature:
 
 .. _examples-classes-constructor-user-defined:
 
-Adding a User-Defined Constructors
-==================================
+Adding a User-Defined Constructor
+=================================
 
 The CMakePP language allows users to define multiple custom constructors for 
 classes. This is done using the ``cpp_constructor`` command. Here we add a 
-constructor that takes two integers to our ``Automobile`` class:
+constructor that takes a new color to our ``Automobile`` class:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/constructor_user_defined.cmake
-   :lines: 12-15
+   :lines: 12-16
    :dedent: 4
 
 Multiple constructors can be added to a class. Calls to constructors will use
@@ -243,7 +251,11 @@ constructor that matches the signature of that call and then call that
 constructor. If no matching constructor is found, an error will be thrown. The 
 only exception to this is when a call is made to the constructor of a class and 
 no arguments are passed. In that case, the CMakePP language will just call the 
-default constructor for the class.
+default constructor for the class:
+
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/constructor_user_defined.cmake
+   :lines: 69-75, 78-84
+   :dedent: 4
 
 .. _examples-classes-constructor-kwargs:
 
@@ -257,10 +269,15 @@ feature. We just need to use the ``KWARGS`` keyword as the third argument to
 the call and provide a list consisting of the name of each attribute we want to 
 set followed immediately by the value or values we want to set. Suppose our 
 automobile class has three attributes: ``color``, ``num_doors``, and 
-``owners``. Then we could set these upon construction using the following:
+``owners``, along with a ``describe_self`` method to print these values:
 
 .. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/constructor_kwargs.cmake
-   :lines: 40
+   :lines: 3-34
+
+Then we could set these upon construction using the following:
+
+.. literalinclude:: /../../tests/docs/source/getting_started/cmakepp_examples/classes/constructor_kwargs.cmake
+   :lines: 40-48
    :dedent: 4
 
 This would set the value of ``color`` to ``red``, ``num_doors`` to ``4``, and
@@ -463,3 +480,7 @@ Now we can create an instance of the ``Truck`` class and call the
 .. --------------------
 ..
 .. We can override  ``_cpp_object_serialize``
+
+.. References:
+
+.. _CMake return: https://cmake.org/cmake/help/latest/command/return.html

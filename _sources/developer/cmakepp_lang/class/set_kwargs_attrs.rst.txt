@@ -1,0 +1,40 @@
+
+###################################
+cmakepp_lang/class/set_kwargs_attrs
+###################################
+
+.. module:: cmakepp_lang/class/set_kwargs_attrs
+
+
+.. function:: _cpp_set_kwargs_attrs(this)
+
+   Reads KWARGS and assigns sets the appropriate attributes values.
+   
+   This function takes in an object (an instance of a class) and the KWARGS
+   passed to that object's CTOR. It parses the keywords and values from those
+   KWARGS and sets the attribute values of the object. For example a class called
+   MyClass with attributes "a", "b", and "c" might get a call to its CTOR like:
+   
+   MyClass(CTOR my_instances KWARGS a red b orange yellow green c blue)
+   
+   This function would assign the following for my_instance's attributes"
+   a = red, b = orange;yellow;green, c = blue
+   
+   :param this: The object whose KWARG CTOR was called
+   :type this: obj
+   
+   :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+                                 debug mode or not.
+   :vartype CMAKEPP_LANG_DEBUG_MODE: bool
+   
+   Error Checking
+   ==============
+   
+   If CMakePP is being run in debug mode this function will ensure that it was
+   called with and object as the first argument.
+   
+   Additionally, this function will ensure that the proper syntax is used for
+   the list of KWARGS. That is the KWARGS must consist of pairings of attribute
+   name and then one or more values and so on.
+   
+

@@ -1,0 +1,11 @@
+
+################################
+cmakepp_lang/algorithm/algorithm
+################################
+
+.. module:: cmakepp_lang/algorithm/algorithm
+
+   Provides an easy way for the user to include the general algorithms provided
+   by CMakePPLang, including value comparisons and value copying, in a single file.
+   
+

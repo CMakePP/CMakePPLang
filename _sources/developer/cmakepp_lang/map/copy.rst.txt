@@ -1,0 +1,36 @@
+
+#####################
+cmakepp_lang/map/copy
+#####################
+
+.. module:: cmakepp_lang/map/copy
+
+
+.. function:: cpp_map_copy(this other)
+
+   Makes a deep copy of a Map instance.
+   
+   This function will deep copy (recursively) the contents of a map into a new
+   Map instance. The resulting instance will not alias the original map in any
+   way.
+   
+   :param this: The Map instance being copied.
+   :type this: map
+   :param other: The name of the variable which will hold the deep copy.
+   :type other: desc
+   :returns: ``other`` will be set to a deep copy of ``this``.
+   :rtype: map
+   
+   :var CMAKEPP_LANG_DEBUG_MODE: Used to determine if CMakePP is being run in
+                                 debug mode or not.
+   :vartype CMAKEPP_LANG_DEBUG_MODE: bool
+   
+   Error Checking
+   ==============
+   
+   If CMakePP is run in debug mode ``cpp_map_copy`` will ensure that the caller
+   has provided only two arguments and that those arguments are of the correct
+   types. This error check is only performed if CMakePP is being run in debug
+   mode.
+   
+
