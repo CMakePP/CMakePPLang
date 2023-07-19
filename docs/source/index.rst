@@ -50,7 +50,7 @@ debugging code written in CMakePPLang, as well as notes for developers.
    api/index
    debugging
    developer/index
-   Contributing <https://cmakepp.github.io/.github/code_of_conduct/index.html>
+   Contributing <https://cmakepp.github.io/.github/code_of_conduct.html>
    Authors <authors>
    license
 
