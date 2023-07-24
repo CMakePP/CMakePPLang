@@ -123,8 +123,8 @@ as soon as possible. If you want to contribute code, that's even better. We
 recommend you start a draft PR early in the process so we know the contribution
 is coming and can help you along the way.
 
-CMakePPLang is part of the CMakePP organization, whose contributing guidelines can be
-found `here <https://github.com/CMakePP/.github/blob/main/CONTRIBUTING.md>`__.
+CMakePPLang is part of the CMakePP organization, whose contributing guidelines
+can be found `here <https://github.com/CMakePP/.github/blob/main/CONTRIBUTING.md>`__.
 
 Developer documentation can be found
 `here <https://cmakepp.github.io/CMakePPLang/developer/index.html>`__ to help
