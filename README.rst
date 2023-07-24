@@ -124,7 +124,7 @@ recommend you start a draft PR early in the process so we know the contribution
 is coming and can help you along the way.
 
 CMakePPLang is part of the CMakePP organization, whose contributing guidelines
-can be found `here <https://github.com/CMakePP/.github/blob/main/CONTRIBUTING.md>`__.
+can be found `here <https://cmakepp.github.io/.github/code_of_conduct.html>`__.
 
 Developer documentation can be found
 `here <https://cmakepp.github.io/CMakePPLang/developer/index.html>`__ to help
