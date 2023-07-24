@@ -111,7 +111,7 @@ API Documentation
 *****************
 
 Full API documentation can be found
-`here <https://cmakepp.github.io/CMakePPLang/api/index.html>`__.
+`here <https://cmakepp.github.io/CMakePPLang/developer/index.html#cmakepplang-api>`__.
 
 ************
 Contributing
