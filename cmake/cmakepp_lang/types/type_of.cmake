@@ -13,7 +13,6 @@
 # limitations under the License.
 
 include_guard()
-
 include(cmakepp_lang/types/bool)
 include(cmakepp_lang/types/cmakepp_type)
 include(cmakepp_lang/types/float)
@@ -99,6 +98,17 @@ function(cpp_type_of _to_result _to_obj)
         endif()
 
     endforeach()
+
+
+
+    # Pointer detection, if we want to enforce true pointer type checking
+    # Needs more work though
+    #if(DEFINED "${_to_obj}")
+    #    cpp_type_of(_to_ptr_type "${${_to_obj}}")
+    #    set("${_to_result}" "${_to_ptr_type}*")
+    #    set("${_to_result}" "${_to_ptr_type}*" PARENT_SCOPE)
+    #    return()
+    #endif()
 
     # Only choice left is desc
     set("${_to_result}" desc PARENT_SCOPE)

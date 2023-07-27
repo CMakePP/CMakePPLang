@@ -55,5 +55,10 @@ function(cpp_is_type _it_result _it_type)
         return()
     endif()
 
+    if ("${_it_type}" MATCHES ".+[*]")
+        set("${_it_result}" TRUE PARENT_SCOPE)
+        return()
+    endif()
+
     set("${_it_result}" FALSE PARENT_SCOPE)
 endfunction()

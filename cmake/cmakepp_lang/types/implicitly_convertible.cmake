@@ -13,7 +13,6 @@
 # limitations under the License.
 
 include_guard()
-
 include(cmakepp_lang/class/detail/bases)
 include(cmakepp_lang/types/type_of)
 include(cmakepp_lang/utilities/global)
@@ -52,6 +51,9 @@ function(cpp_implicitly_convertible _ic_result _ic_from _ic_to)
     if(NOT "${ARGC}" EQUAL 3)
         message(FATAL_ERROR "cpp_implicitly_convertible takes exactly 3 args.")
     endif()
+
+    set(_ic_from_original "${_ic_from}")
+    set(_ic_to_original "${_ic_to}")
 
     # Sanitize types to avoid case-sensitivity
     cpp_sanitize_string(_ic_to "${_ic_to}")
@@ -101,5 +103,7 @@ function(cpp_implicitly_convertible _ic_result _ic_from _ic_to)
         if(_ic_to STREQUAL "type")
             set("${_ic_result}" TRUE PARENT_SCOPE)
         endif()
+    elseif((_ic_from_original STREQUAL "desc" OR _ic_from_original MATCHES ".+[*]") AND (_ic_to_original STREQUAL "desc" OR _ic_to_original MATCHES ".+[*]"))
+        set("${_ic_result}" TRUE PARENT_SCOPE)
     endif()
 endfunction()
