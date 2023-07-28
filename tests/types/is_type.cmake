@@ -195,6 +195,18 @@ function("${test_cpp_is_type}")
             cpp_is_type(return type)
             ct_assert_equal(return TRUE)
         endfunction()
+
+        ct_add_section(NAME "test_bool_ptr_type")
+        function("${test_bool_ptr_type}")
+            cpp_is_type(return bool*)
+            ct_assert_equal(return TRUE)
+        endfunction()
+
+        ct_add_section(NAME "test_desc_ptr_type")
+        function("${test_desc_ptr_type}")
+            cpp_is_type(return desc*)
+            ct_assert_equal(return TRUE)
+        endfunction()
     endfunction()
 
 endfunction()

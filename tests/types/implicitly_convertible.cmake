@@ -308,7 +308,7 @@ function("${test_cpp_implicitly_convertible}")
 
     ct_add_section(NAME "pointer_to_pointer")
     function("${pointer_to_pointer}")
-        cpp_implicitly_convertible(result bool* desc*)
+        cpp_implicitly_convertible(result bool* bool*)
         ct_assert_equal(result TRUE)
     endfunction()
 

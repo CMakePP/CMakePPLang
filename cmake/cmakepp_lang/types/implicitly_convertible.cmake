@@ -30,6 +30,11 @@ include(cmakepp_lang/utilities/sanitize_string)
 #    This function is used to implement ``cpp_assert_signature`` and thus can
 #    not rely on ``cpp_assert_signature`` for type-checking.
 #
+# .. note::
+#    Pointer types are treated as being convertible to and from :code:`desc`.
+#    Pointer types are invariant currently, meaning one pointer type cannot
+#    be used in place of another, even if the base types would be convertible.
+#
 # :param result: Name to use for the variable which will hold the result.
 # :type result: desc
 # :param from: The type we are attempting to cast from.
@@ -103,7 +108,7 @@ function(cpp_implicitly_convertible _ic_result _ic_from _ic_to)
         if(_ic_to STREQUAL "type")
             set("${_ic_result}" TRUE PARENT_SCOPE)
         endif()
-    elseif((_ic_from_original STREQUAL "desc" OR _ic_from_original MATCHES ".+[*]") AND (_ic_to_original STREQUAL "desc" OR _ic_to_original MATCHES ".+[*]"))
+    elseif((_ic_from_original STREQUAL "desc" AND _ic_to_original MATCHES ".+[*]") OR (_ic_from_original MATCHES ".+[*]" AND _ic_to_original STREQUAL "desc"))
         set("${_ic_result}" TRUE PARENT_SCOPE)
     endif()
 endfunction()
