@@ -306,9 +306,21 @@ function("${test_cpp_implicitly_convertible}")
         ct_assert_equal(result TRUE)
     endfunction()
 
+    ct_add_section(NAME "double_pointer_to_desc")
+    function("${double_pointer_to_desc}")
+        cpp_implicitly_convertible(result bool** desc)
+        ct_assert_equal(result TRUE)
+    endfunction()
+
     ct_add_section(NAME "pointer_to_pointer")
     function("${pointer_to_pointer}")
         cpp_implicitly_convertible(result bool* bool*)
+        ct_assert_equal(result TRUE)
+    endfunction()
+
+    ct_add_section(NAME "double_pointer_to_double_pointer")
+    function("${double_pointer_to_double_pointer}")
+        cpp_implicitly_convertible(result bool** bool**)
         ct_assert_equal(result TRUE)
     endfunction()
 
