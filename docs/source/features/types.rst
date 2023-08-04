@@ -218,7 +218,7 @@ type.
 Pointers
 --------
 
-Pointers are an important concept in vnill CMake, but
+Pointers are an important concept in vanilla CMake, but
 are loosely defined and usually not called pointers directly.
 They typically show up when we are dealing with lists
 or function return values. In CMakePPLang, a pointer is
