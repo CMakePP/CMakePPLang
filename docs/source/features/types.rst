@@ -251,6 +251,9 @@ This is due to a limitation in how we determine the type of a variable.
 Pointers are considered *invariant* but are also interchangeable with the
 ``desc`` type.
 
+Pointers can point to any valid type, including other pointers, so
+``T**`` is a valid type that is a pointer to a pointer to T.
+
 It should be noted that the official CMake documentation does not differentiate
 well between the variable holding a list and the list itself. By introducing
 the concept of a pointer to CMake it becomes easier to make this distinction.
