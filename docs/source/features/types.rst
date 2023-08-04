@@ -213,6 +213,50 @@ any of the type abbreviations in this chapter. The list of which is: bool,
 class, desc, float, fxn, genexpr, int, list, map, obj, path, str, target, and 
 type.
 
+.. _features-types-other-pointer:
+
+Pointers
+--------
+
+Pointers are an important concept in vnill CMake, but
+are loosely defined and usually not called pointers directly.
+They typically show up when we are dealing with lists
+or function return values. In CMakePPLang, a pointer is
+a variable which dereferences to a value. In CMake, the ``${...}`` syntax can
+be thought of as dereferencing whatever variable is in the brackets. If a
+function takes a pointer to, for example, a list, then you do not pass in the
+list explicitly, but rather the name of the variable which holds the list. In
+code:
+
+.. code-block:: cmake
+
+   function(take_list_by_pointer pointer_to_list)
+       list(LENGTH "${pointer_to_list}" length_of_list)
+       message("List length: ${length_of_list}")
+   endfunction()
+
+   set(a_list 1 2 3)
+
+   # Meant to be called like:
+   take_list_by_pointer(a_list) # Prints "List length: 3"
+
+   # Not like (this passes the value of the list):
+   take_list_by_pointer("${a_list}") # Prints "List length: 0"
+
+To document the type of ``pointer_to_list`` in the above code we use the syntax
+``list*``, which is borrowed from C/C++ and should be read as "pointer to a
+list". At the moment, if a function takes an argument of type ``T*`` (and it
+does type checking), only pointers of type ``T*`` or ``desc`` will be allowed.
+This is due to a limitation in how we determine the type of a variable.
+Pointers are considered *invariant* but are also interchangeable with the
+``desc`` type.
+
+It should be noted that the official CMake documentation does not differentiate
+well between the variable holding a list and the list itself. By introducing
+the concept of a pointer to CMake it becomes easier to make this distinction.
+In almost all circumstances, native CMake functions take pointers to lists and
+not the lists themselves.
+
 .. _features-types-cmakepp:
 
 CMakePPLang Types
@@ -274,46 +318,6 @@ Other Types
 Particularly for documentation purposes, CMakePPLang introduces 
 several other types. These types may only be conceptual or they may have some 
 code support.
-
-.. _features-types-other-pointer:
-
-Pointers
---------
-
-Pointers are more of a conceptual type in CMakePPLang and typically 
-show up when we are dealing with lists. In CMakePPLang, a pointer is 
-a variable which dereferences to a value. In CMake, the ``${...}`` syntax can 
-be thought of as dereferencing whatever variable is in the brackets. If a 
-function takes a pointer to, for example, a list, then you do not pass in the 
-list explicitly, but rather the name of the variable which holds the list. In 
-code:
-
-.. code-block:: cmake
-
-   function(take_list_by_pointer pointer_to_list)
-       list(LENGTH "${pointer_to_list}" length_of_list)
-       message("List length: ${length_of_list}")
-   endfunction()
-
-   set(a_list 1 2 3)
-
-   # Meant to be called like:
-   take_list_by_pointer(a_list) # Prints "List length: 3"
-
-   # Not like (this passes the value of the list):
-   take_list_by_pointer("${a_list}") # Prints "List length: 0"
-
-To document the type of ``pointer_to_list`` in the above code we use the syntax
-``list*``, which is borrowed from C/C++ and should be read as "pointer to a
-list". At the moment, if a function takes an argument of type ``T*`` (and it
-does type checking) it will only enforce that the provided argument is of type
-``desc`` (which it must be in order to be used as a sane variable name).
-
-It should be noted that the official CMake documentation does not differentiate
-well between the variable holding a list and the list itself. By introducing
-the concept of a pointer to CMake it becomes easier to make this distinction.
-In almost all circumstances, native CMake functions take pointers to lists and
-not the lists themselves.
 
 .. _features-types-other-tuple:
 
