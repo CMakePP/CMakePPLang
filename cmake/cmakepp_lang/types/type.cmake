@@ -42,6 +42,10 @@ function(cpp_is_type _it_result _it_type)
 
     string(TOLOWER "${_it_type}" _it_type)
 
+    if ("${_it_type}" MATCHES ".+[*]+")
+        string(REGEX REPLACE "[*]+$" "" _it_type "${_it_type}")
+    endif()
+
     # See if its an intrinsic CMake type
     list(FIND CMAKE_TYPE_LITERALS "${_it_type}" _it_index)
     if(NOT "${_it_index}" EQUAL -1)
@@ -56,10 +60,7 @@ function(cpp_is_type _it_result _it_type)
         return()
     endif()
 
-    if ("${_it_type}" MATCHES ".+[*]")
-        set("${_it_result}" TRUE PARENT_SCOPE)
-        return()
-    endif()
+
 
     set("${_it_result}" FALSE PARENT_SCOPE)
 endfunction()
