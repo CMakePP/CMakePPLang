@@ -354,5 +354,5 @@ are the types native to CMakePPLang. Native CMakePPLang types derive
 from String as well, with "Class" also deriving from "Type". User-defined 
 classes are symbolized by the green box at the bottom, all of which derive 
 from "Object", and may have relationships among themselves as well. Not shown
-are pointers. Each type has an associated pointer type, including pointer
+are :ref:`pointers <features-types-other-pointer>`. Each type has an associated pointer type, including pointer
 types themselves. Each pointer type is derived from "Description."
