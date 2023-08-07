@@ -19,6 +19,11 @@ cmakepp_lang/types/implicitly_convertible
       This function is used to implement ``cpp_assert_signature`` and thus can
       not rely on ``cpp_assert_signature`` for type-checking.
    
+   .. note::
+      Pointer types are treated as being convertible to and from :code:`desc`.
+      Pointer types are invariant currently, meaning one pointer type cannot
+      be used in place of another, even if the base types would be convertible.
+   
    :param result: Name to use for the variable which will hold the result.
    :type result: desc
    :param from: The type we are attempting to cast from.

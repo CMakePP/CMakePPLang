@@ -64,6 +64,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#quasi-cmake-types">Quasi-CMake Types</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#description-desc">Description (desc)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#type-type">Type (type)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pointers">Pointers</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#cmakepplang-types">CMakePPLang Types</a><ul>
@@ -73,7 +74,6 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#other-types">Other Types</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#pointers">Pointers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#tuples">Tuples</a></li>
 </ul>
 </li>
@@ -275,6 +275,46 @@ any of the type abbreviations in this chapter. The list of which is: bool,
 class, desc, float, fxn, genexpr, int, list, map, obj, path, str, target, and
 type.</p>
 </section>
+<section id="pointers">
+<span id="features-types-other-pointer"></span><h3>Pointers<a class="headerlink" href="#pointers" title="Permalink to this heading"></a></h3>
+<p>Pointers are an important concept in vanilla CMake, but
+are loosely defined and usually not called pointers directly.
+They typically show up when we are dealing with lists
+or function return values. In CMakePPLang, a pointer is
+a variable which dereferences to a value. In CMake, the <code class="docutils literal notranslate"><span class="pre">${...}</span></code> syntax can
+be thought of as dereferencing whatever variable is in the brackets. If a
+function takes a pointer to, for example, a list, then you do not pass in the
+list explicitly, but rather the name of the variable which holds the list. In
+code:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">function</span><span class="p">(</span><span class="s">take_list_by_pointer</span><span class="w"> </span><span class="s">pointer_to_list</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">list</span><span class="p">(</span><span class="s">LENGTH</span><span class="w"> </span><span class="s2">&quot;${pointer_to_list}&quot;</span><span class="w"> </span><span class="s">length_of_list</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">message</span><span class="p">(</span><span class="s2">&quot;List length: ${length_of_list}&quot;</span><span class="p">)</span>
+<span class="nb">endfunction</span><span class="p">()</span>
+
+<span class="nb">set</span><span class="p">(</span><span class="s">a_list</span><span class="w"> </span><span class="s">1</span><span class="w"> </span><span class="s">2</span><span class="w"> </span><span class="s">3</span><span class="p">)</span>
+
+<span class="c"># Meant to be called like:</span>
+<span class="nb">take_list_by_pointer</span><span class="p">(</span><span class="s">a_list</span><span class="p">)</span><span class="w"> </span><span class="c"># Prints &quot;List length: 3&quot;</span>
+
+<span class="c"># Not like (this passes the value of the list):</span>
+<span class="nb">take_list_by_pointer</span><span class="p">(</span><span class="s2">&quot;${a_list}&quot;</span><span class="p">)</span><span class="w"> </span><span class="c"># Prints &quot;List length: 0&quot;</span>
+</pre></div>
+</div>
+<p>To document the type of <code class="docutils literal notranslate"><span class="pre">pointer_to_list</span></code> in the above code we use the syntax
+<code class="docutils literal notranslate"><span class="pre">list*</span></code>, which is borrowed from C/C++ and should be read as “pointer to a
+list”. At the moment, if a function takes an argument of type <code class="docutils literal notranslate"><span class="pre">T*</span></code> (and it
+does type checking), only pointers of type <code class="docutils literal notranslate"><span class="pre">T*</span></code> or <code class="docutils literal notranslate"><span class="pre">desc</span></code> will be allowed.
+This is due to a limitation in how we determine the type of a variable.
+Pointers are considered <em>invariant</em> but are also interchangeable with the
+<code class="docutils literal notranslate"><span class="pre">desc</span></code> type.</p>
+<p>Pointers can point to any valid type, including other pointers, so
+<code class="docutils literal notranslate"><span class="pre">T**</span></code> is a valid type that is a pointer to a pointer to T.</p>
+<p>It should be noted that the official CMake documentation does not differentiate
+well between the variable holding a list and the list itself. By introducing
+the concept of a pointer to CMake it becomes easier to make this distinction.
+In almost all circumstances, native CMake functions take pointers to lists and
+not the lists themselves.</p>
+</section>
 </section>
 <section id="cmakepplang-types">
 <span id="features-types-cmakepp"></span><h2>CMakePPLang Types<a class="headerlink" href="#cmakepplang-types" title="Permalink to this heading"></a></h2>
@@ -323,40 +363,6 @@ equality comparisons.</p>
 <p>Particularly for documentation purposes, CMakePPLang introduces
 several other types. These types may only be conceptual or they may have some
 code support.</p>
-<section id="pointers">
-<span id="features-types-other-pointer"></span><h3>Pointers<a class="headerlink" href="#pointers" title="Permalink to this heading"></a></h3>
-<p>Pointers are more of a conceptual type in CMakePPLang and typically
-show up when we are dealing with lists. In CMakePPLang, a pointer is
-a variable which dereferences to a value. In CMake, the <code class="docutils literal notranslate"><span class="pre">${...}</span></code> syntax can
-be thought of as dereferencing whatever variable is in the brackets. If a
-function takes a pointer to, for example, a list, then you do not pass in the
-list explicitly, but rather the name of the variable which holds the list. In
-code:</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">function</span><span class="p">(</span><span class="s">take_list_by_pointer</span><span class="w"> </span><span class="s">pointer_to_list</span><span class="p">)</span>
-<span class="w">    </span><span class="nb">list</span><span class="p">(</span><span class="s">LENGTH</span><span class="w"> </span><span class="s2">&quot;${pointer_to_list}&quot;</span><span class="w"> </span><span class="s">length_of_list</span><span class="p">)</span>
-<span class="w">    </span><span class="nb">message</span><span class="p">(</span><span class="s2">&quot;List length: ${length_of_list}&quot;</span><span class="p">)</span>
-<span class="nb">endfunction</span><span class="p">()</span>
-
-<span class="nb">set</span><span class="p">(</span><span class="s">a_list</span><span class="w"> </span><span class="s">1</span><span class="w"> </span><span class="s">2</span><span class="w"> </span><span class="s">3</span><span class="p">)</span>
-
-<span class="c"># Meant to be called like:</span>
-<span class="nb">take_list_by_pointer</span><span class="p">(</span><span class="s">a_list</span><span class="p">)</span><span class="w"> </span><span class="c"># Prints &quot;List length: 3&quot;</span>
-
-<span class="c"># Not like (this passes the value of the list):</span>
-<span class="nb">take_list_by_pointer</span><span class="p">(</span><span class="s2">&quot;${a_list}&quot;</span><span class="p">)</span><span class="w"> </span><span class="c"># Prints &quot;List length: 0&quot;</span>
-</pre></div>
-</div>
-<p>To document the type of <code class="docutils literal notranslate"><span class="pre">pointer_to_list</span></code> in the above code we use the syntax
-<code class="docutils literal notranslate"><span class="pre">list*</span></code>, which is borrowed from C/C++ and should be read as “pointer to a
-list”. At the moment, if a function takes an argument of type <code class="docutils literal notranslate"><span class="pre">T*</span></code> (and it
-does type checking) it will only enforce that the provided argument is of type
-<code class="docutils literal notranslate"><span class="pre">desc</span></code> (which it must be in order to be used as a sane variable name).</p>
-<p>It should be noted that the official CMake documentation does not differentiate
-well between the variable holding a list and the list itself. By introducing
-the concept of a pointer to CMake it becomes easier to make this distinction.
-In almost all circumstances, native CMake functions take pointers to lists and
-not the lists themselves.</p>
-</section>
 <section id="tuples">
 <span id="features-types-other-tuple"></span><h3>Tuples<a class="headerlink" href="#tuples" title="Permalink to this heading"></a></h3>
 <p>Tuples are purely a documentation convenience for functions with multiple
@@ -381,7 +387,9 @@ purposes they all derive from a single type, String. In the middle, in red,
 are the types native to CMakePPLang. Native CMakePPLang types derive
 from String as well, with “Class” also deriving from “Type”. User-defined
 classes are symbolized by the green box at the bottom, all of which derive
-from “Object”, and may have relationships among themselves as well.</p>
+from “Object”, and may have relationships among themselves as well. Not shown
+are <a class="reference internal" href="#features-types-other-pointer"><span class="std std-ref">pointers</span></a>. Each type has an associated pointer type, including pointer
+types themselves. Each pointer type is derived from “Description.”</p>
 </section>
 </section>
 

@@ -117,6 +117,12 @@ determine if it is okay to use one type in place of another.</p>
 <p>This function is used to implement <code class="docutils literal notranslate"><span class="pre">cpp_assert_signature</span></code> and thus can
 not rely on <code class="docutils literal notranslate"><span class="pre">cpp_assert_signature</span></code> for type-checking.</p>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Pointer types are treated as being convertible to and from <code class="code docutils literal notranslate"><span class="pre">desc</span></code>.
+Pointer types are invariant currently, meaning one pointer type cannot
+be used in place of another, even if the base types would be convertible.</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">

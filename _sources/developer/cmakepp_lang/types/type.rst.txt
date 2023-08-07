@@ -12,8 +12,9 @@ cmakepp_lang/types/type
    
    CMakePP defines a series of type literals for types recognized by CMake and
    for types recognized by CMake and CMakePP. Additionally, users can create
-   classes to add even more type literals. This function will determine if an
-   identifier is also a type literal.
+   classes to add even more type literals. Every type literal
+   also has a corresponding pointer type literal, marked with an asterisk.
+   This function will determine if an identifier is also a type literal.
    
    :param result: Name for the variable which will hold the result.
    :type result: desc
