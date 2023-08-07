@@ -151,4 +151,31 @@ function(${_test_cpp_assert_signature})
         cpp_assert_signature("TRUE;42;FALSE" bool args args)
     endfunction()
 
+    ct_add_section(NAME "sig_pointer")
+    function(${sig_pointer})
+        ct_add_section(NAME "sig_pointer_bool")
+        function("${sig_pointer_bool}")
+            set(_spb_pointer TRUE)
+            cpp_assert_signature("_spb_pointer" bool*)
+        endfunction()
+
+        ct_add_section(NAME "sig_pointer_to_desc")
+        function("${sig_pointer_to_desc}")
+            set(_sptd_pointer TRUE)
+            cpp_assert_signature("_sptd_pointer" desc)
+        endfunction()
+
+
+        # Potentially dangerous case to support
+        # Since we can't verify that the desc actually resolves
+        # to a value, we could end up with weird empty results upon dereferencing
+        # But, same goes for using a null pointer in other languages, so
+        # at least it's consistent
+        ct_add_section(NAME "sig_desc_to_pointer")
+        function("${sig_desc_to_pointer}")
+            cpp_assert_signature("_sdtp_pointer" bool*)
+        endfunction()
+
+    endfunction()
+
 endfunction()

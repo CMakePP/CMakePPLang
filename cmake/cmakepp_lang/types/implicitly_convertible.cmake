@@ -13,7 +13,6 @@
 # limitations under the License.
 
 include_guard()
-
 include(cmakepp_lang/class/detail/bases)
 include(cmakepp_lang/types/type_of)
 include(cmakepp_lang/utilities/global)
@@ -30,6 +29,11 @@ include(cmakepp_lang/utilities/sanitize_string)
 #
 #    This function is used to implement ``cpp_assert_signature`` and thus can
 #    not rely on ``cpp_assert_signature`` for type-checking.
+#
+# .. note::
+#    Pointer types are treated as being convertible to and from :code:`desc`.
+#    Pointer types are invariant currently, meaning one pointer type cannot
+#    be used in place of another, even if the base types would be convertible.
 #
 # :param result: Name to use for the variable which will hold the result.
 # :type result: desc
@@ -52,6 +56,9 @@ function(cpp_implicitly_convertible _ic_result _ic_from _ic_to)
     if(NOT "${ARGC}" EQUAL 3)
         message(FATAL_ERROR "cpp_implicitly_convertible takes exactly 3 args.")
     endif()
+
+    set(_ic_from_original "${_ic_from}")
+    set(_ic_to_original "${_ic_to}")
 
     # Sanitize types to avoid case-sensitivity
     cpp_sanitize_string(_ic_to "${_ic_to}")
@@ -101,5 +108,8 @@ function(cpp_implicitly_convertible _ic_result _ic_from _ic_to)
         if(_ic_to STREQUAL "type")
             set("${_ic_result}" TRUE PARENT_SCOPE)
         endif()
+    # Check if we're converting desc to pointer type or from pointer to desc
+    elseif((_ic_from_original STREQUAL "desc" AND _ic_to_original MATCHES ".+[*]") OR (_ic_from_original MATCHES ".+[*]" AND _ic_to_original STREQUAL "desc"))
+        set("${_ic_result}" TRUE PARENT_SCOPE)
     endif()
 endfunction()
