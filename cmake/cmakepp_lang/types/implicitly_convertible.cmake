@@ -109,7 +109,7 @@ function(cpp_implicitly_convertible _ic_result _ic_from _ic_to)
             set("${_ic_result}" TRUE PARENT_SCOPE)
         endif()
     # Check if we're converting desc to pointer type or from pointer to desc
-    elseif((_ic_from_original STREQUAL "desc" AND _ic_to_original MATCHES ".+[*]") OR (_ic_from_original MATCHES ".+[*]" AND _ic_to_original STREQUAL "desc"))
+    elseif((_ic_from_original STREQUAL "desc" AND _ic_to_original MATCHES ".+[*_]") OR (_ic_from_original MATCHES ".+[*_]" AND _ic_to_original STREQUAL "desc"))
         set("${_ic_result}" TRUE PARENT_SCOPE)
     endif()
 endfunction()
