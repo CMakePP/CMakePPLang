@@ -319,6 +319,17 @@ function(${_test_attr})
             ct_assert_equal(res 3)
         endfunction()
 
+        ct_add_section(NAME "_attr_set_single_val_extension")
+        function(${_attr_set_single_val_extension})
+            _attr_set_setup()
+            cpp_attr(MyClass c 4)
+            # Set attribute as single value
+            MyClass(SET "${my_instance}" c 3)
+            # Get the value and ensure it was set correctly
+            MyClass(GET "${my_instance}" res c)
+            ct_assert_equal(res 3)
+        endfunction()
+
         ct_add_section(NAME "_attr_set_list")
         function(${_attr_set_list})
             _attr_set_setup()
@@ -327,6 +338,18 @@ function(${_test_attr})
             MyClass(SET "${my_instance}" b 1 2 3)
             # Get the value and ensure it was set correctly
             MyClass(GET "${my_instance}" res b)
+            ct_assert_equal(res "1;2;3")
+        endfunction()
+
+        ct_add_section(NAME "_attr_set_list_extension")
+        function(${_attr_set_list_extension})
+            _attr_set_setup()
+            cpp_attr(MyClass c "4;5")
+
+            # Set attribute as a list of values
+            MyClass(SET "${my_instance}" c 1 2 3)
+            # Get the value and ensure it was set correctly
+            MyClass(GET "${my_instance}" res c)
             ct_assert_equal(res "1;2;3")
         endfunction()
 
@@ -421,6 +444,23 @@ function(${_test_constructor})
             MyClass(CTOR my_instance 3)
             MyClass(GET "${my_instance}" res my_attr)
             ct_assert_equal(res 3)
+        endfunction()
+
+        ct_add_section(NAME "_multi_construct_third_extension_two_int_params")
+        function(${_multi_construct_third_extension_two_int_params})
+            _constructor_multiple_customs_setup()
+
+            cpp_constructor(CTOR MyClass int int)
+            function("${CTOR}" self a b)
+                # Change value of my_attr
+                math(EXPR new_val "${a} + ${b}")
+                MyClass(SET "${self}" my_attr "${new_val}")
+            endfunction()
+
+            # Create instance and test that the 1st CTOR was called
+            MyClass(CTOR my_instance 3 7)
+            MyClass(GET "${my_instance}" res my_attr)
+            ct_assert_equal(res 10)
         endfunction()
 
     endfunction()
