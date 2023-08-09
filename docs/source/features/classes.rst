@@ -455,3 +455,44 @@ or using ``ParentClass`` with a ``ChildClass`` instance:
     If a call is made to the ``my_virtual_fxn`` function for an instance of
     ``ParentClass``, CMakePP will throw an error indicating that this function
     is virtual and must be overridden in a derived class.
+
+
+Extension Functions and Attributes
+==================================
+CMakePP classes support defining member functions and attributes
+outside of the ``cpp_class``/``cpp_end_class`` fences. Such
+definitions are called "extension functions" or "extension attributes."
+Other languages such as Kotlin and C# have similar extension features.
+
+What makes extension functions and attributes special is that
+they can be defined by downstream users and have zero behavioral
+differences from the predefined methods and attributes. Adding
+an extension function or attribute changes the shape of the class
+itself, and all existing instances of the class automatically
+gain access to the extension. For extension attributes,
+any existing instances have the default value for the attribute.
+
+Constructors are also eligible for extension, and all extension constructors
+and methods can overload existing methods or constructors.
+Overload selection is done at time of method invocation, so
+adding an extension can change which overload is selected
+in the future.
+
+Defining an Extension
+---------------------
+Defining an extension method, constructor, or attribute
+is done exactly the same as defining a normal
+method, constructor, or attribute, with one minor difference:
+there is no surrounding :code:`cpp_class`/:code:`cpp_end_class` fence.
+The extension definition *must* be in a scope where the class
+being extended is visible and defined, so one cannot
+make an extension to a class before the class itself has been
+defined. This does not mean the extension definition has
+to be in the same file; so long as the class is visible extensions
+can be defined.
+
+Example
+-------
+.. literalinclude:: /../../tests/docs/source/features/classes/define_extension_function.cmake
+   :lines: 6-24
+   :dedent: 4
