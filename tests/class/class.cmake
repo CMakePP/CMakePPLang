@@ -240,6 +240,12 @@ function(${_test_virtual_member})
         cpp_class(BaseClass)
             cpp_member(my_virtual_fxn BaseClass)
             cpp_virtual_member(my_virtual_fxn)
+
+            cpp_member(my_virtual_fxn_with_params BaseClass bool desc)
+            cpp_virtual_member(my_virtual_fxn_with_params)
+
+            cpp_member(my_virtual_fxn_with_ptr_params BaseClass bool* desc)
+            cpp_virtual_member(my_virtual_fxn_with_ptr_params)
         cpp_end_class()
 
         # Define a derived class that overrides the virtual member
@@ -247,6 +253,16 @@ function(${_test_virtual_member})
             cpp_member(my_virtual_fxn DerivedClass)
             function("${my_virtual_fxn}" self)
                 message("Overridden implementation")
+            endfunction()
+
+            cpp_member(my_virtual_fxn_with_params DerivedClass bool desc)
+            function("${my_virtual_fxn_with_params}" self a b)
+                message("Overridden implementation: ${a}, ${b}")
+            endfunction()
+
+            cpp_member(my_virtual_fxn_with_ptr_params DerivedClass bool* desc)
+            function("${my_virtual_fxn_with_ptr_params}" self a b)
+                message("Overridden implementation: ${${a}}, ${b}")
             endfunction()
         cpp_end_class()
     endmacro()
@@ -270,6 +286,32 @@ function(${_test_virtual_member})
 
         # Assert the derived implemntation was called
         ct_assert_prints("Overridden implementation")
+    endfunction()
+
+    ct_add_section(NAME "_virt_memb_override_params")
+    function(${_virt_memb_override_params})
+        # Create an instance of the derived class and attempt to call the
+        # implementation that overrides the virtual member
+        test_virtual_member_setup()
+        DerivedClass(CTOR derived_instance)
+        DerivedClass(my_virtual_fxn_with_params "${derived_instance}" TRUE my_desc)
+
+        # Assert the derived implemntation was called
+        ct_assert_prints("Overridden implementation: TRUE, my_desc")
+    endfunction()
+
+    ct_add_section(NAME "_virt_memb_override_ptr_params")
+    function(${_virt_memb_override_ptr_params})
+
+        set(my_ptr TRUE)
+        # Create an instance of the derived class and attempt to call the
+        # implementation that overrides the virtual member
+        test_virtual_member_setup()
+        DerivedClass(CTOR derived_instance)
+        DerivedClass(my_virtual_fxn_with_ptr_params "${derived_instance}" my_ptr my_ptr)
+
+        # Assert the derived implemntation was called
+        ct_assert_prints("Overridden implementation: TRUE, my_ptr")
     endfunction()
 endfunction()
 
