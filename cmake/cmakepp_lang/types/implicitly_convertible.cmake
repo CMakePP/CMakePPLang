@@ -111,5 +111,11 @@ function(cpp_implicitly_convertible _ic_result _ic_from _ic_to)
     # Check if we're converting desc to pointer type or from pointer to desc
     elseif((_ic_from_original STREQUAL "desc" AND _ic_to_original MATCHES ".+[*]") OR (_ic_from_original MATCHES ".+[*]" AND _ic_to_original STREQUAL "desc"))
         set("${_ic_result}" TRUE PARENT_SCOPE)
+
+    elseif(_ic_from_original MATCHES ".+[*]" AND _ic_to_original MATCHES ".+[*]")
+        string(REGEX REPLACE "[*]$" "" _ic_from_ptr_deref "${_ic_from_original}")
+        string(REGEX REPLACE "[*]$" "" _ic_to_ptr_deref "${_ic_to_original}")
+        cpp_implicitly_convertible(_ic_convertible_ptr_deref "${_ic_from_ptr_deref}" "${_ic_to_ptr_deref}")
+        set("${_ic_result}" "${_ic_convertible_ptr_deref}" PARENT_SCOPE)
     endif()
 endfunction()
