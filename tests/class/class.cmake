@@ -48,9 +48,7 @@ function(${_test_class})
 
         ct_add_section(NAME "_class_base_cast_ptr")
         function(${_class_base_cast_ptr})
-            set(myclass_ptr "MyClass")
-            set(baseclass_ptr "BaseClass")
-            cpp_implicitly_convertible(result myclass_ptr baseclass_ptr)
+            cpp_implicitly_convertible(result MyClass* BaseClass*)
             ct_assert_equal(result TRUE)
         endfunction()
 
@@ -62,9 +60,7 @@ function(${_test_class})
 
         ct_add_section(NAME "_class_base_cast_obj")
         function(${_class_base_cast_obj})
-            set(myclass_ptr MyClass)
-            set(obj_ptr obj)
-            cpp_implicitly_convertible(result myclass_ptr obj_ptr)
+            cpp_implicitly_convertible(result MyClass* obj*)
             ct_assert_equal(result TRUE)
         endfunction()
 
