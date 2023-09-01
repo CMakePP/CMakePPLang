@@ -43,7 +43,7 @@ CMakePPLang can be included in a CMake project by adding:
    include(FetchContent)
    FetchContent_Declare(
       cmakepp_lang
-      GIT_REPOSITORY https://github.com/CMakePP/cmakepp_lang
+      GIT_REPOSITORY https://github.com/CMakePP/CMakePPLang
    )
    FetchContent_MakeAvailable(cmakepp_lang)
 
