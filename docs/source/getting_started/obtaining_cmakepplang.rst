@@ -46,6 +46,24 @@ add the line:
 Your project will now download CMakePPLang automatically as part of the CMake
 configuration.
 
+Pinning a CMakePPLang Version
+-----------------------------
+
+Sometimes bugs may be found in a particular version of CMakePPLang (that will
+hopefully be fixed quickly in the next version!). In this case, it is useful
+to pin a previous version so you can continue your work uninterupted. To pin
+a specific version of CMakePPLang, use the ``GIT_TAG <version_tag>`` argument
+for ``FetchContent_Declare()``. For example, to pin version ``v1.0.2``, use
+the following ``FetchContent_Declare()`` call:
+
+.. code-block:: cmake
+
+   FetchContent_Declare(
+       cmakepp_lang
+       GIT_REPOSITORY https://github.com/CMakePP/CMakePPLang
+       GIT_TAG v1.0.2
+   )
+
 .. _manually-downloading-cmakepplang:
 
 Downloading CMakePPLang and Building Manually
