@@ -51,20 +51,21 @@ to your ``CMakeLists.txt`` file. CMakePPLang will then be downloaded as part
 of the CMake configuration step. More detailed instructions, can be found
 `here <https://cmakepp.github.io/CMakePPLang/getting_started/obtaining_cmakepplang.html>`__.
 
-If a specific version of CMakePPLang is needed, for example ``v1.0.2``, that
-release version can be specified using the ``GIT_TAG <version_tag>`` option of
-``FetchContent_Declare()``:
+Information about pinning a specific version of CMakePPLang can be found
+`here <https://cmakepp.github.io/CMakePPLang/getting_started/obtaining_cmakepplang.html#pinning-a-cmakepplang-version>`__.
 
-.. code-block:: cmake
+.. If a specific version of CMakePPLang is needed, for example ``v1.0.2``, that
+.. release version can be specified using the ``GIT_TAG <version_tag>`` option of
+.. ``FetchContent_Declare()``:
 
-   # Download CMakePP and bring it into scope
-   include(FetchContent)
-   FetchContent_Declare(
-      cmakepp_lang
-      GIT_REPOSITORY https://github.com/CMakePP/CMakePPLang
-      GIT_TAG v1.0.2
-   )
-   FetchContent_MakeAvailable(cmakepp_lang)
+.. .. code-block:: cmake
+
+..    # GIT_TAG ensures we get the CMakePPLang release tagged as "v1.0.2"
+..    FetchContent_Declare(
+..       cmakepp_lang
+..       GIT_REPOSITORY https://github.com/CMakePP/CMakePPLang
+..       GIT_TAG v1.0.2
+..    )
 
 *************
 Example Usage
@@ -128,6 +129,16 @@ API Documentation
 
 Full API documentation can be found
 `here <https://cmakepp.github.io/CMakePPLang/developer/index.html#cmakepplang-api>`__.
+
+******************
+Release Versioning
+******************
+
+CMakePPLang uses `semantic versioning <https://semver.org/>`__ for releases.
+Although CMakePPLang is built on top of CMake, CMakePPLang mostly relies on
+fairly fundamental features of the CMake language, so it is versioned
+independently of CMake. A more complete discussion of CMakePPLang versioning
+considerations can be found `here <https://cmakepp.github.io/CMakePPLang/versioning.html>`__
 
 ************
 Contributing

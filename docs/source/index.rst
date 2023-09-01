@@ -53,6 +53,7 @@ debugging code written in CMakePPLang, as well as notes for developers.
    Contributing <https://cmakepp.github.io/.github/code_of_conduct.html>
    Authors <authors>
    license
+   versioning
 
 .. References:
 
