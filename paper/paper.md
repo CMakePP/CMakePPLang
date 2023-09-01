@@ -136,7 +136,7 @@ class (\autoref{fig:class_example}). Strong typing of the member function
 parameters can be seen in the example as well.
 
 ![Example of defining a CMakePPLang class, creating an instance, and
-calling a member function to print "Hello world!".\label{fig:class_example}](fig/class_example.png){width=80%}
+calling a member function to print "Hello world!".\label{fig:class_example}](fig/class_example.png){width=75%}
 
 Users can also define a map to hold information, like a map that stores a
 color value under the "color" key (\autoref{fig:map_example}), along with
