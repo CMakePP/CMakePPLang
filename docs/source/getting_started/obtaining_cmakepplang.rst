@@ -46,6 +46,8 @@ add the line:
 Your project will now download CMakePPLang automatically as part of the CMake
 configuration.
 
+.. _version-pinning:
+
 Pinning a CMakePPLang Version
 -----------------------------
 
