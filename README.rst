@@ -51,6 +51,21 @@ to your ``CMakeLists.txt`` file. CMakePPLang will then be downloaded as part
 of the CMake configuration step. More detailed instructions, can be found
 `here <https://cmakepp.github.io/CMakePPLang/getting_started/obtaining_cmakepplang.html>`__.
 
+If a specific version of CMakePPLang is needed, for example ``v1.0.2``, that
+release version can be specified using the ``GIT_TAG <version_tag>`` option of
+``FetchContent_Declare()``:
+
+.. code-block:: cmake
+
+   # Download CMakePP and bring it into scope
+   include(FetchContent)
+   FetchContent_Declare(
+      cmakepp_lang
+      GIT_REPOSITORY https://github.com/CMakePP/CMakePPLang
+      GIT_TAG v1.0.2
+   )
+   FetchContent_MakeAvailable(cmakepp_lang)
+
 *************
 Example Usage
 *************
