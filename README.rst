@@ -87,7 +87,8 @@ attribute and call ``start()``:
 
 .. code-block:: cmake
 
-   # Create an instance of the class called "my_auto" using the default CTOR
+   # Call the default class constructor (CTOR) to create an instance of
+   # Automobile called "my_auto"
    Automobile(CTOR my_auto)
 
    # Access the "color" attribute and save it to the var "my_autos_color"
