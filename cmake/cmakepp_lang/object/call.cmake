@@ -63,7 +63,8 @@ function(_cpp_object_call_guts _ocg_this _ocg_result _ocg_method)
     set(_ocg_sig "${_ocg_nice_method}")
     foreach(_ocg_arg_i "${_ocg_this}" ${ARGN})
         cpp_type_of(_ocg_type_i "${_ocg_arg_i}")
-        cpp_sanitize_string(_ocg_nice_type_i "${_ocg_type_i}")
+        # TOLOWER instead of cpp_santize_string because sanitizing obliterates the pointer asterisk
+        string(TOLOWER "${_ocg_type_i}" _ocg_nice_type_i)
         list(APPEND _ocg_sig "${_ocg_nice_type_i}")
     endforeach()
 

@@ -57,14 +57,25 @@ function(_cpp_object_add_fxn _oaf_this _oaf_name)
 
     # Sanitize the name of the function, start the mangled name and signature
     cpp_sanitize_string(_oaf_nice_name "${_oaf_name}")
+    # _oaf_mn is the mangled function name that must be a valid
+    # command name, _oaf_value is the function name and arguments
+    # tuple so it must preserve special characters in parameter type identifiers
+    # like the pointer asterisk
     set(_oaf_mn "_cpp_${_oaf_type}_${_oaf_nice_name}_")
     set(_oaf_value "${_oaf_nice_name}")
 
     # Loop over types of arguments, updating name/signature
     foreach(_oaf_arg_i ${ARGN})
+        # _oaf_nice_arg_i is used to construct the final mangled
+        # function name, so it needs to be sanitized
         cpp_sanitize_string(_oaf_nice_arg "${_oaf_arg_i}")
+
+        # TOLOWER instead of cpp_santize_string because it obliterates the pointer asterisk.
+        # _oaf_type_arg is used for the signature checks, so it needs to have
+        # the pointer asterisk preserved
+        string(TOLOWER "${_oaf_arg_i}" _oaf_type_arg)
         string(APPEND _oaf_mn "${_oaf_nice_arg}_")
-        list(APPEND _oaf_value "${_oaf_nice_arg}")
+        list(APPEND _oaf_value "${_oaf_type_arg}")
     endforeach()
 
     # Add the function to the vtable
