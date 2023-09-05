@@ -245,11 +245,22 @@ code:
 
 To document the type of ``pointer_to_list`` in the above code we use the syntax
 ``list*``, which is borrowed from C/C++ and should be read as "pointer to a
-list". At the moment, if a function takes an argument of type ``T*`` (and it
-does type checking), only pointers of type ``T*`` or ``desc`` will be allowed.
-This is due to a limitation in how we determine the type of a variable.
-Pointers are considered *invariant* but are also interchangeable with the
-``desc`` type.
+list". If a function takes an argument of type ``T*`` (and it
+does type checking), then any value of type ``R*`` is allowed where ``R`` is
+a type convertible to ``T``. So, a value of type ``fxn*`` is allowed
+to be used where ``str*`` is expected, because a ``fxn`` is convertible
+to a ``str``. The inverse does not hold, because a ``str`` might not
+be a ``fxn``, and so you cannot use a ``str*`` where a ``fxn*`` is
+expected.
+
+Additionally, all pointer types are considered subtypes of ``desc``,
+so a value of type ``desc`` can be used wherever a pointer type is
+expected. This is because a pointer in CMake is the name of an identifier,
+which must follow the rules of a ``desc``.
+
+If a ``desc`` does not resolve to a variable within the
+current scope, dereferencing it resolves to the empty string,
+and so the original ``desc`` can be thought of as a null pointer.
 
 Pointers can point to any valid type, including other pointers, so
 ``T**`` is a valid type that is a pointer to a pointer to T.

@@ -23,19 +23,45 @@ CMakePPLang
 .. image:: https://github.com/CMakePP/CMakePPLang/actions/workflows/deploy_docs.yml/badge.svg?branch=master
    :target: https://github.com/CMakePP/CMakePPLang/actions/workflows/deploy_docs.yml/badge.svg?branch=master
 
+CMakePPLang defines the basic extensions of the CMake language which comprise
+the CMakePP language. Think of this repo as being like the standard C++ library,
+except for CMake.
+
 *****************
 Statement of Need
 *****************
 
-CMakePPLang defines the basic extensions of the CMake language which comprise
-the CMakePP language. Think of this repo as being like the standard C++ library,
-except for CMake.
+CMake is arguably the *de facto* build tool for building C and C++ software
+packages of moderate to large size. Anecdotally we have observed that, as the
+size of a package grows, so too does the complexity of its build system.
+Object-oriented programming (OOP) is a popular and established technique for
+managing complexity in software and we assert that OOP can also be used to
+manage the complexity of the build system. Unfortunately, CMake is a functional
+language with no OOP support. Given the ubiquitous nature of CMake-based build
+systems and tools, the ideal OOP solution is to introduce OOP into CMake via a
+mechanism which preserves backwards compatibility with standard CMake.
+
+We are not the first to suggest such a solution. To that end, Tobias Becker
+created the [CMake++](https://github.com/toeb/cmakepp) (formally called
+cmake-oo) module, which contains a number of CMake extensions including support
+for OOP. As of this writing, CMake++ seems to be an abandoned project with only
+two commits since July of 2017, both in 2021. As far as we know there are no
+other OOP CMake solutions out there.
+
+Before creating CMakePPLang, we considered whether or not to attempt to
+resurrect CMake++. Looking through the CMake++ repo we were able to find a
+decent amount of user documentation, but little to no API or developer
+documentation. Ultimately, we decided that the effort needed to understand
+CMake++, document it with [CMinx](https://github.com/CMakePP/CMinx), and test
+it with [CMakeTest](https://github.com/CMakePP/CMakeTest) would be greater than
+writing a new, ground-up, OOP extension to CMake, and CMakePPLang was born.
 
 *************************
 Installation Instructions
 *************************
 
-CMakePPLang can be included in a CMake project by adding:
+CMakePPLang is distributed as a CMake module and can thus be included in CMake
+projects simply by adding:
 
 .. code-block:: cmake
 
@@ -48,24 +74,14 @@ CMakePPLang can be included in a CMake project by adding:
    FetchContent_MakeAvailable(cmakepp_lang)
 
 to your ``CMakeLists.txt`` file. CMakePPLang will then be downloaded as part
-of the CMake configuration step. More detailed instructions, can be found
-`here <https://cmakepp.github.io/CMakePPLang/getting_started/obtaining_cmakepplang.html>`__.
+of your project's CMake configuration step. More detailed instructions, can be
+found
+`here <https://cmakepp.github.io/CMakePPLang/getting_started/obtaining_cmakepplang.html>`__ including
+information about pinning a specific version of CMakePPLang.
 
-Information about pinning a specific version of CMakePPLang can be found
-`here <https://cmakepp.github.io/CMakePPLang/getting_started/obtaining_cmakepplang.html#pinning-a-cmakepplang-version>`__.
-
-.. If a specific version of CMakePPLang is needed, for example ``v1.0.2``, that
-.. release version can be specified using the ``GIT_TAG <version_tag>`` option of
-.. ``FetchContent_Declare()``:
-
-.. .. code-block:: cmake
-
-..    # GIT_TAG ensures we get the CMakePPLang release tagged as "v1.0.2"
-..    FetchContent_Declare(
-..       cmakepp_lang
-..       GIT_REPOSITORY https://github.com/CMakePP/CMakePPLang
-..       GIT_TAG v1.0.2
-..    )
+If you would like to independently verify CMakePPLang works please see the
+instructions for running the test suite located in the developer documentation
+(`link <https://cmakepp.github.io/CMakePPLang/developer/initial_setup.html>`__).
 
 *************
 Example Usage
