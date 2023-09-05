@@ -82,7 +82,7 @@ decipher CMake++ as it would to develop CMakePPLang.
 CMakePPLang has been developed to provide extensions to the CMake language
 which provide objected-oriented functionality and other quality-of-life
 improvements. The main features of CMakePPLang are the object-oriented
-functionality, addition of a map structure, strong data typing, and 
+functionality, strong data typing, addition of a map structure, and 
 backwards-compatability with CMake. These features allow for easier general
 programming in CMake, which is key to writing complex build tools in the
 language.
@@ -102,7 +102,23 @@ in certain circumstances, select values are interpreted as being of another
 type. A common example is when a string is used as an argument to CMake’s `if`
 statement, where the string is implicitly cast to a boolean. In practice, this
 weak typing can lead to subtle, hard-to-detect errors. CMakePPLang implements
-strong-typing in order to avoid/catch such errors. CMakePPLang conceptually
+strong-typing in order to avoid/catch such errors. An example of weak typing
+causing issues is the ambiguity when passing a list as an argument to a
+function, which many CMake users are likely familiar with. In CMake's
+`list(LENGTH` function, there are three different ways to pass a list to the
+function, yielding three different results as seen in \autoref{fig:cmake_list_length}.
+Looking at the function signature, `list(LENGTH <list> <output variable>)`
+[@cmake_list_length], it is unclear which version to use without trial and error.
+Conversely, using strong typing with CMakePPLang \autoref{fig:cmakepplang_list_length},
+it is immediately clear that the variable pointing to the list should be used,
+while the other options throw errors that prompt the user to reconsider the
+function signature and types being passed in.
+
+![Three different methods of passing a list to `list(LENGTH`, showing the results of each call in a comment on the following line. Only the first call returns the correct list length of three. \label{fig:cmake_list_length}](fig/cmake_list_length.png){width=60%}
+
+![Three different methods of passing a list to a function, `cpp_list(LENGTH`, which wraps `list(LENGTH` and provides strong typing. Results of each call are shown in a comment on the proceeding line. Only the first call is correct and the other two result in errors. \label{fig:cmakepplang_list_length}](fig/cmakepplang_list_length.png){width=60%}
+
+CMakePPLang conceptually
 has three classifications of types: CMake types, Quasi-CMake types, and
 pure CMakePPLang types.
 
