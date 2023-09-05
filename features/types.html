@@ -302,11 +302,20 @@ code:</p>
 </div>
 <p>To document the type of <code class="docutils literal notranslate"><span class="pre">pointer_to_list</span></code> in the above code we use the syntax
 <code class="docutils literal notranslate"><span class="pre">list*</span></code>, which is borrowed from C/C++ and should be read as “pointer to a
-list”. At the moment, if a function takes an argument of type <code class="docutils literal notranslate"><span class="pre">T*</span></code> (and it
-does type checking), only pointers of type <code class="docutils literal notranslate"><span class="pre">T*</span></code> or <code class="docutils literal notranslate"><span class="pre">desc</span></code> will be allowed.
-This is due to a limitation in how we determine the type of a variable.
-Pointers are considered <em>invariant</em> but are also interchangeable with the
-<code class="docutils literal notranslate"><span class="pre">desc</span></code> type.</p>
+list”. If a function takes an argument of type <code class="docutils literal notranslate"><span class="pre">T*</span></code> (and it
+does type checking), then any value of type <code class="docutils literal notranslate"><span class="pre">R*</span></code> is allowed where <code class="docutils literal notranslate"><span class="pre">R</span></code> is
+a type convertible to <code class="docutils literal notranslate"><span class="pre">T</span></code>. So, a value of type <code class="docutils literal notranslate"><span class="pre">fxn*</span></code> is allowed
+to be used where <code class="docutils literal notranslate"><span class="pre">str*</span></code> is expected, because a <code class="docutils literal notranslate"><span class="pre">fxn</span></code> is convertible
+to a <code class="docutils literal notranslate"><span class="pre">str</span></code>. The inverse does not hold, because a <code class="docutils literal notranslate"><span class="pre">str</span></code> might not
+be a <code class="docutils literal notranslate"><span class="pre">fxn</span></code>, and so you cannot use a <code class="docutils literal notranslate"><span class="pre">str*</span></code> where a <code class="docutils literal notranslate"><span class="pre">fxn*</span></code> is
+expected.</p>
+<p>Additionally, all pointer types are considered subtypes of <code class="docutils literal notranslate"><span class="pre">desc</span></code>,
+so a value of type <code class="docutils literal notranslate"><span class="pre">desc</span></code> can be used wherever a pointer type is
+expected. This is because a pointer in CMake is the name of an identifier,
+which must follow the rules of a <code class="docutils literal notranslate"><span class="pre">desc</span></code>.</p>
+<p>If a <code class="docutils literal notranslate"><span class="pre">desc</span></code> does not resolve to a variable within the
+current scope, dereferencing it resolves to the empty string,
+and so the original <code class="docutils literal notranslate"><span class="pre">desc</span></code> can be thought of as a null pointer.</p>
 <p>Pointers can point to any valid type, including other pointers, so
 <code class="docutils literal notranslate"><span class="pre">T**</span></code> is a valid type that is a pointer to a pointer to T.</p>
 <p>It should be noted that the official CMake documentation does not differentiate
