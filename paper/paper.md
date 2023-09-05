@@ -85,7 +85,9 @@ improvements. The main features of CMakePPLang are the object-oriented
 functionality, strong data typing, addition of a map structure, and 
 backwards-compatability with CMake. These features allow for easier general
 programming in CMake, which is key to writing complex build tools in the
-language.
+language. Although CMakePPLang is built on top of CMake, CMakePPLang mostly
+relies on fairly fundamental features of the CMake language, so it is
+versioned independently of CMake using semantic versioning [@semver].
 
 
 # Basic Usage
