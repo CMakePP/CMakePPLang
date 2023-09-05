@@ -109,7 +109,7 @@ function, which many CMake users are likely familiar with. In CMake's
 function, yielding three different results as seen in \autoref{fig:cmake_list_length}.
 Looking at the function signature, `list(LENGTH <list> <output variable>)`
 [@cmake_list_length], it is unclear which version to use without trial and error.
-Conversely, using strong typing with CMakePPLang \autoref{fig:cmakepplang_list_length},
+Conversely, using strong typing with CMakePPLang (\autoref{fig:cmakepplang_list_length}),
 it is immediately clear that the variable pointing to the list should be used
 from the types of the signature, `cpp_list(LENGTH cpp_list list* int*)`, where
 `list*` is a pointer to a list (colloquially it is the variable containing a
