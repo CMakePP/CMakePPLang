@@ -110,9 +110,12 @@ function, yielding three different results as seen in \autoref{fig:cmake_list_le
 Looking at the function signature, `list(LENGTH <list> <output variable>)`
 [@cmake_list_length], it is unclear which version to use without trial and error.
 Conversely, using strong typing with CMakePPLang \autoref{fig:cmakepplang_list_length},
-it is immediately clear that the variable pointing to the list should be used,
-while the other options throw errors that prompt the user to reconsider the
-function signature and types being passed in.
+it is immediately clear that the variable pointing to the list should be used
+from the types of the signature, `cpp_list(LENGTH cpp_list list* int*)`, where
+`list*` is a pointer to a list (colloquially it is the variable containing a
+list) and `int*` is a pointer to an integer where the resulting length will be
+stored. The other options now throw errors that prompt the user to reconsider
+the function signature and types being passed in.
 
 ![Three different methods of passing a list to `list(LENGTH`, showing the results of each call in a comment on the following line. Only the first call returns the correct list length of three. \label{fig:cmake_list_length}](fig/cmake_list_length.png){width=60%}
 
