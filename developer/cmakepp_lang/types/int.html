@@ -11,11 +11,11 @@
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=d4e7da7a"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -104,10 +104,10 @@
            <div itemprop="articleBody">
              
   <section id="module-cmakepp_lang-types-int">
-<span id="cmakepp-lang-types-int"></span><h1>cmakepp_lang/types/int<a class="headerlink" href="#module-cmakepp_lang-types-int" title="Permalink to this heading"></a></h1>
+<span id="cmakepp-lang-types-int"></span><h1>cmakepp_lang/types/int<a class="headerlink" href="#module-cmakepp_lang-types-int" title="Link to this heading"></a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="cmakepp_lang-types-int.cpp_is_int">
-<span class="sig-prename descclassname"><span class="pre">cmakepp_lang/types/int.</span></span><span class="sig-name descname"><span class="pre">cpp_is_int</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">return</span> <span class="pre">str2check</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang-types-int.cpp_is_int" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">cmakepp_lang/types/int.</span></span><span class="sig-name descname"><span class="pre">cpp_is_int</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">return</span> <span class="pre">str2check</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang-types-int.cpp_is_int" title="Link to this definition"></a></dt>
 <dd><p>Determines if a string can lexically be cast to an integer.</p>
 <p>For our purposes an integer is any string whose only characters are taken from
 the numbers 0 through 9, optionally prefixed with a <code class="docutils literal notranslate"><span class="pre">-</span></code> sign. In particular,
@@ -129,7 +129,7 @@ integer and <code class="docutils literal notranslate"><span class="pre">FALSE</
 </dd>
 </dl>
 <section id="error-checking">
-<h2>Error Checking<a class="headerlink" href="#error-checking" title="Permalink to this heading"></a></h2>
+<h2>Error Checking<a class="headerlink" href="#error-checking" title="Link to this heading"></a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">cpp_is_int</span></code> will ensure that the caller has provided exactly two arguments.
 If the caller has provided a different amount of arguments this function will
 raise an error.</p>

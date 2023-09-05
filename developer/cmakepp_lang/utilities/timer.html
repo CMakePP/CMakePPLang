@@ -11,11 +11,11 @@
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=d4e7da7a"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -104,11 +104,11 @@
            <div itemprop="articleBody">
              
   <section id="module-cmakepp_lang-utilities-timer">
-<span id="cmakepp-lang-utilities-timer"></span><h1>cmakepp_lang/utilities/timer<a class="headerlink" href="#module-cmakepp_lang-utilities-timer" title="Permalink to this heading"></a></h1>
+<span id="cmakepp-lang-utilities-timer"></span><h1>cmakepp_lang/utilities/timer<a class="headerlink" href="#module-cmakepp_lang-utilities-timer" title="Link to this heading"></a></h1>
 <p>Defines functions for managing code timing through CMakePPLang.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="cmakepp_lang-utilities-timer.cpp_start_timing">
-<span class="sig-prename descclassname"><span class="pre">cmakepp_lang/utilities/timer.</span></span><span class="sig-name descname"><span class="pre">cpp_start_timing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang-utilities-timer.cpp_start_timing" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">cmakepp_lang/utilities/timer.</span></span><span class="sig-name descname"><span class="pre">cpp_start_timing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang-utilities-timer.cpp_start_timing" title="Link to this definition"></a></dt>
 <dd><p>Starts a timer using the provided name.</p>
 <p>This function is used to start a timer under the provided name. If another
 timer has previously been created using this name it will be overridden.</p>
@@ -121,7 +121,7 @@ timer has previously been created using this name it will be overridden.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cmakepp_lang-utilities-timer.cpp_stop_timing">
-<span class="sig-prename descclassname"><span class="pre">cmakepp_lang/utilities/timer.</span></span><span class="sig-name descname"><span class="pre">cpp_stop_timing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span> <span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang-utilities-timer.cpp_stop_timing" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">cmakepp_lang/utilities/timer.</span></span><span class="sig-name descname"><span class="pre">cpp_stop_timing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span> <span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang-utilities-timer.cpp_stop_timing" title="Link to this definition"></a></dt>
 <dd><p>Stops and computes the time since the specified timer was started.</p>
 <p>This function will compute the time (in seconds) since the specified timer was
 started. Despite the name of this function, the timer will persist meaning it
@@ -144,7 +144,7 @@ was started.</p>
 </dd>
 </dl>
 <section id="error-checking">
-<h2>Error Checking<a class="headerlink" href="#error-checking" title="Permalink to this heading"></a></h2>
+<h2>Error Checking<a class="headerlink" href="#error-checking" title="Link to this heading"></a></h2>
 <p>This function will assert that the specified timer exists. If the timer does
 not exist an error will be raised. This error check is always performed.</p>
 </section>
@@ -152,7 +152,7 @@ not exist an error will be raised. This error check is always performed.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cmakepp_lang-utilities-timer.cpp_stop_and_print_timing">
-<span class="sig-prename descclassname"><span class="pre">cmakepp_lang/utilities/timer.</span></span><span class="sig-name descname"><span class="pre">cpp_stop_and_print_timing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang-utilities-timer.cpp_stop_and_print_timing" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">cmakepp_lang/utilities/timer.</span></span><span class="sig-name descname"><span class="pre">cpp_stop_and_print_timing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang-utilities-timer.cpp_stop_and_print_timing" title="Link to this definition"></a></dt>
 <dd><p>Convenience function for printing the time since a timer was started.</p>
 <p>Usually when we are timing something we want to log the time. This function is
 a convenience function which will do that by printing the timer to standard
@@ -163,7 +163,7 @@ out.</p>
 </dd>
 </dl>
 <section id="id1">
-<h2>Error Checking<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<h2>Error Checking<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
 <p>This function will assert that the specified timer exists. If the timer does
 not exist an error will be raised. This error check is always performed.</p>
 </section>
@@ -171,7 +171,7 @@ not exist an error will be raised. This error check is always performed.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cmakepp_lang-utilities-timer.cpp_time_fxn">
-<span class="sig-prename descclassname"><span class="pre">cmakepp_lang/utilities/timer.</span></span><span class="sig-name descname"><span class="pre">cpp_time_fxn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fxn_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang-utilities-timer.cpp_time_fxn" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">cmakepp_lang/utilities/timer.</span></span><span class="sig-name descname"><span class="pre">cpp_time_fxn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fxn_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang-utilities-timer.cpp_time_fxn" title="Link to this definition"></a></dt>
 <dd><p>Convenience function for timing a function.</p>
 <p>A very common timing scenario is that we want to know how long it takes a
 function to run. This function is a convenience function for doing that and

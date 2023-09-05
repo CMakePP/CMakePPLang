@@ -11,11 +11,11 @@
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=d4e7da7a"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -104,11 +104,11 @@
            <div itemprop="articleBody">
              
   <section id="module-cmakepp_lang-map-get_set">
-<span id="cmakepp-lang-map-get-set"></span><h1>cmakepp_lang/map/get_set<a class="headerlink" href="#module-cmakepp_lang-map-get_set" title="Permalink to this heading"></a></h1>
+<span id="cmakepp-lang-map-get-set"></span><h1>cmakepp_lang/map/get_set<a class="headerlink" href="#module-cmakepp_lang-map-get_set" title="Link to this heading"></a></h1>
 <p>Defines functions to get and set key/value pairs for a CMakePPLang Map.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="cmakepp_lang-map-get_set.cpp_map_get">
-<span class="sig-prename descclassname"><span class="pre">cmakepp_lang/map/get_set.</span></span><span class="sig-name descname"><span class="pre">cpp_map_get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">this</span> <span class="pre">value</span> <span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang-map-get_set.cpp_map_get" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">cmakepp_lang/map/get_set.</span></span><span class="sig-name descname"><span class="pre">cpp_map_get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">this</span> <span class="pre">value</span> <span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang-map-get_set.cpp_map_get" title="Link to this definition"></a></dt>
 <dd><p>Retrieves the value of the specified key.</p>
 <p>This function is used to retrieve the value associated with the provided key.
 If a key has not been set this function will return the empty string. Users
@@ -132,7 +132,7 @@ set to the empty string.</p>
 </dd>
 </dl>
 <section id="error-checking">
-<h2>Error Checking<a class="headerlink" href="#error-checking" title="Permalink to this heading"></a></h2>
+<h2>Error Checking<a class="headerlink" href="#error-checking" title="Link to this heading"></a></h2>
 <p>If CMakePP is run in debug mode this function will ensure that it has been
 provided exactly three arguments and that those arguments are of the correct
 types. If any of these checks fail an error will be raised. These checks are
@@ -151,7 +151,7 @@ debug mode.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cmakepp_lang-map-get_set.cpp_map_set">
-<span class="sig-prename descclassname"><span class="pre">cmakepp_lang/map/get_set.</span></span><span class="sig-name descname"><span class="pre">cpp_map_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">this</span> <span class="pre">key</span> <span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang-map-get_set.cpp_map_set" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">cmakepp_lang/map/get_set.</span></span><span class="sig-name descname"><span class="pre">cpp_map_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">this</span> <span class="pre">key</span> <span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang-map-get_set.cpp_map_set" title="Link to this definition"></a></dt>
 <dd><p>Associates a value with the specified key.</p>
 <p>This function can be used to set the value of a map’s key. If the key has a
 value associated with it already that value will be overridden.</p>
@@ -165,7 +165,7 @@ value associated with it already that value will be overridden.</p>
 </dd>
 </dl>
 <section id="id1">
-<h2>Error Checking<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<h2>Error Checking<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
 <p>If CMakePP is run in debug mode this function will assert that it was called
 with exactly three arguments, and that those arguments have the correct types.
 If these assertions fail an error will be raised. These checks are only

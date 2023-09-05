@@ -11,11 +11,11 @@
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=d4e7da7a"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -104,11 +104,11 @@
            <div itemprop="articleBody">
              
   <section id="module-cmakepp_lang-exceptions-exceptions">
-<span id="cmakepp-lang-exceptions-exceptions"></span><h1>cmakepp_lang/exceptions/exceptions<a class="headerlink" href="#module-cmakepp_lang-exceptions-exceptions" title="Permalink to this heading"></a></h1>
+<span id="cmakepp-lang-exceptions-exceptions"></span><h1>cmakepp_lang/exceptions/exceptions<a class="headerlink" href="#module-cmakepp_lang-exceptions-exceptions" title="Link to this heading"></a></h1>
 <p>Defines the public API for CMakePPLang exception handling.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="cmakepp_lang-exceptions-exceptions.cpp_catch">
-<span class="sig-prename descclassname"><span class="pre">cmakepp_lang/exceptions/exceptions.</span></span><span class="sig-name descname"><span class="pre">cpp_catch</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang-exceptions-exceptions.cpp_catch" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">cmakepp_lang/exceptions/exceptions.</span></span><span class="sig-name descname"><span class="pre">cpp_catch</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang-exceptions-exceptions.cpp_catch" title="Link to this definition"></a></dt>
 <dd><p>Declares an exception handler function</p>
 <p>This command enables users to declare a handler function for specified
 exception types. Subsequent calls to the <code class="docutils literal notranslate"><span class="pre">cpp_raise</span></code> command for those
@@ -126,7 +126,7 @@ exception handler for that exception type.</p>
 </dd>
 </dl>
 <section id="example-usage">
-<h2>Example Usage<a class="headerlink" href="#example-usage" title="Permalink to this heading"></a></h2>
+<h2>Example Usage<a class="headerlink" href="#example-usage" title="Link to this heading"></a></h2>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cpp_catch</span><span class="p">(</span><span class="s">my_exec_type_1</span><span class="w"> </span><span class="s">my_exec_type_2</span><span class="p">)</span>
 <span class="nb">function</span><span class="p">(</span><span class="s2">&quot;${my_exec_type_1}&quot;</span><span class="w"> </span><span class="s">message</span><span class="p">)</span>
 <span class="w">   </span><span class="nb">message</span><span class="p">(</span><span class="s2">&quot;In my_exception_handler for exception type: my_exec_type_1&quot;</span><span class="p">)</span>
@@ -140,7 +140,7 @@ exception handler for that exception type.</p>
 </div>
 </section>
 <section id="error-checking">
-<h2>Error Checking<a class="headerlink" href="#error-checking" title="Permalink to this heading"></a></h2>
+<h2>Error Checking<a class="headerlink" href="#error-checking" title="Link to this heading"></a></h2>
 <p>If CMakePP is run in debug mode (and only if it is run in debug mode) this
 function will assert that it was called with one or more desc arguments.</p>
 <dl class="field-list simple">
@@ -157,7 +157,7 @@ debug mode or not.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cmakepp_lang-exceptions-exceptions.cpp_raise">
-<span class="sig-prename descclassname"><span class="pre">cmakepp_lang/exceptions/exceptions.</span></span><span class="sig-name descname"><span class="pre">cpp_raise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">exce_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang-exceptions-exceptions.cpp_raise" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">cmakepp_lang/exceptions/exceptions.</span></span><span class="sig-name descname"><span class="pre">cpp_raise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">exce_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang-exceptions-exceptions.cpp_raise" title="Link to this definition"></a></dt>
 <dd><p>Raises an exception.</p>
 <p>This command raises an exception of the specified type. This will call
 the exception handler for that type if it is declared.</p>
@@ -170,7 +170,7 @@ the exception handler for that type if it is declared.</p>
 </dd>
 </dl>
 <section id="id1">
-<h2>Example Usage<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<h2>Example Usage<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cpp_raise</span><span class="p">(</span><span class="s">my_exec_type</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -180,7 +180,7 @@ the exception handler for that type if it is declared.</p>
 </div>
 </section>
 <section id="id2">
-<h2>Error Checking<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<h2>Error Checking<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
 <p>If CMakePP is run in debug mode (and only if it is run in debug mode) this
 function will assert that it was called with at least one argument and that
 the argument is of type desc.</p>
@@ -198,7 +198,7 @@ debug mode or not.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cmakepp_lang-exceptions-exceptions.cpp_try">
-<span class="sig-prename descclassname"><span class="pre">cmakepp_lang/exceptions/exceptions.</span></span><span class="sig-name descname"><span class="pre">cpp_try</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang-exceptions-exceptions.cpp_try" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">cmakepp_lang/exceptions/exceptions.</span></span><span class="sig-name descname"><span class="pre">cpp_try</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang-exceptions-exceptions.cpp_try" title="Link to this definition"></a></dt>
 <dd><div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This is a macro, and so does not introduce a new scope.</p>
@@ -207,14 +207,14 @@ debug mode or not.</p>
 <p>This function is a no-op that completes the fencing associated with a try
 block.</p>
 <section id="id3">
-<h2>Error Checking<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<h2>Error Checking<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
 <p>None. This function is a no-op and has no errors to check for.</p>
 </section>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cmakepp_lang-exceptions-exceptions.cpp_end_try_catch">
-<span class="sig-prename descclassname"><span class="pre">cmakepp_lang/exceptions/exceptions.</span></span><span class="sig-name descname"><span class="pre">cpp_end_try_catch</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang-exceptions-exceptions.cpp_end_try_catch" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">cmakepp_lang/exceptions/exceptions.</span></span><span class="sig-name descname"><span class="pre">cpp_end_try_catch</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang-exceptions-exceptions.cpp_end_try_catch" title="Link to this definition"></a></dt>
 <dd><p>Ends a try-catch block</p>
 <p>This command ends a try-catch block and removes the exception handlers for the
 specified types.</p>
@@ -228,13 +228,13 @@ debug mode or not.</p>
 </dd>
 </dl>
 <section id="id4">
-<h2>Example Usage<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<h2>Example Usage<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cpp_end_try_catch</span><span class="p">(</span><span class="s">my_exce_type</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="id5">
-<h2>Error Checking<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<h2>Error Checking<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
 <p>If CMakePP is run in debug mode (and only if it is run in debug mode) this
 function will assert that it was called with one or more desc arguments.</p>
 </section>

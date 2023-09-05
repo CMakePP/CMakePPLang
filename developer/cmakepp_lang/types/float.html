@@ -11,11 +11,11 @@
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=d4e7da7a"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -104,10 +104,10 @@
            <div itemprop="articleBody">
              
   <section id="module-cmakepp_lang-types-float">
-<span id="cmakepp-lang-types-float"></span><h1>cmakepp_lang/types/float<a class="headerlink" href="#module-cmakepp_lang-types-float" title="Permalink to this heading"></a></h1>
+<span id="cmakepp-lang-types-float"></span><h1>cmakepp_lang/types/float<a class="headerlink" href="#module-cmakepp_lang-types-float" title="Link to this heading"></a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="cmakepp_lang-types-float.cpp_is_float">
-<span class="sig-prename descclassname"><span class="pre">cmakepp_lang/types/float.</span></span><span class="sig-name descname"><span class="pre">cpp_is_float</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">return</span> <span class="pre">str2check</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang-types-float.cpp_is_float" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">cmakepp_lang/types/float.</span></span><span class="sig-name descname"><span class="pre">cpp_is_float</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">return</span> <span class="pre">str2check</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang-types-float.cpp_is_float" title="Link to this definition"></a></dt>
 <dd><p>Determines if a string can be lexically cast to a float.</p>
 <p>For our purposes a float is any string whose only characters include a decimal
 point, and the numbers 0 through 9. Optionally the float may be prefixed with
@@ -128,7 +128,7 @@ float and <code class="docutils literal notranslate"><span class="pre">FALSE</sp
 </dd>
 </dl>
 <section id="example-usage">
-<h2>Example Usage<a class="headerlink" href="#example-usage" title="Permalink to this heading"></a></h2>
+<h2>Example Usage<a class="headerlink" href="#example-usage" title="Link to this heading"></a></h2>
 <p>The following is an example showcasing how one would check if the identifier
 <code class="docutils literal notranslate"><span class="pre">x</span></code> contained a float.</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">include</span><span class="p">(</span><span class="s">cmakepp_lang/types/float</span><span class="p">)</span>
@@ -139,7 +139,7 @@ float and <code class="docutils literal notranslate"><span class="pre">FALSE</sp
 </div>
 </section>
 <section id="error-checking">
-<h2>Error Checking<a class="headerlink" href="#error-checking" title="Permalink to this heading"></a></h2>
+<h2>Error Checking<a class="headerlink" href="#error-checking" title="Link to this heading"></a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">cpp_is_float</span></code> will assert that it is called with exactly two arguments. If
 it is not an error will be raised.</p>
 </section>
