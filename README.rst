@@ -69,14 +69,15 @@ projects simply by adding:
    include(FetchContent)
    FetchContent_Declare(
       cmakepp_lang
-      GIT_REPOSITORY https://github.com/CMakePP/cmakepp_lang
+      GIT_REPOSITORY https://github.com/CMakePP/CMakePPLang
    )
    FetchContent_MakeAvailable(cmakepp_lang)
 
 to your ``CMakeLists.txt`` file. CMakePPLang will then be downloaded as part
 of your project's CMake configuration step. More detailed instructions, can be
 found
-`here <https://cmakepp.github.io/CMakePPLang/getting_started/obtaining_cmakepplang.html>`__.
+`here <https://cmakepp.github.io/CMakePPLang/getting_started/obtaining_cmakepplang.html>`__ including
+information about pinning a specific version of CMakePPLang.
 
 If you would like to independently verify CMakePPLang works please see the
 instructions for running the test suite located in the developer documentation
@@ -118,7 +119,8 @@ attribute and call ``start()``:
 
 .. code-block:: cmake
 
-   # Create an instance of the class called "my_auto" using the default CTOR
+   # Call the default class constructor (CTOR) to create an instance of
+   # Automobile called "my_auto"
    Automobile(CTOR my_auto)
 
    # Access the "color" attribute and save it to the var "my_autos_color"
@@ -143,6 +145,16 @@ API Documentation
 
 Full API documentation can be found
 `here <https://cmakepp.github.io/CMakePPLang/developer/index.html#cmakepplang-api>`__.
+
+******************
+Release Versioning
+******************
+
+CMakePPLang uses `semantic versioning <https://semver.org/>`__ for releases.
+Although CMakePPLang is built on top of CMake, CMakePPLang mostly relies on
+fairly fundamental features of the CMake language, so it is versioned
+independently of CMake. A more complete discussion of CMakePPLang versioning
+considerations can be found `here <https://cmakepp.github.io/CMakePPLang/versioning.html>`__
 
 ************
 Contributing
