@@ -213,6 +213,64 @@ any of the type abbreviations in this chapter. The list of which is: bool,
 class, desc, float, fxn, genexpr, int, list, map, obj, path, str, target, and 
 type.
 
+.. _features-types-other-pointer:
+
+Pointers
+--------
+
+Pointers are an important concept in vanilla CMake, but
+are loosely defined and usually not called pointers directly.
+They typically show up when we are dealing with lists
+or function return values. In CMakePPLang, a pointer is
+a variable which dereferences to a value. In CMake, the ``${...}`` syntax can
+be thought of as dereferencing whatever variable is in the brackets. If a
+function takes a pointer to, for example, a list, then you do not pass in the
+list explicitly, but rather the name of the variable which holds the list. In
+code:
+
+.. code-block:: cmake
+
+   function(take_list_by_pointer pointer_to_list)
+       list(LENGTH "${pointer_to_list}" length_of_list)
+       message("List length: ${length_of_list}")
+   endfunction()
+
+   set(a_list 1 2 3)
+
+   # Meant to be called like:
+   take_list_by_pointer(a_list) # Prints "List length: 3"
+
+   # Not like (this passes the value of the list):
+   take_list_by_pointer("${a_list}") # Prints "List length: 0"
+
+To document the type of ``pointer_to_list`` in the above code we use the syntax
+``list*``, which is borrowed from C/C++ and should be read as "pointer to a
+list". If a function takes an argument of type ``T*`` (and it
+does type checking), then any value of type ``R*`` is allowed where ``R`` is
+a type convertible to ``T``. So, a value of type ``fxn*`` is allowed
+to be used where ``str*`` is expected, because a ``fxn`` is convertible
+to a ``str``. The inverse does not hold, because a ``str`` might not
+be a ``fxn``, and so you cannot use a ``str*`` where a ``fxn*`` is
+expected.
+
+Additionally, all pointer types are considered subtypes of ``desc``,
+so a value of type ``desc`` can be used wherever a pointer type is
+expected. This is because a pointer in CMake is the name of an identifier,
+which must follow the rules of a ``desc``.
+
+If a ``desc`` does not resolve to a variable within the
+current scope, dereferencing it resolves to the empty string,
+and so the original ``desc`` can be thought of as a null pointer.
+
+Pointers can point to any valid type, including other pointers, so
+``T**`` is a valid type that is a pointer to a pointer to T.
+
+It should be noted that the official CMake documentation does not differentiate
+well between the variable holding a list and the list itself. By introducing
+the concept of a pointer to CMake it becomes easier to make this distinction.
+In almost all circumstances, native CMake functions take pointers to lists and
+not the lists themselves.
+
 .. _features-types-cmakepp:
 
 CMakePPLang Types
@@ -275,46 +333,6 @@ Particularly for documentation purposes, CMakePPLang introduces
 several other types. These types may only be conceptual or they may have some 
 code support.
 
-.. _features-types-other-pointer:
-
-Pointers
---------
-
-Pointers are more of a conceptual type in CMakePPLang and typically 
-show up when we are dealing with lists. In CMakePPLang, a pointer is 
-a variable which dereferences to a value. In CMake, the ``${...}`` syntax can 
-be thought of as dereferencing whatever variable is in the brackets. If a 
-function takes a pointer to, for example, a list, then you do not pass in the 
-list explicitly, but rather the name of the variable which holds the list. In 
-code:
-
-.. code-block:: cmake
-
-   function(take_list_by_pointer pointer_to_list)
-       list(LENGTH "${pointer_to_list}" length_of_list)
-       message("List length: ${length_of_list}")
-   endfunction()
-
-   set(a_list 1 2 3)
-
-   # Meant to be called like:
-   take_list_by_pointer(a_list) # Prints "List length: 3"
-
-   # Not like (this passes the value of the list):
-   take_list_by_pointer("${a_list}") # Prints "List length: 0"
-
-To document the type of ``pointer_to_list`` in the above code we use the syntax
-``list*``, which is borrowed from C/C++ and should be read as "pointer to a
-list". At the moment, if a function takes an argument of type ``T*`` (and it
-does type checking) it will only enforce that the provided argument is of type
-``desc`` (which it must be in order to be used as a sane variable name).
-
-It should be noted that the official CMake documentation does not differentiate
-well between the variable holding a list and the list itself. By introducing
-the concept of a pointer to CMake it becomes easier to make this distinction.
-In almost all circumstances, native CMake functions take pointers to lists and
-not the lists themselves.
-
 .. _features-types-other-tuple:
 
 Tuples
@@ -346,4 +364,6 @@ purposes they all derive from a single type, String. In the middle, in red,
 are the types native to CMakePPLang. Native CMakePPLang types derive 
 from String as well, with "Class" also deriving from "Type". User-defined 
 classes are symbolized by the green box at the bottom, all of which derive 
-from "Object", and may have relationships among themselves as well.
+from "Object", and may have relationships among themselves as well. Not shown
+are :ref:`pointers <features-types-other-pointer>`. Each type has an associated pointer type, including pointer
+types themselves. Each pointer type is derived from "Description."

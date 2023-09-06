@@ -23,19 +23,45 @@ CMakePPLang
 .. image:: https://github.com/CMakePP/CMakePPLang/actions/workflows/deploy_docs.yml/badge.svg?branch=master
    :target: https://github.com/CMakePP/CMakePPLang/actions/workflows/deploy_docs.yml/badge.svg?branch=master
 
+CMakePPLang defines the basic extensions of the CMake language which comprise
+the CMakePP language. Think of this repo as being like the standard C++ library,
+except for CMake.
+
 *****************
 Statement of Need
 *****************
 
-CMakePPLang defines the basic extensions of the CMake language which comprise
-the CMakePP language. Think of this repo as being like the standard C++ library,
-except for CMake.
+CMake is arguably the *de facto* build tool for building C and C++ software
+packages of moderate to large size. Anecdotally we have observed that, as the
+size of a package grows, so too does the complexity of its build system.
+Object-oriented programming (OOP) is a popular and established technique for
+managing complexity in software and we assert that OOP can also be used to
+manage the complexity of the build system. Unfortunately, CMake is a functional
+language with no OOP support. Given the ubiquitous nature of CMake-based build
+systems and tools, the ideal OOP solution is to introduce OOP into CMake via a
+mechanism which preserves backwards compatibility with standard CMake.
+
+We are not the first to suggest such a solution. To that end, Tobias Becker
+created the [CMake++](https://github.com/toeb/cmakepp) (formally called
+cmake-oo) module, which contains a number of CMake extensions including support
+for OOP. As of this writing, CMake++ seems to be an abandoned project with only
+two commits since July of 2017, both in 2021. As far as we know there are no
+other OOP CMake solutions out there.
+
+Before creating CMakePPLang, we considered whether or not to attempt to
+resurrect CMake++. Looking through the CMake++ repo we were able to find a
+decent amount of user documentation, but little to no API or developer
+documentation. Ultimately, we decided that the effort needed to understand
+CMake++, document it with [CMinx](https://github.com/CMakePP/CMinx), and test
+it with [CMakeTest](https://github.com/CMakePP/CMakeTest) would be greater than
+writing a new, ground-up, OOP extension to CMake, and CMakePPLang was born.
 
 *************************
 Installation Instructions
 *************************
 
-CMakePPLang can be included in a CMake project by adding:
+CMakePPLang is distributed as a CMake module and can thus be included in CMake
+projects simply by adding:
 
 .. code-block:: cmake
 
@@ -43,13 +69,19 @@ CMakePPLang can be included in a CMake project by adding:
    include(FetchContent)
    FetchContent_Declare(
       cmakepp_lang
-      GIT_REPOSITORY https://github.com/CMakePP/cmakepp_lang
+      GIT_REPOSITORY https://github.com/CMakePP/CMakePPLang
    )
    FetchContent_MakeAvailable(cmakepp_lang)
 
 to your ``CMakeLists.txt`` file. CMakePPLang will then be downloaded as part
-of the CMake configuration step. More detailed instructions, can be found
-`here <https://cmakepp.github.io/CMakePPLang/getting_started/obtaining_cmakepplanglanglang.html>`__.
+of your project's CMake configuration step. More detailed instructions, can be
+found
+`here <https://cmakepp.github.io/CMakePPLang/getting_started/obtaining_cmakepplang.html>`__ including
+information about pinning a specific version of CMakePPLang.
+
+If you would like to independently verify CMakePPLang works please see the
+instructions for running the test suite located in the developer documentation
+(`link <https://cmakepp.github.io/CMakePPLang/developer/initial_setup.html>`__).
 
 *************
 Example Usage
@@ -87,7 +119,8 @@ attribute and call ``start()``:
 
 .. code-block:: cmake
 
-   # Create an instance of the class called "my_auto" using the default CTOR
+   # Call the default class constructor (CTOR) to create an instance of
+   # Automobile called "my_auto"
    Automobile(CTOR my_auto)
 
    # Access the "color" attribute and save it to the var "my_autos_color"
@@ -111,7 +144,17 @@ API Documentation
 *****************
 
 Full API documentation can be found
-`here <https://cmakepp.github.io/CMakePPLang/api/index.html>`__.
+`here <https://cmakepp.github.io/CMakePPLang/developer/index.html#cmakepplang-api>`__.
+
+******************
+Release Versioning
+******************
+
+CMakePPLang uses `semantic versioning <https://semver.org/>`__ for releases.
+Although CMakePPLang is built on top of CMake, CMakePPLang mostly relies on
+fairly fundamental features of the CMake language, so it is versioned
+independently of CMake. A more complete discussion of CMakePPLang versioning
+considerations can be found `here <https://cmakepp.github.io/CMakePPLang/versioning.html>`__
 
 ************
 Contributing
@@ -123,8 +166,8 @@ as soon as possible. If you want to contribute code, that's even better. We
 recommend you start a draft PR early in the process so we know the contribution
 is coming and can help you along the way.
 
-CMakePPLang is part of the CMakePP organization, whose contributing guidelines can be
-found `here <https://github.com/CMakePP/.github/blob/main/CONTRIBUTING.md>`__.
+CMakePPLang is part of the CMakePP organization, whose contributing guidelines
+can be found `here <https://cmakepp.github.io/.github/code_of_conduct.html>`__.
 
 Developer documentation can be found
 `here <https://cmakepp.github.io/CMakePPLang/developer/index.html>`__ to help

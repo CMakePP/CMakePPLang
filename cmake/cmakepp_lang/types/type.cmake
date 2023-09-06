@@ -22,8 +22,9 @@ include(cmakepp_lang/utilities/global)
 #
 # CMakePP defines a series of type literals for types recognized by CMake and
 # for types recognized by CMake and CMakePP. Additionally, users can create
-# classes to add even more type literals. This function will determine if an
-# identifier is also a type literal.
+# classes to add even more type literals. Every type literal
+# also has a corresponding pointer type literal, marked with an asterisk.
+# This function will determine if an identifier is also a type literal.
 #
 # :param result: Name for the variable which will hold the result.
 # :type result: desc
@@ -41,6 +42,10 @@ function(cpp_is_type _it_result _it_type)
 
     string(TOLOWER "${_it_type}" _it_type)
 
+    if ("${_it_type}" MATCHES ".+[*]+")
+        string(REGEX REPLACE "[*]+$" "" _it_type "${_it_type}")
+    endif()
+
     # See if its an intrinsic CMake type
     list(FIND CMAKE_TYPE_LITERALS "${_it_type}" _it_index)
     if(NOT "${_it_index}" EQUAL -1)
@@ -54,6 +59,8 @@ function(cpp_is_type _it_result _it_type)
         set("${_it_result}" TRUE PARENT_SCOPE)
         return()
     endif()
+
+
 
     set("${_it_result}" FALSE PARENT_SCOPE)
 endfunction()
