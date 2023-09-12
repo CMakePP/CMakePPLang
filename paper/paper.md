@@ -71,7 +71,7 @@ and there is an increasing need for this in the CMake language.
 
 Tobias Becker [@becker_cmake_2021] recognized these issues and wrote a purely object-oriented
 language on top of CMake, called
-CMake\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\tiny\bf ++} (formerly oo-cmake) .
+CMake\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\tiny\bf ++} (formerly oo-cmake).
 CMake\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\tiny\bf ++} contains an abundance of CMake extensions. Many of those extensions
 have direct overlap with extensions that are part of CMakePPLang. Features
 include (among many): maps, objects, tasks/promises. Unfortunately development
@@ -83,7 +83,8 @@ One of the primary issues with
 CMake\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\tiny\bf ++} is the lack of documentation. While
 there is some high-level documentation, there is little to no API or detailed
 developer documentation. This makes it very challenging for a new developer to figure out
-what is going on. Initially, forking and expanding on CMake++ was
+what is going on. Initially, forking and expanding on
+CMake\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\tiny\bf ++}  was
 considered, but it was determined that it would take similar time to
 decipher CMake\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\tiny\bf ++} as it would to develop CMakePPLang.
 
