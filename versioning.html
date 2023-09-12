@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Debugging Code Written in CMakePPLang &mdash; CMakePPLang 1.0.0alpha documentation</title>
+  <title>Release Versioning &mdash; CMakePPLang 1.0.0alpha documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -19,8 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Developer Documentation" href="developer/index.html" />
-    <link rel="prev" title="Language Conventions" href="conventions.html" /> 
+    <link rel="prev" title="License" href="license.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -49,15 +48,12 @@
 <li class="toctree-l1"><a class="reference internal" href="getting_started/index.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="features/index.html">Language Features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conventions.html">Language Conventions</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Debugging Code Written in CMakePPLang</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#debugging-basics">Debugging Basics</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">Debugging Code Written in CMakePPLang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="developer/index.html">Developer Documentation</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://cmakepp.github.io/.github/code_of_conduct.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
-<li class="toctree-l1"><a class="reference internal" href="versioning.html">Release Versioning</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Release Versioning</a></li>
 </ul>
 
         </div>
@@ -74,9 +70,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Debugging Code Written in CMakePPLang</li>
+      <li class="breadcrumb-item active">Release Versioning</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/debugging.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/versioning.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -84,37 +80,30 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="debugging-code-written-in-cmakepplang">
-<span id="debugging"></span><h1>Debugging Code Written in CMakePPLang<a class="headerlink" href="#debugging-code-written-in-cmakepplang" title="Link to this heading"></a></h1>
-<p>Native CMake has limited debugging capabilities, which are limited to printing
-variables out and very verbose printing of every line that is executed by the
-interpreter. While designing CMakePPLang, we attempted to provide more robust
-programming error checking and debugging features. These features come at a
-computational cost, so they should only be used to debug/unit test your build
-systems.</p>
-<section id="debugging-basics">
-<span id="id1"></span><h2>Debugging Basics<a class="headerlink" href="#debugging-basics" title="Link to this heading"></a></h2>
-<p>The variable <code class="docutils literal notranslate"><span class="pre">CMAKEPP_LANG_DEBUG_MODE</span></code> can be used to cause all CMakePPLang
-functions to run in debug mode. If you are familiar with the C/C++ preprocessor
-macro definition <code class="docutils literal notranslate"><span class="pre">NDEBUG</span></code> it’s the same idea, without the odd negative logic.
-Verbose logging and extra error checks, like type and bounds checks, are only
-done when <code class="docutils literal notranslate"><span class="pre">CMAKEPP_LANG_DEBUG_MODE</span></code> is defined and set to a true value.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>There can be significant computational overhead associated with running your
-build system in debug mode, so your releases should <strong>NOT</strong> be in debug mode.
-As a rule-of-thumb, only enable debug mode when you are debugging or to
-ensure that you didn’t make any programming mistakes.</p>
-</div>
-</section>
+  <section id="release-versioning">
+<h1>Release Versioning<a class="headerlink" href="#release-versioning" title="Link to this heading"></a></h1>
+<p>CMakePPLang uses <a class="reference external" href="https://semver.org/">semantic versioning</a>, often shortened
+called “semver”, for release versioning. In short, each release is tagged with
+a version in the form: <code class="docutils literal notranslate"><span class="pre">MAJOR.MINOR.PATCH</span></code>. The MAJOR version is incremented
+when an incompatible API change is made, the MINOR version is incremented when
+new functionality is added but doesn’t break the API, and the PATCH version is
+incremented for bug fixes that also do not break the API.</p>
+<p>Although CMakePPLang is built on top of CMake, CMakePPLang mostly relies on
+fairly fundamental features of the CMake language, so it is versioned
+independently of CMake. We consider the CMakePPLang API stable regardless of
+underlying changes to CMake, although changes to the CMakePPLang backend may
+be necessary to account for changes in CMake. That said, if CMake ever
+increments from version 3.x.x to 4.0.0 and completely overhauls the basics of
+the CMake language, then we may need to go to increment to 2.0.0.</p>
+<p>See <a class="reference internal" href="getting_started/obtaining_cmakepplang.html#version-pinning"><span class="std std-ref">Pinning a CMakePPLang Version</span></a> for more information about pinning a specific
+CMakePPLang version in case of bugs in the latest version.</p>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="conventions.html" class="btn btn-neutral float-left" title="Language Conventions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="developer/index.html" class="btn btn-neutral float-right" title="Developer Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="license.html" class="btn btn-neutral float-left" title="License" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

@@ -48,7 +48,10 @@
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Getting Started</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Obtaining CMakePPLang</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#automatically-downloading-and-including-cmakepplang">Automatically Downloading and Including CMakePPLang</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#automatically-downloading-and-including-cmakepplang">Automatically Downloading and Including CMakePPLang</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pinning-a-cmakepplang-version">Pinning a CMakePPLang Version</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#downloading-cmakepplang-and-building-manually">Downloading CMakePPLang and Building Manually</a></li>
 </ul>
 </li>
@@ -63,6 +66,7 @@
 <li class="toctree-l1"><a class="reference external" href="https://cmakepp.github.io/.github/code_of_conduct.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../authors.html">Authors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../versioning.html">Release Versioning</a></li>
 </ul>
 
         </div>
@@ -150,6 +154,22 @@ add the line:</p>
 </div>
 <p>Your project will now download CMakePPLang automatically as part of the CMake
 configuration.</p>
+<section id="pinning-a-cmakepplang-version">
+<span id="version-pinning"></span><h3>Pinning a CMakePPLang Version<a class="headerlink" href="#pinning-a-cmakepplang-version" title="Link to this heading"></a></h3>
+<p>Sometimes bugs may be found in a particular version of CMakePPLang (that will
+hopefully be fixed quickly in the next version!). In this case, it is useful
+to pin a previous version so you can continue your work uninterupted. To pin
+a specific version of CMakePPLang, use the <code class="docutils literal notranslate"><span class="pre">GIT_TAG</span> <span class="pre">&lt;version_tag&gt;</span></code> argument
+for <code class="docutils literal notranslate"><span class="pre">FetchContent_Declare()</span></code>. For example, to pin version <code class="docutils literal notranslate"><span class="pre">v1.0.2</span></code>, use
+the following <code class="docutils literal notranslate"><span class="pre">FetchContent_Declare()</span></code> call:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">FetchContent_Declare</span><span class="p">(</span>
+<span class="w">    </span><span class="s">cmakepp_lang</span>
+<span class="w">    </span><span class="s">GIT_REPOSITORY</span><span class="w"> </span><span class="s">https://github.com/CMakePP/CMakePPLang</span>
+<span class="w">    </span><span class="s">GIT_TAG</span><span class="w"> </span><span class="s">v1.0.2</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
 </section>
 <section id="downloading-cmakepplang-and-building-manually">
 <span id="manually-downloading-cmakepplang"></span><h2>Downloading CMakePPLang and Building Manually<a class="headerlink" href="#downloading-cmakepplang-and-building-manually" title="Link to this heading"></a></h2>
