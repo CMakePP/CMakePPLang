@@ -1,0 +1,44 @@
+{
+"description": "<p>This is the state of the repository at the time of submission to JOSS.</p>",
+"license": "other-open",
+"title": "CMakePPLang: An object-oriented extension to CMake",
+"version": "v1.0.0",
+"upload_type": "software",
+"publication_date": "2023-09-12",
+"creators": [
+    {
+        "name": "Zachery Crandall",
+        "affiliation" : "Ames Laboratory / Iowa State University"
+    },
+    {
+        "affiliation" : "Ames Laboratory / Iowa State University" ,
+        "name": "Blake Mulnix"
+    },
+    {
+        "affiliation": "Ames Laboratory / Iowa State University",
+        "name": "Branden Butler"
+    },
+    {
+        "affiliation": "Ames Laboratory / Iowa State University",
+        "name": "Theresa L. Windus"
+    },
+    {
+        "affiliation": "Ames Laboratory / Iowa State University",
+        "name": "Ryan M. Richard"
+    },
+
+],
+"access_right": "open",
+"related_identifiers": [
+    {
+        "scheme": "url",
+        "identifier": "https://github.com/CMakePP/CMakePPLang/tree/v1.0.0",
+        "relation": "isSupplementTo"
+    },
+    {
+        "scheme": "doi",
+        "identifier": "10.5281/zenodo.8339015",
+        "relation": "isVersionOf"
+    }
+]
+}
