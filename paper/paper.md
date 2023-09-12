@@ -40,9 +40,11 @@ CMakePPLang is an object-oriented extension to the CMake language written
 entirely using the original CMake language
 with the goal of making projects built on CMake easier to create and maintain.
 That said, CMakePPLang has different coding practices, paradigms, and standards than the original CMake language,
-much in the same way that C\texttt{++} coding differs from C coding despite some level of interoperability.
-Currently, CMakePPLang is used within the CMakePP organization [@cmakepp_org] as the
-foundation for two in-progress projects: CMakeTest [@cmaketest] and CMaize [@cmaize]. CMakeTest
+much in the same way that
+C\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\tiny\bf ++} coding differs from
+C coding despite some level of interoperability.
+Currently, CMakePPLang is used within the CMakePP organization [@cmakepp_org] as
+the foundation for two in-progress projects: CMakeTest [@cmaketest] and CMaize [@cmaize]. CMakeTest
 provides a solution for unit testing CMake and CMakePPLang code. CMaize
 is a CMake tool to simplify interoperability between projects and writing
 their build systems.
@@ -53,7 +55,8 @@ their build systems.
 CMake [@cmake] is an extensible build tool that exceeds at generating build
 systems
 for many combinations of platforms, compilers, and build configurations.
-CMake has become the *de facto* standard tool for building C, C\texttt{++}, and
+CMake has become the *de facto* standard tool for building C,
+C\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\tiny\bf ++}, and
 Fortran programs of moderate to large size. However, as the size of a project
 increases, the complexity of the CMake build code tends to increase as well,
 and the need arises to make building projects with CMake easier and less
@@ -67,19 +70,22 @@ maintaining large, complex code bases [@wirth_good_2006; @ambler_realistic_1998]
 and there is an increasing need for this in the CMake language.
 
 Tobias Becker [@becker_cmake_2021] recognized these issues and wrote a purely object-oriented
-language on top of CMake, called CMake\texttt{++} (formerly oo-cmake) .
-CMake++ contains an abundance of CMake extensions. Many of those extensions
-have direct overlap with extensions that are part of CMakePPLang. Features include
-(among many): maps, objects, tasks/promises. Unfortunately development of
-CMake++ has largely been done by a single developer and it appears to have been
+language on top of CMake, called
+CMake\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\tiny\bf ++} (formerly oo-cmake) .
+CMake\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\tiny\bf ++} contains an abundance of CMake extensions. Many of those extensions
+have direct overlap with extensions that are part of CMakePPLang. Features
+include (among many): maps, objects, tasks/promises. Unfortunately development
+of CMake\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\tiny\bf ++} has largely
+been done by a single developer and it appears to have been
 abandoned, as there have only been two commits since July 2017, both in 2021.
 
-One of the primary issues with CMake++ is the lack of documentation. While
+One of the primary issues with
+CMake\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\tiny\bf ++} is the lack of documentation. While
 there is some high-level documentation, there is little to no API or detailed
 developer documentation. This makes it very challenging for a new developer to figure out
 what is going on. Initially, forking and expanding on CMake++ was
 considered, but it was determined that it would take similar time to
-decipher CMake++ as it would to develop CMakePPLang.
+decipher CMake\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\tiny\bf ++} as it would to develop CMakePPLang.
 
 CMakePPLang has been developed to provide extensions to the CMake language
 which provide objected-oriented functionality and other quality-of-life
@@ -146,8 +152,10 @@ CMakePPLang can contain attributes and functions and support inheritance.
 Instances of these user-defined classes can be created to be used in CMake
 modules. Currently, Classes are represented using Maps. An object of the
 Map type is an associative array for storing key-value pairs. The CMakePPLang
-Map provides the same basic functionality as a C\texttt{++} `std::map` [@cpp_stdmap_2023], Python
-`dictionary`[@python_map_2023], or JavaScript `Map` [@javascript_map_2023]. Users can use maps in
+Map provides the same basic functionality as a
+C\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\tiny\bf ++} `std::map` [@cpp_stdmap_2023], Python
+`dictionary`[@python_map_2023], or JavaScript `Map` [@javascript_map_2023].
+Users can use maps in
 their code wherever they see fit, and maps are used in CMakePPLang to hold the
 state of object instances. Finally, the Object type is the base class for all
 user-defined classes. The CMakePPLang Object defines the default
