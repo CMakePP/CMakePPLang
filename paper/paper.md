@@ -36,36 +36,38 @@ bibliography: paper.bib
 
 # Summary
 
-CMakePPLang is an object-oriented extension to the CMake language written entirely using the original CMake language
-with the goal of making projects built on CMake easier to create and maintain. 
-That said, CMakePPLang has different coding practices, paradigms, and standards than the original CMake language, 
-much in the same way that C++ coding differs from C coding despite some level of interoperability. 
-Currently, CMakePPLang is used within the CMakePP organization[@cmakepp_org] as the 
-foundation for two in-progress projects: CMakeTest[@cmaketest] and CMaize[@cmaize]. CMakeTest
+CMakePPLang is an object-oriented extension to the CMake language written
+entirely using the original CMake language
+with the goal of making projects built on CMake easier to create and maintain.
+That said, CMakePPLang has different coding practices, paradigms, and standards than the original CMake language,
+much in the same way that C\texttt{++} coding differs from C coding despite some level of interoperability.
+Currently, CMakePPLang is used within the CMakePP organization [@cmakepp_org] as the
+foundation for two in-progress projects: CMakeTest [@cmaketest] and CMaize [@cmaize]. CMakeTest
 provides a solution for unit testing CMake and CMakePPLang code. CMaize
-is a CMake tool to simplify interoperability between projects and writing 
+is a CMake tool to simplify interoperability between projects and writing
 their build systems.
 
 
 # Statement of Need
 
-CMake[@cmake] is an extensible build tool that exceeds at generating build systems
+CMake [@cmake] is an extensible build tool that exceeds at generating build
+systems
 for many combinations of platforms, compilers, and build configurations.
-CMake has become the *de facto* standard tool for building C, C++, and
+CMake has become the *de facto* standard tool for building C, C\texttt{++}, and
 Fortran programs of moderate to large size. However, as the size of a project
 increases, the complexity of the CMake build code tends to increase as well,
 and the need arises to make building projects with CMake easier and less
 error prone. The complexity of builds will also increase as scientific
 computing moves toward heterogeneous systems, requiring programs to leverage
-a combination of CPUs, GPUs, and other specialized hardware. [@richard_pluginplay_2023] Better
+a combination of CPUs, GPUs, and other specialized hardware [@richard_pluginplay_2023].  Better
 utilities and extensions in CMake can help alleviate these issues, but these
-tools must be able to be designed in a maintainable and testable way.
-[@pressman_142_2005] Object-oriented programming excels at managing and
-maintaining large, complex code bases[@wirth_good_2006; @ambler_realistic_1998],
+tools must be able to be designed in a maintainable and testable way [@pressman_142_2005].
+ Object-oriented programming excels at managing and
+maintaining large, complex code bases [@wirth_good_2006; @ambler_realistic_1998],
 and there is an increasing need for this in the CMake language.
 
-Tobias Becker recognized these issues and wrote a purely object-oriented
-language on top of CMake, called CMake++ (formerly oo-cmake).[@becker_cmake_2021]
+Tobias Becker [@becker_cmake_2021] recognized these issues and wrote a purely object-oriented
+language on top of CMake, called CMake\texttt{++} (formerly oo-cmake) .
 CMake++ contains an abundance of CMake extensions. Many of those extensions
 have direct overlap with extensions that are part of CMakePPLang. Features include
 (among many): maps, objects, tasks/promises. Unfortunately development of
@@ -76,14 +78,14 @@ One of the primary issues with CMake++ is the lack of documentation. While
 there is some high-level documentation, there is little to no API or detailed
 developer documentation. This makes it very challenging for a new developer to figure out
 what is going on. Initially, forking and expanding on CMake++ was
-considered, but it was determined that it would take similar time to 
+considered, but it was determined that it would take similar time to
 decipher CMake++ as it would to develop CMakePPLang.
 
 CMakePPLang has been developed to provide extensions to the CMake language
 which provide objected-oriented functionality and other quality-of-life
 improvements. The main features of CMakePPLang are the object-oriented
-functionality, strong data typing, addition of a map structure, and 
-backwards-compatability with CMake. These features allow for easier general
+functionality, strong data typing, addition of a map structure, and
+backwards-compatibility with CMake. These features allow for easier general
 programming in CMake, which is key to writing complex build tools in the
 language. Although CMakePPLang is built on top of CMake, CMakePPLang mostly
 relies on fairly fundamental features of the CMake language, so it is
@@ -110,7 +112,7 @@ function, which many CMake users are likely familiar with. In CMake's
 `list(LENGTH` function, there are three different ways to pass a list to the
 function, yielding three different results as seen in \autoref{fig:cmake_list_length}.
 Looking at the function signature, `list(LENGTH <list> <output variable>)`
-[@cmake_list_length], it is unclear which version to use without trial and error.
+ [@cmake_list_length], it is unclear which version to use without trial and error.
 Conversely, using strong typing with CMakePPLang (\autoref{fig:cmakepplang_list_length}),
 it is immediately clear that the variable pointing to the list should be used
 from the types of the signature, `cpp_list(LENGTH cpp_list list* int*)`, where
@@ -144,8 +146,8 @@ CMakePPLang can contain attributes and functions and support inheritance.
 Instances of these user-defined classes can be created to be used in CMake
 modules. Currently, Classes are represented using Maps. An object of the
 Map type is an associative array for storing key-value pairs. The CMakePPLang
-Map provides the same basic functionality as a C++ `std::map`[@cpp_stdmap_2023], Python
-`dictionary`[@python_map_2023], or JavaScript `Map`[@javascript_map_2023]. Users can use maps in
+Map provides the same basic functionality as a C\texttt{++} `std::map` [@cpp_stdmap_2023], Python
+`dictionary`[@python_map_2023], or JavaScript `Map` [@javascript_map_2023]. Users can use maps in
 their code wherever they see fit, and maps are used in CMakePPLang to hold the
 state of object instances. Finally, the Object type is the base class for all
 user-defined classes. The CMakePPLang Object defines the default
@@ -163,19 +165,19 @@ Users can also define a map to hold information, like a map that stores a
 color value under the "color" key (\autoref{fig:map_example}), along with
 other relevant values.
 
-![Example of creating a CMakePPLang map, adding a key-value pair, and 
+![Example of creating a CMakePPLang map, adding a key-value pair, and
 retrieving the value using the key.\label{fig:map_example}](fig/map_example.png){width=60%}
 
 Using these tools, CMakePPLang users can leverage the benefits of object-
 oriented programming to create more easily maintainable and testable utilities
-for CMake development. 
+for CMake development.
 
 
 # Acknowledgement
 
-This research was supported by the Exascale Computing Project (17-SC-20-SC), a collaborative 
+This research was supported by the Exascale Computing Project (17-SC-20-SC), a collaborative
 effort of the U.S. Department of Energy Office of Science and the National Nuclear Security Administration.
-The software was developed in the NWChemEx subproject and the research was performed at the Ames National Laboratory, 
+The software was developed in the NWChemEx subproject and the research was performed at the Ames National Laboratory,
 which is operated for the US DOE by Iowa State University under [Contract No. DE-AC02-07CH11358].
 
 
