@@ -1,6 +1,4 @@
 {
-"description": "<p>This is the state of the repository at the time of submission to JOSS.</p>",
-"license": "other-open",
 "title": "CMakePPLang: An object-oriented extension to CMake",
 "version": "v1.0.0",
 "upload_type": "software",
@@ -27,18 +25,5 @@
         "name": "Ryan M. Richard"
     }
 
-],
-"access_right": "open",
-"related_identifiers": [
-    {
-        "scheme": "url",
-        "identifier": "https://github.com/CMakePP/CMakePPLang/tree/v1.0.0",
-        "relation": "isSupplementTo"
-    },
-    {
-        "scheme": "doi",
-        "identifier": "10.5281/zenodo.8339015",
-        "relation": "isVersionOf"
-    }
 ]
 }
