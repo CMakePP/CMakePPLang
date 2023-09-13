@@ -37,7 +37,7 @@ bibliography: paper.bib
 # Summary
 
 CMakePPLang is an object-oriented extension to the CMake language written
-entirely using the original CMake language
+entirely using the original CMake language,
 with the goal of making projects built on CMake easier to create and maintain.
 That said, CMakePPLang has different coding practices, paradigms, and standards than the original CMake language,
 much in the same way that
@@ -143,7 +143,7 @@ Targets.
 
 Quasi-CMake types are types which conceptually exist in traditional CMake,
 but are not explicitly defined. These types are: Description and Type.
-Descriptions are the subset of strings that have no other intrinsic type aside from being a string, *i.e.*, they can only be interpreted as text. Types are string values used to represent the type of an object, in CMakePPLang they amount to strings reserved for the in-code keywords representing a type,
+Descriptions are the subset of strings that have no other intrinsic type aside from being a string, i.e., they can only be interpreted as text. Types are string values used to represent the type of an object, in CMakePPLang they amount to strings reserved for the in-code keywords representing a type,
 like `str` for a string, `int` for an integer, and `desc` for a description.
 
 CMakePPLang also defines types that are outside of what can easily be
@@ -187,7 +187,7 @@ for CMake development.
 This research was supported by the Exascale Computing Project (17-SC-20-SC), a collaborative
 effort of the U.S. Department of Energy Office of Science and the National Nuclear Security Administration.
 The software was developed in the NWChemEx subproject and the research was performed at the Ames National Laboratory,
-which is operated for the US DOE by Iowa State University under [Contract No. DE-AC02-07CH11358].
+which is operated for the US DOE by Iowa State University under Contract No. DE-AC02-07CH11358.
 
 
 # References
