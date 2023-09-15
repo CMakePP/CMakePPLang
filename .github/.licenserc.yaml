@@ -28,6 +28,6 @@ header:
     - examples/
     - tests/
     - LICENSE
-    - *.cff
+    - CITATION.cff
 
   comment: never
