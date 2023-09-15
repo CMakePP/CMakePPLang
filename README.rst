@@ -23,6 +23,9 @@ CMakePPLang
 .. image:: https://github.com/CMakePP/CMakePPLang/actions/workflows/deploy_docs.yml/badge.svg?branch=master
    :target: https://github.com/CMakePP/CMakePPLang/actions/workflows/deploy_docs.yml/badge.svg?branch=master
 
+.. image:: https://joss.theoj.org/papers/10.21105/joss.05711/status.svg
+   :target: https://doi.org/10.21105/joss.05711
+
 CMakePPLang defines the basic extensions of the CMake language which comprise
 the CMakePP language. Think of this repo as being like the standard C++ library,
 except for CMake.
