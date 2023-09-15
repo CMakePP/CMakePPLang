@@ -1,0 +1,50 @@
+cff-version: "1.2.0"
+authors:
+- family-names: Crandall
+  given-names: Zachery
+  orcid: "https://orcid.org/0000-0003-3161-9378"
+- family-names: Mulnix
+  given-names: Blake
+- family-names: Butler
+  given-names: Branden
+- family-names: Windus
+  given-names: Theresa L.
+  orcid: "https://orcid.org/0000-0001-6065-3167"
+- family-names: Richard
+  given-names: Ryan M.
+  orcid: "https://orcid.org/0000-0003-4235-5179"
+contact:
+- family-names: Richard
+  given-names: Ryan M.
+  orcid: "https://orcid.org/0000-0003-4235-5179"
+doi: 10.5281/zenodo.8339121
+message: If you use this software, please cite our article in the
+  Journal of Open Source Software.
+preferred-citation:
+  authors:
+  - family-names: Crandall
+    given-names: Zachery
+    orcid: "https://orcid.org/0000-0003-3161-9378"
+  - family-names: Mulnix
+    given-names: Blake
+  - family-names: Butler
+    given-names: Branden
+  - family-names: Windus
+    given-names: Theresa L.
+    orcid: "https://orcid.org/0000-0001-6065-3167"
+  - family-names: Richard
+    given-names: Ryan M.
+    orcid: "https://orcid.org/0000-0003-4235-5179"
+  date-published: 2023-09-14
+  doi: 10.21105/joss.05711
+  issn: 2475-9066
+  issue: 89
+  journal: Journal of Open Source Software
+  publisher:
+    name: Open Journals
+  start: 5711
+  title: "CMakePPLang: An object-oriented extension to CMake"
+  type: article
+  url: "https://joss.theoj.org/papers/10.21105/joss.05711"
+  volume: 8
+title: "CMakePPLang: An object-oriented extension to CMake"
