@@ -35,8 +35,11 @@ macro(@_cg_type@ _@_cg_type@_mode _@_cg_type@_this)
     if("${_@_cg_type@_nice_mode}" STREQUAL "ctor")
         # Handle CTOR call
         cpp_class_ctor("${_@_cg_type@_this}" "@_cg_type@" ${_@_cg_type@_encoded_args})
+    elseif("${_@_cg_type@_nice_mode}" STREQUAL "get" OR "${_@_cg_type@_nice_mode}" STREQUAL "set")
+        # Handle set/get of attribute
+        _cpp_object("${_@_cg_type@_nice_mode}" "${_@_cg_type@_this}" ${ARGN})
     else()
-        # Handle regular function call or set/get of attribute
+        # Handle regular function call
         _cpp_object("${_@_cg_type@_nice_mode}" "${_@_cg_type@_this}" ${_@_cg_type@_encoded_args})
     endif()
 endmacro()
