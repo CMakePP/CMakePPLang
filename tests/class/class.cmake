@@ -352,6 +352,8 @@ function(${_test_attr})
                 cpp_attr(MyClass b 2)
                 cpp_attr(MyClass c 3)
                 cpp_attr(MyClass d 4)
+                cpp_attr(MyClass special_char [[this is a $tring with $pecial ch&rs, no semicolon]])
+                cpp_attr(MyClass [[$pecial char in n&me, no semicolons]] [[this is a $tring with $pecial ch&rs, no semicolon]])
             cpp_end_class()
 
             # Create instance
@@ -362,9 +364,22 @@ function(${_test_attr})
         function(${_retrieve_single_call})
             _attr_retrieve_setup()
             MyClass(GET "${my_instance}" res_1 a)
-            MyClass(GET "${my_instance}" res_2 d)
+            MyClass(GET "${my_instance}" res_2 b)
+            MyClass(GET "${my_instance}" res_3 c)
+            MyClass(GET "${my_instance}" res_4 d)
+            MyClass(GET "${my_instance}" res_5 special_char)
             ct_assert_equal(res_1 1)
-            ct_assert_equal(res_2 4)
+            ct_assert_equal(res_2 2)
+            ct_assert_equal(res_3 3)
+            ct_assert_equal(res_4 4)
+            ct_assert_equal(res_5 [[this is a $tring with $pecial ch&rs, no semicolon]])
+        endfunction()
+
+        ct_add_section(NAME "_retrieve_single_call_special_attr")
+        function(${_retrieve_single_call_special_attr})
+            _attr_retrieve_setup()
+            MyClass(GET "${my_instance}" res [[$pecial char in n&me, no semicolons]])
+            ct_assert_equal(res [[this is a $tring with $pecial ch&rs, no semicolon]])
         endfunction()
 
         ct_add_section(NAME "_retrieve_multi_params_single_call")
@@ -385,6 +400,8 @@ function(${_test_attr})
             cpp_class(MyClass)
                 cpp_attr(MyClass a 1)
                 cpp_attr(MyClass b 2)
+                cpp_attr(MyClass special_char 0)
+                cpp_attr(MyClass [[$pecial char in n&me, no semicolons]] 0)
             cpp_end_class()
 
             # Create instance
@@ -399,6 +416,26 @@ function(${_test_attr})
             # Get the value and ensure it was set correctly
             MyClass(GET "${my_instance}" res a)
             ct_assert_equal(res 3)
+        endfunction()
+
+        ct_add_section(NAME "_attr_set_single_val_special")
+        function(${_attr_set_single_val_special})
+            _attr_set_setup()
+            # Set attribute as single value
+            MyClass(SET "${my_instance}" special_char [[this is a $tring with $pecial ch&rs, no semicolon]])
+            # Get the value and ensure it was set correctly
+            MyClass(GET "${my_instance}" res special_char)
+            ct_assert_equal(res [[this is a $tring with $pecial ch&rs, no semicolon]])
+        endfunction()
+
+        ct_add_section(NAME "_attr_set_single_val_special_name")
+        function(${_attr_set_single_val_special_name})
+            _attr_set_setup()
+            # Set attribute as single value
+            MyClass(SET "${my_instance}" [[$pecial char in n&me, no semicolons]] [[this is a $tring with $pecial ch&rs, no semicolon]])
+            # Get the value and ensure it was set correctly
+            MyClass(GET "${my_instance}" res [[$pecial char in n&me, no semicolons]])
+            ct_assert_equal(res [[this is a $tring with $pecial ch&rs, no semicolon]])
         endfunction()
 
         ct_add_section(NAME "_attr_set_list")
