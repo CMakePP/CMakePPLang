@@ -51,7 +51,6 @@ function(cpp_map_has_key _mhk_this _mhk_result _mhk_key)
     cpp_assert_signature("${ARGV}" map desc str)
 
     cpp_map_keys("${_mhk_this}" _mhk_keys)
-    cpp_sanitize_string(_mhk_key "${_mhk_key}")
     list(FIND _mhk_keys "${_mhk_key}" _mhk_index)
     if("${_mhk_index}" GREATER -1)
         set("${_mhk_result}" TRUE PARENT_SCOPE)
