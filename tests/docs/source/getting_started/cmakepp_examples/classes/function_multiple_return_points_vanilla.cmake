@@ -47,8 +47,8 @@ cpp_class(Automobile)
 # End class definition
 cpp_end_class()
 
-ct_add_test(NAME "function_multiple_return_points")
-function("${function_multiple_return_points}")
+ct_add_test(NAME [[function_multiple_return_points]])
+function("${CMAKETEST_TEST}")
 
     # Create an instance of the class called "my_auto" using the default CTOR
     Automobile(CTOR my_auto)

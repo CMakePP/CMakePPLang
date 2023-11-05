@@ -1,11 +1,11 @@
 include(cmake_test/cmake_test)
 
-ct_add_test(NAME "test_cpp_check_conflicting_types")
-function("${test_cpp_check_conflicting_types}")
+ct_add_test(NAME [[test_cpp_check_conflicting_types]])
+function("${CMAKETEST_TEST}")
     include(cmakepp_lang/utilities/check_conflicting_types)
 
-    ct_add_section(NAME "test_conflicts")
-    function("${test_conflicts}")
+    ct_add_section(NAME [[test_conflicts]])
+    function("${CMAKETEST_SECTION}")
 
         #[[[
         # Ease-of-testing function to test that verifies that a given string
@@ -42,11 +42,11 @@ function("${test_cpp_check_conflicting_types}")
 
     endfunction()
 
-    ct_add_section(NAME "test_no_conflicts")
-    function("${test_no_conflicts}")
+    ct_add_section(NAME [[test_no_conflicts]])
+    function("${CMAKETEST_SECTION}")
 
-        ct_add_section(NAME "test_capitalization")
-        function("${test_capitalization}")
+        ct_add_section(NAME [[test_capitalization]])
+        function("${CMAKETEST_SECTION}")
 
             cpp_check_conflicting_types(
                 _is_conflict _conflicting_type "not_a_type"
@@ -57,8 +57,8 @@ function("${test_cpp_check_conflicting_types}")
 
         endfunction()
 
-        ct_add_section(NAME "test_capitalization")
-        function("${test_capitalization}")
+        ct_add_section(NAME [[test_capitalization]])
+        function("${CMAKETEST_SECTION}")
 
             cpp_check_conflicting_types(_is_conflict _conflicting_type "Target")
 

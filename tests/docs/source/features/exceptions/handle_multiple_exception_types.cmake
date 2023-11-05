@@ -1,7 +1,7 @@
 include(cmake_test/cmake_test)
 
-ct_add_test(NAME "handle_multiple_exception_types")
-function("${handle_multiple_exception_types}")
+ct_add_test(NAME [[handle_multiple_exception_types]])
+function("${CMAKETEST_TEST}")
 
     # Add two exception handlers
     cpp_catch(FileNotFound ConnectionFailure)

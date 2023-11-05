@@ -1,7 +1,7 @@
 include(cmake_test/cmake_test)
 
-ct_add_test(NAME "variable_copy")
-function("${variable_copy}")
+ct_add_test(NAME [[variable_copy]])
+function("${CMAKETEST_TEST}")
 
     # Get the type of a value and print the result
     cpp_type_of(result TRUE)

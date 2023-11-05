@@ -1,7 +1,7 @@
 include(cmake_test/cmake_test)
 
-ct_add_test(NAME "variable_desc_contains_substring")
-function("${variable_desc_contains_substring}")
+ct_add_test(NAME [[variable_desc_contains_substring]])
+function("${CMAKETEST_TEST}")
 
     # Create a desc
     set(my_desc "Here is a desc")

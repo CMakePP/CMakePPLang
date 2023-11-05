@@ -48,8 +48,8 @@ cpp_class(ChildClass ParentClass)
 
 cpp_end_class()
 
-ct_add_test(NAME "function_overloading")
-function("${function_overloading}")
+ct_add_test(NAME [[function_overloading]])
+function("${CMAKETEST_TEST}")
 
     # Create an instance of ChildClass
     ChildClass(CTOR child_instance)

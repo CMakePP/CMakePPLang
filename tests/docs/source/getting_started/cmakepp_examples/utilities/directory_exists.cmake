@@ -1,7 +1,7 @@
 include(cmake_test/cmake_test)
 
-ct_add_test(NAME "directory_exists")
-function("${directory_exists}")
+ct_add_test(NAME [[directory_exists]])
+function("${CMAKETEST_TEST}")
 
     # Check if some files exist
     cpp_directory_exists(result_1 "/home/joe/dir_that_exists")

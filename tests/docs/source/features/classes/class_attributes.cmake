@@ -1,11 +1,11 @@
 include(cmake_test/cmake_test)
 
-ct_add_test(NAME "class_attributes")
-function("${class_attributes}")
+ct_add_test(NAME [[class_attributes]])
+function("${CMAKETEST_TEST}")
     include(cmakepp_lang/cmakepp_lang)
 
-    ct_add_section(NAME "declaring_attributes")
-    function("${declaring_attributes}")
+    ct_add_section(NAME [[declaring_attributes]])
+    function("${CMAKETEST_SECTION}")
 
         cpp_class(MyClass)
 

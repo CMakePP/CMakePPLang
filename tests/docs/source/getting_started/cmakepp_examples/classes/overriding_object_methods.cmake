@@ -48,10 +48,10 @@
 # # End class definition
 # cpp_end_class()
 
-# ct_add_test(NAME "overriding_object_methods")
+# ct_add_test(NAME [[overriding_object_methods]])
 # function("${overriding_object_methods}")
 
-#     ct_add_section(NAME "override_equal")
+#     ct_add_section(NAME [[override_equal]])
 #     function("${override_equal}")
 
 #         # Create two instances with different colors, but the same default
@@ -68,7 +68,7 @@
     
 #     endfunction()
     
-#     ct_add_section(NAME "override_copy")
+#     ct_add_section(NAME [[override_copy]])
 #     function("${override_copy}")
 
 #         # Create two instances using the default CTOR
@@ -87,7 +87,7 @@
     
 #     endfunction()
 
-#     ct_add_section(NAME "override_serialize")
+#     ct_add_section(NAME [[override_serialize]])
 #     function("${override_serialize}")
 
 #         # Create an instances using the default CTOR

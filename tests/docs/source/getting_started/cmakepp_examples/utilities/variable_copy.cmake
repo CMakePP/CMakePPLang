@@ -1,7 +1,7 @@
 include(cmake_test/cmake_test)
 
-ct_add_test(NAME "variable_copy")
-function("${variable_copy}")
+ct_add_test(NAME [[variable_copy]])
+function("${CMAKETEST_TEST}")
 
     # Create a list
     set(my_list 1 2 3)

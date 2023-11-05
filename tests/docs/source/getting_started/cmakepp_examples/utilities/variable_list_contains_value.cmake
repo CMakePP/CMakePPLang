@@ -1,7 +1,7 @@
 include(cmake_test/cmake_test)
 
-ct_add_test(NAME "variable_list_contains_value")
-function("${variable_list_contains_value}")
+ct_add_test(NAME [[variable_list_contains_value]])
+function("${CMAKETEST_TEST}")
 
     # Create list containing some values
     set(my_list 1 2 3 "hello" "world")

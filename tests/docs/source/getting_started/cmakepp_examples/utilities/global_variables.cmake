@@ -1,7 +1,7 @@
 include(cmake_test/cmake_test)
 
-ct_add_test(NAME "global_variables")
-function("${global_variables}")
+ct_add_test(NAME [[global_variables]])
+function("${CMAKETEST_TEST}")
 
     # Set a global value
     cpp_set_global(key_a "Hello")

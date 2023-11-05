@@ -1,10 +1,10 @@
 include(cmake_test/cmake_test)
 
-ct_add_test(NAME "serialization")
-function("${serialization}")
+ct_add_test(NAME [[serialization]])
+function("${CMAKETEST_TEST}")
 
-    ct_add_section(NAME "serialize_map")
-    function("${serialize_map}")
+    ct_add_section(NAME [[serialize_map]])
+    function("${CMAKETEST_SECTION}")
         # Create a map with initial key value pairs
         cpp_map(CTOR my_map "key_a" "value_a" "key_b" "value_b")
 
@@ -19,8 +19,8 @@ function("${serialization}")
         )
     endfunction()
 
-    ct_add_section(NAME "serialize_list")
-    function("${serialize_list}")
+    ct_add_section(NAME [[serialize_list]])
+    function("${CMAKETEST_SECTION}")
         # Create a list
         set(my_list "this;is;a;list")
 
@@ -35,8 +35,8 @@ function("${serialization}")
         )
     endfunction()
 
-    ct_add_section(NAME "serialize_object")
-    function("${serialize_object}")
+    ct_add_section(NAME [[serialize_object]])
+    function("${CMAKETEST_SECTION}")
         cpp_class(Automobile)
 
             cpp_attr(Automobile color red)

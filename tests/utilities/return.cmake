@@ -1,7 +1,7 @@
 include(cmake_test/cmake_test)
 
-ct_add_test(NAME "test_return")
-function("${test_return}")
+ct_add_test(NAME [[test_return]])
+function("${CMAKETEST_TEST}")
     include(cmakepp_lang/utilities/return)
 
     # Define a dummy function which uses the return function
@@ -17,19 +17,19 @@ function("${test_return}")
         cpp_return("${_rmv_rv_1}" "${_rmv_rv_2}" "${_rmv_rv_3}")
     endfunction()
 
-    ct_add_section(NAME "ensure_the_return_not_defined")
-    function("${ensure_the_return_not_defined}")
+    ct_add_section(NAME [[ensure_the_return_not_defined]])
+    function("${CMAKETEST_SECTION}")
         ct_assert_not_defined(the_return)
     endfunction()
 
-    ct_add_section(NAME "return_equals_hello_world")
-    function("${return_equals_hello_world}")
+    ct_add_section(NAME [[return_equals_hello_world]])
+    function("${CMAKETEST_SECTION}")
         dummy_fxn()
         ct_assert_equal(the_return "hello world")
     endfunction()
 
-    ct_add_section(NAME "multiple_return_values")
-    function("${multiple_return_values}")
+    ct_add_section(NAME [[multiple_return_values]])
+    function("${CMAKETEST_SECTION}")
         set(_prefix "multiple_return_values")
         return_multiple_values(_rv_1 _rv_2 _rv_3 "${_prefix}")
 

@@ -1,11 +1,11 @@
 include(cmake_test/cmake_test)
 
-ct_add_test(NAME "class_definition")
-function("${class_definition}")
+ct_add_test(NAME [[class_definition]])
+function("${CMAKETEST_TEST}")
     include(cmakepp_lang/cmakepp_lang)
 
-    ct_add_section(NAME "no_end_class_name")
-    function("${no_end_class_name}")
+    ct_add_section(NAME [[no_end_class_name]])
+    function("${CMAKETEST_SECTION}")
 
         # Begin class definition of class MyClass
         cpp_class(MyClass)
@@ -17,8 +17,8 @@ function("${class_definition}")
 
     endfunction()
 
-    ct_add_section(NAME "end_class_name")
-    function("${end_class_name}")
+    ct_add_section(NAME [[end_class_name]])
+    function("${CMAKETEST_SECTION}")
 
         # Begin class definition of class MyClass
         cpp_class(MyClass)
@@ -30,8 +30,8 @@ function("${class_definition}")
 
     endfunction()
 
-    ct_add_section(NAME "default_ctor")
-    function("${default_ctor}")
+    ct_add_section(NAME [[default_ctor]])
+    function("${CMAKETEST_SECTION}")
 
         # Begin class definition of class MyClass
         cpp_class(MyClass)
@@ -46,8 +46,8 @@ function("${class_definition}")
 
     endfunction()
 
-    ct_add_section(NAME "custom_ctor")
-    function("${custom_ctor}")
+    ct_add_section(NAME [[custom_ctor]])
+    function("${CMAKETEST_SECTION}")
 
         cpp_class(MyClass)
 
@@ -64,8 +64,8 @@ function("${class_definition}")
 
     endfunction()
 
-    ct_add_section(NAME "kwargs_ctor")
-    function("${kwargs_ctor}")
+    ct_add_section(NAME [[kwargs_ctor]])
+    function("${CMAKETEST_SECTION}")
 
         # Define class with some attributes
         cpp_class(MyClass)

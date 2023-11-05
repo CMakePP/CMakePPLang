@@ -12,11 +12,11 @@ cpp_class(MyClass)
 # Don't end the class so methods can be defined in the tests
 # cpp_end_class()
 
-ct_add_test(NAME "test_str_arg_w_escaped_chars")
-function("${test_str_arg_w_escaped_chars}")
+ct_add_test(NAME [[test_str_arg_w_escaped_chars]])
+function("${CMAKETEST_TEST}")
 
-    ct_add_section(NAME "test_no_escapes")
-    function("${test_no_escapes}")
+    ct_add_section(NAME [[test_no_escapes]])
+    function("${CMAKETEST_SECTION}")
 
         MyClass(CTOR my_obj)
 
@@ -28,8 +28,8 @@ function("${test_str_arg_w_escaped_chars}")
 
     endfunction()
 
-    ct_add_section(NAME "test_escaped_quotes")
-    function("${test_escaped_quotes}")
+    ct_add_section(NAME [[test_escaped_quotes]])
+    function("${CMAKETEST_SECTION}")
 
         MyClass(CTOR my_obj)
 
@@ -48,8 +48,8 @@ function("${test_str_arg_w_escaped_chars}")
 
     endfunction()
 
-    ct_add_section(NAME "test_escaped_dollar")
-    function("${test_escaped_dollar}")
+    ct_add_section(NAME [[test_escaped_dollar]])
+    function("${CMAKETEST_SECTION}")
 
         MyClass(CTOR my_obj)
 
@@ -68,8 +68,8 @@ function("${test_str_arg_w_escaped_chars}")
 
     endfunction()
 
-    ct_add_section(NAME "test_escaped_semicolon")
-    function("${test_escaped_semicolon}")
+    ct_add_section(NAME [[test_escaped_semicolon]])
+    function("${CMAKETEST_SECTION}")
 
         MyClass(CTOR my_obj)
 
@@ -88,8 +88,8 @@ function("${test_str_arg_w_escaped_chars}")
 
     endfunction()
 
-    ct_add_section(NAME "test_escaped_backslash")
-    function("${test_escaped_backslash}")
+    ct_add_section(NAME [[test_escaped_backslash]])
+    function("${CMAKETEST_SECTION}")
 
         MyClass(CTOR my_obj)
 
@@ -112,8 +112,8 @@ function("${test_str_arg_w_escaped_chars}")
 
     endfunction()
 
-    ct_add_section(NAME "test_escaped_var_ref")
-    function("${test_escaped_var_ref}")
+    ct_add_section(NAME [[test_escaped_var_ref]])
+    function("${CMAKETEST_SECTION}")
 
         MyClass(CTOR my_obj)
 
@@ -129,8 +129,8 @@ function("${test_str_arg_w_escaped_chars}")
 
     endfunction()
 
-    ct_add_section(NAME "test_other_chars")
-    function("${test_other_chars}")
+    ct_add_section(NAME [[test_other_chars]])
+    function("${CMAKETEST_SECTION}")
 
         MyClass(CTOR my_obj)
 
@@ -166,11 +166,11 @@ function("${test_str_arg_w_escaped_chars}")
 
     endfunction()
 
-    ct_add_section(NAME "test_multiple_args")
-    function("${test_multiple_args}")
+    ct_add_section(NAME [[test_multiple_args]])
+    function("${CMAKETEST_SECTION}")
 
-        ct_add_section(NAME "test_two_args")
-        function("${test_two_args}")
+        ct_add_section(NAME [[test_two_args]])
+        function("${CMAKETEST_SECTION}")
             cpp_member(print_msg MyClass int str)
             function("${print_msg}" self test_int test_string)
 
@@ -194,8 +194,8 @@ function("${test_str_arg_w_escaped_chars}")
             ct_assert_prints("\"\$")
         endfunction()
 
-        ct_add_section(NAME "test_three_args")
-        function("${test_three_args}")
+        ct_add_section(NAME [[test_three_args]])
+        function("${CMAKETEST_SECTION}")
             cpp_member(print_msg MyClass int str int)
             function("${print_msg}" self test_int test_string test_int2)
 

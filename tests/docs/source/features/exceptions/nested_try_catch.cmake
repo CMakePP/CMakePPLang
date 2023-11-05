@@ -1,7 +1,7 @@
 include(cmake_test/cmake_test)
 
-ct_add_test(NAME "nested_try_catch")
-function("${nested_try_catch}")
+ct_add_test(NAME [[nested_try_catch]])
+function("${CMAKETEST_TEST}")
 
     # Declare an exception handler for the outer try-catch block
     cpp_catch(FileNotFound)
