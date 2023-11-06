@@ -1,7 +1,7 @@
 include(cmake_test/cmake_test)
 
-ct_add_test(NAME "stress_test_map")
-function("${stress_test_map}")
+ct_add_test(NAME [[stress_test_map]])
+function("${CMAKETEST_TEST}")
     message("CMake Version: ${CMAKE_VERSION}")
     include(cmakepp_lang/map/map)
     include(cmakepp_lang/utilities/timer)

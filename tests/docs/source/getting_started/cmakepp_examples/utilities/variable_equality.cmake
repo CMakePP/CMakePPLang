@@ -1,7 +1,7 @@
 include(cmake_test/cmake_test)
 
-ct_add_test(NAME "variable_equality")
-function("${variable_equality}")
+ct_add_test(NAME [[variable_equality]])
+function("${CMAKETEST_TEST}")
 
     # Create three strings, two that are equivalent and on that is not
     set(string_a "Hello World")

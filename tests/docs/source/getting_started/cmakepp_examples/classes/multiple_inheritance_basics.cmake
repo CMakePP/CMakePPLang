@@ -35,11 +35,11 @@ cpp_class(ElectricTruck ElectricVehicle Truck)
 
 cpp_end_class()
 
-ct_add_test(NAME "multiple_inheritance_basics")
-function("${multiple_inheritance_basics}")
+ct_add_test(NAME [[multiple_inheritance_basics]])
+function("${CMAKETEST_TEST}")
 
-    ct_add_section(NAME "parent_attribute_access")
-    function("${parent_attribute_access}")
+    ct_add_section(NAME [[parent_attribute_access]])
+    function("${CMAKETEST_SECTION}")
         # Create instance of the subclass
         ElectricTruck(CTOR my_inst)
 
@@ -57,8 +57,8 @@ function("${multiple_inheritance_basics}")
         ct_assert_equal(result2 "3500")
     endfunction()
 
-    ct_add_section(NAME "parent_attribute_access")
-    function("${parent_attribute_access}")
+    ct_add_section(NAME [[parent_attribute_access]])
+    function("${CMAKETEST_SECTION}")
         # Create instance of the subclass
         ElectricTruck(CTOR my_inst)
 

@@ -16,8 +16,8 @@ cpp_class(MyClass)
 
 cpp_end_class()
 
-ct_add_test(NAME "function_overloading")
-function("${function_overloading}")
+ct_add_test(NAME [[function_overloading]])
+function("${CMAKETEST_TEST}")
 
     # Create instance of MyClass
     MyClass(CTOR my_instance)

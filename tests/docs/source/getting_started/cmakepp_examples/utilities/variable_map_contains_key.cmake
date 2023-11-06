@@ -1,7 +1,7 @@
 include(cmake_test/cmake_test)
 
-ct_add_test(NAME "variable_list_contains_value")
-function("${variable_list_contains_value}")
+ct_add_test(NAME [[variable_list_contains_value]])
+function("${CMAKETEST_TEST}")
 
     # Create a map containing some initial key value pairs
     cpp_map(CTOR my_map key_a value_a key_b value_b)

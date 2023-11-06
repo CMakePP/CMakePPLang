@@ -19,8 +19,8 @@ function(fxn_with_multiple_returns return_id_1 return_id_2)
 
 endfunction()
 
-ct_add_test(NAME "return")
-function("${return}")
+ct_add_test(NAME [[return]])
+function("${CMAKETEST_TEST}")
 
     # Calling the function
     fxn_with_return(return_value)

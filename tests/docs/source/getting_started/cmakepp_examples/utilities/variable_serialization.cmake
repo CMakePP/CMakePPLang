@@ -1,7 +1,7 @@
 include(cmake_test/cmake_test)
 
-ct_add_test(NAME "variable_serialization")
-function("${variable_serialization}")
+ct_add_test(NAME [[variable_serialization]])
+function("${CMAKETEST_TEST}")
 
     # Create a map containing a desc
     cpp_map(CTOR my_map desc_key "Hello World")

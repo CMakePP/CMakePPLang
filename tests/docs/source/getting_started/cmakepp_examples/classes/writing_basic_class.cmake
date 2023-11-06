@@ -9,8 +9,8 @@ cpp_class(Automobile)
 # End class definition
 cpp_end_class()
 
-ct_add_test(NAME "writing_basic_class")
-function("${writing_basic_class}")
+ct_add_test(NAME [[writing_basic_class]])
+function("${CMAKETEST_TEST}")
 
     # Create an instance of the class called "my_auto" using the default CTOR
     Automobile(CTOR my_auto)

@@ -18,8 +18,8 @@ cpp_class(ChildClass ParentClass)
 
 cpp_end_class()
 
-ct_add_test(NAME "function_overloading")
-function("${function_overloading}")
+ct_add_test(NAME [[function_overloading]])
+function("${CMAKETEST_TEST}")
 
     ChildClass(CTOR child_instance)
     ChildClass(my_virtual_fxn "${child_instance}")

@@ -1,7 +1,7 @@
 include(cmake_test/cmake_test)
 
-ct_add_test(NAME "basic_try_catch")
-function("${basic_try_catch}")
+ct_add_test(NAME [[basic_try_catch]])
+function("${CMAKETEST_TEST}")
 
     # Add an exception handler
     cpp_catch(FileNotFound)

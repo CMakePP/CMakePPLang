@@ -61,11 +61,11 @@ cpp_class(Car Automobile)
 # End class definition
 cpp_end_class()
 
-ct_add_test(NAME "derived_class")
-function("${derived_class}")
+ct_add_test(NAME [[derived_class]])
+function("${CMAKETEST_TEST}")
 
-    ct_add_section(NAME "access_from_derived_class")
-    function("${access_from_derived_class}")
+    ct_add_section(NAME [[access_from_derived_class]])
+    function("${CMAKETEST_SECTION}")
         # Create an instance of the derived class "Car"
         Car(CTOR my_car)
 
@@ -86,8 +86,8 @@ function("${derived_class}")
         
     endfunction()
 
-    ct_add_section(NAME "access_from_base_class")
-    function("${access_from_base_class}")
+    ct_add_section(NAME [[access_from_base_class]])
+    function("${CMAKETEST_SECTION}")
         # Create an instance of the derived class "Car"
         Car(CTOR my_car)
         

@@ -1,7 +1,7 @@
 include(cmake_test/cmake_test)
 
-ct_add_test(NAME "maps")
-function("${maps}")
+ct_add_test(NAME [[maps]])
+function("${CMAKETEST_TEST}")
 
     set(my_key "my_key")
     set(key_a "key_a")

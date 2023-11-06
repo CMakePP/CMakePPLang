@@ -1,7 +1,7 @@
 #TUTORIAL_START_SKIP
 include(cmake_test/cmake_test)
-ct_add_test(NAME "writing_a_class")
-function("${writing_a_class}")
+ct_add_test(NAME [[writing_a_class]])
+function("${CMAKETEST_TEST}")
 #TUTORIAL_STOP_SKIP
 
 #TUTORIAL
@@ -56,18 +56,18 @@ Greeter(SAY_HELLO "${new_instance}")
 message("${result}")  # Prints "Hello World"
 
 #TUTORIAL_START_SKIP
-ct_add_section(NAME "val_result_correct")
-function("${val_result_correct}")
+ct_add_section(NAME [[val_result_correct]])
+function("${CMAKETEST_SECTION}")
 ct_assert_equal(result "Hello World")
 endfunction()
 
-ct_add_section(NAME "no_method" EXPECTFAIL)
-function("${no_method}")
+ct_add_section(NAME [[no_method]] EXPECTFAIL)
+function("${CMAKETEST_SECTION}")
 Greeter(SAY_HELLO TRUE)
 endfunction()
 
-ct_add_section(NAME "no_overload_multi_args" EXPECTFAIL)
-function("${no_overload_multi_args}")
+ct_add_section(NAME [[no_overload_multi_args]] EXPECTFAIL)
+function("${CMAKETEST_SECTION}")
 Greeter(SAY_HELLO "${new_instance}" foo bar)
 endfunction()
 #TUTORIAL_STOP_SKIP
@@ -137,12 +137,12 @@ UsefulGreeter(SAY_HELLO "${useful}")
 message("${result}")  # Prints "Hello Alice"
 
 #TUTORIAL_START_SKIP
-ct_add_section(NAME "val_result_derived")
-function("${val_result_derived}")
+ct_add_section(NAME [[val_result_derived]])
+function("${CMAKETEST_SECTION}")
 ct_assert_equal(result "Hello Alice")
 endfunction()
 
-#ct_add_section(NAME "no_overload_for_greeter_arg" EXPECTFAIL)
+#ct_add_section(NAME [[no_overload_for_greeter_arg]] EXPECTFAIL)
 #function("${no_overload_for_greeter_arg}")
 #UsefulGreeter(SAY_HELLO "${new_instance}")
 #endfunction()
@@ -158,8 +158,8 @@ Greeter(SAY_HELLO "${useful}")
 message("${result}")  # Prints "Hello Alice"
 
 #TUTORIAL_START_SKIP
-ct_add_section(NAME "val_result_base")
-function("${val_result_base}")
+ct_add_section(NAME [[val_result_base]])
+function("${CMAKETEST_SECTION}")
 ct_assert_equal(result "Hello Alice")
 endfunction()
 endfunction()

@@ -1,7 +1,7 @@
 include(cmake_test/cmake_test)
 
-ct_add_test(NAME "check_conflicting_variable_type")
-function("${check_conflicting_variable_type}")
+ct_add_test(NAME [[check_conflicting_variable_type]])
+function("${CMAKETEST_TEST}")
 
     set(string_to_check "target")
 

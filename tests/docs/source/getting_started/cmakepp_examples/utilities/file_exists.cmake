@@ -1,7 +1,7 @@
 include(cmake_test/cmake_test)
 
-ct_add_test(NAME "file_exists")
-function("${file_exists}")
+ct_add_test(NAME [[file_exists]])
+function("${CMAKETEST_TEST}")
 
     # Check if some files exist
     cpp_file_exists(result_1 "/home/joe/file_that_exists.txt")

@@ -19,8 +19,8 @@ cpp_class(Truck Vehicle)
 
 cpp_end_class()
 
-ct_add_test(NAME "pure_virtual_member_functions")
-function("${pure_virtual_member_functions}")
+ct_add_test(NAME [[pure_virtual_member_functions]])
+function("${CMAKETEST_TEST}")
 
     # Create an instance of the Truck class and call describe_self
     Truck(CTOR my_inst)

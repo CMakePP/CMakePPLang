@@ -1,7 +1,7 @@
 include(cmake_test/cmake_test)
 
-ct_add_test(NAME "define_member_function")
-function("${define_member_function}")
+ct_add_test(NAME [[define_member_function]])
+function("${CMAKETEST_TEST}")
 
     cpp_class(MyClass)
 

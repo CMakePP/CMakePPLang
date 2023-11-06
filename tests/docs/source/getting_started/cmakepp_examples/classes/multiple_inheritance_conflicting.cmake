@@ -28,11 +28,11 @@ cpp_class(Truck)
 
 cpp_end_class()
 
-ct_add_test(NAME "multiple_inheritance_conflicting")
-function("${multiple_inheritance_conflicting}")
+ct_add_test(NAME [[multiple_inheritance_conflicting]])
+function("${CMAKETEST_TEST}")
 
-    ct_add_section(NAME "electric_vehicle_then_truck")
-    function("${electric_vehicle_then_truck}")
+    ct_add_section(NAME [[electric_vehicle_then_truck]])
+    function("${CMAKETEST_SECTION}")
         # Define a subclass that inherits from both parent classes
         cpp_class(ElectricTruck ElectricVehicle Truck)
 
@@ -60,8 +60,8 @@ function("${multiple_inheritance_conflicting}")
         ct_assert_prints("I have started silently.")
     endfunction()
 
-    ct_add_section(NAME "truck_then_electric_vehicle")
-    function("${truck_then_electric_vehicle}")
+    ct_add_section(NAME [[truck_then_electric_vehicle]])
+    function("${CMAKETEST_SECTION}")
         # Define a subclass that inherits from both parent classes
         cpp_class(TruckElectric Truck ElectricVehicle)
 

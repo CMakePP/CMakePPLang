@@ -1,7 +1,7 @@
 include(cmake_test/cmake_test)
 
-ct_add_test(NAME "handle_all_exceptions")
-function("${handle_all_exceptions}")
+ct_add_test(NAME [[handle_all_exceptions]])
+function("${CMAKETEST_TEST}")
 
     # Add general exception handler that catches all exceptions
     cpp_catch(ALL_EXCEPTIONS)

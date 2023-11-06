@@ -15,7 +15,7 @@ include(cmaize/cmaize)
 FetchContent_Declare(
     cmake_test
     GIT_REPOSITORY https://github.com/CMakePP/CMakeTest
-    GIT_TAG 99901a11adda1b21abed7941c10641b2b03c11ad
+    GIT_TAG v0.1.8
 )
 set(build_testing_old "${BUILD_TESTING}")
 set(BUILD_TESTING OFF CACHE BOOL "" FORCE)
