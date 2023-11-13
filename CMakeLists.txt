@@ -8,7 +8,7 @@ option(BUILD_TESTING "Should we build and run the unit tests?" OFF)
 # Adds CMakePPLang to the module path so it can be included as
 # include(cmakepp_lang/cmakepp_lang), checks to make sure it hasn't been added
 # before.
-list(FIND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}" path_has_cmake)
+list(FIND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake" path_has_cmake)
 if(${path_has_cmake} STREQUAL "-1")
     list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 endif()
