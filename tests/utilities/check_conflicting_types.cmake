@@ -45,7 +45,7 @@ function("${CMAKETEST_TEST}")
     ct_add_section(NAME [[test_no_conflicts]])
     function("${CMAKETEST_SECTION}")
 
-        ct_add_section(NAME [[test_capitalization]])
+        ct_add_section(NAME [[test_underscores]])
         function("${CMAKETEST_SECTION}")
 
             cpp_check_conflicting_types(
