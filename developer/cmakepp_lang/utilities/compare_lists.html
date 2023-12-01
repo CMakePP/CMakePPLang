@@ -1,21 +1,23 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>cmakepp_lang/utilities/compare_lists &mdash; CMakePPLang 1.0.0alpha documentation</title>
-      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+
+  
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=d4e7da7a"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=418f8411"></script>
         <script src="../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
@@ -106,10 +108,10 @@
            <div itemprop="articleBody">
              
   <section id="module-cmakepp_lang-utilities-compare_lists">
-<span id="cmakepp-lang-utilities-compare-lists"></span><h1>cmakepp_lang/utilities/compare_lists<a class="headerlink" href="#module-cmakepp_lang-utilities-compare_lists" title="Link to this heading"></a></h1>
+<span id="cmakepp-lang-utilities-compare-lists"></span><h1>cmakepp_lang/utilities/compare_lists<a class="headerlink" href="#module-cmakepp_lang-utilities-compare_lists" title="Permalink to this heading"></a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="cmakepp_lang-utilities-compare_lists.cpp_compare_lists">
-<span class="sig-prename descclassname"><span class="pre">cmakepp_lang/utilities/compare_lists.</span></span><span class="sig-name descname"><span class="pre">cpp_compare_lists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span> <span class="pre">lhs</span> <span class="pre">rhs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang-utilities-compare_lists.cpp_compare_lists" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">cmakepp_lang/utilities/compare_lists.</span></span><span class="sig-name descname"><span class="pre">cpp_compare_lists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span> <span class="pre">lhs</span> <span class="pre">rhs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang-utilities-compare_lists.cpp_compare_lists" title="Permalink to this definition"></a></dt>
 <dd><p>Encapsulates the process of comparing two CMake lists to one another.</p>
 <p>Two CMake lists are equal if they contain the same number of elements and if
 the <span class="math notranslate nohighlight">\(i\)</span>-th element in <code class="docutils literal notranslate"><span class="pre">lhs</span></code> compares equal to the <span class="math notranslate nohighlight">\(i\)</span>-th
@@ -137,7 +139,7 @@ debug mode or not.</p>
 </dd>
 </dl>
 <section id="error-checking">
-<h2>Error Checking<a class="headerlink" href="#error-checking" title="Link to this heading"></a></h2>
+<h2>Error Checking<a class="headerlink" href="#error-checking" title="Permalink to this heading"></a></h2>
 <p>If CMakePP is run in debug mode, this function will assert that the function
 is only provided three arguments (preventing the user from accidentally
 dereferencing one of the input lists in most cases) and that the arguments are

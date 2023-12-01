@@ -1,21 +1,23 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>cmakepp_lang/utilities/global &mdash; CMakePPLang 1.0.0alpha documentation</title>
-      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+
+  
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=d4e7da7a"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=418f8411"></script>
         <script src="../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -105,11 +107,11 @@
            <div itemprop="articleBody">
              
   <section id="module-cmakepp_lang-utilities-global">
-<span id="cmakepp-lang-utilities-global"></span><h1>cmakepp_lang/utilities/global<a class="headerlink" href="#module-cmakepp_lang-utilities-global" title="Link to this heading"></a></h1>
+<span id="cmakepp-lang-utilities-global"></span><h1>cmakepp_lang/utilities/global<a class="headerlink" href="#module-cmakepp_lang-utilities-global" title="Permalink to this heading"></a></h1>
 <p>Defines functions used to manipulate CMakePPLang global variables.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="cmakepp_lang-utilities-global.cpp_append_global">
-<span class="sig-prename descclassname"><span class="pre">cmakepp_lang/utilities/global.</span></span><span class="sig-name descname"><span class="pre">cpp_append_global</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span> <span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang-utilities-global.cpp_append_global" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">cmakepp_lang/utilities/global.</span></span><span class="sig-name descname"><span class="pre">cpp_append_global</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span> <span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang-utilities-global.cpp_append_global" title="Permalink to this definition"></a></dt>
 <dd><p>Appends a value to a global list.</p>
 <p>When we are manipulating a global state, which is actually a list, we often
 want to append to it and not “set” it (set in this context referring to
@@ -126,14 +128,14 @@ case-insensitive.</p></li>
 </dd>
 </dl>
 <section id="error-checking">
-<h2>Error Checking<a class="headerlink" href="#error-checking" title="Link to this heading"></a></h2>
+<h2>Error Checking<a class="headerlink" href="#error-checking" title="Permalink to this heading"></a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">cpp_append_global</span></code> will assert that it is called with only two arguments.</p>
 </section>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cmakepp_lang-utilities-global.cpp_set_global">
-<span class="sig-prename descclassname"><span class="pre">cmakepp_lang/utilities/global.</span></span><span class="sig-name descname"><span class="pre">cpp_set_global</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span> <span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang-utilities-global.cpp_set_global" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">cmakepp_lang/utilities/global.</span></span><span class="sig-name descname"><span class="pre">cpp_set_global</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span> <span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang-utilities-global.cpp_set_global" title="Permalink to this definition"></a></dt>
 <dd><p>Sets a global variable to the provided value.</p>
 <p>This function will set a global variable to the value provided. If the global
 variable already exists it will overwrite its current value.</p>
@@ -147,14 +149,14 @@ case-insensitive.</p></li>
 </dd>
 </dl>
 <section id="id1">
-<h2>Error Checking<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<h2>Error Checking<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">cpp_set_global</span></code> will assert that it is called with only two arguments.</p>
 </section>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cmakepp_lang-utilities-global.cpp_get_global">
-<span class="sig-prename descclassname"><span class="pre">cmakepp_lang/utilities/global.</span></span><span class="sig-name descname"><span class="pre">cpp_get_global</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span> <span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang-utilities-global.cpp_get_global" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">cmakepp_lang/utilities/global.</span></span><span class="sig-name descname"><span class="pre">cpp_get_global</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span> <span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang-utilities-global.cpp_get_global" title="Permalink to this definition"></a></dt>
 <dd><p>Retrieves the value of the requested global variable.</p>
 <p>This function will get the value of the specified global variable. If the
 variable does not exist the empty string will be returned. It is thus not
@@ -180,7 +182,7 @@ set to the empty string.</p>
 </dd>
 </dl>
 <section id="id2">
-<h2>Error Checking<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<h2>Error Checking<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">cpp_get_global</span></code> will assert that it is called with only two arguments.</p>
 </section>
 </dd></dl>

@@ -1,21 +1,23 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Example Project using CMakePPLang &mdash; CMakePPLang 1.0.0alpha documentation</title>
-      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=d4e7da7a"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=418f8411"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -97,7 +99,7 @@
            <div itemprop="articleBody">
              
   <section id="example-project-using-cmakepplang">
-<span id="id1"></span><h1>Example Project using CMakePPLang<a class="headerlink" href="#example-project-using-cmakepplang" title="Link to this heading"></a></h1>
+<span id="id1"></span><h1>Example Project using CMakePPLang<a class="headerlink" href="#example-project-using-cmakepplang" title="Permalink to this heading"></a></h1>
 <p>This chapter demonstrates how to set up a project to use CMakePPLang, aiming to
 be both a tutorial for new users setting up their first project using
 CMakePPLang, as well as a quick reference for experienced users.</p>
@@ -113,7 +115,7 @@ to check your work or follow along when creating a new project is not
 possible/desired.</p>
 </div>
 <section id="project-layout">
-<h2>Project Layout<a class="headerlink" href="#project-layout" title="Link to this heading"></a></h2>
+<h2>Project Layout<a class="headerlink" href="#project-layout" title="Permalink to this heading"></a></h2>
 <p>This project will be a simple layout with a top-level <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file,
 a <code class="docutils literal notranslate"><span class="pre">cmake</span></code> subdirectory where CMake source code will reside, and a <code class="docutils literal notranslate"><span class="pre">tests</span></code>
 directory where the code will be tested. If following along, create these
@@ -154,7 +156,7 @@ In this project, there is an additional <code class="docutils literal notranslat
 <code class="docutils literal notranslate"><span class="pre">CMakeTest</span></code> and include the tests to be run.</p>
 </section>
 <section id="initial-cmake-boilerplate">
-<h2>Initial CMake Boilerplate<a class="headerlink" href="#initial-cmake-boilerplate" title="Link to this heading"></a></h2>
+<h2>Initial CMake Boilerplate<a class="headerlink" href="#initial-cmake-boilerplate" title="Permalink to this heading"></a></h2>
 <p>All CMake projects require that a minimum CMake version be set with
 <code class="docutils literal notranslate"><span class="pre">cmake_minimum_required()</span></code> and a project must be defined with <code class="docutils literal notranslate"><span class="pre">project()</span></code>.
 Additionally, it is useful to add a toggle for whether to build the project
@@ -168,7 +170,7 @@ tests or not that the user can change as needed. We add the
 </div>
 </section>
 <section id="fetching-cmakepplang">
-<h2>Fetching CMakePPLang<a class="headerlink" href="#fetching-cmakepplang" title="Link to this heading"></a></h2>
+<h2>Fetching CMakePPLang<a class="headerlink" href="#fetching-cmakepplang" title="Permalink to this heading"></a></h2>
 <p>We will start by setting up the ability to get CMakePPLang automatically in
 the project following the instructions at <a class="reference internal" href="obtaining_cmakepplang.html#auto-downloading-cmakepplang"><span class="std std-ref">Automatically Downloading and Including CMakePPLang</span></a>.
 First, add the following text to <code class="docutils literal notranslate"><span class="pre">cmake/get_cmakepp_lang.cmake</span></code>:</p>
@@ -221,7 +223,7 @@ First, add the following text to <code class="docutils literal notranslate"><spa
 </div>
 </section>
 <section id="defining-the-class">
-<h2>Defining the Class<a class="headerlink" href="#defining-the-class" title="Link to this heading"></a></h2>
+<h2>Defining the Class<a class="headerlink" href="#defining-the-class" title="Permalink to this heading"></a></h2>
 <p>Now we need to define the <code class="docutils literal notranslate"><span class="pre">Greeter</span></code> class with the <code class="docutils literal notranslate"><span class="pre">name</span></code> attribute and
 <code class="docutils literal notranslate"><span class="pre">hello</span></code> member function. Create a <code class="docutils literal notranslate"><span class="pre">cmake/greeter/greeter_class.cmake</span></code>
 file and add the following text:</p>
@@ -291,7 +293,7 @@ the top-level <code class="docutils literal notranslate"><span class="pre">CMake
 </div>
 </section>
 <section id="testing-the-class">
-<h2>Testing the Class<a class="headerlink" href="#testing-the-class" title="Link to this heading"></a></h2>
+<h2>Testing the Class<a class="headerlink" href="#testing-the-class" title="Permalink to this heading"></a></h2>
 <p>CMakeTest is going to be used to test the <code class="docutils literal notranslate"><span class="pre">Greeter</span></code> class we just wrote, so
 we need to get CMakeTest similarly to how we automatically got CMakePPLang.
 Add the following text to <code class="docutils literal notranslate"><span class="pre">cmake/get_cmake_test.cmake</span></code>:</p>
@@ -399,7 +401,7 @@ to get CMakeTest and add the <code class="docutils literal notranslate"><span cl
 </div>
 </section>
 <section id="building-the-project">
-<h2>Building the Project<a class="headerlink" href="#building-the-project" title="Link to this heading"></a></h2>
+<h2>Building the Project<a class="headerlink" href="#building-the-project" title="Permalink to this heading"></a></h2>
 <p>Now that we have a complete project, it can be built with CMake after
 navigating to the top of the project directory, which we will refer to here
 as <code class="docutils literal notranslate"><span class="pre">PROJECT_ROOT</span></code>. In a terminal, run the following command for your system:</p>
@@ -431,7 +433,7 @@ be run with:</p>
 </div>
 </section>
 <section id="running-the-tests">
-<h2>Running the Tests<a class="headerlink" href="#running-the-tests" title="Link to this heading"></a></h2>
+<h2>Running the Tests<a class="headerlink" href="#running-the-tests" title="Permalink to this heading"></a></h2>
 <p>If tests were built using the <code class="docutils literal notranslate"><span class="pre">BUILD_TESTING=ON</span></code> option, then unit tests from
 the build will be included in the <code class="docutils literal notranslate"><span class="pre">build</span></code> directory generated above. These
 tests are run using CMake’s test driver program, <a class="reference external" href="&quot;https://cmake.org/cmake/help/book/mastering-cmake/chapter/Testing%20With%20CMake%20and%20CTest.html&quot;">CTest</a>. Navigate into the

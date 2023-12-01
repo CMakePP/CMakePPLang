@@ -1,21 +1,23 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Obtaining CMakePPLang &mdash; CMakePPLang 1.0.0alpha documentation</title>
-      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=d4e7da7a"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=418f8411"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -95,14 +97,14 @@
            <div itemprop="articleBody">
              
   <section id="obtaining-cmakepplang">
-<h1>Obtaining CMakePPLang<a class="headerlink" href="#obtaining-cmakepplang" title="Link to this heading"></a></h1>
+<h1>Obtaining CMakePPLang<a class="headerlink" href="#obtaining-cmakepplang" title="Permalink to this heading"></a></h1>
 <p>This section details two ways of obtaining CMakePPLang for use in your build
 system. The easiest way to use the CMakePP language in your project is
 <a class="reference internal" href="#auto-downloading-cmakepplang"><span class="std std-ref">Automatically Downloading and Including CMakePPLang</span></a>.</p>
 <p>Alternatively you can choose <a class="reference internal" href="#manually-downloading-cmakepplang"><span class="std std-ref">Downloading CMakePPLang and Building Manually</span></a>, which is
 a bit more complicated.</p>
 <section id="automatically-downloading-and-including-cmakepplang">
-<span id="auto-downloading-cmakepplang"></span><h2>Automatically Downloading and Including CMakePPLang<a class="headerlink" href="#automatically-downloading-and-including-cmakepplang" title="Link to this heading"></a></h2>
+<span id="auto-downloading-cmakepplang"></span><h2>Automatically Downloading and Including CMakePPLang<a class="headerlink" href="#automatically-downloading-and-including-cmakepplang" title="Permalink to this heading"></a></h2>
 <p>As a convenience to your users you can make it so that your build system
 automatically downloads CMakePPLang and includes it. The easiest way to do
 this is to put the following CMake script in a file
@@ -155,7 +157,7 @@ add the line:</p>
 <p>Your project will now download CMakePPLang automatically as part of the CMake
 configuration.</p>
 <section id="pinning-a-cmakepplang-version">
-<span id="version-pinning"></span><h3>Pinning a CMakePPLang Version<a class="headerlink" href="#pinning-a-cmakepplang-version" title="Link to this heading"></a></h3>
+<span id="version-pinning"></span><h3>Pinning a CMakePPLang Version<a class="headerlink" href="#pinning-a-cmakepplang-version" title="Permalink to this heading"></a></h3>
 <p>Sometimes bugs may be found in a particular version of CMakePPLang (that will
 hopefully be fixed quickly in the next version!). In this case, it is useful
 to pin a previous version so you can continue your work uninterupted. To pin
@@ -172,7 +174,7 @@ the following <code class="docutils literal notranslate"><span class="pre">Fetch
 </section>
 </section>
 <section id="downloading-cmakepplang-and-building-manually">
-<span id="manually-downloading-cmakepplang"></span><h2>Downloading CMakePPLang and Building Manually<a class="headerlink" href="#downloading-cmakepplang-and-building-manually" title="Link to this heading"></a></h2>
+<span id="manually-downloading-cmakepplang"></span><h2>Downloading CMakePPLang and Building Manually<a class="headerlink" href="#downloading-cmakepplang-and-building-manually" title="Permalink to this heading"></a></h2>
 <p>Although convenient, automatically downloading and including CMakePPLang
 is not as useful when attempting to test local changes made to CMakePPLang.
 In this scenario, CMakePPLang can be manually downloaded from GitHub either

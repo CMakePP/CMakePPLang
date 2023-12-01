@@ -1,21 +1,23 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Language Conventions &mdash; CMakePPLang 1.0.0alpha documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=d4e7da7a"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=418f8411"></script>
         <script src="_static/doctools.js?v=888ff710"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/sphinx_highlight.js?v=4825356b"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -87,7 +89,7 @@
            <div itemprop="articleBody">
              
   <section id="language-conventions">
-<h1>Language Conventions<a class="headerlink" href="#language-conventions" title="Link to this heading"></a></h1>
+<h1>Language Conventions<a class="headerlink" href="#language-conventions" title="Permalink to this heading"></a></h1>
 <p>While you can always check the CMakePPLang documentation for how to
 use a function, CMakePPLang strives to also make it as easy as possible to
 “guess” how to use functions. Key to this effort is understanding
@@ -100,7 +102,7 @@ If an exception exists (and it is not documented why it is an exception)
 assume it is a bug and please file an <a class="reference external" href="https://github.com/CMakePP/CMakePPLang/issues">issue on GitHub</a>.</p>
 </div>
 <section id="namespaces">
-<h2>Namespaces<a class="headerlink" href="#namespaces" title="Link to this heading"></a></h2>
+<h2>Namespaces<a class="headerlink" href="#namespaces" title="Permalink to this heading"></a></h2>
 <p>Both CMake and CMakePP have a concept of variable scope, but neither have a
 namespace concept. The most straightforward way to introduce namespaces is to
 mangle a prefix onto function and variable names. CMakePPLang uses the prefix
@@ -117,7 +119,7 @@ and private configuration variables (<code class="docutils literal notranslate">
 is ever need for a protected variable).</p>
 </section>
 <section id="function-argument-order">
-<h2>Function Argument Order<a class="headerlink" href="#function-argument-order" title="Link to this heading"></a></h2>
+<h2>Function Argument Order<a class="headerlink" href="#function-argument-order" title="Permalink to this heading"></a></h2>
 <p>The signatures of functions found in CMakePPLang all follow the same
 conventions when it comes to argument orders. For a non-member CMakePP function
 taking <span class="math notranslate nohighlight">\(m\)</span> arguments and returning <span class="math notranslate nohighlight">\(n\)</span> values (<span class="math notranslate nohighlight">\(n\le m\)</span>), the

@@ -1,21 +1,23 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>cmakepp_lang/types/is_callable &mdash; CMakePPLang 1.0.0alpha documentation</title>
-      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+
+  
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=d4e7da7a"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=418f8411"></script>
         <script src="../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
@@ -106,13 +108,13 @@
            <div itemprop="articleBody">
              
   <section id="module-cmakepp_lang-types-is_callable">
-<span id="cmakepp-lang-types-is-callable"></span><h1>cmakepp_lang/types/is_callable<a class="headerlink" href="#module-cmakepp_lang-types-is_callable" title="Link to this heading"></a></h1>
+<span id="cmakepp-lang-types-is-callable"></span><h1>cmakepp_lang/types/is_callable<a class="headerlink" href="#module-cmakepp_lang-types-is_callable" title="Permalink to this heading"></a></h1>
 <p>Defines functions for checking if a function can be run with the specified
 signature. This is used, for example, to enforce strong typing on class
 member functions.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="cmakepp_lang-types-is_callable._cpp_compare_names">
-<span class="sig-prename descclassname"><span class="pre">cmakepp_lang/types/is_callable.</span></span><span class="sig-name descname"><span class="pre">_cpp_compare_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span> <span class="pre">lhs</span> <span class="pre">rhs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang-types-is_callable._cpp_compare_names" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">cmakepp_lang/types/is_callable.</span></span><span class="sig-name descname"><span class="pre">_cpp_compare_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span> <span class="pre">lhs</span> <span class="pre">rhs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang-types-is_callable._cpp_compare_names" title="Permalink to this definition"></a></dt>
 <dd><p>Handles logic for comparing the human-readable names of the functions.</p>
 <p>This function compares the name part of two signatures (<em>i.e.</em>, the 0th
 element) in a case-insensitive manner.</p>
@@ -141,7 +143,7 @@ is not meant for use outside of the scope of comparing function signatures.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cmakepp_lang-types-is_callable._cpp_compare_lengths">
-<span class="sig-prename descclassname"><span class="pre">cmakepp_lang/types/is_callable.</span></span><span class="sig-name descname"><span class="pre">_cpp_compare_lengths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span> <span class="pre">fxn</span> <span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang-types-is_callable._cpp_compare_lengths" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">cmakepp_lang/types/is_callable.</span></span><span class="sig-name descname"><span class="pre">_cpp_compare_lengths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span> <span class="pre">fxn</span> <span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang-types-is_callable._cpp_compare_lengths" title="Permalink to this definition"></a></dt>
 <dd><p>Attempts to rule out a signature match based on length arguments alone.</p>
 <p>For non-variadic functions we know that if one signature is longer than the
 other they can’t possibly be a match. For a variadic function with <span class="math notranslate nohighlight">\(n\)</span>
@@ -173,7 +175,7 @@ is not meant for use outside of the scope of comparing function signatures.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cmakepp_lang-types-is_callable.cpp_is_callable">
-<span class="sig-prename descclassname"><span class="pre">cmakepp_lang/types/is_callable.</span></span><span class="sig-name descname"><span class="pre">cpp_is_callable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span> <span class="pre">fxn</span> <span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang-types-is_callable.cpp_is_callable" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">cmakepp_lang/types/is_callable.</span></span><span class="sig-name descname"><span class="pre">cpp_is_callable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span> <span class="pre">fxn</span> <span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmakepp_lang-types-is_callable.cpp_is_callable" title="Permalink to this definition"></a></dt>
 <dd><p>Determines if a function can be run as the specified signature.</p>
 <p>This function takes two lists <code class="docutils literal notranslate"><span class="pre">fxn</span></code> and <code class="docutils literal notranslate"><span class="pre">args</span></code>. Each list is
 interpreted as being a function signature such that the first element is the
@@ -206,7 +208,7 @@ debug mode.</p>
 </dd>
 </dl>
 <section id="error-checking">
-<h2>Error Checking<a class="headerlink" href="#error-checking" title="Link to this heading"></a></h2>
+<h2>Error Checking<a class="headerlink" href="#error-checking" title="Permalink to this heading"></a></h2>
 <p>If CMakePP is run in debug mode this function will ensure that only three
 arguments are provided and that each argument has the correct type. If any of
 these asserts fail an error will be raised. These assertions are only done in

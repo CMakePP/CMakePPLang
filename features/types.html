@@ -1,21 +1,23 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Types &mdash; CMakePPLang 1.0.0alpha documentation</title>
-      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=d4e7da7a"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=418f8411"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -123,7 +125,7 @@
            <div itemprop="articleBody">
              
   <section id="types">
-<span id="features-types"></span><h1>Types<a class="headerlink" href="#types" title="Link to this heading"></a></h1>
+<span id="features-types"></span><h1>Types<a class="headerlink" href="#types" title="Permalink to this heading"></a></h1>
 <p>Native CMake is a weakly typed language where all values are strings, and, in
 certain circumstances, certain strings are interpreted as being of another type.
 A common example is when a string is used as an argument to CMake’s <code class="docutils literal notranslate"><span class="pre">if</span></code>
@@ -135,13 +137,13 @@ Subsections describe the individual types in more detail (the type
 literal associated with the subsection’s type is listed in parentheses after
 the type’s name).</p>
 <section id="cmake-types">
-<span id="features-types-cmake"></span><h2>CMake Types<a class="headerlink" href="#cmake-types" title="Link to this heading"></a></h2>
+<span id="features-types-cmake"></span><h2>CMake Types<a class="headerlink" href="#cmake-types" title="Permalink to this heading"></a></h2>
 <p>To our knowledge, CMake does not provide a list of recognized types. CMake
 does, in some contexts, recognize a string as one of the following types:
 boolean, command, file path, floating-point number, generator expression,
 integer, or target.</p>
 <section id="boolean-bool">
-<span id="features-types-cmake-bool"></span><h3>Boolean (bool)<a class="headerlink" href="#boolean-bool" title="Link to this heading"></a></h3>
+<span id="features-types-cmake-bool"></span><h3>Boolean (bool)<a class="headerlink" href="#boolean-bool" title="Permalink to this heading"></a></h3>
 <p>Any CMake string which case-insensitively matches one of the established
 boolean literals is deemed to be a boolean. The recognized boolean literals
 adopted by CMakePPLang are a subset of those recognized by CMake itself. The
@@ -158,7 +160,7 @@ literals; however, CMakePPLang adopts the philosophy that <code class="docutils 
 <code class="docutils literal notranslate"><span class="pre">1</span></code> are integer literals.</p>
 </section>
 <section id="command-fxn">
-<span id="features-types-cmake-fxn"></span><h3>Command (fxn)<a class="headerlink" href="#command-fxn" title="Link to this heading"></a></h3>
+<span id="features-types-cmake-fxn"></span><h3>Command (fxn)<a class="headerlink" href="#command-fxn" title="Permalink to this heading"></a></h3>
 <p>CMake is able to determine if a string is actually the name of an invocable
 CMake command. The name is case-insensitive and is considered to define a
 command if it is the name of a built-in CMake function (<em>e.g.</em>,
@@ -185,7 +187,7 @@ this is only an ambiguity for the syntactic sugar to call them.</p>
 </div>
 </section>
 <section id="file-path-path">
-<span id="features-types-cmake-path"></span><h3>File Path (path)<a class="headerlink" href="#file-path-path" title="Link to this heading"></a></h3>
+<span id="features-types-cmake-path"></span><h3>File Path (path)<a class="headerlink" href="#file-path-path" title="Permalink to this heading"></a></h3>
 <p>CMake has builtin support for determining whether a string is a valid file path
 for a target operating system. While CMake natively has some support for
 relative file paths, best CMake practice is to always use absolute file paths.
@@ -196,7 +198,7 @@ file path object. Additionally, elements of the path should be separated by
 <code class="docutils literal notranslate"><span class="pre">/</span></code> characters regardless of the convention of any particular OS.</p>
 </section>
 <section id="floating-point-number-float">
-<span id="features-types-cmake-float"></span><h3>Floating-Point Number (float)<a class="headerlink" href="#floating-point-number-float" title="Link to this heading"></a></h3>
+<span id="features-types-cmake-float"></span><h3>Floating-Point Number (float)<a class="headerlink" href="#floating-point-number-float" title="Permalink to this heading"></a></h3>
 <p>CMake strings which contain only a single decimal character (<code class="docutils literal notranslate"><span class="pre">.</span></code>) in addition
 to at least one digit in the range 0-9 are floating point numbers. Floating
 point numbers may optionally be prefixed with a single minus sign character
@@ -206,11 +208,11 @@ CMake’s <code class="docutils literal notranslate"><span class="pre">math</spa
 values, so floating point numbers are uncommon in typical CMake scripts.</p>
 </section>
 <section id="generator-expressions-genexpr">
-<span id="features-types-cmake-genexpr"></span><h3>Generator Expressions (genexpr)<a class="headerlink" href="#generator-expressions-genexpr" title="Link to this heading"></a></h3>
+<span id="features-types-cmake-genexpr"></span><h3>Generator Expressions (genexpr)<a class="headerlink" href="#generator-expressions-genexpr" title="Permalink to this heading"></a></h3>
 <p>CMake expressions of the form <code class="docutils literal notranslate"><span class="pre">$&lt;...&gt;</span></code> are generator expressions.</p>
 </section>
 <section id="integers-int">
-<span id="features-types-cmake-int"></span><h3>Integers (int)<a class="headerlink" href="#integers-int" title="Link to this heading"></a></h3>
+<span id="features-types-cmake-int"></span><h3>Integers (int)<a class="headerlink" href="#integers-int" title="Permalink to this heading"></a></h3>
 <p>Any CMake string comprised entirely of the digits 0-9 is an integer. Integers
 may optionally be prefixed with a single minus sign (<code class="docutils literal notranslate"><span class="pre">-</span></code>). Integers are
 ultimately stored as strings and are of infinite precision. That said,
@@ -218,7 +220,7 @@ CMake’s backend is written in C++ and it is likely that passing integers into
 native CMake functions will result in a loss of precision.</p>
 </section>
 <section id="list-list">
-<span id="features-types-cmake-list"></span><h3>List (list)<a class="headerlink" href="#list-list" title="Link to this heading"></a></h3>
+<span id="features-types-cmake-list"></span><h3>List (list)<a class="headerlink" href="#list-list" title="Permalink to this heading"></a></h3>
 <p>In CMake, strings that contain at least one un-escaped semicolon are lists. In
 CMakePPLang, we avoid lists as much as possible due to the many potential
 gotchas associated with them. Nonetheless, particularly at interfaces with
@@ -229,7 +231,7 @@ problem because we allow any single object to be implicitly cast to a
 single-element list in order to satisfy a function’s signature.</p>
 </section>
 <section id="string-str">
-<span id="features-types-cmake-str"></span><h3>String (str)<a class="headerlink" href="#string-str" title="Link to this heading"></a></h3>
+<span id="features-types-cmake-str"></span><h3>String (str)<a class="headerlink" href="#string-str" title="Permalink to this heading"></a></h3>
 <p>This is the fundamental type that all valid CMake values share. In CMakePPLang,
 the type <code class="docutils literal notranslate"><span class="pre">str</span></code> functions like <code class="docutils literal notranslate"><span class="pre">void*</span></code> in C/C++. If a CMakePPLang
 function accepts an argument of type <code class="docutils literal notranslate"><span class="pre">str</span></code> that means it accepts any valid
@@ -239,17 +241,17 @@ example, the <code class="docutils literal notranslate"><span class="pre">str</s
 intrinsic type of an object will never be <code class="docutils literal notranslate"><span class="pre">str</span></code>.</p>
 </section>
 <section id="target-target">
-<span id="features-types-cmake-target"></span><h3>Target (target)<a class="headerlink" href="#target-target" title="Link to this heading"></a></h3>
+<span id="features-types-cmake-target"></span><h3>Target (target)<a class="headerlink" href="#target-target" title="Permalink to this heading"></a></h3>
 <p>CMake keeps an internal list of targets. Any CMake string that CMake recognizes
 as the name of a target is of the <code class="docutils literal notranslate"><span class="pre">target</span></code> type.</p>
 </section>
 </section>
 <section id="quasi-cmake-types">
-<span id="features-types-quasi-cmake"></span><h2>Quasi-CMake Types<a class="headerlink" href="#quasi-cmake-types" title="Link to this heading"></a></h2>
+<span id="features-types-quasi-cmake"></span><h2>Quasi-CMake Types<a class="headerlink" href="#quasi-cmake-types" title="Permalink to this heading"></a></h2>
 <p>The types in this section straddle the line between being native to CMake
 and being part of CMakePPLang.</p>
 <section id="description-desc">
-<span id="features-types-quasi-cmake-desc"></span><h3>Description (desc)<a class="headerlink" href="#description-desc" title="Link to this heading"></a></h3>
+<span id="features-types-quasi-cmake-desc"></span><h3>Description (desc)<a class="headerlink" href="#description-desc" title="Permalink to this heading"></a></h3>
 <p>CMake itself takes the point of view that everything is a string, so <code class="docutils literal notranslate"><span class="pre">str</span></code> is
 the type common to all CMake values. If we want to assert that every valid
 value has one, and only one, intrinsic type, we need a type for the subset of
@@ -265,7 +267,7 @@ literal <code class="docutils literal notranslate"><span class="pre">&quot;</spa
 whitespace.</p>
 </section>
 <section id="type-type">
-<span id="features-types-quasi-cmake-type"></span><h3>Type (type)<a class="headerlink" href="#type-type" title="Link to this heading"></a></h3>
+<span id="features-types-quasi-cmake-type"></span><h3>Type (type)<a class="headerlink" href="#type-type" title="Permalink to this heading"></a></h3>
 <p>If you are going to recognize types, you need a way to express them in the code.
 That is what the abbreviations (<em>e.g.</em>, bool, int) we have been introducing are
 for. The abbreviations are reserved strings that need to have a type associated
@@ -277,7 +279,7 @@ class, desc, float, fxn, genexpr, int, list, map, obj, path, str, target, and
 type.</p>
 </section>
 <section id="pointers">
-<span id="features-types-other-pointer"></span><h3>Pointers<a class="headerlink" href="#pointers" title="Link to this heading"></a></h3>
+<span id="features-types-other-pointer"></span><h3>Pointers<a class="headerlink" href="#pointers" title="Permalink to this heading"></a></h3>
 <p>Pointers are an important concept in vanilla CMake, but
 are loosely defined and usually not called pointers directly.
 They typically show up when we are dealing with lists
@@ -327,9 +329,9 @@ not the lists themselves.</p>
 </section>
 </section>
 <section id="cmakepplang-types">
-<span id="features-types-cmakepp"></span><h2>CMakePPLang Types<a class="headerlink" href="#cmakepplang-types" title="Link to this heading"></a></h2>
+<span id="features-types-cmakepp"></span><h2>CMakePPLang Types<a class="headerlink" href="#cmakepplang-types" title="Permalink to this heading"></a></h2>
 <section id="class-class">
-<span id="features-types-cmakepp-class"></span><h3>Class (class)<a class="headerlink" href="#class-class" title="Link to this heading"></a></h3>
+<span id="features-types-cmakepp-class"></span><h3>Class (class)<a class="headerlink" href="#class-class" title="Permalink to this heading"></a></h3>
 <p>The “Class” type is the type of an object which holds the specification of a
 user-defined type (<em>i.e.</em> it’s the type of a class in the object-oriented sense
 of the word). This should not be confused with the type of an instance of a
@@ -347,7 +349,7 @@ ignore it if it is confusing and know that the string “class” is reserved
 and can’t be used.</p>
 </section>
 <section id="map-map">
-<span id="features-types-cmakepp-map"></span><h3>Map (map)<a class="headerlink" href="#map-map" title="Link to this heading"></a></h3>
+<span id="features-types-cmakepp-map"></span><h3>Map (map)<a class="headerlink" href="#map-map" title="Permalink to this heading"></a></h3>
 <p>Borrowing from Python’s design, it becomes much simpler to implement objects if
 we have an associative array object. These arrays hold the state of the object
 instances. For this reason, CMakePPLang supports a map type. The map
@@ -358,7 +360,7 @@ without further consideration and tend to work cleaner than CMake’s native
 lists (although there is an abstraction penalty).</p>
 </section>
 <section id="object-obj">
-<span id="features-types-cmakepp-obj"></span><h3>Object (obj)<a class="headerlink" href="#object-obj" title="Link to this heading"></a></h3>
+<span id="features-types-cmakepp-obj"></span><h3>Object (obj)<a class="headerlink" href="#object-obj" title="Permalink to this heading"></a></h3>
 <p>This is the base class for all user-defined classes. In practice it works a bit
 like <code class="docutils literal notranslate"><span class="pre">str</span></code> in that it is usually used as the lowest-common denominator for a
 function taking any object. The object type is mainly needed for writing
@@ -369,12 +371,12 @@ equality comparisons.</p>
 </section>
 </section>
 <section id="other-types">
-<span id="features-types-other"></span><h2>Other Types<a class="headerlink" href="#other-types" title="Link to this heading"></a></h2>
+<span id="features-types-other"></span><h2>Other Types<a class="headerlink" href="#other-types" title="Permalink to this heading"></a></h2>
 <p>Particularly for documentation purposes, CMakePPLang introduces
 several other types. These types may only be conceptual or they may have some
 code support.</p>
 <section id="tuples">
-<span id="features-types-other-tuple"></span><h3>Tuples<a class="headerlink" href="#tuples" title="Link to this heading"></a></h3>
+<span id="features-types-other-tuple"></span><h3>Tuples<a class="headerlink" href="#tuples" title="Permalink to this heading"></a></h3>
 <p>Tuples are purely a documentation convenience for functions with multiple
 return values. The standard way to document the return type of a function is
 using the <code class="docutils literal notranslate"><span class="pre">:rtype:</span></code> field which takes the type of the returned value(s) as
@@ -388,7 +390,7 @@ CMake by having multiple arguments to a function be denoted as results.</p>
 </section>
 </section>
 <section id="summary">
-<span id="features-types-summary"></span><h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"></a></h2>
+<span id="features-types-summary"></span><h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading"></a></h2>
 <p>The following UML diagram is intended to help summarize the type system of
 CMakePPLang.</p>
 <img alt="../_images/type_relations.png" src="../_images/type_relations.png" />
