@@ -57,7 +57,7 @@ function("${CMAKETEST_TEST}")
         ct_assert_equal(result2 "3500")
     endfunction()
 
-    ct_add_section(NAME [[parent_attribute_access]])
+    ct_add_section(NAME [[parent_method_access]])
     function("${CMAKETEST_SECTION}")
         # Create instance of the subclass
         ElectricTruck(CTOR my_inst)

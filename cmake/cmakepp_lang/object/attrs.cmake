@@ -72,7 +72,7 @@ function(_cpp_object_get_attr_guts _ogag_this _ogag_value _ogag_done _ogag_attr)
     # This part of the object did not have the attribute, so loop over bases
     _cpp_object_get_meta_attr("${_ogag_this}" _ogag_sub_objs "sub_objs")
     cpp_map(KEYS "${_ogag_sub_objs}" _ogag_bases)
-    foreach(_ogag_type_i ${_ogag_bases})
+    foreach(_ogag_type_i IN LISTS _ogag_bases)
 
         # Get the i-th base class and see if it has the attribute
         cpp_map(GET "${_ogag_sub_objs}" _ogag_base_i "${_ogag_type_i}")

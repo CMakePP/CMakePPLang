@@ -65,15 +65,17 @@ function(_cpp_flatten_attrs _fa_this)
         # them from the subobj
         list(LENGTH _fa_subobj_attr_keys _fa_subobj_attr_keys_len)
         if(_fa_subobj_attr_keys_len GREATER 0)
-            _cpp_object_get_attr("${_fa_subobj_i}" "_r_attr" ${_fa_subobj_attr_keys})
 
             # Loop over each attribute
-            foreach(_fa_attr_key_i ${_fa_subobj_attr_keys})
+            foreach(_fa_attr_key_i IN LISTS _fa_subobj_attr_keys)
                 # If this doesn't already have this attr, add it
                 cpp_map(HAS_KEY "${_fa_this_attrs}" _fa_this_has_key "${_fa_attr_key_i}")
                 if(NOT "${_fa_this_has_key}")
+                    # Grab the default value, if any, and add
+                    # the attribute along with its default to _fa_this
+                    cpp_map(GET "${_fa_subobj_attrs}" _fa_subobj_attr_i "${_fa_attr_key_i}")
                     _cpp_object_set_attr("${_fa_this}" "${_fa_attr_key_i}"
-                                         "${_r_attr_${_fa_attr_key_i}}")
+                                         "${_fa_subobj_attr_i}")
                 endif()
 
                 # Remove the attribute from the subobjs attributes
