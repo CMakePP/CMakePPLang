@@ -69,9 +69,13 @@ function("${CMAKETEST_TEST}")
         endfunction()
     endfunction()
 
-    ct_add_section(NAME [[bad_type]] EXPECTFAIL)
+    ct_add_section(NAME [[other_type]])
     function("${CMAKETEST_SECTION}")
         cpp_contains(result "world" TRUE)
+        ct_assert_false(result)
+
+        cpp_contains(result "TRUE" TRUE)
+        ct_assert_true(result)
     endfunction()
 
 endfunction()
