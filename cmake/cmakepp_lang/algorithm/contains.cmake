@@ -55,13 +55,16 @@ include(cmakepp_lang/utilities/return)
 #    set(a_list "hello" "world")
 #    cpp_contains(result "hello" "${a_list}")
 #    message("The list contains 'hello': ${result}")  # Will print TRUE
-# 
+#
 # Error Checking
 # ==============
 #
 # If CMakePP is run in debug mode this function will ensure that it is called
 # with the correct number of arguments and that those arguments have the correct
 # types. These error checks are only performed if CMakePP is run in debug mode.
+#
+# :raises BAD_LIST_TYPE: If ``list`` is not recognized as a desc, list, or map.
+#
 #]]
 function(cpp_contains _c_result _c_item _c_list)
     cpp_assert_signature("${ARGV}" desc str str)
@@ -81,5 +84,7 @@ function(cpp_contains _c_result _c_item _c_list)
         if(NOT "${_c_pos}" STREQUAL "-1")
             set("${_c_result}" TRUE PARENT_SCOPE)
         endif()
+    else()
+        cpp_raise(BAD_LIST_TYPE "List is of type ${_c_list_type}")
     endif()
 endfunction()
