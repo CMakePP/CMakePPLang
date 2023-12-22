@@ -55,31 +55,34 @@ include(cmakepp_lang/utilities/return)
 #    set(a_list "hello" "world")
 #    cpp_contains(result "hello" "${a_list}")
 #    message("The list contains 'hello': ${result}")  # Will print TRUE
-# 
+#
 # Error Checking
 # ==============
 #
 # If CMakePP is run in debug mode this function will ensure that it is called
 # with the correct number of arguments and that those arguments have the correct
 # types. These error checks are only performed if CMakePP is run in debug mode.
+#
 #]]
 function(cpp_contains _c_result _c_item _c_list)
     cpp_assert_signature("${ARGV}" desc str str)
 
     cpp_type_of(_c_list_type "${_c_list}")
-    set("${_c_result}" FALSE PARENT_SCOPE)
 
-    if("${_c_list_type}" STREQUAL "list")
-        if("${_c_item}" IN_LIST _c_list)
-            set("${_c_result}" TRUE PARENT_SCOPE)
-        endif()
-    elseif("${_c_list_type}" STREQUAL "map")
-        cpp_map_has_key("${_c_list}" _c_temp "${_c_item}")
-        set("${_c_result}" "${_c_temp}" PARENT_SCOPE)
-    elseif("${_c_list_type}" STREQUAL "desc")
+    set(_c_temp_result FALSE)
+
+    if("${_c_list_type}" STREQUAL "map")
+        cpp_map_has_key("${_c_list}" _c_temp_result "${_c_item}")
+    elseif("${_c_list_type}" STREQUAL "desc") #Substring matching
         string(FIND "${_c_list}" "${_c_item}" _c_pos)
         if(NOT "${_c_pos}" STREQUAL "-1")
-            set("${_c_result}" TRUE PARENT_SCOPE)
+            set(_c_temp_result TRUE)
+        endif()
+    else() # Treat it like a single element list or a list
+        if("${_c_item}" IN_LIST _c_list)
+            set(_c_temp_result TRUE)
         endif()
     endif()
+
+    set("${_c_result}" "${_c_temp_result}" PARENT_SCOPE)
 endfunction()

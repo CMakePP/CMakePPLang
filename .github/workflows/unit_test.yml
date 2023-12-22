@@ -8,13 +8,13 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        cmake: [3.14.7, latest, latestrc]
+        cmake: [3.19, latest, latestrc]
     env:
       cmake_version: ${{ matrix.cmake }}
       os: Linux-x86_64
     steps:
       - uses: actions/checkout@v1
-      
+
 #       - name: get cmake
 #         env:
 #           url_prefix: https://github.com/Kitware/CMake/releases/download
@@ -27,16 +27,16 @@ jobs:
         uses: lukka/get-cmake@latest
         with:
           cmakeVersion: ${{ env.cmake_version }}
-          
+
       - name: Check CMake and CTest Versions
         run: |
           cmake --version
           ctest --version
-          
+
       - name: configure
         run: |
           cmake -H. -Bbuild -DBUILD_TESTING=ON
-          
+
       - name: unit_test
         run: |
           cd build
