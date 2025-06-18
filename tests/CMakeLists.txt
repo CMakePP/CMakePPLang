@@ -20,14 +20,15 @@ FetchContent_Declare(
 set(build_testing_old "${BUILD_TESTING}")
 set(BUILD_TESTING OFF CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(cmake_test)
+
 include(cmake_test/cmake_test)
 
 set(BUILD_TESTING "${build_testing_old}" CACHE BOOL "" FORCE)
 
-
 ct_add_dir(algorithm)
 ct_add_dir(asserts)
 ct_add_dir(class)
+ct_add_dir(detection)
 ct_add_dir(docs)
 ct_add_dir(examples)
 ct_add_dir(exceptions)
