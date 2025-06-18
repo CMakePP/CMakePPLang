@@ -1,0 +1,10 @@
+
+################################
+cmakepp_lang/detection/detection
+################################
+
+.. module:: cmakepp_lang/detection/detection
+
+   Provides functions for detecting the state of CMake and/or the runtime.
+   
+

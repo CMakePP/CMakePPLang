@@ -1,0 +1,11 @@
+
+######################
+cmakepp_lang/detection
+######################
+
+.. toctree:: 
+   :maxdepth: 2
+
+   detection
+   languages
+

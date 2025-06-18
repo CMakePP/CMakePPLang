@@ -1,0 +1,29 @@
+
+################################
+cmakepp_lang/detection/languages
+################################
+
+.. module:: cmakepp_lang/detection/languages
+
+
+.. function:: cpp_enabled_languages(return_variable)
+
+   Wraps the process of retrieving a list of enabled languages.
+   
+   CMake sets a global property
+   :ref:`ENABLED_LANGUAGES <https://cmake.org/cmake/help/latest/prop_gbl/ENABLED_LANGUAGES.html>` 
+   to be a list of coding
+   languages which have been enabled either via 
+   :ref:`project() <https://cmake.org/cmake/help/latest/command/project.html>` or 
+   the
+   :ref:`enable_language() <https://cmake.org/cmake/help/latest/command/enable_language.html>` 
+   commands. CMake's documentation is a bit dodgy in 
+   discussing what variables the aforementioned commands set, so we wrote this
+   function as a wrapper around the logic in the event that CMake changes how
+   they do things. At the very least, this function should be more user-
+   friendly.
+   
+   :param: return_variable A variable to hold the resulting list.
+   :type: list*
+   
+

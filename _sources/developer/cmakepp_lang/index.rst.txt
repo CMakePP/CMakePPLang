@@ -9,6 +9,7 @@ cmakepp_lang/.
    algorithm/index.rst
    asserts/index.rst
    class/index.rst
+   detection/index.rst
    exceptions/index.rst
    map/index.rst
    object/index.rst
